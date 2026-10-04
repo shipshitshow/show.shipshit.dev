@@ -1,10 +1,3 @@
 #!/usr/bin/env sh
 
 bunx biome check --write --unsafe --staged --no-errors-on-unmatched
-
-REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
-
-if command -v code-review-graph >/dev/null 2>&1; then
-  code-review-graph update --repo "$REPO_ROOT" || true
-  code-review-graph detect-changes --repo "$REPO_ROOT" --brief || true
-fi
