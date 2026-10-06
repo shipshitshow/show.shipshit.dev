@@ -65,17 +65,19 @@ Put a compact timeline first, then a card for each segment:
   only when the host asks for wording; distinguish it from a sourced quote.
 - **Ask:** one useful co-host or chat question, preserving real disagreement.
 - **Move on:** a short transition and the next segment.
-- **Watch:** only the material caveat for that card, beside the affected cue/link.
+- **Watch:** material caveats, counter-evidence and hot-take risks, beside the affected cue/link.
 
 Make planned time ranges contiguous and sum to the declared total. Integrate the
 opening cue into the first segment when the source board does; a separate opening
 is optional. Explicitly allocate otherwise unbudgeted time to the close and buffer.
 Preserve explicit segment budgets where possible;
 explain any adjustment needed to fit the total. Reserve the close when shortening
-the show. After the episode's first cut, drop optional tangents and backup-source
+the show. Use the episode's first cut when supplied; otherwise label the following
+cut order as an assumption. Drop optional tangents and backup-source
 discussion, then compress remaining segments around the viewer question. State the
-chosen cuts rather than inventing priorities. If a demo is dropped, follow the
-episode's fallback/time instructions and explicitly reallocate its minutes.
+chosen cuts. If a demo is dropped, follow the episode's fallback/time instructions
+and explicitly reallocate its minutes; absent those instructions, give them to
+core discussion and the close and label that allocation as a proposal.
 
 Use local evidence first. During initial preparation, verify changing facts that
 will be stated as current (prices, availability, quotas, laws, metrics) with primary
@@ -98,8 +100,9 @@ overrides the schedule; elapsed time alone gives a **planned** position, not pro
 that earlier segments aired. Never infer the stream start from the computer clock.
 
 Return **Now / Open / Say / Ask / Move on / Next**, plus **Watch** whenever the card
-has a material caveat, for the current or next requested segment. Carry the caveat
-beside its affected cue or link even when shortening the response. Aim for one
+has a material caveat, counter-evidence or hot-take risk, for the current or next
+requested segment. Carry that context beside its affected cue or link even when
+shortening the response; it outranks the word target. Aim for one
 screen (roughly 150 words); answer a links-only request with
 just the ordered links and essential caveats. Do not regenerate the whole episode
 or start a research sweep. If a new current claim needs checking, verify only that
@@ -125,5 +128,6 @@ a request for live cues. Use only supplied or confirmed firsthand experience.
 ## Final check
 
 Can the host find the next link and cue in a glance? Do ranges fit the budget?
-Are planned, actual and source-video times distinct? Did uncertain facts and demo
-conditions survive condensation? Does the close answer the episode's viewer question?
+Are planned, actual and source-video times distinct? Did caveats, counter-evidence,
+hot-take risks and demo conditions survive condensation? Does the close answer the
+episode's viewer question?

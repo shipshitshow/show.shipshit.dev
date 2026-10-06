@@ -23,8 +23,9 @@ Viewer question: the one question this episode answers.
 **Open:** [source number / descriptive label](URL) — passage or result to show.
 **Say:** Short prompt in the host's own voice; distinguish experience from evidence.
 **Ask:** One co-host or chat question.
-**Move on:** Transition to the next question.
-**Watch:** Material uncertainty only, if needed.
+**Move on:** Transition to the next question, or wrap up/end for the close card.
+**Hot take #N:** Optional mapped cue with its receipt and risk, in the host's words.
+**Watch:** Material caveat, counter-evidence or hot-take risk, if needed.
 
 Repeat a compact card for each scheduled segment, including the close.
 Keep extra source links directly below their card as backups.

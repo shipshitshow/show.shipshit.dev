@@ -86,7 +86,7 @@ Vercel. See `apps/app/.env.example` for the full variable list.
 
 ## Skills
 
-- `skills/` — show-runtime skills (talking points, YouTube metadata/chapters, clip extraction, intro hooks).
+- `skills/` — show-runtime skills (talking points, live cues, YouTube metadata/chapters, clip extraction, intro hooks).
 - `.agents/skills/` — dev-workflow skills, managed by `./scripts/skills.sh` against `github.com/shipshitshow/skills`.
   Also contains a discovery link to the repo-owned live cue skill in `skills/`.
 
