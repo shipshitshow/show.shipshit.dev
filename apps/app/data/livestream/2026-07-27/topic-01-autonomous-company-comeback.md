@@ -23,7 +23,6 @@ thumbnail_prompt: "16:9 YouTube livestream thumbnail, 1920x1080, bright premium 
 - Lossless versions use the same filenames with `.png`.
 - Date and time: July 27, 2026 at **14:00 Central European local time — CEST (UTC+2)**.
 - [YouTube livestream](https://youtube.com/live/kRUwZSY7IN8)
-- [Restream studio](https://studio.restream.io/eue-pcqd-vbw)
 - Episode number: **#23**
 - Format: comeback show after a two-week break. Start with the work receipt, then model news, then the autonomous-company thesis.
 - Stream promise: show exactly what shipped while the show was off-air, explain the model routing that made it possible, and define what Restofront still needs before it deserves the words "autonomous company."

@@ -10,7 +10,6 @@ thumbnail_prompt: "YouTube livestream thumbnail, 16:9, high-contrast brutal tech
 ## Livestream Notes
 
 - [YouTube livestream](https://www.youtube.com/watch?v=Ap5vza8qGy4)
-- [Restream studio](https://studio.restream.io/eue-pcqd-vbw)
 
 - Title: **[LIVE] We're Building Our Own AAA Gaming Studio Entirely With AI**
 - Title alt: **[LIVE] Building An AI-Native AAA Game Studio From Scratch**

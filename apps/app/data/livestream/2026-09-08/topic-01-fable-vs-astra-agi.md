@@ -15,7 +15,6 @@ thumbnail_prompt: "16:9 YouTube livestream thumbnail, 1920x1080, photoreal cinem
 - Start: **14:00 CEST (UTC+2)**. Format: comparison stream, 60–90 minutes, English only.
 - **Spine:** OpenAI's president floated the word AGI. Three careful testers published three different winners in the same week. We ran the one test none of them ran, and it changes the answer. Then: what a working developer should actually buy today.
 - YouTube livestream: https://www.youtube.com/watch?v=KPAyE6KSrQU
-- Restream studio: https://studio.restream.io/eue-pcqd-vbw
 
 ### First-hand run — done this morning, use these numbers
 

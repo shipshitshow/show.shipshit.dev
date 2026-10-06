@@ -17,7 +17,6 @@ Okay, so this segment is about Livestream Notes.
 
 - Title: **[LIVE] NPM is broken**
 - [YouTube livestream](https://www.youtube.com/watch?v=PuIJaW_YRdg)
-- [Restream studio](https://studio.restream.io/eue-pcqd-vbw)
 - Format: security panic, but useful: concrete incidents, sources, and operator fixes
 - Cold open story: active AntV / atool npm supply-chain compromise happening today
 - Core context: TanStack/npm supply-chain compromise was last week's warning; AntV is the sequel

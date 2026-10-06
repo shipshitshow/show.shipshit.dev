@@ -16,7 +16,6 @@ Okay, so this segment is about Livestream Notes.
 ### Talking Points
 
 - [YouTube livestream](https://www.youtube.com/watch?v=z7N1z4XtYZY)
-- [Restream studio](https://studio.restream.io/eue-pcqd-vbw)
 
 ### Host Notes
 

@@ -10,7 +10,6 @@ thumbnail_prompt: "YouTube livestream thumbnail, 16:9, high-contrast cinematic t
 ## Livestream Notes
 
 - [YouTube livestream](https://www.youtube.com/watch?v=p-WXHu2gU2s)
-- [Restream studio](https://studio.restream.io/eue-pcqd-vbw)
 
 ## Cold Open - READ THIS
 

@@ -12,7 +12,6 @@ thumbnail_prompt: "16:9 YouTube livestream thumbnail, 1920x1080, ultra sharp, ph
 
 - Start: 14:00 CEST. Format: **masterclass**, 60–90 minutes. Off air 8 Sep → 29 Sep (three weeks).
 - YouTube livestream: https://www.youtube.com/watch?v=uSuqoiEaB1k
-- Restream studio: https://studio.restream.io/eue-pcqd-vbw
 - Title is locked (see `title-options.md`).
 - **Spine, in plain words:** You are paying for the best AI models ever made and probably driving them like a chatbot. Four habits change that. We teach them, then prove them by making a video live on both models and publishing the brief.
 - **Frame borrowed from Theo** (video below): the new models are not *smarter*, they are *less dumb*, so they can be trusted with longer jobs. Everything in the masterclass follows from that: longer jobs need a finish line, a task file, a cost dial and a check at the end.

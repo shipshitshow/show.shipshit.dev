@@ -10,7 +10,9 @@ thumbnail_prompt: "16:9 YouTube livestream thumbnail, 1920x1080, photographic, s
 
 ## Sources — Livestream Notes
 
-- Date: Tue 6 Oct 2026. Start time, YouTube and Restream links: **not created yet.** Previous shows started at 14:00 CEST; confirm.
+- Date: Tue 6 Oct 2026. Start time: **not confirmed.** Previous shows started at 14:00 CEST; confirm.
+- YouTube livestream (public viewing link): https://www.youtube.com/watch?v=zjXzkB8z5xg
+- Restream studio: stored separately in private producer notes. Never put studio or guest access links in public show notes, descriptions or announcements.
 - Title is locked, with no `[LIVE]` prefix (see `title-options.md`).
 - Format: discussion plus one live Grok Bot demo. About 85 minutes. If time runs short, cut the regulation segment to two minutes first.
 - **Viewer question:** "Everyone is selling me a 24/7 AI personal assistant. Do I have 24/7 of work for it, and will these products even last?"
@@ -439,7 +441,7 @@ Grok Bot, OpenAI Dots, ChatGPT Dots, Meta Muse, AI personal assistant, always-on
 
 ## X Pipeline
 
-Drafts only. Nothing has been posted. UTM campaign assumes this is episode 26 (8 Sep was ep-24, 29 Sep would be ep-25); fix the number if that's wrong. Replace `<YOUTUBE_LIVE_URL>` once the live exists.
+Drafts only. Nothing has been posted. UTM campaign assumes this is episode 26 (8 Sep was ep-24, 29 Sep would be ep-25); fix the number if that's wrong. The announcement uses the public YouTube viewing link; producer access links stay private.
 
 ### Pre-stream announcement (@shipshitdev)
 
@@ -449,7 +451,7 @@ Drafts only. Nothing has been posted. UTM campaign assumes this is episode 26 (8
 >
 > Grok Bot vs Dots vs Muse, live from the EU, where we can't even buy two of them. Tue 14:00 CEST.
 >
-> <YOUTUBE_LIVE_URL>?utm_source=x&utm_medium=social&utm_campaign=ep-26-grok-bot-dots-muse-personal-assistant
+> https://www.youtube.com/watch?v=zjXzkB8z5xg&utm_source=x&utm_medium=social&utm_campaign=ep-26-grok-bot-dots-muse-personal-assistant
 
 - Confirm the start time before posting.
 - One original only. Do not post a clip line in the same hour.
