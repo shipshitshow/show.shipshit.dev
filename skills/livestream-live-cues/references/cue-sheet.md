@@ -15,10 +15,10 @@ Viewer question: the one question this episode answers.
 
 | Planned elapsed | Segment | First link | Main cue |
 | --- | --- | --- | --- |
-| 00:00–02:00 | Opening | [source](URL) | Viewer promise |
+| start–end | First source cluster (includes opening cue) | [source](URL) | Viewer promise |
 | ... | ... | ... | ... |
 
-## 00:00–02:00 — Opening
+## start–end — Segment name
 
 **Open:** [source number / descriptive label](URL) — passage or result to show.
 **Say:** Short prompt in the host's own voice; distinguish experience from evidence.
@@ -28,10 +28,12 @@ Viewer question: the one question this episode answers.
 
 Repeat a compact card for each scheduled segment, including the close.
 Keep extra source links directly below their card as backups.
+Allocate unbudgeted minutes to a named close and buffer so the total is explicit.
 
 ## Cuts and parking lot
 
 First cut: the episode's explicit priority, if supplied.
+Further cuts: optional tangents, backup discussion, then compressed core segments.
 Demo fallback: conditional slot and a usable discussion alternative.
 Optional: tangents outside the timed plan.
 ```
