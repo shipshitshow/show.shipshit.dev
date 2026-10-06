@@ -1,17 +1,19 @@
 #!/usr/bin/env python3
 """Sync public skill contracts into app adapters without a runtime sibling dependency."""
 from pathlib import Path
-import argparse,hashlib,json,shutil,subprocess
+import argparse,hashlib,json,re,shutil,subprocess
 parser=argparse.ArgumentParser()
 parser.add_argument('--source',type=Path,required=True,help='Checkout of shipshitshow/skills')
 parser.add_argument('--check',action='store_true')
 args=parser.parse_args();source=args.source.resolve();root=Path(__file__).resolve().parents[1]
-mapping={'talking-points':'shipshitshow-talking-points','youtube-metadata':'youtube-metadata','thumbnail-prompt-variations':'thumbnails'}
+mapping={'talking-points':'prep','youtube-metadata':'metadata','thumbnail-prompt-variations':'thumbnails'}
 errors=[];lock={}
 for src,dst in mapping.items():
  s=source/src;d=root/'skills'/dst
  body=(s/'SKILL.md').read_text().replace('name: '+src+'\n','name: '+dst+'\n',1)
- expected={Path('SKILL.md'):body.encode(),Path('agents/openai.yaml'):(s/'agents/openai.yaml').read_text().replace('$'+src,'$'+dst).encode()}
+ interface=(s/'agents/openai.yaml').read_text().replace('$'+src,'$'+dst)
+ interface=re.sub(r'(?m)^(\s*display_name: ).*$',lambda match:match[1]+'"'+dst.capitalize()+'"',interface)
+ expected={Path('SKILL.md'):body.encode(),Path('agents/openai.yaml'):interface.encode()}
  for p in (s/'references').glob('*.md'):expected[Path('references')/p.name]=p.read_bytes()
  if src=='youtube-metadata':expected[Path('scripts/analyze-vault-performance.js')]=(s/'scripts/analyze-vault-performance.js').read_bytes()
  for relative,content in expected.items():

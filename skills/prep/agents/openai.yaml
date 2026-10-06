@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prep"
+  short_description: "Source boards for natural livestream discussion"
+  default_prompt: "Use $prep for this channel and its actual source material."

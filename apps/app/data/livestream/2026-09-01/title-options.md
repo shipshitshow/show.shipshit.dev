@@ -6,9 +6,9 @@ Vincent killed: `[LIVE] No Pack. One Egg. Clone @poteto's Dr Eggbot.`
 Then killed the four-pack titles. Recut around the SpaceX / Cursor Grok Bot setup deep dive.
 
 Skills used from this worktree (not invented):
-- `skills/youtube-metadata` — conflict / proof / operator consequence, 45-75 chars
-- `skills/shipshitshow-talking-points` — plain language, not handle soup
-- `skills/livestream-intro-hooks` — claim first (titles only)
+- `skills/metadata` — conflict / proof / operator consequence, 45-75 chars
+- `skills/prep` — plain language, not handle soup
+- `skills/hooks` — claim first (titles only)
 
 Walkable engineer sources as of 2026-09-01:
 - @poteto — Dr Eggbot share + Aug 28 thread. Open, not the whole show.

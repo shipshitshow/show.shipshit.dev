@@ -8,7 +8,7 @@ import { UTM_MEDIUM } from '@shipshitshow/types';
  *
  * The campaign identifies the *episode*, not the channel, so the same value is
  * reused on X with `utm_source=x`. This mirrors the contract in
- * `skills/linkedin-pipeline/SKILL.md` — change both together or attribution
+ * `skills/linkedin/SKILL.md` — change both together or attribution
  * silently splits across channels.
  */
 

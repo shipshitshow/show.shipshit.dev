@@ -1,7 +1,0 @@
-interface:
-  display_name: "YouTube Chapters"
-  short_description: "Generate concise transcript-based chapters"
-  default_prompt: "Use $youtube-chapters to generate 3-word-max YouTube chapters from this transcript or VTT."
-
-policy:
-  allow_implicit_invocation: true

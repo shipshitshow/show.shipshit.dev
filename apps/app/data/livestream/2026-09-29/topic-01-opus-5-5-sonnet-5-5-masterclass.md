@@ -19,7 +19,7 @@ thumbnail_prompt: "16:9 YouTube livestream thumbnail, 1920x1080, ultra sharp, ph
 - **Decision for Vincent before stream:** Capsule 6 (live build) needs a stand-in business, a renderer (browser 3D + screen record, or Blender) and a judging rule. Decide by 13:30 CEST or drop it and let Capsule 2 run long.
 - **Scope (29 Sep, morning):** Codex limits are reached, so **no benchmark run and no OpenAI or xAI model tests today.** The live video build uses **Opus 5.5 and Sonnet 5.5 only.** The other labs' releases get their own report-card capsule (Capsule 2), told through Artificial Analysis's numbers.
 - Fable 5.1 is not in this episode's tests. We are out of Fable credits; every Fable, Sol, Luna, Astra and Grok comparison is somebody else's number, attributed.
-- Thumbnails and X posts: not written. Invoke the `thumbnails` and `x-pipeline` skills.
+- Thumbnails and X posts: not written. Invoke the `thumbnails` and `x` skills.
 
 ### What our streams did (from the channel Streams tab, read 29 Sep)
 

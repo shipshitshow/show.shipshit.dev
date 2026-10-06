@@ -1,0 +1,7 @@
+interface:
+  display_name: "Clips"
+  short_description: "Find discovery-first clips from long streams"
+  default_prompt: "Use $clips to turn this livestream transcript or topic file into ranked Shorts and cutdown packages."
+
+policy:
+  allow_implicit_invocation: true

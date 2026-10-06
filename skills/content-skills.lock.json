@@ -1,5 +1,10 @@
 {
-  "shipshitshow-talking-points": {
+  "metadata": {
+    "contract_sha256": "6cffb33772b1a2600eff4e392e39d432465816f744c0b6d070ebf7891a8657a3",
+    "profile_sha256": "85d01929349e4d67b7457a21f8ede30fdc5ed892ea1b80d85fb990ff119a1518",
+    "source": "https://github.com/shipshitshow/skills/tree/master/youtube-metadata"
+  },
+  "prep": {
     "contract_sha256": "155e12cb9393d56c74fa0cd17a418df1fdd6dbdc3ee0cde0bd4cf85967eb3f7c",
     "profile_sha256": "85d01929349e4d67b7457a21f8ede30fdc5ed892ea1b80d85fb990ff119a1518",
     "source": "https://github.com/shipshitshow/skills/tree/master/talking-points"
@@ -8,10 +13,5 @@
     "contract_sha256": "1fa1d4c6b3b8e1c731ff5ab97f0a4d2fd93dbc8003c6ec32ed224c74a0d6c855",
     "profile_sha256": "85d01929349e4d67b7457a21f8ede30fdc5ed892ea1b80d85fb990ff119a1518",
     "source": "https://github.com/shipshitshow/skills/tree/master/thumbnail-prompt-variations"
-  },
-  "youtube-metadata": {
-    "contract_sha256": "6cffb33772b1a2600eff4e392e39d432465816f744c0b6d070ebf7891a8657a3",
-    "profile_sha256": "85d01929349e4d67b7457a21f8ede30fdc5ed892ea1b80d85fb990ff119a1518",
-    "source": "https://github.com/shipshitshow/skills/tree/master/youtube-metadata"
   }
 }
