@@ -12,7 +12,6 @@ thumbnail_prompt: "16:9 YouTube livestream thumbnail, 1920x1080, photoreal cinem
 - Title: **[LIVE] WTF Is Loop Engineering?**
 - Time: 2pm, Tuesday June 23, 2026.
 - [YouTube livestream](https://youtube.com/live/vZZRx4g6tcs)
-- [Restream studio](https://studio.restream.io/eue-pcqd-vbw)
 - Format: reaction + tool walkthrough + live implementation of one automation-loop draft.
 - Angle: do not make this a generic "loops are cool" episode. Show the actual stack: scheduler, worktree, skills, state, connectors, verification, PR boundary.
 - Core promise: by the end, viewers should understand what to put around cron so an AI agent can do useful software work without becoming scheduled slop.

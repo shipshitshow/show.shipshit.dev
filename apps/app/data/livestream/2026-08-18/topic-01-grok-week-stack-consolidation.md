@@ -13,7 +13,6 @@ thumbnail_prompt: "16:9 YouTube livestream thumbnail, 1920x1080, photoreal cinem
 - Title: **[LIVE] Your Coding Stack Got Bought By A Rocket Company**
 - Start: **4:00 PM**
 - [YouTube livestream](https://youtube.com/live/-qsSddwzjpY)
-- [Restream studio](https://studio.restream.io/eue-pcqd-vbw)
 - Format: live reaction + one live field test, English only, 60–90 minutes
 - Mode: reaction episode — every segment carries its own pull-up links (X + YouTube heavy, that is where the clips live)
 - Artifact: published **AI coding stack decision sheet (August 2026)** — who should pay $0 / $20 / $200 / $300, with the lock-in risks named — plus a live Grok Build field test on a real repo

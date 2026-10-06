@@ -12,7 +12,6 @@ thumbnail_prompt: "16:9 YouTube livestream thumbnail, 1920x1080, photoreal cinem
 
 - Title: **[LIVE] Fable 5 Is Back. Sonnet 5 Is The Compromise.**
 - [YouTube livestream](https://youtube.com/live/K1ftXLD5lrg)
-- [Restream studio](https://studio.restream.io/ecm-fsun-dbx)
 - Format: live reaction + receipts + creator reaction deck + one practical routing test.
 - Angle: this is not just "new Claude model dropped." This is a trust/access/routing episode.
 - Stream promise: explain what actually launched, what came back, why the internet is split, and what builders should route to Sonnet, Fable, Opus, or open models.

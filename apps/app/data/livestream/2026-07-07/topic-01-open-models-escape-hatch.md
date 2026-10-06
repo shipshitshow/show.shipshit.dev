@@ -36,7 +36,6 @@ A measured bench of open models can replace the bad architecture of depending on
 
 - Title: **[LIVE] Fable 5 Is Gone. What Are the Alternatives?**
 - [YouTube livestream](https://www.youtube.com/watch?v=h0EzR9Sqkz0)
-- [Restream studio](https://studio.restream.io/eue-pcqd-vbw)
 - Thumbnail Fable mark asset: `/Users/decod3rs/Desktop/thumbnails/2607/260707/fable-butterfly-question-asset.png`
 - Thumbnail host refs: Vincent `/Users/decod3rs/Desktop/thumbnails/pfps/vincentshipsit/vincentshipsit.jpg`; Mitchell `/Users/decod3rs/Desktop/thumbnails/pfps/mntll_nl/mntll_nl.jpg`
 - Generated thumbnail: `/Users/decod3rs/Desktop/thumbnails/2607/260707/open-models-fable-5-thumbnail-v2-1920x1080.png`

@@ -37,7 +37,6 @@ thumbnail_prompt: "16:9 YouTube livestream thumbnail, 1920x1080, photoreal hosts
 - @baltaaazr: no X article. Launch-week post: https://x.com/baltaaazr/status/2087251248315875726
 - Carnage: https://x.com/0xCarnagee/status/2093861750416265686
 - Product: https://cornershop.dev — live restaurant brand https://restofront.com (€49/month founding, private preview first)
-- Restream studio: https://studio.restream.io/eue-pcqd-vbw
 - YouTube livestream: https://www.youtube.com/watch?v=LbCRcGRLYaU
 - Thumbnail 1 — analytical blueprint guide: `/Users/decod3rs/Desktop/thumbnails/2609/260901/how-the-spacex-team-actually-runs-grok-bot-character-v1-analytical.jpg`
 - Thumbnail 2 — discovery, character builds the bot (**recommended**): `/Users/decod3rs/Desktop/thumbnails/2609/260901/how-the-spacex-team-actually-runs-grok-bot-character-v2-discovery.jpg`

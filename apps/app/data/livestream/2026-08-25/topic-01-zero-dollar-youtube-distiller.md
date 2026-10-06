@@ -15,7 +15,6 @@ thumbnail_prompt: "16:9 YouTube livestream thumbnail, 1920x1080, photoreal cinem
 - Shape: a small **local web UI**, not a bare CLI. Paste a link, watch the transcript land, watch clip cards pop in as they finish encoding.
 - Start: **4:00 PM**
 - [YouTube livestream](https://youtube.com/live/eYGDOk2HsOg)
-- [Restream studio](https://studio.restream.io/eue-pcqd-vbw)
 - **Demo machine: the Mac Studio.** All pre-show checks must be run there, not on the laptop.
 - Format: live build, English only, 60–90 minutes
 - Artifact: a public repository anyone can clone and run on a free API key

@@ -11,7 +11,6 @@ thumbnail_prompt: "YouTube livestream thumbnail, 16:9, high-contrast AI policy a
 
 - Title: **[LIVE] WTF Is Going On With Anthropic & Claude Fable 5?**
 - [YouTube livestream](https://www.youtube.com/watch?v=fJl3YoRIvuQ)
-- [Restream studio](https://studio.restream.io/eue-pcqd-vbw)
 - Format: talk + receipts + real usage notes from the Fable 5 game-studio stream.
 - Angle: Fable 5 is not just another model drop. It is stronger, more expensive, more restricted, and now part of the government-access mess.
 

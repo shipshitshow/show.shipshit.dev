@@ -14,7 +14,6 @@ thumbnail_prompt: null
 - Episode number: **#24**
 - Date: August 4, 2026. Time slot TBC (last episode ran 14:00 CEST).
 - [YouTube livestream](https://www.youtube.com/watch?v=ppcMDBiJ5xc)
-- [Restream studio](https://studio.restream.io/eue-pcqd-vbw)
 - Thumbnail: not generated yet (`thumbnail_prompt` still null).
 
 ## Format Note

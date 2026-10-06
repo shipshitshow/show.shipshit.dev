@@ -17,7 +17,6 @@ Okay, so this segment is about Livestream Notes.
 
 - Title: **[LIVE] Cursor is a frontier lab now — Composer 2.5 receipt run**
 - [YouTube livestream](https://www.youtube.com/watch?v=QoQjddWCnKA)
-- [Restream studio](https://studio.restream.io/eue-pcqd-vbw)
 - Tool I am NOT using daily. Honest outsider angle. Pull receipts from people who are.
 - Released 2026-05-18. 8 days old. Still hot, not stale.
 - Base model: Moonshot Kimi K2.5 (open-weight, Chinese). Cursor fine-tune + RL on top.

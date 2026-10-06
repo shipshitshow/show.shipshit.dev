@@ -46,7 +46,6 @@ Okay, so this segment is about Livestream Notes.
 - Your livestream link:
   - [YouTube: Ship Shit Show livestream](https://www.youtube.com/watch?v=b9Re90K4By8)
 - Restream studio:
-  - [Restream Studio](https://studio.restream.io/eue-pcqd-vbw)
 
 ### Host Notes
 

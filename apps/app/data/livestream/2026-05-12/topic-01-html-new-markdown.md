@@ -17,7 +17,6 @@ Okay, so this segment is about Livestream Notes.
 
 - Title: **[LIVE] Stop Planning With Markdown. HTML Is Better.**
 - [YouTube livestream](https://youtube.com/live/vI0VlQ5lULo)
-- [Restream studio](https://studio.restream.io/eue-pcqd-vbw)
 - Format: talk + live build
 - Build: GitHub Repo Roaster — paste any public repo URL, Claude reads it, outputs brutal HTML roast report
 - Key moment: side-by-side markdown blob vs opening HTML in browser live
