@@ -88,3 +88,10 @@ Vercel. See `apps/app/.env.example` for the full variable list.
 
 - `skills/` — show-runtime skills (talking points, YouTube metadata/chapters, clip extraction, intro hooks).
 - `.agents/skills/` — dev-workflow skills, managed by `./scripts/skills.sh` against `github.com/shipshitshow/skills`.
+
+For a glanceable on-air timeline, source links and speaking cues, run
+`$livestream-live-cues` from this repo. It saves a `live-cues.md` companion beside
+the selected episode's topic notes. During the show, use prompts such as
+`$livestream-live-cues next; we're 35 minutes in, demos covered` or
+`$livestream-live-cues skip the demo; 12 minutes left`.
+The repo-local skill is linked into `.agents/skills/` for Codex and Claude discovery.
