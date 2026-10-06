@@ -33,7 +33,13 @@ Read `.agents/memory/topic-file-format.md` and
 `.agents/memory/product-marketing-context.md` when present. The existing topic's
 viewer question, order, budgets, must-cover items and cut priorities take precedence
 over a new editorial plan. Keep its links, uncertainty and firsthand limitations.
+Sort multiple topic files by their zero-padded topic number unless an explicit show
+order exists. State the selected episode date. These are local seed notes, which
+may differ from dashboard edits; keep missing host experience as an explicit prompt.
 Do not treat thumbnail, distribution or clip-planning sections as extra segments.
+If hot takes are mapped to a segment, carry useful cues and their receipts/risks
+into that card without prescribing lines to perform. Label them `Hot take #N`
+separately from the numbered sources.
 
 Use a supplied duration first, then the episode's stated duration. If neither
 exists, offer a clearly labelled 60-minute draft. Do not invent a start time or
@@ -49,9 +55,10 @@ schedule is a plan, not evidence of what aired.
 
 Put a compact timeline first, then a card for each segment:
 
-- **Open:** one to three clickable direct links in order, with what to show on each
+- **Open:** normally one to three clickable direct links in order, with what to show on each
   page. Keep existing source numbers where available so hosts can jump back to the
-  full board. Put remaining links under a small backup list rather than hiding them.
+  full board. Keep must-say caveats and essential counter-evidence in Open or Watch,
+  even when this requires another link. Put remaining links under a small backup list.
 - **Say:** two or three short conversational cues: the question, actual experience
   to contribute and the viewer consequence. Use prompts rather than invented host
   quotes, personal results or a monologue to read. Offer a short suggested line
@@ -60,16 +67,23 @@ Put a compact timeline first, then a card for each segment:
 - **Move on:** a short transition and the next segment.
 - **Watch:** only the material caveat for that card, beside the affected cue/link.
 
-Make planned time ranges contiguous and sum to the declared total, including the
-opening, close and any buffer. Preserve explicit segment budgets where possible;
+Make planned time ranges contiguous and sum to the declared total. Integrate the
+opening cue into the first segment when the source board does; a separate opening
+is optional. Explicitly allocate otherwise unbudgeted time to the close and buffer.
+Preserve explicit segment budgets where possible;
 explain any adjustment needed to fit the total. Reserve the close when shortening
-the show. Put optional tangents in a parking lot.
+the show. After the episode's first cut, drop optional tangents and backup-source
+discussion, then compress remaining segments around the viewer question. State the
+chosen cuts rather than inventing priorities. If a demo is dropped, follow the
+episode's fallback/time instructions and explicitly reallocate its minutes.
 
 Use local evidence first. During initial preparation, verify changing facts that
 will be stated as current (prices, availability, quotas, laws, metrics) with primary
 sources when tools allow. Attribute reported claims and retain their caveats. If a
 claim or timestamp cannot be checked, mark it `CHECK BEFORE SAYING` or omit the
-claim; a copied URL is not a fresh verification. Do not present estimates as costs
+claim; a copied URL is not a fresh verification. Preserve source check dates; omit
+stale engagement counts from speaking cues unless their dated snapshot matters.
+Do not present estimates as costs
 actually incurred or planned demo outcomes as results.
 
 Keep the first screen usable immediately. Open the saved Markdown in the local
@@ -83,8 +97,10 @@ sheet and the host's latest report. A named current segment or completed item
 overrides the schedule; elapsed time alone gives a **planned** position, not proof
 that earlier segments aired. Never infer the stream start from the computer clock.
 
-Return **Now / Open / Say / Ask / Move on / Next** for the current or next requested
-segment. Aim for one screen (roughly 150 words); answer a links-only request with
+Return **Now / Open / Say / Ask / Move on / Next**, plus **Watch** whenever the card
+has a material caveat, for the current or next requested segment. Carry the caveat
+beside its affected cue or link even when shortening the response. Aim for one
+screen (roughly 150 words); answer a links-only request with
 just the ordered links and essential caveats. Do not regenerate the whole episode
 or start a research sweep. If a new current claim needs checking, verify only that
 claim or leave it out and give a safe discussion cue immediately.
