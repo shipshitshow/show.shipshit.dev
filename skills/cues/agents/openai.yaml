@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cues"
+  short_description: "Timeline, links and speaking cues while on air"
+  default_prompt: "Use $cues to prepare today's local stream cue sheet with a timeline, ordered links and concise speaking cues."

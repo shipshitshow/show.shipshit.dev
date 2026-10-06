@@ -1,9 +1,9 @@
 ---
-name: livestream-live-cues
+name: cues
 description: Turn local episode notes into a live host cue sheet with elapsed-time segments, ordered source links, speaking cues and transitions. Use before or during a stream, including next-segment, skip and running-late requests.
 ---
 
-# Livestream live cues
+# Cues
 
 Help Vincent and Mitchell navigate the show while talking naturally. The existing
 `shipshitshow-talking-points` skill prepares the source board; this skill condenses
@@ -13,11 +13,11 @@ that board for use on air. Give the host the next useful cue immediately.
 
 Examples:
 
-- `$livestream-live-cues` — prepare today's cue sheet from local episode notes.
-- `$livestream-live-cues 2026-10-06, 85 minutes` — use a specific episode and budget.
-- `$livestream-live-cues next; we're 35 minutes in, demos covered` — return the next card.
-- `$livestream-live-cues skip the demo; 12 minutes left` — compress the remaining show.
-- `$livestream-live-cues links for the money segment` — return only that segment's links.
+- `$cues` — prepare today's cue sheet from local episode notes.
+- `$cues 2026-10-06, 85 minutes` — use a specific episode and budget.
+- `$cues next; we're 35 minutes in, demos covered` — return the next card.
+- `$cues skip the demo; 12 minutes left` — compress the remaining show.
+- `$cues links for the money segment` — return only that segment's links.
 
 ## Find the episode
 
