@@ -1,4 +1,0 @@
-interface:
-  display_name: "Talking Points"
-  short_description: "Source boards for natural livestream discussion"
-  default_prompt: "Use $shipshitshow-talking-points for this channel and its actual source material."

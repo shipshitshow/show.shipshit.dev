@@ -1,4 +1,4 @@
 interface:
-  display_name: "Thumbnail Prompt Variations"
+  display_name: "Thumbnails"
   short_description: "Three truthful thumbnail test hypotheses"
   default_prompt: "Use $thumbnails for this channel and its actual source material."

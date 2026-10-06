@@ -911,8 +911,8 @@ ${sourceLines.join('\n')}
 
 ## Quality Bar
 
-- Use \`$youtube-metadata\` for title, description, and \`youtube_tags\`.
-- Use \`$youtube-chapters\` for every chapter line.
+- Use \`$metadata\` for title, description, and \`youtube_tags\`.
+- Use \`$chapters\` for every chapter line.
 - First chapter starts at \`0:00\`.
 - Every chapter title is 3 words max.
 - Open the description with the concrete hook, not channel housekeeping.
@@ -960,7 +960,7 @@ ${transcriptSample || 'No transcript text available.'}
 
 ## Production Prompt
 
-Use \`$youtube-metadata\` and \`$youtube-chapters\`.
+Use \`$metadata\` and \`$chapters\`.
 
 Create the final YouTube package for this video:
 

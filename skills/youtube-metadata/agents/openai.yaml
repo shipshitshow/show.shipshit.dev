@@ -1,4 +1,0 @@
-interface:
-  display_name: "Youtube Metadata"
-  short_description: "Draft transcript-grounded YouTube titles, descriptions, chap"
-  default_prompt: "Use $youtube-metadata for this channel and its actual source material."

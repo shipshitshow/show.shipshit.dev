@@ -1,0 +1,4 @@
+interface:
+  display_name: "Metadata"
+  short_description: "Draft transcript-grounded YouTube titles, descriptions, chap"
+  default_prompt: "Use $metadata for this channel and its actual source material."

@@ -2,7 +2,7 @@
 /**
  * Refresh apps/app/data/youtube/channel-inventory.json from the live channel.
  *
- * The inventory feeds the youtube-metadata / talking-points skills and drifts
+ * The inventory feeds the metadata / prep skills and drifts
  * silently — there was previously no in-repo refetcher. This script pulls the
  * full uploads list via the YouTube Data API (public data, API key only),
  * merges ADDITIVELY (existing items and their transcript links are preserved;

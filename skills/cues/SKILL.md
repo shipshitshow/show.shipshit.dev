@@ -6,7 +6,7 @@ description: Turn local episode notes into a live host cue sheet with elapsed-ti
 # Cues
 
 Help Vincent and Mitchell navigate the show while talking naturally. The existing
-`shipshitshow-talking-points` skill prepares the source board; this skill condenses
+`prep` skill prepares the source board; this skill condenses
 that board for use on air. Give the host the next useful cue immediately.
 
 ## Invocation

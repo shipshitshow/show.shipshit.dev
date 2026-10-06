@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hooks"
+  short_description: "Create sharp livestream cold opens"
+  default_prompt: "Use $hooks to write a strong cold open and talking points for today's Ship Shit Show topic."

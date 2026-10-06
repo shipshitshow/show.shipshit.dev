@@ -387,7 +387,7 @@ Bonus, depends on the demo: **"That took Grok Bot [X] minutes. I'd need it [Y] t
 
 - Cut first, if they land: #1 (the episode's thesis in one line), #9 (every paying user feels it), #3 (named product plus a failure), #4 (a number that stops the scroll).
 - Before the show, decide who says which take, and who pushes back on #1, #3 and #7.
-- After the show, run the `livestream-clip-extraction` skill on the transcript to get real timestamps. Do not cut from these notes.
+- After the show, run the `clips` skill on the transcript to get real timestamps. Do not cut from these notes.
 
 ## YouTube Description — Paste This
 
