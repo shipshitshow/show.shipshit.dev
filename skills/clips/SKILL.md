@@ -15,6 +15,14 @@ Use this skill to turn long Ship Shit Show streams into discovery assets. Optimi
 4. Extract 6-12 candidates, then rank down to the top 3-5 to publish first.
 5. Output clip packages with timestamp range, hook, thesis, title, caption, thumbnail prompt, and why it should be discoverable.
 
+When `live-cues.md` or the rundown contains planned Shorts and editor markers,
+start with those candidates and their intended claim, proof and payoff. Follow
+[the show editorial format](../../docs/show-prep/editorial-format.md). Plans and
+rough markers only help locate material; verify each against the recording/VTT.
+Do not fabricate a missing take to hit the planned count. Retain a qualification
+or opposing case when its removal would misrepresent the conclusion. Add a
+strong unplanned moment when the actual discussion earns it.
+
 ## Source Priority
 
 Prefer sources in this order:

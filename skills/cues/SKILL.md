@@ -41,6 +41,13 @@ If hot takes are mapped to a segment, carry useful cues and their receipts/risks
 into that card without prescribing lines to perform. Label them `Hot take #N`
 separately from the numbered sources.
 
+For new episode preparation, apply
+[the show editorial format](../../docs/show-prep/editorial-format.md): a fast
+opening, 3–5 clearly named planned Shorts and at least one controversial angle.
+Map candidates to source segments rather than adding timed slots. If the board
+lacks them, propose narrow angles from its evidence and label missing experience
+or proof; do not invent a host stance or silently rewrite a locked rundown.
+
 Use a supplied duration first, then the episode's stated duration. If neither
 exists, offer a clearly labelled 60-minute draft. Do not invent a start time or
 stream URL. Keep elapsed stream timing separate from source-video timestamps.
@@ -66,6 +73,9 @@ Put a compact timeline first, then a card for each segment:
 - **Ask:** one useful co-host or chat question, preserving real disagreement.
 - **Move on:** a short transition and the next segment.
 - **Watch:** material caveats, counter-evidence and hot-take risks, beside the affected cue/link.
+- **Short S#**, where planned: working title, entry cue and payoff/exit cue. Carry
+  the source and opposing interpretation in Open/Ask/Watch. A planned Short is an
+  opportunity, not confirmed coverage or a scripted conclusion.
 
 Make planned time ranges contiguous and sum to the declared total. Integrate the
 opening cue into the first segment when the source board does; a separate opening
@@ -117,6 +127,11 @@ reported current segment, or otherwise the last presented card. If neither exist
 start with the opening and label that assumption. Record the presented-card cursor
 separately from confirmed coverage; showing a card does not mean it aired.
 
+Preserve reported actual Short markers beside the candidate for the editor. Mark
+them rough until checked against the recording/VTT; never reuse schedule ranges
+as clip timestamps. Finish the point and its caveat before returning to chat or
+moving on, with a brief pause when practical.
+
 ## Demo handling
 
 Carry over the episode's readiness requirements and fallback. An available link
@@ -131,3 +146,5 @@ Can the host find the next link and cue in a glance? Do ranges fit the budget?
 Are planned, actual and source-video times distinct? Did caveats, counter-evidence,
 hot-take risks and demo conditions survive condensation? Does the close answer the
 episode's viewer question?
+Do planned Shorts have a named subject and a clear payoff/exit? Does new episode
+prep include a debatable angle with evidence and an honest competing case?

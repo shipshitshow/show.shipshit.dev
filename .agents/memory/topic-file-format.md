@@ -6,6 +6,14 @@ Topics live at `apps/app/data/livestream/YYYY-MM-DD/topic-NN-slug.md`. Preserve 
 
 Current show preparation uses short source boards: one viewer question, primary/X evidence, firsthand example, host challenge, consequence, rough timing and exit cue. Hosts navigate Ressources; they do not read scripted opening/clip lines. Canonical instructions are mirrored from `shipshitshow/skills`; use `scripts/sync-content-skills.py --source <skills-checkout> --check` to detect contract drift.
 
+Editorial addition, Vincent 2026-10-08: follow
+[`docs/show-prep/editorial-format.md`](../../docs/show-prep/editorial-format.md)
+for a fast opening, 3–5 clearly named planned Shorts and at least one controversial
+angle each episode. Put `### Planned Short S1 — <question/claim>` inside its
+parent `## Sources — <question>` section; keep clip planning out of the timed
+segment list. Capture actual markers after recording, separate from planned
+elapsed ranges and source-video timestamps.
+
 ## Current section routing
 
 `livestream-sections.ts` routes parsed `##` sections. Use `###` for subheadings within a section.
