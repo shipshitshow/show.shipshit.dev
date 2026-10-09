@@ -4,6 +4,12 @@ Use local Codex or Claude to read this repo, its `skills/` contracts and the sib
 
 ## Prepare and save
 
+Before drafting, follow the [episode opening and planned Shorts format](show-prep/editorial-format.md).
+Choose one central founder question, prepare 3–5 standalone Shorts angles inside
+the source segments, and include at least one evidence-backed controversial
+question per episode. Carry their entry, challenge and payoff cues into `$cues`;
+use `$clips` after recording to verify the actual cuts and timestamps.
+
 From the repository root:
 
 ```sh

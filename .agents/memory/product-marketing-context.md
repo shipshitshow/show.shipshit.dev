@@ -1,6 +1,6 @@
 # Ship Shit Show — Product Marketing Context
 
-last_verified: 2026-10-03
+last_verified: 2026-10-08
 
 ## What is it?
 A weekly YouTube show and podcast (video + live) where two founders, Vincent and Mitchell, talk about AI and how they actually use it to run their businesses. It is not a model-testing or benchmark show (Vincent, 2026-10-03).
@@ -36,6 +36,22 @@ Two founders sharing firsthand use of AI in their own businesses, including hone
 1. Weekly conversation (video + live) on how we use AI in our businesses
 2. Building in public with AI
 3. Takes on AI industry moves and what they mean for founders
+
+## Episode and Shorts preparation
+
+Vincent, 2026-10-08: prepare clearer standalone Shorts topics and at least one
+controversial angle every episode, so the recording is easier to edit. Choose one
+central founder question. Open with both hosts and a useful visual, state the
+viewer payoff, and reach the first useful point within roughly 45 seconds.
+Prepare 3–5 narrow candidate angles mapped to source segments: one claim/question,
+evidence, real opposing interpretation and a payoff/exit cue. Plan a debatable
+question without scripting disagreement or inventing results. Mark actual clip
+boundaries after recording and verify them against video/VTT. This is editorial
+guidance, not measured retention or editing savings.
+
+Use [the local editorial format](../../docs/show-prep/editorial-format.md)
+alongside the public source-board contract. Keep host speech natural and preserve
+the caveats that make the controversial take accurate.
 
 ## CTA Style
 - Never begging: "like and subscribe if you're not braindead"
