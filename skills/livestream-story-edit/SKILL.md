@@ -3,7 +3,7 @@ name: livestream-story-edit
 description: Shape a long livestream into a tight story-driven video. Use when the source is a livestream transcript or recording and the goal is to find the strongest thesis, hook, supporting beats, and ending rather than simply trimming dead air.
 ---
 
-> Historical workflow: new editing uses the installed Tesseract plugin with GPT/Claude. Use [the maintained tesseract-recap skill](https://github.com/shipshitshow/skills/tree/master/tesseract-recap) for new work. This retained Premiere guidance is archival; it is not the current editing default.
+> Historical workflow: new editing uses the `recap` skill (synced from [shipshitshow/skills](https://github.com/shipshitshow/skills/tree/master/recap)). This retained Premiere guidance is archival; it is not the current editing default.
 
 
 # Livestream Story Edit

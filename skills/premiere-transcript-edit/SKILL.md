@@ -3,7 +3,7 @@ name: premiere-transcript-edit
 description: Plan and execute transcript-driven edits for this repo's Premiere workflow. Use when the user provides a transcript JSON, wants a keep-plan, wants removal ranges, or wants a livestream cut assembled around a topic and target runtime.
 ---
 
-> Historical workflow: new editing uses the installed Tesseract plugin with GPT/Claude. Use [the maintained tesseract-dialogue skill](https://github.com/shipshitshow/skills/tree/master/tesseract-dialogue) for new work. This retained Premiere guidance is archival; it is not the current editing default.
+> Historical workflow: new editing uses the `recap` skill (synced from [shipshitshow/skills](https://github.com/shipshitshow/skills/tree/master/recap)). This retained Premiere guidance is archival; it is not the current editing default.
 
 
 # Premiere Transcript Edit

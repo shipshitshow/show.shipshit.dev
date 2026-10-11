@@ -16,7 +16,7 @@ Turborepo monorepo with Bun workspaces.
 - `packages/ui` (@shipshitshow/ui) — Shared React components (Button, Select, Textarea) + Tailwind v4 theme tokens + cn() utility.
 
 ### Skills
-- `skills/` (root) — Show-specific runtime skills: talking points, YouTube metadata/chapters, clip extraction, intro hooks, LinkedIn pipeline.
+- `skills/` (root) — Show-specific runtime skills: talking points, YouTube metadata/chapters, clip extraction, intro hooks, LinkedIn pipeline, and editing (recap, dialogue, library, overlays; synced from `shipshitshow/skills`).
 - `.agents/skills/` — Dev workflow skills. Symlinked from `.claude/skills` and `.codex/skills`.
 
 ### Data

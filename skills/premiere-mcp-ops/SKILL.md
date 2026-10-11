@@ -3,7 +3,7 @@ name: premiere-mcp-ops
 description: Safely operate this repo's adobe-premiere-mcp workflow. Use when the user wants to verify the Premiere bridge, execute transcript-based cuts, recover from partial failures, or work directly against the active Premiere sequence.
 ---
 
-> Historical workflow: new editing uses the installed Tesseract plugin with GPT/Claude. Use [the maintained tesseract-projects skill](https://github.com/shipshitshow/skills/tree/master/tesseract-projects) for new work. This retained Premiere guidance is archival; it is not the current editing default.
+> Historical workflow: new editing uses the `library` skill (synced from [shipshitshow/skills](https://github.com/shipshitshow/skills/tree/master/library)). This retained Premiere guidance is archival; it is not the current editing default.
 
 
 # Premiere MCP Ops
