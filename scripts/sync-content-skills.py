@@ -6,7 +6,7 @@ parser=argparse.ArgumentParser()
 parser.add_argument('--source',type=Path,required=True,help='Checkout of shipshitshow/skills')
 parser.add_argument('--check',action='store_true')
 args=parser.parse_args();source=args.source.resolve();root=Path(__file__).resolve().parents[1]
-mapping={'talking-points':'prep','youtube-metadata':'metadata','thumbnail-prompt-variations':'thumbnails'}
+mapping={'talking-points':'prep','youtube-metadata':'metadata','thumbnail-prompt-variations':'thumbnails','recap':'recap','dialogue':'dialogue','library':'library','overlays':'overlays'}
 errors=[];lock={}
 for src,dst in mapping.items():
  s=source/src;d=root/'skills'/dst

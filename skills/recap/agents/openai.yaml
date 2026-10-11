@@ -1,0 +1,4 @@
+interface:
+  display_name: "Recap"
+  short_description: "Edit a livestream into a focused recap with natural dialogue"
+  default_prompt: "Use $recap for this channel and its actual source material."

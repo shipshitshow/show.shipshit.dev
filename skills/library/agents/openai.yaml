@@ -1,0 +1,4 @@
+interface:
+  display_name: "Library"
+  short_description: "Organize edit source media, versions and final exports"
+  default_prompt: "Use $library for this channel and its actual source material."

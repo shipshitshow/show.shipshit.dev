@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dialogue"
+  short_description: "Improve edit dialogue with sync checks and an honest listen"
+  default_prompt: "Use $dialogue for this channel and its actual source material."
