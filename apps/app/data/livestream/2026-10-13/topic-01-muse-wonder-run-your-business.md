@@ -73,7 +73,17 @@ Search needs a login on X, so this is what search and direct post reads surfaced
 7. Arena first-impressions video; one skeptical and one positive tweet
 8. Anthropic 9 Oct report (Active Focus tie-in)
 
-## Sources — Open on the result
+## Cold Open — Facts card
+
+- **Artificial Analysis index:** Opus 5.5 58, Muse Wonder Full 56, Fable 5.1 53, plain Wonder 52.
+- **Meta's own chart:** Wonder Full wins DeepSWE (79.0 vs Opus 74.2) and SWE-Marathon (57.5 vs 46.3, run at xhigh). Opus wins Terminal-Bench (59.6 vs 57.1) and ProgramBench (70.5 vs 59.0).
+- **Price:** $4 in / $20 out per 1M tokens, the same list price as Opus 5.5. Artificial Analysis cost per task: Wonder $4.52, Opus 5.5 $5.98.
+- **Why it burns:** Artificial Analysis measured about 7.7M input tokens per task. Our own test: a one-file prompt cost 31K input tokens on the first call, with 173 personal skills loaded.
+- **Data:** Muse Code defaults to Contributor mode, where Meta can train on your prompts, code and files. Turning it off only covers future content.
+- **Attribution:** Wang's "best model in the world" was a quote-tweet; the "generous limits" line is @SPAC89's, not his.
+- **Your result:** one audit used about half the plan. Show the usage meter.
+
+## Segment 1 — Open on the result
 
 ### Question and opening cue
 
@@ -90,7 +100,7 @@ Open with the screenshot and the result, in Vincent's words: one audit prompt, 5
 - Viewer consequence: how do you budget agent work when the meter, not the token price, is the real cost?
 - Budget: about 6 minutes. Exit cue: "so the question for the rest of the show is what it costs and what you get."
 
-## Sources — What Meta launched, and the claim
+## Segment 2 — What Meta launched, and the claim
 
 ### Question and opening cue
 
@@ -107,7 +117,7 @@ What exactly did Meta ship, and what did its people say about it?
 - Controversial claim to test: **a model built to keep going until the job is done will use a lot of your plan doing it.** Strongest opposing case: Meta says it was tuned for real tasks, and a deep audit is exactly where you want it to keep going.
 - Budget: about 8 minutes. Exit cue: "what they say it does versus what we saw it do."
 
-## Sources — The chart and the independent numbers
+## Segment 3 — The chart and the independent numbers
 
 ### Question and opening cue
 
@@ -131,7 +141,7 @@ Is Wonder frontier on real work, according to someone other than Meta?
 - Strongest claim: **on the independent index Wonder Full is a real contender, and on agent coding tools it is level with Opus 5.5. The disagreement is cost, not intelligence.**
 - Budget: about 10 minutes. Exit cue: "on paper it is there; the next question is what it costs to get that."
 
-## Sources — The bill: tokens and limits, not list price
+## Segment 4 — The bill: tokens and limits, not list price
 
 ### Question and opening cue
 
@@ -153,7 +163,7 @@ The list price is the same as Opus 5.5. Why did one audit take half a plan?
 - Each host: how do you budget agent work now, per token, per plan or per task?
 - Budget: about 14 minutes. Exit cue: one rule for judging a model's cost.
 
-## Sources — Data: Contributor mode
+## Segment 5 — Data: Contributor mode
 
 ### Question and opening cue
 
@@ -177,7 +187,7 @@ What did Meta get from the audit? Check this before anything else goes through M
 - Controversial claim: **the cheap or generous plan limits are bought with your code.** Strongest opposing case: the toggle is documented and can be turned off.
 - Budget: about 8 minutes. Exit cue: the data rule you apply before running a new agent on a real repo.
 
-## Sources — Try it: same audit, two models
+## Segment 6 — Try it: same audit, two models
 
 ### Question and opening cue
 
@@ -198,7 +208,7 @@ Show the difference rather than describe it. Same task, the model Vincent normal
 - Say the result plainly, including if Wonder is better value than expected or not.
 - Budget: about 12 minutes. Exit cue: "I would or would not put ___ on it this month."
 
-## Sources — Close and parking lot
+## Close and parking lot
 
 ### Close
 
