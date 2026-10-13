@@ -2,7 +2,7 @@
 title: "Muse Wonder: Better Than Fable 5.1 or Opus 5.5?"
 slug: "muse-wonder-run-your-business"
 source: "Vincent's own Muse Code test on a real codebase (Genfeed audit), @finkd launch post and chart (12 Oct), Meta newsroom, Meta Model API pricing and Muse Code subscriptions docs, @MetaforDevs launch thread, Artificial Analysis article and X post (12 Oct), VentureBeat, Hacker News 'Muse Wonder' thread, X posts verified via fxtwitter 13 Oct (@alexandr_wang, @SPAC89, @aipulseda1ly, @chetaslua, @kimmonismus, @RoundtableSpace), YouTube title scrape 13 Oct (yt-dlp), Anthropic 'Investigating unintended model actions' (9 Oct)"
-status: "draft"
+status: "in_progress"
 date: "2026-10-13"
 announcement_tweet: null
 ---
