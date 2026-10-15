@@ -1,0 +1,6 @@
+{
+  "description": "Clean recorded livestream dialogue locally, repair microphone clicks, mix a restrained music bed, and verify levels and synchronization for Tesseract delivery.",
+  "name": "tesseract-dialogue",
+  "skills": ".",
+  "version": "1.0.0"
+}

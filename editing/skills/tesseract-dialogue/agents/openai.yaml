@@ -1,0 +1,3 @@
+interface:
+  display_name: "Podcast dialogue cleanup"
+  short_description: "Repair dialogue, mix quiet music and verify audio timing."

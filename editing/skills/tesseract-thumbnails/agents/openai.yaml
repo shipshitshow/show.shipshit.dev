@@ -1,0 +1,3 @@
+interface:
+  display_name: "Show thumbnail workflow"
+  short_description: "Make channel-style thumbnails from original host photos."

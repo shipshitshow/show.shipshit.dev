@@ -1,0 +1,6 @@
+{
+  "description": "Turn local livestream footage into a clean Tesseract recap with natural dialogue, chapter pans, source cut timestamps, and both full and edited transcripts.",
+  "name": "tesseract-recap",
+  "skills": ".",
+  "version": "1.0.0"
+}

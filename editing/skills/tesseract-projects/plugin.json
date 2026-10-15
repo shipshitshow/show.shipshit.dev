@@ -1,0 +1,6 @@
+{
+  "description": "Organize this local Tesseract workspace, initialize media projects, preserve versions, and promote verified bundles to stable final paths.",
+  "name": "tesseract-projects",
+  "skills": ".",
+  "version": "1.0.0"
+}
