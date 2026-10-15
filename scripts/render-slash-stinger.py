@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Render the slash wipe as a transparent OBS stinger (WebM VP9 alpha, optional ProRes 4444) and an opaque preview."""
+"""Render the slash wipe as a transparent OBS stinger (WebM VP9 alpha, optional ProRes 4444), an opaque preview and a manifest."""
 from pathlib import Path
-import argparse,math,subprocess,tempfile
+import argparse,json,math,subprocess,tempfile
 from PIL import Image,ImageChops,ImageDraw
 
 parser=argparse.ArgumentParser()
@@ -11,7 +11,8 @@ parser.add_argument('--prores',action='store_true',help='Also write a ProRes 444
 args=parser.parse_args()
 
 W,H,SS=1920,1080,2
-RED,IVORY,BLACK,PANEL=(255,45,32),(243,235,221),(13,13,13),(28,28,28)
+KIT={'source':'https://github.com/shipshitshow/vault/tree/master/brand','tokens_version':'2026-10-15','commit':'f43b6ffa60ae4766ae3db0f56ed78a52bcc4cd91'}
+RED,WHITE,BLACK,PANEL=(232,59,59),(255,255,255),(13,13,13),(28,28,28)
 SKEW=math.tan(math.radians(18))*H/2
 STRIPE=2400
 START,COVER,END=-(STRIPE/2+SKEW)-20,W/2,W+STRIPE/2+SKEW+20
@@ -30,7 +31,7 @@ def bezier(x,p1x=.76,p1y=0,p2x=.24,p2y=1):
 
 def ease(a,b,t):return a+(b-a)*bezier(min(max(t,0),1))
 
-def ivory_center(t):return ease(START,COVER,t/IN) if t<=COVERED else None
+def white_center(t):return ease(START,COVER,t/IN) if t<=COVERED else None
 
 def red_center(t):
  if t<DELAY:return START
@@ -59,14 +60,14 @@ def layer(color,noise,alpha):
 def frame(t):
  shutter=[t-.25+k/14 for k in range(8)]
  noise=grain_plates[(t//max(1,round(2*f)))%len(grain_plates)]
- ivory=layer(IVORY,noise,mask([ivory_center(s) for s in shutter]))
+ white=layer(WHITE,noise,mask([white_center(s) for s in shutter]))
  red=layer(RED,noise,mask([red_center(s) for s in shutter]))
- return Image.alpha_composite(ivory,red)
+ return Image.alpha_composite(white,red)
 
 def scene(after):
  s=Image.new('RGBA',(W,H),BLACK+(255,));d=ImageDraw.Draw(s)
  if after:
-  d.rectangle((154,430,154+1100,430+90),fill=IVORY);d.rectangle((154,560,154+110,568),fill=RED)
+  d.rectangle((154,430,154+1100,430+90),fill=WHITE);d.rectangle((154,560,154+110,568),fill=RED)
  else:
   d.rounded_rectangle((77,108,77+868,108+880),16,fill=PANEL);d.rounded_rectangle((975,108,975+868,108+880),16,fill=PANEL)
  return s
@@ -74,6 +75,11 @@ def scene(after):
 grain_plates=[Image.effect_noise((W,H),7) for _ in range(6)]
 
 def ffmpeg(*a):subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-y',*a],check=True)
+
+def decoded_alpha(path,n,tmp):
+ png=tmp/f'check-{n}.png'
+ ffmpeg('-c:v','libvpx-vp9','-i',str(path),'-vf',f'select=eq(n\\,{n})','-frames:v','1',str(png))
+ return Image.open(png).getchannel('A').getextrema()
 
 args.out.mkdir(parents=True,exist_ok=True)
 with tempfile.TemporaryDirectory() as tmp:
@@ -88,4 +94,14 @@ with tempfile.TemporaryDirectory() as tmp:
  ffmpeg(*src,'-c:v','libvpx-vp9','-pix_fmt','yuva420p','-crf','32','-b:v','0','-auto-alt-ref','0',str(args.out/'slash-stinger.webm'))
  if args.prores:ffmpeg(*src,'-c:v','prores_ks','-profile:v','4444','-pix_fmt','yuva444p10le','-vendor','apl0',str(args.out/'slash-stinger.mov'))
  ffmpeg('-framerate',str(args.fps),'-i',str(tmp/'p'/'%04d.png'),'-c:v','libx264','-pix_fmt','yuv420p','-crf','18',str(args.out/'slash-stinger-preview.mp4'))
+ webm=args.out/'slash-stinger.webm'
+ probe=json.loads(subprocess.run(['ffprobe','-v','error','-show_entries','stream=codec_name,width,height,r_frame_rate:stream_tags=alpha_mode:format=duration','-of','json',str(webm)],check=True,capture_output=True,text=True).stdout)
+ stream=probe['streams'][0];first,covered,last=(decoded_alpha(webm,n,tmp) for n in (0,TRANSITION_FRAME,FRAMES-1))
+ manifest={'file':webm.name,'kit':KIT,'colors':{'accent_red':'#%02X%02X%02X'%RED,'white':'#%02X%02X%02X'%WHITE},'fonts':None,'logo':None,
+  'width':stream['width'],'height':stream['height'],'fps':args.fps,'frames':FRAMES,'duration_s':float(probe['format']['duration']),
+  'codec':stream['codec_name'],'alpha':stream.get('tags',{}).get('alpha_mode')=='1','transition_point_ms':round(TRANSITION_FRAME*1000/args.fps),
+  'checks':{'first_frame_alpha':first,'transition_frame_alpha':covered,'last_frame_alpha':last,'swap_hidden':covered==(255,255),'clear_at_ends':first[1]==0 and last[1]==0},
+  'watch_review':'pending'}
+ (args.out/'slash-stinger.manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+ if not manifest['alpha'] or not manifest['checks']['swap_hidden'] or not manifest['checks']['clear_at_ends']:parser.exit(1,'Stinger checks failed; see the manifest.\n')
 print(f'Rendered {FRAMES} frames at {args.fps} fps into {args.out}. OBS transition point: {round(TRANSITION_FRAME*1000/args.fps)} ms.')

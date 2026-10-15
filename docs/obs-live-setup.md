@@ -23,10 +23,16 @@ absolute path:
 python3 scripts/render-slash-stinger.py --out ~/Movies/shipshitshow/broadcast
 ```
 
-It writes `slash-stinger.webm` (transparent VP9, 1920×1080, 60 fps, 0.88 s) and
-`slash-stinger-preview.mp4` (the wipe over two placeholder scenes). Add `--prores`
-for a ProRes 4444 `.mov` when an editor needs it. Requires Python with Pillow and an
-ffmpeg build with `libvpx-vp9`.
+It writes `slash-stinger.webm` (transparent VP9, 1920×1080, 60 fps, 0.88 s),
+`slash-stinger-preview.mp4` (the wipe over two placeholder scenes) and
+`slash-stinger.manifest.json`. Add `--prores` for a ProRes 4444 `.mov` when an editor
+needs it. Requires Python with Pillow and an ffmpeg build with `libvpx-vp9`.
+
+Colors follow the [brand kit](branding.md) tokens (accent red `#E83B3B`, white),
+pinned to the kit commit in the script. The manifest records the kit revision, frame
+rate, duration, codec, alpha and transition point, and the decoded-alpha checks: clear
+on the first and last frames, fully covered at the transition point. The render fails
+if a check fails. `watch_review` stays `pending` until someone watches it in OBS.
 
 In OBS, open the Scene Transitions dock, click `+`, choose **Stinger** and name it
 `Slash`:
