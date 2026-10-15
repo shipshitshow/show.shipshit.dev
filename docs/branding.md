@@ -1,6 +1,6 @@
 # Show branding
 
-The maintained source is [the vault brand kit](https://github.com/shipshitshow/vault/tree/master/brand). It owns the identity, working tokens, inventory, visual reference boards and production rules. Read it before creating a thumbnail, caption style, overlay, slate, cover or show-related web page.
+The maintained source is [the vault brand kit](https://github.com/shipshitshow/vault/tree/master/brand). It owns the identity, working tokens, inventory and production rules. Read it before creating a thumbnail, caption style, overlay, slate, cover or show-related web page.
 
 | Job | Canonical reference |
 | --- | --- |
@@ -10,9 +10,9 @@ The maintained source is [the vault brand kit](https://github.com/shipshitshow/v
 | Select a file | [Inventory](https://github.com/shipshitshow/vault/blob/master/brand/inventory.json) |
 | Export, status, approval and handoff | [Production](https://github.com/shipshitshow/vault/blob/master/brand/production.md) |
 
-Full name: **Ship Sh!t Show**. Compact mark: **`SH*W`**, one horizontal line. Current direction uses broad readable lettering, black/white foundations, restrained red, approved host photography and modest repeated signatures. The red/black square JPG is a working asset; the boards are draft references, not finished channel uploads, overlays or real episode footage. Exact tokens, type and application layouts still need production review.
+Full name: **Ship Sh!t Show**. Compact mark: **`SH*W`**, one horizontal line. Current direction uses broad readable lettering, black/white foundations, restrained red, approved host photography and modest repeated signatures. The red/black square JPG is a working asset; face-containing concept boards remain private and are excluded from the public kit. Exact tokens, type and application layouts still need production review.
 
-Private originals, recordings and native editing projects remain in the established media library. Copy only required authorized assets and record kit revision, logo hash, actual fonts and approved deviations with the edit. Do not introduce machine-specific paths in public handoff.
+Only the guides and standalone logo are authorized for this public kit. Private boards, original photographs, recordings and native editing projects remain in the established media library. Copy only required authorized assets and record kit revision, logo hash, actual fonts and approved deviations with the edit. Do not introduce machine-specific paths in public handoff.
 
 ## Keep adapters current
 
