@@ -9,6 +9,12 @@ versions, `recap` for edits, `dialogue` for audio, `overlays` for graphics and
 `thumbnails` for packaging. `README.md` maps requests to them. Organize projects
 with `scripts/workspace.py`, run from this directory.
 
+Work per episode: `projects/<YYMMDD>/` holds `episode.json`, the recording in
+`raws/`, the long-form edit in `video/` and one project per short in
+`shorts/<NN-slug>/`. Create deliverables with `scripts/workspace.py init`; never
+copy the recording into a deliverable. Record published YouTube IDs in
+`episode.json`.
+
 Preserve original media in `raws`. Save the current working bundle in `outputs`,
 deliver at stable `final/video.mp4` and `final/project.tsrct`, and keep meaningful
 snapshots in `versions/vNNN`. Keep temporary working data in `outputs/work`; avoid
