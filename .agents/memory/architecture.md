@@ -21,7 +21,7 @@ Turborepo monorepo with Bun workspaces.
 
 ### Editing workspace
 - `editing/` — Tesseract media workspace (formerly standalone `~/www/tesseract`, merged 2026-10-15 so all show data lives in this repo). Git tracks only `editing/README.md`, `editing/AGENTS.md`, `editing/scripts/workspace.py` and `editing/skills/tesseract-*`; a root `.gitignore` allowlist ignores everything else (raws, renders, `.tsrct`, transcripts, manifests, host photos, concept boards). The repo is public: never force-add from `editing/`.
-- Media exists only in the primary checkout (`~/www/shipshitshow/show.shipshit.dev/editing`, ~72 GB); worktrees get the contract only. `~/www/tesseract` is a compatibility symlink to it because historical work files and the `audio-env` virtualenv use absolute paths.
+- Media exists only in the primary checkout (`~/www/shipshitshow/show.shipshit.dev/editing`, ~72 GB); worktrees get the contract only. The old `~/www/tesseract` path was removed; historical work files and the `260929` `audio-env` virtualenv still reference it and are records only.
 
 ### Data
 - `apps/app/data/livestream/` — Topic seed markdown per date (repo files, read-only in production).

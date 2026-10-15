@@ -16,9 +16,9 @@ the allowlist when changing `.gitignore`.
 Media exists only in the primary checkout, at
 `~/www/shipshitshow/show.shipshit.dev/editing`. Worktrees contain the tracked
 contract but no media, so run edits and `workspace.py` from the primary
-checkout. `~/www/tesseract` is a symlink to that folder; historical work
-scripts, manifests and the `audio-env` virtualenv still use absolute
-`~/www/tesseract/...` paths, so keep the symlink.
+checkout. Historical work scripts, manifests and the `260929` `audio-env`
+virtualenv still contain absolute `~/www/tesseract/...` paths from before the
+merge; treat them as records, not runnable entry points.
 
 ## Layout
 
