@@ -59,3 +59,12 @@ yarn.lock
 
 # Livestream thumbnail working files (kept local, never committed)
 assets/
+
+# Editing workspace: media stays local; track only the contract (editing/README.md)
+editing/*
+!editing/AGENTS.md
+!editing/README.md
+!editing/scripts/
+editing/scripts/*
+!editing/scripts/workspace.py
+__pycache__/
