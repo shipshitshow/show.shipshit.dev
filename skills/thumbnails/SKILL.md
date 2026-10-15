@@ -9,6 +9,8 @@ description: Create exactly three YouTube thumbnail test concepts and generation
 
 Use the user's channel profile and actual source asset. For Ship Sh!t Show, read [the bundled profile](references/channel-profile.md); viewers using another channel should provide their audience, voice, formats, links and visual references. A profile is context, not permission to publish, upload footage, buy generation or contact a partner.
 
+For the bundled show, read the canonical brand kit and inventory linked in the profile. Use its thumbnail rules and appropriate authorized assets; draft boards are composition references, not final artwork or new source photographs.
+
 Determine live, edited recap or Short, the delivered thesis, supplied identity/brand references and whether the user wants new concepts or a surgical edit. For a surgical edit, preserve all unrequested elements; do not redesign the asset to satisfy default style.
 
 For a new test set, return **exactly three** distinct hypotheses. Examples: decisive outcome, firsthand workflow proof, and meaningful tradeoff. Distinguish them enough to learn something while preserving the same truthful viewer promise. Do not label a prompt a proven winner. If testing thumbnails alone, hold the title fixed; if the user chooses combined tests, label each title/thumbnail pair explicitly.

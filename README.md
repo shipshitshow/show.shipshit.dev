@@ -84,6 +84,10 @@ Vercel. See `apps/app/.env.example` for the full variable list.
 - `apps/app/data/youtube/channel-inventory.json` — cached channel video inventory.
 - Refresh inventory + backfill transcripts: `bun scripts/refresh-youtube-inventory.ts` (see `--help`).
 
+## Branding
+
+Read [the brand entry point](docs/branding.md) before making thumbnails, captions, overlays, covers or channel artwork. [The vault brand kit](https://github.com/shipshitshow/vault/tree/master/brand) owns the current **Ship Sh!t Show** / **`SH*W`** identity, tokens, asset inventory and editing rules; the public skill profile and this repo's generated adapters consume that source. Design boards are references, not final exports or actual footage.
+
 ## Skills
 
 - `skills/` — show-runtime skills: `prep`, `cues`, `hooks`, `clips`, `chapters`, `metadata`, `linkedin`, `x`, `thumbnails`.

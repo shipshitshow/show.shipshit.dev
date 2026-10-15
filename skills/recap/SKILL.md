@@ -9,6 +9,8 @@ description: Edit a livestream into a focused recap with natural dialogue, sourc
 
 Use the user's channel profile and actual source asset. For Ship Sh!t Show, read [the bundled profile](references/channel-profile.md); viewers using another channel should provide their audience, voice, formats, links and visual references. A profile is context, not permission to publish, upload footage, buy generation or contact a partner.
 
+For the bundled show, read the canonical kit's editing rules and asset inventory linked in the profile. Record the kit revision, logo hash, actual fonts and approved overrides in the project's supported manifest or handoff notes. Generated board scenes are not source footage.
+
 Read the existing project manifest. Use the full-source transcript to select the viewer question, evidence and verdict. Keep disagreement and uncertainty where they change the answer. Select complete exchanges with enough context; do not manufacture a stronger claim by removing qualifications.
 
 Build an edit brief and source-to-edit cut map before operations. Put the useful answer/proof early when it remains truthful; remove logistics and redundant chronology. Let actual dialogue determine cut boundaries. Review word joins, speaker reactions and audiovisual sync. Preserve the hosts' rhythm rather than imposing a uniform montage.
