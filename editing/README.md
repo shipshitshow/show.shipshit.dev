@@ -7,7 +7,7 @@ October 2026; it now lives here so show data and edits share one repository.
 ## What is tracked
 
 This repository is public. Git tracks only the workspace contract: this README,
-`AGENTS.md`, `scripts/workspace.py` and `skills/`. Everything else under
+`AGENTS.md` and `scripts/workspace.py`. Everything else under
 `editing/` is ignored by an allowlist in the root `.gitignore`: raw footage,
 renders, native projects, transcripts, manifests, host photos, brand concept
 boards and recovery archives. Never force-add files from `editing/`, and keep
@@ -16,28 +16,56 @@ the allowlist when changing `.gitignore`.
 Media exists only in the primary checkout, at
 `~/www/shipshitshow/show.shipshit.dev/editing`. Worktrees contain the tracked
 contract but no media, so run edits and `workspace.py` from the primary
-checkout. Historical work scripts, manifests and the `260929` `audio-env`
-virtualenv still contain absolute `~/www/tesseract/...` paths from before the
-merge; treat them as records, not runnable entry points.
+checkout. Historical work scripts and `work/` JSON still contain absolute
+`~/www/tesseract/...` paths from before the merge; treat them as records.
+Manifest `external_artifacts` were rewritten to the current locations.
 
 ## Layout
 
+One folder per recorded episode, keyed by recording date. The recording is
+stored once per episode; every deliverable cut from it is its own project.
+
 ```text
 editing/
-  projects/<project>/   one folder per edit; nested slugs are allowed
-  raws/                 inbox for footage not yet assigned to a project
+  projects/<YYMMDD>/
+    episode.json        episode identity and links to the rest of the show data
+    raws/               stream recording and full-source transcript, stored once
+    video/              long-form edit (recap) project
+    shorts/<NN-slug>/   one project per short
+    shorts/_archive-*/  superseded collection material, not a project
+  _labs/<slug>/         branding, motion and design experiments (projects)
   assets/               shared original host photos (pfps/) and logos
-  outputs/              workspace-level audits and migration records
+  raws/                 inbox for footage not yet assigned to an episode
+  outputs/              workspace audits, migration records (legacy/)
   _archive-recovery/    recovered downloads and transcripts, kept for reference
 ```
 
-Every project uses the same layout and delivery filenames:
+`episode.json` links an episode to the rest of the show by its date key.
+Repository paths are relative to the repository root; `recording` and
+`transcripts` may also be relative to the episode:
+
+```json
+{
+  "schema_version": 1,
+  "id": "261013",
+  "recording_date": "2026-10-13",
+  "show_data": "apps/app/data/livestream/2026-10-13",
+  "recording": "raws/261013.mp4",
+  "youtube": {"livestream": "M1EEEl4M6-4", "video": null, "shorts": {}},
+  "transcripts": ["raws/transcript.vtt"]
+}
+```
+
+Fill in `youtube.video` and `youtube.shorts.<slug>` when a deliverable is
+published. Every project (`video/`, each short, each lab) uses the same layout
+and delivery filenames:
 
 ```text
-projects/<project>/
-  project.json          status, current revision and artifact paths
+<project>/
+  project.json          id, kind, status, current revision and artifact paths
   README.md             editorial intent and review notes when useful
-  raws/                 original source media and source transcripts
+  raws/                 deliverable-only sources (often empty; the recording is
+                        in the episode's raws/)
   assets/               reusable audio, references, keyframes and briefs
   outputs/
     video.mp4           current working render, when present
@@ -60,9 +88,8 @@ projects/<project>/
 revision number belongs in the manifest and `versions/vNNN`, never in the
 current delivery basename. Empty `final` folders are intentional for unfinished
 projects. Design projects put image proposals under `outputs/images` and do not
-need a video or editable project. Projects are named by recording date
-(`261013/video`, `261013/shorts/<slug>`); exploratory work lives under
-`projects/_labs/`.
+need a video or editable project. A short's portrait export is its main
+`video.mp4`; a landscape variant lives in `landscape/` beside it.
 
 Generated YouTube thumbnails stay in the show's dated Desktop library
 (`~/Desktop/thumbnails/<YYMM>/<YYMMDD>/`); `final/manifest.json` records their
@@ -71,14 +98,18 @@ paths as `external_artifacts`. Always refresh a face from the originals in
 
 ## Commands
 
-Run from `editing/` in the primary checkout. A bare `audit` checks every folder
-that holds a `project.json`.
+Run from `editing/` in the primary checkout. `init` creates the episode
+(`episode.json`, `raws/`) on first use and infers the kind (`recap` for
+`video`, `short` for shorts, `design` for labs). A bare `audit` checks every
+episode and project.
 
 ```sh
-python3 scripts/workspace.py init 261020/video --kind recap
+python3 scripts/workspace.py init 261020/video
+python3 scripts/workspace.py init 261020/shorts/01-hook-name
+python3 scripts/workspace.py init _labs/new-board --kind branding
 python3 scripts/workspace.py audit
 python3 scripts/workspace.py audit --project 261013/video
-python3 scripts/workspace.py promote 261020/video
+python3 scripts/workspace.py promote 261020/shorts/01-hook-name
 ```
 
 Promotion requires `outputs/video.mp4`, `outputs/project.tsrct`, a new revision
@@ -86,8 +117,9 @@ such as `v004`, and an `outputs/manifest.json` with `status: "ready"`. It
 snapshots the new bundle, preserves the previous final revision and switches
 `final` locally. It does not upload or publish anything.
 
-The audit verifies layout, listed artifacts, external thumbnail paths, project
-document digests and packaged resource sizes. It does not prove full decoding,
+The audit verifies episode links (show data, recording, transcripts), layout,
+listed artifacts, external paths, project document digests and packaged resource
+sizes. It does not prove full decoding,
 asset content digests, subjective audio quality or editorial correctness.
 
 ## Skills
