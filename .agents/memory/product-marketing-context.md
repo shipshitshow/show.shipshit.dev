@@ -26,11 +26,19 @@ A weekly YouTube show and podcast (video + live) where two founders, Vincent and
 Two founders sharing firsthand use of AI in their own businesses, including honest disagreement between Vincent and Mitchell. A verified live, recorded or local demo supplies proof when available; discussion does not promise a demo without readiness.
 
 ## Brand
-- **Name:** Ship Shit Show
-- **Color:** #ff2d20 (red) on #0d0d0d (dark)
+- **Name:** Ship Sh!t Show
+- **App theme:** #ff2d20 red on #0d0d0d dark remains unchanged; use the canonical kit for new production artwork.
 - **Font:** Space Grotesk
 - **YouTube channels:** @shipshitshow (main), @ShipShitShowClips (clips)
 - **X account:** @shipshitdev is the Ship Shit Show account. Treat `shipshitdev` as the show account for X/trends/social integrations, not as a separate personal fallback.
+
+### Brand source — updated 2026-10-15
+
+Canonical kit: https://github.com/shipshitshow/vault/tree/master/brand. Read its identity, applications, editing rules, working tokens and asset inventory before producing thumbnails, captions, overlays or channel art. Compact mark: `SH*W`, S/H/asterisk/W on one horizontal line; full show name remains **Ship Sh!t Show**. Current direction uses broad readable type, black/white foundations, restrained red, real approved host photography, small repeated signatures and modest broadcast graphics. Requested logo variant: black mark on edge-to-edge red square, no border.
+
+Earlier SH!P/SH!T, compressed or stacked marks, braces and oversized sponsor panels are superseded explorations. Generated reference boards are not real footage, authorized replacement host photographs, sized channel exports or transparent overlays. Exact application designs/tokens still need production review; existing app colors and approved motion projects were not changed. Private original portraits remain private. Record the kit revision, logo hash, actual fonts and approved overrides with each edit.
+
+The public skills canonical profile owns its bundled summaries; `scripts/sync-content-skills.py` refreshes the app adapters and lock. Do not edit generated copies or introduce a competing palette. Local entry point: `docs/branding.md`.
 
 ## Content Pillars
 1. Weekly conversation (video + live) on how we use AI in our businesses
