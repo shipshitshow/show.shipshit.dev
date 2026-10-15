@@ -92,12 +92,17 @@ asset content digests, subjective audio quality or editorial correctness.
 
 ## Skills
 
-- [Project organization and versioning](skills/tesseract-projects/SKILL.md)
-- [Livestream recap, chapters and transcripts](skills/tesseract-recap/SKILL.md)
-- [Dialogue cleanup and quiet music](skills/tesseract-dialogue/SKILL.md)
-- [Recap thumbnails and host likeness](skills/tesseract-thumbnails/SKILL.md)
+Use the repository's synced editing skills; they are the canonical versions from
+`shipshitshow/skills` (see `scripts/sync-content-skills.py`):
 
-These are the workspace's operational skills. The root `skills/recap`,
-`dialogue`, `library` and `thumbnails` are the public, channel-generic versions
-synced from `shipshitshow/skills`. `.agents/skills/tesseract-*` links here; edit
-the files in `editing/skills/`.
+| Request | Skill |
+| --- | --- |
+| Create/organize a project, version or locate a delivery | `skills/library` |
+| Edit a livestream into a recap, cuts, transcripts and chapters | `skills/recap` |
+| Denoise, dereverb, repair clicks, mix quiet music | `skills/dialogue` |
+| Illustrations, motion graphics and overlays on a recording | `skills/overlays` |
+| Thumbnail concepts and revisions | `skills/thumbnails` |
+
+They replaced the original `tesseract-projects`, `tesseract-recap`,
+`tesseract-dialogue` and `tesseract-thumbnails` workspace skills. Rules specific
+to this machine and workspace live in `AGENTS.md`.

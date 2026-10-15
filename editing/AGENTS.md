@@ -4,14 +4,10 @@ Read `README.md` before reorganizing or starting an edit. Media lives only in th
 primary checkout's `editing/` and is ignored by Git; this repository is public, so
 never force-add anything here beyond the tracked contract.
 
-Use these skills when the request matches:
-
-| Request | Skill |
-| --- | --- |
-| Create/organize a project, version or locate a delivery | `skills/tesseract-projects/SKILL.md` |
-| Edit a livestream, remove fillers, extract transcripts or list preview cuts | `skills/tesseract-recap/SKILL.md` |
-| Denoise, dereverb, repair clicks, mix quiet music or improve dialogue | `skills/tesseract-dialogue/SKILL.md` |
-| Create/revise recap thumbnails, host likeness or channel branding | `skills/tesseract-thumbnails/SKILL.md` |
+Use the synced skills in the repository's `skills/`: `library` for folders and
+versions, `recap` for edits, `dialogue` for audio, `overlays` for graphics and
+`thumbnails` for packaging. `README.md` maps requests to them. Organize projects
+with `scripts/workspace.py`, run from this directory.
 
 Preserve original media in `raws`. Save the current working bundle in `outputs`,
 deliver at stable `final/video.mp4` and `final/project.tsrct`, and keep meaningful
@@ -28,6 +24,9 @@ export, waveform, ASR result or loudness meter is not proof that audio was heard
 Do not claim auditioning, studio sound or complete crackle removal without actual
 listening. Keep the recorded model verdict tied to its recording date.
 
-Follow the show's canonical Desktop thumbnail archive. Use original host photos
-for identity, current channel examples for style, and exact supplied brand marks.
-Do not propagate face degradation through repeated generations.
+Thumbnails: save selected 1920x1080 JPG/PNG siblings and prompts in
+`~/Desktop/thumbnails/<YYMM>/<YYMMDD>/` and list them in the project's
+`final/manifest.json` `external_artifacts`. Use the originals in `assets/pfps/`
+for host identity and rebuild a degraded face from the original, never from a
+previous generation. Recaps use one host plus a logo/result and a short headline,
+not the two-host livestream template.

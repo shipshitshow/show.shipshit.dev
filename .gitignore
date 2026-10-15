@@ -67,5 +67,4 @@ editing/*
 !editing/scripts/
 editing/scripts/*
 !editing/scripts/workspace.py
-!editing/skills/
 __pycache__/

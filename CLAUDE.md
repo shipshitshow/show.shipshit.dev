@@ -28,6 +28,5 @@ bun run lint          # biome check
 
 ## Skills
 - `skills/` — show-specific runtime skills (prep, cues, hooks, clips, chapters, metadata, linkedin, x, thumbnails, plus recap, dialogue, library, overlays for editing)
-- `editing/skills/` — Tesseract workspace skills (projects, recap, dialogue, thumbnails)
 - `.agents/skills/` — show skill discovery links and dev skills (debug, refactor, review); symlinked to .claude/skills and .codex/skills
 - `scripts/skills.sh` — skill installer (pulls from github.com/shipshitshow/skills)
