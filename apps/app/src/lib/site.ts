@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 const LOCAL_SITE_URL = 'http://localhost:3001';
 const PRODUCTION_SITE_URL = 'https://show.shipshit.dev';
+export const DEFAULT_SOCIAL_IMAGE_PATH = '/brand/show-og-2026-10-16.jpg';
 
 export function getSiteUrl(): string {
   const configured = process.env.NEXT_PUBLIC_SITE_URL?.trim();
@@ -25,7 +26,7 @@ export function buildDefaultMetadata(): Pick<
   'metadataBase' | 'openGraph' | 'twitter'
 > {
   const metadataBase = new URL(getSiteUrl());
-  const defaultCardUrl = toAbsoluteUrl('/api/og');
+  const defaultCardUrl = toAbsoluteUrl(DEFAULT_SOCIAL_IMAGE_PATH);
 
   return {
     metadataBase,

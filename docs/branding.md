@@ -20,9 +20,11 @@ Video signatures are white on dark (black on light); livestream signatures are r
 
 The show uses red as its primary action/identity color; the commercial shipshit.dev site uses black and white. Shared typography and the asterisk connect them without giving both brands the same primary palette.
 
-The homepage uses purpose-made website artwork at its native 3:2 aspect ratio, with no transform-based enlargement of the YouTube banner. Only the finished website JPG is packaged in `apps/app/public/brand/`. The high-resolution generation source, original portraits, character sheets and face-containing working boards remain private. Generating a web deliverable does not authorize publishing reference material or boards. Do not replace the image with another enlarged channel-art crop. The website composes the copy and portrait on a shared grid, with CSS edge gradients blending the studio background into charcoal. Keep the faces and shoulders clear; on mobile, place the full-width portrait below the copy.
+The homepage uses purpose-made website artwork at its native 3:2 aspect ratio, with no transform-based enlargement of the YouTube banner. Only finished website and social-card exports are packaged in `apps/app/public/brand/`. The high-resolution generation source, original portraits, character sheets and face-containing working boards remain private. Generating a web deliverable does not authorize publishing reference material or boards. Do not replace the image with another enlarged channel-art crop. The website composes the copy and portrait on a shared grid, with CSS edge gradients blending the studio background into charcoal. Keep the faces and shoulders clear; on mobile, place the full-width portrait below the copy.
 
 Only the guides and standalone logo are authorized for this public kit. Private boards, original photographs, recordings and native editing projects remain in the established media library. Copy only required authorized assets and record kit revision, logo hash, actual fonts and approved deviations with the edit. Do not introduce machine-specific paths in public handoff.
+
+The default Open Graph and Twitter card is the selected host-led “Think AI” artwork at `/brand/show-og-2026-10-16.jpg`, exported at 1200×630. It has no top-left wordmark and retains the red bottom-right asterisk. Both metadata formats use the versioned asset URL; `/api/og` redirects to it for older consumers. Topic-specific cards keep their existing source-grounded metadata.
 
 ## Keep adapters current
 

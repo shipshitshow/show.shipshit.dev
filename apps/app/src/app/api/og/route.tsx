@@ -1,51 +1,6 @@
-import { ImageResponse } from 'next/og';
-import { BrandMark } from '@/components/BrandMark';
-export const runtime = 'nodejs';
-export async function GET() {
-  return new ImageResponse(
-    <div
-      style={{
-        background: '#E83B3B',
-        color: '#0D0D0D',
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100%',
-        justifyContent: 'space-between',
-        padding: 64,
-        width: '100%',
-      }}
-    >
-      <div style={{ alignItems: 'center', display: 'flex', gap: 18 }}>
-        <BrandMark color="#0D0D0D" size={56} />
-        <div style={{ display: 'flex', fontSize: 30, fontWeight: 700 }}>
-          Ship Sh!t Show
-        </div>
-      </div>
-      <div
-        style={{
-          display: 'flex',
-          fontSize: 152,
-          fontWeight: 800,
-          letterSpacing: -9,
-          lineHeight: 1,
-        }}
-      >
-        Think AI
-      </div>
-      <div
-        style={{
-          borderTop: '1px solid #0D0D0D80',
-          color: '#0D0D0D',
-          display: 'flex',
-          fontSize: 26,
-          justifyContent: 'space-between',
-          paddingTop: 26,
-        }}
-      >
-        <div style={{ display: 'flex' }}>Vincent &amp; Mitchell</div>
-        <div style={{ display: 'flex' }}>show.shipshit.dev</div>
-      </div>
-    </div>,
-    { height: 630, width: 1200 },
-  );
+import { NextResponse } from 'next/server';
+import { DEFAULT_SOCIAL_IMAGE_PATH } from '@/lib/site';
+
+export function GET(request: Request) {
+  return NextResponse.redirect(new URL(DEFAULT_SOCIAL_IMAGE_PATH, request.url));
 }
