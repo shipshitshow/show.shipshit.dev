@@ -99,7 +99,7 @@ export function TrendCard({
           </div>
           {typeof item.showScore === 'number' && (
             <div className="mb-1.5 flex flex-wrap items-center gap-1.5 text-[10px] font-mono">
-              <span className="rounded bg-accent-red/10 px-1.5 py-0.5 text-accent-red">
+              <span className="rounded bg-accent-red/10 px-1.5 py-0.5 text-text-primary">
                 fit {item.showScore}
               </span>
               {item.showReasons?.slice(0, compact ? 1 : 3).map((reason) => (
@@ -145,7 +145,7 @@ export function TrendCard({
                 onAddToLivestream(item);
               }}
               size="sm"
-              className="mt-2 rounded-md bg-accent-red/10 text-[10px] text-accent-red hover:bg-accent-red/20 hover:text-accent-red"
+              className="mt-2 rounded-md bg-accent-red/10 text-[10px] text-text-primary hover:bg-accent-red/20 hover:text-text-primary"
             >
               + Livestream
             </Button>

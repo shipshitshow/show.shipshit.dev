@@ -105,7 +105,7 @@ function EntryModeBadge({ mode }: { mode: XMetricsEntryMode | null }) {
   const label = mode ? ENTRY_MODE_LABEL[mode] : 'Not tracked';
   const tone =
     mode === 'api'
-      ? 'border-accent-red/30 bg-accent-red/10 text-accent-red'
+      ? 'border-accent-red/30 bg-accent-red/10 text-text-primary'
       : mode
         ? 'border-surface-border bg-surface-elevated/60 text-text-secondary'
         : 'border-dashed border-surface-border text-text-muted';
@@ -292,7 +292,7 @@ export function StreamXPostsPanel({
       ) : null}
 
       {error ? (
-        <p className="rounded-xl border border-accent-red/30 bg-accent-red/5 px-4 py-3 text-sm text-accent-red">
+        <p className="rounded-xl border border-accent-red/30 bg-accent-red/5 px-4 py-3 text-sm text-text-primary">
           {error}
         </p>
       ) : null}

@@ -338,7 +338,7 @@ export default async function VideoDetailPage({
             </div>
             <div className="space-y-3 p-4">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="rounded-full border border-accent-red/20 bg-accent-red/10 px-2.5 py-1 text-[10px] font-medium text-accent-red">
+                <span className="rounded-full border border-accent-red/20 bg-accent-red/10 px-2.5 py-1 text-[10px] font-medium text-text-primary">
                   {formatVideoType(video.type)}
                 </span>
                 <span className="text-xs text-text-muted">
@@ -350,7 +350,7 @@ export default async function VideoDetailPage({
                   href={video.youtubeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-accent-red px-5 py-3.5 text-sm font-bold text-on-accent transition-colors hover:bg-accent-red/85"
+                  className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-accent-red px-5 py-3.5 text-sm font-bold text-on-accent transition-colors hover:bg-text-primary"
                 >
                   <svg
                     viewBox="0 0 24 24"

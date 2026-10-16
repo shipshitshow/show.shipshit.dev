@@ -114,7 +114,7 @@ export function YouTubeAuthView() {
                     onClick={() => handleAuth(label)}
                     disabled={isAuthenticating || needsCredentials}
                     size="sm"
-                    className="text-xs bg-accent-red/10 text-accent-red hover:bg-accent-red/20 hover:text-accent-red"
+                    className="text-xs bg-accent-red/10 text-text-primary hover:bg-accent-red/20 hover:text-text-primary"
                   >
                     {isAuthenticating
                       ? 'Authenticating...'

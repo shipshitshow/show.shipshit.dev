@@ -12,7 +12,7 @@ interface TopVideosProps {
 const TYPE_CONFIG: Record<VideoType, { label: string; badge: string }> = {
   livestream: { badge: 'bg-blue-500/20 text-blue-400', label: 'Livestreams' },
   short: { badge: 'bg-purple-500/20 text-purple-400', label: 'Shorts' },
-  video: { badge: 'bg-accent-red/20 text-accent-red', label: 'Videos' },
+  video: { badge: 'bg-accent-red/20 text-text-primary', label: 'Videos' },
 };
 
 const TYPES_ORDER: VideoType[] = ['video', 'short', 'livestream'];

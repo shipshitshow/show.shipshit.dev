@@ -101,7 +101,7 @@ export function StreamInfoSidebar({
                   href={youtubeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-accent-red px-5 py-3.5 text-sm font-bold text-on-accent transition-colors hover:bg-accent-red/85"
+                  className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-accent-red px-5 py-3.5 text-sm font-bold text-on-accent transition-colors hover:bg-text-primary"
                 >
                   <svg
                     viewBox="0 0 24 24"

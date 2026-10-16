@@ -60,6 +60,8 @@ if args.check:
                 errors.append(f'Obsolete display-name spelling: {relative}')
             if re.search(r'#(?:ff2d20|ff5a5f)\b|rgba?\(255,\s*90,\s*95', text, re.I):
                 errors.append(f'Obsolete brand color: {path.relative_to(root)}')
+            if 'bg-accent-red' in text and 'text-on-accent' in text and re.search(r'bg-accent-red[^\n]*text-on-accent[^\n]*(?:hover:opacity-|hover:bg-accent-red/)', text):
+                errors.append(f'Primary hover darkens contrast: {relative}')
             if re.search(r'bg-accent-red[^"\n]*text-white|text-white[^"\n]*bg-accent-red', text):
                 errors.append(f'White-on-red action contrast: {path.relative_to(root)}')
     icon = ET.parse(root / 'apps/app/src/app/icon.svg').getroot()

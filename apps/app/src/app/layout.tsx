@@ -26,7 +26,12 @@ export default function RootLayout({
       <body>
         <ClerkProvider
           appearance={{
-            elements: { formButtonPrimary: { color: BRAND_COLORS.ink } },
+            elements: {
+              formButtonPrimary: {
+                '&:hover': { backgroundColor: BRAND_COLORS.white },
+                color: BRAND_COLORS.ink,
+              },
+            },
             variables: {
               colorBackground: BRAND_COLORS.surface_elevated,
               colorInputBackground: BRAND_COLORS.ink,

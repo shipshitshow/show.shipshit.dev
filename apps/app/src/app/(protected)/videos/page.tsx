@@ -102,7 +102,7 @@ export default async function VideosPage() {
                       {video.title}
                     </Link>
                   </div>
-                  <span className="shrink-0 rounded-full border border-accent-red/20 bg-accent-red/10 px-2.5 py-1 text-[10px] font-medium text-accent-red">
+                  <span className="shrink-0 rounded-full border border-accent-red/20 bg-accent-red/10 px-2.5 py-1 text-[10px] font-medium text-text-primary">
                     Video
                   </span>
                 </div>

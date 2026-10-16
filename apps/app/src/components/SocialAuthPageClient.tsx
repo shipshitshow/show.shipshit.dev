@@ -56,7 +56,7 @@ export function SocialAuthPageClient() {
         </p>
 
         {error ? (
-          <div className="mt-5 rounded-xl border border-accent-red/20 bg-accent-red/5 px-4 py-3 text-sm text-accent-red">
+          <div className="mt-5 rounded-xl border border-accent-red/20 bg-accent-red/5 px-4 py-3 text-sm text-text-primary">
             {errorPlatform ? `${errorPlatform}: ` : ''}
             {error}
           </div>

@@ -20,9 +20,9 @@ const buttonVariants = cva(
         sm: 'px-2 py-1 text-[10px]',
       },
       variant: {
-        accent: 'bg-accent-red text-on-accent hover:opacity-90',
+        accent: 'bg-accent-red text-on-accent hover:bg-text-primary',
         danger:
-          'border border-accent-red/20 bg-accent-red/5 text-accent-red hover:bg-accent-red/10',
+          'border border-accent-red/20 bg-accent-red/5 text-text-primary hover:bg-accent-red/10',
         default:
           'border border-surface-border bg-surface-card text-text-secondary hover:text-text-primary',
         ghost:

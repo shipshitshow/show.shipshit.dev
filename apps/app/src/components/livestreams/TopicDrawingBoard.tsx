@@ -450,7 +450,7 @@ export function TopicDrawingBoard({ date, slug }: TopicDrawingBoardProps) {
               <button
                 type="button"
                 onClick={handleSaveNow}
-                className="rounded-lg bg-accent-red px-4 py-3 text-sm font-semibold text-on-accent transition-opacity hover:opacity-90"
+                className="rounded-lg bg-accent-red px-4 py-3 text-sm font-semibold text-on-accent transition-opacity hover:bg-text-primary"
               >
                 Save Board
               </button>
