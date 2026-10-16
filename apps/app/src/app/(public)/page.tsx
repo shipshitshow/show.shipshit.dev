@@ -1,218 +1,237 @@
 import { ArrowUpRight, Play } from 'lucide-react';
 import type { Metadata } from 'next';
-import { Anton, Space_Grotesk } from 'next/font/google';
+import { Space_Grotesk } from 'next/font/google';
+import Image from 'next/image';
+import { BrandMark } from '@/components/BrandMark';
 import { getPublicEpisodes, type PublicEpisode } from '@/lib/public-episodes';
 import { showXAccounts } from '@/lib/show-accounts';
 import styles from './home.module.scss';
-import { LibraryTabs } from './LibraryTabs';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-home',
   weight: ['400', '500', '700'],
 });
-const anton = Anton({
-  subsets: ['latin'],
-  variable: '--font-display',
-  weight: '400',
-});
-
 export const metadata: Metadata = {
   description:
-    'Vincent and Mitchell, two founders, talk about AI and how they actually use it to run their businesses. Weekly on YouTube, video and live.',
-  title: 'Ship Sh!t Show — Two founders on how they actually use AI',
+    'Think AI. Vincent and Mitchell share what it takes to build and run businesses with AI. Watch the latest videos and livestreams.',
+  title: 'Ship Sh!t Show — Think AI',
 };
 export const revalidate = 3600;
-
-const LIBRARY_SIZE = 6;
-
-function formatPublished(iso: string): string {
-  return new Intl.DateTimeFormat('en', {
-    day: 'numeric',
-    month: 'short',
-    timeZone: 'UTC',
-    year: 'numeric',
-  }).format(new Date(iso));
-}
-
-function formatShortDate(iso: string): string {
-  return new Intl.DateTimeFormat('en', {
-    day: 'numeric',
-    month: 'short',
-    timeZone: 'UTC',
-  })
-    .format(new Date(iso))
-    .toUpperCase();
-}
-
-function EpisodeList({
-  emptyHref,
-  emptyLabel,
-  episodes,
-}: {
-  emptyHref: string;
-  emptyLabel: string;
-  episodes: PublicEpisode[];
-}) {
-  if (!episodes.length) {
-    return (
-      <p className={styles.empty}>
-        Browse {emptyLabel} on <a href={emptyHref}>YouTube</a>.
-      </p>
-    );
-  }
-  return (
-    <ol className={styles.rows}>
-      {episodes.slice(0, LIBRARY_SIZE).map((episode) => (
-        <li key={episode.id}>
-          <a className={styles.row} href={episode.url}>
-            <span aria-hidden="true" className={styles.shortDate}>
-              {formatShortDate(episode.publishedAt)}
-            </span>
-            <span className={styles.rowText}>
-              <span className={styles.rowTitle}>{episode.title}</span>
-              <time dateTime={episode.publishedAt}>
-                {formatPublished(episode.publishedAt)}
-              </time>
-            </span>
-            <span aria-hidden="true" className={styles.rowPlay}>
-              <Play fill="currentColor" size={16} />
-            </span>
-          </a>
-        </li>
-      ))}
-    </ol>
-  );
-}
-
+const CHANNEL = 'https://www.youtube.com/@ShipShitShow';
 const resources = [
   {
-    description: 'How we prep and package the show',
+    description: 'The workflows behind the show.',
     href: 'https://github.com/shipshitshow/skills',
     name: 'Skills',
   },
   {
-    description: 'Transcripts and sources',
+    description: 'Transcripts, links and sources.',
     href: 'https://github.com/shipshitshow/vault',
     name: 'Show notes',
   },
   {
-    description: 'What we built on the show',
+    description: 'What we build and share.',
     href: 'https://github.com/shipshitshow/examples',
     name: 'Examples',
   },
   {
-    description: 'Colors, type, creative',
+    description: 'The show identity and production guides.',
     href: 'https://github.com/shipshitshow/vault/tree/master/brand',
     name: 'Brand kit',
   },
 ];
 
+function EpisodeSection({
+  episodes,
+  format,
+  id,
+  title,
+}: {
+  episodes: PublicEpisode[];
+  format: PublicEpisode['format'];
+  id: string;
+  title: string;
+}) {
+  const allHref = `${CHANNEL}/${format === 'livestream' ? 'streams' : 'videos'}`;
+  return (
+    <section aria-labelledby={`${id}-title`} className={styles.library} id={id}>
+      <div className={styles.sectionHeading}>
+        <h2 id={`${id}-title`}>{title}</h2>
+        <a className={styles.textLink} href={allHref}>
+          View all <ArrowUpRight aria-hidden="true" size={18} />
+        </a>
+      </div>
+      {episodes.length ? (
+        <ul className={styles.episodeGrid}>
+          {episodes.slice(0, 3).map((episode) => (
+            <li key={episode.id}>
+              <a className={styles.episodeCard} href={episode.url}>
+                <div className={styles.thumbnail}>
+                  <Image
+                    alt=""
+                    height={360}
+                    sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 400px"
+                    src={episode.thumbnailUrl}
+                    width={480}
+                  />
+                  <span
+                    className={`${styles.signature} ${format === 'livestream' ? styles.liveSignature : ''}`}
+                  >
+                    <BrandMark />
+                  </span>
+                </div>
+                <div className={styles.episodeMeta}>
+                  <span>
+                    {format === 'livestream' ? 'Livestream' : 'Video'}
+                  </span>
+                  <time dateTime={episode.publishedAt}>
+                    {new Intl.DateTimeFormat('en', {
+                      day: 'numeric',
+                      month: 'short',
+                      timeZone: 'UTC',
+                      year: 'numeric',
+                    }).format(new Date(episode.publishedAt))}
+                  </time>
+                </div>
+                <h3>{episode.title}</h3>
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className={styles.empty}>
+          Watch the latest {format === 'livestream' ? 'livestreams' : 'videos'}{' '}
+          on <a href={allHref}>YouTube</a>.
+        </p>
+      )}
+    </section>
+  );
+}
+
 export default async function HomePage() {
   const { livestreams, videos } = await getPublicEpisodes();
+  const latest = [...videos, ...livestreams].sort(
+    (a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt),
+  )[0];
   return (
-    <main
-      className={`${styles.home} ${spaceGrotesk.variable} ${anton.variable}`}
-    >
+    <main className={`${styles.home} ${spaceGrotesk.variable}`}>
       <a className={styles.skipLink} href="#library">
         Skip to episodes
       </a>
       <div className={styles.page}>
-        <section aria-labelledby="show-title" className={styles.hero}>
-          <div
-            aria-label="Ship Sh!t Show cover art: Vincent × Mitchell"
-            className={styles.cover}
-            role="img"
+        <header className={styles.header}>
+          <a
+            aria-label="Ship Sh!t Show home"
+            className={styles.wordmark}
+            href="/"
           >
-            <span className={styles.coverTitle}>
-              Ship
-              <br />
-              sh!t
-              <br />
-              <span>show</span>
-            </span>
-            <span className={styles.coverHosts}>Vincent × Mitchell</span>
-          </div>
+            <BrandMark />
+            <span>Ship Sh!t Show</span>
+          </a>
+          <nav aria-label="Main navigation" className={styles.navigation}>
+            <a href="#library">Videos</a>
+            <a href="#live">Live</a>
+            <a href="#about">About</a>
+          </nav>
+          <a
+            aria-label="Watch Ship Sh!t Show on YouTube"
+            className={styles.headerWatch}
+            href={CHANNEL}
+          >
+            <Play aria-hidden="true" fill="currentColor" size={15} />
+            <span>Watch on YouTube</span>
+          </a>
+        </header>
+        <section aria-labelledby="show-title" className={styles.hero}>
           <div className={styles.heroCopy}>
-            <p className={styles.eyebrow}>
-              <span aria-hidden="true">● </span>A weekly show · video + live
+            <h1 id="show-title">Think AI</h1>
+            <p className={styles.hosts}>Vincent &amp; Mitchell</p>
+            <p className={styles.intro}>
+              Two founders building with AI. The tools, the workflows, and what
+              happens when we put them to work.
             </p>
-            <h1 id="show-title">
-              How two founders actually use AI to run their businesses.
-            </h1>
-            <a
-              className={styles.subscribe}
-              href="https://www.youtube.com/@shipshitshow?sub_confirmation=1"
-            >
-              <Play aria-hidden="true" fill="currentColor" size={16} />
-              Subscribe on YouTube
+            <a className={styles.watchButton} href={latest?.url ?? CHANNEL}>
+              <Play aria-hidden="true" fill="currentColor" size={17} />
+              Watch the latest episode
             </a>
           </div>
+          <div className={styles.portrait}>
+            <Image
+              alt="Vincent on the left and Mitchell on the right"
+              className={styles.hostImage}
+              fill
+              priority
+              sizes="(max-width: 760px) 180vw, 1200px"
+              src="/api/public/channel-art"
+            />
+          </div>
         </section>
-
-        <section
-          aria-labelledby="library-title"
-          className={styles.library}
+        <EpisodeSection
+          episodes={videos}
+          format="video"
           id="library"
+          title="Latest videos"
+        />
+        <EpisodeSection
+          episodes={livestreams}
+          format="livestream"
+          id="live"
+          title="The live show"
+        />
+        <section
+          aria-labelledby="about-title"
+          className={styles.about}
+          id="about"
         >
-          <h2 className={styles.visuallyHidden} id="library-title">
-            Watch the show
-          </h2>
-          <LibraryTabs
-            tabs={[
-              {
-                allHref: 'https://www.youtube.com/@shipshitshow/streams',
-                allLabel: 'All episodes on YouTube',
-                content: (
-                  <EpisodeList
-                    emptyHref="https://www.youtube.com/@shipshitshow/streams"
-                    emptyLabel="full episodes"
-                    episodes={livestreams}
-                  />
-                ),
-                id: 'episodes',
-                label: 'Episodes',
-              },
-              {
-                allHref: 'https://www.youtube.com/@shipshitshow/videos',
-                allLabel: 'All videos on YouTube',
-                content: (
-                  <EpisodeList
-                    emptyHref="https://www.youtube.com/@shipshitshow/videos"
-                    emptyLabel="videos"
-                    episodes={videos}
-                  />
-                ),
-                id: 'videos',
-                label: 'Videos',
-              },
-            ]}
-          />
+          <div>
+            <h2 id="about-title">Built in public.</h2>
+            <p>
+              We run businesses, build products and compare notes on AI. Join us
+              for honest conversations about what works, what breaks and what
+              we’re shipping next.
+            </p>
+          </div>
+          <a className={styles.textLink} href={`${CHANNEL}?sub_confirmation=1`}>
+            Subscribe on YouTube <ArrowUpRight aria-hidden="true" size={18} />
+          </a>
         </section>
-
         <section aria-labelledby="setup-title" className={styles.setup}>
-          <h2 id="setup-title">Steal our setup</h2>
+          <h2 id="setup-title">Take it further.</h2>
           <ul className={styles.setupGrid}>
             {resources.map((resource) => (
               <li key={resource.href}>
                 <a className={styles.setupCard} href={resource.href}>
-                  <h3>{resource.name}</h3>
-                  <p>{resource.description}</p>
+                  <div>
+                    <h3>{resource.name}</h3>
+                    <p>{resource.description}</p>
+                  </div>
+                  <ArrowUpRight aria-hidden="true" size={20} />
                 </a>
               </li>
             ))}
           </ul>
         </section>
-
+        <a className={styles.business} href="https://shipshit.dev">
+          <BrandMark />
+          <div>
+            <h2>Build with us.</h2>
+            <p>AI systems, SaaS and automation. shipshit.dev</p>
+          </div>
+          <ArrowUpRight aria-hidden="true" size={30} />
+        </a>
         <footer className={styles.footer}>
-          <a href="https://www.youtube.com/@ShipShitShowClips/shorts">
-            Shorts <ArrowUpRight aria-hidden="true" size={14} />
-          </a>
-          {showXAccounts.map((account) => (
-            <a href={account.href} key={account.handle}>
-              @{account.handle}
+          <span>Ship Sh!t Show</span>
+          <div>
+            <a href="https://www.youtube.com/@ShipShitShowClips/shorts">
+              Clips
             </a>
-          ))}
+            {showXAccounts.map((account) => (
+              <a href={account.href} key={account.handle}>
+                @{account.handle}
+              </a>
+            ))}
+          </div>
         </footer>
       </div>
     </main>

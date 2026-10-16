@@ -6,6 +6,7 @@ const nextConfig = {
     // Assets are already delivered by the configured CDN/origin.
     unoptimized: true,
     localPatterns: [
+      { pathname: "/api/public/channel-art" },
       {
         pathname: "/api/og/livestreams/**",
       },
