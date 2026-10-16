@@ -18,7 +18,7 @@ Video signatures are white on dark (black on light); livestream signatures are r
 
 `BrandMark` is the application silhouette (three identical 20x88 bars in a 96px viewport at 0/60/120 degrees). Never use a static portrait/vector layout instead of requested imagegen thumbnail artwork; exact logos and signature overlays are production layers. Main topic logos retain official colors while image backdrops remain B&W/charcoal.
 
-The show uses red as its primary action/identity color; the commercial shipshit.dev site uses black and white. Shared typography and the asterisk connect them without giving both brands the same primary palette.
+The show uses red as its primary action/identity color; the commercial shipshit.dev site uses black and white. The asterisk and compact typographic hierarchy connect them. The show uses Space Grotesk; the commercial site retains its approved Inter Tight headings, Inter body and JetBrains Mono utility type.
 
 The homepage uses purpose-made website artwork at its native 3:2 aspect ratio, with no transform-based enlargement of the YouTube banner. Only finished website and social-card exports are packaged in `apps/app/public/brand/`. The high-resolution generation source, original portraits, character sheets and face-containing working boards remain private. Generating a web deliverable does not authorize publishing reference material or boards. Do not replace the image with another enlarged channel-art crop. The website composes the copy and portrait on a shared grid, with CSS edge gradients blending the studio background into charcoal. Keep the faces and shoulders clear; on mobile, place the full-width portrait below the copy.
 
@@ -51,7 +51,7 @@ The homepage rollout implements the validated identity in the live app. It does 
 | Surface | Shared source | Required check |
 | --- | --- | --- |
 | Public home and topic pages | Shared CSS theme, root font, `BrandMark` | Desktop/mobile layout, no duplicate signatures, native portrait ratio |
-| Sign-in, access-denied and OAuth screens | Root theme, `BrandPageShell` and app-scoped Clerk adapter | Dark fields, readable primary button, visible focus; producer gate retained |
+| Sign-in, access-denied, OAuth, missing-page and route-error screens | Root theme, `BrandPageShell` and app-scoped Clerk adapter | Dark fields, readable primary button, visible focus; producer gate retained; branded recovery links |
 | Studio, analytics, research, topics, livestream/video details, comments, socials, leads and partnerships | Production shell, shared UI buttons/inputs/selects, semantic tokens | Navigation/deep-link behavior, shared surfaces/type, status/vendor colors preserved |
 | Main/clip analytics and charts | Red main series, white clip series, shared muted/border tokens | Axis/tooltips readable; series labels remain meaningful |
 | Public topic social cards and default metadata | Shared colors/fonts/mark; approved default image | 1200×630 output, source visibility, bounded source/footer text, OG/Twitter agreement |
