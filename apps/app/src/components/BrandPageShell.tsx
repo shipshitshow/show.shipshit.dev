@@ -3,7 +3,7 @@ import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { BrandMark } from '@/components/BrandMark';
 
-export function AuthShell({ children }: { children: ReactNode }) {
+export function BrandPageShell({ children }: { children: ReactNode }) {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-6 bg-surface px-6 py-10">
       <Link

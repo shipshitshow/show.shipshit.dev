@@ -51,7 +51,7 @@ The homepage rollout implements the validated identity in the live app. It does 
 | Surface | Shared source | Required check |
 | --- | --- | --- |
 | Public home and topic pages | Shared CSS theme, root font, `BrandMark` | Desktop/mobile layout, no duplicate signatures, native portrait ratio |
-| Sign-in, access-denied and OAuth screens | Root theme, `AuthShell` and app-scoped Clerk adapter | Dark fields, readable primary button, visible focus; producer gate retained |
+| Sign-in, access-denied and OAuth screens | Root theme, `BrandPageShell` and app-scoped Clerk adapter | Dark fields, readable primary button, visible focus; producer gate retained |
 | Studio, analytics, research, topics, livestream/video details, comments, socials, leads and partnerships | Production shell, shared UI buttons/inputs/selects, semantic tokens | Navigation/deep-link behavior, shared surfaces/type, status/vendor colors preserved |
 | Main/clip analytics and charts | Red main series, white clip series, shared muted/border tokens | Axis/tooltips readable; series labels remain meaningful |
 | Public topic social cards and default metadata | Shared colors/fonts/mark; approved default image | 1200×630 output, source visibility, bounded source/footer text, OG/Twitter agreement |
