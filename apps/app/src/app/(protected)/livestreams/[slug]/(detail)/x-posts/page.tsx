@@ -43,7 +43,7 @@ export async function generateMetadata({
     visibleTopics,
     archive?.title,
   );
-  const pageTitle = `${streamTitle} — X Posts · Ship Shit Show`;
+  const pageTitle = `${streamTitle} — X Posts · Ship Sh!t Show`;
   const description =
     'Author-post impressions and engagement for this episode.';
   const pageUrl = toAbsoluteUrl(

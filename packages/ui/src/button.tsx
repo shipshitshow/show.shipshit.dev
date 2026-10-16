@@ -20,7 +20,7 @@ const buttonVariants = cva(
         sm: 'px-2 py-1 text-[10px]',
       },
       variant: {
-        accent: 'bg-accent-red text-white hover:opacity-90',
+        accent: 'bg-accent-red text-on-accent hover:opacity-90',
         danger:
           'border border-accent-red/20 bg-accent-red/5 text-accent-red hover:bg-accent-red/10',
         default:

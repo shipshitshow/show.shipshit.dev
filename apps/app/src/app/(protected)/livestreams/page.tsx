@@ -16,8 +16,8 @@ import { analyzeTranscriptScorecard } from '@/lib/transcript-scorecard';
 
 export const metadata: Metadata = {
   description:
-    'All Ship Shit Show livestreams — weekly AI dev tool news and hot takes.',
-  title: 'Livestreams - Ship Shit Show',
+    'All Ship Sh!t Show livestreams — weekly AI dev tool news and hot takes.',
+  title: 'Livestreams - Ship Sh!t Show',
 };
 
 interface StreamListItem {

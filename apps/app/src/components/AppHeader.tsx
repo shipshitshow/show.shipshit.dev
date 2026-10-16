@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { BrandMark } from '@/components/BrandMark';
 
 const NAV_LINKS = [
   { href: '/analytics', label: 'Analytics' },
@@ -20,7 +21,7 @@ function resolveSubtitle(pathname: string): string {
   if (pathname.includes('/draw')) return 'Drawing Board';
   if (pathname.startsWith('/videos/')) return 'Video Transcript';
   if (pathname.startsWith('/livestreams/')) return 'Show Rundown';
-  return SUBTITLE_MAP[pathname] ?? 'Ship Shit Show';
+  return SUBTITLE_MAP[pathname] ?? 'Ship Sh!t Show';
 }
 
 function resolveActiveHref(pathname: string): string {
@@ -43,14 +44,11 @@ export function AppHeader() {
         className="flex items-center gap-3 min-w-0 hover:opacity-90 transition-opacity"
       >
         <div className="size-8 rounded-lg bg-accent-red flex items-center justify-center shrink-0">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
-            <path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 0 0 .5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 0 0 2.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81z" />
-            <path d="M9.75 15.02V8.98L15.5 12l-5.75 3.02z" fill="#ff2d20" />
-          </svg>
+          <BrandMark size={24} className="text-on-accent" />
         </div>
         <div className="min-w-0">
           <h1 className="text-sm font-semibold text-text-primary leading-none">
-            Ship Shit Show
+            Ship Sh!t Show
           </h1>
           <p className="text-xs text-text-muted mt-0.5 truncate">{subtitle}</p>
         </div>

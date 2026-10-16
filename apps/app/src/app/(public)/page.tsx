@@ -1,17 +1,11 @@
 import { ArrowUpRight, Play } from 'lucide-react';
 import type { Metadata } from 'next';
-import { Space_Grotesk } from 'next/font/google';
 import Image from 'next/image';
 import { BrandMark } from '@/components/BrandMark';
 import { getPublicEpisodes, type PublicEpisode } from '@/lib/public-episodes';
 import { showXAccounts } from '@/lib/show-accounts';
 import styles from './home.module.scss';
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-home',
-  weight: ['400', '500', '700'],
-});
 export const metadata: Metadata = {
   description:
     'Think AI. Vincent and Mitchell share what it takes to build and run businesses with AI. Watch the latest videos and livestreams.',
@@ -115,7 +109,7 @@ export default async function HomePage() {
     (a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt),
   )[0];
   return (
-    <main className={`${styles.home} ${spaceGrotesk.variable}`}>
+    <main className={styles.home}>
       <a className={styles.skipLink} href="#library">
         Skip to episodes
       </a>

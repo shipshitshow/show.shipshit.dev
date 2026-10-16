@@ -16,7 +16,7 @@ export function AppSidebar({ onNavigate }: { onNavigate?: () => void }) {
     <aside className="flex w-[232px] min-w-0 shrink flex-col border-r border-surface-border bg-surface-elevated/30">
       <div className="px-4 pb-3 pt-5">
         <p className="text-sm font-semibold text-text-primary">
-          Ship Shit Show
+          Ship Sh!t Show
         </p>
         <p className="mt-1 text-xs text-text-muted">Production workspace</p>
       </div>

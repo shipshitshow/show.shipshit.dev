@@ -63,7 +63,7 @@ function CustomTooltip({
 export function TimeSeriesChart({
   data,
   dataKey,
-  color = '#ff2d20',
+  color = 'var(--color-accent-red)',
   formatValue,
   formatTick,
   lines,
@@ -78,19 +78,19 @@ export function TimeSeriesChart({
       >
         <CartesianGrid
           strokeDasharray="3 3"
-          stroke="#1f1f1f"
+          stroke="var(--color-surface-border)"
           vertical={false}
         />
         <XAxis
           dataKey="day"
           tickFormatter={(v: string) => format(parseISO(v), 'MMM d')}
-          tick={{ fill: '#606060', fontSize: 11 }}
+          tick={{ fill: 'var(--color-text-muted)', fontSize: 11 }}
           axisLine={false}
           tickLine={false}
           interval="preserveStartEnd"
         />
         <YAxis
-          tick={{ fill: '#606060', fontSize: 11 }}
+          tick={{ fill: 'var(--color-text-muted)', fontSize: 11 }}
           axisLine={false}
           tickLine={false}
           tickFormatter={formatTick ?? ((v: number) => v.toLocaleString())}
@@ -98,7 +98,7 @@ export function TimeSeriesChart({
         />
         <Tooltip
           content={<CustomTooltip formatValue={formatValue} />}
-          cursor={{ stroke: '#2a2a2a', strokeWidth: 1 }}
+          cursor={{ stroke: 'var(--color-surface-border)', strokeWidth: 1 }}
         />
         {renderLines ? (
           lines.map((line) => (

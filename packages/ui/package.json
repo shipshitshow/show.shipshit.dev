@@ -12,6 +12,7 @@
   },
   "exports": {
     ".": "./src/index.ts",
+    "./brand": "./src/brand.ts",
     "./theme.css": "./src/theme.css"
   },
   "main": "./src/index.ts",

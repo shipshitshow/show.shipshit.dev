@@ -1,0 +1,97 @@
+{
+  "brands": {
+    "business": {
+      "primary": "#FFFFFF",
+      "primary_text": "#0D0D0D",
+      "surface": "#0D0D0D",
+      "text": "#FFFFFF"
+    },
+    "show": {
+      "primary": "#E83B3B",
+      "primary_text": "#0D0D0D",
+      "surface": "#0D0D0D",
+      "text": "#FFFFFF"
+    }
+  },
+  "broadcast": {
+    "partner_strip": "optional narrow strip, approved official logos and exact URLs",
+    "reference_canvas": [1920, 1080],
+    "signature": "same six-arm geometry; state-specific contrast; verify actual camera/caption placement"
+  },
+  "colors": {
+    "accent_red": "#E83B3B",
+    "ink": "#0D0D0D",
+    "surface_border": "#303030",
+    "surface_card": "#1A1A1A",
+    "surface_elevated": "#141414",
+    "text_muted": "#AAAAAA",
+    "text_secondary": "#D0D0D0",
+    "white": "#FFFFFF"
+  },
+  "identity": {
+    "avatar_clips": "white asterisk on charcoal",
+    "avatar_main": "black asterisk on red",
+    "baseline": "Think AI",
+    "compact_mark": "six-arm-asterisk",
+    "mark_geometry": {
+      "bar": {
+        "height": 88,
+        "width": 20,
+        "x": 38,
+        "y": 4
+      },
+      "center": [48, 48],
+      "rotations": [0, 60, 120],
+      "viewBox": [0, 0, 96, 96]
+    },
+    "show_name": "Ship Sh!t Show"
+  },
+  "photography": {
+    "default": "natural-color approved hosts against monochrome charcoal",
+    "identity": "Vincent left; Mitchell right; preserve approved likeness, eye colors, proportions and direct eye-level gaze",
+    "integration": "native aspect ratio; complete heads and shoulders; background-matched edge fades, no banner zoom",
+    "private_sources": "original portraits, character sheets, recordings and face-containing working boards stay private"
+  },
+  "publication": "Public kit includes guides and standalone marks. Publish only separately approved finished web/channel assets; source portraits and private working boards are excluded.",
+  "status": "approved-direction",
+  "thumbnail": {
+    "background": "predominantly monochrome/charcoal",
+    "exclusions": [
+      "square around signature",
+      "extra dot",
+      "waves",
+      "font-glyph asterisk",
+      "unrequested faces or fake results"
+    ],
+    "livestream_mark": "#E83B3B",
+    "reference_canvas": [1280, 720],
+    "signature": {
+      "height": 96,
+      "inset_bottom": 48,
+      "inset_right": 48,
+      "width": 96,
+      "x": 1136,
+      "y": 576
+    },
+    "subject": "natural-color approved hosts and official topic logos in their original colors",
+    "text": "episode-specific; do not mandate text on every thumbnail",
+    "video_mark": "white on dark, black on light"
+  },
+  "typography": {
+    "body": "Space Grotesk",
+    "display": "Space Grotesk",
+    "max_families": 2,
+    "metadata": "monospace",
+    "rule": "broad readable type; no compressed, stacked or stretched logo lettering",
+    "utility_fallback": "system-ui"
+  },
+  "version": "2026-10-16",
+  "web": {
+    "business_og": "approved monochrome Your idea. We ship it. artwork",
+    "focus": "visible high-contrast outline",
+    "mode": "dark",
+    "primary_contrast": "black text on red show actions; charcoal text on white business actions",
+    "show_og": "host-led Think AI artwork, red bottom-right asterisk, no top-left wordmark",
+    "social_canvas": [1200, 630]
+  }
+}

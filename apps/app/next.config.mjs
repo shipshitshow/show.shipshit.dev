@@ -1,7 +1,10 @@
+import path from 'node:path';
+
 /** @type {import('next').NextConfig} */
 const isProduction = process.env.NODE_ENV === "production";
 
 const nextConfig = {
+  outputFileTracingRoot: path.join(import.meta.dirname, "../.."),
   images: {
     // Assets are already delivered by the configured CDN/origin.
     unoptimized: true,
@@ -65,6 +68,8 @@ const nextConfig = {
     ? {
         outputFileTracingIncludes: {
           "/*": ["./data/livestream/**/*"],
+          "/api/og/livestreams/*": ["../../packages/ui/src/fonts/*.ttf"],
+          "/api/og/livestream/*": ["../../packages/ui/src/fonts/*.ttf"],
         },
       }
     : {}),

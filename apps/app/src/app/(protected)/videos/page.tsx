@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: toAbsoluteUrl('/videos'),
   },
-  description: 'Published Ship Shit Show video transcripts.',
-  title: 'Ship Shit Show - Videos',
+  description: 'Published Ship Sh!t Show video transcripts.',
+  title: 'Ship Sh!t Show - Videos',
 };
 
 const DATE_FORMATTER = new Intl.DateTimeFormat('en', {
@@ -62,7 +62,7 @@ export default async function VideosPage() {
             Published Videos
           </h1>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-text-muted">
-            Every imported Ship Shit Show video transcript.
+            Every imported Ship Sh!t Show video transcript.
           </p>
         </div>
         <div className="flex gap-2 text-xs text-text-muted">

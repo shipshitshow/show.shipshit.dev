@@ -75,7 +75,7 @@ export async function generateMetadata({
     visibleTopics,
     archive?.title,
   );
-  const pageTitle = `${streamTitle} — Distribution · Ship Shit Show`;
+  const pageTitle = `${streamTitle} — Distribution · Ship Sh!t Show`;
   const description =
     'Published episode assets, URLs, UTM click-through, and manually recorded LinkedIn post metrics.';
   const pageUrl = toAbsoluteUrl(

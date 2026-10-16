@@ -2,7 +2,7 @@ import { ArrowRight, Handshake } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-export const metadata: Metadata = { title: 'Partnerships — Ship Shit Show' };
+export const metadata: Metadata = { title: 'Partnerships — Ship Sh!t Show' };
 export default function PartnershipsPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-6 md:px-8 md:py-8">

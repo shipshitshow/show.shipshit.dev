@@ -10,7 +10,11 @@ afterEach(() => {
   for (const restore of restores.splice(0)) restore();
 });
 
-async function render(status: TopicStatus, date: string) {
+async function render(
+  status: TopicStatus,
+  date: string,
+  source = 'Private source',
+) {
   const topic: Topic = {
     announcement_tweet: null,
     content: '## Summary\nPrivate summary',
@@ -27,7 +31,7 @@ async function render(status: TopicStatus, date: string) {
       youtube_title: null,
     },
     slug: 'secret',
-    source: 'Private source',
+    source,
     status,
     thumbnail_prompt: null,
     title: 'Private title',
@@ -60,7 +64,7 @@ describe('public OG topic visibility', () => {
     for (const status of ['draft', 'backlog'] as const) {
       test(`${date} ${status} uses a generic card`, async () => {
         const output = await render(status, date);
-        expect(output).toContain('Ship Shit Show');
+        expect(output).toContain('Ship Sh!t Show');
         expect(output).not.toContain('Private title');
         expect(output).not.toContain('Private summary');
         expect(output).not.toContain('Private source');
@@ -76,6 +80,17 @@ describe('public OG topic visibility', () => {
     expect(output).toContain('Private summary');
     expect(output).toContain('Private source');
   });
+  test('a long source paragraph does not take over the card footer', async () => {
+    const source =
+      '[Official launch](https://example.com/launch) ' +
+      'Additional source context. '.repeat(40);
+    const output = await render('done', '2000-01-01', source);
+    expect(output).toContain('Official launch');
+    expect(output).not.toContain('https://example.com/launch');
+    expect(output).not.toContain('Additional source context. '.repeat(4));
+    expect(output).toContain('Private title');
+  });
+
   test('an upcoming selected topic renders its content', async () => {
     expect(await render('in_progress', '2999-01-01')).toContain(
       'Private title',

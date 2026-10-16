@@ -405,7 +405,7 @@ export function TopicDrawingBoard({ date, slug }: TopicDrawingBoardProps) {
     <div className="flex h-[calc(100vh-65px)] bg-black">
       <aside
         id="talking-points-sidebar"
-        className="shrink-0 overflow-hidden border-r border-surface-border bg-[#050505] transition-[width] duration-200 ease-out"
+        className="shrink-0 overflow-hidden border-r border-surface-border bg-surface transition-[width] duration-200 ease-out"
         style={{ width: isSidebarOpen ? 'min(360px, 85vw)' : '4.5rem' }}
       >
         {isSidebarOpen ? (
@@ -450,7 +450,7 @@ export function TopicDrawingBoard({ date, slug }: TopicDrawingBoardProps) {
               <button
                 type="button"
                 onClick={handleSaveNow}
-                className="rounded-lg bg-accent-red px-4 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                className="rounded-lg bg-accent-red px-4 py-3 text-sm font-semibold text-on-accent transition-opacity hover:opacity-90"
               >
                 Save Board
               </button>
@@ -478,7 +478,7 @@ export function TopicDrawingBoard({ date, slug }: TopicDrawingBoardProps) {
                 return (
                   <section
                     key={section.heading}
-                    className="rounded-xl border border-surface-border bg-[#0a0a0a] p-4"
+                    className="rounded-xl border border-surface-border bg-surface-elevated p-4"
                   >
                     <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-text-secondary">
                       {section.heading}
@@ -487,7 +487,7 @@ export function TopicDrawingBoard({ date, slug }: TopicDrawingBoardProps) {
                       {points.map((point, index) => (
                         <div
                           key={`${section.heading}-${index}`}
-                          className="rounded-lg border border-surface-border/70 bg-[#111111] px-3 py-2"
+                          className="rounded-lg border border-surface-border/70 bg-surface-card px-3 py-2"
                         >
                           <p className="text-sm leading-relaxed text-text-primary">
                             {stripMarkdown(point)}
@@ -505,7 +505,7 @@ export function TopicDrawingBoard({ date, slug }: TopicDrawingBoardProps) {
             <button
               type="button"
               onClick={() => setIsSidebarOpen(true)}
-              className="flex w-full flex-col items-center gap-1 rounded-xl border border-surface-border bg-[#0c0c0c] px-2 py-3 text-text-secondary transition-colors hover:border-accent-red/30 hover:text-text-primary"
+              className="flex w-full flex-col items-center gap-1 rounded-xl border border-surface-border bg-surface-elevated px-2 py-3 text-text-secondary transition-colors hover:border-accent-red/30 hover:text-text-primary"
               aria-expanded={false}
               aria-controls="talking-points-sidebar"
             >
@@ -519,7 +519,7 @@ export function TopicDrawingBoard({ date, slug }: TopicDrawingBoardProps) {
 
             <Link
               href={`/livestreams/${slug}?date=${date}`}
-              className="flex w-full flex-col items-center gap-1 rounded-xl border border-surface-border bg-[#0c0c0c] px-2 py-3 text-text-secondary transition-colors hover:border-accent-red/30 hover:text-text-primary"
+              className="flex w-full flex-col items-center gap-1 rounded-xl border border-surface-border bg-surface-elevated px-2 py-3 text-text-secondary transition-colors hover:border-accent-red/30 hover:text-text-primary"
             >
               <span aria-hidden="true" className="text-sm">
                 ←

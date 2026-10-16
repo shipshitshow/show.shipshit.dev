@@ -4,8 +4,8 @@ import { Suspense } from 'react';
 import { requireProducerPage } from '@/lib/producer-auth';
 
 export const metadata: Metadata = {
-  description: 'Authenticate with YouTube for Ship Shit Show.',
-  title: 'YouTube Auth - Ship Shit Show',
+  description: 'Authenticate with YouTube for Ship Sh!t Show.',
+  title: 'YouTube Auth - Ship Sh!t Show',
 };
 
 import { YouTubeAuthContentSkeleton } from '@/components/PageSkeletons';

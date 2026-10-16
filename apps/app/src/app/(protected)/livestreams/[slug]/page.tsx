@@ -46,20 +46,20 @@ export async function generateMetadata({
         canonical: pageUrl,
       },
       description:
-        'Livestream replay, talking points, and transcript for Ship Shit Show.',
+        'Livestream replay, talking points, and transcript for Ship Sh!t Show.',
       openGraph: {
         ...defaults.openGraph,
         description:
-          'Livestream replay, talking points, and transcript for Ship Shit Show.',
-        title: 'Ship Shit Show — Livestream',
+          'Livestream replay, talking points, and transcript for Ship Sh!t Show.',
+        title: 'Ship Sh!t Show — Livestream',
         url: pageUrl,
       },
-      title: 'Ship Shit Show — Livestream',
+      title: 'Ship Sh!t Show — Livestream',
       twitter: {
         ...defaults.twitter,
         description:
-          'Livestream replay, talking points, and transcript for Ship Shit Show.',
-        title: 'Ship Shit Show — Livestream',
+          'Livestream replay, talking points, and transcript for Ship Sh!t Show.',
+        title: 'Ship Sh!t Show — Livestream',
       },
     };
   }
@@ -73,14 +73,14 @@ export async function generateMetadata({
   if (!topic) {
     return {
       ...defaults,
-      description: 'Livestream topic and show prep for Ship Shit Show.',
-      title: 'Ship Shit Show — Livestream Topic',
+      description: 'Livestream topic and show prep for Ship Sh!t Show.',
+      title: 'Ship Sh!t Show — Livestream Topic',
     };
   }
 
   const summary =
     extractSummary(topic.content) ||
-    'Livestream topic and show prep for Ship Shit Show.';
+    'Livestream topic and show prep for Ship Sh!t Show.';
   const description = clampText(summary, 220);
   const imageUrl = await buildTopicImageUrl(
     topic.slug,
@@ -90,7 +90,7 @@ export async function generateMetadata({
   const pageUrl = toAbsoluteUrl(
     `/livestreams/${encodeURIComponent(topic.slug)}?date=${encodeURIComponent(resolvedDate)}`,
   );
-  const pageTitle = `${topic.title} — Ship Shit Show`;
+  const pageTitle = `${topic.title} — Ship Sh!t Show`;
 
   return {
     ...defaults,

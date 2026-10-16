@@ -73,9 +73,9 @@ export async function generateMetadata({
     visibleTopics,
     archive?.title,
   );
-  const pageTitle = `${streamTitle} — Talking Points · Ship Shit Show`;
+  const pageTitle = `${streamTitle} — Talking Points · Ship Sh!t Show`;
   const description =
-    'Livestream talking points and topic rundown for Ship Shit Show.';
+    'Livestream talking points and topic rundown for Ship Sh!t Show.';
   const pageUrl = toAbsoluteUrl(
     `/livestreams/${encodeURIComponent(slug)}/talking-points`,
   );

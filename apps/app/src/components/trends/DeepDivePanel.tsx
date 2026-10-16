@@ -89,7 +89,7 @@ export function DeepDivePanel({
               size="sm"
               className={`shrink-0 rounded-md text-[10px] transition-colors ${
                 activeSelected
-                  ? 'bg-accent-red text-white hover:bg-accent-red hover:text-white'
+                  ? 'bg-accent-red text-on-accent hover:bg-accent-red hover:text-on-accent'
                   : 'bg-accent-red/10 text-accent-red hover:bg-accent-red/20 hover:text-accent-red'
               }`}
             >

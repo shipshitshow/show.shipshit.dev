@@ -1,4 +1,5 @@
 import { cn } from '@shipshitshow/ui';
+import { BRAND_COLORS } from '@shipshitshow/ui/brand';
 import { useEffect, useRef } from 'react';
 
 type Disposable = { dispose: () => void };
@@ -36,9 +37,9 @@ export function TerminalView({ className }: TerminalViewProps) {
         fontFamily: '"SF Mono", SFMono-Regular, Consolas, Menlo, monospace',
         fontSize: 14,
         theme: {
-          background: '#0d0d0d',
-          cursor: '#ff2d20',
-          foreground: '#f0f0f0',
+          background: BRAND_COLORS.ink,
+          cursor: BRAND_COLORS.accent_red,
+          foreground: BRAND_COLORS.white,
         },
       });
 

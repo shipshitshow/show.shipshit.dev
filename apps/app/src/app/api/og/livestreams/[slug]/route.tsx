@@ -1,4 +1,8 @@
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
+import { BRAND, BRAND_COLORS } from '@shipshitshow/ui/brand';
 import { ImageResponse } from 'next/og';
+import { BrandMark } from '@/components/BrandMark';
 import { todayLocalDate } from '@/lib/date';
 import {
   getTopicsForDate,
@@ -8,6 +12,12 @@ import { getVisibleTopics } from '@/lib/livestreams-visibility';
 import { clampText, stripMarkdown } from '@/lib/text';
 
 export const runtime = 'nodejs';
+
+const fontDirectory = path.join(process.cwd(), '../../packages/ui/src/fonts');
+const fonts = Promise.all([
+  readFile(path.join(fontDirectory, 'SpaceGrotesk-Regular.ttf')),
+  readFile(path.join(fontDirectory, 'SpaceGrotesk-Bold.ttf')),
+]);
 
 function extractSummary(content: string): string | null {
   const match = content.match(/## Summary\n([\s\S]*?)(?:\n## |\n?$)/);
@@ -21,6 +31,7 @@ export async function GET(
   request: Request,
   { params }: { params: Promise<{ slug: string }> },
 ) {
+  const [regularFont, boldFont] = await fonts;
   const { slug } = await params;
   const { searchParams } = new URL(request.url);
   const requestedDate = searchParams.get('date') || todayLocalDate();
@@ -30,23 +41,23 @@ export async function GET(
     resolvedDate,
   ).find((candidate) => candidate.slug === slug);
 
-  const title = topic?.title || 'Ship Shit Show';
+  const title = topic?.title || BRAND.identity.show_name;
   const summary = clampText(
     extractSummary(topic?.content || '') ||
       'Livestream topic, talking points, and stream prep.',
     180,
   );
-  const source = topic?.source || 'Livestream';
+  const source = clampText(stripMarkdown(topic?.source || 'Livestream'), 64);
 
   return new ImageResponse(
     <div
       style={{
         alignItems: 'stretch',
-        background:
-          'linear-gradient(135deg, #17090d 0%, #0c0c0c 45%, #12161c 100%)',
-        color: '#f3f3f3',
+        background: BRAND_COLORS.ink,
+        color: BRAND_COLORS.white,
         display: 'flex',
         flexDirection: 'column',
+        fontFamily: 'Space Grotesk',
         height: '100%',
         justifyContent: 'space-between',
         padding: '52px',
@@ -54,18 +65,6 @@ export async function GET(
         width: '100%',
       }}
     >
-      <div
-        style={{
-          background:
-            'radial-gradient(circle, rgba(255,90,95,0.22) 0%, rgba(255,90,95,0) 68%)',
-          height: 520,
-          position: 'absolute',
-          right: -80,
-          top: -100,
-          width: 520,
-        }}
-      />
-
       <div
         style={{
           alignItems: 'center',
@@ -76,21 +75,20 @@ export async function GET(
       >
         <div
           style={{
-            color: '#ff5a5f',
+            color: BRAND_COLORS.white,
             display: 'flex',
             fontSize: 22,
             fontWeight: 700,
-            letterSpacing: 5,
-            textTransform: 'uppercase',
+            letterSpacing: -0.5,
           }}
         >
-          Ship Shit Show
+          {BRAND.identity.show_name}
         </div>
         <div
           style={{
-            border: '1px solid rgba(255,255,255,0.12)',
+            border: `1px solid ${BRAND_COLORS.surface_border}`,
             borderRadius: 999,
-            color: '#d1d1d1',
+            color: BRAND_COLORS.text_secondary,
             display: 'flex',
             fontSize: 20,
             padding: '10px 18px',
@@ -122,7 +120,7 @@ export async function GET(
         </div>
         <div
           style={{
-            color: '#d0d0d0',
+            color: BRAND_COLORS.text_secondary,
             display: 'flex',
             fontSize: 28,
             lineHeight: 1.35,
@@ -142,28 +140,42 @@ export async function GET(
       >
         <div
           style={{
-            color: '#a9a9a9',
+            color: BRAND_COLORS.text_muted,
             display: 'flex',
-            fontSize: 22,
+            fontSize: 20,
+            lineHeight: 1.3,
+            maxWidth: 600,
           }}
         >
           {source}
         </div>
         <div
           style={{
-            backgroundColor: 'rgba(255,90,95,0.12)',
-            borderRadius: 999,
-            color: '#ffb8ba',
+            color: BRAND_COLORS.text_muted,
             display: 'flex',
             fontSize: 22,
-            padding: '10px 18px',
+            marginRight: 110,
           }}
         >
           show.shipshit.dev
         </div>
       </div>
+      <div
+        style={{ bottom: 42, display: 'flex', position: 'absolute', right: 45 }}
+      >
+        <BrandMark color={BRAND_COLORS.accent_red} size={90} />
+      </div>
     </div>,
     {
+      fonts: [
+        {
+          data: regularFont,
+          name: 'Space Grotesk',
+          style: 'normal',
+          weight: 400,
+        },
+        { data: boldFont, name: 'Space Grotesk', style: 'normal', weight: 700 },
+      ],
       height: 630,
       width: 1200,
     },

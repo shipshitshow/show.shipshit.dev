@@ -1,4 +1,4 @@
-import { Button, cn } from '@shipshitshow/ui';
+import { BrandMark, Button, cn } from '@shipshitshow/ui';
 import {
   PanelLeftClose,
   PanelLeftOpen,
@@ -43,7 +43,8 @@ export function Titlebar({
             <PanelLeftClose size={14} />
           )}
         </Button>
-        <span className="text-text-muted">Ship Shit Show</span>
+        <BrandMark size={16} className="text-accent-red" />
+        <span className="text-text-muted">Ship Sh!t Show</span>
         <span className="text-text-muted">/</span>
         <span className="truncate font-medium text-text-primary">
           {activeViewLabel}

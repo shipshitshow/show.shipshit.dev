@@ -21,14 +21,9 @@ body {
 }
 
 .production-shell {
-  --color-surface: #0b0b0b;
-  --color-surface-card: #101010;
-  --color-surface-elevated: #191919;
-  --color-surface-border: #292929;
-  --color-text-muted: #929292;
 
   :is(a, button, summary):focus-visible {
-    outline: 2px solid #b5b5b5;
+    outline: 2px solid var(--color-text-primary);
     outline-offset: 3px;
   }
 }

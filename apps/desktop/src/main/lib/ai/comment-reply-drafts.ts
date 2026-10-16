@@ -47,7 +47,7 @@ export async function generateCommentReplyDrafts(
 ): Promise<string[]> {
   const { apiKey, model } = getOpenAIConfig();
   const prompt = [
-    'You write reply drafts for the Ship Shit Show YouTube channel.',
+    'You write reply drafts for the Ship Sh!t Show YouTube channel.',
     'Voice: sharp, founder-level, direct, high-signal, not corporate, not cringe, not needy.',
     'Rules:',
     '- Write exactly 3 distinct reply options.',

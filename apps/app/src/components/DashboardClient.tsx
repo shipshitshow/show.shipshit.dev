@@ -108,8 +108,8 @@ export function DashboardClient({
   }, [load]);
 
   const CHANNEL_COLORS: Record<string, string> = {
-    clips: '#ff7b72',
-    main: '#ff2d20',
+    clips: 'var(--color-text-primary)',
+    main: 'var(--color-accent-red)',
   };
 
   const {
