@@ -5,8 +5,8 @@ export async function GET() {
   return new ImageResponse(
     <div
       style={{
-        background: '#0D0D0D',
-        color: '#FFFFFF',
+        background: '#E83B3B',
+        color: '#0D0D0D',
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
@@ -16,7 +16,7 @@ export async function GET() {
       }}
     >
       <div style={{ alignItems: 'center', display: 'flex', gap: 18 }}>
-        <BrandMark color="#E83B3B" size={56} />
+        <BrandMark color="#0D0D0D" size={56} />
         <div style={{ display: 'flex', fontSize: 30, fontWeight: 700 }}>
           Ship Sh!t Show
         </div>
@@ -34,8 +34,8 @@ export async function GET() {
       </div>
       <div
         style={{
-          borderTop: '1px solid #404040',
-          color: '#AAAAAA',
+          borderTop: '1px solid #0D0D0D80',
+          color: '#0D0D0D',
           display: 'flex',
           fontSize: 26,
           justifyContent: 'space-between',

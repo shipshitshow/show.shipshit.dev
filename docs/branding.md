@@ -18,7 +18,9 @@ Video signatures are white on dark (black on light); livestream signatures are r
 
 `BrandMark` is the application silhouette (three identical 20x88 bars in a 96px viewport at 0/60/120 degrees). Never use a static portrait/vector layout instead of requested imagegen thumbnail artwork; exact logos and signature overlays are production layers. Main topic logos retain official colors while image backdrops remain B&W/charcoal.
 
-The homepage uses channel artwork that was already published on YouTube, delivered through the fixed-source `/api/public/channel-art` image endpoint. The endpoint accepts no arbitrary image URL or credentials, validates upstream image types and uses public caching. It is separate from producer APIs. Private portrait files, character sheets and face-containing concept boards remain excluded from this repository.
+The show uses red as its primary action/identity color; the commercial shipshit.dev site uses black and white. Shared typography and the asterisk connect them without giving both brands the same primary palette.
+
+The homepage uses purpose-made website artwork at its native 3:2 aspect ratio, with no transform-based enlargement of the YouTube banner. Only the finished website JPG is packaged in `apps/app/public/brand/`. The high-resolution generation source, original portraits, character sheets and face-containing working boards remain private. Generating a web deliverable does not authorize publishing reference material or boards. Do not replace the image with another enlarged channel-art crop.
 
 Only the guides and standalone logo are authorized for this public kit. Private boards, original photographs, recordings and native editing projects remain in the established media library. Copy only required authorized assets and record kit revision, logo hash, actual fonts and approved deviations with the edit. Do not introduce machine-specific paths in public handoff.
 

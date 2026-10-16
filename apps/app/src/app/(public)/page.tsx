@@ -145,7 +145,10 @@ export default async function HomePage() {
         </header>
         <section aria-labelledby="show-title" className={styles.hero}>
           <div className={styles.heroCopy}>
-            <h1 id="show-title">Think AI</h1>
+            <h1 id="show-title">
+              <BrandMark />
+              Think AI
+            </h1>
             <p className={styles.hosts}>Vincent &amp; Mitchell</p>
             <p className={styles.intro}>
               Two founders building with AI. The tools, the workflows, and what
@@ -160,10 +163,11 @@ export default async function HomePage() {
             <Image
               alt="Vincent on the left and Mitchell on the right"
               className={styles.hostImage}
-              fill
+              height={1024}
               priority
-              sizes="(max-width: 760px) 180vw, 1200px"
-              src="/api/public/channel-art"
+              sizes="(max-width: 760px) 100vw, 740px"
+              src="/brand/hosts-2026-10.jpg"
+              width={1536}
             />
           </div>
         </section>
