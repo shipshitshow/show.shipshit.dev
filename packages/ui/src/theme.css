@@ -1,11 +1,11 @@
 @theme {
-  --color-accent-red: #ff2d20;
-  --color-accent-red-dim: #ff2d2026;
+  --color-accent-red: #e83b3b;
+  --color-accent-red-dim: #e83b3b26;
   --color-surface: #0d0d0d;
   --color-surface-border: #2a2a2a;
   --color-surface-card: #1a1a1a;
   --color-surface-elevated: #141414;
-  --color-text-muted: #606060;
+  --color-text-muted: #969696;
   --color-text-primary: #f0f0f0;
   --color-text-secondary: #a0a0a0;
   --font-sans:

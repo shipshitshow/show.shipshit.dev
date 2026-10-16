@@ -1,94 +1,51 @@
 import { ImageResponse } from 'next/og';
-
+import { BrandMark } from '@/components/BrandMark';
 export const runtime = 'nodejs';
-
 export async function GET() {
   return new ImageResponse(
     <div
       style={{
-        alignItems: 'stretch',
-        background:
-          'radial-gradient(circle at top left, #2b0f18 0%, #14090d 45%, #090909 100%)',
-        color: '#f5f5f5',
+        background: '#0D0D0D',
+        color: '#FFFFFF',
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
         justifyContent: 'space-between',
-        padding: '56px',
+        padding: 64,
         width: '100%',
       }}
     >
-      <div
-        style={{
-          color: '#ff5a5f',
-          display: 'flex',
-          fontSize: 24,
-          fontWeight: 700,
-          letterSpacing: 6,
-          textTransform: 'uppercase',
-        }}
-      >
-        Ship Shit Show
-      </div>
-
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-        <div
-          style={{
-            display: 'flex',
-            fontSize: 72,
-            fontWeight: 800,
-            letterSpacing: -2,
-            lineHeight: 1.02,
-            maxWidth: 920,
-          }}
-        >
-          Livestream prep, analytics, and show ops.
-        </div>
-
-        <div
-          style={{
-            color: '#c8c8c8',
-            display: 'flex',
-            fontSize: 30,
-            lineHeight: 1.35,
-            maxWidth: 860,
-          }}
-        >
-          Deep-dive topics, YouTube context, timeline cues, and links for every
-          Ship Shit Show livestream.
+      <div style={{ alignItems: 'center', display: 'flex', gap: 18 }}>
+        <BrandMark color="#E83B3B" size={56} />
+        <div style={{ display: 'flex', fontSize: 30, fontWeight: 700 }}>
+          Ship Sh!t Show
         </div>
       </div>
-
       <div
         style={{
-          alignItems: 'center',
           display: 'flex',
-          gap: 14,
+          fontSize: 152,
+          fontWeight: 800,
+          letterSpacing: -9,
+          lineHeight: 1,
         }}
       >
-        <div
-          style={{
-            backgroundColor: '#ff5a5f',
-            borderRadius: 999,
-            display: 'flex',
-            height: 12,
-            width: 12,
-          }}
-        />
-        <div
-          style={{
-            color: '#b0b0b0',
-            display: 'flex',
-            fontSize: 24,
-          }}
-        >
-          show.shipshit.dev
-        </div>
+        Think AI
+      </div>
+      <div
+        style={{
+          borderTop: '1px solid #404040',
+          color: '#AAAAAA',
+          display: 'flex',
+          fontSize: 26,
+          justifyContent: 'space-between',
+          paddingTop: 26,
+        }}
+      >
+        <div style={{ display: 'flex' }}>Vincent &amp; Mitchell</div>
+        <div style={{ display: 'flex' }}>show.shipshit.dev</div>
       </div>
     </div>,
-    {
-      height: 630,
-      width: 1200,
-    },
+    { height: 630, width: 1200 },
   );
 }

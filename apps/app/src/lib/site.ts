@@ -32,13 +32,13 @@ export function buildDefaultMetadata(): Pick<
     openGraph: {
       images: [
         {
-          alt: 'Ship Shit Show',
+          alt: 'Ship Sh!t Show — Think AI',
           height: 630,
           url: defaultCardUrl,
           width: 1200,
         },
       ],
-      siteName: 'Ship Shit Show',
+      siteName: 'Ship Sh!t Show',
       type: 'website',
     },
     twitter: {

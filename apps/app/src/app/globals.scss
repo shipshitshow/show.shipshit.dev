@@ -2,6 +2,8 @@
 @import "@shipshitshow/ui/theme.css";
 @source "../../../../packages/ui/src";
 
+:root { color-scheme: dark; }
+
 * {
   box-sizing: border-box;
 }
