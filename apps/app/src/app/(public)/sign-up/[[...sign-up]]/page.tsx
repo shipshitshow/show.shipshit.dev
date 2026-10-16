@@ -1,10 +1,10 @@
 import { SignUp } from '@clerk/nextjs';
-import { AuthShell } from '@/components/AuthShell';
+import { BrandPageShell } from '@/components/BrandPageShell';
 
 export default function Page() {
   return (
-    <AuthShell>
+    <BrandPageShell>
       <SignUp routing="path" path="/sign-up" signInUrl="/sign-in" />
-    </AuthShell>
+    </BrandPageShell>
   );
 }
