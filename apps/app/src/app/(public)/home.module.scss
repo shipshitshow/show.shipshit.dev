@@ -21,13 +21,13 @@
 .wordmark { display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0; font-size: 26px; font-weight: 700; letter-spacing: -.06em; white-space: nowrap; svg { width: 38px; height: 38px; color: var(--red); } }
 .navigation { display: flex; align-items: center; gap: 28px; margin-left: auto; a { display: inline-flex; align-items: center; min-height: 44px; color: #c5c5c5; font-size: 14px; &:hover { color: var(--paper); } } }
 .headerWatch { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 18px; border: 1px solid var(--red); border-radius: 4px; background: var(--red); color: var(--ink) !important; font-size: 13px; font-weight: 700; &:hover { background: var(--paper); border-color: var(--paper); } }
-.hero { display: grid; grid-template-columns: .86fr 1.14fr; align-items: center; min-height: 480px; margin: 28px 0 36px; gap: 32px; }
-.heroCopy { position: relative; z-index: 1; padding: 42px 0; }
+.hero { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: center; isolation: isolate; min-height: 480px; margin: 16px 0 36px; }
+.heroCopy { position: relative; z-index: 1; grid-column: 1 / 6; grid-row: 1; padding: 42px 0; }
 .hero h1 { display: flex; align-items: center; gap: 16px; font-size: clamp(76px, 7.5vw, 108px); font-weight: 700; letter-spacing: -.085em; line-height: .95; white-space: nowrap; svg { width: .8em; height: .8em; flex-shrink: 0; color: var(--red); } }
 .hosts { margin-top: 24px !important; font-size: 22px; letter-spacing: -.03em; color: #d0d0d0; }
 .intro { max-width: 380px; margin-top: 20px !important; color: var(--muted); font-size: 16px; line-height: 1.65; }
 .watchButton { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 52px; margin-top: 30px; padding: 14px 22px; border-radius: 4px; background: var(--red); color: var(--ink) !important; font-size: 14px; font-weight: 700; transition: background-color 150ms ease; &:hover { background: var(--paper); } }
-.portrait { min-width: 0; overflow: hidden; border-radius: 4px; }
+.portrait { position: relative; grid-column: 5 / -1; grid-row: 1; min-width: 0; margin-right: -48px; &::after { position: absolute; inset: 0; content: ''; pointer-events: none; background: linear-gradient(90deg, var(--ink), transparent 18%, transparent 88%, var(--ink)), linear-gradient(180deg, var(--ink), transparent 8%, transparent 72%, var(--ink)); } }
 .hostImage { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; }
 .library { margin-top: 64px; scroll-margin-top: 24px; }
 .sectionHeading { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; margin-bottom: 26px; }
@@ -54,6 +54,7 @@
   .navigation { gap: 20px; }
   .headerWatch span { display: none; }
   .hero { min-height: 450px; }
+  .portrait { margin-right: -32px; }
   .hero h1 { font-size: clamp(64px, 7.5vw, 86px); gap: 12px; }
 }
 @media (max-width: 760px) {
@@ -63,11 +64,11 @@
   .headerWatch { margin-left: auto; width: 44px; padding: 0; }
   .navigation { order: 3; flex-basis: 100%; gap: 28px; margin: 0; }
   .hero { grid-template-columns: 1fr; min-height: 0; margin-top: 0; gap: 0; }
-  .heroCopy { padding: 44px 0 8px; }
+  .heroCopy { grid-column: 1; grid-row: auto; padding: 44px 0 8px; }
   .hero h1 { font-size: clamp(64px, 14.5vw, 100px); gap: 12px; }
   .hosts { font-size: 20px; margin-top: 18px !important; }
   .intro { max-width: 430px; font-size: 15px; }
-  .portrait { max-width: 680px; margin-top: 20px; }
+  .portrait { grid-column: 1; grid-row: auto; max-width: 680px; margin: 12px -20px -24px; }
   .library { margin-top: 40px; }
   .episodeGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 18px; }
   .episodeGrid > li:last-child { display: none; }
