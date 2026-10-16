@@ -4,13 +4,23 @@
       "primary": "#FFFFFF",
       "primary_text": "#0D0D0D",
       "surface": "#0D0D0D",
-      "text": "#FFFFFF"
+      "text": "#FFFFFF",
+      "typography": {
+        "body": "Inter",
+        "code": "JetBrains Mono",
+        "heading": "Inter Tight"
+      }
     },
     "show": {
       "primary": "#E83B3B",
       "primary_text": "#0D0D0D",
       "surface": "#0D0D0D",
-      "text": "#FFFFFF"
+      "text": "#FFFFFF",
+      "typography": {
+        "body": "Space Grotesk",
+        "code": "monospace",
+        "heading": "Space Grotesk"
+      }
     }
   },
   "broadcast": {
