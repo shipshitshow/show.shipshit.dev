@@ -3,6 +3,7 @@ import { ArrowUpRight, Play } from 'lucide-react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { BrandMark } from '@/components/BrandMark';
+import brandedThumbnails from '@/lib/data/branded-thumbnails.json';
 import { getPublicEpisodes, type PublicEpisode } from '@/lib/public-episodes';
 import { showXAccounts } from '@/lib/show-accounts';
 import styles from './home.module.scss';
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 };
 export const revalidate = 3600;
 const CHANNEL = 'https://www.youtube.com/@ShipShitShow';
+const signedThumbnails = new Set(brandedThumbnails);
 const resources = [
   {
     description: 'The workflows behind the show.',
@@ -70,11 +72,13 @@ function EpisodeSection({
                     src={episode.thumbnailUrl}
                     width={480}
                   />
-                  <span
-                    className={`${styles.signature} ${format === 'livestream' ? styles.liveSignature : ''}`}
-                  >
-                    <BrandMark />
-                  </span>
+                  {!signedThumbnails.has(episode.id) && (
+                    <span
+                      className={`${styles.signature} ${format === 'livestream' ? styles.liveSignature : ''}`}
+                    >
+                      <BrandMark />
+                    </span>
+                  )}
                 </div>
                 <div className={styles.episodeMeta}>
                   <span>

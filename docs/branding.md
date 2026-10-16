@@ -16,6 +16,10 @@ The deployed application is `apps/app`; `apps/web` is a retired stub. Its public
 
 Video signatures are white on dark (black on light); livestream signatures are red. Use the identical 96px mark viewport at x1136/y576 on a 1280x720 canvas: bottom and right insets of 48px. Scale all coordinates uniformly. No dots, waves, box or font-glyph substitutes. Website card signatures use the same proportional placement. When a published thumbnail gains its own baked-in signature, do not add a second one in the website presentation.
 
+After saving a signed thumbnail in YouTube Studio, add its video ID to `apps/app/src/lib/data/branded-thumbnails.json`. The homepage skips its presentation overlay for those published IDs and retains the fallback signature for older artwork. Register only saved uploads, not concepts or pending test variants. If an upload later loses its baked-in signature, remove its ID in the same handoff.
+
+YouTube can show viewers a title or thumbnail experiment variant while the public API/feed returns the default. Check the experiment in Studio before treating that difference as a synchronization defect. Preserve active tests during a branding rollout; back up completed results before an explicitly approved replacement that deletes their history.
+
 `BrandMark` is the application silhouette (three identical 20x88 bars in a 96px viewport at 0/60/120 degrees). Never use a static portrait/vector layout instead of requested imagegen thumbnail artwork; exact logos and signature overlays are production layers. Main topic logos retain official colors while image backdrops remain B&W/charcoal.
 
 The show uses red as its primary action/identity color; the commercial shipshit.dev site uses black and white. The asterisk and compact typographic hierarchy connect them. The show uses Space Grotesk; the commercial site retains its approved Inter Tight headings, Inter body and JetBrains Mono utility type.
