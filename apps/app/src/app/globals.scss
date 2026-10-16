@@ -20,12 +20,9 @@ body {
   transition: padding-bottom 0.2s ease;
 }
 
-.production-shell {
-
-  :is(a, button, summary):focus-visible {
-    outline: 2px solid var(--color-text-primary);
-    outline-offset: 3px;
-  }
+:is(a, button, input, select, textarea, summary):focus-visible {
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 3px;
 }
 
 body.terminal-open #app-content-shell {

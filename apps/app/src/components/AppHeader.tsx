@@ -1,5 +1,6 @@
 'use client';
 
+import { BRAND } from '@shipshitshow/ui/brand';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { BrandMark } from '@/components/BrandMark';
@@ -21,7 +22,7 @@ function resolveSubtitle(pathname: string): string {
   if (pathname.includes('/draw')) return 'Drawing Board';
   if (pathname.startsWith('/videos/')) return 'Video Transcript';
   if (pathname.startsWith('/livestreams/')) return 'Show Rundown';
-  return SUBTITLE_MAP[pathname] ?? 'Ship Sh!t Show';
+  return SUBTITLE_MAP[pathname] ?? BRAND.identity.show_name;
 }
 
 function resolveActiveHref(pathname: string): string {
@@ -48,7 +49,7 @@ export function AppHeader() {
         </div>
         <div className="min-w-0">
           <h1 className="text-sm font-semibold text-text-primary leading-none">
-            Ship Sh!t Show
+            {BRAND.identity.show_name}
           </h1>
           <p className="text-xs text-text-muted mt-0.5 truncate">{subtitle}</p>
         </div>

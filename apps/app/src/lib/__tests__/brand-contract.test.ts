@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 import { BRAND, BRAND_COLORS } from '@shipshitshow/ui/brand';
+import { clerkBrand } from '@/lib/clerk-brand';
 import { buildDefaultMetadata } from '@/lib/site';
 
 function luminance(hex: string) {
@@ -29,6 +30,23 @@ describe('approved cross-brand contract', () => {
     ).toBeGreaterThanOrEqual(4.5);
     expect(BRAND.brands.business.primary).toBe(BRAND_COLORS.white);
     expect(BRAND.brands.show.primary).toBe(BRAND_COLORS.accent_red);
+  });
+
+  test('auth uses the show identity instead of shared-provider defaults', () => {
+    const { appearance, localization } = clerkBrand;
+    expect(localization.signIn.start.titleCombined).toContain(
+      BRAND.identity.show_name,
+    );
+    expect(localization.signUp.start.title).toContain(BRAND.identity.show_name);
+    expect(appearance.elements.logoBox.display).toBe('none');
+    expect(appearance.variables.colorInput).toBe(BRAND_COLORS.ink);
+    expect(appearance.variables.colorPrimaryForeground).toBe(BRAND_COLORS.ink);
+    expect(
+      contrast(
+        appearance.variables.colorPrimary,
+        appearance.variables.colorPrimaryForeground,
+      ),
+    ).toBeGreaterThanOrEqual(4.5);
   });
 
   test('Open Graph and Twitter share the selected artwork and exact export dimensions', () => {

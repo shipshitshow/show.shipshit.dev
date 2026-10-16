@@ -1,6 +1,7 @@
 import { ClerkProvider } from '@clerk/nextjs';
 import { BRAND_COLORS } from '@shipshitshow/ui/brand';
 import type { Metadata, Viewport } from 'next';
+import { clerkBrand } from '@/lib/clerk-brand';
 import { buildDefaultMetadata } from '@/lib/site';
 import './globals.scss';
 
@@ -25,22 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ClerkProvider
-          appearance={{
-            elements: {
-              formButtonPrimary: {
-                '&:hover': { backgroundColor: BRAND_COLORS.white },
-                color: BRAND_COLORS.ink,
-              },
-            },
-            variables: {
-              colorBackground: BRAND_COLORS.surface_elevated,
-              colorInputBackground: BRAND_COLORS.ink,
-              colorInputText: BRAND_COLORS.white,
-              colorPrimary: BRAND_COLORS.accent_red,
-              colorText: BRAND_COLORS.white,
-              colorTextSecondary: BRAND_COLORS.text_muted,
-            },
-          }}
+          {...clerkBrand}
           signInUrl="/sign-in"
           signInFallbackRedirectUrl="/studio"
         >
