@@ -165,7 +165,7 @@ export default async function HomePage() {
               className={styles.hostImage}
               height={1024}
               priority
-              sizes="(max-width: 760px) 100vw, 740px"
+              sizes="(max-width: 760px) 100vw, (max-width: 1376px) 70vw, 902px"
               src="/brand/hosts-2026-10.jpg"
               width={1536}
             />
