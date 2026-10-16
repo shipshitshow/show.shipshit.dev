@@ -89,8 +89,8 @@ export function DeepDivePanel({
               size="sm"
               className={`shrink-0 rounded-md text-[10px] transition-colors ${
                 activeSelected
-                  ? 'bg-accent-red text-white hover:bg-accent-red hover:text-white'
-                  : 'bg-accent-red/10 text-accent-red hover:bg-accent-red/20 hover:text-accent-red'
+                  ? 'bg-accent-red text-on-accent hover:bg-accent-red hover:text-on-accent'
+                  : 'bg-accent-red/10 text-text-primary hover:bg-accent-red/20 hover:text-text-primary'
               }`}
             >
               {activeSelected ? 'Selected' : 'Select'}
@@ -142,7 +142,7 @@ export function DeepDivePanel({
                 onClick={() => onAddToLivestream(activeItem)}
                 disabled={adding || addedIds.has(activeItem.id)}
                 size="sm"
-                className="rounded-md bg-accent-red/10 text-[10px] text-accent-red hover:bg-accent-red/20 hover:text-accent-red"
+                className="rounded-md bg-accent-red/10 text-[10px] text-text-primary hover:bg-accent-red/20 hover:text-text-primary"
               >
                 {addedIds.has(activeItem.id)
                   ? 'Added'

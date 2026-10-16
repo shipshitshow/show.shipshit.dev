@@ -28,7 +28,7 @@ export function TrendFilters({ active, onChange, counts }: TrendFiltersProps) {
           variant={active === f.value ? 'accent' : 'ghost'}
           className={`rounded-md text-[11px] transition-colors ${
             active === f.value
-              ? 'bg-accent-red/10 text-accent-red hover:bg-accent-red/10 hover:text-accent-red'
+              ? 'bg-accent-red/10 text-text-primary hover:bg-accent-red/10 hover:text-text-primary'
               : 'text-text-muted hover:bg-transparent hover:text-text-secondary'
           }`}
         >

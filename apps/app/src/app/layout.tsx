@@ -1,5 +1,7 @@
 import { ClerkProvider } from '@clerk/nextjs';
+import { BRAND_COLORS } from '@shipshitshow/ui/brand';
 import type { Metadata, Viewport } from 'next';
+import { clerkBrand } from '@/lib/clerk-brand';
 import { buildDefaultMetadata } from '@/lib/site';
 import './globals.scss';
 
@@ -12,7 +14,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: 'dark',
-  themeColor: '#0D0D0D',
+  themeColor: BRAND_COLORS.ink,
 };
 
 export default function RootLayout({
@@ -24,16 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ClerkProvider
-          appearance={{
-            variables: {
-              colorBackground: '#141414',
-              colorInputBackground: '#0D0D0D',
-              colorInputText: '#FFFFFF',
-              colorPrimary: '#E83B3B',
-              colorText: '#FFFFFF',
-              colorTextSecondary: '#AAAAAA',
-            },
-          }}
+          {...clerkBrand}
           signInUrl="/sign-in"
           signInFallbackRedirectUrl="/studio"
         >

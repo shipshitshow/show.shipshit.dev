@@ -37,5 +37,6 @@
   button, [role="button"] { cursor: pointer; }
   button:disabled, [role="button"][aria-disabled="true"] { cursor: not-allowed; }
 
-  button:focus, [role="button"]:focus { outline: none; }
+  :is(a, button, [role="button"]):focus-visible { outline: 2px solid var(--color-text-primary); outline-offset: 3px; }
+  :root { color-scheme: dark; }
 }

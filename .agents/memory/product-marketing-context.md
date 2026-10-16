@@ -25,20 +25,13 @@ A weekly YouTube show and podcast (video + live) where two founders, Vincent and
 ## Key Differentiator
 Two founders sharing firsthand use of AI in their own businesses, including honest disagreement between Vincent and Mitchell. A verified live, recorded or local demo supplies proof when available; discussion does not promise a demo without readiness.
 
-## Brand
-- **Name:** Ship Sh!t Show
-- **App theme:** #ff2d20 red on #0d0d0d dark remains unchanged; use the canonical kit for new production artwork.
-- **Font:** Space Grotesk
-- **YouTube channels:** @shipshitshow (main), @ShipShitShowClips (clips)
-- **X account:** @shipshitdev is the Ship Shit Show account. Treat `shipshitdev` as the show account for X/trends/social integrations, not as a separate personal fallback.
+## Brand — verified 2026-10-16
 
-### Brand source — updated 2026-10-15
+Canonical source: https://github.com/shipshitshow/vault/tree/master/brand. Local entry: `docs/branding.md`. Exact identity, colors, placement and publication scope live there and in the synchronized web contract; do not copy a competing palette into memory.
 
-Canonical kit: https://github.com/shipshitshow/vault/tree/master/brand. Read its identity, applications, editing rules, working tokens and asset inventory before producing thumbnails, captions, overlays or channel art. Compact mark: `SH*W`, S/H/asterisk/W on one horizontal line; full show name remains **Ship Sh!t Show**. Current direction uses broad readable type, black/white foundations, restrained red, real approved host photography, small repeated signatures and modest broadcast graphics. Requested logo variant: black mark on edge-to-edge red square, no border.
+Full name **Ship Sh!t Show**; baseline **Think AI**; compact mark is the standalone six-arm asterisk. Both websites use dark mode. Show primary is red #E83B3B; the commercial identity is monochrome. Natural-color hosts use charcoal backgrounds and integrated edges. Video signatures are white/black; livestream signatures are red, fixed bottom-right. Current public skills profile and all generated adapters must match the canonical kit. Original reference photographs, grids and face-containing working boards stay private.
 
-Earlier SH!P/SH!T, compressed or stacked marks, braces and oversized sponsor panels are superseded explorations. Generated reference boards are not real footage, authorized replacement host photographs, sized channel exports or transparent overlays. Exact application designs/tokens still need production review; existing app colors and approved motion projects were not changed. Only the guides and standalone logo may be published in the public kit. All four face-containing concept boards and original portraits remain private, outside public repositories (Vincent, 2026-10-15). Record the kit revision, logo hash, actual fonts and approved overrides with each edit.
-
-The public skills canonical profile owns its bundled summaries; `scripts/sync-content-skills.py` refreshes the app adapters and lock. Do not edit generated copies or introduce a competing palette. Local entry point: `docs/branding.md`.
+Main YouTube @ShipShitShow; clips @ShipShitShowClips. X @shipshitdev is the show account, not a personal fallback. Record actual owner approval and deployment evidence separately from the source contract.
 
 ## Content Pillars
 1. Weekly conversation (video + live) on how we use AI in our businesses

@@ -1,15 +1,15 @@
 .home {
-  --ink: #0d0d0d;
-  --paper: #fff;
-  --red: #e83b3b;
-  --muted: #aaa;
-  --line: #303030;
+  --ink: var(--color-surface);
+  --paper: var(--color-text-primary);
+  --red: var(--color-accent-red);
+  --muted: var(--color-text-muted);
+  --line: var(--color-surface-border);
   min-height: 100dvh;
   overflow-x: clip;
   background: var(--ink);
   color: var(--paper);
   color-scheme: dark;
-  font-family: var(--font-home), system-ui, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
   :where(a) { color: inherit; text-decoration: none; }
   :is(a, button):focus-visible { outline: 2px solid var(--paper); outline-offset: 6px; }
   h1, h2, h3, p { margin: 0; }
@@ -19,12 +19,12 @@
 .skipLink { position: fixed; top: -100px; left: 16px; z-index: 20; padding: 14px 20px; background: var(--paper); color: var(--ink) !important; font-weight: 700; &:focus { top: 12px; } }
 .header { min-height: 104px; display: flex; align-items: center; gap: 40px; border-bottom: 1px solid var(--line); }
 .wordmark { display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0; font-size: 26px; font-weight: 700; letter-spacing: -.06em; white-space: nowrap; svg { width: 38px; height: 38px; color: var(--red); } }
-.navigation { display: flex; align-items: center; gap: 28px; margin-left: auto; a { display: inline-flex; align-items: center; min-height: 44px; color: #c5c5c5; font-size: 14px; &:hover { color: var(--paper); } } }
+.navigation { display: flex; align-items: center; gap: 28px; margin-left: auto; a { display: inline-flex; align-items: center; min-height: 44px; color: var(--color-text-secondary); font-size: 14px; &:hover { color: var(--paper); } } }
 .headerWatch { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 18px; border: 1px solid var(--red); border-radius: 4px; background: var(--red); color: var(--ink) !important; font-size: 13px; font-weight: 700; &:hover { background: var(--paper); border-color: var(--paper); } }
 .hero { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: center; isolation: isolate; min-height: 480px; margin: 16px 0 36px; }
 .heroCopy { position: relative; z-index: 1; grid-column: 1 / 6; grid-row: 1; padding: 42px 0; }
 .hero h1 { display: flex; align-items: center; gap: 16px; font-size: clamp(76px, 7.5vw, 108px); font-weight: 700; letter-spacing: -.085em; line-height: .95; white-space: nowrap; svg { width: .8em; height: .8em; flex-shrink: 0; color: var(--red); } }
-.hosts { margin-top: 24px !important; font-size: 22px; letter-spacing: -.03em; color: #d0d0d0; }
+.hosts { margin-top: 24px !important; font-size: 22px; letter-spacing: -.03em; color: var(--color-text-secondary); }
 .intro { max-width: 380px; margin-top: 20px !important; color: var(--muted); font-size: 16px; line-height: 1.65; }
 .watchButton { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 52px; margin-top: 30px; padding: 14px 22px; border-radius: 4px; background: var(--red); color: var(--ink) !important; font-size: 14px; font-weight: 700; transition: background-color 150ms ease; &:hover { background: var(--paper); } }
 .portrait { position: relative; grid-column: 5 / -1; grid-row: 1; min-width: 0; margin-right: -48px; &::after { position: absolute; inset: 0; content: ''; pointer-events: none; background: linear-gradient(90deg, var(--ink), transparent 18%, transparent 88%, var(--ink)), linear-gradient(180deg, var(--ink), transparent 8%, transparent 72%, var(--ink)); } }
@@ -34,8 +34,8 @@
 .textLink { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; font-size: 14px; font-weight: 500; white-space: nowrap; &:hover { text-decoration: underline; text-underline-offset: 5px; } }
 .episodeGrid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 .episodeCard { display: block; height: 100%; h3 { margin-top: 10px; font-size: 19px; line-height: 1.35; letter-spacing: -.035em; font-weight: 700; } &:hover h3 { text-decoration: underline; text-underline-offset: 4px; } }
-.thumbnail { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #1a1a1a; img { display: block; width: 100%; height: 100%; object-fit: cover; } }
-.signature { position: absolute; right: 3.75%; bottom: 6.666667%; display: block; width: 7.5%; aspect-ratio: 1; color: var(--paper); filter: drop-shadow(0 1px 3px #0009); svg { display: block; width: 100%; height: 100%; } }
+.thumbnail { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--color-surface-card); img { display: block; width: 100%; height: 100%; object-fit: cover; } }
+.signature { position: absolute; right: var(--thumbnail-signature-right); bottom: var(--thumbnail-signature-bottom); display: block; width: var(--thumbnail-signature-width); aspect-ratio: 1; color: var(--paper); filter: drop-shadow(0 1px 3px #0009); svg { display: block; width: 100%; height: 100%; } }
 .liveSignature { color: var(--red); }
 .episodeMeta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 14px; margin-top: 15px; font-size: 12px; color: var(--muted); }
 .empty { border-top: 1px solid var(--line); padding: 30px 0; color: var(--muted); a { color: var(--paper); text-decoration: underline; } }
@@ -43,7 +43,7 @@
 .setup { margin-top: 56px; }
 .setupGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; list-style: none; margin: 24px 0 0; padding: 0; }
 .setupCard { display: flex; justify-content: space-between; align-items: center; gap: 24px; min-height: 112px; padding: 24px 0; border-bottom: 1px solid var(--line); h3 { font-size: 20px; font-weight: 700; letter-spacing: -.035em; } p { margin-top: 7px; color: var(--muted); font-size: 14px; line-height: 1.5; } svg { flex-shrink: 0; color: var(--muted); } &:hover svg { color: var(--paper); } }
-.business { display: flex; align-items: center; gap: 28px; margin-top: 72px; padding: 38px 32px; background: #161616; border: 1px solid var(--line); > svg:first-child { color: var(--paper); width: 64px; height: 64px; flex-shrink: 0; } > svg:last-child { margin-left: auto; flex-shrink: 0; } p { margin-top: 10px; color: var(--muted); font-size: 15px; line-height: 1.5; } &:hover { border-color: #777; } }
+.business { display: flex; align-items: center; gap: 28px; margin-top: 72px; padding: 38px 32px; background: var(--color-surface-elevated); border: 1px solid var(--line); > svg:first-child { color: var(--paper); width: 64px; height: 64px; flex-shrink: 0; } > svg:last-child { margin-left: auto; flex-shrink: 0; } p { margin-top: 10px; color: var(--muted); font-size: 15px; line-height: 1.5; } &:hover { border-color: var(--color-text-muted); } }
 .footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding: 36px 0; color: var(--muted); font-size: 12px; > div { display: flex; flex-wrap: wrap; gap: 8px 24px; } a { display: inline-flex; align-items: center; min-height: 44px; &:hover { color: var(--paper); } } }
 .tabList { display: flex; gap: 8px; }
 .tab { min-height: 44px; padding: 0 20px; border: 1px solid var(--line); border-radius: 4px; background: transparent; color: var(--muted); font: inherit; cursor: pointer; &[aria-selected='true'] { background: var(--paper); color: var(--ink); } }

@@ -1,3 +1,4 @@
+export { BrandMark } from './brand-mark';
 export { Button, buttonVariants } from './button';
 export { cn } from './cn';
 export { Input } from './input';

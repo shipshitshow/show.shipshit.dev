@@ -172,7 +172,7 @@ export async function generateCommentReplyDrafts(
     );
   }
   const prompt = [
-    'You write reply drafts for the Ship Shit Show YouTube channel.',
+    'You write reply drafts for the Ship Sh!t Show YouTube channel.',
     'Voice: sharp, founder-level, direct, high-signal, not corporate, not cringe, not needy.',
     'Rules:',
     '- Write exactly 3 distinct reply options.',
@@ -211,7 +211,7 @@ export async function generateCommentReplyDrafts(
         'Content-Type': 'application/json',
         // Attribution for OpenRouter's dashboard/leaderboards.
         'HTTP-Referer': 'https://show.shipshit.dev',
-        'X-Title': 'Ship Shit Show',
+        'X-Title': 'Ship Sh!t Show',
       },
       method: 'POST',
     });

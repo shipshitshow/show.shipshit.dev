@@ -3,13 +3,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { DashboardClient } from '@/components/DashboardClient';
 
-export const metadata: Metadata = { title: 'Home — Ship Shit Show' };
+export const metadata: Metadata = { title: 'Home — Ship Sh!t Show' };
 
 export default function StudioPage() {
   return (
     <div className="mx-auto max-w-7xl space-y-8 px-4 py-6 md:px-8 md:py-8">
       <div>
-        <p className="mb-2 text-xs text-text-muted">Ship Shit Show</p>
+        <p className="mb-2 text-xs text-text-muted">Ship Sh!t Show</p>
         <h1 className="text-2xl font-semibold tracking-tight">
           What are we shipping next?
         </h1>

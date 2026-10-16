@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { AppAccountButton } from '@/components/AppAccountButton';
+import { BrandMark } from '@/components/BrandMark';
 import { useSidebarState } from '@/components/livestreams/SidebarStateContext';
 import { getProductionApp, PRODUCTION_APPS } from '@/lib/app-navigation';
 
@@ -41,6 +42,13 @@ export function AppRail({ onNavigate }: { onNavigate?: () => void }) {
       aria-label="Production apps"
       className="flex w-[52px] shrink-0 flex-col items-center gap-2 bg-surface py-3"
     >
+      <Link
+        href="/"
+        aria-label="Ship Sh!t Show home"
+        className="mb-2 flex size-9 items-center justify-center text-accent-red"
+      >
+        <BrandMark size={26} />
+      </Link>
       <button
         type="button"
         onClick={toggle}

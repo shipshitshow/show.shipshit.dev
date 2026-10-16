@@ -20,7 +20,7 @@ const DATE_FORMATTER = new Intl.DateTimeFormat('en', {
 
 const CHANNEL_HANDLES: Record<string, { handle: string; cls: string }> = {
   clips: { cls: 'bg-red-400/20 text-red-400', handle: '@sssclips' },
-  main: { cls: 'bg-accent-red/20 text-accent-red', handle: '@shipshitshow' },
+  main: { cls: 'bg-accent-red/20 text-text-primary', handle: '@shipshitshow' },
 };
 
 export function VideoTable({
@@ -198,7 +198,7 @@ export function VideoTable({
                 size="icon"
                 className={`size-7 rounded text-xs transition-colors ${
                   page === i
-                    ? 'bg-accent-red/10 text-accent-red border border-accent-red/30'
+                    ? 'bg-accent-red/10 text-text-primary border border-accent-red/30'
                     : 'border-transparent text-text-muted hover:text-text-secondary'
                 }`}
               >

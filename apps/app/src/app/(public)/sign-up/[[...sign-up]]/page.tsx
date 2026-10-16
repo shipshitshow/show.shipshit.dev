@@ -1,9 +1,10 @@
 import { SignUp } from '@clerk/nextjs';
+import { AuthShell } from '@/components/AuthShell';
 
 export default function Page() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-surface px-6 py-10">
+    <AuthShell>
       <SignUp routing="path" path="/sign-up" signInUrl="/sign-in" />
-    </main>
+    </AuthShell>
   );
 }

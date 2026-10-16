@@ -442,7 +442,7 @@ export function CommentsView() {
                   }`}
                 >
                   <div className="flex items-center gap-2 mb-2 flex-wrap">
-                    <span className="text-[10px] font-bold px-2 py-1 rounded bg-accent-red/15 text-accent-red uppercase">
+                    <span className="text-[10px] font-bold px-2 py-1 rounded bg-accent-red/15 text-text-primary uppercase">
                       {comment.channelLabel}
                     </span>
                     {comment.isOwnedComment && (
@@ -562,7 +562,7 @@ export function CommentsView() {
                   aria-describedby={
                     isDraftUnavailable ? 'draft-unavailable' : undefined
                   }
-                  className="text-xs bg-accent-red/10 text-accent-red hover:bg-accent-red/20 hover:text-accent-red"
+                  className="text-xs bg-accent-red/10 text-text-primary hover:bg-accent-red/20 hover:text-text-primary"
                 >
                   {draftLoadingId === selectedComment.commentId
                     ? 'Generating...'
@@ -596,7 +596,7 @@ export function CommentsView() {
             {selectedError && (
               <div
                 role="alert"
-                className="space-y-2 rounded-xl border border-accent-red/20 bg-accent-red/10 p-3 text-xs text-accent-red"
+                className="space-y-2 rounded-xl border border-accent-red/20 bg-accent-red/10 p-3 text-xs text-text-primary"
               >
                 <p className="font-medium">{selectedError.error.error}</p>
                 {selectedError.error.hint && (

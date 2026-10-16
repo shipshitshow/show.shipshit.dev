@@ -73,7 +73,7 @@ export async function generateMetadata({
     visibleTopics,
     archive?.title,
   );
-  const pageTitle = `${streamTitle} — Resources · Ship Shit Show`;
+  const pageTitle = `${streamTitle} — Resources · Ship Sh!t Show`;
   const description = 'Livestream prompts, links, tweets, and resources.';
   const pageUrl = toAbsoluteUrl(
     `/livestreams/${encodeURIComponent(slug)}/resources`,

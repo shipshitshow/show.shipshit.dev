@@ -1,21 +1,16 @@
+import { BRAND } from '@shipshitshow/ui/brand';
 import { ArrowUpRight, Play } from 'lucide-react';
 import type { Metadata } from 'next';
-import { Space_Grotesk } from 'next/font/google';
 import Image from 'next/image';
 import { BrandMark } from '@/components/BrandMark';
 import { getPublicEpisodes, type PublicEpisode } from '@/lib/public-episodes';
 import { showXAccounts } from '@/lib/show-accounts';
 import styles from './home.module.scss';
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-home',
-  weight: ['400', '500', '700'],
-});
 export const metadata: Metadata = {
   description:
     'Think AI. Vincent and Mitchell share what it takes to build and run businesses with AI. Watch the latest videos and livestreams.',
-  title: 'Ship Sh!t Show — Think AI',
+  title: `${BRAND.identity.show_name} — ${BRAND.identity.baseline}`,
 };
 export const revalidate = 3600;
 const CHANNEL = 'https://www.youtube.com/@ShipShitShow';
@@ -115,7 +110,7 @@ export default async function HomePage() {
     (a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt),
   )[0];
   return (
-    <main className={`${styles.home} ${spaceGrotesk.variable}`}>
+    <main className={styles.home}>
       <a className={styles.skipLink} href="#library">
         Skip to episodes
       </a>
@@ -127,7 +122,7 @@ export default async function HomePage() {
             href="/"
           >
             <BrandMark />
-            <span>Ship Sh!t Show</span>
+            <span>{BRAND.identity.show_name}</span>
           </a>
           <nav aria-label="Main navigation" className={styles.navigation}>
             <a href="#library">Videos</a>
@@ -147,7 +142,7 @@ export default async function HomePage() {
           <div className={styles.heroCopy}>
             <h1 id="show-title">
               <BrandMark />
-              Think AI
+              {BRAND.identity.baseline}
             </h1>
             <p className={styles.hosts}>Vincent &amp; Mitchell</p>
             <p className={styles.intro}>
@@ -225,7 +220,7 @@ export default async function HomePage() {
           <ArrowUpRight aria-hidden="true" size={30} />
         </a>
         <footer className={styles.footer}>
-          <span>Ship Sh!t Show</span>
+          <span>{BRAND.identity.show_name}</span>
           <div>
             <a href="https://www.youtube.com/@ShipShitShowClips/shorts">
               Clips

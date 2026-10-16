@@ -84,7 +84,7 @@ export function DeepDivePanel({
               </div>
               {typeof activeItem.showScore === 'number' && (
                 <div className="mb-1.5 flex flex-wrap items-center gap-1.5 text-[10px] font-mono">
-                  <span className="rounded bg-accent-red/10 px-1.5 py-0.5 text-accent-red">
+                  <span className="rounded bg-accent-red/10 px-1.5 py-0.5 text-text-primary">
                     fit {activeItem.showScore}
                   </span>
                   {activeItem.showReasons?.slice(0, 3).map((reason) => (
@@ -107,8 +107,8 @@ export function DeepDivePanel({
               size="sm"
               className={`shrink-0 rounded-md text-[10px] transition-colors ${
                 activeSelected
-                  ? 'bg-accent-red text-white hover:bg-accent-red hover:text-white'
-                  : 'bg-accent-red/10 text-accent-red hover:bg-accent-red/20 hover:text-accent-red'
+                  ? 'bg-accent-red text-on-accent hover:bg-accent-red hover:text-on-accent'
+                  : 'bg-accent-red/10 text-text-primary hover:bg-accent-red/20 hover:text-text-primary'
               }`}
             >
               {activeSelected ? 'Selected' : 'Select'}
@@ -156,7 +156,7 @@ export function DeepDivePanel({
                 type="button"
                 onClick={() => onAddToLivestream(activeItem)}
                 size="sm"
-                className="rounded-md bg-accent-red/10 text-[10px] text-accent-red hover:bg-accent-red/20 hover:text-accent-red"
+                className="rounded-md bg-accent-red/10 text-[10px] text-text-primary hover:bg-accent-red/20 hover:text-text-primary"
               >
                 + Livestream
               </Button>

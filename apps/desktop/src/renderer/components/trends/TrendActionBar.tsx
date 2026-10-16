@@ -39,7 +39,7 @@ export function TrendActionBar({
         <Button
           onClick={onAddToLivestream}
           disabled={selectedCount === 0 || addingToLivestream}
-          className="text-xs bg-accent-red/10 text-accent-red hover:bg-accent-red/20 hover:text-accent-red"
+          className="text-xs bg-accent-red/10 text-text-primary hover:bg-accent-red/20 hover:text-text-primary"
         >
           {addingToLivestream
             ? 'Adding...'

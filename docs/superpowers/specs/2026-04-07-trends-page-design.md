@@ -1,3 +1,5 @@
+> Historical implementation record. Current visual rules and tokens are maintained in [the brand contract](../../branding.md); do not reuse this document’s old palette as an active default.
+
 # /trends Page — Design Spec
 
 ## Context

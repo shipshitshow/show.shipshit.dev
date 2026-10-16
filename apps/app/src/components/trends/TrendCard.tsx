@@ -153,7 +153,7 @@ export function TrendCard({
               }}
               disabled={added || adding}
               size="sm"
-              className="mt-2 rounded-md bg-accent-red/10 text-[10px] text-accent-red hover:bg-accent-red/20 hover:text-accent-red"
+              className="mt-2 rounded-md bg-accent-red/10 text-[10px] text-text-primary hover:bg-accent-red/20 hover:text-text-primary"
             >
               {added ? 'Added' : '+ Livestream'}
             </Button>

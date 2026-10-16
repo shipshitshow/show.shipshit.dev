@@ -75,8 +75,8 @@ export async function generateMetadata({
   if (!resolvedDate) {
     return {
       ...defaults,
-      description: 'Public talking points for Ship Shit Show.',
-      title: 'Ship Shit Show - Talking Points',
+      description: 'Public talking points for Ship Sh!t Show.',
+      title: 'Ship Sh!t Show - Talking Points',
     };
   }
 
@@ -89,7 +89,7 @@ export async function generateMetadata({
     archive?.title,
   );
   const pageTitle = `${streamTitle} - Talking Points`;
-  const description = 'Public livestream talking points for Ship Shit Show.';
+  const description = 'Public livestream talking points for Ship Sh!t Show.';
   const pageUrl = toAbsoluteUrl(`/talking-points/${encodeURIComponent(slug)}`);
   const primaryTopic = visibleTopics[0];
   const imageUrl = archive?.videoId
@@ -150,7 +150,7 @@ export default async function PublicTalkingPointsPage({
       <div className="mx-auto max-w-4xl space-y-5">
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-accent-red">
-            Ship Shit Show
+            Ship Sh!t Show
           </p>
           <h1 className="mt-2 text-2xl font-semibold text-text-primary">
             Talking Points

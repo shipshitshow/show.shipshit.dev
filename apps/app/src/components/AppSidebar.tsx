@@ -1,5 +1,6 @@
 'use client';
 import { cn } from '@shipshitshow/ui';
+import { BRAND } from '@shipshitshow/ui/brand';
 import { ArrowUpRight, BookOpen } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -16,7 +17,7 @@ export function AppSidebar({ onNavigate }: { onNavigate?: () => void }) {
     <aside className="flex w-[232px] min-w-0 shrink flex-col border-r border-surface-border bg-surface-elevated/30">
       <div className="px-4 pb-3 pt-5">
         <p className="text-sm font-semibold text-text-primary">
-          Ship Shit Show
+          {BRAND.identity.show_name}
         </p>
         <p className="mt-1 text-xs text-text-muted">Production workspace</p>
       </div>

@@ -35,6 +35,9 @@ jobs:
       - name: Lint (Biome)
         run: bun run lint
 
+      - name: Brand consistency
+        run: bun run brand:check
+
       - name: Typecheck
         run: bun run check:types
 

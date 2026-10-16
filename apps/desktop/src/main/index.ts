@@ -45,7 +45,7 @@ function openExternalUrl(url: string): Promise<void> {
 function createWindow() {
   mainWindow = new BrowserWindow({
     height: 800,
-    title: 'Ship Shit Show',
+    title: 'Ship Sh!t Show',
     titleBarStyle: 'hiddenInset',
     webPreferences: {
       contextIsolation: true,

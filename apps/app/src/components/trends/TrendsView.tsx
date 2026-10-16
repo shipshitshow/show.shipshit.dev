@@ -341,7 +341,7 @@ export function TrendsView() {
           role={addFeedback.tone === 'error' ? 'alert' : 'status'}
           className={`flex shrink-0 flex-wrap items-center gap-x-3 gap-y-2 rounded-lg border px-3 py-2 text-xs ${
             addFeedback.tone === 'error'
-              ? 'border-accent-red/30 bg-accent-red/5 text-accent-red'
+              ? 'border-accent-red/30 bg-accent-red/5 text-text-primary'
               : 'border-surface-border bg-surface-card text-text-secondary'
           }`}
         >

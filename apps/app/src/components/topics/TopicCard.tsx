@@ -134,7 +134,7 @@ export function TopicCard({ topic, showDate, onStatusChange }: TopicCardProps) {
               onStatusChange(topic, 'in_progress');
             }}
             size="sm"
-            className="rounded-md bg-accent-red/10 text-xs text-accent-red hover:bg-accent-red/20 hover:text-accent-red"
+            className="rounded-md bg-accent-red/10 text-xs text-text-primary hover:bg-accent-red/20 hover:text-text-primary"
           >
             Select for tonight
           </Button>

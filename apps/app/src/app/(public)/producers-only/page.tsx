@@ -13,7 +13,7 @@ export default function ProducersOnlyPage() {
       <div className="flex max-w-md flex-col items-center gap-4 text-center">
         <h1 className="font-bold text-2xl text-text-primary">Producers only</h1>
         <p className="text-sm text-text-secondary">
-          This account is not a producer for Ship Shit Show. The production app
+          This account is not a producer for Ship Sh!t Show. The production app
           is limited to the show's producers.
         </p>
         <div className="flex items-center gap-4 text-sm">

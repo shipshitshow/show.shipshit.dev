@@ -183,7 +183,7 @@ export function StreamDistributionPanel({
       ) : null}
 
       {error ? (
-        <p className="rounded-xl border border-accent-red/20 bg-accent-red/5 px-5 py-3 text-xs text-accent-red">
+        <p className="rounded-xl border border-accent-red/20 bg-accent-red/5 px-5 py-3 text-xs text-text-primary">
           {error}
         </p>
       ) : null}

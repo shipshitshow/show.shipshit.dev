@@ -27,7 +27,7 @@ export const STATUS_META = {
     label: 'Done',
   },
   selected: {
-    badgeClass: 'bg-accent-red/10 text-accent-red border-accent-red/20',
+    badgeClass: 'bg-accent-red/10 text-text-primary border-accent-red/20',
     copy: 'Only selected topics stay here. Backlog remains in the desktop Kanban.',
     empty: 'No topic is selected for the current livestream yet.',
     label: 'Selected',

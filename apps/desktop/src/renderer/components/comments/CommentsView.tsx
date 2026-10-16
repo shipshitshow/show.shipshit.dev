@@ -270,7 +270,7 @@ export function CommentsView() {
                   }`}
                 >
                   <div className="flex items-center gap-2 mb-2 flex-wrap">
-                    <span className="text-[10px] font-bold px-2 py-1 rounded bg-accent-red/15 text-accent-red uppercase">
+                    <span className="text-[10px] font-bold px-2 py-1 rounded bg-accent-red/15 text-text-primary uppercase">
                       {comment.channelLabel}
                     </span>
                     <span className="text-[10px] text-text-muted">
@@ -336,7 +336,7 @@ export function CommentsView() {
                 <Button
                   onClick={() => handleGenerateDrafts(selectedComment)}
                   disabled={draftLoadingId === selectedComment.commentId}
-                  className="text-xs bg-accent-red/10 text-accent-red hover:bg-accent-red/20 hover:text-accent-red"
+                  className="text-xs bg-accent-red/10 text-text-primary hover:bg-accent-red/20 hover:text-text-primary"
                 >
                   {draftLoadingId === selectedComment.commentId
                     ? 'Generating...'
@@ -346,7 +346,7 @@ export function CommentsView() {
             </div>
 
             {actionError && (
-              <div className="bg-accent-red/10 border border-accent-red/20 rounded-xl p-3 text-xs text-accent-red">
+              <div className="bg-accent-red/10 border border-accent-red/20 rounded-xl p-3 text-xs text-text-primary">
                 {actionError}
               </div>
             )}
