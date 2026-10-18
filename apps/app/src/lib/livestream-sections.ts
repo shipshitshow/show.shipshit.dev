@@ -51,12 +51,24 @@ function isPromptSection(title: string): boolean {
 }
 
 /**
- * The `Livestream Notes` block is stream metadata — title, episode number,
- * date, YouTube and Restream links. It is already surfaced by the page header
- * and the stream sidebar, so it never renders as a card.
+ * The `Livestream Notes` block opens every prep file. Older files kept only
+ * stream metadata there; since June it is the episode brief — viewer
+ * question, spine, firsthand notes, how to read the references and post
+ * order — so it renders first in Ressources as "Episode brief". Studio links
+ * never belong on a card, so any line carrying one is dropped.
  */
 function isStreamMetadataSection(title: string): boolean {
   return title.toLowerCase().includes('livestream notes');
+}
+
+const STUDIO_LINK = /studio\.restream\.io/i;
+
+function toEpisodeBrief(body: string): string {
+  return body
+    .split('\n')
+    .filter((line) => !STUDIO_LINK.test(line))
+    .join('\n')
+    .trim();
 }
 
 function isUtilityTalkingPointSection(title: string): boolean {
@@ -169,17 +181,27 @@ export function getSidebarNotes(cards: LivestreamCard[]): SidebarNote[] {
 export function getStreamResourceSections(
   cards: LivestreamCard[],
 ): StreamResourceSection[] {
-  return cards.flatMap((card) =>
-    getTopicSections(card).flatMap((section) => {
-      if (isPromptSection(section.title)) return [];
-      if (isStreamMetadataSection(section.title)) return [];
-      if (isTimelineSection(section.title)) return [];
+  const briefs: StreamResourceSection[] = [];
+  const resources: StreamResourceSection[] = [];
 
-      return [
-        { body: section.body, title: formatTimelineTitle(section.title) },
-      ];
-    }),
-  );
+  for (const card of cards) {
+    for (const section of getTopicSections(card)) {
+      if (isPromptSection(section.title)) continue;
+      if (isStreamMetadataSection(section.title)) {
+        const body = toEpisodeBrief(section.body);
+        if (body) briefs.push({ body, title: 'Episode brief' });
+        continue;
+      }
+      if (isTimelineSection(section.title)) continue;
+
+      resources.push({
+        body: section.body,
+        title: formatTimelineTitle(section.title),
+      });
+    }
+  }
+
+  return [...briefs, ...resources];
 }
 
 export function getStreamPromptSections(
