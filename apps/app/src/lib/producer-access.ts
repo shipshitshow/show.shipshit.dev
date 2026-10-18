@@ -1,7 +1,7 @@
 export const PRODUCER_USER_IDS_ENV = 'PRODUCER_CLERK_USER_IDS';
 export const SIGN_IN_PATH = '/sign-in';
 export const PRODUCERS_ONLY_PATH = '/producers-only';
-export const PRODUCER_ACCESS_API_PATH = '/api/producer/access';
+const PRODUCER_ACCESS_API_PATH = '/api/producer/access';
 
 export type ProducerDenialReason = 'signed_out' | 'not_producer';
 

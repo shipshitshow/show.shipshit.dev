@@ -40,15 +40,3 @@ export function getTopicDrawingFile(slug: string, date: string): string | null {
 export function getEpisodeXPostsFile(date: string): string {
   return path.join(DATA_DIR, date, X_POSTS_FILE);
 }
-
-export function ensureTopicDrawingDir(
-  slug: string,
-  date: string,
-): string | null {
-  const drawingFile = getTopicDrawingFile(slug, date);
-  if (!drawingFile) return null;
-
-  const dir = path.dirname(drawingFile);
-  fs.mkdirSync(dir, { recursive: true });
-  return dir;
-}

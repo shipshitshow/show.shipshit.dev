@@ -1,4 +1,4 @@
-export interface TranscriptTurn {
+interface TranscriptTurn {
   paragraphs: string[];
   /** True when a `>>` caption marker opened this turn. Speakers are unnamed. */
   speakerChange: boolean;

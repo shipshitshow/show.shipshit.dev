@@ -219,13 +219,6 @@ export async function readRedisJsonAndHashes<J, H>(
   }
 }
 
-export async function addRedisSetMember(
-  key: string,
-  member: string,
-): Promise<void> {
-  await write(key, () => getClient().sadd(key, member));
-}
-
 export async function readRedisSetMembers(
   key: string,
   { strict = false }: ReadOptions = {},

@@ -41,7 +41,7 @@ const SEGMENT_TITLE_PATTERNS = [
 /** `Segment 3 — <headline>` / `Capsule 2 — <name>`: the label half is the rundown index. */
 const INDEXED_SEGMENT = /^((?:segment|capsule)\s+\d+)\s+[—–-]\s+(.+)$/i;
 
-export function isPromptSection(title: string): boolean {
+function isPromptSection(title: string): boolean {
   const normalized = title.toLowerCase();
   return (
     normalized.includes('/goal') ||
@@ -55,11 +55,11 @@ export function isPromptSection(title: string): boolean {
  * date, YouTube and Restream links. It is already surfaced by the page header
  * and the stream sidebar, so it never renders as a card.
  */
-export function isStreamMetadataSection(title: string): boolean {
+function isStreamMetadataSection(title: string): boolean {
   return title.toLowerCase().includes('livestream notes');
 }
 
-export function isUtilityTalkingPointSection(title: string): boolean {
+function isUtilityTalkingPointSection(title: string): boolean {
   const normalized = title.toLowerCase();
   return (
     normalized.includes('thumbnail') ||
@@ -68,7 +68,7 @@ export function isUtilityTalkingPointSection(title: string): boolean {
   );
 }
 
-export function isTimelineSection(title: string): boolean {
+function isTimelineSection(title: string): boolean {
   const normalized = title.toLowerCase();
   // `Talking Points — Thumbnail Prompts` / `— Clip Cues` are production
   // helpers wearing a segment heading; they belong in Ressources.
@@ -82,12 +82,12 @@ export function isTimelineSection(title: string): boolean {
   return SEGMENT_TITLE_PATTERNS.some((pattern) => pattern.test(normalized));
 }
 
-export function isTimelineSubSection(title: string): boolean {
+function isTimelineSubSection(title: string): boolean {
   const normalized = title.toLowerCase();
   return normalized === '' || normalized === 'talking points';
 }
 
-export function formatTimelineTitle(title: string): string {
+function formatTimelineTitle(title: string): string {
   return title.replace(/^Talking Points\s+[—–-]\s+/i, '');
 }
 

@@ -65,17 +65,6 @@ export interface YouTubeChannelItem {
   };
 }
 
-export interface YouTubePlaylistItem {
-  status?: {
-    privacyStatus?: string;
-  };
-  snippet?: {
-    resourceId?: {
-      videoId?: string;
-    };
-  };
-}
-
 export interface YouTubeCommentReplyItem {
   id?: string;
   snippet?: {

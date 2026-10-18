@@ -4,7 +4,7 @@ const LOCAL_SITE_URL = 'http://localhost:3001';
 const PRODUCTION_SITE_URL = 'https://show.shipshit.dev';
 export const DEFAULT_SOCIAL_IMAGE_PATH = '/brand/show-og-2026-10-16.jpg';
 
-export function getSiteUrl(): string {
+function getSiteUrl(): string {
   const configured = process.env.NEXT_PUBLIC_SITE_URL?.trim();
   if (configured) {
     return configured.replace(/\/$/, '');
