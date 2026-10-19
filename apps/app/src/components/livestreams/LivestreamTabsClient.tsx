@@ -1,5 +1,6 @@
 'use client';
 
+import { Presentation } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -51,6 +52,14 @@ export function LivestreamTabsClient({
           </Link>
         );
       })}
+      <Link
+        href={`/livestreams/${pathSlug}/tweets`}
+        target="_blank"
+        className="ml-auto inline-flex items-center gap-2 px-4 py-3 text-sm font-semibold text-text-muted transition-colors hover:text-text-primary"
+      >
+        <Presentation className="size-4" />
+        Tweet slider
+      </Link>
     </div>
   );
 }
