@@ -4,6 +4,7 @@ import {
   ArrowLeft,
   ChevronLeft,
   ChevronRight,
+  ExternalLink,
   EyeOff,
   Heart,
   LayoutGrid,
@@ -202,6 +203,20 @@ function QuotedCard({ quoted }: { quoted: TweetSlideBody }) {
   );
 }
 
+function SourceLink({ slide }: { slide: TweetSlide }) {
+  return (
+    <a
+      href={slide.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-2 hover:text-text-primary"
+    >
+      <ExternalLink className="size-[1em]" />
+      x.com/{slide.tweet?.author.handle ?? slide.handle}
+    </a>
+  );
+}
+
 function SlideCard({ slide }: { slide: TweetSlide }) {
   const { quoted, tweet } = slide;
 
@@ -216,8 +231,9 @@ function SlideCard({ slide }: { slide: TweetSlide }) {
             {slide.note}
           </p>
         )}
-        <p className="text-[clamp(0.875rem,1.2vw,1.25rem)] text-text-muted">
-          This post could not be loaded. Press O to open it on X.
+        <p className="flex flex-wrap items-center gap-x-[2vw] gap-y-2 text-[clamp(0.875rem,1.2vw,1.25rem)] text-text-muted">
+          <span>This post could not be loaded.</span>
+          <SourceLink slide={slide} />
         </p>
       </article>
     );
@@ -238,6 +254,7 @@ function SlideCard({ slide }: { slide: TweetSlide }) {
         {COUNT_FORMATTER.format(tweet.replies)}
       </span>
     ) : null,
+    <SourceLink key="source" slide={slide} />,
   ].filter(Boolean);
 
   return (
@@ -335,12 +352,23 @@ function Overview({
                     {slide.topicTitle}
                   </p>
                 </button>
-                <button
-                  onClick={() => onToggleHidden(slide.id)}
-                  className="border-t border-surface-border px-4 py-2 text-left text-xs text-text-muted hover:text-text-primary"
-                >
-                  {isHidden ? 'Show in slider' : 'Skip in slider'}
-                </button>
+                <div className="flex items-center justify-between gap-2 border-t border-surface-border px-4 py-2 text-xs text-text-muted">
+                  <button
+                    onClick={() => onToggleHidden(slide.id)}
+                    className="hover:text-text-primary"
+                  >
+                    {isHidden ? 'Show in slider' : 'Skip in slider'}
+                  </button>
+                  <a
+                    href={slide.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 hover:text-text-primary"
+                  >
+                    Open on X
+                    <ExternalLink className="size-3" />
+                  </a>
+                </div>
               </li>
             );
           })}
@@ -546,6 +574,18 @@ export function TweetSlider({
           >
             <StickyNote className="size-5" />
           </button>
+          {slide && (
+            <a
+              href={slide.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg border border-surface-border p-2 text-text-muted hover:text-text-primary"
+              aria-label="Open this tweet on X"
+              title="Open on X (O)"
+            >
+              <ExternalLink className="size-5" />
+            </a>
+          )}
           <button
             onClick={() => slide && toggleHidden(slide.id)}
             className="rounded-lg border border-surface-border p-2 text-text-muted hover:text-text-primary"
