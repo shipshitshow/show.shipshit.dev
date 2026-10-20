@@ -7,7 +7,7 @@ YouTube's thumbnail test does not run on scheduled live streams. Pick one for th
 ## Livestream requirements (vault brand kit, 16 Oct)
 
 - 1920x1080 export (16:9). Hosts in natural colour, Vincent left and Mitchell right, against a **predominantly monochrome charcoal backdrop**. Official topic logos keep their own colours; no coloured background washes.
-- **Livestream signature:** the exact red six-arm asterisk (`vault/brand/assets/asterisk-red.svg`, sha256 `5e0db98a…`) composited after generation, never generated. At 1920x1080 it sits at x1704, y864, 144x144 (the 1280x720 token x1136/y576, 96x96, scaled 1.5x; 72px right and bottom insets). No box, dot, waves or second copy.
+- **Livestream signature:** the exact red six-arm asterisk (`apps/app/public/brand/asterisk-red.svg`, same file as `vault/brand/assets/asterisk-red.svg`, sha256 `5e0db98a…`) composited after generation, never generated. At 1920x1080 it sits at x1704, y864, 144x144 (the 1280x720 token x1136/y576, 96x96, scaled 1.5x; 72px right and bottom insets). No box, dot, waves or second copy.
 - Logos are production layers: reproduce the official mark from a reference, or composite it, never a redrawn look-alike.
 - Text is optional. Keep any text short and spelled exactly as written below.
 - Check every export at 320px wide for likeness, logo accuracy and the signature.
@@ -17,7 +17,7 @@ YouTube's thumbnail test does not run on scheduled live streams. Pick one for th
 Codex CLI image tool on Vincent's Mac, as for the 13 Oct thumbnails. References in order:
 
 1. Vincent: `~/Desktop/references/vincent/IMG_5598.JPG`
-2. Mitchell: `~/Desktop/thumbnails/pfps/mntll_nl/cn56n8gmq5rmw0cwp44ap7mqsw.jpg`
+2. Mitchell: `~/Desktop/thumbnails/pfps/mntll_nl/mntll_nl.jpg`
 3. 13 Oct live thumbnail v3 A, house style: `~/Desktop/thumbnails/2610/261013/livestream/`
 4. Official logos: OpenAI knot (Codex), Claude starburst, xAI Grok mark. Reuse the files from the 29 Sep and 6 Oct thumbnails where they exist.
 
@@ -70,3 +70,12 @@ Keep A.
 ## After the test
 
 Record the test date, the archive URL, what stayed fixed (title) and YouTube's actual result. An inconclusive test is inconclusive. After saving a signed thumbnail in Studio, add the video ID to `apps/app/src/lib/data/branded-thumbnails.json`.
+
+## Generated (20 Oct)
+
+Codex CLI image tool on the Mac Studio, 20 Oct. In `~/Desktop/thumbnails/2610/261020/livestream/`, each a 1920x1080 `.png` plus a signed `.jpg`; nothing uploaded.
+
+- A: `stack-a-swap-v2` (v1 failed: fist in the signature corner). Claude mark is a generic 12-ray starburst, not the exact shape; composite the official mark before upload.
+- B: `stack-b-zero-bill-v1`. Text is exactly "$0". Same Claude mark caveat.
+- C: `stack-c-bot-inbox-v1`.
+- Mitchell's polo sits behind the asterisk on most; legible, but the corner is not bare backdrop.
