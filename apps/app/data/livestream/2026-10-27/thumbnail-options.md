@@ -1,6 +1,6 @@
 # Thumbnail options — 2026-10-27
 
-Asset: livestream. Title held fixed: `I Self-Host My Own AI Content Agent, Live` (not locked yet; regenerate nothing if only the title changes, the art carries no text).
+Asset: livestream. Title held fixed: `I Self-Host Genfeed, an Open-Source AI Studio` (not locked).
 
 YouTube's thumbnail test does not run on scheduled live streams. Pick one for the live, then test all three on the archive once it is eligible: https://support.google.com/youtube/answer/16391400
 
@@ -14,43 +14,41 @@ Same as `2026-10-20/thumbnail-options.md`: 1920x1080, natural-colour hosts (Vinc
 
 Codex CLI image tool on Vincent's Mac. References: Vincent and Mitchell photos (paths in the 20 Oct file), the 13 Oct live thumbnail for house style, and the official Genfeed logo from the Genfeed repo or brand folder (use the exact file; do not let the generator invent one).
 
-Output folder: `~/Desktop/thumbnails/2610/261027/livestream/`, named `genfeed-selfhost-<a-home-server|b-terminal|c-off-cloud>-v1.png` plus the signed `.jpg`.
+Output folder: `~/Desktop/thumbnails/2610/261027/livestream/`, named `genfeed-studio-<a-studio|b-real-ui|c-one-brief>-v1.png` plus the signed `.jpg`.
 
 Shared prompt base: as on 20 Oct, with the last reference image being the official Genfeed logo.
 
-## A — The home server (live default)
+## Direction (Vincent, 20 Oct)
 
-- **Hypothesis:** "self-hosted" reads fastest as hardware on your own desk.
-- **Viewer inference:** "he runs the whole thing on his own machine."
-- **Composition:** Vincent left, proud grin, one hand on a compact glowing home server box on a desk; the Genfeed logo glows on its front. Mitchell right, arms crossed, sceptical half-smile.
+The thumbnail is about **genfeed.ai** itself, and it must read as an **open-source AI studio**: a creative workspace that makes images, video, voice and posts from one place, that you own. The v1 home-server and cloud concepts are superseded; they sold "hardware" instead of the studio.
+
+## A — The studio (live default)
+
+- **Hypothesis:** showing the studio making real media sells "AI studio" at a glance.
+- **Viewer inference:** "a full AI content studio, and it's open source."
+- **Composition:** both hosts in front of a large dark monitor wall showing a node-based workflow canvas: connected nodes feeding into a grid of generated output tiles (product photos, short video frames, a voice waveform, a social post card). The Genfeed logo glows top-centre on the wall. Vincent pointing at it, proud; Mitchell impressed. Exact text `OPEN SOURCE` as a layer in Space Grotesk Bold, white, upper left.
 - **Concept prompt:**
 
-> CONCEPT A, the home server. Vincent chest-up at the left, grinning proudly, resting one hand on a compact dark home server box on a desk in front of him; the official Genfeed logo glows softly on the front panel of the box, reproduced exactly as the reference. Mitchell chest-up at the right, arms crossed, sceptical half-smile, looking at the box. Dark charcoal studio, small status lights on the box. No text.
+> CONCEPT A, the studio. Vincent chest-up at the left, grinning proudly and pointing at a large dark wall-size screen behind and between the hosts; Mitchell chest-up at the right, impressed grin, looking at it. The screen shows a dark node-based workflow editor: rounded rectangular nodes connected by thin glowing lines, flowing into a grid of finished media tiles: a product photo, a short video frame with a play icon, an audio waveform, a social media post card. Tiles are in natural colour, everything else monochrome. The official Genfeed logo, reproduced exactly as the reference, glows at the top centre of the screen. All tiles and nodes are blank of writing: no letters, no numbers, no UI text. Keep the upper-left 35 percent by 18 percent of the frame plain dark background (a text layer goes there). No text in the image.
 
-- **Small-size check:** the box, the logo and both faces read at 320px.
+- **Small-size check:** the logo, the media tiles and both faces read at 320px; `OPEN SOURCE` readable.
 
-## B — The terminal (only after the dry run)
+## B — The real studio (after the dry run)
 
-- **Hypothesis:** real proof beats a metaphor for a demo show.
-- **Viewer inference:** "they actually install it live."
-- **How to make it:** generate the hosts looking and pointing at an empty centre, then **composite a real screenshot from Vincent's dry run** (the terminal running `npx @genfeedai/create`, or the running web UI with secrets blurred). Never generate a fake terminal or UI.
-- **Concept prompt (base plate):**
+- **Hypothesis:** the actual Genfeed UI is the strongest proof.
+- **How to make it:** use `genfeed-selfhost-b-terminal-base-plate-v2` (empty centre) and composite a **real screenshot of the running Genfeed studio** from Vincent's dry run (workflow canvas or generated results, secrets blurred), plus the exact Genfeed logo and `OPEN SOURCE` text layer. Never generate a fake UI.
+- **Small-size check:** crop to the most visual part (generated media), not menus.
 
-> CONCEPT B, base plate. Vincent chest-up at the left edge and Mitchell chest-up at the right edge, both turned toward the centre, Vincent pointing at it, Mitchell leaning in with raised eyebrows. The CENTRE of the frame, from about 28 percent to 72 percent of the width and from 12 percent to 88 percent of the height, must be EMPTY smooth dark background with only a faint grey glow: no screens, no logos, no shapes, no text. No text anywhere.
+## C — Everything from one brief
 
-- **Small-size check:** at 320px the screenshot must read as "a terminal" or "an app", not text soup. Crop to the biggest, clearest part.
-
-## C — Off the cloud
-
-- **Hypothesis:** a pull-it-down-from-the-cloud image sells ownership of your data.
-- **Viewer inference:** "you don't need their cloud."
-- **Composition:** the Genfeed logo being pulled down out of a grey cloud by Vincent, into a box on the desk; Mitchell watching, impressed.
+- **Hypothesis:** one logo exploding into every media type says "studio" without UI.
+- **Viewer inference:** "one open-source tool makes all of this."
 - **Concept prompt:**
 
-> CONCEPT C, off the cloud. A grey, monochrome cloud shape floats in the upper centre. Vincent at the left reaches up and pulls the official Genfeed logo, reproduced exactly as the reference, down out of the cloud toward a small dark box on the desk. Mitchell at the right watches with an impressed grin. No text.
+> CONCEPT C, one brief, every format. The official Genfeed logo, reproduced exactly as the reference, glows at the centre, about 18 percent of the frame width. Bursting outward from it in a fan: floating tiles of finished media in natural colour (a product photo, a short video frame with a play icon, a portrait image, an audio waveform, a social post card), all blank of writing. Vincent at the left and Mitchell at the right, both excited, watching the tiles fly past. Charcoal monochrome background. Keep the upper-left 35 percent by 18 percent plain dark. No text in the image.
 
-- **Small-size check:** the logo must stay recognisable at 320px; if the cloud reads as smoke, simplify it.
-- **Note:** self-hosting still calls model providers in the cloud (see the board). The image is about owning the app and data, which is accurate; don't add "no cloud" text.
+- Text layer `OPEN SOURCE`, as in A.
+- **Small-size check:** the logo stays the focal point at 320px; reduce the tile count if it reads as clutter.
 
 ## Default if the test is inconclusive
 
