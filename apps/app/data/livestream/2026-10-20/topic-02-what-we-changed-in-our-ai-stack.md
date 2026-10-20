@@ -10,7 +10,7 @@ thumbnail_prompt: null
 
 ## Sources — Livestream Notes
 
-- Date: Tue 20 Oct 2026. Start time and YouTube link: **not set yet.** Previous shows started at 14:00 CEST.
+- Date: Tue 20 Oct 2026. YouTube livestream (public viewing link): https://youtube.com/live/XCyY0VDiRps. Start time: confirm (previous shows started at 14:00 CEST).
 - **Spine (Vincent, 20 Oct): OpenAI's money problem.** OpenAI forecasts **$278B of negative free cash flow from 2026 to 2030** (FT). Its run rate is about **$50B, not the $70B** investors had been passed (FT, 8 Oct). It has up to **$665B of compute commitments** (The Information). We already moved our spend from Codex to Claude. The live question: **if you build on OpenAI, what happens to your business if it can't pay its bills?**
 - **Mitchell's five stories stay as the segments** (and the Shorts). The OpenAI segment opens the show and frames them: every segment is a way we cut dependency or cost.
 - **Viewer question:** "OpenAI might not be able to pay for what it promised. Should founders still build on it?"
