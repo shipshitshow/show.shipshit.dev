@@ -1,5 +1,5 @@
 ---
-title: "OpenAI Will Burn $278 Billion. We Already Cut Codex."
+title: "Is OpenAI Dying? Anthropic Is Taking Over"
 slug: "what-we-changed-in-our-ai-stack"
 source: "Silicon Carne 'OpenAI au cœur de la bulle IA' (YouTube vjANwplght0, 19 Oct, French auto-captions), Financial Times via Reuters/The Star (cash burn, 18-19 Sep), TechCrunch citing the FT (run rate, 8 Oct), The Information via TradingKey (Q1 2026 figures and compute commitments, 16 Jun), OpenAI funding announcement (Mar), Mitchell's lineup (via Vincent, 19 Oct), hosts' own billing and usage, Anthropic monthly API credits for Max and Team (announced 7 Oct, Help Center and platform docs), Developers Digest summary (8 Oct), @bot and @elonmusk Grok Bot email posts (9 Oct), 9to5Mac (9 Oct), Notebookcheck on Muse skipping Europe (Oct), our 6 Oct Grok Bot vs Dots vs Muse board, Anthropic 'How employment is changing at Anthropic' (16 Oct)"
 status: "in_progress"
@@ -15,14 +15,13 @@ thumbnail_prompt: null
 - **Mitchell's five stories stay as the segments** (and the Shorts). The OpenAI segment opens the show and frames them: every segment is a way we cut dependency or cost.
 - **Viewer question:** "OpenAI might not be able to pay for what it promised. Should founders still build on it?"
 - **Format:** opening segment on the OpenAI numbers (about 15 minutes), then Mitchell's segments of 8–12 minutes each. Re-name the subject at the start of every segment so each cut stands alone. Tie each one back to the spine: S1 is the switch, S2 where the money went, S3 the hedge (never one lab), S4 fewer tokens means less exposure to one vendor's pricing, S5 the stakes (your agents' vendor risk is your business risk).
-- **Title options (not locked):**
-  - `OpenAI Will Burn $278 Billion. We Already Cut Codex.` (recommended: a sourced number plus our own move)
-  - `Is OpenAI Too Big to Fail? We Already Left Codex`
-  - `We Cut Codex, Our Claude Max Costs $0 and Grok Bot Has Email` (the earlier, softer title)
+- **Title locked (Vincent, 20 Oct):** `Is OpenAI Dying? Anthropic Is Taking Over`. No `[LIVE]` prefix.
+  - "Dying" stays a question: the board's numbers show cash burn and a funding gap, not a collapse. Answer it on air.
+  - "Taking over" receipts: Anthropic Q2 revenue $11.5B vs OpenAI $6.7B (Reuters and Bloomberg, via The Next Web); the panel's 10x vs 3.3x growth this year (14:31) and ~80% vs ~50% enterprise revenue (29:01). Run rates are measured differently (gross vs net), say so.
 - **Careful with "Codex will be sunset":** that is our speculation. Nobody we found reports it. The Silicon Carne panel says the opposite: Codex made an "excellent turnaround" and is taking share from Anthropic (19:01, 23:31, 29:01). Frame it as a question ("if OpenAI has to cut, what goes first?"), and let Mitchell argue that Codex is fine.
 - **Not in this episode:** no benchmarks. Everything is our own usage and bills.
 - **Hosts to fill before the show (each segment lists its own fields):** the Codex plan change, the Claude bill screenshot, the Grok Bot email test, one before/after slop cleanup.
-- **Thumbnail:** `stack-a-swap-v3` (Codex fading, Claude glowing) still fits the new title. X drafts not made.
+- **Thumbnail:** one of `stack-a-swap-v4-25/40/60` (Claude growing, OpenAI fading); v4-40 recommended. X drafts not made.
 
 ### How to read the references
 
