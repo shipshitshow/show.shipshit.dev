@@ -19,18 +19,3 @@ export const showXAccounts: ShowAccount[] = [
     name: 'Vincent',
   },
 ];
-
-export const showYoutubeChannels: ShowAccount[] = [
-  {
-    handle: 'shipshitshow',
-    href: 'https://www.youtube.com/@shipshitshow',
-    label: 'Main',
-    name: 'YouTube',
-  },
-  {
-    handle: 'ShipShitShowClips',
-    href: 'https://www.youtube.com/@ShipShitShowClips',
-    label: 'Clips',
-    name: 'YouTube',
-  },
-];
