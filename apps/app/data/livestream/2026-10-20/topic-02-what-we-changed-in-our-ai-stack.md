@@ -14,7 +14,7 @@ thumbnail_prompt: null
 - **Spine (Vincent, 20 Oct): OpenAI's money problem.** OpenAI forecasts **$278B of negative free cash flow from 2026 to 2030** (FT). Its run rate is about **$50B, not the $70B** investors had been passed (FT, 8 Oct). It has up to **$665B of compute commitments** (The Information). We already moved our spend from Codex to Claude. The live question: **if you build on OpenAI, what happens to your business if it can't pay its bills?**
 - **Mitchell's five stories stay as the segments** (and the Shorts). The OpenAI segment opens the show and frames them: every segment is a way we cut dependency or cost.
 - **Viewer question:** "OpenAI might not be able to pay for what it promised. Should founders still build on it?"
-- **Format:** opening segment on the OpenAI numbers (about 15 minutes), then Mitchell's segments of 8–12 minutes each. Re-name the subject at the start of every segment so each cut stands alone.
+- **Format:** opening segment on the OpenAI numbers (about 15 minutes), then Mitchell's segments of 8–12 minutes each. Re-name the subject at the start of every segment so each cut stands alone. Tie each one back to the spine: S1 is the switch, S2 where the money went, S3 the hedge (never one lab), S4 fewer tokens means less exposure to one vendor's pricing, S5 the stakes (your agents' vendor risk is your business risk).
 - **Title options (not locked):**
   - `OpenAI Will Burn $278 Billion. We Already Cut Codex.` (recommended: a sourced number plus our own move)
   - `Is OpenAI Too Big to Fail? We Already Left Codex`
@@ -267,6 +267,7 @@ Short, because we've covered agents vs juniors before. Vincent's take: Grok Bot 
 
 ## Close
 
-- One line each: the one change from today a viewer should make this week.
+- One line each: "here's how we'd keep the business running if our main AI provider disappeared tomorrow."
+- Then: the one change from today a viewer should make this week.
 - Bridge to next week: Vincent self-hosts Genfeed live. Disclose it is Vincent's product.
 - CTA: brief, end only. "We do this every week, hit subscribe so you don't miss it."
