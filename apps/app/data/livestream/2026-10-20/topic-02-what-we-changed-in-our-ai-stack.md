@@ -21,7 +21,7 @@ thumbnail_prompt: null
 - **Careful with "Codex will be sunset":** that is our speculation. Nobody we found reports it. The Silicon Carne panel says the opposite: Codex made an "excellent turnaround" and is taking share from Anthropic (19:01, 23:31, 29:01). Frame it as a question ("if OpenAI has to cut, what goes first?"), and let Mitchell argue that Codex is fine.
 - **Not in this episode:** no benchmarks. Everything is our own usage and bills.
 - **Hosts to fill before the show (each segment lists its own fields):** the Codex plan change, the Claude bill screenshot, the Grok Bot email test, one before/after slop cleanup.
-- **Thumbnail:** one of `stack-a-swap-v4-25/40/60` (Claude growing, OpenAI fading); v4-40 recommended. X drafts not made.
+- **Thumbnail:** `stack-a-swap-v2`, used on the live. X drafts not made.
 
 ### How to read the references
 

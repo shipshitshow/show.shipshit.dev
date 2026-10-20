@@ -79,3 +79,7 @@ Codex CLI image tool on the Mac Studio, 20 Oct. In `~/Desktop/thumbnails/2610/26
 - B: `stack-b-zero-bill-v1`. Text is exactly "$0". Same Claude mark caveat.
 - C: `stack-c-bot-inbox-v1`.
 - Mitchell's polo sits behind the asterisk on most; legible, but the corner is not bare backdrop.
+
+## Used on the live
+
+Vincent used `stack-a-swap-v2` (20 Oct), with the title `OpenAI vs Anthropic: Game Over?`. The v3 and v4 variants (official Claude mark, growing logo) were made but not used, and the other files were cleaned up.
