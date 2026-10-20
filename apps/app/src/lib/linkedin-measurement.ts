@@ -26,7 +26,7 @@ interface EpisodeIdentity {
  * topics exist, so anchoring on the slug keeps a campaign pointing at the same
  * episode after the rundown is edited.
  */
-export function resolveEpisodeIdentity(topics: Topic[]): EpisodeIdentity {
+function resolveEpisodeIdentity(topics: Topic[]): EpisodeIdentity {
   for (const topic of topics) {
     const episodeNumber = extractEpisodeNumber(topic.content);
     if (episodeNumber === null) continue;

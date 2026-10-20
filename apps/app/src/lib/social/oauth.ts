@@ -64,7 +64,7 @@ export function isSocialOAuthPlatform(
   return value === 'instagram' || value === 'tiktok';
 }
 
-export function getSocialOAuthRedirectUri(
+function getSocialOAuthRedirectUri(
   platform: SocialTokenPlatform,
   origin?: string,
 ): string {

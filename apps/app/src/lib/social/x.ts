@@ -66,10 +66,6 @@ export function parseXStatusId(url: string | null | undefined): string | null {
   return trimmed.match(STATUS_URL_PATTERN)?.[1] ?? null;
 }
 
-export function buildXPostUrl(statusId: string, username: string): string {
-  return `https://x.com/${username}/status/${statusId}`;
-}
-
 function toNumberOrNull(value: number | undefined): number | null {
   return typeof value === 'number' && Number.isFinite(value) ? value : null;
 }

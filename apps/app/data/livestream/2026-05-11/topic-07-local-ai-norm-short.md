@@ -1,6 +1,6 @@
 ---
 title: "Local AI Needs to Be the Norm — 1,725 Points on HN"
-slug: "local-ai-norm"
+slug: "local-ai-norm-short"
 source: "HN, unix.foo"
 status: "backlog"
 date: "2026-05-11"

@@ -53,10 +53,7 @@ function getDistributionFilePath(date: string): string {
   return path.join(DATA_DIR, date, DISTRIBUTION_FILE_NAME);
 }
 
-export function buildAssetId(
-  type: DistributionAssetType,
-  slot: number,
-): string {
+function buildAssetId(type: DistributionAssetType, slot: number): string {
   return `${type}-${slot}`;
 }
 

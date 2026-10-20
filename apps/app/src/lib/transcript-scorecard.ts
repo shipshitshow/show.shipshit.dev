@@ -1,6 +1,6 @@
 import { stripMarkdown } from '@/lib/text';
 
-export type TranscriptScoreId =
+type TranscriptScoreId =
   | 'hook'
   | 'structure'
   | 'signal'
@@ -9,20 +9,20 @@ export type TranscriptScoreId =
   | 'audience'
   | 'plain_language';
 
-export interface TranscriptScoreCriterion {
+interface TranscriptScoreCriterion {
   description: string;
   id: TranscriptScoreId;
   label: string;
   weight: number;
 }
 
-export interface TranscriptScoreItem extends TranscriptScoreCriterion {
+interface TranscriptScoreItem extends TranscriptScoreCriterion {
   note: string;
   score: number;
 }
 
 /** One insider term used on air without a plain-language first mention. */
-export interface TranscriptJargonFlag {
+interface TranscriptJargonFlag {
   count: number;
   examples: string[];
   say: string;
@@ -45,7 +45,7 @@ export interface TranscriptScorecard {
   strengths: string[];
 }
 
-export const TRANSCRIPT_RATE_CARD: TranscriptScoreCriterion[] = [
+const TRANSCRIPT_RATE_CARD: TranscriptScoreCriterion[] = [
   {
     description:
       'Opens with a clear promise, tension, or reason to keep watching.',
