@@ -22,6 +22,8 @@ Shared prompt base: as on 20 Oct, with the last reference image being the offici
 
 The thumbnail is about **genfeed.ai** itself, and it must read as an **open-source AI studio**: a creative workspace that makes images, video, voice and posts from one place, that you own. The v1 home-server and cloud concepts are superseded; they sold "hardware" instead of the studio.
 
+Anatomy (Vincent, 20 Oct: the arm in v1 C was broken): no reaching, lifting or holding poses. Hosts chest-up with natural arm positions only (pointing at most). Reject any output with a twisted, detached, extra or wrong-length arm, hand or finger at full size, not just at 320px.
+
 ## A — The studio (live default)
 
 - **Hypothesis:** showing the studio making real media sells "AI studio" at a glance.
