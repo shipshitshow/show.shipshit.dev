@@ -27,7 +27,7 @@ thumbnail_prompt: null
 
 - Most of this episode is **our own experience**. Say "for us" and show the screen; do not generalise to "Codex is worse" or "Claude is free".
 - The Claude Max API credit facts come from Anthropic's Help Center and platform docs as summarised by Developers Digest; open Anthropic's page on air before quoting the numbers.
-- **X posts:** found by web search on 20 Oct; the cloud can't open x.com, so each post's text is from the search result. Open every post before putting it on screen. Posts marked "older" predate October.
+- **X posts:** "verified" means the post was fetched on 20 Oct and the note matches its text. The rest come from web search results; open them before putting them on screen. Posts marked "older" predate October.
 - Grok Bot email facts come from the @bot announcement and 9to5Mac. Who can mail the bot and what spam protection exists is **not documented**. Vincent has not tried it yet; say so.
 - EU availability changes often. Re-check Muse and Gemini Spark the morning of the show.
 
@@ -73,7 +73,7 @@ Open on the number: "OpenAI says it will burn $278 billion over the next five ye
 3. [TechCrunch, 8 Oct](https://techcrunch.com/2026/10/08/openais-revenue-is-reportedly-20-billion-less-than-previously-projected/): run rate "approaching $50 billion", $20B below the figure investors circulated.
 4. [The Information via TradingKey](https://www.tradingkey.com/analysis/stocks/us-stocks/261972340-openai-cost-revenue-q1-2026-tradingkey): Q1 net loss over $21.3B, up to $665B of commitments.
 
-### X posts on the OpenAI numbers (found 20 Oct via search, not opened from the cloud; open each before showing)
+### X posts on the OpenAI numbers (posts marked verified were checked 20 Oct; open the others before showing)
 
 - Run rate, $50B vs $70B (8–9 Oct):
   - [@unusual_whales](https://x.com/unusual_whales/status/2108243062275326314): verified, 428k views. Annualized revenue approaching $50B, about $20B below the widely reported $70B, per the FT.
@@ -100,7 +100,10 @@ Open on the number: "OpenAI says it will burn $278 billion over the next five ye
   - [@NextFinAI](https://x.com/NextFinAI/status/2105006836344881162) and [@HedgieMarkets](https://x.com/HedgieMarkets/status/2105074896271257857): Bloomberg, a $30B bridge round at $1.4T after the IPO slipped to 2027.
   - [@wallstengine](https://x.com/wallstengine/status/2107218141927592319): UAE funds (MGX) and BlackRock in talks to anchor it.
 - Anthropic "taking over":
-  - [@wallstengine](https://x.com/wallstengine/status/2089438774149456217): Anthropic run rate $9B (end 2025) to $47B (May) to $65B+ (July); $11.5B quarter (Aug).
+  - [@business](https://x.com/business/status/2088412904924000708): verified, Bloomberg (14 Aug). Anthropic tells investors Q2 revenue jumped at least 14x.
+  - [@AndrewCurran_](https://x.com/AndrewCurran_/status/2088381621024239731): verified, 87k views. Q2 above $11.5B, positive adjusted operating income.
+  - [@kimmonismus](https://x.com/kimmonismus/status/2110564228251763079): verified, 15 Oct. Anthropic reportedly expects a $110B run rate by end-2026.
+  - [@wallstengine](https://x.com/wallstengine/status/2089438774149456217): verified. Anthropic run rate $9B (end 2025) to $47B (May) to $65B+ (July); $11.5B quarter (Aug).
   - [@kimmonismus](https://x.com/kimmonismus/status/2089440269762445635): the same Bloomberg numbers, with positive adjusted operating income.
   - [@FirstSquawk](https://x.com/FirstSquawk/status/2090026168619847880): OpenAI Q2 $6.7B (+18%) vs Anthropic $11.6B, more than doubled.
   - [@rohanpaul_ai](https://x.com/rohanpaul_ai/status/2096644731371667965): Anthropic's 14.8 GW of compute deals, up to $517B over a decade. Anthropic has its own bills too.
@@ -150,15 +153,18 @@ Open on the plan page. "We cut our Codex subscription. Here's why we're happier 
 - Viewer consequence: most people pay for two or three AI subscriptions. How do you decide which one to cut?
 - Budget: about 8 minutes. Exit cue: "and the Claude one now effectively costs us nothing. Here's how."
 
-### X posts on Codex vs Claude Code (found 20 Oct via search, not opened from the cloud)
+### X posts on Codex vs Claude Code (posts marked verified were checked 20 Oct)
 
 - For the switch:
   - [X trending, "Developers Shift to Anthropic's Claude Code Over OpenAI's Codex"](https://x.com/i/trending/2106906183432880196): X's own summary (Oct).
+  - [@theo](https://x.com/theo/status/2112035326625730981): verified, 19 Oct, 114k views. Over 60% of T3 Code users who used Codex also used Claude Code. Lead with this one.
+  - [@morganlinton](https://x.com/morganlinton/status/2111165657228439828): verified, 16 Oct. "Claude Code is on an absolute tear"; his usage goes up every week.
   - [@DrSerunjogiEmma](https://x.com/DrSerunjogiEmma/status/2103894556651528248): why they moved to Claude Code.
 - Mitchell's side, Codex is fine:
   - [@kimmonismus](https://x.com/kimmonismus/status/2109539203487060168): GPT-6.1 Sol in Codex goes from 272K to 500K context.
   - [@reach_vb](https://x.com/reach_vb/status/2109543080609165508): OpenAI's Vaibhav Srivastav, 500K default "at no extra charge across Codex & ChatGPT Work". OpenAI staff, so it's their pitch.
-  - [@theo](https://x.com/theo/status/2105063015712465094): GPT-6.1 Sol "performs WAY better in Codex".
+  - [@theo](https://x.com/theo/status/2105063015712465094): verified, 180k views. "GPT-6.1 Sol still crushes", much better in Codex.
+  - [@ArtificialAnlys](https://x.com/ArtificialAnlys/status/2105025585332605357): verified, 166k views. GPT-6.1 Sol is 1 point below Astra at under a quarter of the cost per task. A benchmark, so only as Mitchell's counterpoint.
   - [@SPAC89](https://x.com/SPAC89/status/2107061260533526624): Codex x20 at $200 gives about 18B tokens a month. Compare with our usage.
   - [X trending, "OpenAI Hints at Ultrafast GPT-6.1 Sol Upgrade for Codex"](https://x.com/i/trending/2106326789635113149).
   - [@unclebobmartin](https://x.com/unclebobmartin/status/2054970327592042661) and [@soumitrashukla9](https://x.com/soumitrashukla9/status/2050608491799232987): older (May), people preferring Codex.
@@ -201,12 +207,13 @@ Open on the plan page. "We cut our Codex subscription. Here's why we're happier 
 - Host challenge: is this Anthropic being generous, or locking us in so we never test another API?
 - Budget: about 8 minutes. Exit cue: "now the bot we can't stop talking about."
 
-### X posts on the Max API credit (found 20 Oct via search, not opened from the cloud)
+### X posts on the Max API credit (posts marked verified were checked 20 Oct)
 
-- [@ClaudeDevs](https://x.com/ClaudeDevs/status/2108228391404966005): Anthropic's own announcement of the monthly API credits. Show this first.
+- [@ClaudeDevs](https://x.com/ClaudeDevs/status/2108228391404966005): verified, 728k views. $100 on Max 5x, $200 on Max 20x, up to $500 pooled on Team, any model. Show this first.
 - [@addyosmani](https://x.com/addyosmani/status/2108860029982163013): what it means for builders.
 - [@kimmonismus](https://x.com/kimmonismus/status/2107930870871158874): "OpenAI: your turn."
-- [@VaibhavSisinty](https://x.com/VaibhavSisinty/status/2109954832539029796): the credit explained for a wider audience.
+- [@Khazix0918](https://x.com/Khazix0918/status/2107918094220083326): verified, 109k views, Chinese. "Bigger than Haiku 5.5": how do other labs compete?
+- [@VaibhavSisinty](https://x.com/VaibhavSisinty/status/2109954832539029796): verified. Shows the new API credits section in his own billing settings.
 
 ### Planned Short S2 — My Claude Max costs $0
 
@@ -234,7 +241,9 @@ Open on the plan page. "We cut our Codex subscription. Here's why we're happier 
 6. [@debs_obrien](https://x.com/debs_obrien/status/2110477175069798427): one address per account, all your bots share it, and it's permanent. Strongest support for the warning: you can't rotate it if it leaks.
 7. [@melvindvivas](https://x.com/melvindvivas/status/2107545810351370324): "It can send and receive emails."
 8. [X trending, "Grok Bot Gains Dedicated Email for Independent Actions"](https://x.com/i/trending/2108921878865727956).
-9. Muse not in Europe: [@wolfofharcourt](https://x.com/wolfofharcourt/status/2100300340000120916) ("Muse still not available in Europe. FFS!"), [@juanbuis](https://x.com/juanbuis/status/2105647552792346988) ("muse isn't available in the EU"), [@tavitag203](https://x.com/tavitag203/status/2097426720001286622) (US only, runs in a Meta cloud VM).
+9. [@every](https://x.com/every/status/2104997866909618589): verified. Every compares 7 personal agents (Dots, Gemini Spark, Grok Bot and others).
+10. [@mikepat711](https://x.com/mikepat711/status/2097484133123432630): verified (Sep). First thoughts on Muse from a daily Grok Bot user.
+11. Muse not in Europe, unverified (no verified post on EU availability turned up; say it verbally): [@wolfofharcourt](https://x.com/wolfofharcourt/status/2100300340000120916) ("Muse still not available in Europe. FFS!"), [@juanbuis](https://x.com/juanbuis/status/2105647552792346988) ("muse isn't available in the EU"), [@tavitag203](https://x.com/tavitag203/status/2097426720001286622) (US only, runs in a Meta cloud VM).
 
 ### The warning: don't post your bot's email
 
@@ -282,14 +291,21 @@ Open on the plan page. "We cut our Codex subscription. Here's why we're happier 
 - Viewer consequence: when do you schedule a cleanup pass, and who checks it?
 - Budget: about 12 minutes. Exit cue: "if we have time, let's build something."
 
-### X posts on slop and code volume (found 20 Oct via search, not opened from the cloud)
+### X posts on slop and code volume (posts marked verified were checked 20 Oct)
 
 - Anthropic's Scion (14 Oct), the scale of AI-written code: merges went from about 2,500 a day in May to 30,000+ in September, so they replaced git.
+  - [@AnthropicAI](https://x.com/AnthropicAI/status/2110047081414987957): verified, 8.3M views. The original post. Show this first.
+  - [@aakashgupta](https://x.com/aakashgupta/status/2110246725965504719): verified, 201k views. Roughly one merge every three seconds.
+  - [@ziv_ravid](https://x.com/ziv_ravid/status/2110099051320320073): verified, 146k views. Skeptical of the merge metric: "how the post would read without the PR".
   - [@mark_k](https://x.com/mark_k/status/2110063589583188224): "Git has become a bottleneck".
   - [@minchoi](https://x.com/minchoi/status/2110091675955548255): 7 engineers, 5 months, 200x less infrastructure.
   - [@VaibhavSisinty](https://x.com/VaibhavSisinty/status/2110098334581170678) and [@RoundtableSpace](https://x.com/RoundtableSpace/status/2110230366644502781): the details (100 GB main-branch history).
   - [@scaling01](https://x.com/scaling01/status/2110099899274670340): an estimate of what that merge volume means.
   - Challenge: more code merged isn't better code. That's the slop argument.
+- The slop debate:
+  - [@mitchellh](https://x.com/mitchellh/status/2052397933522506079): verified (May, older), 219k views. Mitchell Hashimoto: "AI slop is good, actually", as long as you know when to clean it up. Best opposing case.
+  - [@sdrzn](https://x.com/sdrzn/status/2077121290440454467): verified (Jul). SlopCodeBench: agents gradually turn codebases into slop over sequential tasks.
+  - [@tomshardware](https://x.com/tomshardware/status/2074851068794867831): verified (Jul). A "Slopfix" team charges $10k a week to delete AI code bloat, using agents.
 - Cleanup tools people use:
   - [@bcherny](https://x.com/bcherny/status/2074997570317779038): Boris Cherny (Claude Code) on `/checkup`.
   - [@DeeperThrill](https://x.com/DeeperThrill/status/2010894030087860271): a `/deslop` command (Jan, older).
@@ -337,9 +353,12 @@ Short, because we've covered agents vs juniors before. Vincent's take: Grok Bot 
 - Host challenge (Mitchell): a junior learns the business and grows into a senior; an agent resets. What do you lose?
 - Budget: about 6 minutes. Exit cue: close.
 
-### X posts on agents vs juniors (found 20 Oct via search, not opened from the cloud)
+### X posts on agents vs juniors (posts marked verified were checked 20 Oct)
 
-- [@incprodmon](https://x.com/incprodmon/status/2111491277405462717) and [@luke_drago_](https://x.com/luke_drago_/status/2111906641490894967): reactions to Anthropic's employment report.
+- [@spicey_lemonade](https://x.com/spicey_lemonade/status/2111535250467905664): verified, 713k views. "Anthropic is on track to stop hiring technical juniors by 2027". The viral take; the report says 27% to 9%, not zero.
+- [@luke_drago_](https://x.com/luke_drago_/status/2111906641490894967): verified, 315k views. "The first phases of pyramid replacement are happening at Anthropic".
+- [@PeterMcCrory](https://x.com/PeterMcCrory/status/2111197595943256119): verified, report co-author. Staff expect faster, broader AI progress than the public does.
+- [@incprodmon](https://x.com/incprodmon/status/2111491277405462717): verified. Quotes the report.
 - [@alphabatcher on X](https://x.com/alphabatcher/article/2111127503217549816): "Grok Bot got Claude and a $30 plan", what is real and what to set first. Useful for what the "junior team" costs.
 
 ### Planned Short S5 — My junior team is a bot
