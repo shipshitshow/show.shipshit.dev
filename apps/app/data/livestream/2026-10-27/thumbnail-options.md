@@ -1,28 +1,71 @@
 # Thumbnail options — 2026-10-27
 
-Asset: livestream. Title held fixed: `I Self-Host Genfeed, an Open-Source AI Studio` (not locked).
+Asset: livestream. Title (Vincent, 26 Oct): `Genfeed.ai: Launching Our Open-Source AI Content Studio`. Story: **"Models are a commodity. The harness is yours."** (talking points, PR #149).
 
 YouTube's thumbnail test does not run on scheduled live streams. Pick one for the live, then test all three on the archive once it is eligible: https://support.google.com/youtube/answer/16391400
 
+## Direction (Vincent, 26 Oct) — supersedes the 20 Oct direction below
+
+- **Topic first, no host faces.** "Nobody knows us yet", so the thumbnail sells the topic, not the hosts. No people at all.
+- Livestream keeps the **red asterisk**; videos stay white/black.
+- Generate with Codex imagen on Vincent's Mac.
+
 ## Livestream requirements
 
-Same as `2026-10-20/thumbnail-options.md`: 1920x1080, natural-colour hosts (Vincent left, Mitchell right) on a predominantly monochrome charcoal backdrop, official logos in their own colours, the exact red asterisk composited at x1704, y864, 144x144, bottom-right corner kept empty in the generated plate, 320px check.
+1920x1080, predominantly monochrome charcoal backdrop, the official Genfeed logo in its own colours (exact file from the Genfeed repo or brand folder, never redrawn), the exact red asterisk (`apps/app/public/brand/asterisk-red.svg`) composited after generation at x1704, y864, 144x144, bottom-right 12 percent kept empty in the plate. Any text is a Space Grotesk Bold layer set afterwards, not generated. 320px check for every export.
 
 **Disclosure:** Genfeed is Vincent's product. The art must not look like an outside endorsement or a sponsor slot.
 
 ## Generation
 
-Codex CLI image tool on Vincent's Mac. References: Vincent and Mitchell photos (paths in the 20 Oct file), the 13 Oct live thumbnail for house style, and the official Genfeed logo from the Genfeed repo or brand folder (use the exact file; do not let the generator invent one).
+Codex CLI image tool on Vincent's Mac. References: the 13 Oct live thumbnail for house style and the official Genfeed logo. **No host photos.**
 
-Output folder: `~/Desktop/thumbnails/2610/261027/livestream/`, named `genfeed-studio-<a-studio|b-real-ui|c-one-brief>-v1.png` plus the signed `.jpg`.
+Output folder: `~/Desktop/thumbnails/2610/261027/livestream/`, named `genfeed-harness-<a-swap|b-harness|c-toolbox>-v1.png` plus the signed `.jpg`.
 
-Shared prompt base: as on 20 Oct, with the last reference image being the official Genfeed logo.
+Shared prompt base (no people):
 
-## Direction (Vincent, 20 Oct)
+> Generate ONE image with your image generation tool (do not answer in text). 16:9 landscape YouTube livestream thumbnail, photographic, cinematic lighting, high contrast, readable at phone size. BACKGROUND: dark charcoal, predominantly monochrome black and grey; the only saturated colour is the official logo and the small highlights named below. REFERENCE IMAGES in order: image 1 is a previous thumbnail from this channel showing the house style (use its lighting and finish only, not its people); image 2 is the official Genfeed logo. NO PEOPLE, no faces, no hands. LOGO LOCK: reproduce the logo exactly as its reference, do not redraw or add letters. Keep the bottom-right corner (the last 12 percent of width and height) empty dark background, nothing in it. Keep the upper-left 40 percent by 20 percent plain dark (a text layer goes there). NO text, no letters, no numbers, no watermark.
 
-The thumbnail is about **genfeed.ai** itself, and it must read as an **open-source AI studio**: a creative workspace that makes images, video, voice and posts from one place, that you own. The v1 home-server and cloud concepts are superseded; they sold "hardware" instead of the studio.
+## A — The swap (live default)
 
-Anatomy (Vincent, 20 Oct: the arm in v1 C was broken): no reaching, lifting or holding poses. Hosts chest-up with natural arm positions only (pointing at most). Reject any output with a twisted, detached, extra or wrong-length arm, hand or finger at full size, not just at 320px.
+- **Hypothesis:** the thesis in one picture: the model is the swappable part, the rig around it stays.
+- **Viewer inference:** "models come and go; what you build around them is what matters."
+- **Composition:** a heavy dark machined rig in the centre-right with the Genfeed logo glowing on it; a slot in its middle where a small glowing core is being slid out, and a row of identical blank grey cores lined up beside it, waiting. Text layer: `MODELS ARE RENTED`.
+- **Concept prompt:**
+
+> CONCEPT A, the swap. Centre-right, a solid dark machined metal rig, like a high-end engine block or server chassis, with the official Genfeed logo glowing on its front exactly as the reference. In the middle of the rig an open slot; a small glowing white cylindrical core is halfway slid out of it. To the left, a neat row of four identical blank grey cores standing on the dark surface, unlit, interchangeable. Soft rim light on the rig. All surfaces blank of writing.
+
+- **Small-size check:** the logo and the half-ejected core read at 320px; `MODELS ARE RENTED` readable.
+
+## B — The harness
+
+- **Hypothesis:** "harness" made literal reads instantly and is unusual for an AI thumbnail.
+- **Viewer inference:** "the thing around the AI is the product."
+- **Composition:** a small plain glowing orb (the model) held in the centre of a large, intricate dark harness of cables, rails and connectors that fans out to output tiles (a product photo, a video frame with a play icon, a social post card). Genfeed logo top-centre. Text layer: `THE HARNESS IS YOURS`.
+- **Concept prompt:**
+
+> CONCEPT B, the harness. In the centre a small plain glowing white orb, about 8 percent of the frame width. Around it, filling most of the frame, a large intricate dark harness of braided cables, metal rails and connectors that holds the orb and fans out to the right into three floating tiles of finished media in natural colour: a product photo, a short video frame with a play icon, a social media post card, all blank of writing. The official Genfeed logo, exactly as the reference, glows at the top centre. The harness is far more detailed and larger than the orb.
+
+- **Small-size check:** the orb-versus-harness size contrast must read at 320px; cut tiles if cluttered.
+
+## C — The toolbox
+
+- **Hypothesis:** Vincent's opening (the toolbox gives the agent its tools) as an object people already understand.
+- **Viewer inference:** "an open-source toolbox for an AI agent."
+- **Composition:** an open dark metal toolbox lit from inside, with the Genfeed logo on its lid; instead of tools, glowing media objects in the trays (a camera lens, a film strip, a microphone, a post card). Text layer: `OPEN SOURCE`.
+- **Concept prompt:**
+
+> CONCEPT C, the toolbox. Centre, a large open dark metal toolbox with cantilever trays, lit warmly from inside. The official Genfeed logo, exactly as the reference, on the lid. In the trays, instead of hand tools, small glowing objects for media: a camera lens, a strip of film, a studio microphone, a blank social post card. Everything blank of writing.
+
+- **Small-size check:** the box shape and logo read at 320px.
+
+## Default if the test is inconclusive
+
+Keep A.
+
+## Superseded: 20 Oct concepts (hosts on screen)
+
+Kept for the record; replaced by Vincent's 26 Oct no-faces direction above.
 
 ## A — The studio (live default)
 
@@ -52,6 +95,17 @@ Anatomy (Vincent, 20 Oct: the arm in v1 C was broken): no reaching, lifting or h
 - Text layer `OPEN SOURCE`, as in A.
 - **Small-size check:** the logo stays the focal point at 320px; reduce the tile count if it reads as clutter.
 
-## Default if the test is inconclusive
 
-Keep A.
+## Generated (26 Oct)
+
+Codex CLI image tool on Vincent's Mac. In `~/Desktop/thumbnails/2610/261027/livestream/`, each a 1920x1080 `.png` plate plus a signed `.jpg` (text layer + red asterisk via rsvg-convert); raw outputs and the 320px contact sheet in `sources/`. Nothing uploaded.
+
+- A: `genfeed-harness-a-swap-v1`. Passes 320px; logo matches the official mark by eye.
+- B: `genfeed-harness-b-harness-v1` (third generation: attempt 1 warped the logo and a tile hit the asterisk corner, attempt 2 still touched the corner). Logo slightly narrower than the exact mark; composite the real SVG before upload if it must be exact.
+- C: `genfeed-harness-c-toolbox-v1`. Passes; warm amber interior beside the white logo.
+- The official Genfeed mark is a single black glyph (`apps/app/public/logo.svg` in the Genfeed repo); rendered white on charcoal. Every logo is a generated reproduction, checked by eye against the SVG.
+- Generator output was 1672x941, scaled and cropped to 1920x1080.
+
+## D — Big brand (Vincent's pick direction, 26 Oct)
+
+Vincent's own `genfeed-studio-c-one-brief-smug-sceptic-v2` layout (G logo centre, media tiles fanned around it) with no hosts, the logo at about a third of the frame width and bigger tiles filling both sides. Codex CLI on Vincent's Mac: `genfeed-studio-d-big-brand-v1.png` plus signed `.jpg` in `~/Desktop/thumbnails/2610/261027/livestream/`. First generation used; checked at full size only (320px not yet checked). The portrait tile became a landscape because of the no-people rule.
