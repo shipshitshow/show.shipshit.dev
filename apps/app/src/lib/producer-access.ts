@@ -19,6 +19,8 @@ const EXACT_PUBLIC_PATHS = new Set([
   '/',
   PRODUCERS_ONLY_PATH,
   PRODUCER_ACCESS_API_PATH,
+  '/robots.txt',
+  '/sitemap.xml',
 ]);
 
 const PUBLIC_PREFIXES = [

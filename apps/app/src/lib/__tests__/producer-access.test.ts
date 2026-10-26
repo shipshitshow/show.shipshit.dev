@@ -68,6 +68,8 @@ describe('classifyPath', () => {
       '/sign-in/factor-one',
       '/sign-up',
       '/login',
+      '/robots.txt',
+      '/sitemap.xml',
       '/talking-points',
       '/talking-points/some-slug',
       '/api/og',
