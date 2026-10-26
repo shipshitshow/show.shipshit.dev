@@ -1,0 +1,1573 @@
+And welcome back to
+Ship Show with
+Michelle.    THERE ARE
+!  We are back.  Yes
+, that's it.
+Silence.  So, how are you,
+bro?  How are you?
+Yes, busy.  I
+still think about what
+we talked about
+so many shows ago.
+Yes.
+Yes, it is
+approaching.
+Automation
+comes with AI
+.  What will we do with the
+rest of our time?
+Will we still be
+working?
+Well, I've never been so
+busy
+using
+so much AI.
+I mean, it's a good, it's a
+good problem, isn't
+it?  Like, uh, yeah.  I
+mean, for our
+generation—again
+, it's an interesting topic,
+but we know what to
+do.  We have
+clients.  That's good.
+Yes.
+For newcomers, it's a
+different story, but
+maybe Grok agents
+will be doing
+more things tomorrow or
+controlling your
+personal life.  Where is
+he today?
+Yes, we'll see.  Do you
+use them?
+Oh, yes, yes.  So, the Grok bot
+, yes, because it's the
+only one we
+can access.
+Yes.
+get access.  But
+yes, that's exactly what I
+wanted to talk about.
+So, today we're
+going to talk about all the
+personal AI
+assistants, the Grok bot,
+Muse, and doubts, because they're
+always being talked about.
+This is becoming a trend.  This
+attracts attention.  So
+this is also a new
+use case for
+AI.
+Mhm.
+So yeah, I was
+curious to hear
+your perspective on
+this.
+Yeah, well, I'm
+actually curious.  Do
+so many people
+still use
+chat rooms?  So do
+you think that all bots
+will eventually replace chat
+windows, since people
+love chatting with ChatGPT and
+all that, and that bots
+are more of a future
+option than chat?
+Yes, I, I I'm not
+this chat, but
+Yes, exactly.
+It's like a different app
+, a different way of working.
+Yes, these new AI
+personal
+assistants are more
+about "okay, I'll
+talk to you, and you
+'ll run my
+life."  For me, ChatGPT
+is more of an “okay,
+I have a task and you’re
+going to
+create something, like
+write some code for me,
+” you know, I never
+use ChatGPT as a
+therapist.  But the new
+interface and
+user
+experience of Grok bot and all
+its younger
+siblings that came
+after it feel
+like a new Facebook Messenger or
+WhatsApp, where instead of
+chatting with a group of
+friends, you chat
+with your own group of
+agents.
+Yes, true.  But it's
+also more
+proactive.
+Yes.  Yes, I agree.  This This
+helps a lot.
+Yes.  I mean,
+Open Claw opened the door
+to all of this, and
+then they actually
+turned Open Claw into a
+product properly.
+Yes.  It's still cool
+, because Open Claw
+never worked
+100% the way I wanted it to.
+Yes.  Yeah, even though
+there were like
+9,000 configuration
+switches in the
+settings files and stuff
+.
+And I had to
+drop them so many
+times.
+Yes.  They released a
+second version, but
+Alex made a video about it
+.  I took a
+quick look at it, and it
+said it wasn't
+working.  Like, they
+released it, I updated
+, but it's still
+broken.
+Yes.  But he made
+so many videos about it
+.  So Yes
+.
+It brought him something
+.
+No, no, no, of course not.  He
+did something good with it
+.  But yeah, and
+now we have
+all these "product"
+versions of apps like
+Open Claw again.  But yeah, the
+interesting point
+you're talking about—
+what's the difference between the
+user experience
+in ChatGPT and Grok bot or dots.
+Like, what's the difference
+between a stream in ChatGPT and a
+stream in dots?
+Well, the main thing they
+say is that
+they have their own PC,
+so they can
+work all the time, but
+I think that over time,
+everything will have it, and you
+see that Cursor gives
+a lot of
+options for that.  You can
+program in the cloud,
+so that's not a problem at all
+.  But
+most importantly, he
+seems smarter.
+I feel like
+every time
+I communicate with ChatGPT, it
+has memory, and
+you can create
+projects to
+upload everything to, but
+it still
+gets confused in memory.
+And Grok bot does it
+much better.  And in Grok
+bot there are different bots, each
+with its own task, and
+maybe that's the
+difference, because if
+you divide the tasks,
+they need to
+remember less, because
+they only need to keep a
+certain
+niche in their head.  I think it
+helps a lot, and it doesn't
+work that way in
+Oh, yeah, because that's essentially the
+Open Claw style,
+right?  Like each
+of these bot platforms Muse
+and so on, they
+have their own function,
+essentially, and yes, it's
+designed for
+one task, not
+something
+general.  Yes,
+okay, logical.  Something
+like
+apps, essentially.
+This, well, this, this, this.  From a
+business perspective, it's
+often better to
+focus on
+one thing and do
+it vertically well,
+rather than
+having something big like
+Salesforce and doing everything
+mediocre.
+Sort of.
+Yes.  This, this, yes, this is
+interesting.  But, well, you
+tried Muse and...
+Well, I tried to
+try it.  Yes.  I
+even set up a VPS.
+I was trying to get
+...We talked about this
+last week after the
+show, that we could
+get a
+phone number on Twilio with a
+US
+number.  And I
+had to enter
+so much information
+that I was blocked
+everywhere.
+Oh, right, so you
+tried the
+Twilio option?
+Yes, I couldn't get
+through the App Store and everything else
+.  And maybe I should have
+taken
+more time, but I
+had to enter
+my personal details, and that's where it
+all
+went wrong again.
+Okay.  Yes, I would like to
+change the country in the App
+Store, it's, like,
+incredibly difficult.
+Like, you have to change
+your entire account,
+cancel all
+subscriptions.  This, this is a
+complete mess.  But
+yeah, I haven't tested it,
+it's still on my
+to-do list because it
+was too much of a hassle to
+do.  I need to
+pay taxes.
+Yeah, so if anyone
+has any advice,
+Yeah.
+how to get Muse or dot in
+EU, let us know.
+Yes.  Or move to the
+USA.
+Yes.
+Go to Canada.
+Well, it will work outside the EU too
+, right?
+Yes.  Uh, no, I don't...Uh,
+sorry.  I'm not even
+sure.  I think Muse is
+only launched in
+North America.
+Oh.
+And, well, there are some...I
+don't even know,
+right?  There are certain
+assumptions about
+regulation in the EU.  But
+it could also be a
+way to launch,
+see
+usage, and then
+launch globally.
+M-hm.
+Because yeah, I saw
+a lot of tweets about
+"when will I be able to
+access it" and I'm
+sure some of
+them were from South
+America, so I don't
+think it was a
+full
+global launch.
+Yes, they are just
+testing the product.
+Yes, I think it's a
+matter of regulations,
+because even Grok models
+like 4.6 and 4.7, we
+couldn't get.
+Yes, we had to
+wait 1 or 2 weeks.
+Just so.  So yeah,
+but it's been over
+a week, two weeks for
+Muse, well, I don't know.
+But even if we
+get them, I still
+wonder
+how much we are
+restricted in the EU.
+Yeah, you know, for example,
+on your iPhone, oh,
+okay, wait, that
+would be a good example.
+On the iPhone, there
+are still features you
+don't have access to.  Or
+even artificial
+intelligence, some kind of
+AI-based search.
+Mhm.
+I'm pretty sure
+Google AI search is not
+activated in
+France.
+So, essentially,
+being in the EU, you
+get less than in the
+rest of the world.
+But it's not...but it is,
+after all.  It will be like this.
+But you were going to
+show us something.
+Yes, it was the launch of
+all those little,
+uh...
+Oh, by the way, a small
+update: the Grok bot
+last week gave
+me the ability
+to assign a star or
+special status to
+one bot so that it would
+be my personal
+assistant and
+work more actively.
+A.
+And it works, but there is
+one "but".  It worked for me
+, I did
+exactly this about a month
+ago, then it
+stopped working,
+and now all of a sudden they're
+saying, "Hey, we have an
+update."  And I
+assigned this to
+my working copy.
+Okay.
+And it works exactly the same as it did a
+month ago.
+So I think they
+stole our idea.    I
+mean, I'm sure
+they see it in the
+usage statistics,
+right?  They see
+people doing it and
+implement it as a
+feature.  And then they
+do some
+hidden things in the
+background, right?
+But yes, again, on August 11,
+the introduction of the
+Grok bot.  Look, what's also
+interesting is the
+number of views
+.  Almost 58 million
+impressions on X for the
+Grok bot, which means "Okay,
+thanks, Elon."  So, there it
+is.  Then, on September 8th,
+the launch of Muse, which...
+You see, even
+Mark
+Zuckerberg's discussion thread for
+the launch of Muse is completely
+different than the Grok bot.
+But yes, it's interesting.
+Just one sentence
+to introduce Muse,
+boom, off we go.  And then a
+community note appears.
+Yes.  It seems like Elon is
+joking, right?
+Uh, Muse was built from
+the ground up for
+privacy and
+security.  Muse's current
+secure virtual
+machine isolates all
+data from other
+agents, but Meta
+says this does not
+prevent Meta from
+accessing
+data when
+necessary to
+maintain security and
+service operations.  Um, and
+even since then there have been
+rumors about
+advertising.  So, yeah,
+you know, you never
+know for sure, right
+?  And the latest one, which
+was launched during uh
+DevDay, "Dots" from OpenAI, yes,
+September 29th.  Which, actually, is
+not exactly a copy, but
+they are directly
+competing with the Yankees.
+directly compete with the
+Grok bot and others.  Yes
+, yes.  We're still
+waiting for the
+Anthropic version, right?  That would be
+I saw a post about "ants",
+but I don't know if it's
+fake or not.
+No, it's fake.  It was a
+fake.  This is some
+guy using, uh
+, Opus to make a
+video about it.  And, and, and
+Yes, I haven't checked,
+so I don't know if they're
+developing one.
+Yes, it is.
+But I like
+Anthropic.
+Yes.
+All their products, and
+even if sometimes we
+say the products
+have gotten worse, just
+give them a few days
+or a week and they
+work again,
+even better.
+But I don't know, okay, Opus
+5.5 was a little
+slow and kind of
+weird today.  It was like he
+was doing some strange
+things.  Me, they're still
+retraining him in the
+background, but
+yeah, there are certain
+behaviors that we don't
+understand, but yeah, it
+was, it wasn't, yeah, is
+it real?  No, I don't
+know who created this
+concept.  This is
+Yes.
+But I also don't think
+having a
+personal
+assistant is a goal,
+not a goal, but a kind of goal
+for Anthropic.  I don't think
+Anthropic
+cares about
+consumers at all, and
+they don't have the
+computing
+power anyway.
+Yes.  And even if
+they are going to
+become bigger than the
+Grok bot, they still
+remain in
+Elon's network.
+Yes, but I don't know how
+it works because it doesn't
+feel like it.
+No.
+We need more "
+masters", man.
+This, this is strange, right?
+It's as if they really have
+no
+computing
+power at all.
+Yes.
+Because it feels like there are
+not many of them.  And they're
+already using
+Anthropic, uh,
+Elon
+Musk's infrastructure.
+Oh, sorry.  Yes, that one, that one.
+Yes.  Uh, Gigafak...No,
+not Gigafactory.  What?
+No, the one from the missiles.  I,
+I, I usually know
+the name, but
+Yes, I forgot too.
+Yes.
+Er, sorry.
+Yes.
+Yes, subscribe.
+Yes, and we will let you
+know.
+Yes.  Ahem.  like
+Yeah, I mean,
+OpenAI has been a little
+slow on
+resetting limits too,
+right?  Because, I don't know if
+you saw that tweet, but
+Thibaut wrote that "so far"
+is not unlimited and
+free.  And they
+use Astra.
+Although I don't know
+how fast it is.
+Yes.
+But it is unlimited.
+So, dumping the "bombs"
+.
+Yeah, they said it was
+beyond your
+use in your,
+uh...
+Yeah, exactly.
+in your subscription.
+That's cool, but, like,
+yeah, okay.  This
+was the tweet.  Way.  Way.
+Thibault: "Since
+your
+main Dota usage is
+currently virtually
+unlimited, I can't
+just give you a reset
+."  I need to
+come up with something new quickly.
+And then, about 2
+days later, he gave a reset.
+But, well, yeah, to be honest
+.
+Yes, imagine:
+doing a reset, and
+then just resetting the
+entire bot.  Yes,
+that would be strange.
+I mean, if it's
+unlimited, they don't
+care about
+using resets
+in "dota", right?  But I would
+rather have more
+resets than a
+competitor like Grok to
+answer
+emails at six in the morning
+.  Like, you know, and it's...
+yeah, whatever.
+Well, the question is, how
+long will it be
+free?  And
+unlimited, because I
+think they're doing
+it to catch up with
+Grokbot, and then when
+people have everything
+set up...
+Yeah.
+and have to pay,
+who will delete all
+the settings that I
+just worked on for
+two months?
+Yes, no, exactly.
+It's...there's a lot of
+productivity at
+the start that they
+build up and then
+slow down a bit
+.  For example: "We
+optimized the
+standard speed
+, it is now 50%
+faster in GPT-6, blah blah."
+And then they reach 50
+tokens per second
+instead of 30. Bro, that's not 50
+%.
+Yes.
+Like the
+most optimized
+tokenizer or
+something.  But yes.  Yes, and
+again,
+for example, in
+communication: if you
+say "Okay, now
+we can't
+use this because
+we have "doti"", but you
+don't launch "doti"
+globally... and 10-20% of
+your users
+use them, then
+you don't give a damn, right
+?  Like, yeah, it's difficult.
+Okay, do I have any more
+examples?  Okay, okay,
+cool.  Since we can't
+test
+this in person, I
+found Peter Young...
+who makes
+practical AI
+tutorials for
+busy people.  Hey, do you
+know him?  No.
+No.    I guess
+I'm probably not that
+busy.
+Yes.  Here is my opinion
+on OpenAI Dot compared
+to other
+personal
+agents.  These are
+actually two different
+races.  Dot and Grokbot
+are focused on
+work tasks, Muse is focused
+on personal tasks, so I don't
+think Dot is directly
+competing with Muse.
+Dot's biggest advantage is that
+it lives
+inside ChatGPT.  Logging in
+was
+seamless because
+everything was already
+connected, and that, yes,
+is true.  Like,
+for example, if you
+go from Claude to
+Codex and switch
+to Grok, you have to
+redo all your
+plugin connections
+.  This is maddening as
+hell.
+Yes.
+So yes, it's true.
+If everything is in one
+ecosystem, a bit like
+Apple,
+MGM.
+then you have some
+advantages that you can
+use later,
+I guess.  The memory behind
+it.  Also a
+big question: what can
+I do for
+business better than
+any other agent
+?  Dot is the official
+agent-manager of the
+ChatGPT apparatus.  My
+favorite way
+to use it is for
+work calls.
+What should I take care of
+today?  What do I
+need to do
+today?  And then
+pass it on to my
+other ChatGPT chats.
+Instead,
+communicating with my Dot
+in the app is the
+worst experience.
+Because he is juggling
+multiple tasks
+at once, it is difficult
+to understand what exactly
+he is responding to.  Yes,
+that's true.  And that
+was also with Open Claw, right?  That's
+why
+we moved to Discord during the Open Claw mania
+, because every
+Discord thread had its own
+topic for discussion,
+right?
+Yes.  And Grokbot has the same
+problem.  If your
+main assistant
+has seven bots, it will
+lump all the conversations into
+one pile.
+I have group chats
+with topics, and when
+agents are chatting,
+they go into
+their own chat and
+tag me.
+Yes, but I'm talking
+to my
+personal
+assistant and I want
+her to
+fix everything.  And then
+she turned to me and
+asked for
+approval.  And if
+she's doing four
+things at once,
+she just mixes up the
+approvals,
+shows me everything
+at once, I click "
+approve," and she's
+back to talking about
+something else, and it makes it very
+difficult to get the
+big picture.    Do
+you not approve
+other agents?
+No, no.  She gives me
+approval.  Others, I
+don't communicate with my
+other agents.
+Of course.
+Because I don't have six
+dogs at the same time, and
+each dog has
+two tasks.
+Yes, okay.  Is this because
+you have one agent per
+project, or do you have
+vertical agents
+that can be
+used across
+different projects?
+Yes, I have project
+agents and subject
+agents.  So, I have a
+support agent, a
+WordPress specialist agent, and a
+project agent for
+my big
+clients.
+Yes, okay.
+And that means they
+can interact.
+So, if a project
+agent needs
+WordPress expertise
+, they go to
+someone else, but my
+personal assistant
+is the only one I
+talk to.  I don't
+talk to everyone at once
+.
+Yes, okay.  And your
+personal assistant
+delegates it to the main
+agent-CEO in a group
+chat or somewhere else.
+That's right.
+And delegates, yes.
+Honestly, Paperclip
+was ahead of its time.
+Remember a few
+months ago when we
+did a demo
+and saved this
+hierarchy for agents?
+It was like
+I still use
+that structure.
+Yes, exactly.  I
+mean, is this the most
+optimized
+structure or just the one
+we're used to
+in companies?  So, we're
+going to
+recreate this.  I always
+think about it.  Yes,
+I often think about this, because
+how exactly should
+agents be organized?  Is CEO, CTO, CMO,
+CFO the best way to
+do this?
+Well, really, I
+just want to have Discord,
+create threads, and
+I don't care who
+replies, as long as it gets
+done.
+Yes.
+But I still do it in a
+"corporate"
+way.  You have a
+manager below you, the
+manager manages
+the team, and you
+only communicate with the
+manager.  Unless
+you are unhappy with
+the manager, but that
+doesn't happen at Grokbot.
+Yes, it's like the goal was
+to get rid of the middle
+management, and
+now we have a
+middle management of
+agents.
+Yes, but I still
+believe that a middle manager
+should be able to
+create as many
+agents as they
+need.
+Mhm.  I turn them on and
+off just like
+we have,
+for example, Stripe, right?
+Yes.
+Yes, that's right.
+Yes.  This is, well, yes, this is
+interesting.  I don't think so
+, because our agents are
+permanent, right?
+Once you hire an
+agent, it
+stays there, but
+it probably
+runs sub-agents
+that you don't see because
+they're still
+running on the
+computer.
+Yes, that makes sense.  Um,
+okay, last point
+.  I repeat myself like a
+broken record,
+but this is, uh, stuffing
+Codex.  Yes.  Stuffing Codex,
+walk pages, dot, space, and
+more into GPT chat is
+awesome.  My
+answer is this: everyone at
+OpenAI is an
+agent developer, so it's hard to
+take a step back and
+think about how the
+average
+user would learn all this
+.  Yes.  This is
+true.  Especially with the
+new design, Codex
+has separate pages,
+sites, Codex.  They
+return Codex
+instead of chat GPT walk.  Uh,
+GPT chat, which has the
+same damn
+interface as Codex,
+but a different
+query string.  This is difficult.    That
+'s why I love my CLI.
+It's easy.
+Yes.  No, that's right.  Um, so yeah
+, it was like
+someone trying
+Muse and agent dots.  So yes
+.  But, uh, okay.  Hmm
+.
+But this is a good
+start.  So, we have a
+team that
+does tasks that
+we would normally
+spend many
+hours on.  She
+responds faster.
+So if tickets come in
+, you can
+set up a webhook,
+send it to an
+agent in Grokbot, Muse, or
+wherever, and they'll
+handle it.  And
+even if you say
+not to give a full
+answer, you
+can still
+respond to the customer: “
+Hey, we got this.  I
+see that I am missing
+some information.
+Could you
+send it too?  Then I
+will assign it to a senior
+developer."  And it
+could be me or anyone
+.  So I think
+it improves the quality of
+your company.
+Yes, and you have a faster
+workflow,
+right?  Like, yes.
+Yes.
+And so.
+He can set
+priorities and all that
+.  And if I see the ticket an
+hour later and
+the information is still
+missing, well, the customer doesn't
+like waiting an
+hour and then
+getting asked
+, "Hey, I need
+this before I can
+do anything."  And
+now I see it an
+hour later, and everything is already in
+place.
+Yes, and the bug has been fixed.
+You just need to
+unfold it, and that's it, right?
+Yes, for the most part my
+agent has already told me
+what the bug is.  And he gave
+me a solution with
+the question, "Am
+I allowed to
+fix this?"
+Oh, that's pretty cool.  This is
+fire.  Uh, yeah, so
+again, you know,
+you have the architecture
+for a team of 5-10
+people, and you're managing it
+all by yourself.
+Yes, that's impressive.  But is
+it because of those Grok/
+Muse/
+dots personal assistant bots, or did
+you have this before
+they came along?
+Yes, um, no, before
+I still
+needed
+support from a
+real person.  Because
+I can't be everywhere at
+once.  And the best thing
+is, if, for example,
+our hosting server, which hosts
+about 20
+sites, goes down
+, I instantly
+receive a notification and
+can fix it.
+Yes.
+But still, I
+get about 10 emails
+from people saying,
+"Hey, my website isn't
+working."
+Yes.
+Um, and now the Grok bot
+just writes to all of them: "
+Hey, we noticed that
+your site is down. We're
+really sorry about
+that. Something went wrong.
+We had to
+reboot.
+It should take 10
+minutes at most, and everything will be back up and running
+."  Um, so he
+takes care of all the
+communication so I
+can focus on the
+real problem
+and fix it.
+Instead of
+talking to everyone
+before I start
+fixing something, because I
+can
+only focus on one or two
+things at a time.
+That's right.  This is, well,
+you're an international
+company, but they're
+from Grok news.  Yes, that's
+it.  This, this is great.  And,
+yes, what do we
+lack for complete
+autonomy?  We are so
+close to
+becoming a fully
+autonomous company
+because, again,
+you have incoming requests.
+Mhm.
+They
+fix something, or
+implement a new
+feature, or something else,
+and then you release
+it to production.  You
+just need
+a little trust and stuff
+, but it's all
+about trust, or rather
+quality.  It
+still seems to me that
+the quality of the bot
+varies depending
+on the day or week.
+Yes, that's true.  And this is
+probably related to
+calculations.
+Maybe during
+peak loads,
+etc.  I remember Anthropic
+doing this, is it still
+relevant?  When you
+use your
+subscription from 8 am to
+10 pm, you
+use up your limits faster.
+Yes, I don't know if that's
+still the case.
+Yes, yes, I remember that
+.
+Yes.
+But you also
+get less
+powerful models.  So it's the
+same model, but if
+you use it during
+rush hour in the US,
+yeah, exactly, during
+rush hour.
+the quality is worse.  And if
+we do it in the morning
+European time,
+when everyone in the US is asleep,
+we get the
+best results.
+Yes.  So, we
+have to wake up at 3
+am to... Not even
+, yes, a little later.
+Yes, a little later.
+Yes.
+But
+let AI break all the
+wake-up lights in everyone in the
+US so they sleep,
+sleep too long.
+Let me know, yes,
+give me a signal when
+they're all, when all these
+scum are just
+sleeping.
+Turn off all
+alarms.
+Yes.  Yes, this is madness
+.  But, um, okay.  So,
+um, also, yeah, I wanted to
+talk about the
+demo effect of these agents, because I'm
+not sure if they're that
+good.  Um,
+so, have you seen this
+demo, like the
+bot presentation, because
+... they were running it
+during Dev Day, but they had some
+issues with the
+Wi-Fi or something, and the
+bot architecture
+broke.  So she
+had a botched demo, and
+then she, um, she
+demonstrated,
+essentially, Grok Bot, but from
+OpenAI.
+Mhm.  I didn't watch it.  I
+, I watched, um, a
+demo of Grok Bot earlier from
+the developers that
+explained everything.  And so
+many people
+were talking about it and
+saying it was
+perfect, and when I
+watched the video,
+in the end, I thought,
+well, there's nothing
+new there.  They're
+inflating the hype, and
+it's very pointless
+to do a 2-hour demo of
+one thing.  So I
+stopped watching the
+demo.
+So, for example, she
+books a flight.
+Yes.
+Uh...
+Why would I want to watch a
+demo of how people
+book a flight?  I want
+to know what you write in
+your prompt,
+Yes.
+so that your Grok Bot or your
+bot from OpenAI
+Yes.
+used
+maximum quality,
+either to get
+the best results
+or to make sure
+it doesn't...that the bot doesn't
+forget what I want to
+get.
+Yes.  No, exactly.  This, uh...
+This, this is strange.
+For example, uh...this
+guy said that OpenAI
+needs to hire
+more regular
+people, and what the...so what did
+he say?  Close your
+eyes for 10 seconds,
+open them and look
+at the world around you
+like a normal person.
+Exactly.  So I want
+to know why my bot
+responds perfectly three times
+, and the fourth time it
+just gives a
+nonsensical response
+that I would never
+send.
+Yes.  No, exactly.  It's, yeah,
+it's...it's so weird, but
+oh, it's also hard
+to understand the world when
+you work at OpenAI and
+then you have to
+communicate with
+people who
+haven't even tried ChatGPT 3.5 yet.
+Yes.
+It's like a gap in
+the perception of life, like
+how do you explain AI to an
+80-year-old grandmother,
+right?  Like
+Yes.
+Devil.
+Yes, we just
+answer, if I
+pick up the phone, I'll
+be faster.
+That's right.
+Yes.
+I don't know, they're about to
+pick up the phone and don't
+realize there's no
+one on the other end.
+Yes.
+Uh, yeah, the amount of
+information I
+need to know before
+booking is so
+vast and
+complex that I
+can't even imagine how to talk about it
+.  Yes,
+flight time, price, location,
+type of plane, choice of
+airport, how
+empty or
+full the plane is.  Like what do you
+need?  Okay, I
+just want to
+go somewhere.  Uh, and this is how we
+introduce complexity into
+life.
+Why do I need to know
+how
+empty or full the plane is?
+I don't care, right?
+Yeah, man, I'm just
+booking a ticket to
+fly to my
+destination on
+And who even knows
+all the types of planes?  You
+just look at the
+seat and say whether
+you want it by the window
+or not.
+So yeah, maybe this
+Marvin is a bit of a
+specific
+user.
+Yes.
+But what they could
+show ordinary
+people is, uh, read
+my children's school letters
+and help them
+prepare for
+school, review
+all
+credit card expenses and help them
+stay within
+budget.  Help me
+make an appointment for
+a haircut, help me
+order flowers for
+my wife.  Uh yeah, I I
+Yeah, he he just
+opened a bank
+account.  I will show it.
+I don't know.  Uh, but yes,
+these demos can, in principle, be
+done in ChatGPT.
+This doesn't close the gap
+between what's new,
+right?  Compared to
+chat in ChatGPT.  Um, and yes,
+that was the initial
+demo.  You didn't see
+this.  At some
+point they just
+stopped talking.  And
+yes, that's all.  They
+still need to work on
+the demonstration.  Um,
+like Elon when he
+shows off SpaceX,
+Mhm.
+This is a
+rocket going to
+Mars, right?
+Yes.
+This is a cool
+demonstration.  Uh, for
+superintelligence, AI, AGI
+, whatever.  I
+want more than
+booking a plane.
+Yes, they can
+do so many things
+.
+Yes.  Yes, but what would
+be the ideal demo
+for regular people?
+Yes, I don't know.  Because,
+again, what are they
+going to do with AI 24/7?
+In your
+everyday life.
+I think they'll just
+ask
+stupid questions.
+Yes.
+What do people do with their
+phones?  They
+watch TV, someone
+says one thing, someone else says no,
+that's not true, they
+Google it, and that's it.
+Yes, and playing Candy Crush
+during Amazon Prime.
+Yes.    Uh
+-huh.
+I think they might be
+making a list of
+products to
+buy, and I
+think artificial
+intelligence could
+automate
+advice on where to
+buy the same
+quality product cheaper, but that's it.
+But bro, I don't know, I
+always go
+shopping at the same
+place.  My
+parents do the same thing
+, and we
+buy the same
+damn food almost every week.  Well,
+except you change
+something between winter and
+summer, but essentially you
+follow the same
+routes.  So, yes.
+You don't need
+AI for this.  Yes.  I
+mean, yes, you can
+instruct AI to place
+orders on Instacart,
+but there's no
+complexity in the
+prompts here, right?  This is something that
+can be
+connected.  Again
+, you have an MCP
+server for Instacart.  You
+say, "order what I
+had last week,"
+and you get your
+food delivered.
+Yes, but I also
+use Grokbot for
+simple things.  I
+make him
+check my email,
+calendar every morning and see
+what needs to be done, what's a
+priority, what
+just arrived.  And
+it also suggests my
+schedule, because Grokbot can
+determine how much
+time I spend on
+tasks.
+Mhm.
+And I instruct him to
+review every
+incoming ticket,
+assign priority,
+flag me if it's
+high priority,
+and provide a draft
+response.  I approve,
+and he responds.
+Mhm.
+And if someone asks
+for a meeting, Grokbot already
+tells me: “Hey,
+Vincent wants to
+meet.  I think it will take
+2 hours for the meeting
+and another 2 hours for this
+task.  You only have time
+on Friday and
+next Monday between then
+, the rest of the
+week is busy."  So
+it filters out all
+the information that I
+usually have to
+search for manually.
+Yes.    That's the
+only thing I
+use it for.
+Yes.  I mean,
+yeah, I plugged in...I
+mean, you have to
+give
+your whole life to
+personal
+assistants like that to
+really see
+their potential,
+right?  And, uh, it
+took me 4 years
+to connect my
+Gmail and Slack to, uh,
+GPT connectors.
+Yes.
+To summarize all the
+conversations I had,
+for example, with
+clients and in
+email threads,
+to have proof of the decisions
+we made, uh, 3
+weeks ago in a Slack branch
+, and to add that to a
+GitHub release.  Well, that's powerful.  And
+when you do that with
+your Grok bot, with the
+letters and all that,
+uh, it's amazing.
+Yes, it can be
+significant.
+Yeah, that's pretty cool.
+And, uh, yeah, by the way,
+also, uh, for Muse, Amazon,
+like, banned... So,
+Amazon banned the
+Muse and
+Instinct connections because they didn't
+want people to
+buy using them.  That's because
+when you give
+your agent a task, "Oh, yeah
+, I want to buy a
+toothbrush, uh, and I do
+n't have toothpaste,
+etc.", you're
+only going to buy that.  But
+if you go to the
+site, they will show
+you ads or
+related products, so
+your average cart value will increase.
+But if you
+use an agent
+, he doesn't... Yeah, you
+won't do that because you won't
+see the ads.
+Mhm.
+So they banned
+these, uh, agents from
+essentially making
+purchases that way.
+But that...
+Yeah, that makes sense.
+Yes, but it's like taxis
+versus Uber.  This, this, this
+will lead to... It's
+interesting to see
+the internet traffic
+now, how many
+agents are there against people.
+Well, I think most of them are
+agents.
+Oh yes, 100%.  Like, like, I would be
+surprised
+if it was 50, well,
+a little over 50% right
+now.  So yeah, this, this, this
+, this, yeah, again a
+paradigm shift in AI
+with all these
+personal
+agents.
+Mhm.
+Uh, the module, it's like
+another conversation thread
+repackaged for
+everyday life.
+Uh, but yeah, it's... It'll be
+interesting to see how
+it goes, for sure.
+And if the EU doesn't
+protect us, well, from
+regulating this,
+like...
+As soon as we
+get real
+access, we'll
+test it and
+let everyone know.
+Yes.  And they will start
+watermarking
+news conversations
+or conversations in Dots
+because they can.
+Yes, they own everything.
+I think the EU is forcing them to
+do this.
+Oh yes, exactly.  This is the
+EU law on AI.
+Yes.
+But yes, that's stupid.  So,
+yeah, which
+personal agent is
+your favorite?
+Yes, the one-of-a-
+kind Grok bot.
+Congratulations, Elon, we
+love you very much.    See
+you later.
+Yes.
+Yeah, if you're watching
+this video, Elon,
+please subscribe.  That would be
+nice.
+Yes, we
+use your
+products a lot.
+Yeah, a lot.  Aha.
+Very.
+I'm out of
+limits for this week
+, but they'll reset
+in a couple of hours, so it's
+okay.  The limits are generous,
+but still, the
+more webhooks you have
+, the faster they
+run out, right?
+Aha.
+Yes.
+Aha.  But yeah, I think that's
+all.  Can we
+end this?
+Yes, we can.  Perfectly.
+Agree.  And so,
+Mitchell,
+thank you very much for your time.
+We appreciate it, as we do
+every week, and
+Yes, and thank you.
+Please.  With pleasure.
+And for everyone
+watching this video,
+please
+subscribe,
+like, and share the
+video.  I hope, we
+hope,
+we hope, it
+was useful to you,
+see you
+next week.
+Goodbye.

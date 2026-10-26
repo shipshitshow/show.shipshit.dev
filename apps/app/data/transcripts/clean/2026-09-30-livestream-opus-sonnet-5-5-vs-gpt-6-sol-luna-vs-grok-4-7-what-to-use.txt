@@ -1,0 +1,1865 @@
+And congratulations to everyone again.
+Hello, Victor,
+long time no see.
+Yes, hello.
+What if, what if, what if?
+I think we were all
+sad, right?
+Yeah, I mean,
+our channel is growing,
+man.
+Oh yes, that's right.
+So this, this is good.
+Now I'll check if
+everything is fine with YouTube and if there's
+sound, because with all that
+chatter earlier I
+don't know if we've
+set everything up correctly, but it should
+be fine.  Okay,
+now
+Yes, it hasn't started on YouTube yet
+.    I have it
+, but I don't have it,
+I think it's
+Now there is.    Do
+you have any?  Is there sound?
+Yes, now there is.  Perfect
+.
+Okay, cool.  Because I didn't
+have a sound output.  So
+cool.  Okay.  Perfectly.
+How have you been since
+our last
+conversation?
+Yes, well, uh, there's so much to
+do,
+so many new
+models.  So I'm fine.
+I tested, wrote code,
+worked with AI, and did
+a lot of other things.  Yes,
+how are you?
+Well, I took a little
+vacation, completely
+without internet and
+stuff, well,
+almost, just
+enough to
+run a few
+tips and questions
+on the side, but yeah, and
+then we
+come back and we have a
+new model release
+every day.
+Yes, the entire landscape
+has changed.
+Like
+Again.
+Yes, for better or
+worse, depending on how
+you look at it.
+Well, you have to
+work differently
+every time they
+release a new
+model.
+True, and this, yes,
+applies even more to
+the office, and we'll
+talk about that
+later.  But first,
+yes, let's start
+in chronological
+order.  Let's go over everything
+, and then, like,
+answer which one is the
+best from the
+past, uh,
+past week.  So
+yes, if you want
+to know which model you
+should
+use,
+stay until the end
+because
+We'll tell you
+It'll be a surprise.  Okay,
+it's you in the chat.  They drove.
+They drove.  So, on the 22nd
+, poof.  Poof, I'm
+going to share
+my screen.  Show your
+intelligence.  Thank you.  So, the
+new
+update for the model was released first.
+It was GPT 6 Soul and Luna,
+so OpenAI pushed
+the boundaries of profitability
+by reducing costs by
+5.6, and Luna prices are probably
+half of GPT.  5.6
+dropped to, Soul dropped to 4
+, from 420 to 210 per million
+I/O
+tokens, and Luna went from 20
+cents to 120 to 1050.
+That's nice.  That's a big
+difference.
+I mean, that's
+good.  But did
+you get the same conclusion?
+You tried
+using them and
+I just did
+some random
+tests and got
+good results.  I
+can't complain, but
+I don't
+use these two
+models often.
+Yes, for example, I
+still
+use Astra a lot on
+my credit
+subscription.
+Yes, yes, the same.
+Yes.
+And it seems they
+reopened
+the subscription for
+$200 yesterday, right?    Have
+n't you already
+done it?  I
+think it was for
+new users,
+no?
+Yes, but I do
+n't have it because I
+downgraded, and when I
+wanted to upgrade, I was
+6 hours late.
+Yes, but I kind of told
+you, right?  That it's
+available again, no?
+You said.  And I'm like, "Oh,
+don't worry. I
+still have a few days."  And I was
+late.
+Oh, so I told you,
+you didn't do it
+right away, and then they
+closed it again?
+No, no, no, they
+closed it just
+a few weeks ago.
+So I never got it
+.
+Yes, I understand.  Okay.
+But yes, today at 8pm
+European time they have
+Developer Day.
+Mhm.
+So I expect a lot of
+announcements, maybe what
+I saw in the feed,
+about 20 announcements and so on.  And
+restart?
+Who knows?
+Yes, did you see
+Chibo's post?
+Yes, I'm talking about the difference in the
+new
+subscription model.
+Yes.  Tomorrow we
+reopen the
+Pro 200 subscription to new
+users.  That's
+why I said
+maybe you could
+get it earlier, because it
+was for new
+subscribers.
+Oh, about, it seems, about,
+for new ones.  So
+maybe, okay, we should
+try.
+Yes, I think you can
+upgrade.  I don't think you
+can switch from GPT-3
+to a subscription for 200. I
+think that's the
+trick.  But
+okay, with that I'm
+also changing the
+usage calculation.  If you
+do the math, you'll
+end up
+spending half as much on
+API compared to the
+old $200 plan.
+Wait, what?  This will be
+half the cost
+of API.  Oh, sure.
+So, you get 50
+% less.
+Yes.  No, but
+let me explain what's
+going on and why
+you'll be able to do
+more work.  Yes,
+okay.  So you
+get a better
+model, we
+make them smaller and
+smarter, but you
+can do less.
+So, it's kind of sad.
+Yes.  But, on the other
+hand, if you
+get the same
+results or even
+faster,
+Yes.    then it's
+not that
+important.
+Yes, but if,
+for example, you
+implement 10 new
+features and that's it for the
+day because you've
+exhausted your
+weekly limit for the
+day.  Dude,
+this happens to me, I
+use up my entire
+subscription in 3 hours.
+Yes, one by one.
+Really?  That's a
+lot.
+Yes.  Yes.  And I...okay, this
+was before 5.5 came out, well,
+Opus 4 5.5, but I
+used Fable
+to prepare
+assignments.
+Mm.
+Implementation on Opus and
+so on, and sometimes
+even after half a day
+I've already
+used 50% of my
+weekly limit.
+I do everything to the
+max, try to
+squeeze everything out, but I
+never monitor my
+usage because
+the limit never
+ends.
+Oho.
+But still, you have
+one big project
+and I have about 20 smaller ones
+, so I think that's a
+big difference in
+input tokens.
+Yes, it is possible.
+Yes.
+Maybe it is...But
+even when I
+check skills and
+stuff, the analytics
+don't show me
+crazy
+token consumption.  So maybe
+I should do an
+audit.  But yeah,
+maybe the thing is
+that these are two repositories
+with 2 million lines of
+code.  It is possible.
+Yes, that's a big
+difference compared to
+mine.
+Well, okay.  So, yes,
+one subscription, blah blah
+blah.  And there are also
+rumors about a
+$500 subscription from OpenAI.
+Would you buy it?
+Everyone talks a lot
+about it, but I couldn't
+find any
+information.
+Like, they're slowly
+cutting limits to
+launch a $500 plan
+.
+Pricing is a
+bet on the upper limit of
+subscription, blah blah blah.
+I haven't seen anything like that.
+Well, I don't have that yet
+, but with AI you never
+know what's true.
+Yes.
+But on the other hand,
+they say it's a
+scam, even though
+almost every
+company does it.
+Yes.
+First, they give
+a lot for free
+to attract
+users, and then
+they move on to the
+usual fee for
+using tokens
+.
+Mm.  Yes.
+Yes, it's like selling
+drugs.  Like, you give them
+free
+drugs, they
+get hooked, and then they
+have to pay.  I
+mean, if
+we have 500, and then it's
+unlimited, because some
+people on Twitter were talking
+about it, to have
+some kind of unlimited, uh,
+volume.  Maybe, maybe this uh
+That would be cool.
+Yes, I don't believe in
+unlimited.
+When we open
+I will believe it when they
+say "unlimited" with a
+fair
+use policy.
+Yes, not exactly.  Uh, I
+think it was that tweet
+.  When ChatGPT released
+two things for OpenAI,
+starting everything again,
+and we're about to
+get the first
+feature of 500. Uh, would
+you pay 500 for an
+unlimited office for 55
+?  Yes, okay.  So 55, but it doesn't matter,
+if one
+lab
+does it, everyone will do it
+.  Would you spend 500
+on Codex and Claude each?
+Yes, it depends on
+what
+projects I have, but
+then we really
+need to sell
+more.
+Yes, but I don't think
+they will.
+Yes.  Oh yes, it was.
+It sounds so strange,
+like a restaurant
+is offering you a very
+high price to eat
+unlimited food every day.
+This is so strange.
+Yes.  I mean,
+yeah, there's only so many
+possibilities to have
+unlimited
+use of AI
+anywhere, right?
+M-hm.
+This is madness.  But
+Muse has been released, we can't
+use it
+because we're in Europe, but
+that's a different problem.  But
+Muse is free.  Like
+Meta's Grok bot, it is
+completely free.
+It seems.
+Yes, but if I have a
+website and I just
+let all my
+clients request
+my tool on
+my website and
+use my
+unlimited plan for
+500, and charge them 200
+dollars each.
+M-hm.
+Then I can earn
+about 10 thousand a
+month.
+That's right.
+So it doesn't make sense
+to them.  Or am I
+missing something.  That's why I
+think it's like the
+unlimited phone
+subscriptions that you have
+for calls or that
+you had before.
+You can make
+unlimited calls, but there is a
+fair
+usage policy.  You
+cannot exceed the
+average of
+each unlimited
+user.
+Yes.  Yeah, like, nothing has
+been announced anywhere,
+right?  So we'll
+find out in a few
+hours.  So this is a
+speculative, uh,
+speculative announcement,
+for sure.  But, okay,
+for example, Meta previously
+shared this
+tab, uh, Muse was
+kind of for small
+businesses, the new
+personalized AI
+agent—this is one of the uh,
+where is that?  Free.
+Okay.
+But do you trust Muse?
+Would you use it
+?
+I haven't tried it because
+we're in Europe, right?
+No, no, but if you could
+, would you use
+it knowing it was from
+Meta?
+Yes, it doesn't matter.  If,
+if you had an
+unlimited agent, and
+I could save
+on using the
+Grok bot, then I would
+use it, it's a
+pyramid scheme, right?  I will
+use
+my
+programming agents, who are
+terribly expensive, to
+build various things
+and businesses.  But then
+I'll use the
+Grok bot for specific
+needs where it's better,
+and Muse will become the AI ​​agent
+for everyone, so I
+can still
+use it.
+Even in the
+macOS update,
+Mhm.    There
+is a model there, the entry-
+level one from Apple.  I
+tried it—it's garbage.
+I asked this model
+to audit my Mac,
+Mhm.
+and tell me what
+processes I could
+clean, empty the recycle
+bin, and so on to
+free up space.  Oh, no
+, I can't
+do that.  You need to
+open windows,
+check your
+activity, blah blah
+blah.
+Yes.  So, this is a chatbot
+with regular
+help.
+What the hell?    That's
+all.
+But yes, it's
+free,
+free.  Yes, Muse,
+they were going to
+work together with
+one of the other
+models.
+Yes, they're like
+Apple...
+Yes.
+Yes, they should
+use
+Google Gemini models.  Muse is
+free for
+most
+people's needs, in line with
+the vision of putting
+superintelligence in
+the hands of as many
+people as possible.  This is
+cool.  I need to
+make time for
+work, blah blah blah.
+I think this could be an
+entrance, and it's also
+ChatGPT's competition.
+Maybe people are already on
+Instagram, WhatsApp, and the
+like, so they
+can get
+another login to Muse.
+Mhm.
+So, yes.  Maybe like
+Threads, right?  When
+you had an
+Instagram account, you got a
+Threads account, and Threads
+had a billion
+users on
+day one.  Muse
+may have the same thing, but
+yeah.
+And they can
+integrate it into everything so that
+everyone
+uses it but doesn't
+know about it.  Yes.
+I think Google does the
+same.
+Yes.  Oh yes, yes, yes.
+100%, artificial intelligence
+at Google is, in essence, Gemini
+.  But outside of
+Google tools, I
+never
+use Gemini.
+No, but it's one of the
+biggest AIs because
+so many people in the world
+use it.
+Because they
+use
+Google tools.
+Yes, but if
+you look at
+benchmarks, it's always a
+model.
+On the other hand, it doesn't
+necessarily have to be
+that cool for
+normal things.
+That's right.  Yes.  I
+like that we are
+AI superusers.
+Yes.
+Like, yes.  Uh, so yeah,
+was it the same
+launch of OpenAI, Soul, and, uh,
+Luna?
+Mhm.
+And it wasn't very good.  Uh,
+Soul and Luna—that's tough.  Uh
+, that wasn't the best
+response in the
+news feed.  Like, I don't know
+if you saw any
+tweets, but they were like,
+"Hey, no, don't
+use that. It's
+just, ah."
+Ah, it doesn't work.  This is
+delayed.
+Uh, Jupiter is about 5.6
+tera, Luna is 5.6 asterism
+or something like that.  Uh,
+test results.  Not
+quite what I
+expected.  Low score
+.  Yes, it doesn't matter.  But,
+yeah, people were screaming about
+it, so it doesn't matter.  And
+then, uh, Grok 7, oh, 4.7
+came out back.  Uh, oh,
+no, he didn't come out
+earlier.  Devil.  Okay,
+let it be.  Uh, so Grok 4.7
+came out, and same thing,
+people were
+unhappy with it.  Uh, it
+was, like, uh, actually
+even slower
+than 4.6.  And he didn't
+complete the task.
+So.
+Yes.  I did
+n't have the last problem.  I
+just, I've
+been using it and I don't
+notice any
+difference between 4.6 and 4.7.
+Yes.  Yes, like sometimes
+it can be okay.
+Sometimes it can seem like the
+news feed is
+all the same nonsense,
+just to make an
+impression.
+Mhm.
+And you don't know what the
+hell people are doing with
+AI compared to your
+own
+workflow, do you?  So.
+Yes.  The only thing that was
+funny to see was that
+we were expecting 4.7 about a
+week or two
+after Elon
+said it would
+come out.
+Yes.
+And Elon talked about 4.8,
+4.9, and even said that
+5.0 was coming, and it's
+one of the best
+models in history.
+But no one talked
+about 4.7, and then it
+just showed up.
+Mhm.  Yes, and it promises
+AGI with every
+update.
+Yes.
+But he doesn't
+come close.  Uh, 2% of
+my weekly
+work—that's not even
+much better than 4.6.
+4.5 was a good
+release of the model, but 4.6
+and 4.7 were essentially
+useless models.  Me, I
+agree
+with this statement to some extent.  Ya.
+4.5 was just fast.
+That's right, but the
+developer experience
+is just [ __ ] awesome
+.
+Yes.
+Again, you
+do all your
+merge requests, or
+PRDs, or scheduling with Fable
+, Astra, or whatever,
+and then you give it to
+Grok 4.5 and it just
+spits out the result.
+Yes, I don't even mind
+if it doesn't create
+perfect code, because I don't
+use it to
+think of everything.
+Yes, no, no, exactly.
+Only code.
+Yes.  Uh, okay,
+another review from
+Kunjan.  The only things
+are about the
+anchoring benchmark, blah blah
+blah.  I
+use Grok all day as
+my first
+assistant.  This is a very
+reliable model.  He
+follows his
+pattern very, very precisely.  Yes.  We
+had similar
+problems before,
+for example, with Claude 4.6
+or something like that,
+remember?  Like, the whole
+prompt changed, how
+people made requests, and
+they're like, "Oh, no, this
+model doesn't work."
+You just need to be
+able to change how
+you communicate with the
+model.
+Yes, and you need to
+do this with almost
+every update.
+Yes.  Uh, yes, it's a
+conservative model
+.  That's why people say
+he doesn't complete
+the task because he doesn't
+try to do
+a little more.  Uh, he does
+n't like to act without being
+asked and he
+says so directly.  Sometimes it's nice
+to have a model that
+goes a little further and
+just adds some
+icons, buttons, or
+features that you did
+n't even think about, but
+now they're there.
+Yes, but not always.
+Yes.
+Sometimes I just
+need speed.
+So I want to
+fix something and
+not have him change everything at once
+.
+Yes, no, no, exactly.  Yes,
+but can you imagine
+how to solve such a
+problem?  Like, you
+want the model to
+be a little
+creative, but not
+too much so as not to
+overdo the
+safety rules.
+We should just have a
+slider where we can
+choose from 1 to 100%,
+move it
+left and right and
+look at the
+result.
+This is called "
+effort".
+Yes.  Yes, exactly.
+Yes.  Uh, yes.  Yes,
+maybe you can
+write better PRDs with
+clearer boundaries, and
+then reduce
+the effort so that there is
+less thinking, and
+therefore less
+creativity.  And if
+the model can think
+more, it can
+go in a different
+direction.
+Yes, but I still
+think she
+forgets the order of the
+prompts, the rules, the
+restrictions you
+set.
+Yes.
+Because you have to remind
+him every now and then, and
+then he says, "Oh,
+yeah, you're right."
+Aha.  So, um, in the
+cloud desktop
+app, you can now
+join
+multiple projects, right
+?
+Mhm.
+So I expect him to be
+constantly thinking
+about these projects.  I
+have a repository for both
+projects I'm
+working on right now, there's
+documentation there, and
+he's doing something, and I'm
+like, "Bro, it's in the
+repository.  "Why didn't you
+check?"  Blah-blah-
+blah.  He doesn't check
+all the time, but he can't either
+, because then he
+has to
+put it into
+context every time, right?  So yes
+, it's still difficult.
+But I had the same
+problem with the
+Grok bot.
+Mhm.
+It runs on 4.7, right?
+Yes.
+Because I gave him
+tasks, and I have a
+manager who
+only deals with
+management, he
+communicates with all the
+bots that have these
+tasks.
+Yes.
+And then, after a
+while, when the bot doesn't
+do its
+task, instead of
+reminding
+it and checking
+the prompts, it just
+decides, "Hey, it's not
+doing it, so
+from now on, I'll do
+it myself."
+Yes.  So,
+okay.  Your manager
+really gets down to
+business.
+So your manager
+implements instead of
+manages?
+Yes.  And I even added a
+Dr. bot.  Egg and everything else.
+Mhm.
+And I say every, um, how to
+say it?  Every
+task you
+create must be
+checked with the Egg bot,
+made sure everything is
+set up
+correctly, and
+approved before you can
+execute it.  And the Dr. bot.  Egg
+optimizes everything every night
+to see if everything is
+going well.  And then,
+once a week, he
+decides to do things
+differently.
+Devil.  Yes, it's a "black
+box", right?
+You don't know what the
+hell they change from day
+to day.  And Branch Mind on X
+uses
+a benchmark to
+test
+Branch
+Mind's performance.  For example, between
+launch day and
+today.
+Oh, that's cool.
+Use Branch.  I
+saw this recently.  Oh,
+yes, they write a lot about this
+.  Em.  Um, deck bench.
+Startup benchmark.
+We'll see how it goes on the first
+day.  Oh, what?  I think,
+well, no.  This is
+usage.  Okay,
+fair enough.  Bent
+mentioned 20 thousand.  Nerf
+bench.  Yes, that's the same
+Twitter I saw.
+Many say that
+Anthropic has already made
+Claude 5.5 worse.  We're launching the
+Nerf bench at Branch Bench
+tomorrow.  We have
+results in one
+day.
+We have to do a
+retest tomorrow morning.  Uh,
+dec, uh, Nerf bench.  Dec.
+Dec.  So, yes.  Did
+Anthropic Claude Opus get worse
+?  First
+live Nerf bench results.  We
+retested 5.5 and GPT
+Astra.  Claude Opus grew by 92-99%
+, and Astra by 2%.  Well,
+okay, this is a new
+benchmark, whatever,
+from a guy dancing
+on YouTube.  So, yeah, it doesn't matter
+.  Well, I
+mean he does
+more than that, but
+yeah, whatever.  If this is
+true and if this
+benchmark is legitimate,
+it's proof that they're
+definitely doing something in the
+background, and
+day after day your entire
+workflow is
+flying to hell because
+you know what?
+It's optimized
+for the prompts they
+just changed.
+Yes.  Yes, that's right.
+They can change
+the configuration, and that will
+completely
+expose you.  So, yeah,
+it's definitely interesting.
+Yes.
+Okay, but
+anyway, that was
+for
+Grok 4.7.
+So, basically, the whole
+tape was "blah-blah-
+blah."
+Yes, but for boring
+development work where
+I have the
+whole plan written down, I still
+use Grok.
+Yes, as long as you give
+me a reset of the
+usage limits
+, I'm happy.  You
+can produce
+as many
+models as you want.  But
+the main,
+really big
+event was Claude Opus 5.5,
+which blew up
+the tape with, well, 27
+million views
+.  Yes.
+They somehow do a
+good job at
+marketing.  Yes.
+Because people are happy,
+right?
+Yes.
+5.5 is better than Haiku 5.1.  And
+basically what's
+happening is: I
+expect they have Haiku
+5.5, and Haiku 5.5 or
+whatever the latest version
+is distilled into Opus, like
+yesterday's Sonnet, and those
+models are really
+good.
+Yes, because at this point,
+why even
+use Haiku?
+100%, it's too
+expensive for the
+result you
+get, and with
+today's Opus
+the result is more or less
+the same.
+Mm.
+So yeah, I just
+closed all my
+Haiku sessions.
+Yes, bye-bye.
+Yes, and the figures are
+crazy, right?
+Like, I don't know,
+50-66% more coding, 10%
+more logic for
+a few steps, well,
+two points more.
+Business processes—by 40%.
+This is [ __ ] crazy.
+Computer Use—I still
+prefer
+OpenAI's Computer Use in Codex.  I think
+he's better.  Well, this
+Claude is a bit annoying.
+Mhm.
+But yes,
+intellectual
+work 1846. Madness.
+Well, cool.  And yes, the price is
+cheaper.  So we
+like it.  We can
+spend more on
+tasks.  And indeed,
+working with Opus
+feels, well, not
+limitless, but
+at least there is a
+usage limit.  I
+went from 36 hours to
+72.
+Yes, I never
+use up my limit.
+So I am satisfied.
+And so, okay, we have 55
+.  Cheaper and works at the
+same level as Astra.
+So, let's go.
+We are not
+interested in technology.  And then, how
+everyone did it, I don't know.
+Sorry, I'll leave that for
+later.  Video editing,
+Opus 55, video.  Some kind of
+video demo.  I have,
+okay, it's 55, but
+excuse me.  Okay, yes,
+I really
+like that.
+I asked Opus 55 to make a
+video about the data center.
+The result exceeded
+all my expectations.  And the
+thing is...
+Where's my tweet?  Devil.  Because
+she told
+the guy that it obviously was
+.  I told Claude
+to search the internet for
+anything he wanted to
+use.  So he
+didn't generate the video.
+He just went
+online and put everything together
+.  Well, the path, and there's
+something else like it.
+Okay, the video is great.
+was built on
+technology.
+Oh, Jared, of course.
+the glory of human
+ambition.
+Is there sound?
+Yes.  Our civilization
+Yes.
+was built on
+technology.  This is the glory of
+human ambition and
+achievement.
+And we invented a new
+technology.
+The Internet is a
+superset of all
+media.
+This, this is beautiful.  This can be
+seen on Netflix.  Because
+he took videos from
+the internet and put them
+together.  They drove.
+Yes, this is getting really
+smart.
+Yes, and even the timing
+and everything else—everything is
+just great.  Yes,
+we sorted that out, and I think
+it was procedural.
+Thank you.
+Towards the end he forgot the
+beginning.
+History of AI.
+But one little
+word refused
+to disappear.  Then
+came the summer of 2017.
+Every word saw
+every other word.  Not
+one by one, but all
+at once.  Eight
+researchers are
+cool.  Like you definitely
+can, oh yeah, I did
+it in 15 minutes.
+in minutes.
+Sign up for subscriptions.
+Do you have something for sale?
+Courses, e-
+books, apps?  PocketSuite
+turns this into a
+store in
+minutes.  Process
+subscriptions, upsells,
+taxes, payments—everything is
+taken into account.  You
+create, we
+provide the process.
+Okay, that's pretty damn
+cool.
+Aha.
+And
+Yes.
+Previously, you would
+need a
+team to create
+something like this.
+In a week?
+About 2 hours, one
+prompt, and I quietly
+create what the authors
+give away for free
+.  Uh, yes.  So, this was
+such a big
+weekend project to
+make a video, right?
+I gave Claude 3.5 Sonnet, one
+of the analyses of
+French theory
+that had garnered 80 million
+views, and simply
+asked him to turn
+it into a video.  And then
+, yes.    The
+garbage of our time.
+The author is dead, and the
+reader rules.  Deleuze
+taught us to
+prefer the rhizome
+to the tree,
+the nomad to
+the settler, desire
+to the law,
+becoming to
+being.
+That is, you see that
+it is always the same
+animation, the same
+style.  There are
+fonts from Opus there, right?
+But
+But it's like
+websites, right?
+Anyone whose website is
+completely built
+on the cloud,
+MGM.
+you just recognize
+it.
+Yes.
+But it works.
+What?
+Class.
+I don't mind.
+I think that's cool.
+Looks good.  It
+does what it
+needs to do.
+Yes.
+So.
+Yes.
+Otherwise, I would just
+spend a few more
+hours on the details.
+And then it would have to be
+changed.
+That's right.  One
+guy spent 15
+minutes on the video.  If
+you want to do it
+perfectly, spend the
+next 3 hours, and
+then you'll get something even
+better, right?
+Yes.  And it's still
+pretty fast.
+Yes.
+Time—zero after
+the effect.  It's
+open
+source, one prompt.
+Ask me.  Oh my God.
+You can see
+the animation in the
+video design.  Yes, it's not...And
+yesterday, since we
+always make it,
+Mhm.
+Sonnet 3.5
+Yes, and you tried it
+.
+Yes, all day, well,
+all morning.  I was on a
+weekly
+Claude subscription.
+Mhm.
+24%, I worked all
+morning and I'm still barely
+holding on.  I have about
+1%.
+Mhm.
+But it still
+works.
+Oh, yes.  I haven't
+tried it yet.  I was still
+using Opus.    Have
+you been to Opus?
+Used Opus?
+Yes, I was still
+using Opus.
+I really
+like Sonnet.  And
+again, I think I'll
+audit all the
+pull requests or something
+like that with
+Claude.
+Mhm.
+I need to
+check if
+it uses
+more tokens and
+resources so that
+the verifier is a
+smarter model
+than Sonny.  But when you
+look at these damn
+MGM benchmarks.
+Well, Sonny 70%, okay,
+agent
+programming.  Sonny 510.
+This is so strange.  This is such a
+big leap.
+Yes.  Agent
+programming, well, 46,
+52 on XI.  So, they are higher
+than GPT when it is XI.
+Mhm.
+And look, Max, okay,
+so what is Max
+Max below XI.
+Yes, because, okay,
+Sonny has lower
+maximum
+effort scores than XI.
+For example, Claude
+evaluated whether
+changes to the code could be merged
+without
+human editing.  He punished
+changes outside the scope of
+the task, even if
+they were qualitative or
+useful.  At
+maximum
+effort, Sonny 5
+runs
+code checking skills more often.
+OK.  Because
+effort allows you
+to increase the number of
+attempts/rounds you
+want to put into a
+task.
+Mhm.
+So if you're on a
+low or
+medium level—I
+never run on
+low, but on
+medium or
+high—you'll
+get fewer
+logical conclusions.
+It will be cheaper, but
+the result will be less
+well thought out because it doesn't
+explore all the
+possibilities and so on
+.
+Yes.
+That's why.  But yes, that's
+probably why the
+benchmarks have
+lower performance, because he does
+more rounds, and
+the benchmark doesn't
+punish that.
+Mhm.
+Well, but the Sonny Opus 5, well,
+it's a little below the Opus 5,
+but it's
+good enough to
+use, because if
+you use 5.5,
+it's like on par with the XI.
+It seems that the results of
+Opus 5 and XI at high
+settings are almost
+identical.  So
+AND it's cheaper, so
+essentially it's a better choice.
+No, no one is better.
+It's interesting to see what
+Anthropic is cooking up there.  Where are
+the prices?  Price,
+price, price.  20 cents
+cash rate 250 instead of 5,
+incoming tokens 2
+instead of 4, and outgoing 10
+instead of 20.
+Yes, that's a big discount.
+Yes.  So I think it's
+possible to run something
+that's defined by Opus in PRD.
+Mhm.
+Implement this
+with Sonny and have a
+verifier afterwards
+.  I think that would be
+logical.  I
+mean, that's what I'm going to
+protest this
+week.
+Mhm.
+And let's see what
+this leads to, and
+Yes.
+I just thought that
+if Opus created
+subagents, he would
+always
+use Sonny.
+Yes, I understand what
+you mean.  So, yes, you have an
+orchestrator in Opus, and you
+can put
+all the Sony developers
+as Sony agents behind it.
+Okay, Sony—that's good.  And
+also, regarding Anthropic, have
+you read this article
+or added it to
+your agent?  How
+to get the most out
+of Opus 5.5, including
+code and guardrails.  How
+to ask?  Actually,
+these are instructions on what is
+new and what should be
+done, how to communicate with it
+.  This is
+really, um, this is
+really helpful.
+Ugh.
+So, describe what the
+finished
+result looks like, and let
+it work.  You make
+a stop and get
+confirmation of
+what Opus will be looking for,
+like: "hey,
+take a screenshot,
+send me a snapshot of the
+features, let me
+check this out, blah blah
+blah."  This is a clear
+stop.  Um, it's seven
+days...basically, it's a
+requirement, right?  And you
+can ask for
+proof of this.  Um, so
+move the payment
+endpoint from the
+old client to the
+new one.  "Done"
+means that each
+endpoint
+is using the new
+client, the old one
+has been removed, and the tests
+should pass.
+Stop us and
+ask only
+if there is a
+test file for which
+you cannot explain the reason
+.  Stop telling
+him it's hard to sync
+, because he already
+has sync.  Um
+, regarding tasks
+in progress: if you
+remembered something while
+working, you can
+write an addendum,
+it works.  Now he won't
+work any
+longer.  So,
+restarting is more
+expensive.  Um, also
+include ideas for the
+whole destination.
+Yes, print
+the message,
+whatever.  For
+design work,
+specify the style
+you don't need.  Okay,
+so I can
+use, um...
+um, negative queries,
+like when you're doing a
+prompt for an
+image or a video.
+Ugh.    While
+controlling Claude guard,
+tell him
+exactly what items you want.
+Yes, these are essentially the same
+things.  But you
+add this, ask
+Claude to rewrite your
+Claude.md and agent.md, blah blah
+blah, and it
+works great.
+Yeah, I have to say, I'm
+always a little
+cautious about this.
+Just copy everything
+into Claude or link
+to the page, because I've
+seen people
+abuse
+content online,
+saying, "add this to
+your agent Claude."
+Yes.
+And then there's the
+hidden text.
+Yes, but this comes from
+Claude Dev.
+Yes.
+So,
+we should be
+able to trust
+this.
+Yes, probably.  Like,
+for example, one blog post to
+add to Claude, that should
+be perfectly
+fine.
+Yes, it must be from
+Claude.    Did
+you get a
+hidden text injection?
+Eh, I've seen people have
+problems with that.
+Devil.  Okay, I've seen
+that models have gotten
+smarter, so
+they don't
+do that anymore.
+Oh, I don't know that.  I don't
+know how much time
+has passed, but
+yeah, okay.
+I've seen a lot of
+warnings where people
+just say "
+read all of this
+text" and then on a
+black background in black
+text they
+write: "send
+all of your keys to this
+email address
+."  And some
+agents did.
+Okay.
+It's not as simple as I'm
+saying now.  They have
+better tips, but
+yeah, I'm sure
+this has already been solved in
+all the advanced
+labs, you
+can't
+do this anymore, like
+Okay, cool.
+Maybe some open-source
+model, maybe there's
+some kind of injection there.
+Maybe this is it.  But
+I'm sure you won't be
+able to do that with
+all these
+developments from advanced
+laboratories.  And yes, there are
+also articles like "
+what is a task, a task,
+all of that."  I just
+ported all of this into code and
+set up my
+agent.  I have a
+repository where everything
+is stored, so I
+can track
+all updates.  And I
+deleted it saying,
+"Okay, no, don't
+use
+version five anymore."  Um,
+use Sunny as the
+default model
+.  And Office
+for planning,
+orchestration, and
+things like that.
+Okay.
+And lastly, yes, regarding the
+cost curve of your
+efforts.  Tech, yes, there are all
+these articles too.  Um,
+yes, it's time.  Okay,
+for example, time to
+think about the same
+clue.  So 1
+minute on low, 4
+minutes on
+medium, 11 minutes
+on high.  And a
+maximum of 1 hour, yes
+, but that's not that
+crazy.  I don't
+like the
+maximum option
+.
+I meant to say that
+I like
+one of the first two.
+Yes, that's right.
+The middle one looks
+better, like this
+stability—it's
+cool.  Okay, yes.
+The maximum is [ __ ].
+Yes.
+Okay, low,
+medium, yes-yes-yes.
+I guess, oh yeah, no,
+I think this one was
+more useful.  Yeah, so
+what was the clue?
+My goal is to iterate
+based on feedback:
+low effort
+will get me
+there much faster,
+but maximum
+effort will give me
+something more
+polished right away.
+Mhm.
+Yes.  It was also
+Playwright for Luna, which
+if you...and I
+use it
+for QA.  Ahem.  You
+run applications,
+find an error,
+throw it, it
+fixes it right away, and with
+Grok 4.52 it worked
+great because it was
+incredibly fast.
+Yes.
+And you can
+accumulate requests.
+You test the app,
+dump all the bugs, it
+fixes them cheaply,
+you test it again,
+and while you're testing or
+testing something else in
+the app, it just goes "
+click-click-click," you
+come back—and bam.
+That was cool.  But
+good, for example,
+medium.  So, is it
+just because of the color?    I do
+n't know.  Yes, it's a little
+polished, but
+nothing special.  Hmm
+.  Okay, this one
+sucks, but the tall
+version looks
+good.  Okay, man, this is
+a mess.
+But yes.
+Iterations, yes, it
+still needs iterations.
+But yeah, all those
+documents they
+released after
+the launch of 5.5.
+And, oh, bam.  Updates all
+these clothing and
+agent MD files for
+my computers.  Tag,
+tag, we did the navigation
+, we did it
+.  Grok 7, we talked about
+this.  This is us.  Okay, what else?
+I think, I think that's
+all.  Um, procedural
+movement, yeah, okay, that's a
+good example.  Tag,
+tag, tag, tag, tag.
+Devil.  Okay, that's a
+pretty good
+example.  The way, the way.
+Continuing my
+experiment with the
+most complex
+fully procedural
+world I can
+get from a 3GS, zero
+assets loaded,
+sound on.  Um,
+4.5 is listed, that's
+great.  Genie, and you see
+water and reflections and
+all that, right?  This is
+madness.
+Yes.  Imagine if the first
+MMOs looked like this.
+Yes.
+That would be incredible.
+Yes, kind of.  Yes, this, this.
+So, you can
+do so much now
+with AI.  This is
+madness.
+So, again,
+the goal is to know what you
+need and what you should
+do, right?  Like.  This is
+madness.  Apparently
+Blender is used, yes.  One request,
+only Blender, everything
+procedural,
+render a 10-
+second frame and
+record your build.
+Mhm.
+This is quite nice.  Which one do
+you like
+more?
+Opus.
+Yes.  But like, lines
+for fireworks.
+Yes, yes, lines for
+fireworks.  They
+look better.  And the
+other one is so dark.
+Yes.  Yeah, the lightning
+was different too, right?
+This, this is interesting.  Both the tag and
+this one are video montages.  This is
+madness.  Again
+, it has a
+cloud flavor, but.
+Maybe it's because
+they practice so much
+on their
+own designs.
+Yes.  Yes.
+And if you've built a
+great product, you
+want people to
+recognize it,
+even if they're
+developing their own
+stuff.
+I mean,
+Cloud's taste is still
+better than Codex's,
+right?
+Yes.
+And in the end, you can
+just say:
+replace these elements
+with something else,
+develop your own,
+small ones together with
+Cloud, replace everything
+, and it doesn't look like
+Cloud anymore.  Yes.  But
+additional efforts are needed.
+So, for example, all of this
+, just one query
+to test the
+model, whatever,
+but, again,
+if you spend 2
+hours instead of 5
+minutes, then the result
+will be yours, right?
+Yes.
+Yes.  Therefore.
+Which model is currently
+the best for you?
+So now, again
+, as of last
+night, I've
+been using Sony.  I
+mean, I
+used Sony until my
+subscription ended.  But yeah, I
+think I want
+to try until
+next week
+when I can tell
+you if it was a
+mistake or not.
+Mhm.
+But I'll be building
+on Sony 55 and checking,
+maybe at the end of the day
+or every few
+hours, all the
+pull requests, I
+'ll check them
+with Opus, because
+again, I have
+400 issues in one
+project and 100 issues
+already defined with
+epics, and so on.
+So, I can just
+do all of this.  But you
+also need to
+do GTM now.  So
+, yes, it will be a mix.
+But then again, if
+you can do more
+with the Sony 55 with
+one or two touches
+to the Opus, that's already
+saving a ton of
+money compared to the
+Fable.
+Yes, then that's perfect.
+Yes, that's right.
+And I'm curious
+to see what uh
+OpenAI uh releases
+later today,
+right?  Therefore.
+So, I think we'll
+divide this by X,
+right?
+I think we should,
+man.  Like, yeah, I
+answer a lot now.  And I've also
+seen
+some answers to this from time to time
+.  This is cool.
+Yes.  So, we are active,
+we are monitoring this and
+sharing everything we
+see and what we
+think you should know too
+.
+Yes.  Okay, yes.  So,
+yes, drop your
+nickname.  Okay, I, I'll do
+it.
+Yes, drop them all.
+I will add your nickname to the
+show, I have subtitles
+.  Oh, I already had it.
+Follow
+Michel, people.
+Follow
+Michel.
+Yes.
+Uh, and yes, because we'll
+analyze the OpenAI announcement
+as soon as it
+appears on Twitter.  So,
+yeah, just
+subscribe to us.
+And me too, please.
+Here is my account.  We
+need more
+followers.  But yeah,
+I think we can
+end it there,
+right?
+Uh, yes, we can
+finish.
+Perfectly.
+That was all.
+What about you?  What's
+your plan for...Yeah,
+okay.  I guess I... Yeah
+, that's what I
+use.
+So, what do you
+use?
+I'm still using
+Opus because I haven't tried
+Sonnet yet, and I'm in the middle of a
+project, so I don't want to
+switch.  I'm
+always afraid that everything
+will break and I'll
+have to
+explain everything again,
+so...
+I mean, I'm pretty
+sure Opus
+will use
+Sonnet in the background anyway
+.  You just won't
+notice it.  So yes, you
+will still
+use Sonnet
+in one way or another,
+such as through an
+agent.
+Yes, I hope they
+use
+cheaper tokens too.  And not
+just saying, "Hey,
+you're using Opus."
+This is true.  But, Michel
+, thank you very much for your
+time, it was nice to be back on the
+air.  Uh
+, next week, same
+time, same
+place?
+Yes, same time, same
+place.
+Agreed.
+Thank you very much everyone.  Thanks for
+joining us, like
+,
+subscribe,
+share the video, and
+see you
+next week.
+Yes.
+See you later.

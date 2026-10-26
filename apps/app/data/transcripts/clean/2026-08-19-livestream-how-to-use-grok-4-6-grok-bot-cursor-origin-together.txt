@@ -1,0 +1,1758 @@
+And we are on the air.  Welcome back
+,
+hello everyone.  Welcome
+back, Mitchell.
+How are you doing?
+Yes.  What's new?  We
+had a good week.
+It's been a crazy
+week.
+Yes.
+I liked it.
+We released the
+perfect video.
+Yes.  And, well, Elon
+wins, and that's
+nice to see.  Yes,
+I like what
+he does and things
+move quickly.
+Conversation.  Okay,
+wait.  I'm just
+checking if
+the microphone is connected correctly
+.
+Yes.  Yes, I hear you.
+Okay, fine.  Uh, yes.
+Yes.  So, yes, TP is still
+not bad, but, well,
+we'll see that in the
+tests in a minute,
+but it's a little
+slower than 4.5.
+Oh, yes.
+Speed.
+New
+product launches.  This is, like, a
+tenfold
+acceleration.
+Yes.  Oh, yes.  Yes.  I mean,
+it
+launches missiles, so
+what can we say about
+AI, right?
+Yes.  Everything moves
+forward thanks to X.
+That's right.  And, yes, are you
+going to apply
+to SpaceX?
+Oh, well, that would be cool.
+But, seeing all the
+people tweeting
+or posting on X,
+working for Gers, Ex
+and his other companies
+... Yeah, I don't know if
+he'll hire me
+.    I should have
+.
+Okay.  So what are we
+going to talk about for the
+next 45 minutes, because
+then we have meetings
+with clients and stuff
+.  So let's go.
+Um, Grock 4.6, six
+Grock bots, and, well, a new
+little company
+that was bought for 60
+billion.
+Cursor from Origin.
+Yes, that's right.  And, like,
+60 billion.  That's
+not bad.  Like,
+what, three years
+ago?  They started
+about three or four years
+ago.
+Yes, and they are now
+officially part of
+SpaceX, right?
+Yes.  That's right.  On the
+14th, they
+shared a tweet
+announcing that the buyout
+had taken place.    It's
+cool that the emails
+they send to
+customers like you and
+me are now officially
+signed "from SpaceX."
+Yes.  Oh, yes.  Yes.  Oh, yes.
+I didn't notice, but that's
+cool.  Last night.
+This is cool.  You just
+check your email and
+see that you received a
+letter from SpaceX.  Why?
+This is strange.  And then
+you see what it is about Cursor.
+But...
+it was nice to
+see.
+Were you on the
+waitlist for CO Origin?
+No.
+Because the subject line of the email
+was: "Oh no, you're off the
+Origin waitlist."  I said, "What the
+hell?"  And then you
+check and say, "Oh
+yeah, we launched."
+Yes, maybe
+Grock wrote it.
+Yes.  Good.  Yes.  I
+mean, he knows how to
+write clickbait,
+right?  Yes.
+But, uh, yes.  OK.
+So, uh, introduction.
+Yes.  Well, this is your
+master class, right?
+Yes.  Oh, yes.  Yes.  Yes.
+This is it.  Did I do it?
+Want to learn about
+Grock?
+Yes.
+Want to learn about
+origin or Grockbot?
+Yes.  Yes.
+Click and watch
+this video because it will be
+golden.
+That's right.  We'll show
+you how it works, or
+just the small
+part that works, because
+some of it is still in beta.
+But
+yes.  Yes.  It's a little
+raw, there are certain
+flaws that are still
+like
+flaws.
+We are excited, but this is
+just a warning.
+This is not origin, this is not a 15-
+minute video.
+Not yet.  Maybe
+next week.  Uh,
+okay.  So,
+first of all, uh, SpaceX.  It's
+pretty cool
+to broadcast
+SpaceX tweets.
+Yes.
+Eh, cool.  No.  Above.
+Cool, 4.6.  The tweet
+announcing it was,
+uh, yeah, last
+week.  OK.
+Wait, I just
+want to make this
+really
+close.
+What the hell?  Machinery.
+Why?  Why is that?  What
+is broken?
+OK.  Uh, yes, that would
+work.  Um, Grock 4.6,
+crazy benchmark
+4.6 high, uh, on par with,
+essentially, Fable 5 max.  Here are
+the numbers.  Uh, yes,
+it leads in GDP.  Um,
+61 vs 62, like in Fable 5 max.
+I don't use max,
+I use high.
+So yeah
+, me too.  Yes.
+Otherwise, tokens
+are spent very
+quickly.
+Yes, I know.  It goes like,
+and honestly, after a day or
+two of planning I've already
+spent, uh, 20-35%.  Uh-huh.
+Like, on my, on my,
+uh, max 50%.
+Yes.
+Yes.  Again, we
+get a big
+advantage because we didn't
+use Fable
+max.
+Yes.
+Fable high.  So the results
+should be lower
+, sorry.
+So Grock 4.6 is better than what
+we're currently
+getting from Fable.
+Yes.
+In our case.
+Yes.  And regarding
+planning.  Do you
+use it for
+planning or not?
+Yes.  I use
+this for planning, and
+if I ask Grock
+to plan some
+little thing, I always
+ask Fable to double-check
+it.
+Just to be
+sure.
+Yes.  I started your
+workflow for
+verifying the
+merge request, so now I've
+executed it on Grok, and the
+PR verification was
+done
+using the code CLI on Fable
+5.
+It's not bad, it
+works, and that's the main thing.
+It captures even the
+smallest details,
+you know, it's really
+cool.  Yes, but
+using Grok I
+could reduce my
+Fable subscription.
+That's right.  Because
+you have heavy
+loads there and
+more "fables"
+inside.
+But yeah, let's
+discuss that
+later.  Good.  So yeah
+, that's it.  Like
+Fable 5 max or something.
+Good performance.  Yes
+, thank you for this
+illustration too.  Okay,
+so GDP val AI briefcase.  I do
+n't know exactly what
+the benchmark is, but it's
+yellow, so that's good.
+And labs, I don't know about GDP, and
+the one we
+like—the
+Cursor benchmark: 69, 69.9
+versus 70.5 for Fable, so
+yeah, it's a very small
+difference.
+Yes, exactly, at this
+stage it doesn't really
+matter,
+so last week
+Grok was released as, in fact, the
+advanced model with
+version 4.6.
+Yes.
+And uh RT RT
+and Elon even wrote
+that they are testing
+version 4.7 within the
+company.
+Yes.
+And it will be out in a few
+weeks.
+Yes.  It should work out, yes.
+About two or three
+weeks from now, right?
+Yes.
+Uh, Grok 4.6.  Where is he?
+I think it was right
+here?  Yes.  So you
+see a jump from 4.5 to
+4.6.  This is just
+madness.  And again
+, after a week of
+using the model,
+you can definitely see that
+it is good.
+Yes.  Well, try it
+yourself and you will see that
+it does the job
+properly.
+Yes.  That's right.  And
+a few days later, in the
+days that follow, where is this
+tweet?  Oh, I
+lost it.  It's okay
+.  I will do
+it again.  Tech courses.  Not yet.
+But Grok, but ah, it's us.
+Yes.  It's difficult.  Steeply.
+Good.  Did you watch
+the video?
+Yes.  I even
+turned it on on
+the TV and my
+daughter watched it too.
+She didn't
+understand anything, but
+she said I
+looked good.
+Well, not bad either.  Yeah,
+the next day…oh
+[ __ ], I
+lost it.  Yes.  So, on
+August 11, Grogbot was launched
+.  It's essentially an open
+tool that
+works.
+Yes.  And the entire Cursor team
+wrote about it, saying
+that he was doing everything for
+them.
+I don't believe them.
+Well, that's cool, and it
+works.  I tested
+it and it even
+gave me a
+summary this
+morning, but then again
+, I had a
+meeting.
+And I told him you
+need to give me an
+update at 9:00 AM
+about when I
+need to leave.  And
+then it started
+working at 9:00 AM.
+So the update
+came a little
+later, it gave
+me time and said, "
+Yeah, you were supposed to
+leave five minutes
+ago."
+So I gave him feedback
+that when I say 9:00
+AM, I want
+the result at 9:00 AM
+and it should start
+earlier.  So,
+it needs some
+updates and you
+need to work with it
+.  But what it
+gave me
+worked pretty
+well.
+Yes.  OK.  So do
+you write code with it?
+No.
+With his help?
+No.  No, I use
+it as a personal
+assistant.
+OK.
+Do you write code with it?
+No, I tried, and
+you know what I do?  I'm
+setting this up as a
+company, all the time,
+when I start these...I'm
+testing these
+agency
+workflows.  So I hire a
+CEO, a CTO, a
+CMO, and so on
+, and then I watch
+how they interact
+with each other, which is, frankly
+,
+agent-to-agent communication.  This is a pretty
+cool feature.  It's
+pretty well
+implemented, right?
+For example, you can
+see how the chief of
+staff communicates
+with the inbox manager
+or the
+sales department, and give them
+a couple of months, it can
+be very powerful.
+It's cool to see that you
+made a different
+setup than I did.
+OK.  I mean
+, I can show
+you right now...
+I have three bots, and I
+use each one
+for a separate
+project.  So I
+created three different
+project managers
+and they don't communicate
+with each other.
+OK.  OK.  So this is
+definitely not the
+workflow I
+use.
+No, he's different.
+OK.  I can
+zoom in.  Perfectly.
+So, I have...
+they all have
+French names
+because I can... The
+Chief of Staff—that's
+basically my main
+bot, and I basically
+communicate mostly
+with him.
+And he hires other
+agents when a
+new need arises, etc.    This one
+manages my
+network, which is my Mac
+Studio and MacBook Pro.  QA
+engineer, which I
+really like
+because it's the main
+function I
+use.
+This is a testing and...
+application that I'm
+working on directly
+with... with production.
+Yeah, maybe it would be
+cool to explain what
+people do because you're
+switching from Mac
+to Windows right now.
+No, it's Linux.  This is Linux.  Uh-huh.
+Oh, sorry.  Q.
+Yes.  So I did this:
+if you
+use a session
+here, you have a window, uh
+, if you click on the
+o.  Because I need to
+show you an icon.
+See the little
+icon here?  You click
+here, and a
+sidebar appears, where there
+are also routines, uh, it's
+like a conversation, you
+communicate with an agent,
+you have a routine set up
+, and you don't
+have to ask, "Oh,
+create a routine, blah blah
+blah."  It makes
+a decision a little better
+than another agent to
+create it like Codex
+used to, but, uh,
+sometimes I just say "
+create a cron job" and
+it creates the damn
+job in the
+Codex app.
+Yes.  So, essentially, the
+Grokbot has its own
+virtual machine
+that it runs, and
+everything it does,
+it does in that VM.
+That's right.  And you have
+one, uh, computer
+for your
+account.
+And all the agents
+you have—this is a new
+virtual
+desktop.
+Yes.  Everyone has a
+virtual machine.
+That's right.  Uh, and I
+know this because I asked Grok.
+Well, if you don't know—don't
+make assumptions.  Grok
+can answer
+everything.
+That's right.  Uh,
+thank God, he
+gives your agent
+one shared Linux
+computer.  I
+don't have a private
+car.  Er,
+installing and logging
+into the browser.  So yes,
+if you switch from
+one session to another, your
+credentials
+are saved, the
+virtual machine is not
+deleted;  they
+just, uh, hold it,
+like shut it down,
+reboot it and
+continue, but you
+can, essentially, uh,
+yeah, keep
+working, but separately
+in different instances,
+uh, your app on the Mac
+, yeah, control, yeah,
+because I asked if
+you would code on my
+computer in your
+virtual machine, uh,
+so, yeah, I think
+it would be like a
+personal agent,
+not an agent that
+would control my, uh
+, GitHub or
+workflow and development.
+Yes.  But, for example,
+if you get a
+system error or
+a notification that something
+went wrong, you can
+forward it to the bot.
+Yes.
+And he will check it and
+create an issue on GitHub.
+That's exactly what happened
+here.  I'm testing, uh, the gen
+feed agent and trying to
+hack it.  So it
+was
+very easy to break it.  He was
+just trying
+to generate one
+image, a simple
+red apple on a
+whiteboard, and right away the
+first error—boom,
+let's go.  Uh, but it
+was automated.
+So now I can
+deploy to production, the
+QA engineer will get a
+notification and try
+again—the same
+request, click retry
+, submit a new
+request, and check
+if it breaks.
+create
+error monitoring in Sentry
+or fix them immediately
+.  This is simply
+incredible.
+Yes, and it can be
+integrated with Slack.
+So
+yes,
+I think you can even
+set up an
+automatic cycle: as soon as the
+QA engineer
+decides it,
+he tags the bot in
+Slack, the bot sees the issue ID in
+GitHub, repeats the action and
+reports whether everything
+works correctly
+or whether the error still
+remains.
+And you have this cycle
+that fixes everything.
+Yes.  But do you want to...
+Okay.  Another
+problem I have with loops is
+that...you need to
+have constraints,
+like a limit on...
+Yeah.  Because I don't want to
+spend the entire
+subscription, even though Cursor is doing pretty
+well right now.
+This works pretty well
+.
+Yes.  I always say that there
+should be a maximum of
+five attempts in each AI cycle.
+Yes.  Oh yes.  Of course.
+Makes sense.  Yes.  And then you
+can still
+track it in GitHub
+through history or
+even in...you give
+the agents the task
+of writing a
+discussion thread in GitHub issue
+or pull request to have a
+history of changes.  Yes.
+Or just add a
+comment
+summarizing everything—and you're
+done.
+Yes, that's cool.  So,
+this was my first
+use case for Groq.    It's
+also interesting that
+you can see how the
+virtual
+machine is running—I know
+Codex has that too, but with Groqbot
+, I find it
+cleaner.
+What I did...well, it's
+a bit different: I opened
+Discord, where I have a
+separate thread where I
+dump all
+my system errors, and
+told it
+to index the entire
+thread for the last
+few days.  And you
+see him
+scrolling the screen,
+taking screenshots,
+scrolling again,
+taking screenshots, and
+recording everything.  I
+got a full
+list of all the bugs,
+created a bunch of issues on
+GitHub, and then he
+tries to
+fix it all.
+Of course.  You
+don't have a problem with
+context and
+screenshots, because
+I had such a big
+problem, I think, with
+Anthropic and Claude.
+Mm.  Claude was debugging a
+mobile app — a
+TV series tracker
+that I created for my
+girlfriend and I.
+Um, the session had a
+simulator context, an
+iOS simulator context plus
+a screenshot of the phone, and
+it compressed every
+request.
+Oh no, he doesn't
+do that.  He is working.
+Good.  Good.  Well done.
+Yes.  And it only took
+three days and a lot of
+hassle, he even
+removed all the
+duplicates.
+Class.  This is cool.  So yes
+, that's how I
+set up my Yes.
+But like Okay.  How are you?
+Good.  Because I am Yes.  I
+think Okay.  So yes,
+all these agents are
+connected.
+M-hm.
+And I like it. Yes.
+I discovered that you
+can create a
+type of folder there.  Would you
+create one per
+project or would you have
+one CTO
+coding in each
+repository?
+Well, I'm starting with the
+project base because I don't
+want him to do
+everything.  There are a few
+projects that I don't
+want them to
+check and
+to be sure
+they don't
+do anything with the letters or
+anything like that.  Yes.
+Or with errors.
+So I created a
+project manager
+for each project and
+said that you can
+only work on what is
+relevant to that
+project and nothing
+else.
+Ahem.
+But if I see that it's
+working
+properly, I can
+scale up and
+just tell
+the CEO: fix
+everything.
+Yes.
+And then he will be able to
+create several
+folders and simply
+perform a few
+settings.  But it's
+not connected to anything,
+like any
+folders on my
+computer.  And
+I also have Grog
+bot installed on my MacBook Pro.
+M-hm.
+And for an hour or
+two, it was impossible to
+access the
+WW folder that I have on my
+MacBook Pro from my Grogbot because
+it was installed
+on my studio.
+M-hm.  And for some
+reason there's
+nothing there to
+see.  I said,
+bro, try SSH,
+try Tailscale, but yeah,
+I think it's because
+I have multiple SSH
+keys, and it
+tried them all, and
+then it timed out because
+it was the last one or
+something.  But now
+it is too general.
+I feel like they
+need fuses
+.
+Yes.  Yes.  I think they are
+definitely needed.
+Yes.  But why, what do you
+think about UX/UI here?  Because
+it's raw.  He is
+really raw.  It
+really is, but it's very
+unconventional, and if
+you compare it to Gro or
+any other
+interface where there are these
+two goals—you
+assign a project, a
+folder, a cloud
+virtual machine, or
+whatever—which one is
+better?
+Well, it depends on
+what you want
+to get: the ones where
+you have folders,
+fuses and everything
+else.  You decide
+what you want to do.  And then
+you throw in the assignment, and
+he just corrects
+it, and it doesn't matter how
+.
+Yes.
+So you have to trust
+that it works
+properly.  And you
+do the same thing when
+you hire a
+personal
+assistant, just a
+real person.  You give
+him or her a task
+and later get the
+result, and this bot
+does exactly the same
+thing.
+Yes.  Yes.  You delegate
+, like, yes.  You learn
+to delegate more to the
+little AI.
+Yes.  More than that, yes.
+But, like, yeah, I
+mean, it's not easy,
+right?  Because I'm like, "Yeah
+, I have my Grobot MD. Don't
+do that."  Oh, by the way
+, I did it.
+Yes.  Well, I haven't
+had that problem yet.
+And what you can
+do is if
+you open a
+Linux virtual machine, a VM,
+you can record
+one of your routines and
+it will execute it
+every day exactly the same way
+you do.  What do you
+mean?
+So, I think if you
+... well, maybe we're in a bit of a
+hurry.
+Close the
+preview.  And can
+you click on your
+bot at the top?  Lafayette,
+icon or Curie, it doesn't
+matter.
+Oh, right here.  Ahem.  Let me
+check here
+, then I'll
+know, otherwise I have a
+...conversation.  Now that.
+And, I think it's down
+here, on the plus sign, where you
+enter the message
+, bottom middle.  A.
+You can say "
+teach task", and
+if you click...Yes.
+Record how you
+perform tasks and
+Curie will learn the steps and
+be able to repeat them on its
+own.
+Go crazy.
+So you just
+need to show
+him how you do it.
+And I think it's like
+macros in Excel.
+Remember how it is in Excel:
+you click here,
+click there, and the
+Excel macro exactly
+repeats your actions and
+does it over and over again
+.  It's exactly the same
+.  That's good.
+Why is it here?  Devil.  Um,
+okay.  So, I could
+even test
+the app, write it down,
+and say, "Oh, that's why
+."  Click, click, click, and
+then...cool.
+So if you spend
+a little time, you
+can teach him
+what he should
+do.  And he has
+routines and everything else.
+Okay, that's nice.  This is
+nice.  Oh, and how do you like the
+Genfield interface?  Thanks
+, he's cool.  I
+need to give you
+your account.
+Yes.  So I can
+test it.
+Yes.  I know.  Yes.  Don't
+test it, because now
+I have a bot that
+tests it and
+finds bugs.  So...
+yes.  Well, it doesn't
+matter.
+Hmm, okay, cool.  So yes
+.  What will you
+do?  Want to
+show something
+you have?
+Yeah, I think we can
+give Origin a few
+minutes and then
+do a demo with the bot.
+Good.  Ah, tag.  So,
+or, ah, tag, I'll do a
+puff replace.  crockbot.  Yes.  Puff.
+Steeply.  I'll close this.  Puff,
+share this.  No one.
+Okay.  Steeply.  So, Oh, I
+changed it.  Okay.
+Devil.  I changed
+the scroll.  Devil.  Ah,
+cool.  Tech.  tech.  I don't
+want this.  I want this.
+Okay.  So, Cursor Origin, the
+new GitHub competitor in
+town.  Have you tried
+it?
+Ah, I tried and
+finished it in three
+minutes.
+But the launch!  Good
+time.  Damn, I knew that.
+I need to find those
+reels about this where I
+said they would
+launch it the day
+GitHub was down and they
+just had to
+wait 24 hours.
+Yes.  And yesterday GitHub wasn't
+working.
+Yes.  Four hours.
+Four hours.
+Yes.  So I think
+they were actually
+waiting for this moment,
+but it came sooner
+than they expected.
+So they had to make do
+with what they
+had.
+Which is like, well, it basically
+works, right?  Have you, uh, oh, have
+you read the change log?
+Okay, so
+Origin code hosting, Cursor can
+know your code.  Origin
+is starting to roll out
+today in early
+beta, and the old
+paid plan, well,
+whatever,
+Origin repositories.  The new
+codebase tab is
+home to
+Origin repositories.  Okay, so you
+can essentially
+sync your
+repository;
+bring your GitHub
+repo.  Your GitHub repo
+can sit next to the one
+in Cursor.  Ah,
+connect GitHub to Cursor
+.  Select your
+organization and you
+will see the repository
+.  You can
+sync,
+choose one, and add
+it.  So yes,
+you can make a
+backup for now.  I
+wonder how they
+changed Git or
+improved the
+workflow?  Yes, you see,
+we still have a pull request.
+Yes.
+Is this the best
+workflow for
+agents?  Everyone
+is used to this.  If you
+change this, I don't think
+teams will switch to
+your product.  First
+you have to engage them and
+make sure they are
+using it, and
+then you can say,
+“Hey, we made
+an improvement.
+Please test this
+new way of working,
+give us feedback, and
+see how they
+use it."
+Yes.  Like, okay.
+For example, the agent in
+each repository,
+your code, your PR, and the
+agent are not all
+in the same place.
+Ask questions about the
+code
+you are reviewing.  He
+can reply,
+make changes,
+update PRs, and
+push the branch.  Okay
+.  So,
+this is essentially what we
+did before, right?
+Yes.
+And we're always
+trying something new,
+but our clients, who
+have an IT team that
+we support, I don't
+think they're
+waiting for a new
+system from some
+GitHub competitor.
+Well, okay, so what
+happened?  Okay, what, what's
+going on here?  Oh,
+of course.  So you...
+Okay.  You select
+a function, drag
+it, and it
+opens on the side,
+explaining the function.
+Yes.
+Okay.  So yeah, it's like
+...
+yeah, it's integrated.
+Why do you need GitHub's interface
+and infrastructure
+for this?
+Because they are not
+ready to fully switch to it
+.  I think
+maybe they, yeah,
+maybe they want to,
+because okay, if people
+start to stop
+using GitHub
+and start
+using Origin,
+then they start
+to win, because
+then they will have
+data that doesn't belong to
+Microsoft.
+Yes.  But the biggest
+problem is that
+everyone uses
+GitHub not only for
+pull
+requests and merges, but also
+for full
+automation,
+since almost every
+...
+hosting on the Internet
+has integration with GitHub.
+You submit the code and
+we automatically
+deploy it.
+Yes.  Yes.  But I
+mean, for example,
+Blacksmith, you know,
+the company that
+improved the runners
+for GitHub Actions.
+Mhm.
+The way to connect
+to Blacksmith is to modify the
+GitHub Actions image
+you are using and
+apply the
+Blacksmith node 26 image to
+start and
+connect to the
+platform.  So you
+can leave
+your entire workflow on
+GitHub and just
+abandon the
+infrastructure
+behind GitHub,
+which is just crazy.
+Yes, that's cool.
+My mistake.
+Okay, great.  Um, and we
+partner with
+some of the best
+GitHub integrations here.
+Vercel, Bulk, Kai, Depot are already
+available.  Sorry.
+No problem.
+Well, yes.  Wait, is GitHub
+going down here?  Okay, a
+competitor to GitHub or Postman.
+Yes, its own git forge
+for hosting
+repositories, PR, and
+can create AI
+agents, deeply
+integrated with Cursor.
+You can create
+native
+Origin repositories or
+sync them with
+GitHub.  So, for example,
+can we have
+something, um, different if
+you create a native
+Origin?  That would be interesting.
+We could
+test this with a
+new repository,
+maybe next
+week.
+I think you can
+write code in Cursor
+using this and
+deploy to Vercel
+because it's one of the
+early integrations and
+that's it.  But it means
+that, well, in terms of
+using the agent,
+if it's connected,
+I don't want to pay
+extra for
+using it, because I
+can get it for
+free on GitHub
+if I agree to
+four hours of
+downtime every week or
+something.  But if that's
+also included in
+the cost of the Groq subscription,
+which you also have...you
+pay $30 a
+month for Groq and then
+you have a subscription to
+Cursor Ultra, which is cool.
+Because then you have
+usually another $200
+for the API, but you
+also have access—
+that is, you have
+$200 for the API for
+other models, but
+more capabilities
+for Groq 4.5/CM, Composer 3,
+which is coming out soon.
+Yes.
+So even in Cursor, if
+you use "auto
+", it should
+optimize the
+use of models
+.
+Oh, I haven't tried that.
+No, me too, I
+used 4.6 because
+it was fun and I
+know what's what.  But
+yeah, if it's "auto" and you
+optimize it...
+it might be good
+.
+Okay, cool.
+So now we have a
+demonstration from you,
+right?
+Yes, I think we can
+test Grobot.
+Yes, let's
+do it.  So will
+you do it or will I?
+Yes.  Yes.  I...I...
+okay.
+I move the windows so I
+can
+show something.
+Perfectly.  Yes.  Just don't
+light the files.
+Everything is closed.
+And if anything leaks, we'll
+just update everything.
+Yes.  And how is your
+integration with Pocket?
+Works perfectly.  I
+optimized it, now
+it looks
+better and better.
+Show me after the
+show.
+Yes.
+Got it.  Oh, GM.  Okay,
+fair enough.  It's you.
+Pat Mitchell.  Bam.  No.
+Still not.  Class.  Oh, you
+deleted everything.
+No, no, they can be
+hidden.  If you
+right-click
+,
+you can select "
+Hide from
+sidebar".  And here you
+see hidden
+buttons,
+because I'm not going to
+show my
+active projects and
+stuff.
+Class.  Class.
+I try not to
+do that.
+And here it is.  Let me... make it
+fit on
+the screen.  Yes.  So,
+you see, I created a
+new one, it was
+today, just an
+hour ago.  And this is the
+initial
+setup you
+get.  When you
+create a bot, you
+can easily
+click the plus here
+and create a new one.
+It wants to know what
+it should do for you, and
+I want to do a
+live demo and I've
+fully
+configured my
+first bot.  I
+explained the projects I was
+working on.  I provide
+him with some
+documentation.  and I give
+him a
+preview and everything.
+Um, and then I'll ask some
+more questions
+to make sure
+it knows exactly what
+you want from it.
+So, what should be in
+the demo?
+Talk to me.
+Um, you're doing
+real work.  I will give you some
+tips and I have done
+some preparation.
+So, I've already written
+the prompts and done
+some testing.  Um,
+I think we can start with that
+.  Got it.  Um,
+do you want a
+run first?  No, we're
+live now.
+Good.
+OK.  Give me the
+first clue.  I've
+been checking here and seeing
+a lot of people
+saying, "If my
+company
+went bankrupt and I
+needed
+100k by the end of the month
+, here's what I would do."  And
+they come up with
+incredible ideas where
+AI can optimize
+all SEO, create
+pages,
+automatically
+send
+emails, find leads
+for new websites,
+or whatever.
+Mhm.
+So I named him "
+King," and King will be the
+king of generating
+leads and getting
+projects for me.
+I can make
+money
+and if we do everything
+right, I can
+sell on the
+website for a day, right?
+Yes.  One shot,
+your generation is worth
+it, bro.
+Yes.  Yes.  So what I
+want to do is:
+explore the internet,
+here in the Netherlands
+around me, and
+find three or
+more companies
+every day that don't have a
+proper website
+or that need a
+new one because we
+think we can
+improve it.  Um,
+then we
+use Grog
+to create a website
+, and King
+will actually write
+emails to these
+people and respond
+to the first
+messages.  We
+can do it all,
+or at least some of it
+.  I can
+show this right
+now
+and let me
+create a new
+document.  Here I
+wrote a hint.
+OK.  So, this is a
+lead generation bot,
+right?  As a hint.
+Yes.
+18. So, you are my
+personal sales assistant
+for the
+English-language live
+broadcast on YouTube.
+You see, I've already given
+him some
+information.  I said we have
+30 minutes.
+So he gave you a
+maximum of two or three
+minutes to complete the task.
+Well, it's just for now,
+but usually you
+need it to
+work a little longer.
+I want to find
+small companies in
+or near Antwerp, with
+two to
+eight people, no
+multinational
+corporations or networks
+that need a new
+website.  Um, the goal is
+five, but if it's
+instant, then one
+will be enough for the demo right now
+.
+I asked Grok
+to research companies
+that have money but
+don't have a website.
+He replied: well, if
+it's plumbers,
+electricians, uh, people...
+Um, it's like engineers
+who don't know how to
+build a website.  They have
+money because they have a high
+hourly rate, but
+they don't want to
+do this.  So I'll
+just type it in and
+see what happens, and
+the idea is that if
+it finds anything, I
+get a report every day.
+Yes, I know for sure.
+So, let's create a routine
+.  Find me one or
+two new
+potential clients
+or leads every day.
+I made a request, and it
+seems a little
+slow here.  We see
+here in the side window what
+he's going to
+do.  You see, here I
+would like to see the steps
+he takes;
+the animation is nice, but
+maybe we need
+steps, or we
+get used to them, like in the
+code or Codex, to
+understand what's
+going on.
+Yes, because he's
+not doing anything right now.
+Yes, but you don't know
+if there's a
+launch list for that.
+So I'll take one
+real local
+store instead of
+looking for five.  Yes.
+But what are you doing?  Well, I
+wanted him to go
+on Google and actually
+search.
+Oh,
+I think we need a
+little patience.  So,
+read this on camera
+.  Well, that's cool.
+And, right here, top right
+.  You see, it
+works.
+Yes.  He just told
+me I should
+read it to you.
+See, you're just a
+puppet, bro.
+Yes.  Yes.  I have no
+choice.  But I think
+he already found something,
+because it's the same text
+I gave him, I
+prepared it, and
+maybe I can
+show you too.
+This is my preparation.
+Mhm.
+And I wrote down the prompts
+right here.
+I prepared myself according to my niche.  I've
+already done this, but I
+did it with Grok.  And
+now it looks like he
+found mine or it
+was in my query,
+but the sites on my
+screen are installation
+equipment in Velto.
+So, these are
+installation technicians, a
+one-person shop
+, a thin website, a logo
+, a link to the service.
+That's good, man, that's
+good.
+Okay.  And then it says, I
+found one, and you
+can see here in the
+VM,
+it actually launched
+Google and started
+searching for something,
+and I can use that too
+.  But
+yes, this is exactly the
+client I
+need.
+They have a website, and we
+can just
+try to
+improve it.  So the
+next thing I want to
+do is, um, I want
+to create a prompt that
+can be inserted into Google
+Build or into, sorry, into Groq
+Build, or does it
+do it itself and then
+build the site?
+I mean, uh, I
+think corner corners.dev, I
+opened the repository?
+Which one exactly?
+Well, the one I created
+for the same niche.  Uh,
+I don't remember if it's
+open source, because
+you can tell it to
+fork.
+Oh yes, we can
+do that too.  I can
+do it now, but I do
+n't know where we're going
+.    Uh
+, back.  Yes, it is
+public.  So,
+create me a prompt
+that I can
+use.  Yes.
+New website.
+Yes.  So create me a
+prompt for Groq Build to
+create a new site
+for this.
+Yes.  Yes.  What else will it
+do?
+Yes.  So, it
+will create a prompt, and
+everyone knows that with it, I
+can just paste
+it in.  It generates a
+website.
+Uh, I was doing it for someone
+else.  But here he is.
+And then you connect
+Resend, and you have a ready-made
+pipeline for sending
+emails, and the job is
+done.
+Yes.  Can you also
+send emails with a
+suitable offer to the
+lead you just
+found?  I'm in
+a bit of a hurry with this right now,
+but now he has to
+ask if he can
+access my email.
+Here, it gives me a
+choice: Outlook, Gmail, and, uh,
+yeah, whatever.  So
+, he says I can
+drive now.  We don't
+send email on
+the screen?
+But it's really
+smart because when I
+did examples
+before, it just
+asked to log in and
+submit.
+This is too long.  But,
+uh, yes, you have to
+show that this is a
+bad cold
+email.
+Yes.  Yes.  Well, it
+needs to be optimized,
+right?  Uh, if I
+want you to handle
+emails and initial
+responses.  Oh,
+can you do that?
+Let's see what
+he answered.  You see,
+I need a
+connected Gmail for
+this.
+Yes.  And I can say
+that I have IMAP.  It should
+ask for a login.
+Yes.  And in this case,
+it asks you
+to go to the browser in
+this VM application,
+uh, open the site,
+log in to your
+online mailbox, and
+just
+use it
+like you normally
+use
+webmail.
+Yes.  Yes.  Well, in 5
+minutes you find,
+like in two minutes in
+one query you
+find the lead that, uh
+, you just
+need to find 1,000 and
+then you'll have
+some passive
+income, right?
+Well, you know that not
+every
+lead you're currently
+writing to will become a
+customer.  You just
+have to
+keep going, and
+eventually, if you
+write to 100 companies
+, you'll get one
+or two clients.
+Yes.  That's right.  So the
+next thing you
+want to do is
+create a routine out of this
+and schedule
+it every day.  So I,
+doing this after
+five or 10 emails, I'm
+already exhausted, I
+need to create a
+website, it's going to take too
+much time, and if you
+only get
+one or two
+clients, that
+income isn't enough.
+But if the bot does
+this automatically, it
+will continue
+to generate leads and
+then customers, and you
+can ask for
+referrals and
+it's like a real business
+that you're building.
+So you can
+do exactly that for
+every app on
+earth
+and you can even, uh
+, generate leads
+for apps that
+have referral or
+affiliate discounts.
+Yes.  And you see,
+now I asked him to
+create a routine.  So this
+is the
+weekday
+morning startup setup for this
+scenario.  One lead,
+one draft, the
+first
+draft reply says that
+the mail is not
+being sent.  Of course,
+you need to
+perfect it, and you
+need to do it
+right.
+Uh, but you see
+he scheduled it, and
+he reminds me that
+IMAP is still not
+connected.
+And I'm moving
+a little fast right now, but I
+should be
+able to
+see this routine somewhere else.
+Yes, she is here.  She is
+here.  Like, no, no,
+come back.  Close
+the arrow.  She is here.
+These routines.
+Here they are.
+Yes.
+You see, now this is
+routine.  You can also
+deactivate it.  You
+can run it in
+test mode.
+Yes.
+And he created a description
+of what he
+needs to do,
+which is actually your
+request.  And it's like, yeah, it's
+going to be like that.
+Yes.  That's my whole
+example.  and he just
+does it on weekdays at
+8:56 am.
+and you will also have the
+full story.  So
+basically it's a uh bot, a
+grog bot, we just
+gave one example,
+but anything you can
+imagine, and why
+you need a
+task that's going
+to be repeated over and over again,
+even if it's
+boring as hell,
+just let the
+bot do it.
+You just don't care
+because it'll bring in about
+50 bucks more a
+month, right?  So to
+hell with it.
+Yes.  And if you don't want to
+clutter up your
+email, create a new
+mailbox or buy a
+domain for just 5
+bucks.  Set it up,
+connect a small
+IMAP account, and let it
+work.
+Yes.  Yes.  I think that
+was a good
+demonstration, man.
+Yes.  A little fast, but
+...
+No, everything is fine.  Everything is
+fine.  Like, there's proof,
+right?  There
+'s still some delivery, so we're
+fine.  Yeah, I think
+we can
+end it there, right?
+Overall, last
+week was
+not bad.  We had a
+fantastic model.
+Now there's a great
+tool
+you can play around with and
+start at least 10,000
+new businesses, or
+at least one where
+you can create
+websites for companies
+that need better ones.
+Yes.  Start the machine
+for sale.
+That's right.  Yes.  Finally
+.
+But yes.  Yeah, thank
+you, Mitchell, thank you
+for your time and the
+demonstration.  That was
+cool.  And see
+you in
+next week's review.  In the
+same place, at the same
+time.
+Like, subscribe,
+follow us on
+LinkedIn and Twitter.  We
+will be everywhere.
+Yes.
+See you later.
