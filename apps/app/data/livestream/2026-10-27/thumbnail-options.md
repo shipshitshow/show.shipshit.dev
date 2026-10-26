@@ -95,3 +95,13 @@ Kept for the record; replaced by Vincent's 26 Oct no-faces direction above.
 - Text layer `OPEN SOURCE`, as in A.
 - **Small-size check:** the logo stays the focal point at 320px; reduce the tile count if it reads as clutter.
 
+
+## Generated (26 Oct)
+
+Codex CLI image tool on Vincent's Mac. In `~/Desktop/thumbnails/2610/261027/livestream/`, each a 1920x1080 `.png` plate plus a signed `.jpg` (text layer + red asterisk via rsvg-convert); raw outputs and the 320px contact sheet in `sources/`. Nothing uploaded.
+
+- A: `genfeed-harness-a-swap-v1`. Passes 320px; logo matches the official mark by eye.
+- B: `genfeed-harness-b-harness-v1` (third generation: attempt 1 warped the logo and a tile hit the asterisk corner, attempt 2 still touched the corner). Logo slightly narrower than the exact mark; composite the real SVG before upload if it must be exact.
+- C: `genfeed-harness-c-toolbox-v1`. Passes; warm amber interior beside the white logo.
+- The official Genfeed mark is a single black glyph (`apps/app/public/logo.svg` in the Genfeed repo); rendered white on charcoal. Every logo is a generated reproduction, checked by eye against the SVG.
+- Generator output was 1672x941, scaled and cropped to 1920x1080.
