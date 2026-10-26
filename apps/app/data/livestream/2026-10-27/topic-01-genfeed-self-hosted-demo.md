@@ -44,11 +44,11 @@ thumbnail_prompt: null
 - Capture: Segment 3.
 - After recording: unverified; verify against the video/VTT.
 
-### Planned Short S2 — From install to first post
+### Planned Short S2 — From install to first post (only if an install is recorded separately)
 
 - Working title: I Installed an AI Content Agent in [X] Minutes
 - Point: the real time from command to a scheduled draft. Only use the number measured live.
-- Open: the terminal and the login screen.
+- Open: the running stack and the login screen.
 - Challenge: Mitchell: would a non-technical founder get this far?
 - Payoff: what it took, honestly.
 - Capture: Segment 3.
@@ -107,14 +107,16 @@ Open on a finished result from the dry run: one brief, the drafts it made. Then:
 - Mitchell: would you post this as-is? What would you change?
 - Budget: about 14 minutes. Exit cue: "now, how do you run this yourself?"
 
-## Segment 3 — The self-hosted process
+## Segment 3 — The self-hosted process (walkthrough, no live install)
+
+Vincent, 26 Oct: no live install of the 9 GB Docker image. Segment 2 already runs on a stack that was brought up before going live. Here we explain the process and show the pieces, nothing is pulled on air.
 
 ### What to put on screen
 
-1. Docs requirements page.
-2. Terminal: `npx @genfeedai/create my-genfeed` (or the release bundle). Show the checksum step. Show a stack pre-pulled before going live if the image pull is slow (9.5 GB, amd64 only, emulated on Apple Silicon: 87 s pull and about 2 min to healthy on the rehearsal machine).
-3. `curl http://localhost:3010/v1/health`, then first user and login at `localhost:3000` (sign-up was broken on v0.2.13; re-check on the release used; fallback is the curl sign-up from the tester guide).
-4. Keys: OpenRouter key; mention media keys. Never show real API keys; use a throwaway `.env` or blur.
+1. Docs requirements page (Docker, 10-15 GB disk, no GPU, ports).
+2. The install commands as text or the docs page (`npx @genfeedai/create my-genfeed`, or the checksummed release bundle). Say the rehearsal numbers as one machine: 87 s pull and about 2 min to healthy, image 9.5 GB, amd64 only, emulated on Apple Silicon. Be honest that it is a big image; that is part of the self-host trade-off.
+3. The already-running stack: `curl http://localhost:3010/v1/health`, then the logged-in app. Say it was brought up before the stream.
+4. Keys: where the OpenRouter key goes; mention media keys. Never show real keys; use a throwaway `.env` or blur.
 5. Architecture page: local vs provider calls.
 6. Optional: connect Claude Code to the MCP server at `localhost:3014`, only if verified in the dry run.
 
@@ -122,12 +124,12 @@ Open on a finished result from the dry run: one brief, the drafts it made. Then:
 
 - Controversial claim to test: **"self-hosted AI" is mostly self-hosted plumbing; the intelligence is still rented.** This is the Segment 1 thesis seen from the other side: the model is rented and will keep changing; the harness, brand memory and data are what you own.
 - Provider spend: show only from the provider dashboard after the run, if checked.
-- Budget: about 18 minutes. Exit cue: close.
+- Budget: about 12 minutes. Exit cue: close.
 
 ## Fallbacks
 
 - Pre-generated drafts saved in a text file on the stream machine.
-- Stack already up before going live, plus the recorded install run.
+- Stack already up before going live (pre-pulled; the install segment never runs a pull on air), plus the recorded install run if one exists.
 - Finished backup render and full rehearsal recording (growth backup plan; backup render not done yet, depends on growth#17).
 - If a step fails live, keep the failure and explain it; say it if you cut to a recording.
 
