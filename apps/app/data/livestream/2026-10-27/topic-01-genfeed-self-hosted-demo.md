@@ -72,25 +72,31 @@ thumbnail_prompt: null
 - Records and files stay local; model calls go to providers.
 - Vincent built it. Disclose.
 
-## Segment 1 — The play: why a founder would want a content agent they own
+## Segment 1 — The play: models get better, your harness and context are what you own
 
 ### Question and opening cue
 
-Open on a finished result from the dry run: one brief, the drafts it made. Then: "before the how, why would a founder bother with this?"
+Open on a finished result from the dry run: one brief, the drafts it made. Then: "before the how: why does this matter if the models keep getting better?"
+
+### The pitch (Vincent's thesis, 26 Oct)
+
+- **Models will get better and cheaper. That is not your edge, everyone gets the same models.** What you need is your own harness (the workflow around the model) and your own context (brand, voice, product knowledge, past content). That is what turns a generic model into content that sounds like your business, and it is the part you keep when you swap models.
+- **Why Genfeed:** it is that harness and context layer, open-source, so a founder can own it. Use it to produce content for your business, including B2B content (founder posts, product explainers, episode and launch posts).
+- **The ask, said once and briefly:** Vincent wants viewers to use Genfeed to sell content to B2B. Disclose first that Genfeed is his product. Keep it to the style rule (value, not begging, CTA at the end); do not repeat the ask in every segment.
+- **Guardrails:** no claim that Genfeed content has sold to or converted B2B buyers unless there is a measured, sourced example; no "models will" predictions presented as fact (frame as Vincent's view). The B2B angle is the thesis for the show, and the demo should show it: use a B2B-style brief (see Segment 2).
 
 ### Conversation cues
 
-- Vincent makes the case in founder terms: what content work it takes off the founder, what stays human (review, approval; nothing publishes until approved). No invented results or numbers.
-- Mitchell's challenge: why not just use ChatGPT or Claude directly, or pay for Cloud?
-- Viewer consequence: owning the workflow, brand memory and data vs renting everything.
-- Only after Mitchell says "ok, show me": exit cue "let's see what it makes."
+- Mitchell's challenge: if models keep improving, why not just prompt ChatGPT or Claude, or pay for Cloud?
+- Vincent: context and harness compound, prompts don't; and which one buys B2B attention?
+- Exit cue once Mitchell says "ok, show me": "let's see what it makes."
 - Budget: about 8 minutes.
 
 ## Segment 2 — Output demo: one real brief to drafts
 
 ### What to put on screen
 
-1. The brief (a real Ship Sh!t Show post, for example the Tuesday episode announcement). Rehearsed brief was "Trailhead Notebook"; the episode post has not been rehearsed.
+1. The brief: a B2B-style one that supports the pitch (for example a founder post for a B2B product, or the Tuesday episode announcement). Pick it in the dry run. Rehearsed brief was "Trailhead Notebook"; the episode post has not been rehearsed.
 2. Ask for drafts one at a time (only draft 1 shows in the chat UI).
 3. Host review on air. Expect the first output to break the format rules (rehearsal: every time); show the correction turn instead of promising the brief enforces format.
 4. Stop at draft. Scheduling, Approve, image render and connected channels are unverified; do not publish or schedule live without deciding beforehand.
@@ -114,7 +120,7 @@ Open on a finished result from the dry run: one brief, the drafts it made. Then:
 
 ### Conversation cues
 
-- Controversial claim to test: **"self-hosted AI" is mostly self-hosted plumbing; the intelligence is still rented.** Strongest opposing case: owning the workflow, brand memory and data is the part that compounds; models are interchangeable.
+- Controversial claim to test: **"self-hosted AI" is mostly self-hosted plumbing; the intelligence is still rented.** This is the Segment 1 thesis seen from the other side: the model is rented and will keep changing; the harness, brand memory and data are what you own.
 - Provider spend: show only from the provider dashboard after the run, if checked.
 - Budget: about 18 minutes. Exit cue: close.
 
