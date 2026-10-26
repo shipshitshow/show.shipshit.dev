@@ -127,6 +127,40 @@ Vincent, 26 Oct: no live install of the 9 GB Docker image. The content demo (Seg
 - Provider spend: show only from the provider dashboard after the run, if checked.
 - Budget: about 12 minutes. Exit cue: close.
 
+## Demo prompts (draft, UNTESTED in the Playground)
+
+Written 26 Oct for the dry run. The only brief ever run was the "Trailhead Notebook" one on the self-hosted Agent page; these have not been run anywhere. Edit freely.
+
+### Brief (B2B founder post, about the thesis)
+
+```
+Write 3 LinkedIn posts for a B2B founder audience (founders and small-team operators who sell to other businesses).
+
+Point: models keep getting better and cheaper for everyone, so the model is not your edge. Your edge is your own harness (the workflow around the model) and your own context (brand, voice, product knowledge, past content). Genfeed is an open-source content agent built around that idea. I built it, so say "I built" in the post.
+
+Rules:
+- First person, plain and direct, no corporate speak, no hashtags, no emojis, no exclamation marks.
+- 400 characters or fewer per post. Short paragraphs with a blank line between them.
+- Do not claim results, revenue, leads, customers or numbers of any kind.
+- Do not say the content sells or converts. Say what the tool does.
+- End with one line pointing to genfeed.ai/self-hosted and github.com/genfeedai/genfeed.ai. No "like and subscribe", no "comment below".
+- Give me one draft at a time; start with draft 1.
+```
+
+### Correction-turn prompts (use whichever the first output needs)
+
+- Format: `Shorten it to 400 characters or fewer, keep short paragraphs with a blank line between them, and remove any hashtags, emojis and exclamation marks.`
+- Claims: `Remove any claim about results, sales, leads or conversions. Describe only what the tool does.`
+- CTA: `End with exactly one line linking genfeed.ai/self-hosted and github.com/genfeedai/genfeed.ai, nothing else.`
+- Voice: `Rewrite in first person as the founder who built it, direct, no marketing language.`
+
+### Notes for the dry run
+
+- Check whether the Playground shows one draft or several, and ask for them one at a time if it shows only one.
+- The rehearsal (Agent page) dropped a "do not claim" rule when the orchestrator shortened the brief. Check that the claims rule survives; if not, put it in the correction turn on air.
+- Record the credits or spend of the run from the provider/Genfeed billing view if it can be read; do not quote a number until it is.
+- Genfeed's own docs say nothing publishes until you approve; confirm this in the Playground before saying it on air.
+
 ## Fallbacks
 
 - Pre-generated drafts saved in a text file on the stream machine.
