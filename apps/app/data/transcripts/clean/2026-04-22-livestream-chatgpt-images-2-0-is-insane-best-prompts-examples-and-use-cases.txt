@@ -1,0 +1,299 @@
+And we are live. Yes. Welcome back on the Shifty Show. [laughter] You had to miss us a whole week. Yeah. Uh Mitchell? Yes. How's life? How's your day? Well, I think we we hacked Cloud Opus today, right? Like I don't know what's going on with that [ __ ] Like bro, like you said you type hello world and then you are at 50%.
+
+[laughter] Yeah, you don't have to you cannot make a typo. Because it's a caution of additional 10%. Yeah. Like I spent my day like rewriting my skills. Like all of the repo, like cleaning up all of the skills, stuff like that. Downgrading the CLI. Yes. And that was the best one. Yeah, 1%. Uh so I watched a couple of Theo's videos and stuff and explain like why the [ __ ] it's going. And like some guys are able to compare results and uh the they have the numbers. They're legit burning more tokens to less um but to follow a shitty result. Yeah. Get less results, pay more. Yeah, exactly. I mean it's a good business model. Yeah, not well not that good. I think people are leaving. I I think so. Like uh [snorts] I keep my subscription because I know they will fix it and they will like the next release should be hopefully better. But and I I think we would have a ping-pong to do like all the time with between Claude and Codex anyway like yeah OpenAI so Yeah, but still they release a new update. You get automatically updated in your CLI. So you have no choice. Cloud code just goes to Opus 4.7 and there is no explanation, no documentation. You just know because all the people on X posting they have figured it out and they say it's worse and then after a day you get blocked because you're out of tokens. Yeah, no it's it's not. Like yeah I I I use my weekly stuff on a day or two and maybe it's about the about the skills and stuff but Codex are loading the same the same like I have global skills for both, right? Mhm. So and and Codex I'm going everything with X I effort. And it works perfectly. Yeah, but also now you rolled back to 4.6, right? Yes yes so for I didn't even upgrade it because yeah like you said like the Oh yeah, you you had the automatic upgrading disabled. Yeah so there is that but uh So yeah so I downgraded to the CLI the stable one and I never changed the model 4.7. So maybe for the viewers if you go to the Cloud folder and you change the settings file just disable automatic updates. Yeah, I will have the tweet. Oh yeah yeah uh because we've been talking about that. [laughter] We can say we know how to yes downgrade and how to disable it but I don't know if everybody knows where it is. Uh tag path tag apply Uh that's what yeah what we have done downgraded to 2.1.96 blah blah blah disable enable tool search and auto auto update channels auto update channel stable. I think that's the most important one. I didn't disable the tool search because like there's one guy talking about it. Uh I suggest to use Claude code stable. It's the same as three but can be done at the terminal shell and the current stable release is 2.1.5 and it was like uh 20 days ago almost like 15 days ago. So basically a lifetime in AI but uh But normally you just always work on stable, right? And you only update when you disable it. Uh I had I I do like brew upgrade every day. Ah okay. Yeah. Yeah, I think last version is best one. Exactly. Yeah, it's supposed to be. But because of because of that I expected to only get the stable version. And if I do brew upgrade uh I I stay on the stable path because of that config. What's cool. Yeah. And I didn't do that. And it's fine. But how I understood it they just are trying to tweak Cloud to be more uh more Yeah, more better and then So like Theo explained that where so also there is some hardware behind the hood like from Anthropic. Mhm. For every request you can get dispatched to another server and a server can be on another hardware and AI doesn't function works the same if it's using Nvidia server or like something else or even GPU whatever whatever. If it's a different hardware you will get two different output. Yes. And you get different routing to a different server every every search tool every so all the time you are talking to somewhere else. Yeah. Well that makes sense why it's more expensive. Yeah and yeah talk about non-deterministic output. Yeah, no [ __ ] But we fixed it. Yeah but yeah just going back to back to the future of the past. But are you going to test every update or you just waiting for people to explain what they are doing? Yeah, I will I will I will wait for my subscription to reset first. [laughter] Yeah. And yeah we'll see like okay I think if it works I will not upgrade [ __ ] until like another model. Yeah. I will avoid all of the [ __ ] CLI update stuff between two models. Cuz [ __ ] it. Like I don't to spend days on configuring like Claude.settings. Yeah, that's IT rule one. If it works, don't touch it. Yeah and yeah but except with AI when they push something and then it gives you 50% more token or less token. Uh that's interesting. Yeah. Ah yeah. But anyway um there was a big update while we were searching for a topic for the live stream that happened like it was live. Yeah, it's daily updates. Yes. Yeah, we we should do more than one a week but yeah when we will have an audience. So if you are here please like and subscribe because every view counts. So Thank you. Thank you. Thank you. Thank you. And I don't think there is anybody. [laughter] I mean that's okay. Uh one moment. Oh sure.
+
+Oh yeah, thank you. Thank you, sir.
+
+Uh tag Oh
+
+like tag Okay, nice. Uh so why we were basically 30 minutes ago no 1 hour ago
+
+one Oh no, this one. Yes. This one. So 1 hour ago OpenAI released GPT images 2.0 and it's uh great. It's fantastic. You already tried it. Yes, to make the thumbnail of this live stream. Cool. So but we are going to try it even more together because yeah I want you to like help me prompt some crazy stuff. [laughter]
+
+Let's see how it works. Uh okay, I'm going to zoom in. Okay, wait. Video path. So a state-of-the-art image model that can take on complex visual task and produce precise immediately immediately usable visual with sharper editing, rich layout and thinking level intelligence. There is thinking into this image model. So it's interesting because instead of like a loading OpenAI logo into your image output Mhm. you can [clears throat] reference OpenAI logo as and then it will go as web search. Oh, that's cool. Yes. So I mean it's I think it's supposed to work like that.
+
+Uh and the video boom perfect.
+
+You have the sound? Yeah yeah, we hear the sound.
+
+[music]
+
+In [music] front of you I waited for [music] you.
+
+[music]
+
+[music]
+
+[music]
+
+Wait, that's crazy. Like Uh okay, I can zoom. [ __ ] But uh I think [music]
+
+The quality, the consistency is kind of crazy, right? Yeah. [music]
+
+[music]
+
+[music]
+
+Okay. So, that's It went crazy on chameleon images. Yeah, they like that. So, chat GPT 10 I just um great music. Yeah. [laughter]
+
+Uh chat GPT image 2 is a step change in details instruction following placing and Yeah, okay, all of your prompt are [ __ ] You need to change everything and your harness to change everything. Again. Yeah. Uh that why? Okay. Um uh-huh Uh detail instruction following placing and relating object accurately and rendering dense dense text with the ability to generate across aspect ratio They have way more ratio than nano pro or something. Like it's kind of an interesting feature. It's also accurate across languages where you can prompt different Uh yeah, again languages in the same pictures and it about like to translate an image or something like that. Mhm. Uh so, it gets more image with less prompting. Uh okay. A great precision and control. Yeah, okay, that's cool. That's hard. Yeah. Damn. Like if you if I were able to generate that, that's Uh can conceptualize more sophisticated images and then actually bring that vision to life effectively. Able to follow instruction element generation. Zoom in on the rice. Oh, wait, what?
+
+Can you zoom in? Oh. See, that's that's really good.
+
+Okay. It would be cool if you eventually found out they used the real image. I mean, what do I Yeah, what what do you mean by the real image? Yeah, like a real photograph as an example because it looks so good. I mean, yeah, like you can see like the there is no like uh wrong artifact, right? Like it looks like a real rice grain. Yeah, yeah. That no longer persons with six or seven fingers. True. Or at least not here. Yeah. But [laughter] in this example, it generated like after 20 hours of rendering. But the same is here. First, you had the issue if you just want to print your company name inside the image on the logo, it would always make a typo. And now it Now it shows you a full letter. Yeah, that's not even like look like there is like some different gray that Yeah, like the pen. Yeah. And it Yeah, it looks like different pressure of the wall like of the wall. And there is even like a coffee coffee mark on the top corner. That's crazy. Your chapter blah blah blah. Yeah. Back back. Okay. Back here. Boom boom. Uh strong stronger across languages. Can produce image with non-English text that's not only rendered correctly, but with language that flow currently. Okay, so bro. That could be one Like I I have an example that that's why it come to mind, but like you can can generate one piece episode with that.
+
+I That could be That's a manga. Mhm. Like that's Yeah, bro.
+
+If you are a good storyteller, you can generate your manga. You can create whatever you want. Yeah. Well, I'm eager to try something. Bro.
+
+Like Like that's good.
+
+Like So, now even manga and comic writers are out of work. Yeah, like that That's That's good question. Who Like is it the place like who waits in a place like this? I have no choice. You came alone. We don't have much time. Okay, there is a Answer the question. Then get to the point. Hey, what? I don't
+
+It's an example. Yeah, okay. But yeah. Oh, [ __ ] Uh let's get back to it. But it is already live in chat GPT. Yeah, yeah, yeah, yeah, like we going to We going to prompt some example after that, but uh I It takes It's accessible on API and the interface. Mhm. Uh flexible aspect ratio. So, yeah, that's like Yeah, that kind of format they they made that during the Uh Yeah, you can make different sizes of images. I mean, that Yeah, like you have to have a use case for that. Like uh Yeah, but before if you want to uh social media had Uh It's always hard to get the correct format or aspect Yeah. No, for sure. But I mean, like for Yeah, I mean, for Tik Tok or like Instagram post and stuff, we had that. So, yeah, why not? Uh visual visual thought partner chat GPT image is our first image first image model with thinking capabilities. Okay, that's good. When a thinking model is selected in chat GPT, image 2.0 can search the web for real-time information, create multiple distinct images from one prompt, double-check if it uh double-check its own output, and even create functional QR code. Okay. It's allowed to allow it to take one more on more on the heavy lifting between ID and image, especially when accuracy, up-to-date information, consistency, and visual cohesion matters. Uh that would be interesting to see if we can Yeah, like famous people if you can generate some famous people stuff. Mhm. Uh okay. Thinking mode searches. Okay. When I Oh, yeah, that's the store I think the store they had. Okay, cool. Real-world intelligence. Uh Uh has an updated knowledge cut off of December 25. Okay. Enter visual proof contradiction of the real number and What? Okay. Uh there is too much math in here. I I said It works. Yeah, it works. Um is it cheaper than Midjourney? Yes. So, we have uh I have like the pricing here. Pricing. Like tick tack. Uh path. Path. Path. Path. Back. Yeah, and also the question is the consistency is better than Midjourney. If you see the chameleon or the manga, every frame had the exact same figure in it. I I think it's because they used um like the image reference, too, right? But I The consistency is kind of solved, honestly, even with like nano pro like all of the image like all of our thumbnails were like nano generated with you. banana, too. Yeah, and I always used the same input and we have like pretty Yeah, because with Midjourney, I don't know. The last time I used it, I had issues creating the same image over and over again. Yeah. I mean, yeah. I I didn't test Midjourney for the last 2 years. Uh image. So, it's basically the same price than 1.5. Um 52 image input 8 8 per 1.5 1.5. Yeah, okay. Cash input 2 30. So, like SG rack, do you compare to those pricing? Like do you know the input and output? Maybe you can look at it. Back. Uh Midjourney pricing. Yeah, I don't know if he has a fixed fee for Midjourney.
+
+Uh Cuz here are the API pricing per million tokens. So, it depends on how many tokens you use per image. Yeah. Yeah, and like the speed of the generation, too, right? Mhm. [clears throat] Uh but everyone here maybe maybe If you prompt like 4 500 images per month, it can go hard. Yeah, no no, 1%. Uh nano 2 path. Back. Nano was at 0.607 for 1K resolution Mhm. and sent for 2K and 4K 15. Uh that was quite cheap, but I think the price is not that crazy compared here. Yeah, it's a subscription. Yeah, yeah. Uh mid-journey
+
+mid-journey price Uh basic plan for Yeah, okay. But you still have like um Yeah, okay, because they use the GP time GPU time, so it takes like if generating an image is fast, then you can have a [ __ ] ton of them, right? Uh yeah, like uh as you I didn't use mid-journey since forever. I'm I'm using like Nano Pro. So and Nano 2 even.
+
+Yeah, but what are you paying? Like the basic plan? Shaka? Yeah.
+
+Cuz like yes, 3 hours of compute, that's not that much. No, and a maximum of 10 jobs queued. That's for That's for video like Do they have the image? Yeah, but also depends what you are using it for. But unlimited image generation with the last mode subscribe goes to Nano Pro or Mega and okay. Uh tag unlimited video generation and stealth mode which keeps your image and video private if only available unlimited images, okay. [ __ ] okay. That's good. Is that the same? I have a yearly, but it's not persistent enough basic. Yeah, so that's like 100 bucks per year. Yeah.
+
+I mean, if yeah, it depends of like how much you make, right? Uh did you use mid-journey recently, uh Mitchell? No, I didn't. I haven't used it a lot because the overview I had was really bad in Discord. Mhm. Yeah, I I I think they changed that a long time ago. Like now you have the wayback machine. That's how long I didn't use it. Yeah. Uh wayback up.
+
+Let's go. Yeah, they have like a studio like that. This is the same like like you see in ChatGPT for Sora. Yeah, like you see exactly maybe Sora copied mid-journey. Yeah. Uh create export try now. Yeah, okay. Go on.
+
+Okay, whatever. Uh where can I I just want to see images.
+
+Nope, you need to pay first. Okay. So, bye. But also like it was kind of cheap to I mean, I didn't pay my subscription on ChatGPT going down because I generated like two images, so
+
+it's yeah. I mean, it's kind of included in all stuff. Uh anyway, Back to the source. Yeah, back to the thread image was available starting today on ChatGPT and connects user seeking available to ChatGPT Pro plus Well, okay, so we have that. Whatever. Some example below the thread. So, that's [ __ ] That's [ __ ] Okay. Multiple distinct image here. I was using it. Okay. Okay, looks That's Okay, no, that's good. That's high fidelity. Yeah, that's good quality. Yeah. Back uh but wait, I saw Okay, so I have a couple of images. Um example Yes, back back. laugh Okay, so this one That's all of the base use case for GPT images and this illustration was generated by GPT image too. So, text to image, realistic image, artistic image editing because in the conversation in ChatGPT, you can edit a video directly in the conversation like was I think they did that with image one, so It's a but it's an interesting workflow. Background generation, product visualization, concept art, character generation which like yeah, if you have like good consistency, that's good. And you can even like, you know, have the 3x3 spreadsheet for characters with different angle. So, then you validate that and then you can animate it based on what that's called. Portrait, yes. Background infographic, UX/UI, storyboarding, okay. Marketing, social media print, packaging design, illustration, photo enhancement, meme and funny and fun creation. Cool. Uh and I had another one which is uh tag uh one piece What? [ __ ] I didn't save it.
+
+image blah blah blah Uh [ __ ] I lost it. Okay, uh path What's Reddit saying?
+
+Okay, ChatGPT is rolling out rolling out rolling out. Okay. Uh singularity
+
+The new ChatGPT image is a new standard of photorealistic images. Well, that's not not really good. It's a lot of details. Yeah, this is cool. Well, that's nice.
+
+Oh my god.
+
+Is that good? Yes, yeah. I think you have to integrate this one in your API as well. Yeah, yeah. We'll be down. Well, that should be easy, right? With everything you developed. Yeah. 4% back but yeah, take Ask ChatGPT.
+
+Oh, wait. She has some issues. She is front and back like [laughter] Uh okay, friends. Hey, trying image into bro
+
+That's not The word is bit here. The hand is bit is a bit weird here, but that's a family picture. Yeah, yeah. And you just you just have to look for it and make some final changes and then it's perfect.
+
+This is awesome for web shops. Yeah. Yeah, I mean, we were already capable to do that with Nano, right? Yeah, but each time they make it easier and even more consistent. But that's what like bro, like it's it's there is no point of taking pictures anymore.
+
+Like okay, yeah, you can you can you can fake. Yeah, the only [laughter] thing is if you show your daughter and your wife that you went to Disneyland and give them all the pictures, they won't believe you. Yeah, wait Okay, what's the joke? ChatGPT What?
+
+Oh, okay, maybe it's the Yeah, it's the next one. Uh Did she change the face, too?
+
+That's a lot. Uh tag path Okay.
+
+Yeah, why not?
+
+The way I'm taking out ChatGPT. Is that like um [ __ ] what is his name?
+
+The White Walker. Uh no, it's the the Jason Momoa. No? No. No, no, he isn't. Okay. I think. Uh oh, that's I am wondering. Okay. Image 2 is now online should be incredible just a few days. Even with a 3x3 would have been struggling. Now we can do 10x complexity. Yeah.
+
+That's kind of cool.
+
+Uh [ __ ]
+
+Mandatory vaccine checkpoint. Text to reach and
+
+Okay. Uh so, that's Okay, so like pretty nuts. Uh as you write like would you use over like mid-journey to ChatGPT now? Like if you see the images generated in example.
+
+Oh, we'll see we'll see if it will reply. Okay, so that was This one is like the the blog post on the website. They have I don't know if they had it last time, but like they have the which is kind of cool. They have the text version and the image version of the article. So, they generate like all of the all of those image with the text they have here. Okay. Like that. You mean? Mhm. Yeah. So, yeah, introducing ChatGPT image to a new era in of image generation. A year ago, we released ChatGPT image showing the It was a year. Jesus. Uh both beautiful and useful image in the next step instead of art step change instruction to extend model capability to most complete task. Yeah, whatever whatever. Greater precision and control. Yeah, that's That's a that's not a screenshot. No, no, that was generated. Yeah.
+
+Like it looks perfect. Yeah, you can show people your desktop that you're working. Yeah, you have background, right? Yeah. Like Like it's working on my PC. Yeah. [laughter]
+
+Yeah, bro, that's that's a [ __ ] screenshot.
+
+That's crazy. Uh tag half
+
+the egg egg create everything at once, bro, like Is that generated? The rise
+
+stronger across languages. Okay, yes. Okay, so you you can you can have it like Okay, you take uh translation um You can take an original of uh of a manga, for example, and you can do the translation Mhm. with AI. And then you you can place all of the like the the dialogue directly into the image, and that's it. Yeah, you you only have to make one, and you make it so easier to do the rest. Yeah, it's not as direct. Uh I will take a look at it. For now, I'm not I'm not using MGNO for the price it cost, yes. Uh where are you based?
+
+Uh tag where Okay, yes.
+
+Okay. So, basically, images are solved, bro. Like No more hot stuff, no more Photoshop, no more editing, just prompt it. Yeah, no, no, exactly. And you can edit a a picture in uh in the conversation. I'm going to I'm going to show you that right now. That's Wow. That is cool. Like even like Yeah, see like the framing and the disposition of like the design, it's not like it's odd You know what I mean? It's not like completely like, you know, it stay in the box. It's like that, and it goes above the boxes and stuff. That's pretty cool. GPT image in flexible aspect ratio. So, we saw that. That was kind of nice. egg
+
+Okay. Real-world intelligence. Okay. Biggest Oh, yeah, that Okay, so that means the model So, while it was generating the image Yeah, it also put in the correct mouth. Yeah. Oh, maybe. How can you say if it's real or not? Yeah, [laughter] probably if they show it here, it's correct. I hope so for them. Uh because of design trend Yeah, you can do illustrations and stuff. Wow, that's cool.
+
+I like blue. You can generate that for design like website design and stuff. Yeah, normally, a designer would charge you like a lot of money just to show your product in different angles and different setups. Now, it's one prompt. Yeah, and then we can still charge 15 15 grand for that. [laughter]
+
+With just one prompt still. Okay, that's So, that's an ad. Let's go. Copy. Okay, thinking. Yeah, whatever whatever. Okay, cool. Let's play a little bit. Yeah, see what it can do. The generation. So, okay. What I've done for the summary of this live stream live stream Mhm. [clears throat] I uploaded a on like a little PFP. Wow. And I took a prompt from that I have a prompt template that I have from um
+
+Claude. Mhm. Cuz I have a conversation there just before it got cut. And that's the that's the first one it generated. And I have three different variation. This one is cool. I like I like this one. Yeah, and it did it only had one reference image. Yeah, I I did not upload the uh the OpenAI logo. No, no, it just found it. Well, at least I know it has [laughter] what the OpenAI logo is. Uh yeah, it and it generated that, and after
+
+Yeah, I asked it like two different variation of the same prompt because I edited um inside the conversation. Mhm. And like Yeah, it's not This one is [ __ ] but Yeah, okay, so yeah, because I asked to show the different capability of the model. Mhm. But uh so different type of illustration, but then it had like the GPT image, and I didn't like that. But yeah, and that this one was another variation. But to do it in Nana Banana 2, we had to put in multiple images of the person, right? Uh no, no, no, just one like one output and stuff, so Okay, that was good. Pretty similar, yeah. Uh But even the see between the face, like it's the same. Mhm. Our face doesn't move. It just like move it, but keep the consistency between. It's like it copy-pasted the image. 100%. Like even here, same position, same everything. Mhm. Okay, the hand moved a bit. But like the my face doesn't change, yours neither. Yeah, it's crazy. It's crazy. That's Uh okay, so let's try something else. Uh okay, so same thread and Yes, okay. Um uh uh let's uh gen- uh create imagine imagine a manga uh way um page with those two men. They are meeting in
+
+in the street. Uh
+
+raining raining
+
+uh in night and they are getting ready for a podcast. Uh noir at first pair manga style. Let's see how it goes. A manga page with those with those two men, they are meeting in the street, raining midnight. They are Yeah, in night dark. Okay, let's see. Yeah, now we can also see how fast this is. Not that fast. Okay. [laughter] So, yeah, I should have to talk about something else. Um Yeah, what did you do today? No. Um okay, so Well, the only thing I noticed is that your left menu, your recents, it's cleared. I have like 1,000 history beats. I have I have everything. Oh, okay. Uh okay, imagine Clean up before the show. Exactly. Imagine Elon Musk uh uh playing Diablo 3 IRL. Boom. Uh oh, [ __ ] Yeah. What What is he doing? I I was going to ask, does it know that when you type imagine that it needs to generate an image every time? Where is it? You lost it. It's gone. Oh. Okay. Oh. Probably he has to refresh the page. What?
+
+Hey, wait, wait, wait. This is the wrong one, right? Yeah, that's the that's um [ __ ] It's a Marvel character. Yeah, Iron Man. And uh Well, it it's Iron Man combined with another one. Yeah. But that's not Elon Musk. Uh I want to create an image that looks Okay. Now, it tried to make a game, it looks like. Uh Is It gave you the quest, it gave you what you can do with the side quest, so it made an idea for a game. Ah, okay, interesting. And for that Ooh.
+
+Okay, we lost the faces, but Yeah, that doesn't matter. Yeah, mine is more like Yeah, they got the we lost the your reference. [laughter] But okay, bro, that's cool. You You made it. Yeah, let's do this. Some conversation don't just happen. They change everything. Tonight we build the future. What the
+
+Uh [snorts] make it uh not landscape, portrait. Uh thing uh with these boxes with one big central font that going to move. Uh and uh if if the same face
+
+laugh Elon Musk Diablo 3. Okay. Um what if Ooh. Ooh. Holy [ __ ] It put everything it it wrote down around it. So, yeah, that's a character sheet, so Yeah. Elon Musk techno sorcerer level 52 CEO. Bro, that's sick. And that's the interface from um uh Diablo 3. Okay, described edit select Yeah, okay, so you can select what you want to edit. Okay. Aspect ratio ultra wide 3 wide portrait uh landscape, square. Mm okay, wait. Oh, story? Story? What does it mean, story? Um and I want to try Okay. Imagine the last uh page of One piece.
+
+Baf. Did you need to press the plus and select the image? Oh, now it does it right away. Okay, that was fast as [ __ ] Uh the final page opening silence. No, no, no, no, no. Yeah, I think it just loaded a few images. It didn't create one because you
+
+Oh, yeah, yeah, it take the resources. Oh, bro, let's see. Oh, it search for the web and Yeah, yeah, yeah. You didn't press the plus that you want an image. Oh, yeah, it's a yeah, it's Dr. Strange. That's the name of the character like the sorcerer stuff. Uh my bad. Okay, so perfect.
+
+Now uh create the uh image. All right. Uh it is creating the last page of One piece uh in um uh live action from Netflix video. Baf. Okay, Diablo 3 boom. Okay, so ratio okay, okay, nice. Uh Okay, cool. And now okay. Put Elon in the Diablo 3 uh game. Uh the image is the is a frame of Diablo 3. Baf. I character [ __ ] I think we can animate to create it nice. Ooh. Yeah, you can make a full comic. 100%.
+
+Boom, boom. Okay, so okay, which sense do you read it because if it if it's among us going right to left, right? You made it. Yeah, let's do this. Boom. Tonight we build the future. Yeah. From conversation don't just happen. Okay, the Okay, so need to We need to write to think to walk on the storytelling, but uh Yeah, you also need to make proper prompt. Now it just copies the image. Yeah, and and this this one is the same as like the this one. Yeah. Yeah. So you need to tell it in the prompt that it needs to create a new image for each frame, but still that doesn't matter. Uh that's nuts. That's Try asking if it can make this entire page, but then photorealistic. Um Or convert it to a photorealistic page. I want Okay. Um it photore- realistic realistic. Baf. One piece final Ooh. See, that's 50 there. Holy Wait, wait, wait. Is that
+
+Oh, [ __ ] it's opening the desktop.
+
+It's uh Yeah, I'm going to do that. But uh Thank thank. One piece bam.
+
+Uh did did you watch the TV show? Just a few a few uh a few one, not the full show. That's all bro, that's the [ __ ] actors.
+
+And this is not a real scene, right? This is created. that's one of like all of the the some characters don't even exist. Okay, so Yeah, Brook is um is only on his um uh human form like the the skeleton here. These characters Okay, you don't see the mouse, but like the this big guy on the right, it doesn't it's not happy at yet. Uh it's not exactly that, but we are like 90% here. Yeah, so it actually did a Google search. Yeah. And it looked up all the characters and put them in here. 100%. Ah, cool. Let's see. But still, you see again that it it takes out the the person that we created and it actually copies it in here, so the consistency is really good. Yeah, make fight uh uh knight
+
+uh bells pages is uh lightning bells against him.
+
+The knight is electrified. Boom. Uh okay, so this one Oh, cool. See?
+
+It isn't fully or is it? Uh it it kind of like colorized it. Yeah. Uh That's nuts. Tonight be that big ideas no filter real talk. Let's go.
+
+That's nuts.
+
+Like that's nuts. That's crazy. Um okay, so what else can we do? Okay, so uh baf um create the image of uh uh imagine uh Well, before you press enter, press that plus on the left. Paris If you select create image, it works much better. Yes. Uh imagine Paris in uh the garden. Baf. Chat. Uh what can we do to test the capability? Blueprint, nightmare flash, anime. Uh oh, yeah, wait. Uh Give me an ad for Gen fit AI.
+
+That's it. Let's see if it Google's it. Yes. Paris okay, Elon Musk
+
+Holy [ __ ] Oh, that's cool. And he even put a Tesla logo on his back. Holy [ __ ] [laughter]
+
+Wow. You should DM it to Elon.
+
+See if you can get a response.
+
+He's going to like, "Thank you for joining my party on Diablo."
+
+Cheap [ __ ] No, okay, I'm not I'm going to I'm going to use my account to do better. Thank. Uh baf No, I want that. I want that. I wait wait with that. Uh food.
+
+Yeah. I can I hello um
+
+uh um
+
+[ __ ] No, they can't be triggered or can't be uh I mean
+
+Woohoo. Um Welcome to Diablo 3 uh Templar folklore Elon Musk said, "Let's change the world."
+
+Uh let's change the world
+
+the uh the one night at a time. Diablo world with uh GPT. No, uh image 2.0 uh one night at One night or one night one No, one night like this, that's better. Okay. Uh let's change the Diablo 3 world with image 2.0 one night at a time. Thank. Let's let's see if we can go viral.
+
+[snorts] Okay, cool. Uh baf. Thank.
+
+Okay, Paris uh [ __ ] Uh I saw the same prompt from London and it was exactly the same [ __ ] [ __ ] Yeah. I I it still has some stuff that it just reuses every time. Yeah. Yeah, and like it's Yeah, okay, it's Paris because you have the [ __ ] Eiffel Tower, but I can't tell you there like there is nothing there. The styling is the same. Yeah, exactly. But then the question is if you give it a better prompt from, "Hey, this is cool, but I expected the aliens to be in it, so we have a multicultural with aliens and humans. Can you create that?" See if it does it differently.
+
+Thank. Baf. Uh Because that was the the issue I had with uh Nana Banana One. Wait, yeah, baf. It would not just keep on going creating new stuff. Eventually it would fall back to the main stuff every time.
+
+audio
+
+uh
+
+ad and make the
+
+level of Okay, uh the ad for Gen Z, okay, that's a shitty illustration, but content that connects AI that delivers. All right, okay. Uh generate in second, build every goal. Yeah, it it went it it went on on the website. Yeah, it does know what you do. Yeah. uh
+
+egg
+
+or Yeah. humans with human edge and uh ID based Right. And [clears throat] you get all the happy people. uh EV 3 variation of the end
+
+Is that going to going to output right emotional cause with final page? Okay.
+
+Okay. Yeah, okay. All right, I need to Okay. the empty throne and the next adventure Okay, cool.
+
+Okay.
+
+Oh, great image. Uh illustrate uh version one Cool. Paris Paris What is it?
+
+Yeah, the style is the same. I mean uh It has the same type of buildings in it, the same type of trees and plants.
+
+It only added billboards and a few aliens on the street. Yeah.
+
+No, yeah, it's not that crazy crazy. You can't You can't really use that. Uh okay, uh ad request
+
+Now the question is how easy is it to This looks better. That looks like an ad from the 2000s. Yeah, yeah, you you could fly at this to all the neighbors in your neighborhood. Yeah. I would You know, with the gradients and the purple and stuff. Yeah, for sure. um Do you have other ID of generation?
+
+um Oh, can we uh make uh make the uh CEO of OpenAI writing the CEO of Anthropic uh Anthropic in a box fight
+
+Okay. Let's see how good it does it with faces. I'm I'm [snorts] curious if it's going to censor it or not. Yeah, it should search people on internet, right? No, but it should tell me to [ __ ] off because it's too violent. Oh. Oh, yeah, it depends on how it makes the image.
+
+Hey, what? So, you have what? Okay. And then the pirate king disappear and then Okay. The end. Uh it's weird. Uh okay, illustrate illustrate uh eat Yeah, but your prompt is also really short. Yeah, it That's true. Oh. Is it Is it always going to make Sam win? [laughter]
+
+Uh hey, the name, the logo Yeah.
+
+I'm going to do it that [ __ ] Hop la. um It only didn't use the cloud logo.
+
+Oh, okay. It even wrote Anthropic with a slash in it. Anthro Yeah. Like one of some They They They took the Wikipedia logo stuff. uh tag tag uh okay, path uh
+
+OpenAI
+
+OpenAI
+
+Come on, create image.
+
+Like
+
+last Yeah. uh EV rate championship Yeah, champion. champion
+
+tag
+
+Cool. Let's go. [laughter] Let's see. um Okay, something that you have been struggling to generate with a image model. Well, the only thing is is is an company names or writing a name on a For example, if you have an office and you want to write the company name on the door, it's always giving issues. Okay. right page
+
+um imagine easy straight with the um focus on the door with the logo of ships Uh a ship [ __ ] ship [ __ ] dev on the on it um 90 style Yes. tag
+
+Ooh. Ooh. Ooh, that's good. It could have never wrote but it was never It was never the point. Bro, that's that's You can You can Yeah, you can make a storyboard on that. Yeah, yeah, and if you play with it and just keep improving your prompt, you can make some really cool stuff. uh down and story board um
+
+What? Uh storyboard
+
+Yeah. That's it. Okay, ship [ __ ] dev um uh window tinting auto residential [laughter] It doesn't understand what ship [ __ ] is. Uh software development Unix is user-friendly. That's good.
+
+I mean I mean, we have uh we have the
+
+uh uh We have the name correct. uh change the style of the door the door
+
+Okay. Uh okay, so what if we have Oh, it's already done. Oh, no. Oh, what? Yeah, I thought it gave the the the message on top that was already done, but it isn't. Yeah. Oh. I don't know if it's Oh, it's it's still pinning. Okay. Yeah, yeah. Uh tag and I wanted to check if they have more illustration in there.
+
+Ooh. They can be hot as well with mirrors. GPT 1.5 versus 10 prompt difference is not really impressive. Yeah. Yeah, with mirror, yeah, because you have to have the consistency from one room. Yeah. Uh that's that's way cleaner.
+
+Uh create an image. It gave context of the image based on your memory and your past conversation. Create my view.
+
+That's a bit busy, but that's that's a movie poster for sure.
+
+Yeah.
+
+Oh, that's crazy.
+
+Hey, try GPT.
+
+Let's go. Cool.
+
+And generation by this entity as Yeah, yeah. Okay. um
+
+in full Wow. Wow. Wow. Wow. Wow. That's That's a magazine. All right. No more expensive editors needed. [snorts] That's nuts. Oh, amazing update will be nanobrain cinematic photography. Yeah, man. That's nice with a reflection. That's pretty cool.
+
+Wow, that's nuts.
+
+That's crazy. Okay, that's good.
+
+Uh but okay, so do we have anything Okay, it's Yeah, it's been night right. Um do we have anything else we wanted to explore? No, I think we already saw a lot. So, I'm pretty curious to see what other people can do.
+
+Yeah. That's Yeah, like and it's full like copy paste. Like the characters are copy pasted.
+
+Nice. Nice. Nice. Okay, cool. That's it. Well, it's time to make some images. Yes. Like Yeah, I think it's going to is quite cheap. I I will need to compare the pricing once it's going to be on replicate or directly via the API. But uh I don't think uh it's really going to be expensive. So, Mhm. Mhm. pricing So, we might have a new main model. Yeah. That's going to That's going to uh Yeah. That's That's going to make some thumbnails in the next few weeks for sure. We're going to have some fun. Yes. Well, looking forward to it. Yes. Let's go. Let's go. Uh thank you, Mitchell, for your time. Thank you, H H Iraq, for your participation. And yeah, uh if you are here, subscribe, like uh the video, too, please. Thank you, because we need views. And follow us. And follow us everywhere. And maybe Elon Musk will do that. So, So, Yeah. You could say you were you you were you were there. Yeah, when [clears throat] we created Elon. [laughter] Uh okay, Mitchell, thank you so much and have a good night. Yes. Bye. Bye.
