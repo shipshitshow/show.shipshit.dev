@@ -10,9 +10,9 @@ thumbnail_prompt: null
 
 ## Sources — Livestream Notes
 
-- Date: Tue 27 Oct 2026, 15:00 CET (14:00 UTC), right after the Show HN post goes up. YouTube link: **not set yet** (growth#20). Title not locked; "I Self-Host Genfeed" no longer fits because we are not installing live.
+- Date: Tue 27 Oct 2026, 15:00 CET (14:00 UTC), right after the Show HN post goes up. YouTube link: **not set yet** (growth#20). Title not locked; working title still fits since the install stays in.
 - **Viewer question:** "Can a founder run their own AI content agent on their own machine, and what does it actually cost and take?"
-- **Format (Vincent, 26 Oct):** we **talk** about self-hosting and do **not** demo the install. The live demo is the product itself making content: one brief to drafts, host review, a correction turn. Vincent drives, Mitchell is the skeptical first-time user.
+- **Format (Vincent, 26 Oct):** pitch first, because viewers must be convinced of the play before they care how it runs. Then demo the output (one brief to drafts, host review, a correction turn). Only then the self-hosted process: install, keys, what leaves the box. Vincent drives, Mitchell is the skeptical first-time user.
 - **Disclosure, say it in the first minute:** Genfeed is Vincent's product. This is a founder showing his own tool, not a review.
 - **Demo rule:** only promise on air what has run end to end in a dry run, and say which instance (local or Cloud) is on screen. If a step fails live, keep the failure and explain it; do not cut to a pre-recorded "it works" without saying so.
 - **Vincent to fill before the show:** which instance runs the demo and its release (growth plan says v0.2.15, untagged on 24 Oct; the only rehearsal was v0.2.13 self-hosted); dry-run date; which provider keys you will use; the one real brief you will run; what one generation cost in provider spend.
@@ -41,17 +41,17 @@ thumbnail_prompt: null
 - Open: the architecture page, local vs provider calls.
 - Challenge: you can point it at your own ComfyUI or local infrastructure; is that worth it for a small team?
 - Payoff: when self-hosting is worth it, and when Cloud is the honest answer.
-- Capture: Segment 2.
+- Capture: Segment 3.
 - After recording: unverified; verify against the video/VTT.
 
-### Planned Short S2 — From install to first post (DROPPED: no live install)
+### Planned Short S2 — From install to first post
 
 - Working title: I Installed an AI Content Agent in [X] Minutes
 - Point: the real time from command to a scheduled draft. Only use the number measured live.
-- Open: n/a unless an install is recorded.
+- Open: the terminal and the login screen.
 - Challenge: Mitchell: would a non-technical founder get this far?
 - Payoff: what it took, honestly.
-- Capture: not available if we do not install live; drop unless Vincent records an install separately.
+- Capture: Segment 3.
 - After recording: unverified; fill [X] from the recording only.
 
 ### Planned Short S3 — What does one AI post actually cost?
@@ -61,7 +61,7 @@ thumbnail_prompt: null
 - Open: the provider billing pages after the run.
 - Challenge: the cost is not the tokens, it is the review time.
 - Payoff: cost per usable post, not per generation.
-- Capture: Segment 3.
+- Capture: Segment 2.
 - After recording: unverified; verify against the video/VTT.
 
 ## Cold Open — Facts card
@@ -72,27 +72,21 @@ thumbnail_prompt: null
 - Records and files stay local; model calls go to providers.
 - Vincent built it. Disclose.
 
-## Segment 1 — Why self-host a content agent? (talk, no demo)
+## Segment 1 — The play: why a founder would want a content agent they own
 
 ### Question and opening cue
 
-Open on a finished result from the dry run: one brief, the drafts it made. Then: "we'll make it do a real brief live, but first, what does owning it mean?"
+Open on a finished result from the dry run: one brief, the drafts it made. Then: "before the how, why would a founder bother with this?"
 
 ### Conversation cues
 
-- Mitchell's challenge: why would a founder run their own instead of paying for Cloud?
-- Viewer consequence: data ownership, cost control, and the work of keeping it running (9.5 GB image, emulation on Apple Silicon, Docker).
-- Say what the rehearsal found, including that sign-up was broken on v0.2.13.
-- Budget: about 8 minutes. Exit cue: "let's see what it makes."
+- Vincent makes the case in founder terms: what content work it takes off the founder, what stays human (review, approval; nothing publishes until approved). No invented results or numbers.
+- Mitchell's challenge: why not just use ChatGPT or Claude directly, or pay for Cloud?
+- Viewer consequence: owning the workflow, brand memory and data vs renting everything.
+- Only after Mitchell says "ok, show me": exit cue "let's see what it makes."
+- Budget: about 8 minutes.
 
-## Segment 2 — Keys, brand and what leaves the box (talk, optional screen share of the architecture page)
-
-- Architecture page: local vs provider calls.
-- Controversial claim to test: **"self-hosted AI" is mostly self-hosted plumbing; the intelligence is still rented.** Strongest opposing case: owning the workflow, brand memory and data is the part that compounds; models are interchangeable.
-- Never show real API keys on stream.
-- Budget: about 10 minutes. Exit cue: "now a real brief."
-
-## Segment 3 — One real brief to drafts, live
+## Segment 2 — Output demo: one real brief to drafts
 
 ### What to put on screen
 
@@ -100,17 +94,34 @@ Open on a finished result from the dry run: one brief, the drafts it made. Then:
 2. Ask for drafts one at a time (only draft 1 shows in the chat UI).
 3. Host review on air. Expect the first output to break the format rules (rehearsal: every time); show the correction turn instead of promising the brief enforces format.
 4. Stop at draft. Scheduling, Approve, image render and connected channels are unverified; do not publish or schedule live without deciding beforehand.
-5. Provider billing after the run, only if it is shown from the provider dashboard.
-6. Optional: connect Claude Code to the MCP server at `localhost:3014` (only if it runs on this instance).
+5. Say which instance is on screen.
 
 ### Conversation cues
 
 - Mitchell: would you post this as-is? What would you change?
-- Budget: about 20 minutes. Exit cue: close.
+- Budget: about 14 minutes. Exit cue: "now, how do you run this yourself?"
+
+## Segment 3 — The self-hosted process
+
+### What to put on screen
+
+1. Docs requirements page.
+2. Terminal: `npx @genfeedai/create my-genfeed` (or the release bundle). Show the checksum step. Show a stack pre-pulled before going live if the image pull is slow (9.5 GB, amd64 only, emulated on Apple Silicon: 87 s pull and about 2 min to healthy on the rehearsal machine).
+3. `curl http://localhost:3010/v1/health`, then first user and login at `localhost:3000` (sign-up was broken on v0.2.13; re-check on the release used; fallback is the curl sign-up from the tester guide).
+4. Keys: OpenRouter key; mention media keys. Never show real API keys; use a throwaway `.env` or blur.
+5. Architecture page: local vs provider calls.
+6. Optional: connect Claude Code to the MCP server at `localhost:3014`, only if verified in the dry run.
+
+### Conversation cues
+
+- Controversial claim to test: **"self-hosted AI" is mostly self-hosted plumbing; the intelligence is still rented.** Strongest opposing case: owning the workflow, brand memory and data is the part that compounds; models are interchangeable.
+- Provider spend: show only from the provider dashboard after the run, if checked.
+- Budget: about 18 minutes. Exit cue: close.
 
 ## Fallbacks
 
 - Pre-generated drafts saved in a text file on the stream machine.
+- Stack already up before going live, plus the recorded install run.
 - Finished backup render and full rehearsal recording (growth backup plan; backup render not done yet, depends on growth#17).
 - If a step fails live, keep the failure and explain it; say it if you cut to a recording.
 
