@@ -1,0 +1,522 @@
+Astra, I started
+checking all my
+projects, and it's a cool
+thing.  Every time a
+new model comes out
+, I say, “Hey,
+test this product,
+take security to the
+next level, fix
+all the bugs that are found
+.”  And then she
+replies, "Oh, now
+I'm sure this is the
+perfect project."  And
+then we go to Astra,
+and it gives us the full
+list.  The first thing I
+do with each
+model is
+check my entire
+codebase for
+several projects that
+we are constantly
+updating, and it
+finds a whole
+list.  We
+have improved everything.  Then I
+said I wanted to
+reduce
+the load on the
+servers because we
+need to
+scale on the
+same number of
+servers, and she
+did everything, and on my
+graphs I see how the
+RAM usage
+drops.
+Okay, great.    So that's
+perfect.  This is
+simply amazing
+.
+Yes.
+And it continues to
+optimize queries
+and everything else.
+Okay, that's right, good.
+So yes.  But remember
+, when version 4.1 came out
+, when 4.8 came out, we
+tested the same thing, and
+there were a bunch of bugs
+and a lot of "garbage",
+right?  And now, 2
+years later, we still have this
+"garbage".
+Yes.  I think if you
+throw a 2010 project
+at Vivo coding, you
+'ll get the answer
+that it shouldn't
+work.
+Yes.  Are you sure
+this works in real
+time?
+Yes, yes, yes.
+I think speed
+plays a big role
+because if you do something
+quickly, you can
+fix it just as quickly if something
+goes wrong, and you don't
+have to take
+crazy steps,
+just take it and do it,
+right?
+Yes, yes.  And the result is
+still faster than
+when another model
+takes twice as
+long.
+What do you expect from the
+next round of
+models, like the 5.2 and 6.1?
+What do they need?
+Should they become
+smarter,
+cheaper or
+faster?
+Yes.  Ultimately, I just
+want more tokens,
+but I don't think they will
+.  But I
+believe that over time the
+models will
+get better,
+better, better,
+better, better.  And
+if you already have,
+say, 95%, does
+95.1% or 95.2% make
+much of a difference?  I don't
+think so.  So from there it all
+comes down to
+optimization for
+greater efficiency
+and maybe even
+speed.
+Yes.  But the problem is
+also that
+eventually, at some
+point, they will make
+us pay full
+price for the token.
+Yes.  If they
+don't go bankrupt first.
+Yes.  No, well, for a
+professional
+developer.
+Yes, at least two,
+right?  I hope
+people do that.
+Because anyway,
+even if I don't
+check it with another
+agent, there are still
+errors there.
+Yes.  Yes, yes, yes.
+The errors have not been fixed.
+But do you expect
+anything different from
+future models?
+Yes,
+faster and
+cheaper.  If they
+could lower
+the cost of the tokens, that would be
+great.  Because,
+again, as you
+said, give us
+more
+usage options so we
+can apply
+your model.  But that
+happened with Opus 4.8,
+right?  This update
+was then a
+token consumption update.
+And eventually they have to
+do it, because
+Chinese models
+will run on
+ever smaller
+computers with
+less
+RAM.
+And if there is a big
+difference, if I know
+that I can invest
+4-5 thousand and get it back
+in a year, then yes, then
+Claude and Astra will lose.
+Wouldn't you invest
+10 thousand now in
+equipment to
+install the model?
+Yes, and why not?
+I would invest.
+If you need
+such a large
+API usage that
+the costs reach 10
+thousand per year, and you
+can do it on
+two local
+models.
+Yes.
+So you buy two
+Nvidia cards for 5 thousand
+or two Mac Minis, the more
+powerful ones.  I would
+do that because then you
+have a reserve.  If one
+breaks, you
+still have the other.  And it
+only takes a year
+to recoup
+the costs because people who
+use the API
+get huge
+bills.
+Yes.
+People don't talk about it
+.  Everyone
+shows up, "Hey, I'll
+do this for $200.
+"  But companies that do
+n't, they easily
+pay 5-10k a
+month for API tokens.
+Yes, but then maybe
+with new
+model updates
+the speed
+will slow down, but the
+intelligence level
+may also
+slow down.  But
+okay, you're buying
+equipment for DeepSeek
+right now.  Yes, but
+what happens when everyone
+uses
+Astra, spending 10
+thousand on the API, and you're
+stuck with a stupid
+model that's half a
+year old?  I mean,
+if they distill
+Fiber 5.1 in 48 hours, that's a
+whole different game.
+Yes, but it also
+depends on what
+exactly you need.
+If you create
+websites on WordPress and
+make, say, 50
+websites per month, then a
+cheaper model is
+quite enough.  There is
+no need for any
+large or
+complex code.  Yes,
+but the system must be
+scalable.
+Yeah, maybe if
+you have the same routines all the time
+and
+do the same
+tasks over and over again
+, then you don't
+necessarily need
+to upgrade to a
+cutting-edge model.
+Yes.  But if you
+implement this in your own business,
+for example, in a large
+warehouse where you need
+to track inventory,
+which is currently done
+manually and always with
+errors, it
+will cost so much
+money that 5 thousand will
+easily pay for itself in a
+month.
+Yes.  Yeah, maybe, or
+we'll update at
+the end of the year anyway.  But
+yeah, maybe
+next year we
+should invest in
+some equipment.  But
+prices are also going crazy.  Uh
+,
+computer capabilities—that's the
+main trend
+we're seeing on the timeline right now
+.  Astra
+can use the
+applications you
+use every day and
+do it better and
+faster than you.  I'm
+going to
+edit this
+video later in Premiere
+and see how she
+actually reacts.
+Yes, I created MCP, so
+Premiere is now controlled
+through MCP.  This looks
+a bit strange, and there are certain
+actions that cannot
+be performed through MCP.  And
+if they have a
+better
+computer control interface, I
+can also improve
+the sound, adjust
+the colors, etc. directly,
+since the model itself
+will work with the
+app.  So,
+Okay.  Yes, that would be
+cool.
+But does this give Astra
+access to the entire
+computer?
+Yes, that's what
+using
+a computer is, right?
+That is, you allow the
+ChatGPT application
+to use your
+computer the way
+you do.
+Yes.
+And if
+video editing is fairly simple,
+I expect Astra
+to do a better job than
+me, because I'm not a
+professional editor
+.  So yes, technically
+I can do it, but
+if she can
+edit better than
+me, then go ahead.
+Yes.  So does this mean
+we can also
+give Astra a task
+like "show this
+image every 5
+seconds"?
+I think so, I'm pretty
+sure she
+can do it.  And that would be
+interesting,
+for example, for clips
+: instead of
+using Opus Pro,
+can we tell Astra
+to cut five clips
+, add subtitles,
+export, boom.  This This would be
+incredible.
+Yes, that would be really
+cool.  But it would be
+interesting to see
+how much it costs.
+So yeah, I'm going to
+launch this after the
+live stream.
+Thibaut mentioned that it
+was a competitive
+advantage to have ChatGPT
+Astra even before their
+release.  Now that
+they've released it,
+they'll probably have
+version seven and then
+they'll go even further,
+right?  Well, sort of.
+Yes, they are simply way
+ahead of
+us.
+Yes, but what do we
+do now?  What, what is
+our goal?
+To create more,
+to create better,
+to make sure that we
+not only build, but also
+make money and
+simply optimize
+everything.
+We can even
+start
+to rethink the
+business model as an
+AI integrator—what
+they call an FDE, "
+forward deployed engineer"—is a
+technical role to
+work directly
+in a customer's environment
+to build,
+deploy, and
+integrate
+production-ready AI
+systems.  There is also a
+new business model
+where you come to a
+company,
+install AI, and
+get paid based on
+performance results.
+Oh, that's cool.
+And if you do it on
+a large scale, instead of 400
+thousand, do it with a
+billion, then that's
+good.
+Yes, yes, and you just
+target
+larger companies.
+That's right.  How many
+large companies
+spend hundreds of
+thousands or millions
+every month on different
+things, and for you it's
+one prompt, one
+skill, and even one
+training—
+two hours—with some
+customization, and you
+save them 80%.
+Yes.
+from expenses.
+Yes.
+And you go on
+vacation at their
+expense.
+Yes, you can
+work for 6 months
+and you will earn
+enough money.  This is
+right, because
+even in 5 years
+we will still be
+integrating AI into
+large systems or into
+large companies or
+corporations.
+Yes.  Yes, yes,
+definitely.
+Because even in France, I
+think they are still
+integrating systems.
+Well, like the internet,
+maybe not the internet,
+but computer stuff
+for sure.  I mean,
+how many, how many
+integrators work
+with Microsoft?
+Yes, a lot, but
+once you
+get into big
+companies, you also
+have to think about
+privacy and
+how to train
+people.  So it's a bigger
+project, but there's
+definitely a lot of money involved.
+No, yes, and if you're
+going to deploy an
+open-
+source model locally,
+you don't have...well, it's a
+hell of a
+huge project,
+of course.
+It's like those videos you
+see online, right
+?  How people buy 500 Mac
+minis.  And if they're
+sold out, they
+just buy a MacBook Pro
+.
+Yes, there are so many
+possibilities here, right?
+Bro, we need to
+print.
+We're charging, but yes
+, and you can do this,
+for example, for
+content, right?
+You run an ad,
+you spend,
+let's say, 100 thousand on
+advertising.  I have my own
+AI process.  You do
+n't have one, but I have my own
+SaaS, but I
+use it
+for myself.  I'm running
+an ad for you.  You
+reduce costs by
+50%, but get 200%
+better results.
+Yes.
+And I get 20% of the
+savings.
+This, this is perfect.
+And it's not even a
+use, the
+use is
+n't even on you.  I pay for
+use.  You don't
+pay for seats.  You
+could just have
+access to a
+control panel or something like
+that, or even
+connect it to
+your own ChatGPT.  You, you
+understand.  You get
+all the data.  The job
+is done.
+Well, I think we are
+moving towards such
+systems.
+Yes, that, that makes sense.  And
+yet, it will allow
+experts in any
+field to develop and
+improve their
+skills, and the
+level of performance and
+results will increase
+thanks to AI.  So
+subscribe and
+watch the next
+video, that's all.
+Thank you.
+Goodbye everyone.  Pope.
+Goodbye.

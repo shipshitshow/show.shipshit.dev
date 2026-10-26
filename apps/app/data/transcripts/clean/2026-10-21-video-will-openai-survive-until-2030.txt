@@ -1,0 +1,451 @@
+So, we could
+see
+OpenAI go bankrupt by
+2030.
+2030, just a few
+years away.
+Well, yes, they have 5 years,
+even less, yes,
+26th.  They have 3 years to
+triple their income
+by the end of the year.
+No, good luck to them.
+When OpenAI announced these
+numbers, for example, Oracle,
+which depends on OpenAI
+... No, OpenAI depends on
+Oracle, and this whole
+ecosystem is connected
+together.
+Yes, but a difference of 20
+billion is a lot.
+They said,
+"Okay, we expected
+70, but we got 50."  But they
+analyzed it, and
+when they announced
+the numbers, the market got scared
+, even though they are essentially the
+same numbers, because it is 50
+billion at the end of
+September, which is 20
+billion less than the
+previously mentioned 70
+billion.  But these 70
+billion are for
+December.
+Oh, I didn't understand that
+.
+Yes.  And cloud
+partner revenue raises
+questions about
+AI revenue projections.  I mean
+massive
+infrastructure spending.
+This is what could
+burst the “
+AI bubble” if the growth of
+these companies
+slows down,
+even slows down
+compared to what it
+was before.
+Mhm.  This will be interesting.
+OpenAI needs to show that
+they can grow
+as fast as
+Anthropic to attract
+more funding, etc.  And
+looking at
+user accounts won't
+save them.  They need a
+better model than their
+competitors to
+attract
+enterprise
+subscriptions and APIs—that’s
+where the real money is,
+right?
+Yes, because it's not
+about $20 subscriptions
+.
+Yes.  No, no, exactly.
+Consumer income is less
+attractive.  If you
+were Sam Altman,
+you would have trouble sleeping because of this
+.
+You have one of the
+largest companies
+on Earth, one of the
+most important and the
+fastest growing.    No
+one has ever
+seen anything like this, and you
+still have a lot of problems.
+When you're on the financial
+front lines, OpenAI
+expects to burn through $280
+billion by 2030.
+Yes.  It's even hard
+to imagine what this amount is.
+Bro.
+And it's not about salaries.
+So, partly,
+probably, for salaries,
+right?  How much space?
+Yes, but I think
+it's mostly
+processors and
+electricity, right?
+Yes.  So, they have somewhere
+, well, yeah, 4 years, 5
+years to
+spend it.  But
+still, that's 10 years of
+SpaceX spending, right?  And
+they launch
+rockets into space.
+Yes, yes, and these just
+tell people
+what products are on their
+shopping list.
+Yes.  Yes.
+Yes, most people,
+I think, big
+companies, of course
+they program, but a
+lot of people
+use
+computers for
+stupid things.
+Uh, but that's why they
+stopped Sora, right?
+Remember when there was a
+video with Cameo?
+Yes.
+Like, they shut it down
+because they were spending like 100
+million a month
+or something without
+any
+But I think, yeah,
+just so people would
+make flowers and other
+images.    Have
+you fully
+migrated to Opus 5.5 now?  Still
+?
+Yes, I passed.  Because I don't
+use Codex because
+it takes too
+much time.  Opus is
+actually fast.  And
+if I use
+Codex just for
+checking, I'm slowing down
+Opus.  And then Opus
+still does a full
+build, and then Codex
+says, "I have
+feedback on this,
+this, and this," and
+eventually when I ask
+Opus, "Hey, what did you
+improve?"  He made
+all the improvements from
+Codex, and I ask, "
+Was that really
+necessary?"  And he says,
+"No, because I've already done this
+, this, this, and this."  And then you
+see that everything Codex
+provided as feedback is
+actually either
+duplicated or
+concerns exceptions
+that happen once every
+100 years.  Well, I
+actually
+optimized my
+query.  Because I'm not saying
+to do a full
+security check,
+bug checks, and how the
+code is structured.  I
+just say, "I
+only have 10 minutes. I
+need to deploy.
+Please check everything to make sure the
+code is correct and
+safe, but don't
+give me any
+updates or
+one-time enhancements
+or exceptions or
+anything like that. That's better than what
+I'm explaining now, but
+later on you see that
+Codex starts to make
+a difference because it only throws out
+really big
+problems, not like, "Oh
+, this is possible." I
+actually think
+they just
+allocate all the
+computing
+power they can at the time of
+release because people
+run benchmarks.
+Yeah.
+And once all the
+benchmarks are done and the
+big companies
+have run them and said, "
+This is great," they
+just
+scale down.
+We use
+both, right? I don't
+understand people who
+say, "Oh yeah, no, I'm
+going to use
+Codex no matter what."
+Yeah.
+Like what? Why? I
+don't know why, but
+because it makes sense, right
+?
+If there's better
+software, you
+use better.
+Do I think we'll ever
+pay full price for
+the API? Like those subscriptions...
+that's it?
+Ultimately, you won't have
+a choice.
+Yeah, but we have
+open weights
+. I'm not going to
+pay for the API. I'm not going
+to spend 15k a
+month working
+on an open source project
+or something...
+No, no, you're right, but
+big companies that are
+paying
+50k for an IT team right now...
+If
+they spend 30k or
+40k on tokens, they don't
+care.
+Yeah. Yeah.
+Because the team is smaller
+. It's more efficient.
+You can just
+run 24/7 and have a
+20% discount.
+Oh yeah, I know. I think
+it's still... Yeah, okay.
+So we have 10 days with
+20x
+Codex usage.
+So you don't see a
+difference yet, but yeah,
+we're going to get cut a lot in 10 days
+.
+Yeah, we'll see where
+that goes.
+Yeah. No, no, definitely.
+I think Anthropic is waiting for
+them to do it.  will do
+to take away all
+the clients.
+No, no, exactly, because if
+their use in the
+OpenAI Codex is covered.
+The only thing is, you know
+my Claude subscription is
+free?
+Okay, say that again.
+My Anthropic subscription is
+free now.
+Okay, how do you do that?
+Because they're giving me
+free money.
+Oh yeah. Oh yeah, no. These
+API credit things.
+Yeah, API credits.
+The thing is, I'm
+using
+my API credits right now. I'm
+spending them, even though I
+normally would have to
+pay, and now they're
+giving them away for free,
+and I can even
+bill
+the clients I'm
+helping. So they're
+essentially... I'm paying them
+$200 to
+get $200
+for free.
+That's cool.
+Yeah, but for those of you
+who haven't already:
+you have to
+make sure you
+'ve applied in
+your account,
+otherwise you won't
+get it.
+Yeah, you have to
+apply in your account, yeah.
+Yeah.
+That was definitely a smart
+move on Anthropic's part.
+Because if you get
+$200 in API credits
+for free, you're
+moving your APIs to
+Anthropic and staying
+there, because you're not moving
+to Codex or ChatGPT or
+anywhere else. I just
+asked Fable, this was when
+Fable first
+came out, to create a
+simple
+four-
+column task board for me, you
+know how it works.
+And it pulls
+tasks from GitHub. All
+I did was
+say, "Everything you
+do, log it.
+And at night, between 3:00 and 4:00
+in the morning, go through all the
+logs, you should find
+at least five
+problems or areas
+for improvement." But
+she actually
+found that
+she
+needed problems to improve herself.
+So she started
+building her own
+project for something, I
+don't even know
+what, just to
+keep
+coding and creating
+tasks and
+improving. Yeah. So
+I finally said, "
+When did you decide that
+you really
+needed to create your
+own tasks?"
+It turns out
+I was the one complaining, because
+eventually she
+said, "Oh, I found
+three issues." I
+only did three. And I
+commented on that like,
+"No, I told you to
+do five." I don't
+care how, just
+do five every night. It's
+so cool. I don't
+dare do this on a
+real
+client project because I want to make
+sure it's
+safe, that it's not going to get
+hacked. But it's
+local on a Mac mini behind
+my firewall, and
+everything is protected.
+Today I
+need to -- yesterday
+I had a
+client project. I asked
+Codex to just check
+everything, and I forgot to say to
+do it quickly.
+So it gave me
+about 70 points for
+improvement. And I
+said, "Okay,
+create an HTML page with
+this issue, where did you
+find it, and what do you want to
+do to
+fix it?"  And then I
+asked Cloud Code
+to check everything. And
+create issues on GitHub
+. It created 105 issues
+on GitHub . Then the Mac mini
+started programming.
+Everything was done,
+everything was merged, and everything
+went into the development branch
+. And then I checked
+the code through Codex, Drug, and Cloud,
+did three tests, and there
+were zero issues. I
+pushed it, and it
+worked. Damn it
+.
+So, 105
+pull
+requests were merged.
+Autonomous, like, basically
+software.
+Well, the only thing I
+expect from them now
+is that they
+continue to make the
+models smarter
+and better, because that's the
+only thing I
+know of that they
+can do to
+compete with
+each other.
+Lower prices and
+speed.
+Yes, prices and
+speed, but do
+you think
+they can make it
+so good
+that the prices go even
+lower?
+Yes, they can, right now it's the
+worst
+possible option, right?
+Unless they
+release some  a
+crappy model that
+works even worse. But,
+uh, yeah, I'm off. Thank you very much
+, and, uh, yeah,
+see you
+next week on
+our special
+stream. It's going to be fun. And
+, uh, yeah, everyone, uh, like
+,
+subscribe,
+share the video, and, uh
+, see you
+next week.

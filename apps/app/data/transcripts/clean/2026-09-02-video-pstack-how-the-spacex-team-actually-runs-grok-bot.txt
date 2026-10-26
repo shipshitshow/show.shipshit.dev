@@ -1,0 +1,361 @@
+Do you use the
+Potato stack yourself, or not?
+Yes, I added it because I
+started with Grok Bot and
+decided that it would
+notify me of
+incoming tickets,
+review them, and
+offer a
+draft response.  And
+then I choose "yes"
+or "no", or provide
+feedback on the draft
+so that it can improve the letter
+before sending.
+Since the usage limits
+run out quickly,
+I don't want
+to use it
+for coding.
+Yes.    I
+don't want to spend everything
+in 4 hours and then
+wait a whole week.
+Yes.
+But things got a little out
+of control.
+At first, I had
+one bot, and I told it
+that people who should be
+writing to the
+ticket system should
+write to me directly.
+So I scan my
+mailboxes and
+forward the tickets.
+I have a notification in
+Slack about incoming tickets,
+and another bot is drafting a
+response.  And
+then I tried
+adding another bot
+.  I said, "Hey, if
+this is a WordPress question
+about updating
+content, I have a
+one-click login system where you
+get a regular
+author account, not an
+administrator account, and you
+can update
+text."  Try this.
+And before I knew it,
+I had a stream of
+tickets where people
+were asking to change
+text on their
+site, and the bot was doing it.
+He suggested
+adding another bot
+for quality control.
+He checked, they
+communicated, and then they
+told me, “Check
+this link.  "Here it is,
+it's already online."  I
+review, approve, the
+email is sent,
+and it even records the
+hours we
+can
+bill the client for.
+This is cool.
+So, it's like a
+full-time
+employee.  And then
+my
+limit usage started to
+skyrocket in a
+matter of hours.  That's
+when I used the Egg
+Bot from Lauren from Potato.  And
+this, well, you have about
+8 thousand tokens for
+each prompt, and it
+compresses them to 500
+instead of 8 thousand.  I've been
+testing it for 3 days now
+and it works very
+clearly.  Works
+perfectly.  No
+problems.  So he
+saves me a bunch of
+tokens.  I even
+set it up to
+repeat: I gave Egg Bot a
+recurring task
+every Monday night
+to check all my
+bots, all my
+workflow, all my routines, and
+optimize it all.
+And egg bot even takes
+routine tasks away from
+certain bots and says, "
+Hey, this should be a
+separate bot, because
+if it only has
+one task, it
+focuses on
+that, and it costs
+less tokens than
+if you do three
+tasks at once."
+Yeah. So you
+still have a kind of
+chief of staff, you
+only communicate with
+him, and he already
+distributes things?
+Yeah.
+Yeah. I just have
+one point of
+communication.
+Now we have webhooks,
+right? It
+doesn't even have to be a cron
+job, it has to be an
+event.
+Yeah. The
+daily crypto report
+should be in my
+crypto feed, but
+maybe I'll
+remove it because I can
+save some
+tokens.
+Do you have an egg bot in it
+?
+Yeah. Yeah.
+Yeah, just tell
+it to check everything,
+optimize it,
+suggest how it can
+be better, and ask
+how many tokens it
+can save.
+I can't because I
+don't have access to
+use it.
+Oh, yeah, sure.
+I have a certain
+problem,  I don't know if
+you have it. Look,
+I have a message,
+etc., and I need to
+ask for the status of a
+task.
+Sometimes it doesn't give me
+an answer to that.
+Yeah, sometimes it seems to
+miss something.
+Yeah, checking all
+the statuses for all
+the tasks that
+are running, like the
+last report, blah blah
+blah. So it
+asks the whole team
+what to do. If I
+have, say, 20 bots, then
+I'm burning tokens like
+crazy, right?
+Yeah. Once you
+get that down, you could
+even have one
+task per Grok
+bot, a super Grok account,
+etc.
+Yeah, it works just like a
+normal
+development team.
+If everyone communicates
+with everyone else, at the end of
+the day they
+only work 2 hours. And if
+you completely
+optimize the process,
+be strict with
+communication, and
+optimize everything, you
+get the perfect
+development team
+that works 7.5 hours out of 8.
+So that's what you
+want to do here
+too.
+Personally, I would
+change that  so that you don't have to
+write code, but just
+open PRs, and then
+I have other
+agents: Codex, Claude, Grok.
+Yeah.
+They could build
+things based on those PRs.
+Yeah, they work
+on building code and
+Yeah, that's right.
+So just
+management.
+Verification is all
+you need, yeah.
+The most important skill to
+have in
+your arsenal is a
+high-quality
+verification skill. Yeah,
+something like something
+for CI/CD, right? It sounds like you
+want to try the
+P stack skills, it's
+really cool.
+I haven't tried it yet.
+It's
+worth a try.
+Yeah, but, you know, I'm not
+sure if it's worth it
+because you have legacy
+projects that you'd rather not
+rework too
+much.
+Oh no, no, that's going to break everything
+. I
+don't know if you want to
+rework the entire
+codebase
+with AI and then
+fix bugs 24/7
+without understanding why.
+Let's build a
+verification skill together.
+I'm building a
+verification skill. Yeah, that's why
+in my  Grok I
+mentioned creating a
+verification skill
+because I wrote an article about it
+. So
+creating a
+verification skill Dr. Eggbot
+is something that we both
+set up. I think
+we need our own
+V stack and stack, bro.
+Yeah, but there are so
+many options right now, and on the
+other hand, I'm waiting for
+it to be integrated into
+Cursor.
+I mean, that's
+it. You can
+create your own
+skill, but they're not
+going to
+standardize the P stack
+for all developers,
+right? Well, maybe
+they'll do it on the
+backend, you know.
+Yeah, yeah, that's what I
+mean. They're
+integrating something
+like that because if
+so many people are
+using it and
+internal teams are using it
+, why not
+make it part of
+Cursor, available to
+everyone without additional
+integrations?
+Yeah. Yeah. I
+think it
+makes more sense for them to keep
+everything in a
+plugin format. Then everyone
+can customize
+everything to their needs,
+right? Everyone builds their own
+stack because an
+iOS developer will have different
+needs than a
+No, that's true.
+React,  right? So, yeah. And also,
+a lot of developers
+want to
+control their own
+stack and
+coding style, right?
+No unnecessary junk.
+Of course, it's important for them
+to maintain that.
+Yeah, that makes sense.
+I've struggled before,
+cleaning up work
+trees and branches after
+a deployment, right? So, we're not
+happy with the
+stack deployment, but yeah. And the bot
+uses the P stack in
+its own
+setup, right?
+Hopefully, that
+helps to build a
+quality bot, your
+roster comes
+with the Space stack, right. Okay.
+Okay, so what
+have we learned and what do we
+expect from Grok Bot
+going forward?
+Well, Grok Bot is great, but
+it needs to be
+optimized, otherwise
+you'll run out of
+tokens within the day and
+you won't be able to
+use it. So,
+we use their
+solution to
+add EggBot, just
+say "optimize
+everything" and it's fixed.
+Yeah. Yeah, you ask for
+optimization, and that's it
+.
+And it worked.
+Yeah. I, I
+need to do that.
+Okay, I need to
+wait a few
+hours, but after
+that, everything should  be
+well.
+Yes.
+Thank you all. Thank you for
+the comments and thank you Ewen
+Ad for
+joining us
+during the broadcast.
+Subscribe, like the
+video,
+like the video,
+share it, and
+see you
+next time,
+next week,
+next time,
+same place.
+Bye.
