@@ -105,3 +105,7 @@ Codex CLI image tool on Vincent's Mac. In `~/Desktop/thumbnails/2610/261027/live
 - C: `genfeed-harness-c-toolbox-v1`. Passes; warm amber interior beside the white logo.
 - The official Genfeed mark is a single black glyph (`apps/app/public/logo.svg` in the Genfeed repo); rendered white on charcoal. Every logo is a generated reproduction, checked by eye against the SVG.
 - Generator output was 1672x941, scaled and cropped to 1920x1080.
+
+## D — Big brand (Vincent's pick direction, 26 Oct)
+
+Vincent's own `genfeed-studio-c-one-brief-smug-sceptic-v2` layout (G logo centre, media tiles fanned around it) with no hosts, the logo at about a third of the frame width and bigger tiles filling both sides. Codex CLI on Vincent's Mac: `genfeed-studio-d-big-brand-v1.png` plus signed `.jpg` in `~/Desktop/thumbnails/2610/261027/livestream/`. First generation used; checked at full size only (320px not yet checked). The portrait tile became a landscape because of the no-people rule.
