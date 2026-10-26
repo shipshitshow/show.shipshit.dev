@@ -1,0 +1,398 @@
+Do you know what's cheaper than
+Grok 4.6?
+Don't pay at all.
+That's right.  Free
+model on OpenRouter,
+dude.
+Okay, let's go.
+Yes, exactly.
+Forget Grok, forget
+OpenAI.
+Yes.
+We have something better.
+That's right.  All this is
+garbage.  Put it
+aside, because it's too
+expensive.  I refuse to
+pay for my AI
+now.
+Yes, and it's not just
+for good
+developers, it's for
+everyone.
+Yes.
+Last week, OpenRouter
+announced that 0x Alpha
+was in
+stealth mode, i.e. as a
+launch model, and
+they were going to
+get your request,
+see if
+you liked it,
+and then release
+it in a week.
+So, yes, now we
+know that 0x Alpha is z.ai
+5.3 flash, and for a
+whole week everyone
+has been trying to guess
+based on the model inputs and
+outputs,
+etc., what the
+model is.  This lasted
+about 15 minutes.  Everyone
+was already talking about GLM 5.3
+right after its launch.
+And within a week,
+about 42 trillion
+tokens in six days
+through open code.  Have you
+tried it or not?
+I haven't tried.
+Yes.  You could
+have another 8 billion
+more.
+I didn't find any
+crazy big
+bugs, because even
+the tests showed that
+in some benchmarks
+it was on par with Fable 5.
+Oh.  And it's free.
+And we had it for
+free for a
+week.  But I had
+problems
+testing the model.
+Well, in open source sometimes it
+just stops
+working.  I couldn't
+see the result at the
+station.  It just
+"build, build, build",
+stops building, what
+happens?  I
+was building, building, building,
+building, it
+stopped again.
+Yes.  In the free
+version, so many
+people
+use it.  Apparently there's a
+spike in
+load and it
+just loses
+connection or
+something.
+Yes.  Because of this style of
+math, I decided
+to try Open Code
+again, and even in Cursor
+you can do this
+by changing the API key.  So
+you can add your
+Open Router key to Cursor to
+use the
+Cursor interface for
+free models
+.  And I didn't
+try Open Code
+because it's a CLI and it
+worked best
+with this secret
+model.  And yes, now
+I've discovered even
+more free
+patterns because I like to
+pay, but yeah, if
+you can get these
+free patterns
+for free, that's even better.
+But now you can
+just use
+free AI.
+Yes.  Well,
+that's cool.
+You need Cursor, but do you
+need a subscription
+to use
+it or not?  Insert
+your own API key.    I
+don't think so, because it
+uses your...
+Okay, so
+it uses the API,
+you just get
+the program, and that's it.
+Yes.  So, you have a
+convenient interface
+for working with artificial
+intelligence.  What can you
+create
+with these
+little
+free patterns
+?  I want to try them
+.  I want to try them
+right now
+by creating a transcript
+for YouTube.  We
+insert the link
+, get
+the transcript, and if
+it builds it
+correctly, I want to
+get the clip.  So
+he will cut clips with the
+best moments of
+our live
+broadcast.
+Okay.  So, essentially,
+at the end of this
+video, we'll be able to
+paste in a URL and it'll
+create all the clips for us
+.
+This is what I hope to
+create with the
+free model.
+Using a
+free model?
+Using a
+free model.
+Yes.
+In 30 minutes?
+Yes.
+That's right.
+Let's go.
+Okay.  Perfectly.  So,
+I have Muse on the left and Zero X
+Alpha on the right.  I want
+to use the prompt.
+We are building a
+small standalone
+tool in TypeScript
+called YouTube Distiller.
+Paste the
+YouTube link and you get the
+video text, as well as
+a few highlights—
+cut and ready
+to play.  Yes,
+read-only.
+Don't write any code yet.
+These are two phases of one
+engine.  It performs the
+states below
+and I already have progress.
+It will eventually become a CLI
+server.  The interface
+is a simple static
+HTML file.  No React, no
+bundler, no nothing.
+Pipeline:
+YouTube download,
+video
+and English
+auto-subtitles download in JSON 3.
+JSON 3 parsing, one
+request to OpenRouter (
+free route) with
+full transcript.
+Build in 5
+minutes and make as
+ordered.  Yes, you see,
+time estimation...
+It's complete nonsense.
+This is great.
+Yes, the same if you
+enter a request and say
+create a plan and
+then give an estimate of
+time and cost.    It still
+seems to
+give estimates in the
+same amount of time as humans
+without AI.
+Yes, one hundred percent.
+Because the dataset
+for estimating time is
+still based on
+people's posts
+on Reddit, right?  So,
+yes.  YouTube Distiller,
+insert link,
+3-5 ranked
+moments, chopped and
+played, one
+request to model per
+video, ignore
+time estimate,
+upload
+started.  Okay,
+let's go.  The
+request format is not available.
+What is this
+used for?
+Video comparison.  How do
+you do a capture
+if there is no video?  I'll
+take it away.  I'll take it away.
+Download
+complete.  It works.  Are you
+...are you doing something?
+He found it.
+Is this a fake?  The fake
+video is going
+well.
+Transcript analysis, one
+query.  Good.  I'm doing
+...finding five
+people, wait.
+Good.  Yes.  Yes.  Yes.
+He does everything...that's
+it.
+Live stream demonstration with the robot and
+full demo with
+King.
+Yes, King was my bot
+.
+Yes.  Okay, wait.  I'll
+cut it out.  Make
+the segment smart.  Okay
+, that's cool.  Because look,
+this is an effect.  This is what I
+use to
+transition from
+one section to
+another in a video, right?
+Let's walk through the entire
+assembly line.  Google search
+from start to finish,
+lead generation,
+email draft,
+agent work.  Yes, 1
+minute, 1 minute.
+Bro, these could be
+clips for Twitter.
+Yes, but people
+try to do
+it through Claude and
+spend an hour
+copying, pasting,
+linking, querying.
+You can simply
+write your own
+solution.  This is much
+faster.
+And it works, and it's
+free.
+Yes, that's cool.
+Bro, it cost
+zero.
+And it gave results
+.
+Like...
+From a lead search query
+, when you need to
+find 1000.
+Or do it
+automatically, then it will
+be an example and everything
+you can imagine and everything you
+need.
+Okay, why is it
+constantly updated
+?  Okay, what else works?
+Yes, but every time
+it creates a video,
+it updates.
+Yes, not fake, real,
+but without corrections.    Oh
+my god, I love AI
+, bro.
+What?  And again, we
+don't need an
+employee to do
+this for us.
+Leads.
+Make sure you
+test the different models
+that are available, because
+you see, even if
+people say this is the
+best model,
+now you have to prove
+that another one works.
+Yes.  I mean, yeah,
+it's crazy.  I mean,
+you don't have the
+gaps like the
+Frontier model from Anthropic, and I have
+...yes.  5.5 is still the
+best model.
+Yes, and the most expensive.
+Yes.  I think I'll give it a try
+...I'll just do
+one query with the
+same data through
+Codex and Claude from Anthropic.
+So it'll be 5.6, or...
+but yeah, it would be interesting to
+try that.  But
+yeah, okay, whatever.
+So, yes, we
+can even work with
+three models
+now.
+Yes, it works, and it
+was visible, and it
+produces good solutions.
+You see, we instantly
+had five videos.
+It's not like that, I didn't
+expect it to be
+so fast.  Yes, not the
+model I wanted to
+test first.
+But the secret is to
+tell him we
+need it in five
+minutes because we're
+live, and he'll
+do it all in 5
+minutes.
+Truth.  Oh yes, yes, that's
+true.  Yes, the life hack
+is: "Bro, you have 30
+minutes or 30 seconds,
+because if you don't, I'll cut off
+your electricity."
+Yes, yes.  The whole world
+will go to hell.
+Just do it in 30
+seconds.
+Yes.  So, yes, for
+everyone writing prompts right now
+, tell
+your cloud that its
+bandwidth
+will be reduced.
+Yes.
+Oh, yes.  Mitchell,
+thank you so much for your time.
+Guys, thanks for the demo.
+It was fun.  And uh,
+yeah, next week
+, somewhere around there.  Oh yes, yes.
+Somewhere out there, once upon a time.    It's right there
+online.
+Yes.  Bye, dude.
+Thank you.
+Goodbye.
+Oh yes, like,
+subscribe,
+share.
+Yes, yes.
+Jingle-jingle.
