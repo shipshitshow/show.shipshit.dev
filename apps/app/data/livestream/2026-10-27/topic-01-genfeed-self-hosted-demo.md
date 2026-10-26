@@ -14,7 +14,7 @@ thumbnail_prompt: null
 - **Viewer question:** "Can a founder run their own AI content agent on their own machine, and what does it actually cost and take?"
 - **Format (Vincent, 26 Oct):** pitch first, because viewers must be convinced of the play before they care how it runs. Then demo the output (one brief to drafts, host review, a correction turn). Only then the self-hosted process: install, keys, what leaves the box. Vincent drives, Mitchell is the skeptical first-time user.
 - **Disclosure, say it in the first minute:** Genfeed is Vincent's product. This is a founder showing his own tool, not a review.
-- **Demo rule:** only promise on air what has run end to end in a dry run, and say which instance (local or Cloud) is on screen. If a step fails live, keep the failure and explain it; do not cut to a pre-recorded "it works" without saying so.
+- **Demo rule:** only promise on air what has run end to end in a dry run, and say which instance (hosted Playground or local) is on screen. If a step fails live, keep the failure and explain it; do not cut to a pre-recorded "it works" without saying so.
 - **Vincent to fill before the show:** which instance runs the demo and its release (growth plan says v0.2.15, untagged on 24 Oct; the only rehearsal was v0.2.13 self-hosted); dry-run date; which provider keys you will use; the one real brief you will run; what one generation cost in provider spend.
 - **Mitchell to fill:** what you would want a content agent to do for your business, and what would make you not trust it.
 
@@ -92,15 +92,16 @@ Open on a finished result from the dry run: one brief, the drafts it made. Then:
 - Exit cue once Mitchell says "ok, show me": "let's see what it makes."
 - Budget: about 8 minutes.
 
-## Segment 2 — Output demo: one real brief to drafts
+## Segment 2 — Output demo: one real brief to drafts, in the Playground
+
+Vincent, 26 Oct: the content demo runs in the Genfeed Playground, https://app.genfeed.ai/playground (the hosted app), not in the self-hosted stack. Nothing from the growth rehearsal covers it: that was the **Agent** page on a self-hosted v0.2.13 install. Dry-run the Playground before the show and say on air that this is the hosted app, while Segment 3 is about running your own.
 
 ### What to put on screen
 
-1. The brief: a B2B-style one that supports the pitch (for example a founder post for a B2B product, or the Tuesday episode announcement). Pick it in the dry run. Rehearsed brief was "Trailhead Notebook"; the episode post has not been rehearsed.
-2. Ask for drafts one at a time (only draft 1 shows in the chat UI).
-3. Host review on air. Expect the first output to break the format rules (rehearsal: every time); show the correction turn instead of promising the brief enforces format.
-4. Stop at draft. Scheduling, Approve, image render and connected channels are unverified; do not publish or schedule live without deciding beforehand.
-5. Say which instance is on screen.
+1. The brief: a B2B-style one that supports the pitch (for example a founder post for a B2B product, or the Tuesday episode announcement). Pick and test it in the dry run; no brief has been written down or tested for the Playground yet.
+2. Drafts in the Playground. Unknown until dry-run: whether it shows all drafts at once, whether outputs break format rules (the Agent page did every time), what a run costs in credits.
+3. Host review on air; if the output misses the rules, show the correction turn instead of hiding it.
+4. Stop at draft unless scheduling/publishing is tested and decided beforehand.
 
 ### Conversation cues
 
@@ -109,13 +110,13 @@ Open on a finished result from the dry run: one brief, the drafts it made. Then:
 
 ## Segment 3 — The self-hosted process (walkthrough, no live install)
 
-Vincent, 26 Oct: no live install of the 9 GB Docker image. Segment 2 already runs on a stack that was brought up before going live. Here we explain the process and show the pieces, nothing is pulled on air.
+Vincent, 26 Oct: no live install of the 9 GB Docker image. The content demo (Segment 2) runs in the hosted Playground. Here we explain the process and show the pieces, nothing is pulled on air.
 
 ### What to put on screen
 
 1. Docs requirements page (Docker, 10-15 GB disk, no GPU, ports).
 2. The install commands as text or the docs page (`npx @genfeedai/create my-genfeed`, or the checksummed release bundle). Say the rehearsal numbers as one machine: 87 s pull and about 2 min to healthy, image 9.5 GB, amd64 only, emulated on Apple Silicon. Be honest that it is a big image; that is part of the self-host trade-off.
-3. The already-running stack: `curl http://localhost:3010/v1/health`, then the logged-in app. Say it was brought up before the stream.
+3. If a local stack is brought up before going live to show: `curl http://localhost:3010/v1/health`, then the logged-in app. Say it was brought up before the stream. Not required for the content demo.
 4. Keys: where the OpenRouter key goes; mention media keys. Never show real keys; use a throwaway `.env` or blur.
 5. Architecture page: local vs provider calls.
 6. Optional: connect Claude Code to the MCP server at `localhost:3014`, only if verified in the dry run.
@@ -129,7 +130,7 @@ Vincent, 26 Oct: no live install of the 9 GB Docker image. Segment 2 already run
 ## Fallbacks
 
 - Pre-generated drafts saved in a text file on the stream machine.
-- Stack already up before going live (pre-pulled; the install segment never runs a pull on air), plus the recorded install run if one exists.
+- Optional local stack, pre-pulled before going live (nothing is pulled on air), plus the recorded install run if one exists.
 - Finished backup render and full rehearsal recording (growth backup plan; backup render not done yet, depends on growth#17).
 - If a step fails live, keep the failure and explain it; say it if you cut to a recording.
 
