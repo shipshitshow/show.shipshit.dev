@@ -76,12 +76,13 @@ thumbnail_prompt: null
 
 ### Question and opening cue
 
-Open on a finished result from the dry run: one brief, the drafts it made. Then: "before the how: why does this matter if the models keep getting better?"
+Open on a finished result from the dry run: one brief, the drafts it made. Then, in one minute: the toolbox gives the agent its tools, automation workflows drive the agentic workflow, and that is what lets you add more automation and more guardrails. Then: "why does this matter if the models keep getting better?"
 
 ### The pitch (Vincent's thesis, 26 Oct)
 
 - **Models will get better and cheaper. That is not your edge, everyone gets the same models.** What you need is your own harness (the workflow around the model) and your own context (brand, voice, product knowledge, past content). That is what turns a generic model into content that sounds like your business, and it is the part you keep when you swap models.
 - **Why Genfeed:** it is that harness and context layer, open-source, so a founder can own it. Use it to produce content for your business, including B2B content (founder posts, product explainers, episode and launch posts).
+- **The toolbox (Vincent, 26 Oct; opening of the show):** the harness has two parts. The **toolbox** gives the agent its tools. The **workflows in automation** then drive the agentic workflow, which unlocks more automation and more guardrails. Say it as a direction Vincent wants to develop, not as a shipped feature. **Unverified:** what of the toolbox and automation workflows exists in Genfeed today (the docs I read only mention the MCP server and Claude/Claude Code/Codex support); Vincent to state exactly what is live vs planned before air, and show only what is live.
 - **The ask, said once and briefly:** Vincent wants viewers to use Genfeed to sell content to B2B. Disclose first that Genfeed is his product. Keep it to the style rule (value, not begging, CTA at the end); do not repeat the ask in every segment.
 - **Guardrails:** no claim that Genfeed content has sold to or converted B2B buyers unless there is a measured, sourced example; no "models will" predictions presented as fact (frame as Vincent's view). The B2B angle is the thesis for the show, and the demo should show it: use a B2B-style brief (see Segment 2).
 
