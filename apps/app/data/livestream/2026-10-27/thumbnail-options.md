@@ -1,6 +1,6 @@
 # Thumbnail options — 2026-10-27
 
-Asset: livestream. Title (Vincent, 26 Oct): `Genfeed.ai: We Open-Sourced our AI Content Engine`. Story: **"Models are a commodity. The harness is yours."** (talking points, PR #149).
+Asset: livestream. Title (Vincent, 26 Oct): `Genfeed.ai: We Launch Our Open Source AI Content Studio`. Story: **"Models are a commodity. The harness is yours."** (talking points, PR #149).
 
 YouTube's thumbnail test does not run on scheduled live streams. Pick one for the live, then test all three on the archive once it is eligible: https://support.google.com/youtube/answer/16391400
 
