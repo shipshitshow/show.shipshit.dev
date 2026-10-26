@@ -1,5 +1,5 @@
 ---
-title: "I Self-Host Genfeed, an Open-Source AI Studio"
+title: "Genfeed.ai: We Open-Sourced our AI Content Engine"
 slug: "genfeed-self-hosted-demo"
 source: "genfeed.ai homepage, docs.genfeed.ai self-host pages (installation, system requirements, architecture), github.com/genfeedai/genfeed.ai (AGPL-3.0-or-later), read 19 Oct"
 status: "draft"
@@ -10,7 +10,7 @@ thumbnail_prompt: null
 
 ## Sources — Livestream Notes
 
-- Date: Tue 27 Oct 2026, 15:00 CET (14:00 UTC), right after the Show HN post goes up. YouTube link: **not set yet** (growth#20). Title not locked; working title still fits since the install stays in.
+- Date: Tue 27 Oct 2026, 15:00 CET (14:00 UTC), right after the Show HN post goes up. YouTube link: **not set yet** (growth#20). Title locked by Vincent, 26 Oct: "Genfeed.ai: We Open-Sourced our AI Content Engine".
 - **Viewer question:** "Can a founder run their own AI content agent on their own machine, and what does it actually cost and take?"
 - **Format (Vincent, 26 Oct):** pitch first, because viewers must be convinced of the play before they care how it runs. Then demo the output (one brief to drafts, host review, a correction turn). Only then the self-hosted process: install, keys, what leaves the box. Vincent drives, Mitchell is the skeptical first-time user.
 - **Disclosure, say it in the first minute:** Genfeed is Vincent's product. This is a founder showing his own tool, not a review.
