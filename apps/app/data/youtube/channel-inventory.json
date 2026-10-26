@@ -30,52 +30,6 @@
       "actualStartTime": null,
       "channelId": "UCxuriP32znodU-8N7zkwuew",
       "channelTitle": "Ship Sh!t Show",
-      "cleanTranscriptPath": null,
-      "commentCount": 0,
-      "description": "All internet content will be AI-generated. \nSo we built our own agentic studio, and today we open-source it.\n\nRun it yourself and make your own content: your machine, your brand, your keys, nothing published until you approve it. \n\nWe're launching Genfeed.ai live with one real B2B brief turned into posts on air, and showing what self-hosting actually takes.\n\nGitHub: https://github.com/genfeedai/genfeed.ai\nSelf-host: https://genfeed.ai/self-hosted\n\nBring your questions to the chat.\n\n#OpenSource #AI #Genfeed",
-      "duration": "P0D",
-      "duration_seconds_flat": 0,
-      "duration_string_flat": "0:00",
-      "id": "X5zWE-Cvgt4",
-      "likeCount": 0,
-      "privacyStatus": "public",
-      "publishedAt": "2026-10-26T13:56:02Z",
-      "rawTranscriptPath": null,
-      "thumbnail": "https://i.ytimg.com/vi/X5zWE-Cvgt4/maxresdefault.jpg",
-      "title": "Genfeed.ai: We're Launching Our Open-Source AI Content Studio",
-      "transcriptStatus": "missing",
-      "type": "livestream",
-      "url": "https://www.youtube.com/watch?v=X5zWE-Cvgt4",
-      "viewCount": 0
-    },
-    {
-      "actualEndTime": null,
-      "actualStartTime": null,
-      "channelId": "UCxuriP32znodU-8N7zkwuew",
-      "channelTitle": "Ship Sh!t Show",
-      "cleanTranscriptPath": null,
-      "commentCount": 0,
-      "description": "All internet content will be AI-generated. \nSo we built our own agentic studio, and today we open-source it.\n\nRun it yourself and make your own content: your machine, your brand, your keys, nothing published until you approve it. \n\nWe're launching Genfeed.ai live with one real B2B brief turned into posts on air, and showing what self-hosting actually takes.\n\nGithub: https://github.com/genfeedai/genfeed.ai\nSelf-host: https://genfeed.ai/self-hosted\n\nBring your questions to the chat.\n\n#OpenSource #AI #Genfeed",
-      "duration": "P0D",
-      "duration_seconds_flat": 0,
-      "duration_string_flat": "0:00",
-      "id": "5MHHTWYSZ-Y",
-      "likeCount": 0,
-      "privacyStatus": "public",
-      "publishedAt": "2026-10-26T13:38:57Z",
-      "rawTranscriptPath": null,
-      "thumbnail": "https://i.ytimg.com/vi/5MHHTWYSZ-Y/maxresdefault.jpg",
-      "title": "Genfeed.ai: We Launch Our Open Source AI Content Studio",
-      "transcriptStatus": "missing",
-      "type": "livestream",
-      "url": "https://www.youtube.com/watch?v=5MHHTWYSZ-Y",
-      "viewCount": 0
-    },
-    {
-      "actualEndTime": null,
-      "actualStartTime": null,
-      "channelId": "UCxuriP32znodU-8N7zkwuew",
-      "channelTitle": "Ship Sh!t Show",
       "cleanTranscriptPath": "apps/app/data/transcripts/clean/2026-10-21-video-will-openai-survive-until-2030.txt",
       "commentCount": 0,
       "description": "OpenAI expects to burn $280B by 2030. We look at the gap between where its revenue is and where it needs to be, then get practical: why Opus 5.5 ships while Codex mostly nitpicks edge cases (and the 10-minute prompt that fixes it), whether we'll ever pay real API prices, how Mitchell's Claude bill hit $0, and how one Codex review turned into 105 PRs merged overnight.\n\nOur take (recorded 20 October 2026): use both, switch to whichever model is better, and remember the labs have to get smarter, cheaper and faster. Right now is the worst these models will ever be.\n\n00:00 Cold open\n00:19 The $20B gap\n02:03 $280B to burn\n03:31 Opus ships, Codex nitpicks\n05:24 Will we pay API prices?\n06:34 My Claude bill is $0\n07:42 105 PRs overnight\n10:01 The verdict\n\nThe $280B figure is from the FT headline shown on screen. Revenue figures are as reported at the time; Sora and pricing figures are our own estimates from the stream.\n\nFull livestream: https://youtube.com/live/XCyY0VDiRps\n\nI do this every week, hit subscribe so you don't miss it.\nFollow us: https://x.com/shipshitdev",
@@ -1432,7 +1386,7 @@
   "source": "youtube-data-api-v3",
   "summary": {
     "cleanTranscripts": 58,
-    "livestreams": 36,
+    "livestreams": 34,
     "missingTranscripts": [
       {
         "id": "1CFi5rzc2bU",
@@ -1440,22 +1394,12 @@
         "url": "https://www.youtube.com/watch?v=1CFi5rzc2bU"
       },
       {
-        "id": "X5zWE-Cvgt4",
-        "title": "Genfeed.ai: We're Launching Our Open-Source AI Content Studio",
-        "url": "https://www.youtube.com/watch?v=X5zWE-Cvgt4"
-      },
-      {
-        "id": "5MHHTWYSZ-Y",
-        "title": "Genfeed.ai: We Launch Our Open Source AI Content Studio",
-        "url": "https://www.youtube.com/watch?v=5MHHTWYSZ-Y"
-      },
-      {
         "id": "b9Re90K4By8",
         "title": "[LIVE] ChatGPT Images 2.0 Is Insane: Best Prompts, Examples, and Use Cases",
         "url": "https://www.youtube.com/watch?v=b9Re90K4By8"
       }
     ],
-    "total": 62,
+    "total": 60,
     "videos": 26
   }
 }
