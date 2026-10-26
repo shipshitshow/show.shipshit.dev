@@ -9,6 +9,52 @@
       "channelTitle": "Ship Sh!t Show",
       "cleanTranscriptPath": null,
       "commentCount": 0,
+      "description": "All internet content will be AI-generated. \nSo we built our own agentic studio, and today we open-source it.\n\nRun it yourself and make your own content: your machine, your brand, your keys, nothing published until you approve it. \n\nWe're launching Genfeed.ai live with one real B2B brief turned into posts on air, and showing what self-hosting actually takes.\n\nGitHub: https://github.com/genfeedai/genfeed.ai\nSelf-host: https://genfeed.ai/self-hosted\n\nBring your questions to the chat.\n\n#OpenSource #AI #Genfeed",
+      "duration": "P0D",
+      "duration_seconds_flat": 0,
+      "duration_string_flat": "0:00",
+      "id": "X5zWE-Cvgt4",
+      "likeCount": 0,
+      "privacyStatus": "public",
+      "publishedAt": "2026-10-26T13:56:02Z",
+      "rawTranscriptPath": null,
+      "thumbnail": "https://i.ytimg.com/vi/X5zWE-Cvgt4/maxresdefault.jpg",
+      "title": "Genfeed.ai: We're Launching Our Open-Source AI Content Studio",
+      "transcriptStatus": "missing",
+      "type": "livestream",
+      "url": "https://www.youtube.com/watch?v=X5zWE-Cvgt4",
+      "viewCount": 0
+    },
+    {
+      "actualEndTime": null,
+      "actualStartTime": null,
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh!t Show",
+      "cleanTranscriptPath": null,
+      "commentCount": 0,
+      "description": "All internet content will be AI-generated. \nSo we built our own agentic studio, and today we open-source it.\n\nRun it yourself and make your own content: your machine, your brand, your keys, nothing published until you approve it. \n\nWe're launching Genfeed.ai live with one real B2B brief turned into posts on air, and showing what self-hosting actually takes.\n\nGithub: https://github.com/genfeedai/genfeed.ai\nSelf-host: https://genfeed.ai/self-hosted\n\nBring your questions to the chat.\n\n#OpenSource #AI #Genfeed",
+      "duration": "P0D",
+      "duration_seconds_flat": 0,
+      "duration_string_flat": "0:00",
+      "id": "5MHHTWYSZ-Y",
+      "likeCount": 0,
+      "privacyStatus": "public",
+      "publishedAt": "2026-10-26T13:38:57Z",
+      "rawTranscriptPath": null,
+      "thumbnail": "https://i.ytimg.com/vi/5MHHTWYSZ-Y/maxresdefault.jpg",
+      "title": "Genfeed.ai: We Launch Our Open Source AI Content Studio",
+      "transcriptStatus": "missing",
+      "type": "livestream",
+      "url": "https://www.youtube.com/watch?v=5MHHTWYSZ-Y",
+      "viewCount": 0
+    },
+    {
+      "actualEndTime": null,
+      "actualStartTime": null,
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh!t Show",
+      "cleanTranscriptPath": null,
+      "commentCount": 0,
       "description": "OpenAI expects to burn $280B by 2030. We look at the gap between where its revenue is and where it needs to be, then get practical: why Opus 5.5 ships while Codex mostly nitpicks edge cases (and the 10-minute prompt that fixes it), whether we'll ever pay real API prices, how Mitchell's Claude bill hit $0, and how one Codex review turned into 105 PRs merged overnight.\n\nOur take (recorded 20 October 2026): use both, switch to whichever model is better, and remember the labs have to get smarter, cheaper and faster. Right now is the worst these models will ever be.\n\n00:00 Cold open\n00:19 The $20B gap\n02:03 $280B to burn\n03:31 Opus ships, Codex nitpicks\n05:24 Will we pay API prices?\n06:34 My Claude bill is $0\n07:42 105 PRs overnight\n10:01 The verdict\n\nThe $280B figure is from the FT headline shown on screen. Revenue figures are as reported at the time; Sora and pricing figures are our own estimates from the stream.\n\nFull livestream: https://youtube.com/live/XCyY0VDiRps\n\nI do this every week, hit subscribe so you don't miss it.\nFollow us: https://x.com/shipshitdev",
       "duration": "PT10M45S",
       "duration_seconds_flat": 645,
@@ -30,7 +76,7 @@
       "actualStartTime": "2026-10-20T15:39:20Z",
       "channelId": "UCxuriP32znodU-8N7zkwuew",
       "channelTitle": "Ship Sh!t Show",
-      "cleanTranscriptPath": null,
+      "cleanTranscriptPath": "apps/app/data/transcripts/clean/2026-10-21-livestream-openai-vs-anthropic-game-over.txt",
       "commentCount": 0,
       "description": "OpenAI expects to burn $278 billion by 2030, and its revenue came in about $20 billion below what investors had heard. Anthropic is growing faster.\n\nIs it game over for OpenAI, and should you still build on it?\n\nWe're discussing OpenAI's numbers, why we cut our Codex plan for Claude, how our $200 Claude Max costs us $0, Grok Bot's new email, and cleaning up AI slop code.\n\nWould you switch? Bring your questions to the chat.\n\n#OpenAI #Anthropic #ClaudeCode",
       "duration": "PT53M39S",
@@ -40,10 +86,10 @@
       "likeCount": 1,
       "privacyStatus": "public",
       "publishedAt": "2026-10-21T04:43:12Z",
-      "rawTranscriptPath": null,
+      "rawTranscriptPath": "apps/app/data/transcripts/XCyY0VDiRps-OpenAI vs Anthropic： Game Over？.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/XCyY0VDiRps/maxresdefault.jpg",
       "title": "OpenAI vs Anthropic: Game Over?",
-      "transcriptStatus": "missing",
+      "transcriptStatus": "clean",
       "type": "livestream",
       "url": "https://www.youtube.com/watch?v=XCyY0VDiRps",
       "viewCount": 69
@@ -145,7 +191,7 @@
       "actualStartTime": null,
       "channelId": "UCxuriP32znodU-8N7zkwuew",
       "channelTitle": "Ship Sh!t Show",
-      "cleanTranscriptPath": null,
+      "cleanTranscriptPath": "apps/app/data/transcripts/clean/2026-10-01-video-sonnet-5-5-vs-opus-5-5-why-anthropic-won.txt",
       "commentCount": 0,
       "description": "Can Sonnet 5.5 handle the build while Opus 5.5 checks the work? And does that combination make more sense than using the most expensive model for every task?\n\nIn this recap, we discuss why Anthropic’s models became our leading choices that week, Sonnet 5.5’s value for everyday coding, and where Opus 5.5 fits into planning, orchestration, and verification.\n\nWe also look at AI video creation, why defining what “done” means matters, and whether higher effort settings actually beat fast iteration and clear feedback.\n\nVincent’s plan: build with Sonnet 5.5 and review the pull requests with Opus 5.5. Mitchell is staying with Opus while finishing his current project and hasn’t tried Sonnet yet.\n\nWhich model would you trust to build—and which would you trust to check the result?\n\nRecorded September 29, 2026, before subsequent OpenAI news. This is our verdict from that livestream.\n\n00:12 Why Claude won the week\n01:38 The Sonnet value case\n03:17 Plan. Build. Verify.\n04:42 What Opus can make\n07:11 Define what done means\n08:30 Effort vs. iteration\n10:12 Outro\n\nSubscribe for more conversations about AI, software, entrepreneurship, and building things that actually ship.\n\n#Claude #Sonnet55 #Opus55",
       "duration": "PT11M39S",
@@ -155,10 +201,10 @@
       "likeCount": 2,
       "privacyStatus": "public",
       "publishedAt": "2026-10-01T14:30:06Z",
-      "rawTranscriptPath": null,
+      "rawTranscriptPath": "apps/app/data/transcripts/WOTzkAWvb0w-Sonnet 5.5 vs Opus 5.5： Why Anthropic Won.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/WOTzkAWvb0w/maxresdefault.jpg",
       "title": "Sonnet 5.5 vs Opus 5.5: Why Anthropic Won",
-      "transcriptStatus": "missing",
+      "transcriptStatus": "clean",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=WOTzkAWvb0w",
       "viewCount": 331
@@ -214,7 +260,7 @@
       "actualStartTime": "2026-09-08T12:17:34Z",
       "channelId": "UCxuriP32znodU-8N7zkwuew",
       "channelTitle": "Ship Sh!t Show",
-      "cleanTranscriptPath": null,
+      "cleanTranscriptPath": "apps/app/data/transcripts/clean/2026-09-09-livestream-fable-5-1-vs-gpt-6-astra-did-we-reach-agi.txt",
       "commentCount": 0,
       "description": "Claude Fable 5.1 vs GPT-6 Astra. Did we just reach AGI?\nThree testers compared them and came back with three different verdicts.\n\nThis week, we ran Astra through real development tasks.\nWe’re breaking down the comparisons live, showing our results, and asking what these models can actually ship.\n\nSubscribe so you don't miss the next build.\nFollow us: https://x.com/shipshitdev\n\n#GPT6Astra #ClaudeFable #AGI",
       "duration": "PT45M37S",
@@ -224,10 +270,10 @@
       "likeCount": 0,
       "privacyStatus": "public",
       "publishedAt": "2026-09-09T01:08:56Z",
-      "rawTranscriptPath": null,
+      "rawTranscriptPath": "apps/app/data/transcripts/KPAyE6KSrQU-Fable 5.1 vs GPT-6 Astra： Did We Reach AGI？.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/KPAyE6KSrQU/maxresdefault.jpg",
       "title": "Fable 5.1 vs GPT-6 Astra: Did We Reach AGI?",
-      "transcriptStatus": "missing",
+      "transcriptStatus": "clean",
       "type": "livestream",
       "url": "https://www.youtube.com/watch?v=KPAyE6KSrQU",
       "viewCount": 313
@@ -253,7 +299,7 @@
       "transcriptStatus": "missing",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=1ZbR2qie8rk",
-      "viewCount": 3840
+      "viewCount": 3841
     },
     {
       "actualEndTime": "2026-09-01T13:12:08Z",
@@ -1362,18 +1408,23 @@
   ],
   "source": "youtube-data-api-v3",
   "summary": {
-    "cleanTranscripts": 45,
-    "livestreams": 33,
+    "cleanTranscripts": 48,
+    "livestreams": 35,
     "missingTranscripts": [
+      {
+        "id": "X5zWE-Cvgt4",
+        "title": "Genfeed.ai: We're Launching Our Open-Source AI Content Studio",
+        "url": "https://www.youtube.com/watch?v=X5zWE-Cvgt4"
+      },
+      {
+        "id": "5MHHTWYSZ-Y",
+        "title": "Genfeed.ai: We Launch Our Open Source AI Content Studio",
+        "url": "https://www.youtube.com/watch?v=5MHHTWYSZ-Y"
+      },
       {
         "id": "MTbYJ4o2EQg",
         "title": "Will OpenAI Survive Until 2030?",
         "url": "https://www.youtube.com/watch?v=MTbYJ4o2EQg"
-      },
-      {
-        "id": "XCyY0VDiRps",
-        "title": "OpenAI vs Anthropic: Game Over?",
-        "url": "https://www.youtube.com/watch?v=XCyY0VDiRps"
       },
       {
         "id": "mYkxfB4ib7E",
@@ -1391,11 +1442,6 @@
         "url": "https://www.youtube.com/watch?v=zjXzkB8z5xg"
       },
       {
-        "id": "WOTzkAWvb0w",
-        "title": "Sonnet 5.5 vs Opus 5.5: Why Anthropic Won",
-        "url": "https://www.youtube.com/watch?v=WOTzkAWvb0w"
-      },
-      {
         "id": "uSuqoiEaB1k",
         "title": "Opus/Sonnet 5.5 vs GPT-6 Sol/Luna vs Grok 4.7: What To Use?",
         "url": "https://www.youtube.com/watch?v=uSuqoiEaB1k"
@@ -1404,11 +1450,6 @@
         "id": "r6o5wFD4P-w",
         "title": "GPT Astra: How Do We Make Money Post-AGI?",
         "url": "https://www.youtube.com/watch?v=r6o5wFD4P-w"
-      },
-      {
-        "id": "KPAyE6KSrQU",
-        "title": "Fable 5.1 vs GPT-6 Astra: Did We Reach AGI?",
-        "url": "https://www.youtube.com/watch?v=KPAyE6KSrQU"
       },
       {
         "id": "1ZbR2qie8rk",
@@ -1436,7 +1477,7 @@
         "url": "https://www.youtube.com/watch?v=b9Re90K4By8"
       }
     ],
-    "total": 59,
+    "total": 61,
     "videos": 26
   }
 }

@@ -1,0 +1,502 @@
+If you can do
+more with the Sony 5.5 with one
+or two points outside
+the office, that's already
+saving you a bunch of
+money compared to the
+Fable.
+Yes, that's perfect.
+Yes, exactly.  And the main
+event was uh Claude Opus 5.5,
+which uh conquered the
+news feed, because uh
+yes, 27 million
+views.  Yes.
+Hmm, they're somehow good at
+marketing.  Yes.
+Because people are happy,
+right?
+Yes.
+5.5 is better than Fable 5.1.  And
+what is happening?  I
+expect them to have
+Fable 5.5.  Both they and Fable 5.5
+or whatever the
+next version will be
+are being distilled at Opus and,
+starting
+yesterday, at Sony.
+And these models are really
+good.
+Yes, because at this point,
+why would you even
+use Fable?
+This is one of the It's too
+expensive for
+the result you get, and you
+get about the
+same
+result with
+today's Opus.
+Mhm.
+I just closed all
+my Fable sessions.
+Yes, bye.
+And coding from 50% to 66,
+10% more
+multi-step
+reasoning, okay,
+two points more.
+Business processes 40%.  This is
+[ __ ] crazy.
+Computer usage I still
+prefer the
+computer
+usage of Open AI in
+Codex.  I think that's better.
+Claude is a little annoying.
+Mhm.
+Um, intellectual
+work uh 1846 mentally
+.  Um, yesterday, because uh
+we always
+choose the right time.
+Mhm.
+Sony 5.5.
+Yes, and you tried
+it.
+Yes, all morning.  I have
+um I was on my
+weekly
+Claude 24% subscription.  I worked
+all morning and am still
+working at my
+last strength.
+I have 100%.
+Mhm.
+But it still
+works.  I love Sony
+.  I will probably
+audit all
+pull requests
+using Claude.
+Mhm.
+I need to
+see if
+it uses
+more tokens and
+more resources to
+have a verifier as a
+smarter model than
+Sony.  Basically, this is a
+high figure.  No, this one is
+amazing.  It seems
+they are both high,
+Opus 5 has the same
+result.  So.
+And it's cheaper, so it's a
+better choice.
+Input tokens are two
+instead of four, and
+output tokens are 10 instead of 20.
+Yes.
+So that's a big discount.
+And yes, the price is cheaper,
+so we
+like it.  So we
+can do
+more tasks.
+Working with Opus
+feels a bit like it's
+not unlimited, but
+at least we have
+usage limits.
+I went from 36 hours
+to 72.
+Yeah, well, I never go
+over my limit,
+so I'm happy.
+And so, okay, we're above 55
+, um cheaper and operating
+at the same level as
+Astra, so go ahead.  Uh
+But I had the same
+problem with the
+Grok bot.
+M-hm.
+He also works 4.7
+hours, right?
+Yes.
+Since I gave it
+certain tasks,
+I have a manager who
+only
+manages and
+communicates with all the
+bots that have those
+tasks.
+Yes.
+And after a while,
+when the bot doesn't do
+its job,
+instead of
+reminding it and
+checking the requests,
+the manager just
+decides, "Hey, it's
+not doing it, so
+from now on, I'll do
+it myself."
+Yes.
+So your manager
+is performing real
+tasks.
+So, your manager
+implements, not
+manages?
+Yes.
+So, yes.  I think you
+can run
+something defined by Opus
+in PRD,
+M-hmm.
+implemented
+using Sonnet, and
+then have a
+verifier.  That would be
+appropriate, I think.
+But that's what I'll be experimenting with
+this week,
+M-hm.
+and see what
+it leads to, and
+Yes.  I just figured
+that if Opus creates
+subagents, it
+would use
+Sonnet, which is always
+enabled.
+Yes, I know Opus.  So,
+yes.  You have an
+orchestrator in Opus, and
+then you can
+put all the Sonnet
+agents behind it.
+I gave up on
+that and said, "Okay
+, no. Don't
+use
+version 3.5 anymore.
+Use Sonnet
+as the default model
+and Opus
+for planning and
+orchestration."  Okay,
+yes.  This is what I really
+like.
+Asked Opus to create
+a video about the data center.
+The result exceeded
+all my expectations.  And
+the thing is, Where's my
+tweet?  I told Claude
+to browse the internet
+and find anything he
+wanted to use.  So
+he didn't generate
+the video.  He just
+went online and
+put it all together.
+Our civilization
+was built on
+technology.  This is the glory of
+human ambition and
+achievement.
+And we invented a new
+technology
+Cool.  It's like you can
+see it on Netflix.  Because
+he took videos from
+the internet and
+edited them together.
+Okay, let's go.
+Yes, he is becoming very
+intelligent.
+Yes.  And even the timing
+and everything else—just
+fire.  Ugh.
+At the end he forgot the
+beginning.
+AI.
+But one little
+word refused
+to disappear.  Then, in the summer of
+2017,
+every word saw
+every other word.  Not
+one by one, but all
+at once.
+And so.  Previously, you would
+need a whole
+team to create
+something like this in a
+week.
+About 12 hours, one
+promt, and you quietly
+create something
+so cool that
+the creator gives it away
+for free.  I gave
+my Opus 3.5 one of the
+French
+theoretical analyses
+that had garnered 80
+million views
+and simply asked
+it to be adapted for
+video.  And then—yes.    The
+garbage of our time.
+The author is dead, and the reader
+reigns.  Deleuze taught
+us to
+prefer the rhizome
+to the tree,
+the nomad to
+the settled, desire to the
+law, becoming to
+being.
+You see, it's always the
+same
+animation, the same
+style, but...
+But it's like
+websites, right?  Anyone who has a
+website
+built entirely on Claude
+will immediately recognize this.
+Yes.  But it works.
+What?
+Class.
+I don't mind.
+Looks good.
+Does what it has to
+do.
+Yes.
+So yes.  Otherwise,
+just spend a
+few more hours on the
+details and ask him
+to change everything.
+That's right.  One
+guy spent 15
+minutes on the video.  If
+you want to do it
+perfectly, spend the
+next 3 hours and
+you'll get something even
+better, right?
+Yes.  And it's still
+pretty fast.
+And regarding the topic,
+did you read this article or did you
+dump it on your agent?
+How to get the
+most out of Opus 3.5 in Claude
+and Claude Code.  How to ask
+questions, tips
+on new products, and how to
+communicate with him.  Tell me
+what the result should be
+and let
+it work.  That is, you
+set a stop
+and get proof that
+Opus will search.
+For example, take
+a screenshot, send
+me screenshots of the video.
+Let me
+check this.  A clear
+stop is even
+better than a technical
+task, right?  And you
+can demand proof of
+this.  Let's say my
+payment
+endpoint code is from an old
+client to a new one: this
+means that each
+endpoint
+uses the new
+client, the old one
+is removed, and the
+test suite passes.
+Stop it and
+only ask me if there is a
+test file for some
+reason you can't
+explain.  Okay, so
+you can
+use
+negative...
+When will you prompt with
+an image or video?
+Ugh.  Control in Claude—
+just tell him at
+what stage
+to stop.  Yes, it's
+all the same.    Are
+you dropping it?  You
+tell Claude to rewrite
+your Claude.md and agent.md and...
+That's all great.
+Yes, and look,
+for example, at X. Okay, so
+Max—what is it?
+Max is lower than X I.
+Yes, because okay, Sonnet
+scores lower at
+maximum
+effort than in
+cases where our
+code checks whether
+changes can be merged without
+human intervention.  It
+punishes changes outside the
+scope of the task,
+even if they are of
+good quality or useful.
+At maximum
+effort, Sonnet 3.5
+uses code review skills more often
+.  Yes, okay.
+Because effort
+allows you to increase
+the number of attempts/
+rounds you
+want to spend on a
+task.  That's why.  This is
+time, okay, for example,
+time to think about the
+same
+request.  So, 1
+minute on low, 4
+minutes on
+medium, 11 minutes
+on high, and 1 hour
+on maximum.  Yes
+, but it's not that
+crazy.  I don't
+like the
+maximum level.
+I meant to say that
+I like
+one of the first two.
+Yes, exactly.  The middle one
+looks better.  My
+goal was to
+iteratively
+receive feedback.
+Low efforts will
+help you get to
+the result faster,
+but maximum efforts will
+give you something more
+polished right away.
+Mhm.
+You run the application,
+find an error,
+throw it, it
+fixes it instantly, and
+with Grok 4.52 it worked
+great because it was
+incredibly fast.
+Yes.
+And you can
+accumulate requests.
+You test the app,
+throw away all the bugs,
+it fixes them
+cheaply, you test it
+again, and while
+you're testing or
+testing something else,
+it just finishes it,
+you come back—and boom
+.  That was cool.
+So which one is the best for you so far
+?
+Well, I can now
+say that
+I
+used Sonnet last night.  I
+used Sonnet
+until my
+subscription expired.  I want
+to try it by
+next week.  Well,
+I can't say whether
+it was a mistake or not
+.
+Mhm.
+I will build on
+Sonnet 3.5 and check.
+Maybe at the end of
+the day or every few
+hours I'll
+check all pull
+requests using Opus
+.  If you can do
+more with Sonnet 3.5 and
+then do it once or twice with
+Opus, it will save
+you a lot of money
+compared to Claude.
+Yes, then that's perfect.
+Yes, exactly.
+I'm using Opus because I have
+n't tried Sonnet yet,
+but I'm in the middle of a project
+so I don't want to
+switch.  I'm
+always afraid that everything
+will break and I'll
+have to
+explain everything
+again, so...
+I'm pretty sure
+Opus
+uses Sonnet in the
+background anyway.  You just
+won't notice it, so yeah.
+You
+will
+use Sonnet
+with an agent one way or another.
+Yes,
+let's just hope they
+use
+cheaper tokens as well.
+Yes.
+And don't just say, "
+Hey, you're
+using Opus."
+Michelle, thank you so much for
+your time, it was great to be back on the
+air.
+Next week, same
+time, same
+place?
+Yes, at the same time, in the
+same place.
+They drove.  Thank you very much
+everyone.  Thanks for
+joining us, like
+,
+subscribe,
+share the video, and
+see you
+next week.
+Yes.
+See you later.
+Goodbye.  All the best.
