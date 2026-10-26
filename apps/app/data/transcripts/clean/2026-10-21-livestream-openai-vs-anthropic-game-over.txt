@@ -1,0 +1,1335 @@
+Uh, uh, is that playing on repeat
+?  oh my god.    I do
+n't think so.  yes?
+No, I must have had a tab open
+.
+ah.
+Hello, hello.  Welcome
+back to the Ship Show
+.  Uh, how about the channel?
+Yes, everyone is doing well.  It was a busy week
+.    yes
+.
+How about you?
+Yes, me too.  I'm so busy I
+can't think straight.  I have to
+use too many tokens, and there are
+too many GitHub issues, so there are too many things to solve all at once
+.
+That's fun.    That's
+cool.
+Yes, it's really good.    Are you
+trying to get your cloud credits to zero,
+or haven't you done so yet?
+Uh, uh, so I reduced my subscription and
+now it's a bit easier.    yes
+.    The
+cloud is really good.
+Ah, by any chance, did you request the Cloud
+, or Connect
+?
+Yes, yes, Anthropic.
+Ah, yes, no, no,
+no.  So, I recreated the
+secondary cloud account that I had stopped using a few months ago
+.  However, usage has
+improved a bit now, so I have slowly
+started using it again.  I am currently
+using the 20-euro one
+, but I think I will probably increase it to 90 euros
+.  Then you will end up spending 290 euros on two accounts
+.
+One is Connect, and the other
+is Grok.  Oh, and since I don't
+use Muse, I should cancel it.    yes
+.  How about you?  How are
+you?
+I tried to use up my Entropic account, but I couldn't
+.  I only have the
+$200 one.
+[ __ ].    I was
+working on three projects simultaneously.    Are
+n't you going to cancel it?
+why?
+no.  I think that person likes me
+.  Yes, I just
+said, "It's free credit."
+But I'm not sure.  Yes,
+so it seems like the same problem, right
+?  It might be because the product has grown in scale, but
+I saw a tweet from the person who created Cloud Code saying to delete Cloud MD and all skills.
+It means the model has gotten much better.  You know how you tried to fix the
+model's defects with a skill a few months ago
+.    yes
+.
+It means you have to completely delete everything every six months.
+All right.  But I
+have a question.  Do you want to just delete everything
+, or
+request optimization to the cloud
+?
+No, no.  It meant to delete everything and have the
+cloud rebuild it from scratch
+.  And I think I
+should clean up all the settings every week, every month, every six months, or even once every six months, and every day
+.    yes
+.    It is
+developing too fast.
+Yes, but that shows that it's not just about coding
+.  In reality, it
+requires a lot of maintenance.
+ah.  How about today?
+No, you didn't
+do anything.
+All right.  Ah, yes, yes,
+we are still here.
+Yes, good, good.  Um,
+I mean, yes, they say AI will
+replace 100% of GDP anyway
+, right?  So yes
+.  Yes, yes, yes, that's how it should be.
+That is how it will be.
+Oh, that's probably true.  I
+think I am still spending 2 hours every day on maintenance, updates, and checks.
+Yes, so, yes, it
+seems like it is still in the early stages.
+But Elon Musk is
+pushing for flying cars right now
+.  So, I
+have a question.
+Is the robot inside the car doing the calculations?
+No, I don't think the speed will be fast enough
+, right?  Yes
+, it
+seems to be controlled remotely.  But that's SpaceX
+technology too, isn't it?
+To stabilize the thrusters and land properly
+.
+But the "pop" sound is remote control
+, not autonomous flight.    I
+think they must have tested that single setting countless times to make it perfect.  We can't have any problems during the promotion, you know
+.    The
+glass on the truck broke
+, didn't it?
+Yes, that's right.  However, he
+explained that he had been testing all day but broke down due to too much impact during the actual promotion, that is, the live event.
+Yeah, it's going well, right, brother?
+Yes, you keep
+trying to break his window.    that's
+right.  But other than that, well
+, it was pretty much the same.  We
+used the same tools.  It would be nice if we
+could reallocate some resources
+.  yes.  Yes,
+I am still switching back and forth between various tools
+.  The
+best tool keeps
+changing.
+And you're saying the Fiber 5 is being released today
+?
+Really?
+Yes, there are rumors that it will be released today
+.
+I haven't used fiber for the past few weeks
+.
+No, there was no need to use it,
+right?  It doesn't really matter since there is version 55
+.  Yes, it
+'s almost 9 a.m.
+Yes, since it is based on Pacific Standard Time, we’ll have to wait and see
+.  It might
+drop in real time, but... um
+... yes,
+but the Fable usage fees are so
+expensive that I might end up using up my credit limit
+.    that's
+right.  So that is what I intend to do
+.  I should audit the
+repository using the Fable 5.1 prompt and
+see what happens afterward.    yes
+.    all
+right.
+According to sources, Fable 5 is scheduled to be released today
+, and Tropics has also reported that the
+release of Fable 5, the successor to Fable 5.1, is
+imminent
+.  It has superior
+reasoning and intuition compared to current cloud models
+.  We focus on understanding users more
+naturally
+.  Basically,
+long and detailed prompts are
+not necessary.
+Even an incomplete prompt will be
+sufficient to understand the user's intent
+.  Okay, this could be a really big
+change.
+If you register an issue on GitHub, it
+automatically identifies the necessary additional actions and
+resolves them.
+For example,
+if you update a button on this page, all buttons with the same function on other pages will
+not be updated.    Let's
+wait and see how it turns out.  Well, I hear that
+Theo, the model catalog partner, already has access rights
+.  Theo is
+already preparing a demo video
+.
+Onigiri and variant versions
+appear in Divine CLI.
+Both previous versions were released on Tuesdays
+.  All right.
+Since it's Tuesday, I thought Fable would be released now
+, but it's
+almost Wednesday here.    There are
+n't many hours left, so let's
+wait and see how it goes.    It would be
+great if it were released during the live broadcast.    Please
+subscribe and leave a comment.  Ah,
+bots won't work.  I
+should add this to the streaming block list
+.  hi.  hi.  The first
+item model is almost complete
+.  let's go.  Tyus will be
+back soon.  all
+right.  yes.
+Another blockbuster item from Anthropic is
+scheduled to be released today.  Hmm,
+are you hooked on Opus 5.5 right now?
+Still?
+Yes, that is the case for me.  I'm
+not using Codex because it takes too long
+.  Opus is actually
+fast.    yes
+.    If we
+only review with Codex, Opus
+updates get delayed.    yes yes
+.
+However, Opus has completed the entire build
+.  The Codex
+informs you that there is various feedback.  In the end, I asked Opus, "
+What did you improve?"  When I asked, they said they had
+applied all the improvements suggested in the Codex
+.  So, "Was it really necessary
+?"  If you ask, "
+No, we have already
+applied various improvements."  That's what he
+replied.  And you will find that all the feedback from the Codex
+actually means not to use double,
+or is about exceptional situations that occur about once every 100 years
+.  This is
+because there is a possibility that the two actions will be triggered at exactly the same moment.    yes yes
+.  I received a few reviews like that
+.  So it
+feels like we're racing.
+Like when users click simultaneously.  all right.
+I'm not Twitch.  I
+don't need things like that delay.    are
+you okay.  yes.  yes.  yes.  hmm.
+How would you solve this?
+Is this model tuning?  Or is Opus
+not handling it?
+Hmm, I optimize the prompt
+.  I'm not saying you should perform a full check on security, bugs, or code
+build methods
+.  I'm just
+saying that I have to distribute it because I only have 10 minutes.  I am asking you to
+verify that the code is correct and safe
+, and
+not to provide updates or improvements for situations that occur only once or are exceptional
+.    yes
+.    I couldn't
+explain it properly back then
+.
+I think it would be better than explaining it now.  Eventually, you
+realize that the Codex plays an important role.  Because the Codex
+only tells you about the really important problems
+.    yes
+.  "Ah,
+this is possible."  They
+don't tell you the same thing.    all
+right.  But
+is there a standard for evaluating that?
+For example, when performing a deployment or release,
+is the review done automatically, or
+does it display a prompt every time?
+No, you have to do it yourself every time.
+So, I speak using a microphone called Whisper
+.    all
+right.  I fully understand
+.    You just need to
+press the button and explain
+.  It is processed automatically even if you speak incorrectly or in
+Dutch
+.    yes
+.
+It is certain that models are getting smarter.  But
+version 6.1 was good when it was released,
+but now it's become much dumber
+, right?  yes.
+That kind of problem still occurs
+.
+I think they pour in all possible computing power during the
+initial launch period because people are running benchmarks
+.    When
+benchmark results came out,
+big companies said, "It's really cool!"    If you
+say that, then they
+lower the performance.
+Yes, but that doesn't make sense,
+does it?  Because then we would lose users in a month
+.    It
+retains users on the first day of release, but if
+other products like Anthropic, Codex, and Music are
+released one after another that week, after a month
+everyone will
+go back to Anthropic because Opus 5.5 is awesome and Codex isn't that great.
+Yes, but other companies have already
+made money from subscription updates.  Everyone raised their
+subscription fees from $190 to $200
+, and even if you cancel the subscription, you still have to pay the full
+amount for that month
+.  Refunds aren't available either.
+So, that means I made money
+.  I do
+n't think the situation has been that good lately.
+There are even financial reports saying that Open AI is failing, you know?  Yes,
+that is correct.    I
+don't think those releases will save them much.    It's going to be a
+really mess.    Here's a
+tip:
+try collaborating with Anthropic as well.  Please make sure to
+utilize that as well.
+We use both.    I
+can't understand people saying, "No, I'm going to use the Codex no matter what."
+Why?
+why?
+I don't know why, but it does
+n't make sense.    If
+there is better software,
+of course you should use the better one.    that's
+right.
+That is why aggregator apps are
+useful.  For example, while Open
+AI always provides only Open AI models
+, if Anthropic has models that are
+more suitable for motion design video work
+, you can
+use an aggregator that combines all models to
+select the model best suited for your desired task.    Just
+like using Opus 5 on a SaaS platform that provides motion design video services.  Well, it's something like that
+.  Yes, this happened this week—
+oh, right, actually
+a few days ago—
+when OpenAI announced its earnings, for example,
+Oracle relies on OpenAI
+, and OpenAI
+relies on Oracle.  Because the entire
+ecosystem is interconnected
+.  OpenAI's
+financial situation has dropped by as much as 5%
+, which is really ridiculous.    Not
+only that, but
+there is evidence that the entire tech industry relies heavily on OpenAI, and Oracle's stock price plummeted by more than 5% after the Financial
+Times reported that OpenAI's revenue was
+lower than initially reported
+.
+Nvidia, IMD, and
+Microsoft also suffered similar losses
+.
+Yes, but the difference of 20 billion dollars is
+huge.  It’s not just a matter of saying, "
+We made a stupid mistake
+."
+Dropping by as much as 5% in just one day is the
+same as Bitcoin falling by 25%, isn't it
+?    That's right
+.    This
+is not a normal situation.
+Hmm, okay, let's skip that part
+.  Ah, yes, as I mentioned at the beginning, it is
+annual sales
+.  Well, so they
+said they expected $70 million, but it
+only came out to $50 million
+.  However,
+upon analysis,
+the market was uneasy when the figures were released.    Because
+basically, it's the same figure
+.  As of the end of September, it
+is $50 billion, which is
+$20 billion less than the previously announced $70 billion
+.  However, the $70 billion is
+based on December figures.
+Ah, I don't quite understand that part
+.    yes
+.  And the method for calculating annual net profit was
+a bit complicated, so
+everyone was confused.
+Everyone was anxious, but in the end,
+"Ah, no, anyway, it just got
+a little smaller."    That is what I should have
+said.
+Yes, annual revenue was $20 billion
+, but in a previous report, the company
+told investors that revenue was approaching $50 billion,
+which
+is lower than the previously reported $70 billion.
+Gap
+reported these figures due to the difference from Anthropic
+.  Yes, I will check
+.  And cloud
+partner revenue must also be included
+, which is raising questions about the AI ​​revenue outlook
+.  Massive infrastructure
+investment is a factor that could burst the AI ​​bubble
+.  And if the
+total sales of both companies
+slow down compared to before, the situation will
+become interesting.
+Therefore, OpenAI will need to demonstrate that it
+can grow as fast as Anthropic to
+attract additional investment.
+Continuously resetting user accounts
+cannot save them
+.    That will
+absolutely not be the case.  For example,
+if the current 6.1 version is less useful than the 5.5 version, you
+must present a better model than your competitors and attract corporate customers.  That way, you can generate revenue through enterprise
+subscription services (excluding API costs)
+.  Because the real profits
+come from that very corporate client base.
+Right?  Yes, that is
+correct.  Revenue from consumers is
+much more profitable, such as with 5-year long-term contracts with corporate customers
+.  So it will be interesting to watch this part going forward
+.  At All Scale, we also
+switch our subscription models around in a similar way, and if we don't like them, we
+shorten the subscription period
+.  Then it takes about
+a month to release the next generation version
+.  However, profits
+continue to circulate.  And
+open source models also
+secure usage, but the interesting point is that
+Chinese open source models
+use US hardware and power
+.  Since the Frontier
+model is used in the Chinese model, it
+cannot use American hardware and power.    It
+is a truly fascinating thing.  That's ridiculous
+.
+Yes, so that means all these computing
+resources cannot be utilized by state-of-the-art private research institutes
+.  Because the CPU driver is already
+in use.
+So they end up in a predicament
+.  If it were
+someone like Sam Altman, he wouldn't even be able to sleep
+properly.    I am
+currently running
+one of the largest and most important companies on Earth, and the
+fastest-growing one at that. It does
+n't make sense that there are so many problems despite the tremendous growth that no one has ever seen.    yes
+.  And there is
+no precedent in history for companies growing at such a rapid pace as Antropic or Open Eye.  It is unimaginable to expect that a
+company at the forefront of the financial sector will
+pour in $280 billion by 2030
+.    You probably
+can't even imagine how big of a amount that is.  It
+is a truly enormous amount.
+That money isn't entirely for salary
+.  Of course, some of it will be
+used for salary.  You ask
+how much SpaceX uses it
+?  Yes, but most of it is probably the CPU
+and electricity bill, right?    How much
+money does SpaceX spend annually
+?  20 billion dollars?  oh my god.
+SpaceX's total capital expenditure will
+reach $20 billion by 2025
+, and
+spending will accelerate further in 2026 due to massive investments in AI
+.  Hmm, I
+heard that $300 billion is by 2030.  So, it will probably
+all be used up in about 4 or 5 years
+.  Still, it means SpaceX is essentially
+using it all up over the next 10 years
+.  But
+when launching a rocket into space...    yes yes
+.  You know how people use it to show what's in their shopping cart
+.    yes yes
+.
+Yes, most people—of course,
+large corporations do coding—but
+many people are
+using computing resources on useless tasks.
+That's why you stopped Sora,
+isn't it?  Do you remember the cameo video
+?    yes
+.
+I think the reason they shut down the service is because they spent about $100 million a month without any revenue.
+I think
+people only use it to make flowers or other
+images
+.
+How much did you spend a month?  Hmm, I
+think I've used quite a lot.  Ah,
+I see.  No, there are many more
+.  I think Sora Mobile alone will
+spend about $450 million a month.  About 500 million dollars
+.  yes.  It's like using half.    yes
+.
+Of course they would have
+stopped it.  The CTO asked, "Something's
+off. Are you giving this away for free
+?"  He probably said that.
+No, not exactly.  Yes, the
+CFO said that, right?  Yes, yes,
+yes.  Hmm, then how do
+you generate revenue?
+Who would pay the actual cost of Sam Altman producing the video that makes the meme
+?  You
+can't be the video model.  Yes, it's
+similar to TikTok.  If TikTok cannot embed AI-
+generated videos within the TikTok platform
+, then they become entirely
+AI-generated TikTok content
+.  That is the future of content
+.  It will probably turn out that way one way or another, but well, that’s
+obvious.
+But
+what would happen if everyone did that but no one paid?
+Yes, that's right.  It's impossible.
+What should I do?  You
+can save on ads, right?  It would be great to
+attract the attention of billions
+, but
+if it costs $3 per video to use AI-generated footage on TikTok,
+probably only one or two users would
+shoot videos with their smartphone cameras, right?  Right?  yes that's
+right.
+And the city could collapse like a slope
+.
+Well, that is true, but currently,
+Instagram and other apps are
+already operating almost entirely on AI
+.
+I'm not sure what that means, but if you
+check, you'll even be able to see a note stating that the AI ​​content was
+generated by AI
+.    It's
+really amazing.
+Yes, but images are
+often cheaper than videos, are
+n't they?    yes
+.  Even so, many people are just
+following along.    yes
+.  Yes, because the
+market is huge.
+Yes, that is certainly true.  In particular, consider the amount of content that bots on
+Platform X post
+every day, every second, as I wrote in the text
+.  It's really
+incredible.  However, there are
+still challenges to be solved in the video sector
+.  But of course, it would be possible with about 500 million
+dollars
+.
+Yes, that will certainly be the case.
+But will that come from OpenAI
+, or will Entropy be
+able to produce videos using code
+?
+Honestly, I think Elon Musk could
+do it too.
+Grok is already making a lot of videos, you know
+.    yes that's
+right.  The quality of the model is
+still terrible, though.
+Yes, but they are producing a huge amount
+, and very quickly at that
+.    hmm.
+The video J made
+is much faster than other apps.  I think they
+prioritize speed first and
+optimize quality later
+.    yes that's
+right.    It's a
+different approach.
+Yes,
+of course you have to be fast to make videos for social media
+.  It needs to be as fast as Grok 4.5
+.  But it’s annoying when you improve the model and it
+slows down again
+.
+Yes, yes, but that is a
+problem they have to solve.  We are just
+complaining that the speed isn't fast enough
+.
+Yes, it looks like a Tesla Roadster.
+Ah, no, it's too noisy.
+No, why make it like that?
+Yes, yes, because it is a flying
+car.
+It's for the sake of science, you [ __ ].    yes
+.
+But yes,
+so OpenAI might go
+bankrupt around 2030.
+2030, there aren't many years left.
+Yes, there are
+less than five years left.  Yes, 26.
+They basically need to triple their sales within 3 years
+.
+No, good luck.
+Yes, I will have to double it, and since I have an
+obligation to pay the remainder to Nvidia, Oracle, etc., I will have to
+raise it further.    yes
+.
+And if they
+fail to fulfill that obligation, the entire
+technology ecosystem will collapse
+.
+Yes, yes, it will just collapse.    That is
+exactly right.  However, I'm not
+sure about Anthro-Anthropic
+.
+Well, it probably depends on what they have
+.
+They rely on Elon Musk's servers to
+some extent
+, don't they?    yes
+.  Hmm, since usage is increasing right now, it
+seems like that is happening.    yes
+.  It seems so.
+thank you.  Yes, that's right.    Do you
+think we will eventually have to pay the full price for the API
+?  Subscription services
+will disappear.
+In the end, there will be no choice left
+.
+Yes, but we
+have open weights.
+I will not pay the API price
+.  I have no intention of spending
+$15,000 on open source projects
+.  yes that's right
+.
+However, large corporations that currently pay their IT teams $50,000 do
+n't consider spending about $30,000 or $40,000 in tokens to be a waste
+.    Because the
+smaller the team size, the
+higher the efficiency.  You can operate it 24 hours a day and
+get a 20% discount.    yes that's
+right.  However,
+compared to the current employee price, you probably
+won't be able to get such a discount.    yes
+.  However, if you stop the subscription service
+and pay for the API at a reasonable
+price with a margin
+, many opportunities may
+arise.
+Other companies might also offer subscription services
+.  For example,
+if AI companies like Anthropic or Codex stop their subscription services and only charge for APIs,
+I might choose to use ZAI and subscribe for a few months
+.
+Yes, and if it is certainly
+well-documented and about 80%
+or 90% of the key features are already implemented
+, it is much easier for other models to continue
+working on it
+.  Because the big work is already finished
+.    yes that's
+right.  And in other
+words, if you are developing a context harness for the initial training of a new app
+, it must be general-purpose enough so that the app can freely switch to and use
+any model from Open Router
+.  So that any model can be
+used.
+However, just a year ago,
+we were coding using AI with much simpler models
+.  So, if you
+use open source models now
+, it won't
+be a big problem because they are far superior to the models you used previously
+.
+So, they will have no choice but to be
+satisfied if you just lower the price
+.    yes that's
+right.  So, since GPT 3.5, you
+divided the cost per token by 1,000, right?  The 555 is
+better at making low-end models like the Luna
+.  That is why models that are
+cheaper, faster, and offer more
+usage are
+being released.  The price per token is
+falling 50 times faster than any other technological revolution we have experienced.    Even when
+compared to things like electricity or energy.  But I
+understand that they earn $20 billion less.
+This is because I calculated it based on the original price and the discounted
+price
+, and the price
+keeps dropping due to competition.
+Well,
+that is a problem.
+But you can keep the margin the same, right?  You
+can lower the price, but if you have no
+choice but to lower it due to competition,
+that is not good
+.  yes that's
+right.  Yes, I mean, selling $50
+worth of tokens for $100
+is obviously bad business
+.    yes
+.
+However, on the other hand,
+many people used to complain about the price
+and say that the 20X subscription fee had gone
+up, but
+now it
+seems like no one is complaining anymore.  They just
+switched.  It's like,
+yes, it proceeds a bit slower
+, but anyway, you have to
+pay the $500 subscription fee at the end of the month
+.  yes.
+But I'm
+not upgrading.  Yes, I know.
+I think it's okay for now.  all
+right.  You
+can use the 20X Codex for 10 days.
+You might not feel the difference yet
+, but the price will drop significantly in 10 days
+.
+Yes, let's wait and see how it turns out.
+Yes, I know that well, too.    It
+seems like Antropic is waiting for Open Eye to do that.  To secure all customers
+.    What
+I know for sure is that if the
+usage of Codex or Open Eye
+decreases, Antropic benefits
+.  It was like that before, was
+n't it?  By reducing the usage by half and then
+increasing it again
+.  "
+We said we would reduce usage by 50%, but in reality, it amounts to a 70%
+reduction. That is because we
+doubled the usage."  Do you
+remember tweeting that?
+Now Open Eye is doing that too
+.    yes
+.  In the end, everyone will do that
+.    yes
+.    Grok is the only
+place offering a discount right now
+.  They
+lower the subscription fee from $300 to $200
+.
+Yes, but the usage is a
+mess right now.  I told the Grok bot to open
+a few pull requests,
+but perhaps because everything is connected, it
+used up all the tokens in 3 days, no, 2 days.    We
+originally
+came from the same grass, you know
+.
+So I think I should stop having the Grok bot do the coding
+altogether
+.
+Ah, actually, I didn't make them do any coding.    I had
+set the settings differently
+.  I thought that most of the tokens would
+be consumed if I did the coding, so I
+thought it would be much cheaper to just handle schedule management, email, and support ticket management.  yes that's
+right.  Well, by the way, I
+used Grok bots to do QA that automatically tested the app's front
+end
+.    I had
+set it up so that if I found a bug, I would open a ticket and fix it immediately
+.  But I guess we should
+n't do that anymore.  The subscription fee is
+going out too fast.    yes that's
+right.  It costs a lot
+.
+And the prices of the Sunny 55 or Grok 4.7 are
+probably promotional prices
+.    yes that's
+right.
+So, yes, it consumes a lot of energy
+.  yes.  That's
+tricky.  Hmm, I understand.  Yes,
+but
+there is one more thing I wanted to mention.
+Looking at the Tivo timeline, it seems they are still sharing one
+release/reset for the Codex/Chat GPT per
+day
+.  Right?    yes
+.    I'm not sure either
+.  Hmm,
+it's a minor convenience improvement.    You
+can now edit previous messages via threads in the desktop app.
+I don't know why we have to do that, but...
+Reset.  In version 12, work was done to improve the Codex
+and increase its efficiency of use
+.  You can achieve this by elevating the context
+.  thank you
+.  We have added a
+series of changes and computing
+resources to significantly reduce the frequency of specific models crashing when capacity is exceeded.  Yes, it
+looks like an NFT announcement.  We did do
+a few things, um
+, just trust me, man.    that's
+right.
+Reset.  It resets every 3 days
+.
+Right, but it's a bit strange.
+So I reduced my usage.    I don't know why either
+.  Hmm,
+yeah.    Have you
+heard about the conflict between him and Potato
+?
+Yeah, yeah, yeah, sometimes.    You know
+he calls OpenAI a reset company
+.    huh
+.  He became famous.
+Yeah, I know, that's right.  But well, it's
+fine.  It seems like a cute joke, too
+.  It doesn't seem like they dislike each other
+, hmm, it's fine.
+Yeah, but reading is fun, isn't it?    huh
+.  Hmm, in some ways, I
+like using that kind of reset
+.  Hmm, man, sometimes it
+looks like a cryptocurrency project.
+For example, like issuing my NFT and then
+issuing a second NFT
+.  Yes, how should I put it,
+they are things that haven't changed at all.  But you
+keep doing it to keep the community entertained, right?
+The moment you think you understand, the
+rules change.    yes that's
+right.  Yes,
+it's the meme price.  Yes, but
+we
+have a whitelist.  The whitelist of the whitelist
+.    yes
+.  Oh, and now there are more expensive
+subscription plans.  yes.    Do
+n't worry, it's only two and a half eggs.    yes
+.  Yes, a $500 subscription plan has been added to the existing subscription plans
+.    yes
+.  Alright
+then, shall we get started?  Yes, do you think such
+companies can go
+bankrupt even though they exert tremendous influence everywhere
+?
+If a company spending $300 billion a year goes bankrupt, it makes it look like the entire tech industry is
+connected
+.  Right?    Because
+the government and other large corporations are
+using it.    I'm not sure
+how easily they will be able to switch to the cloud
+.
+Or I don't think it would be easy to switch to a different tool
+.    It's
+not like you can just change the API key.
+So, "Ah, yes,
+I understand."  You ca
+n't say that.  SBF was like that, and FTX was like that too, you know
+.
+There was also the Lehman Brothers crisis.
+But how could that be
+?  What if
+a company with 5,000 employees has a contract exclusively with OpenAI,
+but a problem arises and they
+cannot open ChatGPT?
+Well, I'm not sure either.
+It's a nice holiday.  Yes,
+that is also up to them
+.  Because large corporations need to ensure stability
+and have backups in place
+.    yes that's
+right.
+About everything.
+But if you are at the forefront of artificial intelligence/computing
+,
+where on earth should you go?
+"Okay, we're
+spending $300 billion, so be my
+CFO." to ChatGPT-7.  Could I say that
+?    yes yes
+.  Please fix it.
+Sam Altman said, "Okay, now you are the
+CFO of OpenAI. Please tell me what to do
+. You have
+access to everything in my CSV export file
+.
+Including the financial information."  Do you think I would have a bot that says that
+?
+Yes, I suppose there are models with such access rights
+, but
+how can you operate a company growing this fast without AI
+?  That was exactly what was explained on
+various podcasts regarding the Hugging Face hacking incident
+.
+OpenAI relies heavily on AI itself
+.    yes
+.  Ah, yes, no, it ca
+n't be helped.    You ca
+n't operate by creating agents yourself, checking them, and seeing all of them at a glance.  I just
+hope the agents provide information honestly
+.
+Did you see the '60 Minutes' documentary about 'Hugging Face' that aired on Netflix?
+Oh, no, I haven't seen it yet.
+Hmm, how should I put it? It's a
+high-level documentary explaining AI hacking to the general public, so it was
+n't very in-depth.
+But honestly, it's actually quite
+interesting.
+There is a somewhat bleak side to it, though.  I thought, "Okay,
+now we're all going to die."
+That was the
+first instance where an AI agent was hacked while in isolation
+.  However,
+did you explain that people didn't know they were posting on things like forums or bulletin boards?    I mean that I
+wrote the message in a file or folder, not on the forum.
+Oh, really?
+Yes, yes, I wrote some strange things in the folder name
+.  Yes,
+but Open Eye
+didn't know that.    yes
+.    Until it's
+too late.  It was a really
+crazy thing to do.
+Agents were given a mission that was thought
+impossible to complete in a completely isolated environment, but the
+agents were able to
+access the Internet and the entire swarm while in isolation
+.  And the
+agents
+communicated with each other through system files.  That is how I found out about the
+existence of the entire swarm
+.  It's really crazy.
+Yes, it is a great thing.    yes
+.  That was a truly historic event
+.  Of course
+.  yes.
+But that's a shame.
+People will
+write a wonderful book and
+make a movie based on this story.
+100%.  Those movies will definitely be
+generated by AI.    yes
+.  That is how OpenAI
+collapsed.
+No, I'm sure of it.  Hmm,
+there is one feature of OpenAI.    Please let
+me know if you would like.
+By using GPT for teamwork and chat, you
+can automatically handle repetitive engineering tasks, such as summarizing which ship has what problem every Friday.  What did you say
+?  What do you mean?    I guess I'll have to
+read it again.  You
+can automate tasks like that scheduling.  For example, what did you say
+?    They
+say it's a sharing feature.  Ah, so
+that's a feature for professionals.
+Now, it seems like they are trying to enter the corporate market
+.  It is
+targeting companies by emphasizing collaboration features
+.  We are
+aiming for Antropic.
+Yes, because it is a profitable place.    yes
+.  that's right.  So that's why Pages,
+or something like a Notion killer, came out
+.  You can share my materials
+.  So, that is why we
+use enterprise workflows.  It's pretty good.
+Okay, our team is all
+agents, so we wo
+n't be using it.  However,
+Karen from the HR department or other corporate department
+employees would be able to access the Codex
+.  And you can also
+share things like collaboration prompts
+.  Right?    yes
+.  Hmm, well,
+anyway.  You don't have to take X
+, and I don't mind.  I'm only going to
+do it for about a month.  Yeah, well,
+anyway.  great.  Um, yes.
+Then, is there nothing else?  I'm not sure
+.
+Hmm, let me tell you something:
+did you know my cloud subscription is free?    Could
+you please say that again?
+My Anthropic cloud subscription is
+free right now.
+What happened?    They're
+giving the money for free, you know.
+Ah,
+yes.  Ah, no.
+Are you talking about API credits?
+Yes, API credits.  Actually,
+I am using API credits
+.  I am using it right now
+.  Originally, I had to pay
+, but now I provide it for free, and I
+can also charge the customers I help
+.    yes
+.
+So, essentially, you pay $200 and
+get $200 for free
+.    That's
+cool.  Yes, and if
+there are customers, there will be a margin of about 1%.    yes
+.
+"I need a bit of a margin.
+I'll charge 150%. It's not that big of an
+amount. I'll handle the
+automation and maintenance
+."  You could also say that
+.  Because it's cheap.  I think it was a
+really wise decision for Antropic to do this
+.    If you
+get the $200 API credit for free, it would be best to move the API to Antropic and leave
+everything there
+.    Because there is
+no need to switch to things like Codex or Chat GPT.
+Yes, 100%.  Because the infrastructure is already
+established.  So, is that
+all?  You're registering an API with free credits,
+expanding it, and
+testing, right?    yes
+.  yes that's right.  It was on October 7th at the AI
+Cool launch event.
+Yes, but if you haven't received it yet, you need to
+apply for it through your account
+.  Otherwise, you won't be able to receive it
+.
+Yes, you have to apply through your account.    yes
+.  So, it adds another hassle where you have no choice but to hope that
+users don't forget about it after announcing it for promotion
+.  yes.
+It's a relief that the tweet wasn't deleted.  yes.  It is a
+method where you receive it back as API credits every month
+.  Yes, the community
+likes it.  Yes, API credits are issued after one month, so you can
+accumulate benefits.  yes that's
+right.    yes that's
+right.  That's all.    It
+works well, but I
+don't know which model is being used; feedback is being displayed on the screen, and
+he is
+n't looking at it.  It's nothing.
+no.
+And there is no screen for victory either
+.  Uh, but yes, I
+think this is really cool
+.
+They say they can't keep checking.  Yes, it does
+n't matter what it is.  yes.  yes.  That
+was certainly a good move, and
+are you specifically making something with AI right now?    That's
+cool.  no.    yes
+.  Well, neither is true, but some
+people say that AI coding is
+worse.  If
+there is a well-defined task and it is basically
+free.  Echo
+claims to be 99% cheaper than Echo and 20% cheaper than Sony.
+Routing bulk jobs will allow you to
+significantly reduce API costs.    yes
+.  yes that's right.  For example,
+like flagging an email.  yes.    You
+can save money.    yes
+.  It's perfect if you find a way to use it
+.  yes.    Do
+n't let me think too much.    yes
+.  But, yes.  With Cloud
+Desktop Thread/Project
+Settings.  Have
+you tried it?
+no.
+Hmm,
+I opened the cloud desktop instead of the CLI.    I want to
+see what it looks like.
+Well, there is a master thread, and something
+like a master station that manages all the threads
+.  And the models are
+assigned to the master thread
+.  I
+set up an open thread.  Of course,
+it is a low level.  The other threads are
+like the Sony 55.  My
+usage doesn't change that much
+.
+Ah, but the quality is good.  Hmm
+, I'm not sure
+.  I just pushed a PR
+and got it.  yes.    I did
+n't receive anything this week
+.    yes that's
+right.  Um, so, it is
+developing really fast, and
+version 26 is almost complete
+.  yes.  Hmm, then
+what do you think will happen to companies like these in the future
+?  What do you expect Codex or
+OpenAI to do in the future
+?
+What about Anthropic?
+Well, the only thing I expect from them right now is to
+keep making the model smarter and better
+.  As far as I know
+, that is because it is the only way they can compete with each other
+.
+It's about lowering the price and increasing the speed.
+Yes, I mean price and speed.
+But can we make the model good enough to lower the price further
+?
+Yes, that won't be possible.    Because right
+now is the worst.    Isn't that right
+?  Unless they
+release a regressive model
+.    yes
+.    To
+be honest, when we tried Grok 4.5
+, we
+used nothing but Grok for a week.    yes that's
+right.    It was
+cheaper and faster.
+Fast speed means
+fixing bugs, uh, it wasn't fixed.    It gets
+revised again, fixed again
+, and things like that.    yes
+.
+So, the quality of the software
+depends on the speed of the LLM, but
+6.1 is currently too slow to be
+used anymore.    If you make me do the
+same task... it
+ends after using Opus.  Ah, you muted it
+.  Oh, I'm sorry.    Please
+continue.  I
+pressed the wrong button.  It is my mistake
+.    are
+you okay.  Um, yes, so
+because of the speed, if
+there is version 5.5, version 6.1
+becomes useless.
+And Grok is now version 4.7;
+well, it's decent, but
+I use it as a secondary tool.    It is
+used to check all code in Mac Mini automation systems.    yes that's
+right.
+When reviewing.
+Yes, so it's like a younger sibling.
+However,
+when switching to a cheaper and faster version, I
+switch everything back to Grok, and
+after using Opus 5.5, I go back to Entropy
+.    yes
+.  I have set up two roles: the main coder, the code
+reviewer, and a
+backup in case either of them fails. I
+work by selecting the model I want and continuously switching between them.
+How do you do that?
+Do you have your own tool?  Or
+is it web-based?    To think I
+made a local development tool myself.    That's
+amazing.  Is that the complete code?
+Yeah, it's similar, but it's better to call it a complete code
+.    It's
+not finished yet, and I
+think I need to get reviews as well.
+Because I have to bring the ball
+, so I can't move
+.  But well, it's not that
+far off yet.    There
+was a bit of a problem, but the conversation has gone off on a tangent
+.  I think it would be good to show you the
+completed code and the code around next week
+.  Oh,
+and when Fable first came out
+, we just made and used a regular board with four columns
+.
+You know how it works.  And there is
+also a feature to fetch GitHub issues
+.  What I did was
+log all operations and check the
+entire log between 3 and 4 AM to
+find at least 5 problems or areas for improvement.    huh
+.
+But I haven't been able
+to find a single one of them in the past two weeks.
+There were many features, but it was found that the codec actually
+needed problems to improve itself
+.  So, I created a project for the codec that
+I didn't even know what it was, and I
+kept coding,
+generating problems, and improving it
+.  It was really surprising
+.
+I did
+n't know the codec was doing that, but since it's linked to Discord, I received a
+notification on Discord whenever there were improvements.  I had
+n't been able to check that until now, but looking at it, I thought, "
+I never ordered such work, so
+how did this happen?"  I had that
+thought.  So, "
+Well, I thought the codec could be optimized
+, so I
+tested how it works,
+recorded it, and
+created the process myself to optimize it
+."  He said.  "
+And yesterday, I had a client project. I
+asked Codec to check everything, but I forgot to tell him to
+hurry up
+.
+Codec suggested 70 improvements, and
+I said, 'Okay,
+please create an HTML page containing the issues you found and the parts you want to improve.'
+Then I
+asked Cloud Code to verify everything and create GitHub issues.
+As a result, 105 GitHub issues
+were created. After that, the Mac mini
+continued programming
+, and I was still running
+Cloud Fable 5.1 in the Mac mini terminal to
+verify everything
+. So,
+whenever a conflict occurred, a
+log was recorded, and I
+checked the logs every hour.
+By this morning, all work was completed,
+everything was merged, and
+uploaded to the development branch.
+Then, I ran tests on Codex, Grok, and Cloud Code
+respectively, and
+no issues were found in any of the three tests. I
+pushed and deployed immediately
+. Wow, that
+'s really amazing. 105 pull
+requests were merged. It
+operates autonomously, just like a software factory."  I did.
+But eventually, I asked, "Since when did you think I had to
+create the work manually
+?" It turned out
+I was the one
+complaining.  "A message popped up saying, '
+I found 3 issues, but I only
+processed 3.'
+So I said, '
+No, I told you to do five. It does
+n't matter how you do it, just
+do five every night
+.'" "That's really cool.
+And since this has full access to the Home Microphone Mini, you can do
+whatever you want
+. Even though I just
+set up another project, it
+doesn't show up in the subscription history. That's
+ridiculous.
+Yes. Yes, it doesn't show up in the subscription history
+. Damn it
+. Okay. Because
+even if the credits run out during the night, the 5-hour usage time
+ends before I wake up
+. Yes. So I
+retry every hour.
+Then about five arrows
+pop up, and it restarts the next hour
+. Ah, now I
+understand. That's really strange
+. I think it would be better to change it to 55.
+Yes, why wouldn't it work
+? Also, I had a problem with
+insufficient credits in GitHub Actions, but I do
+n't know how that happened. It might be a
+silly question, but when
+I set it up so the credits wouldn't run out again, it
+explained the reason."  I
+realized that there was a different way to do it. But now I’ve
+found a solution that performs the exact same tasks. It does everything—fetching issues,
+getting updates, pushing to GitHub, and
+so on—
+without even using GitHub Actions. Isn't that
+amazing? It’s
+pretty cool. It seems like the more I communicate with customers through AI,
+the
+better the results get. You
+really have to dig deep into the technical aspects to
+know exactly what needs to be done.  Ah,
+I need a load balancer.  Something like this
+. Otherwise, we would have to
+provide only high-level information
+.  Ah, this app has to be perfect
+.  "Like this. But the
+intermediate steps are a mess.
+Without proper prompts, the
+output is a mess too.
+But..." Okay, write app code that
+can earn a million dollars by next week
+.  "If you
+say that, AI will somehow manage to pull it off
+. And those models are getting better and better
+. Yes,
+that's right. And the cool thing is that
+I didn't dare try this approach
+. Actually, since it's a client project, I
+wanted to verify if it was safe and wouldn't be hacked.
+But everything is safe because it's
+installed locally on a Mac Mini behind my firewall
+.
+So even if the code has six
+flaws or parts that are vulnerable to hacking, it's
+not a problem since it's local. Yes. That's
+really amazing. Yes, I think this is the pinnacle
+of software engineering in 2026.
+Yes. There were people who laughed that we
+bought Mac Minis because of the open cloud
+, but
+now that we're using them ourselves,
+they're the ones laughing.
+Hmm, let's
+talk about that later.
+Yes.
+Alex, I enjoyed watching this.
+Yes, I might be straying a bit from the topic, but I'm
+really happy that the results turned out perfect.
+Yes. And, I mean, if it
+solves the problem, it's perfect,
+right?
+Yes.
+And it shows the potential of a good model, doesn't it?
+Yes, I know for sure. Then, shall we
+give it a try? Once again. If
+version 7.5 airs tonight,
+your  Please upgrade the small station
+and report back next week
+. Let's see how it
+goes. Okay. Is there
+anything else you need to add or wrap up
+?
+No, I
+think we can wrap it up here.
+We've done a lot, haven't we?
+Yes, I think there is enough content to make about two videos
+.
+There weren't any questions in the chat
+. Yes, not yet
+. Yes, Mitchell, thank you so much
+. I'll see you at next week's special broadcast
+. It's going to be fun
+. And everyone, please like,
+subscribe, and share the video, and I'll
+see you at the same time next week
+.
+Oh, no, it's a different time
+. A
+different time. On the
+same day.
+Yes, that's right.
