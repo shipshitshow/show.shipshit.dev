@@ -1,7 +1,352 @@
 {
   "channel": "@shipshitshow",
-  "fetchedAt": "2026-07-13",
+  "fetchedAt": "2026-10-26",
   "items": [
+    {
+      "actualEndTime": null,
+      "actualStartTime": null,
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh!t Show",
+      "cleanTranscriptPath": null,
+      "commentCount": 0,
+      "description": "OpenAI expects to burn $280B by 2030. We look at the gap between where its revenue is and where it needs to be, then get practical: why Opus 5.5 ships while Codex mostly nitpicks edge cases (and the 10-minute prompt that fixes it), whether we'll ever pay real API prices, how Mitchell's Claude bill hit $0, and how one Codex review turned into 105 PRs merged overnight.\n\nOur take (recorded 20 October 2026): use both, switch to whichever model is better, and remember the labs have to get smarter, cheaper and faster. Right now is the worst these models will ever be.\n\n00:00 Cold open\n00:19 The $20B gap\n02:03 $280B to burn\n03:31 Opus ships, Codex nitpicks\n05:24 Will we pay API prices?\n06:34 My Claude bill is $0\n07:42 105 PRs overnight\n10:01 The verdict\n\nThe $280B figure is from the FT headline shown on screen. Revenue figures are as reported at the time; Sora and pricing figures are our own estimates from the stream.\n\nFull livestream: https://youtube.com/live/XCyY0VDiRps\n\nI do this every week, hit subscribe so you don't miss it.\nFollow us: https://x.com/shipshitdev",
+      "duration": "PT10M45S",
+      "duration_seconds_flat": 645,
+      "duration_string_flat": "10:45",
+      "id": "MTbYJ4o2EQg",
+      "likeCount": 0,
+      "privacyStatus": "public",
+      "publishedAt": "2026-10-21T15:00:24Z",
+      "rawTranscriptPath": null,
+      "thumbnail": "https://i.ytimg.com/vi/MTbYJ4o2EQg/maxresdefault.jpg",
+      "title": "Will OpenAI Survive Until 2030?",
+      "transcriptStatus": "missing",
+      "type": "video",
+      "url": "https://www.youtube.com/watch?v=MTbYJ4o2EQg",
+      "viewCount": 16
+    },
+    {
+      "actualEndTime": "2026-10-20T16:32:57Z",
+      "actualStartTime": "2026-10-20T15:39:20Z",
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh!t Show",
+      "cleanTranscriptPath": null,
+      "commentCount": 0,
+      "description": "OpenAI expects to burn $278 billion by 2030, and its revenue came in about $20 billion below what investors had heard. Anthropic is growing faster.\n\nIs it game over for OpenAI, and should you still build on it?\n\nWe're discussing OpenAI's numbers, why we cut our Codex plan for Claude, how our $200 Claude Max costs us $0, Grok Bot's new email, and cleaning up AI slop code.\n\nWould you switch? Bring your questions to the chat.\n\n#OpenAI #Anthropic #ClaudeCode",
+      "duration": "PT53M39S",
+      "duration_seconds_flat": 3219,
+      "duration_string_flat": "53:39",
+      "id": "XCyY0VDiRps",
+      "likeCount": 1,
+      "privacyStatus": "public",
+      "publishedAt": "2026-10-21T04:43:12Z",
+      "rawTranscriptPath": null,
+      "thumbnail": "https://i.ytimg.com/vi/XCyY0VDiRps/maxresdefault.jpg",
+      "title": "OpenAI vs Anthropic: Game Over?",
+      "transcriptStatus": "missing",
+      "type": "livestream",
+      "url": "https://www.youtube.com/watch?v=XCyY0VDiRps",
+      "viewCount": 69
+    },
+    {
+      "actualEndTime": null,
+      "actualStartTime": null,
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh!t Show",
+      "cleanTranscriptPath": null,
+      "commentCount": 1,
+      "description": "Meta released Muse Wonder and Muse Wonder Full on 12 October, and the benchmarks put Meta at the frontier barely a year after Meta Superintelligence Labs started. \nSo we read the fine print, paid for the $20 Muse plan and pointed it at a real codebase.\n\nOur take (recorded 13 October 2026): impressive progress, but it hasn't won us over yet. Opus 5.5 still leads Terminal-Bench, one codebase-audit prompt used about half of the 5-hour limit and 30% of the weekly one, and the audit came back fairly superficial. \n\nEven Alexandr Wang says it's not as good as Opus 5.5 and Codex for coding yet, with bugs they're still fixing. We're standing by for now.\n\n00:00 Introduction\n00:13 Zuckerberg drops Muse\n01:25 Reading the fine print\n03:17 Pricing and context\n04:30 The $20 test\n07:42 What others are building\n09:42 The verdict\n11:42 Outro\n\nBenchmarks shown are Meta's launch table and the Artificial Analysis Intelligence Index v4.3 as published on 12 October 2026; pricing and usage are what we saw on the day.\n\nSubscribe so you don't miss the next build.\nFollow us: https://x.com/shipshitdev",
+      "duration": "PT12M10S",
+      "duration_seconds_flat": 730,
+      "duration_string_flat": "12:10",
+      "id": "mYkxfB4ib7E",
+      "likeCount": 4,
+      "privacyStatus": "public",
+      "publishedAt": "2026-10-14T14:00:24Z",
+      "rawTranscriptPath": null,
+      "thumbnail": "https://i.ytimg.com/vi/mYkxfB4ib7E/maxresdefault.jpg",
+      "title": "Meta Muse Wonder Full: Hype or Frontier?",
+      "transcriptStatus": "missing",
+      "type": "video",
+      "url": "https://www.youtube.com/watch?v=mYkxfB4ib7E",
+      "viewCount": 46
+    },
+    {
+      "actualEndTime": "2026-10-13T14:02:08Z",
+      "actualStartTime": "2026-10-13T13:15:15Z",
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh!t Show",
+      "cleanTranscriptPath": null,
+      "commentCount": 0,
+      "description": "Meta’s Muse Wonder claims frontier performance. On the independent index it beats Claude Fable 5.1, but Opus 5.5 still leads.\n\nBut is it worth switching, and what does it actually cost to use?\n\nWe’re discussing Meta’s benchmarks vs the independent numbers, pricing and plan limits, Muse Code’s default data setting, and how it holds up on real coding work.\n\nWe’ll share our first test in Muse Code: one audit on a real codebase used about half the plan.\n\nWould you switch? Bring your questions to the chat.\n\n#MuseWonder #MetaMuse #ClaudeOpus",
+      "duration": "PT46M58S",
+      "duration_seconds_flat": 2818,
+      "duration_string_flat": "46:58",
+      "id": "M1EEEl4M6-4",
+      "likeCount": 0,
+      "privacyStatus": "public",
+      "publishedAt": "2026-10-14T02:06:04Z",
+      "rawTranscriptPath": null,
+      "thumbnail": "https://i.ytimg.com/vi/M1EEEl4M6-4/maxresdefault.jpg",
+      "title": "Muse Wonder: Better Than Fable 5.1 or Opus 5.5?",
+      "transcriptStatus": "missing",
+      "type": "livestream",
+      "url": "https://www.youtube.com/watch?v=M1EEEl4M6-4",
+      "viewCount": 40
+    },
+    {
+      "actualEndTime": null,
+      "actualStartTime": null,
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh!t Show",
+      "cleanTranscriptPath": "apps/app/data/transcripts/clean/2026-10-07-video-grok-muse-or-dots-which-ai-can-you-trust.txt",
+      "commentCount": 1,
+      "description": "Would you trust an AI assistant with your inbox, calendar—and permission to act?\n\nVincent and Mitchell discuss Grok Bot, Meta Muse and OpenAI Dots: where personal AI assistants save real work, where they create more management, and what it takes to trust them.\n\nMitchell shares how he uses Grok Bot for customer support, outage communication and meeting planning. We also get into mixed-up approvals, inconsistent replies, and the tradeoff between useful context and access to your personal data.\n\nOur firsthand experience is with Grok Bot. Muse and Dots access remains limited for us in the EU, so this is a conversation about our experience and the public claims—not a hands-on test of all three.\n\n00:00 When approvals get mixed up\n00:22 AI assistants vs. ChatGPT\n02:35 What we’ve actually tried\n03:36 How Grok Bot saves work\n06:14 Managing agents and approvals\n08:25 Launch demos vs. everyday reliability\n10:09 Quality, privacy and personal context\n11:28 Which assistant would we choose?\n\nRecorded October 6, 2026.\n\nWatch the full conversation:\nhttps://www.youtube.com/watch?v=zjXzkB8z5xg\n\nSubscribe so you don’t miss the next build.\nFollow us: https://x.com/shipshitdev\n\n#AIAgents #GrokBot #AIAssistant",
+      "duration": "PT12M10S",
+      "duration_seconds_flat": 730,
+      "duration_string_flat": "12:10",
+      "id": "yWYCVI9JsfA",
+      "likeCount": 2,
+      "privacyStatus": "public",
+      "publishedAt": "2026-10-07T19:30:31Z",
+      "rawTranscriptPath": "apps/app/data/transcripts/yWYCVI9JsfA-Grok, Muse or Dots： Which AI Can You Trust？.en.vtt",
+      "thumbnail": "https://i.ytimg.com/vi/yWYCVI9JsfA/maxresdefault.jpg",
+      "title": "Grok, Muse or Dots: Which AI Can You Trust?",
+      "transcriptStatus": "clean",
+      "type": "video",
+      "url": "https://www.youtube.com/watch?v=yWYCVI9JsfA",
+      "viewCount": 119
+    },
+    {
+      "actualEndTime": "2026-10-06T14:00:24Z",
+      "actualStartTime": "2026-10-06T13:22:23Z",
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh!t Show",
+      "cleanTranscriptPath": null,
+      "commentCount": 0,
+      "description": "Grok Bot, OpenAI Dots and Meta Muse promise an AI personal assistant that works 24/7. \nBut do you have enough work to give one?\n\nTake coding away: how much of a founder's week is left to delegate? And who pays when the agent sits idle?\n\nWe're discussing the demos, real admin tasks, pricing, usage limits, access from Europe, and what we'd never hand over.\n\nWe'll share our Grok Bot experience and discuss the published demos for Dots and Muse. We haven't used those two ourselves.\n\nWhat would you delegate every week? Bring your use cases to the chat.\n\n#GrokBot #OpenAIDots #MetaMuse",
+      "duration": "PT38M6S",
+      "duration_seconds_flat": 2286,
+      "duration_string_flat": "38:06",
+      "id": "zjXzkB8z5xg",
+      "likeCount": 0,
+      "privacyStatus": "public",
+      "publishedAt": "2026-10-07T02:11:37Z",
+      "rawTranscriptPath": null,
+      "thumbnail": "https://i.ytimg.com/vi/zjXzkB8z5xg/maxresdefault.jpg",
+      "title": "Grok Bot vs Dots vs Muse: Do You Even Need an AI Personal Assistant?",
+      "transcriptStatus": "missing",
+      "type": "livestream",
+      "url": "https://www.youtube.com/watch?v=zjXzkB8z5xg",
+      "viewCount": 272
+    },
+    {
+      "actualEndTime": null,
+      "actualStartTime": null,
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh!t Show",
+      "cleanTranscriptPath": null,
+      "commentCount": 0,
+      "description": "Can Sonnet 5.5 handle the build while Opus 5.5 checks the work? And does that combination make more sense than using the most expensive model for every task?\n\nIn this recap, we discuss why Anthropic’s models became our leading choices that week, Sonnet 5.5’s value for everyday coding, and where Opus 5.5 fits into planning, orchestration, and verification.\n\nWe also look at AI video creation, why defining what “done” means matters, and whether higher effort settings actually beat fast iteration and clear feedback.\n\nVincent’s plan: build with Sonnet 5.5 and review the pull requests with Opus 5.5. Mitchell is staying with Opus while finishing his current project and hasn’t tried Sonnet yet.\n\nWhich model would you trust to build—and which would you trust to check the result?\n\nRecorded September 29, 2026, before subsequent OpenAI news. This is our verdict from that livestream.\n\n00:12 Why Claude won the week\n01:38 The Sonnet value case\n03:17 Plan. Build. Verify.\n04:42 What Opus can make\n07:11 Define what done means\n08:30 Effort vs. iteration\n10:12 Outro\n\nSubscribe for more conversations about AI, software, entrepreneurship, and building things that actually ship.\n\n#Claude #Sonnet55 #Opus55",
+      "duration": "PT11M39S",
+      "duration_seconds_flat": 699,
+      "duration_string_flat": "11:39",
+      "id": "WOTzkAWvb0w",
+      "likeCount": 2,
+      "privacyStatus": "public",
+      "publishedAt": "2026-10-01T14:30:06Z",
+      "rawTranscriptPath": null,
+      "thumbnail": "https://i.ytimg.com/vi/WOTzkAWvb0w/maxresdefault.jpg",
+      "title": "Sonnet 5.5 vs Opus 5.5: Why Anthropic Won",
+      "transcriptStatus": "missing",
+      "type": "video",
+      "url": "https://www.youtube.com/watch?v=WOTzkAWvb0w",
+      "viewCount": 331
+    },
+    {
+      "actualEndTime": "2026-09-29T14:09:20Z",
+      "actualStartTime": "2026-09-29T13:20:52Z",
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh!t Show",
+      "cleanTranscriptPath": null,
+      "commentCount": 0,
+      "description": "GPT-6 Sol/Luna vs Grok 4.7 vs Claude Opus/Sonnet 5.5: what should you actually use?\n\nFive new AI models just dropped. Independent scoreboards vs real-world results, and what each one costs.\n\nThen we build the same video with both Claude models, live, with the timer and the bill on screen.\n\nSubscribe so you don't miss the next build.\nFollow us: https://x.com/shipshitdev\n\n#ClaudeOpus #ClaudeSonnet #GPT6",
+      "duration": "PT48M31S",
+      "duration_seconds_flat": 2911,
+      "duration_string_flat": "48:31",
+      "id": "uSuqoiEaB1k",
+      "likeCount": 1,
+      "privacyStatus": "public",
+      "publishedAt": "2026-09-30T02:22:53Z",
+      "rawTranscriptPath": null,
+      "thumbnail": "https://i.ytimg.com/vi/uSuqoiEaB1k/maxresdefault.jpg",
+      "title": "Opus/Sonnet 5.5 vs GPT-6 Sol/Luna vs Grok 4.7: What To Use?",
+      "transcriptStatus": "missing",
+      "type": "livestream",
+      "url": "https://www.youtube.com/watch?v=uSuqoiEaB1k",
+      "viewCount": 640
+    },
+    {
+      "actualEndTime": null,
+      "actualStartTime": null,
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh!t Show",
+      "cleanTranscriptPath": null,
+      "commentCount": 1,
+      "description": "What happens when GPT Astra checks an entire codebase, finds security issues, fixes bugs, optimizes queries, reduces server load, and improves performance?\n\nIn this video, we explore the real impact of advanced AI on software development, business, and the future of work. We discuss AI-powered coding, computer use, automated video editing, local AI hardware, open-weight models, cheaper tokens, and how companies can use AI to reduce costs while producing better results.\n\nThe biggest opportunity after AGI may not be simply using AI. It may be helping businesses integrate, deploy, optimize, and operate AI systems—and getting paid based on the measurable value they create.\n\nCan developers, entrepreneurs, and AI integrators build profitable businesses in the age of AGI? Let’s explore it.\n\nSubscribe for more conversations about AI, software, entrepreneurship, and the future of technology.\n\n#GPTAstra #AGI #ArtificialIntelligence",
+      "duration": "PT10M34S",
+      "duration_seconds_flat": 634,
+      "duration_string_flat": "10:34",
+      "id": "r6o5wFD4P-w",
+      "likeCount": 2,
+      "privacyStatus": "public",
+      "publishedAt": "2026-09-10T08:00:22Z",
+      "rawTranscriptPath": null,
+      "thumbnail": "https://i.ytimg.com/vi/r6o5wFD4P-w/maxresdefault.jpg",
+      "title": "GPT Astra: How Do We Make Money Post-AGI?",
+      "transcriptStatus": "missing",
+      "type": "video",
+      "url": "https://www.youtube.com/watch?v=r6o5wFD4P-w",
+      "viewCount": 681
+    },
+    {
+      "actualEndTime": "2026-09-08T13:03:07Z",
+      "actualStartTime": "2026-09-08T12:17:34Z",
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh!t Show",
+      "cleanTranscriptPath": null,
+      "commentCount": 0,
+      "description": "Claude Fable 5.1 vs GPT-6 Astra. Did we just reach AGI?\nThree testers compared them and came back with three different verdicts.\n\nThis week, we ran Astra through real development tasks.\nWe’re breaking down the comparisons live, showing our results, and asking what these models can actually ship.\n\nSubscribe so you don't miss the next build.\nFollow us: https://x.com/shipshitdev\n\n#GPT6Astra #ClaudeFable #AGI",
+      "duration": "PT45M37S",
+      "duration_seconds_flat": 2737,
+      "duration_string_flat": "45:37",
+      "id": "KPAyE6KSrQU",
+      "likeCount": 0,
+      "privacyStatus": "public",
+      "publishedAt": "2026-09-09T01:08:56Z",
+      "rawTranscriptPath": null,
+      "thumbnail": "https://i.ytimg.com/vi/KPAyE6KSrQU/maxresdefault.jpg",
+      "title": "Fable 5.1 vs GPT-6 Astra: Did We Reach AGI?",
+      "transcriptStatus": "missing",
+      "type": "livestream",
+      "url": "https://www.youtube.com/watch?v=KPAyE6KSrQU",
+      "viewCount": 313
+    },
+    {
+      "actualEndTime": null,
+      "actualStartTime": null,
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh!t Show",
+      "cleanTranscriptPath": null,
+      "commentCount": 4,
+      "description": "We ran Grok Bot on live tickets, draft emails, and WordPress copy. Usage exploded in a few hours. Coding had to wait.\n\nLauren Tan posted one share, Dr Eggbot. It makes the others. We added it, told it to audit the farm, and it split fat bots into one-task bots. The token bill calmed down.\n\nOptimize or you are empty before dinner. One egg, not a four-pack.\n\nSources:\nhttps://x.com/poteto\nhttps://x.ai/bot/93gOz3op1UQdBdbekQFLK\nhttps://x.com/poteto/status/2093392701005946931\n\nCHAPTERS:\n0:00 Ticket Bots\n0:41 WordPress Flow\n1:22 Full Employee\n1:37 Dr Eggbot\n2:09 Split Tasks\n2:28 Event Webhooks\n3:14 Token Burn\n4:07 Verification Skill\n4:56 Cursor Next\n6:23 What Worked\n\nSubscribe so you don't miss the next build.\nFollow us: https://x.com/shipshitdev\n\n#GrokBot #pstack",
+      "duration": "PT7M1S",
+      "duration_seconds_flat": 421,
+      "duration_string_flat": "7:01",
+      "id": "1ZbR2qie8rk",
+      "likeCount": 13,
+      "privacyStatus": "public",
+      "publishedAt": "2026-09-02T23:00:21Z",
+      "rawTranscriptPath": null,
+      "thumbnail": "https://i.ytimg.com/vi/1ZbR2qie8rk/maxresdefault.jpg",
+      "title": "pstack: How The SpaceX Team Actually Runs Grok Bot",
+      "transcriptStatus": "missing",
+      "type": "video",
+      "url": "https://www.youtube.com/watch?v=1ZbR2qie8rk",
+      "viewCount": 3840
+    },
+    {
+      "actualEndTime": "2026-09-01T13:12:08Z",
+      "actualStartTime": "2026-09-01T12:19:54Z",
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh!t Show",
+      "cleanTranscriptPath": "apps/app/data/transcripts/clean/2026-09-02-livestream-how-the-spacex-team-ships-grok-bot.txt",
+      "commentCount": 0,
+      "description": "The SpaceXAI × Cursor team built Grok Bot with Grok Bot.\n\nThe real setup is Dr Eggbot creating focused bots, five engineer bots running a screenshot-proof loop, and a fleet that grew from 15 cloud agents by hand to more than 200.\n\nWe’re recreating that workflow live, then putting it against a real product: https://cornershop.dev. \nSomething customers can actually buy.\n\nSubscribe so you don't miss the next build.\nFollow us: https://x.com/shipshitdev\n\n#GrokBot #pstack",
+      "duration": "PT52M21S",
+      "duration_seconds_flat": 3141,
+      "duration_string_flat": "52:21",
+      "id": "LbCRcGRLYaU",
+      "likeCount": 2,
+      "privacyStatus": "public",
+      "publishedAt": "2026-09-02T01:21:00Z",
+      "rawTranscriptPath": "apps/app/data/transcripts/LbCRcGRLYaU-How The SpaceX Team Ships Grok Bot.en.vtt",
+      "thumbnail": "https://i.ytimg.com/vi/LbCRcGRLYaU/maxresdefault.jpg",
+      "title": "How The SpaceX Team Ships Grok Bot",
+      "transcriptStatus": "clean",
+      "type": "livestream",
+      "url": "https://www.youtube.com/watch?v=LbCRcGRLYaU",
+      "viewCount": 110
+    },
+    {
+      "actualEndTime": null,
+      "actualStartTime": null,
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh!t Show",
+      "cleanTranscriptPath": null,
+      "commentCount": 1,
+      "description": "We used free models through OpenRouter and OpenCode to build a YouTube clip finder live. It pulled the transcript, ranked the best moments, and returned playable clips. The model stalled, its estimates were useless, and the final bill was still $0.\n\nFree models are not the best at everything. They are already good enough to ship useful software.\n\nCHAPTERS:\n0:00 Free Beats Paid\n0:25 Stealth Model\n1:27 Free Model Failures\n1:49 OpenCode Setup\n2:40 Build Challenge\n3:18 Clip Finder Build\n4:31 First Run\n5:09 Clips Found\n5:54 Zero Cost\n6:22 Model Reality\n7:02 Free Models Work\n7:44 Demo Wrap\n\nSubscribe so you don't miss the next build.\nFollow us: https://x.com/shipshitdev\n\n#FreeAI #OpenRouter #OpenCode",
+      "duration": "PT8M2S",
+      "duration_seconds_flat": 482,
+      "duration_string_flat": "8:02",
+      "id": "mz5xo-QX1VM",
+      "likeCount": 1,
+      "privacyStatus": "public",
+      "publishedAt": "2026-08-28T15:00:10Z",
+      "rawTranscriptPath": null,
+      "thumbnail": "https://i.ytimg.com/vi/mz5xo-QX1VM/maxresdefault.jpg",
+      "title": "Stop Paying for AI Models. Free Ones Are Good Enough",
+      "transcriptStatus": "missing",
+      "type": "video",
+      "url": "https://www.youtube.com/watch?v=mz5xo-QX1VM",
+      "viewCount": 152
+    },
+    {
+      "actualEndTime": null,
+      "actualStartTime": null,
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh!t Show",
+      "cleanTranscriptPath": null,
+      "commentCount": 0,
+      "description": "I gave Grok Bot one job: find me customers.\n\nThis is the full run: what Grok Bot is, how I set up an agent team with real guardrails, and then a live end-to-end demo where King finds a real lead on camera, sends the email, and gets scheduled as a routine that fires every weekday.\n\nFind 1000 of these and you don't have a side project. \nYou have revenue.\n\nCHAPTERS\n00:00 Intro\n00:26 Grok Bot launch\n01:05 Hiring a full agent team\n02:19 Every agent gets its own VM\n02:38 Feedback loop\n03:18 Projects and guardrails\n03:51 The UX is raw\n04:38 Task Record\n05:29 Demo\n10:15 Outro\n\nSubscribe so you don't miss the next build.\n\n#GrokBot #AIAgents #LeadGeneration #xAI #AIAutomation",
+      "duration": "PT10M52S",
+      "duration_seconds_flat": 652,
+      "duration_string_flat": "10:52",
+      "id": "zyQEwa5IYvk",
+      "likeCount": 9,
+      "privacyStatus": "public",
+      "publishedAt": "2026-08-19T23:15:36Z",
+      "rawTranscriptPath": null,
+      "thumbnail": "https://i.ytimg.com/vi/zyQEwa5IYvk/maxresdefault.jpg",
+      "title": "I Gave Grok Bot One Job: Find Me Customers While I Sleep",
+      "transcriptStatus": "missing",
+      "type": "video",
+      "url": "https://www.youtube.com/watch?v=zyQEwa5IYvk",
+      "viewCount": 628
+    },
+    {
+      "actualEndTime": "2026-08-18T12:59:52Z",
+      "actualStartTime": "2026-08-18T12:14:17Z",
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh!t Show",
+      "cleanTranscriptPath": null,
+      "commentCount": 0,
+      "description": "We spent a week using Grok 4.6, Grok Bot and Cursor Origin together.\n\nNow we’re walking through the full setup: what each tool does, how they connect, what actually worked, and where the whole thing fell apart.\n\nIf you’re considering the Grok + Cursor stack, this should save you a week.\n\n#Grok46 #GrokBot #CursorOrigin",
+      "duration": "PT45M40S",
+      "duration_seconds_flat": 2740,
+      "duration_string_flat": "45:40",
+      "id": "-qsSddwzjpY",
+      "likeCount": 6,
+      "privacyStatus": "public",
+      "publishedAt": "2026-08-19T01:11:04Z",
+      "rawTranscriptPath": null,
+      "thumbnail": "https://i.ytimg.com/vi/-qsSddwzjpY/maxresdefault.jpg",
+      "title": "How to Use Grok 4.6, Grok Bot & Cursor Origin Together",
+      "transcriptStatus": "missing",
+      "type": "livestream",
+      "url": "https://www.youtube.com/watch?v=-qsSddwzjpY",
+      "viewCount": 1113
+    },
     {
       "actualEndTime": null,
       "actualStartTime": null,
@@ -102,11 +447,11 @@
       "cleanTranscriptPath": "apps/app/data/transcripts/clean/2026-06-24-video-how-to-use-ai-loops-with-claude-codex.txt",
       "commentCount": 1,
       "description": "Stop prompting coding agents one task at a time. Start designing loops that prompt your agents for you.\n\nReferneces:\n- shipshitdev/skills: https://github.com/shipshitdev/skills\n- VincentShipsIt/loops: https://github.com/VincentShipsIt/loops\n- Forward-Future/loop-library: https://github.com/Forward-Future/loop-library\n\nIn this video, I break down AI loops for Claude and Codex: recurring agent routines, loop engineering, cloud automations, and how to make coding agents work without babysitting every single step.\n\nThe important part: loops are not magic. If you don’t define scope, boundaries, acceptance criteria, and a clear end state, your agent can burn tokens forever fixing bugs it created itself.\n\nWe cover:\n- What AI loops actually are\n- How Claude and Codex can run repeatable routines\n- Why “just keep improving” is dangerous\n- How to keep loops small and controlled\n- Examples like Sentry hotfix loops, nightly E2E expansion, repo maintenance, worktree pruning, and content factory routines\n- Why AI development now needs better project management, not less\n\nIf you’re paying for Claude, Codex, or AI coding agents, you should be using more of what you already bought.\n\nChapters:\n00:00 Are you maxing out your subscription?\n00:20 What AI loops are\n00:52 Why loops need boundaries\n01:14 Loop library and repeatable routines\n02:37 Real loop examples\n03:10 Why uncontrolled loops get expensive\n03:51 AI development needs project management\n05:18 How to prepare safe agent loops\n05:37 Claude and Codex routine examples\n07:47 Nightly E2E and repo automation\n08:11 Max out what you’re paying for",
-      "duration": "PT8M31S",
-      "duration_seconds_flat": 511,
-      "duration_string_flat": "8:31",
+      "duration": "PT8M32S",
+      "duration_seconds_flat": 512,
+      "duration_string_flat": "8:32",
       "id": "B2Sw4FqemtI",
-      "likeCount": 9,
+      "likeCount": 10,
       "privacyStatus": "public",
       "publishedAt": "2026-06-24T18:30:16Z",
       "rawTranscriptPath": "apps/app/data/transcripts/B2Sw4FqemtI-How To Use AI Loops With Claude & Codex.en.vtt",
@@ -115,7 +460,7 @@
       "transcriptStatus": "clean",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=B2Sw4FqemtI",
-      "viewCount": 234
+      "viewCount": 258
     },
     {
       "actualEndTime": "2026-06-23T12:50:10Z",
@@ -194,9 +539,9 @@
       "cleanTranscriptPath": "apps/app/data/transcripts/clean/2026-06-12-video-claude-fable-5-we-built-an-ai-native-game-studio.txt",
       "commentCount": 1,
       "description": "Claude Fable 5 launched, so we tested it the obvious way: can it help build an AI-native game studio?\n\nLast week we built a browser FPS with Opus 4.8 in one prompt. This time we pushed the idea further: multiple game prototypes, shared lore, reusable systems, sprites, agents, automation loops, and one repo acting like a tiny AI game studio.\n\nThis is not just “AI made a game.” The interesting part is the production loop around it:\n- multiple game ideas in one shared universe\n- FPS, tower defense, runner, RPG/fighting-style experiments\n- lore stored like an Obsidian vault\n- reusable systems for sprites, rules, animation, and gameplay\n- agents that keep context across the whole project\n- a public repo people can inspect and build on\n\nThe real question is not whether Claude Fable 5 can make a cool demo. \nThe question is whether AI can turn one idea into a repeatable game production pipeline.\n\nIf you build games, software, agents, or weird AI-native products, this is where it gets interesting.\n\nLinks:\n- Ship Shit Show: https://www.youtube.com/@ShipShitShow\n- Ship Shit Show Clips: https://www.youtube.com/@ShipShitShowClips\n- GH repos: https://github.com/orgs/shipshitgames/repositories\n- DeadRot: https://deadrot.com/",
-      "duration": "PT9M56S",
-      "duration_seconds_flat": 596,
-      "duration_string_flat": "9:56",
+      "duration": "PT9M57S",
+      "duration_seconds_flat": 597,
+      "duration_string_flat": "9:57",
       "id": "BTb9O0Th8qs",
       "likeCount": 5,
       "privacyStatus": "public",
@@ -207,7 +552,7 @@
       "transcriptStatus": "clean",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=BTb9O0Th8qs",
-      "viewCount": 354
+      "viewCount": 395
     },
     {
       "actualEndTime": "2026-06-10T13:57:40Z",
@@ -239,10 +584,10 @@
       "channelTitle": "Ship Sh!t Show",
       "cleanTranscriptPath": "apps/app/data/transcripts/clean/2026-06-04-video-opus-4-8-we-built-a-browser-fps-in-45-minutes-with-one-prompt.txt",
       "commentCount": 3,
-      "description": "We gave Claude Code one prompt. 45 minutes later we had a playable browser FPS — running, on the first try.\n\nNo starter repo. No boilerplate. Just: \"build me a playable browser-based first-person-shooter arena, end-to-end.\"\n\nOpus 4.8 planned its own subtasks, scaffolded the whole project, and handed us something that ran. Then we pushed it further — live in the terminal:\n\n→ Enemy waves + a boss fight (then a meaner one)\n→ Shotgun, SMG, rifle, cannon\n→ Pickups, shields, health bars, reloading animations\n→ Collision fixes it caught and fixed itself\n\nThis isn't a vibe code toy. It's a real build loop — and it held up the whole way.\n\nPLAY IT / FORK IT: https://github.com/shipshitshow/opus48\nSubscribe for multiplayer + scoreboard next → @ShipShitShow \n\nDrop your boss-fight death count in the comments.\n\nCHAPTERS:\n0:00 \"It actually works\" (cold open)\n0:11 Is Opus 4.8 the best model ever?\n0:43 The challenge: build a playable FPS end-to-end\n2:06 First build goes live — and it runs\n3:15 \"Duke Nukem in minutes\"\n4:39 What Opus 4.8 does differently (it decides its own subtasks)\n5:49 Adding waves, a boss, and fixing collisions\n7:53 Weapons, upgrades & a meaner boss\n9:23 Building the finale\n10:26 Final playthrough + boss fight\n13:00 Verdict: a successful test\n13:28 Get the game / outro",
-      "duration": "PT14M18S",
-      "duration_seconds_flat": 858,
-      "duration_string_flat": "14:18",
+      "description": "We gave Claude Code one prompt. 45 minutes later we had a playable browser FPS — running, on the first try.\n\nNo starter repo. No boilerplate. Just: \"build me a playable browser-based first-person-shooter arena, end-to-end.\"\n\nOpus 4.8 planned its own subtasks, scaffolded the whole project, and handed us something that ran. Then we pushed it further — live in the terminal:\n\n→ Enemy waves + a boss fight (then a meaner one)\n→ Shotgun, SMG, rifle, cannon\n→ Pickups, shields, health bars, reloading animations\n→ Collision fixes it caught and fixed itself\n\nThis isn't a vibe code toy. It's a real build loop — and it held up the whole way.\n\nPLAY IT / FORK IT: https://github.com/shipshitshow/examples/tree/master/episodes/2026-06-02-p-WXHu2gU2s\nSubscribe for multiplayer + scoreboard next → @ShipShitShow \n\nDrop your boss-fight death count in the comments.\n\nCHAPTERS:\n0:00 \"It actually works\" (cold open)\n0:11 Is Opus 4.8 the best model ever?\n0:43 The challenge: build a playable FPS end-to-end\n2:06 First build goes live — and it runs\n3:15 \"Duke Nukem in minutes\"\n4:39 What Opus 4.8 does differently (it decides its own subtasks)\n5:49 Adding waves, a boss, and fixing collisions\n7:53 Weapons, upgrades & a meaner boss\n9:23 Building the finale\n10:26 Final playthrough + boss fight\n13:00 Verdict: a successful test\n13:28 Get the game / outro",
+      "duration": "PT14M19S",
+      "duration_seconds_flat": 859,
+      "duration_string_flat": "14:19",
       "id": "49IkgeGr1kE",
       "likeCount": 5,
       "privacyStatus": "public",
@@ -253,7 +598,7 @@
       "transcriptStatus": "clean",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=49IkgeGr1kE",
-      "viewCount": 388
+      "viewCount": 413
     },
     {
       "actualEndTime": "2026-06-02T13:37:27Z",
@@ -286,9 +631,9 @@
       "cleanTranscriptPath": "apps/app/data/transcripts/clean/2026-06-01-video-cursor-wins-is-composer-2-5-the-new-king.txt",
       "commentCount": 6,
       "description": "Cursor just dropped Composer 2.5, their most powerful coding model yet, and it's claiming to be faster, cheaper, and smarter than Claude Opus and GPT-5. So we put it to the test.\n\nIn this episode we break down Cursor's Composer 2.5 release: the benchmarks, the pricing, and whether it's actually worth switching your whole workflow. \n\nWe get into how it's built on top of a Chinese open source model, why 85% of its gains come from reinforcement learning on Cursor's own user data, and the wild reality that developers are paying to train the model that competes with everyone else.\n\nWe cover:\nWhat Composer 2.5 actually is and how it was trained\nThe benchmark numbers vs Claude Opus and GPT-5\nWhy it's reportedly up to 60x cheaper to run\nThe \"run it 3 times and merge\" strategy for cheap parallel agents\nWhether we're actually switching (spoiler: it's complicated)\nWhat happens when every model maxes out the benchmarks\n\nTimestamps\n00:00 Cursor made the best model?\n00:30 What is Composer 2.5\n01:30 The benchmark numbers\n03:00 The pricing breakdown\n04:30 Running cheap agents in parallel\n06:00 Why we're not switching (yet)\n07:30 When benchmarks stop mattering\n08:30 Final verdict\n\nSubscribe for weekly breakdowns of what's actually happening in AI and dev tooling",
-      "duration": "PT9M23S",
-      "duration_seconds_flat": 563,
-      "duration_string_flat": "9:23",
+      "duration": "PT9M24S",
+      "duration_seconds_flat": 564,
+      "duration_string_flat": "9:24",
       "id": "bc6WbJJNWPU",
       "likeCount": 4,
       "privacyStatus": "public",
@@ -299,7 +644,7 @@
       "transcriptStatus": "clean",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=bc6WbJJNWPU",
-      "viewCount": 412
+      "viewCount": 428
     },
     {
       "actualEndTime": "2026-05-26T15:42:59Z",
@@ -332,9 +677,9 @@
       "cleanTranscriptPath": "apps/app/data/transcripts/clean/2026-05-21-video-your-npm-packages-are-compromised.txt",
       "commentCount": 1,
       "description": "NPM is broken and nobody is talking about it.\n\nA supply chain attack just compromised dozens of @antv packages on npm — including g2, g6, and x6 — with over 1 million weekly downloads combined. And the scariest part? Most developers had no idea they were even using them.\n\nIn this video, we break down exactly what happened, why supply chain attacks are getting harder to detect, and why AI-assisted vibe coding is making the problem significantly worse.\n\nSubscribe",
-      "duration": "PT10M39S",
-      "duration_seconds_flat": 639,
-      "duration_string_flat": "10:39",
+      "duration": "PT10M40S",
+      "duration_seconds_flat": 640,
+      "duration_string_flat": "10:40",
       "id": "wmZl7ROJ14Q",
       "likeCount": 2,
       "privacyStatus": "public",
@@ -483,7 +828,7 @@
       "transcriptStatus": "clean",
       "type": "livestream",
       "url": "https://www.youtube.com/watch?v=VEzRyG-jZys",
-      "viewCount": 148
+      "viewCount": 150
     },
     {
       "actualEndTime": "2026-04-28T12:58:42Z",
@@ -516,9 +861,9 @@
       "cleanTranscriptPath": "apps/app/data/transcripts/clean/2026-04-22-video-openai-chatgpt-images-2-0-is-insanely-good.txt",
       "commentCount": 1,
       "description": "OpenAI ChatGPT Images 2.0 might be a much bigger deal than it looks.\n\nIn this video, we test OpenAI ChatGPT Images 2.0 with real prompts and compare it against Nano Banana 2 to see which one actually holds up in real-world use. We’re looking at image quality, character consistency, prompt accuracy, thumbnail potential, manga-style generations, text and logo handling, and whether OpenAI ChatGPT Images 2.0 is genuinely better or just overhyped.\n\nThis isn’t a benchmark for the sake of benchmarking. It’s a practical test:\ncan OpenAI ChatGPT Images 2.0 make better images, better thumbnails, and more usable outputs than Nano Banana 2?\n\nIf you’ve been wondering whether OpenAI ChatGPT Images 2.0 is worth paying attention to, this should give you a clear answer.\n\nTopics covered:\n- OpenAI ChatGPT Images 2.0 first impressions\n- OpenAI ChatGPT Images 2.0 vs Nano Banana 2\n- thumbnail generation\n- text and logo rendering\n- manga / comic-style image generation\n- consistency and prompt following\n- real-world creative use cases",
-      "duration": "PT7M44S",
-      "duration_seconds_flat": 464,
-      "duration_string_flat": "7:44",
+      "duration": "PT7M45S",
+      "duration_seconds_flat": 465,
+      "duration_string_flat": "7:45",
       "id": "28hDnDaAiTA",
       "likeCount": 5,
       "privacyStatus": "public",
@@ -529,7 +874,7 @@
       "transcriptStatus": "clean",
       "type": "livestream",
       "url": "https://www.youtube.com/watch?v=28hDnDaAiTA",
-      "viewCount": 183
+      "viewCount": 185
     },
     {
       "actualEndTime": "2026-04-21T22:13:12Z",
@@ -644,7 +989,7 @@
       "transcriptStatus": "clean",
       "type": "livestream",
       "url": "https://www.youtube.com/watch?v=MJp8l5ZBlI4",
-      "viewCount": 552
+      "viewCount": 553
     },
     {
       "actualEndTime": null,
@@ -690,7 +1035,7 @@
       "transcriptStatus": "clean",
       "type": "livestream",
       "url": "https://www.youtube.com/watch?v=1wSZwDps9Vg",
-      "viewCount": 498
+      "viewCount": 501
     },
     {
       "actualEndTime": null,
@@ -713,7 +1058,7 @@
       "transcriptStatus": "clean",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=gnfJl0YfNHc",
-      "viewCount": 1253
+      "viewCount": 1257
     },
     {
       "actualEndTime": "2026-03-24T22:59:09Z",
@@ -736,7 +1081,7 @@
       "transcriptStatus": "clean",
       "type": "livestream",
       "url": "https://www.youtube.com/watch?v=EC59_bed_yM",
-      "viewCount": 350
+      "viewCount": 352
     },
     {
       "actualEndTime": null,
@@ -759,7 +1104,7 @@
       "transcriptStatus": "clean",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=jryNWdxPGmI",
-      "viewCount": 146
+      "viewCount": 149
     },
     {
       "actualEndTime": "2026-03-17T23:12:18Z",
@@ -805,7 +1150,7 @@
       "transcriptStatus": "clean",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=hobkMV6hKCM",
-      "viewCount": 1568
+      "viewCount": 1581
     },
     {
       "actualEndTime": "2026-03-10T23:05:31Z",
@@ -920,7 +1265,7 @@
       "transcriptStatus": "clean",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=WJJZHyhlAuI",
-      "viewCount": 320
+      "viewCount": 338
     },
     {
       "actualEndTime": "2026-02-12T04:10:04Z",
@@ -943,7 +1288,7 @@
       "transcriptStatus": "clean",
       "type": "livestream",
       "url": "https://www.youtube.com/watch?v=NiMvki8JqQ4",
-      "viewCount": 179
+      "viewCount": 184
     },
     {
       "actualEndTime": "2026-02-10T22:59:30Z",
@@ -989,7 +1334,7 @@
       "transcriptStatus": "clean",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=K1nwHfOonDw",
-      "viewCount": 449
+      "viewCount": 453
     },
     {
       "actualEndTime": "2026-02-03T22:53:51Z",
@@ -1017,16 +1362,81 @@
   ],
   "source": "youtube-data-api-v3",
   "summary": {
-    "cleanTranscripts": 43,
-    "livestreams": 26,
+    "cleanTranscripts": 45,
+    "livestreams": 33,
     "missingTranscripts": [
+      {
+        "id": "MTbYJ4o2EQg",
+        "title": "Will OpenAI Survive Until 2030?",
+        "url": "https://www.youtube.com/watch?v=MTbYJ4o2EQg"
+      },
+      {
+        "id": "XCyY0VDiRps",
+        "title": "OpenAI vs Anthropic: Game Over?",
+        "url": "https://www.youtube.com/watch?v=XCyY0VDiRps"
+      },
+      {
+        "id": "mYkxfB4ib7E",
+        "title": "Meta Muse Wonder Full: Hype or Frontier?",
+        "url": "https://www.youtube.com/watch?v=mYkxfB4ib7E"
+      },
+      {
+        "id": "M1EEEl4M6-4",
+        "title": "Muse Wonder: Better Than Fable 5.1 or Opus 5.5?",
+        "url": "https://www.youtube.com/watch?v=M1EEEl4M6-4"
+      },
+      {
+        "id": "zjXzkB8z5xg",
+        "title": "Grok Bot vs Dots vs Muse: Do You Even Need an AI Personal Assistant?",
+        "url": "https://www.youtube.com/watch?v=zjXzkB8z5xg"
+      },
+      {
+        "id": "WOTzkAWvb0w",
+        "title": "Sonnet 5.5 vs Opus 5.5: Why Anthropic Won",
+        "url": "https://www.youtube.com/watch?v=WOTzkAWvb0w"
+      },
+      {
+        "id": "uSuqoiEaB1k",
+        "title": "Opus/Sonnet 5.5 vs GPT-6 Sol/Luna vs Grok 4.7: What To Use?",
+        "url": "https://www.youtube.com/watch?v=uSuqoiEaB1k"
+      },
+      {
+        "id": "r6o5wFD4P-w",
+        "title": "GPT Astra: How Do We Make Money Post-AGI?",
+        "url": "https://www.youtube.com/watch?v=r6o5wFD4P-w"
+      },
+      {
+        "id": "KPAyE6KSrQU",
+        "title": "Fable 5.1 vs GPT-6 Astra: Did We Reach AGI?",
+        "url": "https://www.youtube.com/watch?v=KPAyE6KSrQU"
+      },
+      {
+        "id": "1ZbR2qie8rk",
+        "title": "pstack: How The SpaceX Team Actually Runs Grok Bot",
+        "url": "https://www.youtube.com/watch?v=1ZbR2qie8rk"
+      },
+      {
+        "id": "mz5xo-QX1VM",
+        "title": "Stop Paying for AI Models. Free Ones Are Good Enough",
+        "url": "https://www.youtube.com/watch?v=mz5xo-QX1VM"
+      },
+      {
+        "id": "zyQEwa5IYvk",
+        "title": "I Gave Grok Bot One Job: Find Me Customers While I Sleep",
+        "url": "https://www.youtube.com/watch?v=zyQEwa5IYvk"
+      },
+      {
+        "id": "-qsSddwzjpY",
+        "title": "How to Use Grok 4.6, Grok Bot & Cursor Origin Together",
+        "url": "https://www.youtube.com/watch?v=-qsSddwzjpY"
+      },
       {
         "id": "b9Re90K4By8",
         "title": "[LIVE] ChatGPT Images 2.0 Is Insane: Best Prompts, Examples, and Use Cases",
         "url": "https://www.youtube.com/watch?v=b9Re90K4By8"
       }
     ],
-    "total": 44,
-    "videos": 18
+    "total": 59,
+    "videos": 26
   }
 }
