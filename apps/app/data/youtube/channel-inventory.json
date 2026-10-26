@@ -950,7 +950,7 @@
       "actualStartTime": "2026-04-21T21:11:35Z",
       "channelId": "UCxuriP32znodU-8N7zkwuew",
       "channelTitle": "Ship Sh!t Show",
-      "cleanTranscriptPath": null,
+      "cleanTranscriptPath": "apps/app/data/transcripts/clean/2026-04-22-livestream-chatgpt-images-2-0-is-insane-best-prompts-examples-and-use-cases.txt",
       "commentCount": 2,
       "description": "AI images used to be a gimmick.\nPretty outputs, broken text, and almost nothing you could actually use.\n\nOpenAI is trying to change that with ChatGPT Images 2.0.\n\nThe real shift is not better AI art.\nIt is usable assets: posters, brochures, mockups, diagrams, multilingual layouts, and typography that finally starts to hold together.\n\nTonight’s livestream is about what actually changed, the best examples so far, the prompts worth stealing, and whether this is finally good enough for real creator and dev workflows.\n\nWe’ll break down the official launch, test prompts live, pull up the strongest reactions, and separate real progress from launch-day hype.\n\nSubscribe and hit the bell for weekly AI tool breakdowns, honest reactions, and real dev workflows.",
       "duration": "PT1H1M42S",
@@ -963,7 +963,7 @@
       "rawTranscriptPath": null,
       "thumbnail": "https://i.ytimg.com/vi/b9Re90K4By8/maxresdefault.jpg",
       "title": "[LIVE] ChatGPT Images 2.0 Is Insane: Best Prompts, Examples, and Use Cases",
-      "transcriptStatus": "missing",
+      "transcriptStatus": "clean",
       "type": "livestream",
       "url": "https://www.youtube.com/watch?v=b9Re90K4By8",
       "viewCount": 310
@@ -1431,7 +1431,7 @@
   ],
   "source": "youtube-data-api-v3",
   "summary": {
-    "cleanTranscripts": 58,
+    "cleanTranscripts": 59,
     "livestreams": 36,
     "missingTranscripts": [
       {
@@ -1448,11 +1448,6 @@
         "id": "5MHHTWYSZ-Y",
         "title": "Genfeed.ai: We Launch Our Open Source AI Content Studio",
         "url": "https://www.youtube.com/watch?v=5MHHTWYSZ-Y"
-      },
-      {
-        "id": "b9Re90K4By8",
-        "title": "[LIVE] ChatGPT Images 2.0 Is Insane: Best Prompts, Examples, and Use Cases",
-        "url": "https://www.youtube.com/watch?v=b9Re90K4By8"
       }
     ],
     "total": 62,
