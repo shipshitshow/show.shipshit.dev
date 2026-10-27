@@ -102,7 +102,7 @@ Open on a finished result from the dry run: one brief, the drafts it made. Then,
 - Exit cue once Mitchell says "ok, show me": "let's see what it makes."
 - Budget: about 8 minutes.
 
-## Segment 1b — My growth advisor: Nevo's Brain (about 5 minutes)
+## Segment 1b — Solving distribution: Genfeed grows Genfeed, with Nevo's Brain as advisor (about 6 minutes)
 
 Vincent, 27 Oct: he is setting up Nevo's Brain as his growth bot / advisor. Disclose that it is someone else's product and free, and that Vincent has no tie to it beyond using it (confirm before air).
 
@@ -114,6 +114,8 @@ Vincent, 27 Oct: he is setting up Nevo's Brain as his growth bot / advisor. Disc
 
 ### Conversation cues
 
+- **Vincent's bet (27 Oct): distribution is the problem, and I'll solve it as a tech guy.** Genfeed is the experiment itself: I use Genfeed (plus Nevo's Brain as advisor) to grow Genfeed's own reach. If I can grow Genfeed's reach, I can do it for customers. Frame it as a public bet we'll report back on, not a result: no reach numbers exist yet.
+- Mitchell's challenge: what counts as success, and when do we check back on the show?
 - Why it fits the thesis: it is a harness plus context (one founder's playbook) plugged into any model. Same idea as Genfeed for content.
 - The Genfeed launch plan already follows Nevo's 0-to-$3K playbook (weekly r/selfhosted posts, star CTAs).
 - Mitchell's challenge: is one founder's playbook advice for everyone? The page's examples are all Postiz; it does not show results for other users.
