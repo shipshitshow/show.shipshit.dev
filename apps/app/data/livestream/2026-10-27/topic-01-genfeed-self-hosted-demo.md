@@ -112,11 +112,19 @@ Vincent, 26 Oct: the content demo runs in the Genfeed Playground, https://app.ge
 2. Drafts in the Playground. Unknown until dry-run: whether it shows all drafts at once, whether outputs break format rules (the Agent page did every time), what a run costs in credits.
 3. Host review on air; if the output misses the rules, show the correction turn instead of hiding it.
 4. Stop at draft unless scheduling/publishing is tested and decided beforehand.
+5. **Close the demo in Codex (Vincent, 27 Oct):** the same brand, driven from a Codex session through the hosted Genfeed MCP (`https://mcp.genfeed.ai/mcp`). Ask Codex to write one post for the brand and save it to Genfeed as a draft, then show the draft appearing in the app. Point: your coding agent can run your content studio.
+
+### Codex MCP setup (do before air, not on stream)
+
+- Codex had no Genfeed MCP on 26 Oct (`~/.codex/config.toml` had none). Add the hosted server with Codex's MCP command (current CLI: `codex mcp add genfeed --url https://mcp.genfeed.ai/mcp`, then `codex mcp login genfeed` if it asks for OAuth; check `codex mcp --help` on your version) and run one test prompt.
+- What it can do (checked from Claude on 26 Oct): read the account and brands, create posts and article drafts, schedules, analytics. **Not** image, video or audio generation, workflows or batches; keep media generation in the Playground.
+- The brand needs to exist in the org the MCP signs into: the shipshitshow brand sits in the shipdev org (19% complete, 0 credits on 27 Oct); the Genfeed.ai org had no brands on 26 Oct. Sign Codex into the org you demo.
+- Do not schedule or publish from Codex on air unless decided beforehand.
 
 ### Conversation cues
 
 - Mitchell: would you post this as-is? What would you change?
-- Budget: about 14 minutes. Exit cue: "now, how do you run this yourself?"
+- Budget: about 17 minutes (3 for the Codex beat). Exit cue: "now, how do you run this yourself?"
 
 ## Segment 3 — The self-hosted process (walkthrough, no live install)
 
@@ -158,9 +166,9 @@ Vincent, 27 Oct: he is setting up Nevo's Brain as his growth bot / advisor. Disc
 - Mitchell's challenge: is one founder's playbook advice for everyone? The page's examples are all Postiz; it does not show results for other users.
 - All numbers are Nevo's own claims (page says "verified by TrustMRR"; the MRR chart is partly read off Stripe "to the nearest $500"). Say "he says".
 
-## Demo prompts (draft, UNTESTED in the Playground)
+## Demo prompts — copy paste (UNTESTED in the Playground)
 
-Written 26 Oct for the dry run. The only brief ever run was the "Trailhead Notebook" one on the self-hosted Agent page; these have not been run anywhere. Edit freely.
+Written 26 Oct for the dry run. Run everything on the shipshitshow brand (shipdev org) and paste the brand context (section 0 below) first. The only brief ever run was the "Trailhead Notebook" one on the self-hosted Agent page; these have not been run anywhere. Edit freely.
 
 ### Brief (B2B founder post, about the thesis)
 
@@ -191,6 +199,66 @@ Rules:
 - The rehearsal (Agent page) dropped a "do not claim" rule when the orchestrator shortened the brief. Check that the claims rule survives; if not, put it in the correction turn on air.
 - Record the credits or spend of the run from the provider/Genfeed billing view if it can be read; do not quote a number until it is.
 - Genfeed's own docs say nothing publishes until you approve; confirm this in the Playground before saying it on air.
+
+
+### Brand: Ship Sh!t Show (the shipshitshow brand in Genfeed)
+Source for every brand rule: shipshitshow/vault `brand/` (identity.md, colors.json, generation.md), verified 27 Oct. None of these prompts has been run in the Playground. Run each once before going live.
+
+### 0. Paste first: brand context
+
+```
+Brand: Ship Sh!t Show, a weekly show where two founders talk about how they actually use AI in their businesses. Baseline: "Think AI" (no colon, no punctuation).
+Voice: direct, no fluff, no corporate speak, opinionated but honest, first person ("I built"). No hype, no invented results or quotes.
+Colors: charcoal #0D0D0D background, white #FFFFFF text, single accent red #E83B3B. Nothing else.
+Type: Space Grotesk, broad and bold. Never squeezed or stretched.
+Mark: a six-arm asterisk (three identical bars crossed at 0, 60 and 120 degrees), red, bottom-right.
+```
+
+### 1. Image: livestream thumbnail
+
+House rule (generation.md): topic first, no host faces, mostly monochrome, red asterisk accent for livestreams, no generic model logos, no fabricated proof.
+
+```
+16:9 YouTube thumbnail, dark charcoal #0D0D0D background, almost monochrome.
+Topic: self-hosting an open-source AI content studio on your own machine.
+Subject: a simple matte server box or laptop silhouette in white line art, with a stack of three post cards leaving it.
+Headline in white, broad bold Space Grotesk, large, max 4 words: "I SELF-HOST MY CONTENT AI".
+One red #E83B3B six-arm asterisk, bottom-right, fixed position. Red used nowhere else.
+No people, no faces, no model logos, no screenshots, no numbers or claims.
+```
+
+### 2. Video: 6-8 s vertical clip for a Short or post
+
+Say on air that a generated clip is illustrative, not product footage.
+
+```
+9:16, 8 seconds, dark charcoal #0D0D0D background, white and red #E83B3B only.
+Slow push-in on a bold white headline in Space Grotesk: "The model is rented. The harness is yours."
+Beat 1 (0-3 s): headline fades in word by word.
+Beat 2 (3-6 s): thin white line draws a box around the word "harness".
+Beat 3 (6-8 s): red six-arm asterisk (three crossed bars) spins in at bottom-right and settles.
+Flat motion graphics, no people, no logos, no stock footage, no extra text, no music lyrics.
+```
+
+### 3. Scheduled posts (the "show the queue" beat)
+
+Draft with the Playground brief already in the notes (Demo prompts, section "Brief"), then schedule. Genfeed's own docs say nothing publishes until you approve. Unverified: scheduling and connected accounts (the 23 Oct rehearsal had 0 connected accounts). Do not schedule anything public on air without a connected test account.
+
+Queue to show (edit freely):
+
+| Slot | Post |
+| --- | --- |
+| Today 14:00 UTC | Launch post linking genfeed.ai/self-hosted and the repo |
+| Wed | The "model is rented, harness is yours" post |
+| Fri | Clip post from today's recording |
+
+Fallback if no account is connected: show the drafts and the schedule screen, and say plainly nothing was posted.
+
+### Check before air
+
+- Run each prompt once and keep the best outputs as saved fallbacks.
+- Check the output against the brand: colors only #0D0D0D, #FFFFFF, #E83B3B; asterisk bottom-right; no faces.
+- Verify the image and video generators have provider keys (the rehearsal showed `imageGenerationReady:false`).
 
 ## Fallbacks
 
