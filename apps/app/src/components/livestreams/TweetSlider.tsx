@@ -15,7 +15,13 @@ import {
   X,
 } from 'lucide-react';
 import Link from 'next/link';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import {
+  type ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import type {
   TweetSlide,
   TweetSlideBody,
@@ -288,6 +294,14 @@ function SlideCard({ slide }: { slide: TweetSlide }) {
   );
 }
 
+function ScrollStage({ children }: { children: ReactNode }) {
+  return (
+    <div className="flex h-full w-full overflow-y-auto overscroll-contain px-2 py-2">
+      <div className="m-auto flex w-full justify-center">{children}</div>
+    </div>
+  );
+}
+
 function Overview({
   current,
   hidden,
@@ -340,6 +354,13 @@ function Overview({
                     <span className="font-mono text-accent-red">
                       {index + 1}
                     </span>
+                    {slide.tweet && (
+                      <img
+                        src={slide.tweet.author.avatarUrl}
+                        alt=""
+                        className="size-6 rounded-full"
+                      />
+                    )}
                     <span className="font-semibold text-text-primary">
                       @{slide.tweet?.author.handle ?? slide.handle}
                     </span>
@@ -596,11 +617,12 @@ export function TweetSlider({
           </button>
           <button
             onClick={() => setShowOverview((value) => !value)}
-            className="rounded-lg border border-surface-border p-2 text-text-muted hover:text-text-primary"
+            className="inline-flex items-center gap-2 rounded-lg border border-surface-border px-3 py-2 text-text-muted hover:text-text-primary"
             aria-label="Show all tweets"
             title="All tweets (L)"
           >
             <LayoutGrid className="size-5" />
+            <span className="text-sm">All tweets</span>
           </button>
           <button
             onClick={toggleFullscreen}
@@ -617,9 +639,11 @@ export function TweetSlider({
         </div>
       </header>
 
-      <main className="relative flex min-h-0 flex-1 items-center justify-center px-[5vw] pb-[4vh]">
+      <main className="relative flex min-h-0 flex-1 items-center justify-center px-[5vw] pb-[2vh]">
         {slide ? (
-          <SlideCard key={slide.id} slide={slide} />
+          <ScrollStage key={slide.id}>
+            <SlideCard slide={slide} />
+          </ScrollStage>
         ) : (
           <div className="max-w-xl space-y-3 text-center text-text-muted">
             <p className="text-2xl font-semibold text-text-primary">
