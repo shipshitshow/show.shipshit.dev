@@ -2,7 +2,7 @@
 title: "Genfeed.ai: We're Launching Our Open-Source AI Content Studio"
 slug: "genfeed-self-hosted-demo"
 source: "genfeed.ai homepage, docs.genfeed.ai self-host pages (installation, system requirements, architecture), github.com/genfeedai/genfeed.ai (AGPL-3.0-or-later), read 19 Oct"
-status: "draft"
+status: "in_progress"
 date: "2026-10-27"
 announcement_tweet: null
 thumbnail_prompt: null
