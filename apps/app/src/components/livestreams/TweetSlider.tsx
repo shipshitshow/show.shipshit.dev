@@ -170,7 +170,7 @@ function MediaGrid({ media }: { media: TweetSlideMedia[] }) {
     return (
       <MediaItem
         item={media[0]}
-        className="mx-auto max-h-[68vh] w-auto max-w-full rounded-2xl border border-surface-border object-contain"
+        className="mx-auto max-h-[calc(100vh-14rem)] w-auto max-w-full rounded-2xl border border-surface-border object-contain"
       />
     );
   }
@@ -265,28 +265,30 @@ function SlideCard({ slide }: { slide: TweetSlide }) {
 
   return (
     <article
-      className={`grid w-full items-center gap-[3vw] rounded-3xl border border-surface-border bg-surface-card p-[3vw] shadow-2xl shadow-black/60 ${
+      className={`grid max-h-full min-h-0 w-full items-stretch gap-[3vw] rounded-3xl border border-surface-border bg-surface-card p-[3vw] shadow-2xl shadow-black/60 ${
         hasMedia ? 'max-w-[1800px] lg:grid-cols-[1fr_1.1fr]' : 'max-w-6xl'
       }`}
     >
-      <div className="min-w-0 space-y-[3vh]">
+      <div className="flex min-h-0 min-w-0 flex-col gap-[2vh]">
         <Author author={tweet.author} />
-        {tweet.text && (
-          <TweetText
-            className={`font-medium text-text-primary ${textSize(
-              tweet.text.length,
-              hasMedia || Boolean(quoted),
-            )}`}
-            text={tweet.truncated ? `${tweet.text}…` : tweet.text}
-          />
-        )}
-        {quoted && <QuotedCard quoted={quoted} />}
+        <div className="min-h-0 flex-1 space-y-[3vh] overflow-y-auto overscroll-contain pr-2">
+          {tweet.text && (
+            <TweetText
+              className={`font-medium text-text-primary ${textSize(
+                tweet.text.length,
+                hasMedia || Boolean(quoted),
+              )}`}
+              text={tweet.truncated ? `${tweet.text}…` : tweet.text}
+            />
+          )}
+          {quoted && <QuotedCard quoted={quoted} />}
+        </div>
         <div className="flex flex-wrap items-center gap-x-[2vw] gap-y-2 text-[clamp(0.875rem,1.2vw,1.375rem)] text-text-muted">
           {meta}
         </div>
       </div>
       {hasMedia && (
-        <div className="min-w-0">
+        <div className="flex min-h-0 min-w-0 items-center">
           <MediaGrid media={tweet.media} />
         </div>
       )}
@@ -296,8 +298,8 @@ function SlideCard({ slide }: { slide: TweetSlide }) {
 
 function ScrollStage({ children }: { children: ReactNode }) {
   return (
-    <div className="flex h-full w-full overflow-y-auto overscroll-contain px-2 py-2">
-      <div className="m-auto flex w-full justify-center">{children}</div>
+    <div className="flex h-full w-full items-center justify-center px-2 py-2">
+      {children}
     </div>
   );
 }
