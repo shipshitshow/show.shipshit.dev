@@ -112,11 +112,19 @@ Vincent, 26 Oct: the content demo runs in the Genfeed Playground, https://app.ge
 2. Drafts in the Playground. Unknown until dry-run: whether it shows all drafts at once, whether outputs break format rules (the Agent page did every time), what a run costs in credits.
 3. Host review on air; if the output misses the rules, show the correction turn instead of hiding it.
 4. Stop at draft unless scheduling/publishing is tested and decided beforehand.
+5. **Close the demo in Codex (Vincent, 27 Oct):** the same brand, driven from a Codex session through the hosted Genfeed MCP (`https://mcp.genfeed.ai/mcp`). Ask Codex to write one post for the brand and save it to Genfeed as a draft, then show the draft appearing in the app. Point: your coding agent can run your content studio.
+
+### Codex MCP setup (do before air, not on stream)
+
+- Codex had no Genfeed MCP on 26 Oct (`~/.codex/config.toml` had none). Add the hosted server with Codex's MCP command (current CLI: `codex mcp add genfeed --url https://mcp.genfeed.ai/mcp`, then `codex mcp login genfeed` if it asks for OAuth; check `codex mcp --help` on your version) and run one test prompt.
+- What it can do (checked from Claude on 26 Oct): read the account and brands, create posts and article drafts, schedules, analytics. **Not** image, video or audio generation, workflows or batches; keep media generation in the Playground.
+- The brand needs to exist in the org the MCP signs into: the shipshitshow brand sits in the shipdev org (19% complete, 0 credits on 27 Oct); the Genfeed.ai org had no brands on 26 Oct. Sign Codex into the org you demo.
+- Do not schedule or publish from Codex on air unless decided beforehand.
 
 ### Conversation cues
 
 - Mitchell: would you post this as-is? What would you change?
-- Budget: about 14 minutes. Exit cue: "now, how do you run this yourself?"
+- Budget: about 17 minutes (3 for the Codex beat). Exit cue: "now, how do you run this yourself?"
 
 ## Segment 3 — The self-hosted process (walkthrough, no live install)
 
