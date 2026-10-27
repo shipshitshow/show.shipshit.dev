@@ -102,25 +102,6 @@ Open on a finished result from the dry run: one brief, the drafts it made. Then,
 - Exit cue once Mitchell says "ok, show me": "let's see what it makes."
 - Budget: about 8 minutes.
 
-## Segment 1b — Solving distribution: Genfeed grows Genfeed, with Nevo's Brain as advisor (about 6 minutes)
-
-Vincent, 27 Oct: he is setting up Nevo's Brain as his growth bot / advisor. Disclose that it is someone else's product and free, and that Vincent has no tie to it beyond using it (confirm before air).
-
-### What to put on screen
-
-1. [Nevo David's post, 14 Oct 2026](https://x.com/wickedguro/status/2110347509948146070) (~1.05M views): Postiz passed $3M ARR, growing about $3k MRR a day; credits distribution, not product (37k GitHub stars, weekly launches, three Product Hunt #1s, creator content); gives away his "brain" for free at nevo.md. Says @trust_mrr verifies the numbers.
-2. [nevo.md](https://nevo.md/): "Nevo's Brain", a free MCP server for Claude, ChatGPT, Cursor, Codex and others. Four parts: niche radar (audiences big competitors miss), hype antenna (early trends), tactics board (channels that work now), growth engine (trial-to-paid, churn). Setup: add the URL as a custom connector (Claude) or `mcp add` (Claude Code, Codex), sign in with email + 6-digit code. Signing in subscribes you to his newsletter.
-3. If connected before air: ask it one real Genfeed launch question live, and show the answer.
-
-### Conversation cues
-
-- **Vincent's bet (27 Oct): distribution is the problem, and I'll solve it as a tech guy.** Genfeed is the experiment itself: I use Genfeed (plus Nevo's Brain as advisor) to grow Genfeed's own reach. If I can grow Genfeed's reach, I can do it for customers. Frame it as a public bet we'll report back on, not a result: no reach numbers exist yet.
-- Mitchell's challenge: what counts as success, and when do we check back on the show?
-- Why it fits the thesis: it is a harness plus context (one founder's playbook) plugged into any model. Same idea as Genfeed for content.
-- The Genfeed launch plan already follows Nevo's 0-to-$3K playbook (weekly r/selfhosted posts, star CTAs).
-- Mitchell's challenge: is one founder's playbook advice for everyone? The page's examples are all Postiz; it does not show results for other users.
-- All numbers are Nevo's own claims (page says "verified by TrustMRR"; the MRR chart is partly read off Stripe "to the nearest $500"). Say "he says".
-
 ## Segment 2 — Output demo: one real brief to drafts, in the Playground
 
 Vincent, 26 Oct: the content demo runs in the Genfeed Playground, https://app.genfeed.ai/playground (the hosted app), not in the self-hosted stack. Nothing from the growth rehearsal covers it: that was the **Agent** page on a self-hosted v0.2.13 install. Dry-run the Playground before the show and say on air that this is the hosted app, while Segment 3 is about running your own.
@@ -155,6 +136,27 @@ Vincent, 26 Oct: no live install of the 9 GB Docker image. The content demo (Seg
 - Controversial claim to test: **"self-hosted AI" is mostly self-hosted plumbing; the intelligence is still rented.** This is the Segment 1 thesis seen from the other side: the model is rented and will keep changing; the harness, brand memory and data are what you own.
 - Provider spend: show only from the provider dashboard after the run, if checked.
 - Budget: about 12 minutes. Exit cue: close.
+
+## Segment 4 — Closing bet: Genfeed grows Genfeed, with Nevo's Brain as advisor (about 6 minutes)
+
+Vincent, 27 Oct: this segment goes last, after the self-hosted walkthrough; Genfeed is the topic of every segment before it. Bridge from the close of Segment 3.
+
+Vincent, 27 Oct: he is setting up Nevo's Brain as his growth bot / advisor. Disclose that it is someone else's product and free, and that Vincent has no tie to it beyond using it (confirm before air).
+
+### What to put on screen
+
+1. [Nevo David's post, 14 Oct 2026](https://x.com/wickedguro/status/2110347509948146070) (~1.05M views): Postiz passed $3M ARR, growing about $3k MRR a day; credits distribution, not product (37k GitHub stars, weekly launches, three Product Hunt #1s, creator content); gives away his "brain" for free at nevo.md. Says @trust_mrr verifies the numbers.
+2. [nevo.md](https://nevo.md/): "Nevo's Brain", a free MCP server for Claude, ChatGPT, Cursor, Codex and others. Four parts: niche radar (audiences big competitors miss), hype antenna (early trends), tactics board (channels that work now), growth engine (trial-to-paid, churn). Setup: add the URL as a custom connector (Claude) or `mcp add` (Claude Code, Codex), sign in with email + 6-digit code. Signing in subscribes you to his newsletter.
+3. If connected before air: ask it one real Genfeed launch question live, and show the answer.
+
+### Conversation cues
+
+- **Vincent's bet (27 Oct): distribution is the problem, and I'll solve it as a tech guy.** Genfeed is the experiment itself: I use Genfeed (plus Nevo's Brain as advisor) to grow Genfeed's own reach. If I can grow Genfeed's reach, I can do it for customers. Frame it as a public bet we'll report back on, not a result: no reach numbers exist yet.
+- Mitchell's challenge: what counts as success, and when do we check back on the show?
+- Why it fits the thesis: it is a harness plus context (one founder's playbook) plugged into any model. Same idea as Genfeed for content.
+- The Genfeed launch plan already follows Nevo's 0-to-$3K playbook (weekly r/selfhosted posts, star CTAs).
+- Mitchell's challenge: is one founder's playbook advice for everyone? The page's examples are all Postiz; it does not show results for other users.
+- All numbers are Nevo's own claims (page says "verified by TrustMRR"; the MRR chart is partly read off Stripe "to the nearest $500"). Say "he says".
 
 ## Demo prompts (draft, UNTESTED in the Playground)
 
