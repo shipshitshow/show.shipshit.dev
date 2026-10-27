@@ -86,12 +86,40 @@ Open on a finished result from the dry run: one brief, the drafts it made. Then,
 - **The ask, said once and briefly:** Vincent wants viewers to use Genfeed to sell content to B2B. Disclose first that Genfeed is his product. Keep it to the style rule (value, not begging, CTA at the end); do not repeat the ask in every segment.
 - **Guardrails:** no claim that Genfeed content has sold to or converted B2B buyers unless there is a measured, sourced example; no "models will" predictions presented as fact (frame as Vincent's view). The B2B angle is the thesis for the show, and the demo should show it: use a B2B-style brief (see Segment 2).
 
+### On screen: AI content is taking over (X posts, checked 27 Oct)
+
+- [@levelsio, 8 Aug 2026](https://x.com/levelsio/status/2086056496920506723) (~1.07M views): Dead Internet Theory: Stack Overflow questions gone, Reddit and X replies taken over by AI bots, "there is no real content anymore on the internet", so no fresh training data either.
+- [Forbes, 13 Oct 2025](https://x.com/Forbes/status/1977831724789682499): Reddit co-founder Alexis Ohanian says much of the content posted online is AI-generated, not human-created.
+- [Bearly AI on Adam Mosseri's essay, 31 Dec 2025](https://x.com/bearlyai/status/2006474217206985085) (~683k views): the head of Instagram: by 2026 "authenticity" will be infinitely reproducible, and AI will produce far more content than humans.
+- [Kelly Hungerford, 16 Jun 2026](https://x.com/KDHungerford/status/2066763959063986347): AI agent web traffic has passed human traffic (links a news story; check the source before quoting a number).
+- Counterpoint for Mitchell: [@0xPia, 12 Aug 2026](https://x.com/0xPia/status/2087546245648683163): if creators stop posting, we all watch AI recycle the same content forever, or humans adapt and find new formats.
+- How to use: the hook "all internet content will be AI-generated" is our prediction; these posts show others see the same trend. None of them proves a percentage.
+
 ### Conversation cues
 
 - Mitchell's challenge: if models keep improving, why not just prompt ChatGPT or Claude, or pay for Cloud?
 - Vincent: context and harness compound, prompts don't; and which one buys B2B attention?
 - Exit cue once Mitchell says "ok, show me": "let's see what it makes."
 - Budget: about 8 minutes.
+
+## Segment 1b — Solving distribution: Genfeed grows Genfeed, with Nevo's Brain as advisor (about 6 minutes)
+
+Vincent, 27 Oct: he is setting up Nevo's Brain as his growth bot / advisor. Disclose that it is someone else's product and free, and that Vincent has no tie to it beyond using it (confirm before air).
+
+### What to put on screen
+
+1. [Nevo David's post, 14 Oct 2026](https://x.com/wickedguro/status/2110347509948146070) (~1.05M views): Postiz passed $3M ARR, growing about $3k MRR a day; credits distribution, not product (37k GitHub stars, weekly launches, three Product Hunt #1s, creator content); gives away his "brain" for free at nevo.md. Says @trust_mrr verifies the numbers.
+2. [nevo.md](https://nevo.md/): "Nevo's Brain", a free MCP server for Claude, ChatGPT, Cursor, Codex and others. Four parts: niche radar (audiences big competitors miss), hype antenna (early trends), tactics board (channels that work now), growth engine (trial-to-paid, churn). Setup: add the URL as a custom connector (Claude) or `mcp add` (Claude Code, Codex), sign in with email + 6-digit code. Signing in subscribes you to his newsletter.
+3. If connected before air: ask it one real Genfeed launch question live, and show the answer.
+
+### Conversation cues
+
+- **Vincent's bet (27 Oct): distribution is the problem, and I'll solve it as a tech guy.** Genfeed is the experiment itself: I use Genfeed (plus Nevo's Brain as advisor) to grow Genfeed's own reach. If I can grow Genfeed's reach, I can do it for customers. Frame it as a public bet we'll report back on, not a result: no reach numbers exist yet.
+- Mitchell's challenge: what counts as success, and when do we check back on the show?
+- Why it fits the thesis: it is a harness plus context (one founder's playbook) plugged into any model. Same idea as Genfeed for content.
+- The Genfeed launch plan already follows Nevo's 0-to-$3K playbook (weekly r/selfhosted posts, star CTAs).
+- Mitchell's challenge: is one founder's playbook advice for everyone? The page's examples are all Postiz; it does not show results for other users.
+- All numbers are Nevo's own claims (page says "verified by TrustMRR"; the MRR chart is partly read off Stripe "to the nearest $500"). Say "he says".
 
 ## Segment 2 — Output demo: one real brief to drafts, in the Playground
 
