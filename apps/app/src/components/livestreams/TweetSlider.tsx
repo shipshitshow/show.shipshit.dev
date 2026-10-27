@@ -20,7 +20,6 @@ import {
   useCallback,
   useEffect,
   useMemo,
-  useRef,
   useState,
 } from 'react';
 import type {
@@ -295,42 +294,10 @@ function SlideCard({ slide }: { slide: TweetSlide }) {
   );
 }
 
-function FitToStage({ children }: { children: ReactNode }) {
-  const stageRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(1);
-
-  useEffect(() => {
-    const stage = stageRef.current;
-    const content = contentRef.current;
-    if (!stage || !content) return;
-    const measure = () => {
-      const fit = Math.min(
-        1,
-        stage.clientHeight / Math.max(1, content.offsetHeight),
-        stage.clientWidth / Math.max(1, content.offsetWidth),
-      );
-      setScale(Math.max(0.3, fit));
-    };
-    measure();
-    const observer = new ResizeObserver(measure);
-    observer.observe(stage);
-    observer.observe(content);
-    return () => observer.disconnect();
-  }, []);
-
+function ScrollStage({ children }: { children: ReactNode }) {
   return (
-    <div
-      ref={stageRef}
-      className="flex h-full w-full items-center justify-center overflow-auto"
-    >
-      <div
-        ref={contentRef}
-        className="flex w-full justify-center"
-        style={{ transform: `scale(${scale})`, transformOrigin: 'center' }}
-      >
-        {children}
-      </div>
+    <div className="flex h-full w-full overflow-y-auto overscroll-contain px-2 py-2">
+      <div className="m-auto flex w-full justify-center">{children}</div>
     </div>
   );
 }
@@ -674,9 +641,9 @@ export function TweetSlider({
 
       <main className="relative flex min-h-0 flex-1 items-center justify-center px-[5vw] pb-[2vh]">
         {slide ? (
-          <FitToStage key={slide.id}>
+          <ScrollStage key={slide.id}>
             <SlideCard slide={slide} />
-          </FitToStage>
+          </ScrollStage>
         ) : (
           <div className="max-w-xl space-y-3 text-center text-text-muted">
             <p className="text-2xl font-semibold text-text-primary">
