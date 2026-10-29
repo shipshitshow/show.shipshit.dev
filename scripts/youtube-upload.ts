@@ -217,7 +217,7 @@ async function getAccessToken(channel: Channel): Promise<string> {
     channel === 'main'
       ? process.env.YOUTUBE_REFRESH_TOKEN_MAIN
       : process.env.YOUTUBE_REFRESH_TOKEN_CLIPS;
-  const refreshToken = (await readKvRefreshToken(channel)) || envToken;
+  const refreshToken = envToken || (await readKvRefreshToken(channel));
   if (!refreshToken) {
     fail(
       `No refresh token for "${channel}" in KV or YOUTUBE_REFRESH_TOKEN_${channel.toUpperCase()}`,
