@@ -1,6 +1,6 @@
 # Ship Shit Show — Product Marketing Context
 
-last_verified: 2026-10-08
+last_verified: 2026-10-29
 
 ## What is it?
 A weekly YouTube show and podcast (video + live) where two founders, Vincent and Mitchell, talk about AI and how they actually use it to run their businesses. It is not a model-testing or benchmark show (Vincent, 2026-10-03).
@@ -53,6 +53,30 @@ guidance, not measured retention or editing savings.
 Use [the local editorial format](../../docs/show-prep/editorial-format.md)
 alongside the public source-board contract. Keep host speech natural and preserve
 the caveats that make the controversial take accurate.
+
+### Picking and cutting Shorts — verified 2026-10-29
+
+Vincent, 2026-10-29, on the 27 Oct Genfeed Shorts: pick takes that give the
+viewer value, never feature walkthroughs. He kept "the tools are free, the
+harness is the IP", "your feed is already AI / dead internet", "rebuild every
+time the models change" and "give away the code, sell the service". He rejected
+a product compliment ("you built a company for us"), a draft-then-remix feature
+explanation, a self-host install walkthrough and "a scheduler isn't enough".
+A demo like the install walkthrough can still go to LinkedIn as is.
+
+- Each Short is one hot take or founder lesson. Open on the take itself in the
+  first two seconds, pulling the strongest line forward when it sits later in
+  the segment, and end on a clean payoff. 30–50 s.
+- Keep a host's opinion phrased as opinion, and keep it a lesson rather than a
+  sales pitch.
+- Layout for 9:16: the full sharp 16:9 frame in the middle, the hosts' cam
+  column scaled to fill the background, heavily blurred and darkened (no black
+  bars), the white six-arm asterisk top-right, the title above the video and
+  white captions on a dark backing below it. No single red karaoke words.
+  Nothing in the bottom ~350 px. Reference render:
+  `editing/projects/261027/shorts/_layout-test/`.
+- Send a plan with candidate takes and source ranges, plus one layout example,
+  before recutting a batch.
 
 ## CTA Style
 - Never begging: "like and subscribe if you're not braindead"

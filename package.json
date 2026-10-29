@@ -25,7 +25,8 @@
     "show:prep": "bun run --cwd apps/app show:prep",
     "storage:export": "bun run --cwd apps/app storage:export",
     "test": "turbo test",
-    "youtube:metadata": "bun scripts/generate-youtube-metadata.ts"
+    "youtube:metadata": "bun scripts/generate-youtube-metadata.ts",
+    "youtube:upload": "bun scripts/youtube-upload.ts"
   },
   "workspaces": [
     "apps/*",
