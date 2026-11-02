@@ -1,15 +1,9 @@
 import { BRAND } from '@shipshitshow/ui/brand';
-import { ArrowUpRight } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { ArtifactCards } from '@/components/artifacts/ArtifactCards';
 import { BrandMark } from '@/components/BrandMark';
-import { ARTIFACTS, type ArtifactKind } from '@/lib/artifacts/registry';
 import { buildDefaultMetadata } from '@/lib/site';
-
-const KIND_LABELS: Record<ArtifactKind, string> = {
-  timeline: 'Timeline',
-  tweets: 'Tweet slideshow',
-};
 
 export const metadata: Metadata = {
   ...buildDefaultMetadata(),
@@ -35,27 +29,9 @@ export default function ArtifactsPage() {
         Assets we made to show during the livestream. Each one lists its sources
         and how far we checked them.
       </p>
-      <ul className="mt-10 grid gap-4 md:grid-cols-2">
-        {ARTIFACTS.map((artifact) => (
-          <li key={artifact.slug}>
-            <Link
-              href={`/artifacts/${artifact.slug}`}
-              className="flex h-full flex-col gap-3 rounded-lg border border-surface-border bg-surface-card p-5 hover:border-text-muted"
-            >
-              <span className="font-mono text-xs uppercase tracking-wide text-text-muted">
-                {KIND_LABELS[artifact.kind]} · Updated {artifact.updated}
-              </span>
-              <span className="flex items-center justify-between gap-3 text-xl font-bold text-text-primary">
-                {artifact.title}
-                <ArrowUpRight aria-hidden="true" className="size-5 shrink-0" />
-              </span>
-              <span className="text-base text-text-secondary">
-                {artifact.summary}
-              </span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <div className="mt-10">
+        <ArtifactCards />
+      </div>
     </main>
   );
 }

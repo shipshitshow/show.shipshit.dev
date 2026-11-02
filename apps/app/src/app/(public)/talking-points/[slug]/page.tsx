@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
+import { StreamArtifactsPanel } from '@/components/artifacts/StreamArtifactsPanel';
 import { PublicTalkingPointsTabs } from '@/components/livestreams/PublicTalkingPointsTabs';
 import { StreamPromptsPanel } from '@/components/livestreams/StreamPromptsPanel';
 import { StreamResourcesPanel } from '@/components/livestreams/StreamResourcesPanel';
@@ -157,6 +158,7 @@ export default async function PublicTalkingPointsPage({
           </h1>
         </div>
         <PublicTalkingPointsTabs
+          artifacts={<StreamArtifactsPanel />}
           prompts={<StreamPromptsPanel cards={cards} />}
           ressources={<StreamResourcesPanel cards={cards} />}
           talkingPoints={<StreamRundownPanel cards={cards} />}
