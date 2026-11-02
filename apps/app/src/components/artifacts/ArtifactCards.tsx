@@ -1,15 +1,23 @@
 import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
-import { ARTIFACTS, type ArtifactKind } from '@/lib/artifacts/registry';
+import {
+  ARTIFACTS,
+  type ArtifactEntry,
+  type ArtifactKind,
+} from '@/lib/artifacts/registry';
 
 const KIND_LABELS: Record<ArtifactKind, string> = {
   timeline: 'Timeline',
   tweets: 'Tweet slideshow',
 };
 
-/** The library as a grid of links, newest first. */
-export function ArtifactCards() {
-  const artifacts = [...ARTIFACTS].sort((a, b) =>
+/** Artifacts as a grid of links, newest first; the whole library by default. */
+export function ArtifactCards({
+  artifacts: source = ARTIFACTS,
+}: {
+  artifacts?: ArtifactEntry[];
+}) {
+  const artifacts = [...source].sort((a, b) =>
     b.updated.localeCompare(a.updated),
   );
 

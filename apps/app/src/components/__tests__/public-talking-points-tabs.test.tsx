@@ -21,12 +21,25 @@ describe('public livestream notes', () => {
     expect(markup).toContain('rundown');
   });
 
-  test('the Artifacts panel links every artifact and the library', () => {
-    const markup = renderToStaticMarkup(<StreamArtifactsPanel />);
-    for (const artifact of ARTIFACTS) {
+  test('the Artifacts panel lists what is attached to the stream', () => {
+    const markup = renderToStaticMarkup(
+      <StreamArtifactsPanel date="2026-11-03" slug="upcoming" />,
+    );
+    for (const artifact of ARTIFACTS.filter((item) =>
+      item.streams.includes('2026-11-03'),
+    )) {
       expect(markup).toContain(`href="/artifacts/${artifact.slug}"`);
       expect(markup).toContain(artifact.title);
     }
+    expect(markup).toContain('href="/talking-points/upcoming/artifacts"');
     expect(markup).toContain('href="/artifacts"');
+  });
+
+  test('the Artifacts panel says so when nothing is attached', () => {
+    const markup = renderToStaticMarkup(
+      <StreamArtifactsPanel date="2020-01-07" slug="2020-01-07" />,
+    );
+    expect(markup).toContain('No artifacts are attached');
+    expect(markup).not.toContain('href="/artifacts/');
   });
 });

@@ -7,6 +7,8 @@ export type ArtifactKind = 'timeline' | 'tweets';
 export interface ArtifactEntry {
   kind: ArtifactKind;
   slug: string;
+  /** Livestream dates (`YYYY-MM-DD`) this artifact is shown on. */
+  streams: string[];
   summary: string;
   title: string;
   /** Last content check, `YYYY-MM-DD`. */
@@ -17,6 +19,7 @@ export const ARTIFACTS: ArtifactEntry[] = [
   {
     kind: 'timeline',
     slug: 'agent-security-timeline',
+    streams: ['2026-11-03'],
     summary:
       'PHP2Shell, the trojanized Claude Code extension on Cursor and the AI-agent intrusions around them, in date order. Every entry shows its sources and how far they were checked.',
     title: 'Bot Swarm Timeline',
@@ -25,6 +28,7 @@ export const ARTIFACTS: ArtifactEntry[] = [
   {
     kind: 'tweets',
     slug: 'agent-security-tweets',
+    streams: ['2026-11-03'],
     summary:
       'The X posts behind the timeline, as a full-screen slideshow: the PHP2Shell disclosure and the Cursor extension incident.',
     title: 'Bot Swarm Tweets',
@@ -34,4 +38,8 @@ export const ARTIFACTS: ArtifactEntry[] = [
 
 export function getArtifact(slug: string): ArtifactEntry | undefined {
   return ARTIFACTS.find((artifact) => artifact.slug === slug);
+}
+
+export function getArtifactsForStream(date: string): ArtifactEntry[] {
+  return ARTIFACTS.filter((artifact) => artifact.streams.includes(date));
 }

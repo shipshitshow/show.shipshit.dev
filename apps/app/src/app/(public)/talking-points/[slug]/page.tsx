@@ -158,7 +158,7 @@ export default async function PublicTalkingPointsPage({
           </h1>
         </div>
         <PublicTalkingPointsTabs
-          artifacts={<StreamArtifactsPanel />}
+          artifacts={<StreamArtifactsPanel date={resolvedDate} slug={slug} />}
           prompts={<StreamPromptsPanel cards={cards} />}
           ressources={<StreamResourcesPanel cards={cards} />}
           talkingPoints={<StreamRundownPanel cards={cards} />}

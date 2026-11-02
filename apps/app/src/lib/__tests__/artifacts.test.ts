@@ -6,7 +6,11 @@ import {
   TRACK_LABELS,
   TWEET_DECK,
 } from '@/lib/artifacts/agent-security-2026-10';
-import { ARTIFACTS, getArtifact } from '@/lib/artifacts/registry';
+import {
+  ARTIFACTS,
+  getArtifact,
+  getArtifactsForStream,
+} from '@/lib/artifacts/registry';
 
 describe('artifacts registry', () => {
   test('slugs are unique and resolve to their entry', () => {
@@ -17,6 +21,16 @@ describe('artifacts registry', () => {
       expect(artifact.updated).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     }
     expect(getArtifact('missing')).toBeUndefined();
+  });
+
+  test('attaches artifacts to livestream dates', () => {
+    for (const artifact of ARTIFACTS) {
+      for (const date of artifact.streams) {
+        expect(date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+        expect(getArtifactsForStream(date)).toContain(artifact);
+      }
+    }
+    expect(getArtifactsForStream('2020-01-07')).toEqual([]);
   });
 
   test('has one timeline and one tweet slideshow for the security story', () => {
