@@ -24,6 +24,7 @@ const EXACT_PUBLIC_PATHS = new Set([
 ]);
 
 const PUBLIC_PREFIXES = [
+  '/artifacts',
   '/sign-in',
   '/sign-up',
   '/login',
