@@ -26,8 +26,15 @@ export const PRODUCTION_APPS = [
     links: [
       { href: '/livestreams', label: 'Livestreams' },
       { href: '/videos', label: 'Edited videos' },
+      { href: '/artifacts', label: 'Artifacts library' },
     ],
-    roots: ['/livestreams', '/livestream', '/live-stream', '/videos'],
+    roots: [
+      '/livestreams',
+      '/livestream',
+      '/live-stream',
+      '/videos',
+      '/artifacts',
+    ],
   },
   {
     group: 'daily',

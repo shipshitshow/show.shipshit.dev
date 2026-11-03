@@ -2,19 +2,22 @@
 
 import { useState } from 'react';
 
-type PublicTab = 'prompts' | 'ressources' | 'talking-points';
+type PublicTab = 'artifacts' | 'prompts' | 'ressources' | 'talking-points';
 
 const TABS: Array<{ label: string; tab: PublicTab }> = [
   { label: 'Talking Points', tab: 'talking-points' },
   { label: 'Ressources', tab: 'ressources' },
   { label: 'Prompts', tab: 'prompts' },
+  { label: 'Artifacts', tab: 'artifacts' },
 ];
 
 export function PublicTalkingPointsTabs({
+  artifacts,
   prompts,
   ressources,
   talkingPoints,
 }: {
+  artifacts: React.ReactNode;
   prompts: React.ReactNode;
   ressources: React.ReactNode;
   talkingPoints: React.ReactNode;
@@ -46,6 +49,7 @@ export function PublicTalkingPointsTabs({
       {activeTab === 'talking-points' ? talkingPoints : null}
       {activeTab === 'ressources' ? ressources : null}
       {activeTab === 'prompts' ? prompts : null}
+      {activeTab === 'artifacts' ? artifacts : null}
     </div>
   );
 }
