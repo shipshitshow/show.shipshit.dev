@@ -8,7 +8,7 @@ import './globals.scss';
 export const metadata: Metadata = {
   description:
     'Think AI. Vincent and Mitchell share the tools and workflows behind building with AI. Video and live on YouTube.',
-  title: 'Ship Sh!t Show — Think AI',
+  title: 'Ship Sh*t Show — Think AI',
   ...buildDefaultMetadata(),
 };
 

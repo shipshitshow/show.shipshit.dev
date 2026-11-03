@@ -64,7 +64,7 @@ describe('public OG topic visibility', () => {
     for (const status of ['draft', 'backlog'] as const) {
       test(`${date} ${status} uses a generic card`, async () => {
         const output = await render(status, date);
-        expect(output).toContain('Ship Sh!t Show');
+        expect(output).toContain('Ship Sh*t Show');
         expect(output).not.toContain('Private title');
         expect(output).not.toContain('Private summary');
         expect(output).not.toContain('Private source');

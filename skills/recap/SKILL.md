@@ -7,7 +7,7 @@ description: Edit a livestream into a focused recap with natural dialogue, sourc
 
 ## Channel context
 
-Use the user's channel profile and actual source asset. For Ship Sh!t Show, read [the bundled profile](references/channel-profile.md); viewers using another channel should provide their audience, voice, formats, links and visual references. A profile is context, not permission to publish, upload footage, buy generation or contact a partner.
+Use the user's channel profile and actual source asset. For Ship Sh*t Show, read [the bundled profile](references/channel-profile.md); viewers using another channel should provide their audience, voice, formats, links and visual references. A profile is context, not permission to publish, upload footage, buy generation or contact a partner.
 
 For the bundled show, read the canonical kit's editing rules and asset inventory linked in the profile. Record the kit revision, logo hash, actual fonts and approved overrides in the project's supported manifest or handoff notes. Generated board scenes are not source footage.
 

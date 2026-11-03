@@ -1,6 +1,6 @@
 # Editing workspace
 
-Local editing, audio, transcripts, graphics and delivery for Ship Sh!t Show,
+Local editing, audio, transcripts, graphics and delivery for Ship Sh*t Show,
 edited in Tesseract. This was the standalone `~/www/tesseract` workspace until
 October 2026; it now lives here so show data and edits share one repository.
 

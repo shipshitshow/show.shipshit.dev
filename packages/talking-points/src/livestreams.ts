@@ -15,7 +15,7 @@ export function buildLivestreamTopicDraft(item: TrendItem): {
 } {
   const source = TREND_SOURCE_LABELS[item.source];
   const showFit = item.showScore
-    ? `\n- Ship Shit Show fit: ${item.showScore}/100${
+    ? `\n- Ship Sh*t Show fit: ${item.showScore}/100${
         item.showReasons?.length ? ` (${item.showReasons.join(', ')})` : ''
       }`
     : '';

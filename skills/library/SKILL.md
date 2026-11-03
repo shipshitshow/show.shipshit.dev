@@ -7,7 +7,7 @@ description: Organize a local editing library with source media, reproducible ve
 
 ## Channel context
 
-Use the user's channel profile and actual source asset. For Ship Sh!t Show, read [the bundled profile](references/channel-profile.md); viewers using another channel should provide their audience, voice, formats, links and visual references. A profile is context, not permission to publish, upload footage, buy generation or contact a partner.
+Use the user's channel profile and actual source asset. For Ship Sh*t Show, read [the bundled profile](references/channel-profile.md); viewers using another channel should provide their audience, voice, formats, links and visual references. A profile is context, not permission to publish, upload footage, buy generation or contact a partner.
 
 Inspect the existing workspace before introducing a new structure. Preserve referenced media/native project paths. For a new library use [the folder contract](references/folders.md); an existing library can map its current folders to that contract without relocating recordings.
 

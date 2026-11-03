@@ -7,7 +7,7 @@ description: Draft transcript-grounded YouTube titles, descriptions, chapters an
 
 ## Channel context
 
-Use the user's channel profile and actual source asset. For Ship Sh!t Show, read [the bundled profile](references/channel-profile.md); viewers using another channel should provide their audience, voice, formats, links and visual references. A profile is context, not permission to publish, upload footage, buy generation or contact a partner.
+Use the user's channel profile and actual source asset. For Ship Sh*t Show, read [the bundled profile](references/channel-profile.md); viewers using another channel should provide their audience, voice, formats, links and visual references. A profile is context, not permission to publish, upload footage, buy generation or contact a partner.
 
 Identify the format, publication stage and exact asset. An upcoming live uses its source board with tentative claims; a completed stream uses its transcript; a recap or Short uses the final edit's own transcript and clock. Do not copy full-stream chapters into an edit.
 

@@ -7,13 +7,13 @@ description: Create exactly three YouTube thumbnail test concepts and generation
 
 ## Channel context
 
-Use the user's channel profile and actual source asset. For Ship Sh!t Show, read [the bundled profile](references/channel-profile.md); viewers using another channel should provide their audience, voice, formats, links and visual references. A profile is context, not permission to publish, upload footage, buy generation or contact a partner.
+Use the user's channel profile and actual source asset. For Ship Sh*t Show, read [the bundled profile](references/channel-profile.md); viewers using another channel should provide their audience, voice, formats, links and visual references. A profile is context, not permission to publish, upload footage, buy generation or contact a partner.
 
 For the bundled show, read the canonical brand kit and inventory linked in the profile. Use its thumbnail rules and appropriate authorized assets; draft boards are composition references, not final artwork or new source photographs.
 
 Determine live, edited recap or Short, the delivered thesis, supplied topic/brand references and whether the user wants new concepts or a surgical edit. For a surgical edit, preserve all unrequested elements; do not redesign the asset to satisfy default style.
 
-Thumbnails lead with the topic and contain no host faces or likenesses: do not use host photographs or character references, and do not prompt for people. Vary the topic treatment (official logo, source-grounded visual, short text) instead. For Ship Sh!t Show, the exact six-arm signature always sits top-right inside the profile’s format-specific safe margins: equal top/right for 16:9, larger top than right for 9:16 Shorts. Use the supplied vector master in the final composite; subtle scene-matched material/lighting may integrate it without changing its silhouette, base color or safe placement. Livestream thumbnails use the red signature; edited-video thumbnails use the white (on dark) or black (on light) signature.
+Thumbnails lead with the topic and contain no host faces or likenesses: do not use host photographs or character references, and do not prompt for people. Vary the topic treatment (official logo, source-grounded visual, short text) instead. For Ship Sh*t Show, the exact six-arm signature always sits top-right inside the profile’s format-specific safe margins: equal top/right for 16:9, larger top than right for 9:16 Shorts. Use the supplied vector master in the final composite; subtle scene-matched material/lighting may integrate it without changing its silhouette, base color or safe placement. Livestream thumbnails use the red signature; edited-video thumbnails use the white (on dark) or black (on light) signature.
 
 For a new test set, return **exactly three** distinct hypotheses. Examples: decisive outcome, firsthand workflow proof, and meaningful tradeoff. Distinguish them enough to learn something while preserving the same truthful viewer promise. Do not label a prompt a proven winner. If testing thumbnails alone, hold the title fixed; if the user chooses combined tests, label each title/thumbnail pair explicitly.
 

@@ -1,4 +1,4 @@
-# Ship Shit Show — Monorepo Architecture
+# Ship Sh*t Show — Monorepo Architecture
 
 last_verified: 2026-10-15
 

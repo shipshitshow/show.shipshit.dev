@@ -1,4 +1,4 @@
-# Ship Shit Show — Monorepo
+# Ship Sh*t Show — Monorepo
 
 @.agents/memory/product-marketing-context.md
 @.agents/memory/architecture.md

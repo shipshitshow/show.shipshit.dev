@@ -44,7 +44,7 @@ export function AppRail({ onNavigate }: { onNavigate?: () => void }) {
     >
       <Link
         href="/"
-        aria-label="Ship Sh!t Show home"
+        aria-label="Ship Sh*t Show home"
         className="mb-2 flex size-9 items-center justify-center text-accent-red"
       >
         <BrandMark size={26} />

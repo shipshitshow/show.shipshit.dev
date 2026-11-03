@@ -4,8 +4,8 @@ import { SocialAuthPageClient } from '@/components/SocialAuthPageClient';
 import { requireProducerPage } from '@/lib/producer-auth';
 
 export const metadata: Metadata = {
-  description: 'Connect Instagram and TikTok analytics for Ship Sh!t Show.',
-  title: 'Social OAuth - Ship Sh!t Show',
+  description: 'Connect Instagram and TikTok analytics for Ship Sh*t Show.',
+  title: 'Social OAuth - Ship Sh*t Show',
 };
 
 export default async function SocialAuthPage() {

@@ -24,6 +24,8 @@ w, h = tokens['thumbnail']['reference_canvas']
 css += ':root {\n' + f"  --thumbnail-signature-width: {mark['width'] / w * 100:g}%;\n  --thumbnail-signature-right: {mark['inset_right'] / w * 100:g}%;\n  --thumbnail-signature-top: {mark['inset_top'] / h * 100:.6f}%;\n" + '}\n'
 outputs = {snapshot: payload, root / 'packages/ui/src/theme.css': css}
 errors = []
+if tokens['identity']['show_name'] != 'Ship Sh*t Show':
+    errors.append('The active display name must be Ship Sh*t Show.')
 for path, content in outputs.items():
     if args.check:
         if not path.is_file() or (json.loads(path.read_text()) != tokens if path.suffix == '.json' else re.sub(r'\s+', '', path.read_text()).lower() != re.sub(r'\s+', '', content).lower()):
@@ -56,7 +58,7 @@ if args.check:
                 unknown = set(re.findall(r'#[a-f0-9]{3,8}\b', text, re.I)) - allowed_colors.get(relative, set())
                 if unknown:
                     errors.append(f'Hardcoded visual color outside documented semantic/vendor exceptions: {relative}: {sorted(unknown)}')
-            if 'Ship Shit Show' in text:
+            if 'Ship Shit Show' in text or 'Ship Sh!t Show' in text:
                 errors.append(f'Obsolete display-name spelling: {relative}')
             if re.search(r'#(?:ff2d20|ff5a5f)\b|rgba?\(255,\s*90,\s*95', text, re.I):
                 errors.append(f'Obsolete brand color: {path.relative_to(root)}')
