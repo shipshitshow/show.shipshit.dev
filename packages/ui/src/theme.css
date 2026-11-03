@@ -16,6 +16,6 @@
 }
 :root {
   --thumbnail-signature-width: 7.5%;
-  --thumbnail-signature-right: 3.75%;
-  --thumbnail-signature-bottom: 6.666667%;
+  --thumbnail-signature-right: 5%;
+  --thumbnail-signature-top: 8.888889%;
 }
