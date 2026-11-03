@@ -1,10 +1,10 @@
 # Metadata output
 
 - Asset/format, source transcript and recording/publication dates.
-- Distinct title candidates; recommended title and evidence for its promise.
-- Ready-to-paste description: human opener, practical takeaway, chapters from the correct clock, relevant sources/examples, channel footer.
+- Preserve an approved title; otherwise provide distinct candidates and a recommendation grounded in the asset.
+- Final title and description in separate plain-text copy blocks. Apply the channel profile’s narrator and format-specific link policy; include the opener, practical takeaway, chapters from the correct clock when available, and channel footer.
 - Comma-separated focused tags; optional `youtube_tags` YAML.
-- Unknown claims/timestamps and a test hypothesis, separated from paste-ready copy.
+- Keep source-verification notes, unknown claims/timestamps, pending public-page links and test hypotheses outside paste-ready copy.
 
 For a scheduled live, describe the intended question without claiming results. For a recap, package the final edit. For a Short, use its complete narrow point and do not fabricate long-form chapters.
 

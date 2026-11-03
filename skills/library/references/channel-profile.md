@@ -22,7 +22,11 @@ Livestreams cover a viewer decision across sources and firsthand stories. Recaps
 
 Recent source examples: September 29 stream https://www.youtube.com/watch?v=uSuqoiEaB1k and its edited video https://www.youtube.com/watch?v=WOTzkAWvb0w; September 8 stream https://www.youtube.com/watch?v=KPAyE6KSrQU. Inspect actual transcript and current titles before borrowing a pattern. These examples do not establish performance winners.
 
-Main-video descriptions: a brief human opener, specific takeaway, accurate chapters, relevant sources and derivative/example links. Use `youtube_tags` for vault keyword lists. Suggested footer when applicable:
+Descriptions speak as the show in first-person plural: **we, us, our; “Join us.”** Host names are internal context, not an introduction in public description copy. Keep the opener human and the practical takeaway specific; use verified chapters only when a recording exists.
+
+Livestream descriptions stay concise and contain **no source list** unless explicitly requested. Keep citations and source links in the episode’s talking-points/source board. Include one public `https://show.shipshit.dev/talking-points/<YYYY-MM-DD>` link only after checking, signed out, that the rendered title and visible notes/resources match the exact episode. An HTTP 200 is insufficient: missing dates can fall back to older episodes. If the page is missing, private, empty or shows another episode, leave its URL out of the paste-ready description and report that it is pending outside the copy. Preparing metadata does not authorize publishing notes, changing topic visibility or merging/deploying code.
+
+Recap/edited-video descriptions may include relevant source/example links when useful. Return the final title and description in separate plain-text copy blocks. Use `youtube_tags` for vault keyword lists. Suggested footer when applicable:
 
 Subscribe so you don't miss the next build.
 Follow us: https://x.com/shipshitdev
