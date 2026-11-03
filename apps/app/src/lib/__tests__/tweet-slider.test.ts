@@ -4,6 +4,7 @@ import {
   buildTweetDeck,
   formatTweetText,
   loadTweetSlides,
+  splitTweetText,
 } from '@/lib/tweet-slider';
 
 describe('buildTweetDeck', () => {
@@ -147,5 +148,41 @@ describe('loadTweetSlides', () => {
     );
     expect(slides[0].tweet).toBeNull();
     expect(slides[0].note).toBe('note');
+  });
+});
+
+describe('splitTweetText', () => {
+  test('links @handles to the X profile and #tags to the hashtag page', () => {
+    const parts = splitTweetText('Thanks @test_user and @Wiz! #PHP2Shell now');
+
+    expect(parts.filter((part) => part.href)).toEqual([
+      { highlight: true, href: 'https://x.com/test_user', text: '@test_user' },
+      { highlight: true, href: 'https://x.com/Wiz', text: '@Wiz' },
+      {
+        highlight: true,
+        href: 'https://x.com/hashtag/PHP2Shell',
+        text: '#PHP2Shell',
+      },
+    ]);
+    expect(parts.map((part) => part.text).join('')).toBe(
+      'Thanks @test_user and @Wiz! #PHP2Shell now',
+    );
+  });
+
+  test('does not treat an email address as a mention', () => {
+    const parts = splitTweetText('mail me at dev@example.com');
+
+    expect(parts.some((part) => part.href)).toBe(false);
+  });
+
+  test('highlights bare URLs without linking the shortened text', () => {
+    const parts = splitTweetText('Read example.com/post/abc… today');
+    const url = parts.find((part) => part.highlight);
+
+    expect(url).toEqual({
+      highlight: true,
+      href: null,
+      text: 'example.com/post/abc…',
+    });
   });
 });
