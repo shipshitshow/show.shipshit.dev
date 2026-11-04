@@ -1,0 +1,11 @@
+{
+  "Statement": [
+    {
+      "Action": ["s3:GetObject", "s3:PutObject"],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::cdn.shipshit.dev/shipshitshow/thumbnails/*",
+      "Sid": "ThumbnailObjectsOnly"
+    }
+  ],
+  "Version": "2012-10-17"
+}

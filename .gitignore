@@ -59,6 +59,8 @@ yarn.lock
 
 # Livestream thumbnail working files (kept local, never committed)
 assets/
+!apps/app/src/app/api/labs/thumbnails/*/assets/
+!apps/app/src/app/api/labs/thumbnails/*/assets/**
 
 # Editing workspace: media stays local; track only the contract (editing/README.md)
 editing/*
@@ -68,3 +70,6 @@ editing/*
 editing/scripts/*
 !editing/scripts/workspace.py
 __pycache__/
+
+# Private thumbnail catalogue and local image drafts
+apps/app/data/thumbnail-lab/
