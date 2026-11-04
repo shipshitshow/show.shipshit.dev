@@ -39,8 +39,9 @@
     "white": "#FFFFFF"
   },
   "identity": {
+    "avatar_business": "white asterisk on charcoal",
     "avatar_clips": "white asterisk on charcoal",
-    "avatar_main": "black asterisk on red",
+    "avatar_main": "red asterisk on charcoal",
     "baseline": "Think AI",
     "compact_mark": "six-arm-asterisk",
     "mark_geometry": {
@@ -54,7 +55,7 @@
       "rotations": [0, 60, 120],
       "viewBox": [0, 0, 96, 96]
     },
-    "show_name": "Ship Sh!t Show"
+    "show_name": "Ship Sh*t Show"
   },
   "photography": {
     "default": "natural-color approved hosts against monochrome charcoal",
@@ -75,15 +76,33 @@
     ],
     "livestream_mark": "#E83B3B",
     "reference_canvas": [1280, 720],
+    "shorts": {
+      "reference_ad_safe_area": {
+        "height": 960,
+        "width": 840,
+        "x": 48,
+        "y": 288
+      },
+      "reference_canvas": [1080, 1920],
+      "safe_area_source": "https://services.google.com/fh/files/misc/universalsafezones-youtube.pdf",
+      "signature": {
+        "height": 96,
+        "inset_right": 216,
+        "inset_top": 320,
+        "width": 96,
+        "x": 768,
+        "y": 320
+      }
+    },
     "signature": {
       "height": 96,
-      "inset_bottom": 48,
-      "inset_right": 48,
+      "inset_right": 64,
+      "inset_top": 64,
       "width": 96,
-      "x": 1136,
-      "y": 576
+      "x": 1120,
+      "y": 64
     },
-    "subject": "natural-color approved hosts and official topic logos in their original colors",
+    "subject": "source-grounded topic subjects and official topic logos in their original colors; no host faces",
     "text": "episode-specific; do not mandate text on every thumbnail",
     "video_mark": "white on dark, black on light"
   },
@@ -95,7 +114,7 @@
     "rule": "broad readable type; no compressed, stacked or stretched logo lettering",
     "utility_fallback": "system-ui"
   },
-  "version": "2026-10-16",
+  "version": "2026-11-03",
   "web": {
     "business_og": "approved monochrome Your idea. We ship it. artwork",
     "focus": "visible high-contrast outline",

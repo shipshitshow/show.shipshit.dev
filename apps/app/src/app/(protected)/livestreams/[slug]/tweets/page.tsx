@@ -17,7 +17,7 @@ import { buildTweetDeck, loadTweetSlides } from '@/lib/tweet-slider';
 
 export const metadata: Metadata = {
   description: 'Full-screen tweet slider for the livestream.',
-  title: 'Tweets - Ship Sh!t Show',
+  title: 'Tweets - Ship Sh*t Show',
 };
 
 async function fetchTweet(id: string) {

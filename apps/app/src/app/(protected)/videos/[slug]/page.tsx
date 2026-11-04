@@ -219,8 +219,8 @@ export async function generateMetadata({
   if (!video) {
     return {
       ...defaults,
-      description: 'Published Ship Sh!t Show video transcript.',
-      title: 'Ship Sh!t Show - Video Transcript',
+      description: 'Published Ship Sh*t Show video transcript.',
+      title: 'Ship Sh*t Show - Video Transcript',
     };
   }
 
@@ -241,15 +241,15 @@ export async function generateMetadata({
     openGraph: {
       ...defaults.openGraph,
       description,
-      title: `${video.title} - Ship Sh!t Show`,
+      title: `${video.title} - Ship Sh*t Show`,
       type: 'article',
       url: pageUrl,
     },
-    title: `${video.title} - Ship Sh!t Show`,
+    title: `${video.title} - Ship Sh*t Show`,
     twitter: {
       ...defaults.twitter,
       description,
-      title: `${video.title} - Ship Sh!t Show`,
+      title: `${video.title} - Ship Sh*t Show`,
     },
   };
 }

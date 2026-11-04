@@ -10,7 +10,7 @@ export const showXAccounts: ShowAccount[] = [
     handle: 'shipshitdev',
     href: 'https://x.com/shipshitdev',
     label: 'Show',
-    name: 'Ship Sh!t',
+    name: 'Ship Sh*t',
   },
   {
     handle: 'VincentShipsIt',

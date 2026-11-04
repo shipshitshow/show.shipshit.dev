@@ -121,7 +121,7 @@ export default async function HomePage() {
       <div className={styles.page}>
         <header className={styles.header}>
           <a
-            aria-label="Ship Sh!t Show home"
+            aria-label="Ship Sh*t Show home"
             className={styles.wordmark}
             href="/"
           >
@@ -134,7 +134,7 @@ export default async function HomePage() {
             <a href="#about">About</a>
           </nav>
           <a
-            aria-label="Watch Ship Sh!t Show on YouTube"
+            aria-label="Watch Ship Sh*t Show on YouTube"
             className={styles.headerWatch}
             href={CHANNEL}
           >

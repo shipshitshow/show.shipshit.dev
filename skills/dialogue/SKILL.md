@@ -7,7 +7,7 @@ description: Improve dialogue in an edit with recording-specific treatment, sync
 
 ## Channel context
 
-Use the user's channel profile and actual source asset. For Ship Sh!t Show, read [the bundled profile](references/channel-profile.md); viewers using another channel should provide their audience, voice, formats, links and visual references. A profile is context, not permission to publish, upload footage, buy generation or contact a partner.
+Use the user's channel profile and actual source asset. For Ship Sh*t Show, read [the bundled profile](references/channel-profile.md); viewers using another channel should provide their audience, voice, formats, links and visual references. A profile is context, not permission to publish, upload footage, buy generation or contact a partner.
 
 Inspect the actual recording: levels, clipping, room sound, noise, overlapping voices and music. Read the existing project recipe. Use recording-specific treatment; a historical Premiere preset or one episode's timing offset is not a universal default.
 

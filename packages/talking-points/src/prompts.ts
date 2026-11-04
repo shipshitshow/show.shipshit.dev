@@ -2,7 +2,7 @@ import type { TrendItem } from '@shipshitshow/types';
 
 export function buildTrendResearchPrompt(trend: TrendItem): string {
   return [
-    'Research this trend for Ship Shit Show and turn it into livestream prep.',
+    'Research this trend for Ship Sh*t Show and turn it into livestream prep.',
     `Title: ${trend.title}`,
     `Source: ${trend.source}`,
     `URL: ${trend.url}`,
@@ -21,7 +21,7 @@ export function buildTrendResearchPrompt(trend: TrendItem): string {
 
 export function buildSelectedTrendsResearchPrompt(trends: TrendItem[]): string {
   return [
-    'Research these selected trends for Ship Shit Show and turn them into livestream prep.',
+    'Research these selected trends for Ship Sh*t Show and turn them into livestream prep.',
     '',
     ...trends
       .flatMap((item, index) => [

@@ -1,4 +1,4 @@
-# Ship Shit Show — YouTube Channel Context
+# Ship Sh*t Show — YouTube Channel Context
 
 ## Channels
 - **Main:** https://www.youtube.com/@shipshitshow

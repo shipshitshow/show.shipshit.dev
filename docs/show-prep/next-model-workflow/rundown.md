@@ -94,7 +94,7 @@ Record actual segment times after broadcast for the recap editor. Candidate reca
 - Variant B: **Opus, Sonnet, Codex: Where We Add More Agents** — model/workflow continuity; keep only if all three appear in the discussion.
 - Variant C: **More AI Agents. More Work—or More Chaos?** — coordination tension. Use the real failure/recovery, without staging a quote.
 - Thumbnail hypotheses: A, one task branching to agents and returning to a checked output, text "MORE AGENTS?"; B, hosts weighing three model/role cards, text "WHO DOES WHAT?"; C, tangled handoffs versus one clear owner, text "COORDINATION COST". Reuse the channel thumbnail skill for assets and its three distinct compositions. Avoid fabricated spend numbers or logos implying endorsement.
-- Working tag list: AI agents, multi agent workflows, agent orchestration, Claude Opus 5.5, Claude Sonnet 5.5, GPT 6.1 Sol, Codex, Claude Code, AI coding, pstack, Ship Shit Show. Refine against the actual recording; tags are metadata, not evidence of reach.
+- Working tag list: AI agents, multi agent workflows, agent orchestration, Claude Opus 5.5, Claude Sonnet 5.5, GPT 6.1 Sol, Codex, Claude Code, AI coding, pstack, Ship Sh*t Show. Refine against the actual recording; tags are metadata, not evidence of reach.
 
 ## Sources — Before going live
 

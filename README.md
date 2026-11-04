@@ -1,6 +1,6 @@
-# Ship Shit Show — Monorepo
+# Ship Sh*t Show — Monorepo
 
-Turborepo (Bun workspaces) for the Ship Shit Show — a YouTube livestream/channel
+Turborepo (Bun workspaces) for the Ship Sh*t Show — a YouTube livestream/channel
 about AI tools for indie devs. The public site and producer dashboard live in
 one Next.js app, plus a local Electron control app, shared packages, and
 show-runtime skills.
@@ -86,7 +86,7 @@ Vercel. See `apps/app/.env.example` for the full variable list.
 
 ## Branding
 
-Read [the brand entry point](docs/branding.md) before making thumbnails, captions, overlays, covers or channel artwork. [The vault brand kit](https://github.com/shipshitshow/vault/tree/master/brand) owns the current **Ship Sh!t Show** / **`SH*W`** identity, tokens, asset inventory and editing rules; the public skill profile and this repo's generated adapters consume that source. Design boards are references, not final exports or actual footage.
+Read [the brand entry point](docs/branding.md) before making thumbnails, captions, overlays, covers or channel artwork. [The vault brand kit](https://github.com/shipshitshow/vault/tree/master/brand) owns the current **Ship Sh*t Show** identity, standalone six-arm asterisk, tokens, asset inventory and editing rules; the public skill profile and this repo's generated adapters consume that source. Design boards are references, not final exports or actual footage.
 
 ## Skills
 

@@ -1,4 +1,4 @@
-# Ship Shit Show — Product Marketing Context
+# Ship Sh*t Show — Product Marketing Context
 
 last_verified: 2026-10-29
 
@@ -29,7 +29,7 @@ Two founders sharing firsthand use of AI in their own businesses, including hone
 
 Canonical source: https://github.com/shipshitshow/vault/tree/master/brand. Local entry: `docs/branding.md`. Exact identity, colors, placement and publication scope live there and in the synchronized web contract; do not copy a competing palette into memory.
 
-Full name **Ship Sh!t Show**; baseline **Think AI**; compact mark is the standalone six-arm asterisk. Both websites use dark mode. Show primary is red #E83B3B; the commercial identity is monochrome. Natural-color hosts use charcoal backgrounds and integrated edges. Video signatures are white/black; livestream signatures are red, fixed bottom-right. Current public skills profile and all generated adapters must match the canonical kit. Original reference photographs, grids and face-containing working boards stay private.
+Full name **Ship Sh*t Show**; baseline **Think AI**; compact mark is the standalone six-arm asterisk. Both websites use dark mode. Show primary is red #E83B3B; the commercial identity is monochrome. Natural-color hosts use charcoal backgrounds and integrated edges. Video signatures are white/black; livestream signatures are red. Thumbnail signatures are always top-right inside the canonical format-specific safe margins; landscape top/right insets match, while Shorts reserve more space above. Current public skills profile and all generated adapters must match the canonical kit. Original reference photographs, grids and face-containing working boards stay private.
 
 Main YouTube @ShipShitShow; clips @ShipShitShowClips. X @shipshitdev is the show account, not a personal fallback. Record actual owner approval and deployment evidence separately from the source contract.
 

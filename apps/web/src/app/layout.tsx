@@ -7,7 +7,7 @@ const SITE_URL =
 export const metadata: Metadata = {
   description: 'Think AI. Vincent and Mitchell on building with AI.',
   metadataBase: new URL(SITE_URL),
-  title: 'Ship Sh!t Show — Think AI',
+  title: 'Ship Sh*t Show — Think AI',
 };
 
 export default function RootLayout({
