@@ -22,10 +22,11 @@ import {
   useMemo,
   useState,
 } from 'react';
-import type {
-  TweetSlide,
-  TweetSlideBody,
-  TweetSlideMedia,
+import {
+  splitTweetText,
+  type TweetSlide,
+  type TweetSlideBody,
+  type TweetSlideMedia,
 } from '@/lib/tweet-slider';
 
 const IDLE_MS = 2500;
@@ -35,7 +36,6 @@ const DATE_FORMATTER = new Intl.DateTimeFormat('en', {
   year: 'numeric',
 });
 const COUNT_FORMATTER = new Intl.NumberFormat('en', { notation: 'compact' });
-const TOKEN = /(@\w+|#\w+|\b[\w-]+(?:\.[\w-]+)+\/\S*)/g;
 
 function hiddenKey(date: string) {
   return `sss:tweet-slider:hidden:${date}`;
@@ -77,16 +77,45 @@ function formatDate(value: string): string {
 function TweetText({ className, text }: { className: string; text: string }) {
   return (
     <p className={`whitespace-pre-line break-words leading-snug ${className}`}>
-      {text.split(TOKEN).map((part, index) =>
-        index % 2 === 1 ? (
+      {splitTweetText(text).map((part, index) =>
+        part.href ? (
+          <a
+            key={index}
+            href={part.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent-red hover:underline"
+          >
+            {part.text}
+          </a>
+        ) : part.highlight ? (
           <span key={index} className="text-accent-red">
-            {part}
+            {part.text}
           </span>
         ) : (
-          part
+          part.text
         ),
       )}
     </p>
+  );
+}
+
+function ProfileLink({
+  children,
+  handle,
+}: {
+  children: ReactNode;
+  handle: string;
+}) {
+  return (
+    <a
+      href={`https://x.com/${handle}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:text-text-primary hover:underline"
+    >
+      {children}
+    </a>
   );
 }
 
@@ -133,7 +162,7 @@ function Author({
               : 'text-[clamp(1rem,1.5vw,1.75rem)]'
           }`}
         >
-          @{author.handle}
+          <ProfileLink handle={author.handle}>@{author.handle}</ProfileLink>
         </p>
       </div>
     </div>
@@ -230,7 +259,7 @@ function SlideCard({ slide }: { slide: TweetSlide }) {
     return (
       <article className="w-full max-w-5xl space-y-[3vh] rounded-3xl border border-surface-border bg-surface-card p-[3vw]">
         <p className="text-[clamp(1.5rem,2.6vw,3rem)] font-bold text-text-primary">
-          @{slide.handle}
+          <ProfileLink handle={slide.handle}>@{slide.handle}</ProfileLink>
         </p>
         {slide.note && (
           <p className="text-[clamp(1.25rem,2.2vw,2.5rem)] leading-snug text-text-secondary">

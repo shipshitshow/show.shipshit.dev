@@ -118,6 +118,48 @@ function noteFromLine(line: string, url: string): string {
     : note;
 }
 
+const TEXT_TOKEN =
+  /((?<![\w@])@\w{1,15}\b|(?<![\w&])#[\p{L}\p{N}_]+|\b[\w-]+(?:\.[\w-]+)+\/\S*)/gu;
+
+/** A run of tweet text; mentions and hashtags carry the X page they open. */
+export interface TweetTextPart {
+  /** Set for @mentions and #hashtags; plain text and bare URLs have none. */
+  href: string | null;
+  highlight: boolean;
+  text: string;
+}
+
+/**
+ * Splits tweet text into plain runs and highlighted tokens. An @handle links
+ * to its X profile and a #hashtag to its X hashtag page. Bare URLs are only
+ * highlighted: X shortens their display text, so it is not a safe link target.
+ */
+export function splitTweetText(text: string): TweetTextPart[] {
+  // With one capture group, odd indexes are the matched tokens.
+  return text
+    .split(TEXT_TOKEN)
+    .map((part, index): TweetTextPart | null => {
+      if (part === '') return null;
+      if (index % 2 === 0) return { highlight: false, href: null, text: part };
+      if (part.startsWith('@')) {
+        return {
+          highlight: true,
+          href: `https://x.com/${part.slice(1)}`,
+          text: part,
+        };
+      }
+      if (part.startsWith('#')) {
+        return {
+          highlight: true,
+          href: `https://x.com/hashtag/${encodeURIComponent(part.slice(1))}`,
+          text: part,
+        };
+      }
+      return { highlight: true, href: null, text: part };
+    })
+    .filter((part): part is TweetTextPart => part !== null);
+}
+
 function decodeEntities(text: string): string {
   return text
     .replace(/&lt;/g, '<')

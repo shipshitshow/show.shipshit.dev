@@ -7,7 +7,7 @@ last_verified: 2026-10-15
 Turborepo monorepo with Bun workspaces.
 
 ### Apps
-- `apps/app` (@shipshitshow/app) — Public site and producer dashboard. Next.js 16, port 3001. Deployed to show.shipshit.dev via Vercel. `/` is public. `/sign-in` is the canonical Clerk entry on show.shipshit.dev; `/login` redirects there. Producer Home is `/studio`, with `/analytics`, `/livestreams`, `/socials`, `/partnerships` and `/research` as app paths. Public-library reads and producer authorization are separate concerns; producer capability enforcement is tracked in GitHub #54.
+- `apps/app` (@shipshitshow/app) — Public site and producer dashboard. Next.js 16, port 3001. Deployed to show.shipshit.dev via Vercel. `/` is public. `/artifacts` is the public artifacts library: assets made to show during a livestream (timeline, tweet slideshow), data in `apps/app/src/lib/artifacts/`. `/sign-in` is the canonical Clerk entry on show.shipshit.dev; `/login` redirects there. Producer Home is `/studio`, with `/analytics`, `/livestreams`, `/socials`, `/partnerships` and `/research` as app paths. Public-library reads and producer authorization are separate concerns; producer capability enforcement is tracked in GitHub #54.
 - `apps/web` (@shipshitshow/web) — Retired marketing stub. Next.js 16, port 3000. Not the public host.
 - `apps/desktop` (@shipshitshow/desktop) — Local show management. Electron + Vite + React 19. Local-only, no deployment.
 

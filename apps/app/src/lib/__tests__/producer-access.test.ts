@@ -72,6 +72,8 @@ describe('classifyPath', () => {
       '/sitemap.xml',
       '/talking-points',
       '/talking-points/some-slug',
+      '/artifacts',
+      '/artifacts/some-slug',
       '/api/og',
       '/api/og/episode',
       '/api/public/schedule',
@@ -98,6 +100,7 @@ describe('classifyPath', () => {
   test('prefix collisions stay producer', () => {
     for (const path of [
       '/talking-pointsx',
+      '/artifactsx',
       '/sign-inx',
       '/api/ogx',
       '/api/publicity',
