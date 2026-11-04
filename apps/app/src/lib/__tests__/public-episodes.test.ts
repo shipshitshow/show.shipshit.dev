@@ -54,6 +54,44 @@ describe('public episode formats', () => {
     ]);
   });
 
+  test('splits Shorts from long-form videos by duration, never streams', () => {
+    const withDuration = (id: string, duration: string, extra = {}) =>
+      item(id, id, { contentDetails: { duration }, ...extra });
+    const result = parsePublicVideoDetails(
+      {
+        items: [
+          withDuration('short123456', 'PT45S'),
+          withDuration('threemin123', 'PT3M'),
+          withDuration('long1234567', 'PT3M1S'),
+          withDuration('episode1234', 'PT1H2M3S'),
+          withDuration('nodur123456', 'P0D'),
+          withDuration('stream12345', 'PT50S', {
+            liveStreamingDetails: { actualStartTime: '2026-09-30T17:00:00Z' },
+          }),
+        ],
+      },
+      channel,
+    );
+    expect(result.map(({ id, format }) => ({ format, id }))).toEqual([
+      { format: 'short', id: 'short123456' },
+      { format: 'short', id: 'threemin123' },
+      { format: 'video', id: 'long1234567' },
+      { format: 'video', id: 'episode1234' },
+      { format: 'video', id: 'nodur123456' },
+      { format: 'livestream', id: 'stream12345' },
+    ]);
+  });
+
+  test('groups Shorts into their own list, apart from videos', () => {
+    const short = { ...known, format: 'short' as const, id: 'short123456' };
+    const video = { ...known, format: 'video' as const, id: 'video123456' };
+    const result = groupPublicEpisodes([], [], [short, video]);
+    expect(result.shorts.map(({ id }) => id)).toEqual([]);
+    const withKnown = groupPublicEpisodes([short, video], [], [short, video]);
+    expect(withKnown.shorts.map(({ id }) => id)).toEqual(['short123456']);
+    expect(withKnown.videos.map(({ id }) => id)).toEqual(['video123456']);
+  });
+
   test('never returns private, unlisted, other-channel or malformed items', () => {
     expect(
       parsePublicVideoDetails(
@@ -94,6 +132,7 @@ describe('public episode formats', () => {
       null,
     );
     expect(result.livestreams).toHaveLength(1);
+    expect(result.shorts).toEqual([]);
     expect(result.livestreams[0]?.title).toBe('Updated public title');
     expect(result.videos).toEqual([]);
   });
@@ -101,6 +140,7 @@ describe('public episode formats', () => {
   test('successful metadata removes unavailable archive items and sorts/deduplicates each format', () => {
     expect(groupPublicEpisodes([], [known], [])).toEqual({
       livestreams: [],
+      shorts: [],
       videos: [],
     });
     const newer = {
