@@ -50,7 +50,11 @@ function EpisodeSection({
   id: string;
   title: string;
 }) {
-  const allHref = `${CHANNEL}/${format === 'livestream' ? 'streams' : 'videos'}`;
+  const isShort = format === 'short';
+  const allHref = `${CHANNEL}/${{ livestream: 'streams', short: 'shorts', video: 'videos' }[format]}`;
+  const label = { livestream: 'Livestream', short: 'Short', video: 'Video' }[
+    format
+  ];
   return (
     <section aria-labelledby={`${id}-title`} className={styles.library} id={id}>
       <div className={styles.sectionHeading}>
@@ -60,19 +64,26 @@ function EpisodeSection({
         </a>
       </div>
       {episodes.length ? (
-        <ul className={styles.episodeGrid}>
-          {episodes.slice(0, 3).map((episode) => (
+        <ul className={isShort ? styles.shortGrid : styles.episodeGrid}>
+          {episodes.slice(0, isShort ? 4 : 3).map((episode) => (
             <li key={episode.id}>
               <a className={styles.episodeCard} href={episode.url}>
-                <div className={styles.thumbnail}>
+                <div
+                  className={isShort ? styles.shortThumbnail : styles.thumbnail}
+                >
                   <Image
                     alt=""
-                    height={360}
-                    sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 400px"
+                    height={isShort ? 640 : 360}
+                    sizes={
+                      isShort
+                        ? '(max-width: 760px) 50vw, 280px'
+                        : '(max-width: 640px) 100vw, (max-width: 900px) 50vw, 400px'
+                    }
                     src={episode.thumbnailUrl}
-                    width={480}
+                    width={isShort ? 360 : 480}
                   />
-                  {!signedThumbnails.has(episode.id) && (
+                  {/* Shorts carry the asterisk inside the 9:16 frame already. */}
+                  {!isShort && !signedThumbnails.has(episode.id) && (
                     <span
                       className={`${styles.signature} ${format === 'livestream' ? styles.liveSignature : ''}`}
                     >
@@ -81,9 +92,7 @@ function EpisodeSection({
                   )}
                 </div>
                 <div className={styles.episodeMeta}>
-                  <span>
-                    {format === 'livestream' ? 'Livestream' : 'Video'}
-                  </span>
+                  <span>{label}</span>
                   <time dateTime={episode.publishedAt}>
                     {new Intl.DateTimeFormat('en', {
                       day: 'numeric',
@@ -100,7 +109,12 @@ function EpisodeSection({
         </ul>
       ) : (
         <p className={styles.empty}>
-          Watch the latest {format === 'livestream' ? 'livestreams' : 'videos'}{' '}
+          Watch the latest{' '}
+          {
+            { livestream: 'livestreams', short: 'Shorts', video: 'videos' }[
+              format
+            ]
+          }{' '}
           on <a href={allHref}>YouTube</a>.
         </p>
       )}
@@ -109,7 +123,7 @@ function EpisodeSection({
 }
 
 export default async function HomePage() {
-  const { livestreams, videos } = await getPublicEpisodes();
+  const { livestreams, shorts, videos } = await getPublicEpisodes();
   const latest = [...videos, ...livestreams].sort(
     (a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt),
   )[0];
@@ -130,6 +144,7 @@ export default async function HomePage() {
           </a>
           <nav aria-label="Main navigation" className={styles.navigation}>
             <a href="#library">Videos</a>
+            <a href="#shorts">Shorts</a>
             <a href="#live">Live</a>
             <a href="#about">About</a>
           </nav>
@@ -175,6 +190,12 @@ export default async function HomePage() {
           format="video"
           id="library"
           title="Latest videos"
+        />
+        <EpisodeSection
+          episodes={shorts}
+          format="short"
+          id="shorts"
+          title="Shorts"
         />
         <EpisodeSection
           episodes={livestreams}

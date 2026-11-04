@@ -6,8 +6,25 @@ import {
 } from '@/lib/youtube-feed';
 
 export type PublicEpisode = PublicVideo & {
-  format: 'livestream' | 'video';
+  format: 'livestream' | 'short' | 'video';
 };
+
+// YouTube Shorts are vertical or square and run up to three minutes
+// (https://support.google.com/youtube/answer/15424877). The Data API exposes
+// no Shorts flag, so duration is the only signal; the channel's long-form
+// uploads are far longer than this.
+export const SHORT_MAX_SECONDS = 180;
+
+export function parseIsoDuration(iso: unknown): number {
+  if (typeof iso !== 'string') return 0;
+  const match = iso.match(/^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/);
+  if (!match) return 0;
+  return (
+    (Number(match[1]) || 0) * 3600 +
+    (Number(match[2]) || 0) * 60 +
+    (Number(match[3]) || 0)
+  );
+}
 
 type ArchiveEntry = Pick<
   PublicEpisode,
@@ -42,6 +59,7 @@ export function parsePublicVideoDetails(
     const snippet = asRecord(video.snippet);
     const status = asRecord(video.status);
     const live = asRecord(video.liveStreamingDetails);
+    const seconds = parseIsoDuration(asRecord(video.contentDetails).duration);
     if (
       status.privacyStatus !== 'public' ||
       snippet.channelId !== channelId ||
@@ -59,9 +77,10 @@ export function parsePublicVideoDetails(
       typeof live.actualStartTime === 'string' ||
       typeof live.scheduledStartTime === 'string' ||
       ['live', 'upcoming'].includes(String(snippet.liveBroadcastContent));
+    const isShort = !isStream && seconds > 0 && seconds <= SHORT_MAX_SECONDS;
     return [
       episode({
-        format: isStream ? 'livestream' : 'video',
+        format: isStream ? 'livestream' : isShort ? 'short' : 'video',
         id: video.id,
         publishedAt: snippet.publishedAt,
         title: snippet.title,
@@ -74,7 +93,11 @@ export function groupPublicEpisodes(
   feed: PublicVideo[],
   known: ArchiveEntry[],
   details: PublicEpisode[] | null,
-): { livestreams: PublicEpisode[]; videos: PublicEpisode[] } {
+): {
+  livestreams: PublicEpisode[];
+  shorts: PublicEpisode[];
+  videos: PublicEpisode[];
+} {
   const entries = new Map(known.map((entry) => [entry.id, episode(entry)]));
   for (const video of feed) {
     const existing = entries.get(video.id);
@@ -98,6 +121,7 @@ export function groupPublicEpisodes(
 
   return {
     livestreams: sorted.filter((entry) => entry.format === 'livestream'),
+    shorts: sorted.filter((entry) => entry.format === 'short'),
     videos: sorted.filter((entry) => entry.format === 'video'),
   };
 }
@@ -120,7 +144,10 @@ async function fetchPublicVideoDetails(
     if (!main) return null;
     const token = await getAccessToken(main);
     const url = new URL('https://www.googleapis.com/youtube/v3/videos');
-    url.searchParams.set('part', 'snippet,status,liveStreamingDetails');
+    url.searchParams.set(
+      'part',
+      'snippet,status,liveStreamingDetails,contentDetails',
+    );
     url.searchParams.set('id', ids.slice(0, 50).join(','));
     const response = await fetch(url, {
       headers: { Authorization: `Bearer ${token}` },
