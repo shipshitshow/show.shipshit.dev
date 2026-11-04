@@ -1,5 +1,6 @@
 import {
   BarChart3,
+  FlaskConical,
   Handshake,
   Home,
   Radio,
@@ -83,6 +84,18 @@ export const PRODUCTION_APPS = [
       { href: '/topics', label: 'Topic backlog' },
     ],
     roots: ['/research', '/trends', '/topics'],
+  },
+  {
+    group: 'more',
+    href: '/labs',
+    icon: FlaskConical,
+    id: 'labs',
+    label: 'Labs',
+    links: [
+      { href: '/labs', label: 'Overview' },
+      { href: '/labs/thumbnails', label: 'Thumbnail Lab' },
+    ],
+    roots: ['/labs'],
   },
 ] as const;
 

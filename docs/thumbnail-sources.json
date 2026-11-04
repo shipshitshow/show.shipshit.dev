@@ -1,0 +1,75 @@
+{
+  "artDirection": [
+    "Reuse camera perspective, lighting and convincing materials, not the scene or props.",
+    "Discord always uses a purple/blurple face.",
+    "Anthropic company comparison uses company monogram, not Claude product glyph."
+  ],
+  "assets": [
+    {
+      "downloadPolicy": "Reuse this cached file. Fetch again only if missing, corrupted or explicitly refreshed.",
+      "file": "anthropic/company-icon.png",
+      "kind": "company",
+      "note": "Official Anthropic company monogram, A plus diagonal slash. Company comparisons only.",
+      "sha256": "40e3900fcb3ad237af6869dbd40e77efc8eb23549c478125b40e563ac74423cb",
+      "sourceUrl": "https://www.anthropic.com/images/icons/apple-touch-icon.png"
+    },
+    {
+      "downloadPolicy": "Reuse this cached file. Fetch again only if missing, corrupted or explicitly refreshed.",
+      "file": "anthropic/company-mark.svg",
+      "kind": "company",
+      "note": "Official monochrome company mark, original SVG.",
+      "sha256": "2d7c1e11931030042efdf8bc8594e20f3765c6c4e7c7d48a1181a79c43173999",
+      "sourceUrl": "https://www.anthropic.com/images/icons/safari-pinned-tab.svg"
+    },
+    {
+      "downloadPolicy": "Reuse this cached file. Fetch again only if missing, corrupted or explicitly refreshed.",
+      "file": "anthropic/company-favicon.ico",
+      "kind": "company",
+      "note": "Original company favicon.",
+      "sha256": "45fa55283b0671b71451d4e067932e3d4ae57eeb7b59582c4c3c1ab21558b0a4",
+      "sourceUrl": "https://www.anthropic.com/favicon.ico"
+    },
+    {
+      "downloadPolicy": "Reuse this cached file. Fetch again only if missing, corrupted or explicitly refreshed.",
+      "file": "discord/symbol-original.svg",
+      "kind": "product",
+      "note": "Official Discord symbol, original white SVG.",
+      "sha256": "eb3bf5a2e8b9f9aa39c1b1d38aeaa7c2997084567634c55f4141aa39cf426cec",
+      "sourceUrl": "https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66e3d7f4ef6498ac018f2c55_Symbol.svg"
+    },
+    {
+      "downloadPolicy": "Reuse this cached file. Fetch again only if missing, corrupted or explicitly refreshed.",
+      "file": "discord/symbol-reference.png",
+      "kind": "derived-reference",
+      "note": "Reused prior cached Discord reference, black fill for visibility; geometry unchanged. Derived from symbol-original.svg.",
+      "sha256": "89fc5d1273be8944bb4120f141f4cd8b0cf8da9313db7df4e7b7f5b7c32072f7",
+      "sourceUrl": null
+    },
+    {
+      "downloadPolicy": "Reuse this cached file. Fetch again only if missing, corrupted or explicitly refreshed.",
+      "file": "openai/company-mark-reference.png",
+      "kind": "company-reference",
+      "note": "Reused previous official brand reference. Exact prior download URL not recovered; official source page https://openai.com/brand/.",
+      "sha256": "e6db64719cef21b85b283ef020df80c6ec238afe41e8ce8dd4f933738e0a8275",
+      "sourceUrl": null
+    },
+    {
+      "downloadPolicy": "Reuse this cached file. Fetch again only if missing, corrupted or explicitly refreshed.",
+      "file": "style/chess-approved.png",
+      "kind": "approved-style",
+      "note": "Owner-approved channel artwork for XCyY0VDiRps. Lighting, materials and camera reference; old Claude sunburst is not a company logo reference.",
+      "sha256": "628da88d4be877134d5da558390e194e48ed0c1c485f89ae6036d68738d5bd03",
+      "sourceUrl": null
+    },
+    {
+      "downloadPolicy": "Reuse cached attachment. Do not redownload.",
+      "file": "openclaw/owner-supplied-banner.png",
+      "kind": "owner-supplied-reference",
+      "note": "Owner supplied banner reference: claw-to-contact concept only. Do not copy a chess setup. Discord stays purple.",
+      "sha256": "3afc5bd9bcb11338c8d2c60eb790a3e41bbd6df7bf62ea92576e0929fbd114fd",
+      "sourceUrl": null
+    }
+  ],
+  "schemaVersion": 1,
+  "verifiedAt": "2026-11-04"
+}
