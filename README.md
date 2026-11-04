@@ -86,7 +86,7 @@ Vercel. See `apps/app/.env.example` for the full variable list.
 
 ## Branding
 
-Read [the brand entry point](docs/branding.md) before making thumbnails, captions, overlays, covers or channel artwork. [The vault brand kit](https://github.com/shipshitshow/vault/tree/master/brand) owns the current **Ship Sh*t Show** / **`SH*W`** identity, tokens, asset inventory and editing rules; the public skill profile and this repo's generated adapters consume that source. Design boards are references, not final exports or actual footage.
+Read [the brand entry point](docs/branding.md) before making thumbnails, captions, overlays, covers or channel artwork. [The vault brand kit](https://github.com/shipshitshow/vault/tree/master/brand) owns the current **Ship Sh*t Show** identity, standalone six-arm asterisk, tokens, asset inventory and editing rules; the public skill profile and this repo's generated adapters consume that source. Design boards are references, not final exports or actual footage.
 
 ## Skills
 
