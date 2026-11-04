@@ -41,7 +41,7 @@ export async function generateMetadata({
   const stream = await loadStream(slug);
   return {
     ...buildDefaultMetadata(),
-    description: 'Artifacts we show on this Ship Sh!t Show livestream.',
+    description: `Artifacts we show on this ${BRAND.identity.show_name} livestream.`,
     title: stream
       ? `${stream.title} - Artifacts`
       : `Artifacts — ${BRAND.identity.show_name}`,

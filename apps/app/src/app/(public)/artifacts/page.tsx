@@ -7,8 +7,7 @@ import { buildDefaultMetadata } from '@/lib/site';
 
 export const metadata: Metadata = {
   ...buildDefaultMetadata(),
-  description:
-    'Assets made to show during the Ship Sh!t Show livestream: timelines, tweet slideshows and more.',
+  description: `Assets made to show during the ${BRAND.identity.show_name} livestream: timelines, tweet slideshows and more.`,
   title: `Artifacts library — ${BRAND.identity.show_name}`,
 };
 
