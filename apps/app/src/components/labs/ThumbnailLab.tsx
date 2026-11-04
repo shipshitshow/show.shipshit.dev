@@ -1,6 +1,5 @@
 'use client';
 import { BrandMark } from '@shipshitshow/ui';
-import { BRAND } from '@shipshitshow/ui/brand';
 import { Check, Download, History, ImagePlus, Search, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import {
@@ -12,6 +11,16 @@ import {
   thumbnailAssetUrl,
   visibleThumbnail,
 } from '@/lib/thumbnail-lab';
+import {
+  EMPTY_RULES,
+  RealSizePreview,
+  ReferenceRail,
+  RuleChecklist,
+  type RuleChecks,
+  type RuleKey,
+  type RuleState,
+  syncRuleFeedback,
+} from './ThumbnailReviewAids';
 
 type Capabilities = { writable: boolean; uploadsAvailable: boolean };
 function parseItems(value: unknown): ThumbnailItem[] {
@@ -65,7 +74,14 @@ export function ThumbnailLab() {
     [large, setLarge] = useState(false),
     [busy, setBusy] = useState<string | null>(null);
   const [artwork, setArtwork] = useState<File | null>(null),
-    [prompt, setPrompt] = useState('');
+    [prompt, setPrompt] = useState(''),
+    [rules, setRules] = useState<RuleChecks>(EMPTY_RULES);
+  const failedRules = Object.values(rules).includes('fail');
+  function setRule(key: RuleKey, state: RuleState) {
+    const next = { ...rules, [key]: state };
+    setRules(next);
+    setFeedback((current) => syncRuleFeedback(current, next));
+  }
   const dialog = useRef<HTMLDialogElement>(null),
     importFile = useRef<HTMLInputElement>(null),
     uploadFile = useRef<HTMLInputElement>(null);
@@ -123,6 +139,7 @@ export function ThumbnailLab() {
     setFeedback(v.review.status === 'revise' ? v.review.feedback : '');
     setCompare(false);
     setArtwork(null);
+    setRules(EMPTY_RULES);
     setPrompt(v.prompt);
     setError('');
   }
@@ -252,14 +269,20 @@ export function ThumbnailLab() {
     );
   return (
     <main className="mx-auto max-w-[1800px] px-4 py-6 md:px-7">
-      <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <p className="text-[10px] uppercase tracking-[.18em] text-text-muted">
-            Producer Labs
-          </p>
-          <h1 className="mt-1 text-2xl font-semibold tracking-tight">
-            Thumbnail Lab
-          </h1>
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-surface-border bg-surface-card">
+            <BrandMark className="h-5 w-5 text-accent-red" />
+          </div>
+          <div>
+            <h1 className="text-xl font-semibold tracking-tight">
+              Thumbnail Lab
+            </h1>
+            <p className="mt-0.5 text-xs text-text-muted">
+              {items.length} videos & livestreams · {counts.pending} awaiting
+              review · {counts.approved} approved
+            </p>
+          </div>
         </div>
         <div className="flex flex-wrap gap-2">
           <input
@@ -285,28 +308,7 @@ export function ThumbnailLab() {
           </a>
         </div>
       </div>
-      <div className="flex min-h-24 items-center justify-between rounded-xl border-l-4 border-accent-red bg-surface-elevated px-7">
-        <p className="text-2xl font-bold tracking-tight md:text-3xl">
-          THINK AI. SHIP SH!T.
-        </p>
-        <span className="hidden text-[10px] tracking-[.16em] text-text-muted md:block">
-          THUMBNAIL LAB / 001
-        </span>
-      </div>
-      <div className="flex items-center gap-4 py-6">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-surface-border bg-surface-card">
-          <BrandMark className="h-8 w-8 text-accent-red" />
-        </div>
-        <div>
-          <h2 className="text-2xl font-semibold tracking-tight">
-            {BRAND.identity.show_name}
-          </h2>
-          <p className="mt-1 text-xs text-text-muted">
-            @shipshitshow · {items.length} videos & livestreams ·{' '}
-            {counts.pending} awaiting review
-          </p>
-        </div>
-      </div>
+      <ReferenceRail />
       <div className="flex flex-wrap items-end justify-between gap-3 border-b border-surface-border">
         <nav className="flex gap-6" aria-label="Thumbnail review status">
           {(
@@ -501,6 +503,10 @@ export function ThumbnailLab() {
                   alt={active.title}
                   className="aspect-video w-full rounded-lg object-contain"
                 />
+                <RealSizePreview
+                  alt={active.title + ' at real feed sizes'}
+                  src={thumbnailAssetUrl(active, version)}
+                />
                 <div className="mt-4 flex flex-wrap gap-2">
                   <label className="flex items-center gap-2 text-xs">
                     <History size={14} />
@@ -510,6 +516,7 @@ export function ThumbnailLab() {
                       value={version.id}
                       onChange={(e) => {
                         setVersionId(e.target.value);
+                        setRules(EMPTY_RULES);
                         const v = active.versions.find(
                           (v) => v.id === e.target.value,
                         );
@@ -663,6 +670,11 @@ export function ThumbnailLab() {
                       ? 'Revision requested'
                       : 'Awaiting review'}
                 </p>
+                <RuleChecklist
+                  checks={rules}
+                  disabled={!editable || !!busy}
+                  onChange={setRule}
+                />
                 <label className="mt-4 block text-xs">
                   What should change?
                   <textarea
@@ -677,7 +689,12 @@ export function ThumbnailLab() {
                 <div className="mt-3 flex gap-2">
                   <button
                     className={button + ' flex-1 text-emerald-400'}
-                    disabled={!editable || !!busy}
+                    disabled={!editable || !!busy || failedRules}
+                    title={
+                      failedRules
+                        ? 'A rule is marked Fail. Request a revision instead.'
+                        : undefined
+                    }
                     onClick={() => decide(active, 'approve')}
                   >
                     <Check size={14} />
