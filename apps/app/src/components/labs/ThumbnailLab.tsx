@@ -351,7 +351,7 @@ export function ThumbnailLab() {
               className={
                 'min-h-9 rounded-lg px-3 text-xs ' +
                 (format === value
-                  ? 'bg-text-primary text-surface-base'
+                  ? 'bg-text-primary text-surface'
                   : 'bg-surface-elevated text-text-secondary')
               }
             >
@@ -478,7 +478,7 @@ export function ThumbnailLab() {
         onCancel={close}
         onClose={() => setActiveId(null)}
         aria-labelledby="thumbnail-title"
-        className="m-auto max-h-[94vh] w-[min(1280px,95vw)] overflow-y-auto rounded-2xl border border-surface-border bg-surface-base p-0 text-text-primary backdrop:bg-black/75"
+        className="m-auto max-h-[94vh] w-[min(1280px,95vw)] overflow-y-auto rounded-2xl border border-surface-border bg-surface p-0 text-text-primary backdrop:bg-black/75"
       >
         {active && version && (
           <>
@@ -506,7 +506,7 @@ export function ThumbnailLab() {
                     <History size={14} />
                     <select
                       aria-label="Thumbnail version"
-                      className="max-w-60 rounded-lg border border-surface-border bg-surface-base p-2 text-xs"
+                      className="max-w-60 rounded-lg border border-surface-border bg-surface p-2 text-xs"
                       value={version.id}
                       onChange={(e) => {
                         setVersionId(e.target.value);
@@ -593,7 +593,7 @@ export function ThumbnailLab() {
                     <label className="block text-xs text-text-muted">
                       Generation prompt
                       <textarea
-                        className="mt-2 min-h-28 w-full rounded-lg border border-surface-border bg-surface-base p-3 text-xs"
+                        className="mt-2 min-h-28 w-full rounded-lg border border-surface-border bg-surface p-3 text-xs"
                         value={prompt}
                         onChange={(e) => setPrompt(e.target.value)}
                         maxLength={20000}
