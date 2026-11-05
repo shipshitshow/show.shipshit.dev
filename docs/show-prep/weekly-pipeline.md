@@ -12,6 +12,8 @@ When a rule changes, change it at its source, not here.
 | Asterisk asset, colour, size and position for every format | [vault brand/placement.md](https://github.com/shipshitshow/vault/blob/master/brand/placement.md) |
 | Thumbnail art and covers | `skills/thumbnails` (art not locked yet, see "Open" below) |
 | Editing workspace layout | [editing/README.md](../../editing/README.md) |
+| Asterisk stamp on thumbnails | `bun run thumbnail:stamp` (reads the placement table) |
+| Shorts render | `editing/scripts/shorts/` (locked template) |
 | Upload safety | `scripts/youtube-upload.ts` (private by default) |
 
 **Vincent signs off at five points:** the topic board, the recap transcript and
@@ -69,9 +71,13 @@ public. Nothing else waits on him.
 
 ## 5. Thumbnails and covers
 
-1. Make the recap thumbnail and Shorts covers per `skills/thumbnails`. Place
-   the asterisk per placement.md: white for edited video.
-2. Review them in the Thumbnail Lab (`/labs/thumbnails`), checking them at
+1. Generate the art with `$thumbnails`: no text, with the top-right corner
+   left empty. Don't draw the asterisk in the art.
+2. Stamp the asterisk from the real SVG master at the placement-table spot:
+   `bun run thumbnail:stamp --in <art.png> --out <thumb.png> --kind live|video [--format landscape|shorts]`.
+   Use `live` (red) only for an actual livestream. Use `video` (white) for the
+   recap and the Shorts covers.
+3. Review them in the Thumbnail Lab (`/labs/thumbnails`), checking them at
    real size.
    - **Gate:** Vincent approves.
 
