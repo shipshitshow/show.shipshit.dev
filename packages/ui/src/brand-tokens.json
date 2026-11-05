@@ -106,28 +106,26 @@
         "y": 320
       },
       "video_layout": {
-        "background": "same clip, centered on the faces, heavily blurred and darkened; no black bars",
-        "bottom_clear_from_y": 1570,
         "captions": {
-          "height": 282,
-          "width": 984,
-          "x": 48,
-          "y": 1288
+          "bottom_clear_from_y": 1570,
+          "centre_y": 1480,
+          "max_width": 920,
+          "spoken_word_color": "#E83B3B"
         },
-        "frame": {
-          "height": 608,
-          "width": 1080,
-          "x": 0,
-          "y": 660
+        "frame": "speaker fills the whole 9:16 frame; no blur, tile or bars; no title text",
+        "reference_canvas": [1080, 1920],
+        "signature": {
+          "centre": [940, 290],
+          "color": "#E83B3B",
+          "height": 120,
+          "inset_right": 80,
+          "inset_top": 230,
+          "width": 120,
+          "x": 880,
+          "y": 230
         },
-        "mark_color": "#FFFFFF",
-        "status": "proposed-pending-owner-example",
-        "title": {
-          "height": 200,
-          "width": 984,
-          "x": 48,
-          "y": 440
-        }
+        "source": "show.shipshit.dev docs/show-prep/edit-style.md",
+        "status": "locked-by-owner-2026-11-05"
       }
     },
     "signature": {
