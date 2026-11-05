@@ -215,12 +215,22 @@ test('new artwork gets the exact format-specific star and upload dimensions', as
     expect(metadata.width).toBe(1920);
     expect(metadata.height).toBe(1080);
     expect(output.bytes.length).toBeLessThan(2_000_000);
-    const pixel = await decoded
-        .extract({ height: 1, left: 1776, top: 144, width: 1 })
-        .raw()
-        .toBuffer(),
-      expected = format === 'video' ? [255, 255, 255] : [232, 59, 59];
-    for (let i = 0; i < 3; i++)
-      expect(Math.abs((pixel[i] ?? 0) - (expected[i] ?? 0))).toBeLessThan(5);
+    // Shared placement table: 144px at x1680/y96 on 1920x1080.
+    const sample = (left: number, top: number) =>
+        sharp(output.bytes)
+          .extract({ height: 1, left, top, width: 1 })
+          .raw()
+          .toBuffer(),
+      expected = format === 'video' ? [255, 255, 255] : [232, 59, 59],
+      centre = await sample(1752, 168),
+      bottomArm = await sample(1752, 228),
+      aboveBox = await sample(1776, 80);
+    for (let i = 0; i < 3; i++) {
+      expect(Math.abs((centre[i] ?? 0) - (expected[i] ?? 0))).toBeLessThan(5);
+      expect(Math.abs((bottomArm[i] ?? 0) - (expected[i] ?? 0))).toBeLessThan(
+        5,
+      );
+      expect(Math.abs((aboveBox[i] ?? 0) - 0x22)).toBeLessThan(5);
+    }
   }
 });

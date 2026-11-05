@@ -128,7 +128,8 @@ export async function renderThumbnail(
   );
   const bytes = await image
     .resize(1920, 1080)
-    .composite([{ input: signature, left: 1704, top: 72 }])
+    // Brand placement table: 144px at x1680/y96 on 1920x1080 (96px clearance).
+    .composite([{ input: signature, left: 1680, top: 96 }])
     .jpeg({ quality: 93 })
     .toBuffer();
   if (bytes.length > 2_000_000)

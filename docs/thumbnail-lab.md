@@ -8,7 +8,7 @@ All app pages and API handlers require producer access. Thumbnail review metadat
 
 Image files use the existing CDN at cdn.shipshit.dev under shipshitshow/thumbnails/VIDEO_ID/SHA256.jpg. Images on the CDN are public by explicit owner choice; review notes, prompts and approvals stay private in the database. Object URLs are immutable, and existing versions are never overwritten.
 
-New uploads accept unbranded 16:9 JPEG, PNG or WebP artwork under 4 MB. The server composites a six-arm asterisk in a 144×144 viewport at x1704/y72 on 1920×1080: white for video, #E83B3B for live. The resulting JPEG must be under 2 MB. Initial imports preserve the exact existing JPEG bytes and signatures.
+New uploads accept unbranded 16:9 JPEG, PNG or WebP artwork under 4 MB. The server composites a six-arm asterisk in a 144×144 viewport at x1680/y96 on 1920×1080, per the brand placement table: white for video, #E83B3B for live. The resulting JPEG must be under 2 MB. Initial imports preserve the exact existing JPEG bytes and signatures.
 
 ## Runtime configuration
 
