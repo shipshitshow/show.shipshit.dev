@@ -55,16 +55,18 @@ describe('stampThumbnail', () => {
     expect(b).toBeLessThan(90);
   });
 
-  test('stamps a 9:16 Shorts cover at its own placement', async () => {
+  test('stamps a Shorts cover with the Short video mark', async () => {
+    const { mark } = stampPlacement('shorts');
+    expect(mark).toMatchObject({ height: 120, width: 120, x: 880, y: 230 });
     const out = await stampThumbnail(await art(1080, 1920), {
       brandDir,
       format: 'shorts',
       kind: 'video',
     });
-    const { mark } = stampPlacement('shorts');
-    expect(
-      await pixel(out, mark.x + mark.width / 2, mark.y + mark.height / 2),
-    ).toEqual([255, 255, 255]);
+    const [r, g, b] = await pixel(out, 940, 290);
+    expect(r).toBeGreaterThan(200);
+    expect(g).toBeLessThan(90);
+    expect(b).toBeLessThan(90);
   });
 
   test('rejects art with the wrong aspect ratio', async () => {

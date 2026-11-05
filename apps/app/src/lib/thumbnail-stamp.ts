@@ -44,7 +44,9 @@ export async function stampThumbnail(
     );
   const brandDir =
     options.brandDir ?? path.join(import.meta.dir, '../../public/brand');
-  const svg = await readFile(path.join(brandDir, MASTERS[options.kind]));
+  // Shorts covers carry the locked Short video mark: always the red master.
+  const kind: StampKind = options.format === 'shorts' ? 'live' : options.kind;
+  const svg = await readFile(path.join(brandDir, MASTERS[kind]));
   const signature = await sharp(svg, { density: 300 })
     .resize(mark.width, mark.height)
     .png()

@@ -12,8 +12,9 @@ Usage:
   bun run thumbnail:stamp --in <art.png> --out <thumb.png> --kind live|video [--format landscape|shorts]
 
 --kind live    red master, for an actual livestream
---kind video   white master, for any edited video, recap or Short cover
---format       landscape (1920x1080, default) or shorts (1080x1920)
+--kind video   white master, for any edited video or recap
+--format       landscape (1920x1080, default) or shorts (1080x1920).
+               Shorts covers always get the red Short video mark.
 
 Relative paths resolve from the repository root.
 Size and position come from the vault placement table via brand-tokens.json.

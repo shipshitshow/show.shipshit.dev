@@ -59,8 +59,9 @@ public. Nothing else waits on him.
 ## 4. Shorts (9:16)
 
 1. Plan with `$clips`. Match each angle from step 1.3 to its actual source
-   range. Every Short has one take that lands in the first 2 s, ends on a
-   clean payoff, and runs a length that fits the take (see "Open").
+   range. Every Short has one take that lands in the first 2 s and ends on a
+   clean payoff. There's no fixed length: the take decides, under 60 s
+   (Vincent, 5 Nov 2026).
 2. Render one sample with `editing/scripts/shorts/` (locked template, see its
    README).
    - **Gate:** Vincent OKs the sample, then cut the batch.
@@ -75,8 +76,9 @@ public. Nothing else waits on him.
    left empty. Don't draw the asterisk in the art.
 2. Stamp the asterisk from the real SVG master at the placement-table spot:
    `bun run thumbnail:stamp --in <art.png> --out <thumb.png> --kind live|video [--format landscape|shorts]`.
-   Use `live` (red) only for an actual livestream. Use `video` (white) for the
-   recap and the Shorts covers.
+   Use `live` (red) for an actual livestream and `video` (white) for the
+   recap. Shorts covers (`--format shorts`) always get the red Short video
+   mark.
 3. Review them in the Thumbnail Lab (`/labs/thumbnails`), checking them at
    real size.
    - **Gate:** Vincent approves.
@@ -105,10 +107,6 @@ public. Nothing else waits on him.
 
 ## Open (5 Nov 2026)
 
-- **Shorts length:** the 29 Oct rule says 30–50 s, but the 3 Nov batch runs
-  21–30 s. Waiting on Vincent.
-- **Shorts cover asterisk:** 96 px white at x768/y320, while the video uses
-  120 px red at x940/y290. Waiting on Vincent to say whether to unify them.
 - **Thumbnail art:** the current direction is photoreal, no text and famous
   faces only (never the hosts). Not locked yet. Rewrite `skills/thumbnails`
   once it is.
