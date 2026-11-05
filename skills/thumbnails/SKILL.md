@@ -18,7 +18,8 @@ Thumbnails follow the approved set's rules, which the Thumbnail Lab review check
 1. **One big 3D hero metaphor.** A single scene or object in physical materials that carries the whole idea.
 2. **Correct logos, large and built into the scene.** Use the real company mark (Anthropic is the A-slash mark, not the sunburst; Discord is purple), never a lookalike, sized to read at feed size.
 3. **Almost no text.** The scene does the talking.
-4. **Video and live artwork differ.** The edited video and its livestream twin never share the same image.
+4. **Guessable title.** A viewer should be able to guess the video's topic and title from the image alone, with no text. If the topic only makes sense to someone who already knows it, the thumbnail fails. The strongest approved pieces (chess pieces for OpenAI vs Anthropic, a sketch becoming a car for ChatGPT Images) show a clear story or before/after in one glance.
+5. **Video and live artwork differ.** The edited video and its livestream twin never share the same image.
 
 Faces are for famous people only, so viewers recognise the brand at a glance. No host faces, no random or invented faces. Real screenshots are optional, not a rule. For Ship Sh*t Show, the exact six-arm signature always sits top-right inside the profile’s format-specific safe margins: equal top/right for 16:9, larger top than right for 9:16 Shorts. Use the supplied vector master in the final composite; subtle scene-matched material/lighting may integrate it without changing its silhouette, base color or safe placement. Livestream thumbnails use the red signature; edited-video thumbnails use the white (on dark) or black (on light) signature.
 

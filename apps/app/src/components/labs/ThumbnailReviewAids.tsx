@@ -1,11 +1,12 @@
 'use client';
 
-export type RuleKey = 'hero' | 'logo' | 'text' | 'distinct';
+export type RuleKey = 'hero' | 'logo' | 'text' | 'guess' | 'distinct';
 export type RuleState = '' | 'pass' | 'fail' | 'na';
 export type RuleChecks = Record<RuleKey, RuleState>;
 
 export const EMPTY_RULES: RuleChecks = {
   distinct: '',
+  guess: '',
   hero: '',
   logo: '',
   text: '',
@@ -26,6 +27,11 @@ const RULES: { key: RuleKey; label: string; fail: string }[] = [
     fail: 'Cut the text down to almost none.',
     key: 'text',
     label: 'Almost no text',
+  },
+  {
+    fail: 'Make the topic obvious: a viewer should be able to guess the video title from the image alone.',
+    key: 'guess',
+    label: 'Title guessable from the image alone',
   },
   {
     fail: 'Make the video and live artwork clearly different from each other.',
@@ -158,7 +164,14 @@ export function RealSizePreview({ alt, src }: { alt: string; src: string }) {
 }
 
 const REFERENCES = [
-  { file: 'openai-vs-anthropic.jpg', label: 'OpenAI vs Anthropic (live)' },
+  {
+    file: 'openai-vs-anthropic.jpg',
+    label: 'OpenAI vs Anthropic (live) · favourite',
+  },
+  {
+    file: 'chatgpt-images.jpg',
+    label: 'ChatGPT Images 2.0 (live) · favourite',
+  },
   { file: 'openclaw-discord.jpg', label: 'OpenClaw on Discord' },
   { file: 'ai-loops.jpg', label: 'AI loops' },
   { file: 'genfeed-launch.jpg', label: 'Genfeed launch (live)' },
@@ -171,9 +184,9 @@ export function ReferenceRail() {
     <details className="mb-4 rounded-xl border border-surface-border">
       <summary className="cursor-pointer px-4 py-3 text-xs text-text-secondary">
         Approved references · one big 3D hero metaphor, correct logos built into
-        the scene, almost no text
+        the scene, almost no text, title guessable at a glance
       </summary>
-      <div className="grid grid-cols-2 gap-3 px-4 pb-4 sm:grid-cols-3 lg:grid-cols-5">
+      <div className="grid grid-cols-2 gap-3 px-4 pb-4 sm:grid-cols-3 lg:grid-cols-6">
         {REFERENCES.map((ref) => (
           <figure key={ref.file} className="m-0">
             <img
