@@ -9,7 +9,7 @@ description: Add AI-illustrated motion graphics, subtitles and overlays to a pla
 
 Use the user's channel profile and actual source asset. For Ship Sh*t Show, read [the bundled profile](references/channel-profile.md); viewers using another channel should provide their audience, voice, formats, links and visual references. A profile is context, not permission to publish, upload footage, buy generation or contact a partner.
 
-For the bundled show, use the canonical kit's editing rules and inventory linked in the profile as the established house reference. Keep text native/editable and record kit revision, logo hash, fonts and approved overrides. Generated boards are design references, not source footage, authorized replacement likenesses or finished overlays.
+For the bundled show, use the canonical kit's editing rules and inventory linked in the profile as the established house reference. Keep text native/editable and record kit revision, logo hash, fonts and approved overrides. Generated boards are design references, not source footage, authorized replacement likenesses or finished overlays. Place the asterisk exactly as [the placement table](https://github.com/shipshitshow/vault/blob/master/brand/placement.md) says, from the same three SVG masters; never redraw it or pick a corner or size by eye.
 
 Start from the plain recording and the approved cut map, not a pre-styled edit. Read the existing project manifest. Time every graphic to the words actually spoken, using the edited transcript or captions from the final timeline rather than full-stream timestamps.
 

@@ -74,6 +74,18 @@
       "font-glyph asterisk",
       "unrequested faces or fake results"
     ],
+    "landscape_1080": {
+      "reference_canvas": [1920, 1080],
+      "signature": {
+        "height": 144,
+        "inset_right": 96,
+        "inset_top": 96,
+        "width": 144,
+        "x": 1680,
+        "y": 96
+      },
+      "use": "16:9 edited video, live scenes, slates and the Thumbnail Lab composite; 1.5x the 1280x720 template"
+    },
     "livestream_mark": "#E83B3B",
     "reference_canvas": [1280, 720],
     "shorts": {
@@ -92,6 +104,28 @@
         "width": 96,
         "x": 768,
         "y": 320
+      },
+      "video_layout": {
+        "captions": {
+          "bottom_clear_from_y": 1570,
+          "centre_y": 1480,
+          "max_width": 920,
+          "spoken_word_color": "#E83B3B"
+        },
+        "frame": "speaker fills the whole 9:16 frame; no blur, tile or bars; no title text",
+        "reference_canvas": [1080, 1920],
+        "signature": {
+          "centre": [940, 290],
+          "color": "#E83B3B",
+          "height": 120,
+          "inset_right": 80,
+          "inset_top": 230,
+          "width": 120,
+          "x": 880,
+          "y": 230
+        },
+        "source": "show.shipshit.dev docs/show-prep/edit-style.md",
+        "status": "locked-by-owner-2026-11-05"
       }
     },
     "signature": {
