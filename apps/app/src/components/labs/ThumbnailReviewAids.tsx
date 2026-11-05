@@ -1,36 +1,36 @@
 'use client';
 
-export type RuleKey = 'screenshot' | 'person' | 'text' | 'logo';
+export type RuleKey = 'hero' | 'logo' | 'text' | 'distinct';
 export type RuleState = '' | 'pass' | 'fail' | 'na';
 export type RuleChecks = Record<RuleKey, RuleState>;
 
 export const EMPTY_RULES: RuleChecks = {
+  distinct: '',
+  hero: '',
   logo: '',
-  person: '',
-  screenshot: '',
   text: '',
 };
 
 const RULES: { key: RuleKey; label: string; fail: string }[] = [
   {
-    fail: 'Use real, readable screenshots: the repo name and Fork button must read at thumbnail size.',
-    key: 'screenshot',
-    label: 'Real, readable screenshots',
+    fail: 'Build one big 3D hero metaphor or scene in physical materials.',
+    key: 'hero',
+    label: 'One big 3D hero metaphor',
   },
   {
-    fail: 'Show one person only, Vincent, excited and smiling.',
-    key: 'person',
-    label: 'One person, Vincent, smiling',
+    fail: 'Use the correct company logo, large and built into the scene.',
+    key: 'logo',
+    label: 'Correct logo, large + integrated',
   },
   {
     fail: 'Cut the text down to almost none.',
     key: 'text',
-    label: 'Little or no text',
+    label: 'Almost no text',
   },
   {
-    fail: 'Use real company logos for the comparison.',
-    key: 'logo',
-    label: 'Company logos for comparisons',
+    fail: 'Make the video and live artwork clearly different from each other.',
+    key: 'distinct',
+    label: 'Distinct from its video/live twin',
   },
 ];
 
@@ -109,6 +109,10 @@ export function RuleChecklist({
         ))}
       </ul>
       <p className="mt-2 text-[10px] leading-4 text-text-muted">
+        Faces: famous people only, so viewers recognise the brand. No hosts, no
+        random faces.
+      </p>
+      <p className="mt-1 text-[10px] leading-4 text-text-muted">
         Failed rules are added to the revision note. Approve is blocked while a
         rule is marked Fail.
       </p>
@@ -130,7 +134,7 @@ export function RealSizePreview({ alt, src }: { alt: string; src: string }) {
       className="mt-4 rounded-xl border border-surface-border p-4"
     >
       <p className="text-[10px] uppercase tracking-wider text-text-muted">
-        Real-size check · can you still read the repo name and Fork button?
+        Real-size check · does the hero and logo still read at feed size?
       </p>
       <div className="mt-3 flex flex-wrap items-end gap-4">
         {SIZES.map((size) => (
@@ -154,9 +158,11 @@ export function RealSizePreview({ alt, src }: { alt: string; src: string }) {
 }
 
 const REFERENCES = [
-  { file: 'steal-studio.jpg', label: 'Steal Studio' },
-  { file: 'brief-to-feed.jpg', label: 'Brief to Feed' },
-  { file: 'higgsfield.jpg', label: 'Higgsfield' },
+  { file: 'openai-vs-anthropic.jpg', label: 'OpenAI vs Anthropic (live)' },
+  { file: 'openclaw-discord.jpg', label: 'OpenClaw on Discord' },
+  { file: 'ai-loops.jpg', label: 'AI loops' },
+  { file: 'genfeed-launch.jpg', label: 'Genfeed launch (live)' },
+  { file: 'npm-compromised.jpg', label: 'NPM compromised' },
 ];
 
 /** The approved thumbnails to compare against. */
@@ -164,10 +170,10 @@ export function ReferenceRail() {
   return (
     <details className="mb-4 rounded-xl border border-surface-border">
       <summary className="cursor-pointer px-4 py-3 text-xs text-text-secondary">
-        Approved references · split screen, real screenshots, one logo at the
-        seam, almost no text
+        Approved references · one big 3D hero metaphor, correct logos built into
+        the scene, almost no text
       </summary>
-      <div className="grid grid-cols-1 gap-3 px-4 pb-4 sm:grid-cols-3">
+      <div className="grid grid-cols-2 gap-3 px-4 pb-4 sm:grid-cols-3 lg:grid-cols-5">
         {REFERENCES.map((ref) => (
           <figure key={ref.file} className="m-0">
             <img

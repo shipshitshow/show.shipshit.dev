@@ -1,6 +1,15 @@
 'use client';
 import { BrandMark } from '@shipshitshow/ui';
-import { Check, Download, History, ImagePlus, Search, X } from 'lucide-react';
+import {
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  Download,
+  History,
+  ImagePlus,
+  Search,
+  X,
+} from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import {
   currentThumbnail,
@@ -84,7 +93,9 @@ export function ThumbnailLab() {
   }
   const dialog = useRef<HTMLDialogElement>(null),
     importFile = useRef<HTMLInputElement>(null),
-    uploadFile = useRef<HTMLInputElement>(null);
+    uploadFile = useRef<HTMLInputElement>(null),
+    note = useRef<HTMLTextAreaElement>(null),
+    keys = useRef<(e: KeyboardEvent) => void>(() => {});
   const active = items.find((item) => item.id === activeId),
     version = active?.versions.find((v) => v.id === versionId);
   const editable = Boolean(
@@ -142,6 +153,8 @@ export function ThumbnailLab() {
     setRules(EMPTY_RULES);
     setPrompt(v.prompt);
     setError('');
+    setNotice('');
+    dialog.current?.scrollTo({ top: 0 });
   }
   function close() {
     setActiveId(null);
@@ -151,6 +164,9 @@ export function ThumbnailLab() {
     setItems((rows) => rows.map((row) => (row.id === item.id ? item : row)));
   }
   async function decide(item: ThumbnailItem, action: 'approve' | 'revise') {
+    // The neighbour is taken before the save so the queue keeps its order.
+    const at = visible.findIndex((row) => row.id === item.id);
+    const next = at < 0 ? undefined : (visible[at + 1] ?? visible[at - 1]);
     setBusy(item.id);
     setError('');
     try {
@@ -174,12 +190,15 @@ export function ThumbnailLab() {
       )
         throw new Error('Invalid saved review response.');
       updated(body.item);
-      close();
-      setNotice(
-        action === 'approve'
-          ? 'Approved & locked. Removed from review.'
-          : 'Revision saved. Removed from review.',
-      );
+      const saved =
+        action === 'approve' ? 'Approved & locked.' : 'Revision saved.';
+      if (next) {
+        open(next);
+        setNotice(saved + ' Next thumbnail opened.');
+      } else {
+        close();
+        setNotice(saved + ' Nothing left in this view.');
+      }
     } catch (e) {
       setError(e instanceof Error ? e.message : 'The review was not saved.');
     } finally {
@@ -263,6 +282,50 @@ export function ThumbnailLab() {
   );
   const button =
     'inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-surface-border px-3 py-2 text-xs transition-colors hover:bg-surface-elevated disabled:cursor-not-allowed disabled:opacity-40';
+  const activeIndex = visible.findIndex((row) => row.id === activeId);
+  function go(step: number) {
+    const target = activeIndex < 0 ? undefined : visible[activeIndex + step];
+    if (target) open(target);
+  }
+  function onKey(e: KeyboardEvent) {
+    if (!active || e.repeat || e.isComposing) return;
+    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
+      if (editable && !busy && feedback.trim()) {
+        e.preventDefault();
+        decide(active, 'revise');
+      }
+      return;
+    }
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const el = e.target;
+    if (
+      el instanceof HTMLElement &&
+      (el.isContentEditable || /^(INPUT|SELECT|TEXTAREA)$/.test(el.tagName))
+    )
+      return;
+    const key = e.key.toLowerCase();
+    if (key === 'arrowright') {
+      e.preventDefault();
+      go(1);
+    } else if (key === 'arrowleft') {
+      e.preventDefault();
+      go(-1);
+    } else if (key === 'a' && editable && !busy && !failedRules) {
+      e.preventDefault();
+      decide(active, 'approve');
+    } else if (key === 'r' && editable) {
+      e.preventDefault();
+      note.current?.focus();
+    }
+  }
+  useEffect(() => {
+    keys.current = onKey;
+  });
+  useEffect(() => {
+    const handle = (e: KeyboardEvent) => keys.current(e);
+    window.addEventListener('keydown', handle);
+    return () => window.removeEventListener('keydown', handle);
+  }, []);
   if (loading && !items.length)
     return (
       <p className="p-12 text-sm text-text-muted">Loading Thumbnail Lab…</p>
@@ -445,19 +508,6 @@ export function ThumbnailLab() {
                     <code>{item.id}</code>
                   </div>
                 </div>
-                <button
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-text-muted transition-colors hover:bg-surface-elevated hover:text-emerald-400 disabled:opacity-30"
-                  title="Approve & lock"
-                  aria-label={'Approve ' + item.title}
-                  disabled={
-                    !!busy ||
-                    !capabilities.writable ||
-                    v.review.status === 'approved'
-                  }
-                  onClick={() => decide(item, 'approve')}
-                >
-                  <Check size={16} />
-                </button>
               </div>
             </article>
           );
@@ -488,13 +538,44 @@ export function ThumbnailLab() {
               <span className="text-[10px] tracking-[.15em] text-text-muted">
                 THUMBNAIL LAB
               </span>
-              <button
-                className={button}
-                onClick={close}
-                aria-label="Close thumbnail"
-              >
-                <X size={16} />
-              </button>
+              <div className="flex items-center gap-2">
+                {activeIndex >= 0 && (
+                  <>
+                    <button
+                      className={button}
+                      onClick={() => go(-1)}
+                      disabled={activeIndex === 0}
+                      aria-label="Previous thumbnail"
+                      title="Previous (←)"
+                    >
+                      <ChevronLeft size={16} />
+                    </button>
+                    <span
+                      className="min-w-16 text-center text-xs tabular-nums text-text-muted"
+                      aria-live="polite"
+                    >
+                      {activeIndex + 1} of {visible.length}
+                    </span>
+                    <button
+                      className={button}
+                      onClick={() => go(1)}
+                      disabled={activeIndex === visible.length - 1}
+                      aria-label="Next thumbnail"
+                      title="Next (→)"
+                    >
+                      <ChevronRight size={16} />
+                    </button>
+                  </>
+                )}
+                <button
+                  className={button}
+                  onClick={close}
+                  aria-label="Close thumbnail"
+                  title="Close (Esc)"
+                >
+                  <X size={16} />
+                </button>
+              </div>
             </div>
             <div className="grid lg:grid-cols-[1.7fr_1fr]">
               <div className="min-w-0 bg-surface-elevated/30 p-5">
@@ -540,7 +621,7 @@ export function ThumbnailLab() {
                       className={button}
                       onClick={() => setCompare(!compare)}
                     >
-                      {compare ? 'Hide comparison' : 'Compare live / recap'}
+                      {compare ? 'Hide twin' : 'Compare with video/live twin'}
                     </button>
                   )}
                   <button
@@ -678,6 +759,7 @@ export function ThumbnailLab() {
                 <label className="mt-4 block text-xs">
                   What should change?
                   <textarea
+                    ref={note}
                     value={feedback}
                     onChange={(e) => setFeedback(e.target.value)}
                     disabled={!editable || !!busy}
@@ -709,9 +791,16 @@ export function ThumbnailLab() {
                   </button>
                 </div>
                 <p className="mt-3 text-[10px] leading-5 text-text-muted">
-                  Decisions save to the app and leave the active queue. Approved
-                  versions remain immutable. New variations return for review.
+                  Keys: ← → browse · A approve & lock · R write a note ·
+                  ⌘/Ctrl+Enter request revision · Esc close. A decision opens
+                  the next thumbnail in this view. Approved versions remain
+                  immutable. New variations return for review.
                 </p>
+                {notice && (
+                  <p role="status" className="mt-3 text-xs text-emerald-400">
+                    {notice}
+                  </p>
+                )}
                 {error && (
                   <p role="alert" className="mt-3 text-xs text-accent-red">
                     {error}
