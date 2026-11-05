@@ -1,61 +1,78 @@
 {
-  "brands": {
-    "business": {
-      "primary": "#FFFFFF",
-      "primary_text": "#0D0D0D",
-      "surface": "#0D0D0D",
-      "text": "#FFFFFF",
-      "typography": {
-        "body": "Inter",
-        "code": "JetBrains Mono",
-        "heading": "Inter Tight"
-      }
+  "version": "2026-11-03",
+  "status": "approved-direction",
+  "identity": {
+    "show_name": "Ship Sh*t Show",
+    "baseline": "Think AI",
+    "compact_mark": "six-arm-asterisk",
+    "mark_geometry": {
+      "viewBox": [
+        0,
+        0,
+        96,
+        96
+      ],
+      "bar": {
+        "x": 38,
+        "y": 4,
+        "width": 20,
+        "height": 88
+      },
+      "rotations": [
+        0,
+        60,
+        120
+      ],
+      "center": [
+        48,
+        48
+      ]
     },
+    "avatar_main": "red asterisk on charcoal",
+    "avatar_clips": "white asterisk on charcoal",
+    "avatar_business": "white asterisk on charcoal"
+  },
+  "colors": {
+    "ink": "#0D0D0D",
+    "white": "#FFFFFF",
+    "accent_red": "#E83B3B",
+    "surface_card": "#1A1A1A",
+    "surface_elevated": "#141414",
+    "surface_border": "#303030",
+    "text_muted": "#AAAAAA",
+    "text_secondary": "#D0D0D0"
+  },
+  "brands": {
     "show": {
       "primary": "#E83B3B",
       "primary_text": "#0D0D0D",
       "surface": "#0D0D0D",
       "text": "#FFFFFF",
       "typography": {
+        "heading": "Space Grotesk",
         "body": "Space Grotesk",
-        "code": "monospace",
-        "heading": "Space Grotesk"
+        "code": "monospace"
+      }
+    },
+    "business": {
+      "primary": "#FFFFFF",
+      "primary_text": "#0D0D0D",
+      "surface": "#0D0D0D",
+      "text": "#FFFFFF",
+      "typography": {
+        "heading": "Inter Tight",
+        "body": "Inter",
+        "code": "JetBrains Mono"
       }
     }
   },
-  "broadcast": {
-    "partner_strip": "optional narrow strip, approved official logos and exact URLs",
-    "reference_canvas": [1920, 1080],
-    "signature": "same six-arm geometry; state-specific contrast; verify actual camera/caption placement"
-  },
-  "colors": {
-    "accent_red": "#E83B3B",
-    "ink": "#0D0D0D",
-    "surface_border": "#303030",
-    "surface_card": "#1A1A1A",
-    "surface_elevated": "#141414",
-    "text_muted": "#AAAAAA",
-    "text_secondary": "#D0D0D0",
-    "white": "#FFFFFF"
-  },
-  "identity": {
-    "avatar_business": "white asterisk on charcoal",
-    "avatar_clips": "white asterisk on charcoal",
-    "avatar_main": "red asterisk on charcoal",
-    "baseline": "Think AI",
-    "compact_mark": "six-arm-asterisk",
-    "mark_geometry": {
-      "bar": {
-        "height": 88,
-        "width": 20,
-        "x": 38,
-        "y": 4
-      },
-      "center": [48, 48],
-      "rotations": [0, 60, 120],
-      "viewBox": [0, 0, 96, 96]
-    },
-    "show_name": "Ship Sh*t Show"
+  "typography": {
+    "display": "Space Grotesk",
+    "body": "Space Grotesk",
+    "utility_fallback": "system-ui",
+    "metadata": "monospace",
+    "max_families": 2,
+    "rule": "broad readable type; no compressed, stacked or stretched logo lettering"
   },
   "photography": {
     "default": "natural-color approved hosts against monochrome charcoal",
@@ -63,10 +80,24 @@
     "integration": "native aspect ratio; complete heads and shoulders; background-matched edge fades, no banner zoom",
     "private_sources": "original portraits, character sheets, recordings and face-containing working boards stay private"
   },
-  "publication": "Public kit includes guides and standalone marks. Publish only separately approved finished web/channel assets; source portraits and private working boards are excluded.",
-  "status": "approved-direction",
   "thumbnail": {
+    "reference_canvas": [
+      1280,
+      720
+    ],
+    "signature": {
+      "x": 1120,
+      "y": 64,
+      "width": 96,
+      "height": 96,
+      "inset_right": 64,
+      "inset_top": 64
+    },
+    "video_mark": "white on dark, black on light",
+    "livestream_mark": "#E83B3B",
     "background": "predominantly monochrome/charcoal",
+    "subject": "source-grounded topic subjects and official topic logos in their original colors; no host faces",
+    "text": "episode-specific; do not mandate text on every thumbnail",
     "exclusions": [
       "square around signature",
       "extra dot",
@@ -74,53 +105,85 @@
       "font-glyph asterisk",
       "unrequested faces or fake results"
     ],
-    "livestream_mark": "#E83B3B",
-    "reference_canvas": [1280, 720],
     "shorts": {
-      "reference_ad_safe_area": {
-        "height": 960,
-        "width": 840,
-        "x": 48,
-        "y": 288
-      },
-      "reference_canvas": [1080, 1920],
-      "safe_area_source": "https://services.google.com/fh/files/misc/universalsafezones-youtube.pdf",
+      "reference_canvas": [
+        1080,
+        1920
+      ],
       "signature": {
+        "x": 768,
+        "y": 320,
+        "width": 96,
         "height": 96,
         "inset_right": 216,
-        "inset_top": 320,
-        "width": 96,
-        "x": 768,
-        "y": 320
+        "inset_top": 320
+      },
+      "reference_ad_safe_area": {
+        "x": 48,
+        "y": 288,
+        "width": 840,
+        "height": 960
+      },
+      "safe_area_source": "https://services.google.com/fh/files/misc/universalsafezones-youtube.pdf",
+      "video_layout": {
+        "status": "proposed-pending-owner-example",
+        "frame": {
+          "x": 0,
+          "y": 660,
+          "width": 1080,
+          "height": 608
+        },
+        "title": {
+          "x": 48,
+          "y": 440,
+          "width": 984,
+          "height": 200
+        },
+        "captions": {
+          "x": 48,
+          "y": 1288,
+          "width": 984,
+          "height": 282
+        },
+        "bottom_clear_from_y": 1570,
+        "background": "same clip, centered on the faces, heavily blurred and darkened; no black bars",
+        "mark_color": "#FFFFFF"
       }
     },
-    "signature": {
-      "height": 96,
-      "inset_right": 64,
-      "inset_top": 64,
-      "width": 96,
-      "x": 1120,
-      "y": 64
-    },
-    "subject": "source-grounded topic subjects and official topic logos in their original colors; no host faces",
-    "text": "episode-specific; do not mandate text on every thumbnail",
-    "video_mark": "white on dark, black on light"
+    "landscape_1080": {
+      "reference_canvas": [
+        1920,
+        1080
+      ],
+      "signature": {
+        "x": 1680,
+        "y": 96,
+        "width": 144,
+        "height": 144,
+        "inset_right": 96,
+        "inset_top": 96
+      },
+      "use": "16:9 edited video, live scenes, slates and the Thumbnail Lab composite; 1.5x the 1280x720 template"
+    }
   },
-  "typography": {
-    "body": "Space Grotesk",
-    "display": "Space Grotesk",
-    "max_families": 2,
-    "metadata": "monospace",
-    "rule": "broad readable type; no compressed, stacked or stretched logo lettering",
-    "utility_fallback": "system-ui"
-  },
-  "version": "2026-11-03",
   "web": {
+    "mode": "dark",
+    "social_canvas": [
+      1200,
+      630
+    ],
+    "show_og": "host-led Think AI artwork, red bottom-right asterisk, no top-left wordmark",
     "business_og": "approved monochrome Your idea. We ship it. artwork",
     "focus": "visible high-contrast outline",
-    "mode": "dark",
-    "primary_contrast": "black text on red show actions; charcoal text on white business actions",
-    "show_og": "host-led Think AI artwork, red bottom-right asterisk, no top-left wordmark",
-    "social_canvas": [1200, 630]
-  }
+    "primary_contrast": "black text on red show actions; charcoal text on white business actions"
+  },
+  "broadcast": {
+    "reference_canvas": [
+      1920,
+      1080
+    ],
+    "signature": "same six-arm geometry; state-specific contrast; verify actual camera/caption placement",
+    "partner_strip": "optional narrow strip, approved official logos and exact URLs"
+  },
+  "publication": "Public kit includes guides and standalone marks. Publish only separately approved finished web/channel assets; source portraits and private working boards are excluded."
 }

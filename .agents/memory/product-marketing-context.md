@@ -75,6 +75,7 @@ A demo like the install walkthrough can still go to LinkedIn as is.
   white captions on a dark backing below it. No single red karaoke words.
   Nothing in the bottom ~350 px. Reference render:
   `editing/projects/261027/shorts/_layout-test/`.
+- The asterisk is the vault's white master at the position in the [placement table](https://github.com/shipshitshow/vault/blob/master/brand/placement.md) (96 px at x768/y320 on 1080×1920). The zone numbers there are proposed until this layout's example is approved.
 - Send a plan with candidate takes and source ranges, plus one layout example,
   before recutting a batch.
 

@@ -9,7 +9,7 @@ description: Edit a livestream into a focused recap with natural dialogue, sourc
 
 Use the user's channel profile and actual source asset. For Ship Sh*t Show, read [the bundled profile](references/channel-profile.md); viewers using another channel should provide their audience, voice, formats, links and visual references. A profile is context, not permission to publish, upload footage, buy generation or contact a partner.
 
-For the bundled show, read the canonical kit's editing rules and asset inventory linked in the profile. Record the kit revision, logo hash, actual fonts and approved overrides in the project's supported manifest or handoff notes. Generated board scenes are not source footage.
+For the bundled show, read the canonical kit's editing rules and asset inventory linked in the profile. Record the kit revision, logo hash, actual fonts and approved overrides in the project's supported manifest or handoff notes. Generated board scenes are not source footage. Place the asterisk exactly as [the placement table](https://github.com/shipshitshow/vault/blob/master/brand/placement.md) says, from the same three SVG masters; never redraw it or pick a corner or size by eye.
 
 Read the existing project manifest. Use the full-source transcript to select the viewer question, evidence and verdict. Keep disagreement and uncertainty where they change the answer. Select complete exchanges with enough context; do not manufacture a stronger claim by removing qualifications.
 
