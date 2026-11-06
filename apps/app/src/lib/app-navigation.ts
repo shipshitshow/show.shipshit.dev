@@ -94,6 +94,7 @@ export const PRODUCTION_APPS = [
     links: [
       { href: '/labs', label: 'Overview' },
       { href: '/labs/thumbnails', label: 'Thumbnail Lab' },
+      { href: '/labs/titles', label: 'Titles Lab' },
     ],
     roots: ['/labs'],
   },
