@@ -1009,14 +1009,27 @@ export function ThumbnailLab() {
                   />
                 </label>
                 {reopenable ? (
-                  <button
-                    className={button + ' mt-3 w-full'}
-                    disabled={!!busy}
-                    onClick={() => reopen(active, version)}
-                  >
-                    <RotateCcw size={14} />
-                    Reopen for review
-                  </button>
+                  <div className="mt-3 flex gap-2">
+                    <button
+                      className={button + ' flex-1'}
+                      disabled={!!busy}
+                      onClick={() => reopen(active, version)}
+                    >
+                      <RotateCcw size={14} />
+                      Reopen for review
+                    </button>
+                    {version.review.status === 'approved' && (
+                      <button
+                        className={button + ' flex-1'}
+                        disabled={!!busy}
+                        title="Reject this approved thumbnail"
+                        onClick={() => decide(active, version, 'reject')}
+                      >
+                        <Ban size={14} />
+                        Reject
+                      </button>
+                    )}
+                  </div>
                 ) : (
                   <div className="mt-3 flex gap-2">
                     <button

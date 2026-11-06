@@ -85,6 +85,30 @@ describe('thumbnail review contract', () => {
     expect(next.versions[0]?.review.status).toBe('approved');
     expect(currentThumbnail(next).review.status).toBe('pending');
   });
+  test('an approved version can be rejected, then reopened', () => {
+    const item = fixture(),
+      approved = applyThumbnailDecision(
+        item,
+        { action: 'approve', revision: 0, versionId: item.currentVersionId },
+        'owner',
+        'now',
+      ),
+      rejected = applyThumbnailDecision(
+        approved,
+        { action: 'reject', revision: 1, versionId: approved.currentVersionId },
+        'owner',
+        'later',
+      );
+    expect(currentThumbnail(rejected).review.status).toBe('rejected');
+    expect(rejected.revision).toBe(2);
+    const reopened = applyThumbnailDecision(
+      rejected,
+      { action: 'reopen', revision: 2, versionId: rejected.currentVersionId },
+      'owner',
+      'later',
+    );
+    expect(currentThumbnail(reopened).review.status).toBe('pending');
+  });
   test('revision requests leave the review queue and carry a useful prompt', () => {
     const item = fixture(),
       next = applyThumbnailDecision(

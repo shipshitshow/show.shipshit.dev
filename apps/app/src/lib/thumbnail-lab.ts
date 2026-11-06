@@ -334,7 +334,7 @@ export function applyThumbnailDecision(
       throw new ThumbnailConflict(
         'Only an approved or rejected version can be reopened.',
       );
-  } else if (status === 'approved')
+  } else if (status === 'approved' && decision.action !== 'reject')
     throw new ThumbnailConflict('This version is approved and locked.');
   else if (status === 'rejected')
     throw new ThumbnailConflict('This version is rejected. Reopen it first.');
