@@ -1,7 +1,5 @@
 import { Badge, cn } from '@shipshitshow/ui';
 import { ThumbsUp } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
 import {
   type ContentItem,
   type ContentType,
@@ -10,6 +8,7 @@ import {
 import { formatNumber } from '@/lib/format';
 import { formatLivestreamDate } from '@/lib/livestreams-ui';
 import { formatCount, formatDuration } from '@/lib/video-stats';
+import { CardLink, CardThumbnail } from './CardThumbnail';
 
 const KIND: Record<ContentType, string> = {
   livestream: 'Live',
@@ -51,35 +50,18 @@ export function ContentCard({ item }: { item: ContentItem }) {
   const duration = stat ? formatDuration(stat.durationSeconds) : '';
   const privacy =
     stat?.privacy && stat.privacy !== 'public' ? stat.privacy : null;
-  const hasThumbnail = item.thumbnailUrl !== '/icon.svg';
   const className =
-    'group self-start overflow-hidden rounded-2xl border border-surface-border bg-surface-card transition-colors outline-none hover:border-accent-red/40 focus-visible:ring-2 focus-visible:ring-accent-red/40';
+    'group self-start overflow-hidden rounded-2xl border border-surface-border bg-surface-card transition-colors hover:border-accent-red/40 has-[>a:focus-visible]:ring-2 has-[>a:focus-visible]:ring-accent-red/40';
 
-  const body = (
-    <>
-      <div
-        className={cn(
-          'relative overflow-hidden bg-surface-elevated',
-          short ? 'aspect-[9/16]' : 'aspect-video',
-        )}
+  return (
+    <article className={className}>
+      <CardThumbnail
+        external={item.external}
+        href={item.href}
+        short={short}
+        thumbnailUrl={item.thumbnailUrl}
+        variants={item.variants}
       >
-        {hasThumbnail ? (
-          <Image
-            src={item.thumbnailUrl}
-            alt=""
-            fill
-            sizes={
-              short
-                ? '(min-width: 1280px) 16vw, (min-width: 768px) 25vw, 50vw'
-                : '(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 100vw'
-            }
-            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-          />
-        ) : (
-          <div className="flex size-full items-center justify-center">
-            <Image src="/icon.svg" alt="" width={48} height={48} />
-          </div>
-        )}
         <span className="absolute left-2 top-2 flex gap-1">
           <Badge
             variant="overlay"
@@ -109,8 +91,12 @@ export function ContentCard({ item }: { item: ContentItem }) {
             {duration}
           </Badge>
         ) : null}
-      </div>
-      <div className="space-y-2 p-4">
+      </CardThumbnail>
+      <CardLink
+        external={item.external}
+        href={item.href}
+        className="block space-y-2 p-4 outline-none"
+      >
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             {item.date ? (
@@ -162,17 +148,7 @@ export function ContentCard({ item }: { item: ContentItem }) {
         ) : (
           <p className="text-[10px] text-text-muted/50">No transcript</p>
         )}
-      </div>
-    </>
-  );
-
-  return item.external ? (
-    <a href={item.href} target="_blank" rel="noreferrer" className={className}>
-      {body}
-    </a>
-  ) : (
-    <Link href={item.href} className={className}>
-      {body}
-    </Link>
+      </CardLink>
+    </article>
   );
 }

@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import {
+  attachVariants,
   buildContentItems,
   type ContentItem,
   type RepoContent,
@@ -12,6 +13,14 @@ import {
   listPublishedVideos,
 } from './livestreams-store';
 import { formatLivestreamDate } from './livestreams-ui';
+import {
+  isThumbnailKind,
+  type ThumbnailItem,
+  type ThumbnailVersion,
+  thumbnailAssetUrl,
+  thumbnailCdnUrl,
+} from './thumbnail-lab';
+import { listThumbnailItems } from './thumbnail-lab-store';
 import { analyzeTranscriptScorecard } from './transcript-scorecard';
 import type { VideoStatsSnapshot } from './video-stats';
 import { readVideoStats } from './video-stats-store';
@@ -140,13 +149,41 @@ async function loadRepoContent(): Promise<RepoContent[]> {
   return entries;
 }
 
+/**
+ * Where a card loads a Library version from. In production that is the public
+ * CDN, so a page of cards costs no API call per image; locally it is the
+ * asset route, which reads the files on disk.
+ */
+function variantUrl(item: ThumbnailItem, version: ThumbnailVersion): string {
+  return process.env.VERCEL || process.env.THUMBNAIL_LAB_USE_CDN
+    ? thumbnailCdnUrl(item, version)
+    : thumbnailAssetUrl(item, version);
+}
+
+/** The Library's video thumbnails. Cards still render if it cannot load. */
+async function loadThumbnailCatalogue(): Promise<ThumbnailItem[]> {
+  try {
+    return (await listThumbnailItems()).filter(isThumbnailKind);
+  } catch {
+    return [];
+  }
+}
+
 export async function loadContent(): Promise<{
   items: ContentItem[];
   stats: VideoStatsSnapshot | null;
 }> {
-  const [repo, stats] = await Promise.all([
+  const [repo, stats, catalogue] = await Promise.all([
     loadRepoContent(),
     readVideoStats(),
+    loadThumbnailCatalogue(),
   ]);
-  return { items: buildContentItems(repo, stats?.videos ?? {}), stats };
+  return {
+    items: attachVariants(
+      buildContentItems(repo, stats?.videos ?? {}),
+      catalogue,
+      variantUrl,
+    ),
+    stats,
+  };
 }

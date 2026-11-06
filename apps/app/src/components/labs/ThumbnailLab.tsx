@@ -27,6 +27,7 @@ import {
   currentThumbnail,
   isThumbnailItem,
   itemsOfKind,
+  kindOf,
   paginate,
   THUMBNAIL_KINDS,
   type ThumbnailItem,
@@ -155,7 +156,7 @@ export function ThumbnailLab() {
     setRules(EMPTY_RULES);
     setFeedback(v.review.status === 'revise' ? v.review.feedback : '');
   }
-  async function load() {
+  async function load(): Promise<ThumbnailItem[]> {
     setLoading(true);
     setError('');
     try {
@@ -164,7 +165,8 @@ export function ThumbnailLab() {
       });
       if (!response.ok) throw await responseError(response);
       const body: unknown = await response.json();
-      setItems(parseItems(body));
+      const rows = parseItems(body);
+      setItems(rows);
       setCapabilities({
         uploadsAvailable: !!(
           body &&
@@ -179,14 +181,28 @@ export function ThumbnailLab() {
           body.writable === true
         ),
       });
+      return rows;
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Could not load thumbnails.');
+      return [];
     } finally {
       setLoading(false);
     }
   }
   useEffect(() => {
-    load();
+    // A video card's version strip links here with ?video=<id>&version=<id>:
+    // open that video, on that version, whatever the filters were.
+    load().then((rows) => {
+      const params = new URLSearchParams(window.location.search);
+      const item = rows.find((row) => row.id === params.get('video'));
+      if (!item) return;
+      setKind(kindOf(item));
+      setScope('all');
+      setSearch(item.id);
+      open(item);
+      const version = params.get('version');
+      if (version) selectVersion(item, version);
+    });
   }, []);
   useEffect(() => {
     const d = dialog.current;

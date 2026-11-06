@@ -26,6 +26,8 @@ Run the app's thumbnail-lab:import command with --source pointing to a review ar
 
 Approve or request revision removes the card from To review only after the database confirms the write. Approved versions are immutable. Adding a variation creates a pending version while retaining approved history. History is read only; the current draft can be reviewed. Revision requests save feedback and a prepared generation prompt, which can be copied or exported. The app does not claim an image is generating until a new version is actually uploaded. No action publishes to YouTube, changes channel metadata or deletes experiments.
 
+Every video card on Content shows its versions in a strip under the thumbnail when there is more than one left to choose from: the current one first, then the newest, rejected ones left out, four at most. Hovering a version previews it in the card. Clicking opens `/library/thumbnails?video=<id>&version=<versionId>`, which opens that video on that version whatever the filters were. In production the strip loads straight from the CDN.
+
 ## Source cache
 
 Reference originals live in the ignored editing/sources/thumbnails folder, with a manifest recording primary URL, retrieval date, content hash, role and transformations. Check the manifest and file hash before fetching an asset again. Company identities and product identities are distinct: Anthropic's company monogram is for company comparisons; the Claude sunburst is for Claude products/models. Do not silently substitute one for the other.
