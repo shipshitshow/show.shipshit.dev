@@ -41,7 +41,7 @@ export function LivestreamTabsClient({
         return (
           <Link
             key={tab}
-            href={`/livestreams/${pathSlug}/${tab}`}
+            href={`/content/livestreams/${pathSlug}/${tab}`}
             className={`-mb-px border-b-2 px-4 py-3 text-sm font-semibold transition-colors ${
               isActive
                 ? 'border-accent-red text-text-primary'
@@ -53,7 +53,7 @@ export function LivestreamTabsClient({
         );
       })}
       <Link
-        href={`/livestreams/${pathSlug}/tweets`}
+        href={`/content/livestreams/${pathSlug}/tweets`}
         target="_blank"
         className="ml-auto inline-flex items-center gap-2 px-4 py-3 text-sm font-semibold text-text-muted transition-colors hover:text-text-primary"
       >

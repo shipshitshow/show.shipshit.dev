@@ -1,9 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
-import { LinkedInMeasurementPanel } from '@/components/livestreams/LinkedInMeasurementPanel';
-import { StreamDistributionPanel } from '@/components/livestreams/StreamDistributionPanel';
-import { getEpisodeDistribution } from '@/lib/distribution-store';
-import { getEpisodeLinkedInMeasurement } from '@/lib/linkedin-measurement';
+import { TranscriptPanel } from '@/components/livestreams/TranscriptPanel';
 import {
   isDateSlug,
   isYouTubeVideoId,
@@ -26,7 +23,6 @@ import {
 } from '@/lib/livestreams-ui';
 import { buildYouTubeThumbnailUrl } from '@/lib/livestreams-youtube';
 import { buildDefaultMetadata, toAbsoluteUrl } from '@/lib/site';
-import { isStorageWritable } from '@/lib/storage-capability-server';
 
 async function resolveDate(slug: string): Promise<string> {
   if (isDateSlug(slug)) return slug;
@@ -75,11 +71,10 @@ export async function generateMetadata({
     visibleTopics,
     archive?.title,
   );
-  const pageTitle = `${streamTitle} — Distribution · Ship Sh*t Show`;
-  const description =
-    'Published episode assets, URLs, UTM click-through, and manually recorded LinkedIn post metrics.';
+  const pageTitle = `${streamTitle} — Transcript · Ship Sh*t Show`;
+  const description = 'Livestream transcript for Ship Sh*t Show.';
   const pageUrl = toAbsoluteUrl(
-    `/livestreams/${encodeURIComponent(slug)}/distribution`,
+    `/content/livestreams/${encodeURIComponent(slug)}/transcript`,
   );
   const imageUrl = archive?.videoId
     ? await buildYouTubeThumbnailUrl(archive.videoId)
@@ -106,7 +101,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function DistributionPage({
+export default async function TranscriptPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -115,30 +110,32 @@ export default async function DistributionPage({
 
   if (isDateSlug(slug)) {
     const canonicalPath = await resolveStreamPathForDate(slug);
-    if (canonicalPath !== `/livestreams/${encodeURIComponent(slug)}`) {
-      redirect(`${canonicalPath}/distribution`);
+    if (canonicalPath !== `/content/livestreams/${encodeURIComponent(slug)}`) {
+      redirect(`${canonicalPath}/transcript`);
     }
   }
 
-  const resolvedDate = await resolveFullDate(slug);
-  const [distribution, measurement] = await Promise.all([
-    getEpisodeDistribution(resolvedDate),
-    getEpisodeLinkedInMeasurement(resolvedDate),
+  const requestedDate = await resolveDate(slug);
+  const [topicDates, livestreams] = await Promise.all([
+    listAvailableLivestreamDates(),
+    listLivestreamArchive(),
   ]);
+  const availableDates = Array.from(
+    new Set([...topicDates, ...livestreams.map((item) => item.date)]),
+  ).sort((a, b) => b.localeCompare(a));
+  const resolvedDate = availableDates.includes(requestedDate)
+    ? requestedDate
+    : await resolveLivestreamDate(requestedDate);
 
-  const isWritable = isStorageWritable();
+  const archive = await getLivestreamArchiveByDate(resolvedDate);
+  const topics = await getTopicsForArchive(archive, resolvedDate);
+  const visibleTopics = sortTopics(getVisibleTopics(topics, resolvedDate));
+  const title = getLivestreamTitle(resolvedDate, visibleTopics, archive?.title);
 
   return (
-    <div className="space-y-8">
-      <StreamDistributionPanel
-        date={resolvedDate}
-        initialDistribution={distribution}
-        isWritable={isWritable}
-      />
-      <LinkedInMeasurementPanel
-        isWritable={isWritable}
-        measurement={measurement}
-      />
-    </div>
+    <TranscriptPanel
+      title={archive?.transcriptTitle ?? title}
+      transcript={archive?.transcript ?? null}
+    />
   );
 }

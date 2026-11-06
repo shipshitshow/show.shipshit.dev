@@ -1,6 +1,8 @@
 'use client';
-import { Menu } from 'lucide-react';
+import { cn } from '@shipshitshow/ui';
+import { Menu, Sparkles } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import { useSidebarState } from '@/components/livestreams/SidebarStateContext';
 import { getProductionApp, getProductionPageLabel } from '@/lib/app-navigation';
 
 export function AppTitlebar({
@@ -11,6 +13,7 @@ export function AppTitlebar({
   const pathname = usePathname();
   const app = getProductionApp(pathname);
   const label = getProductionPageLabel(pathname);
+  const { agentOpen, toggleAgent } = useSidebarState();
   return (
     <header className="flex h-12 shrink-0 items-center gap-3 px-3 text-[13px] md:px-4">
       <button
@@ -39,6 +42,21 @@ export function AppTitlebar({
           <span className="truncate text-text-primary">{label}</span>
         </>
       )}
+      <button
+        type="button"
+        onClick={toggleAgent}
+        aria-expanded={agentOpen}
+        aria-label={agentOpen ? 'Close the agent' : 'Open the agent'}
+        title="Content agent"
+        className={cn(
+          'ml-auto flex size-8 shrink-0 items-center justify-center rounded-md transition-colors',
+          agentOpen
+            ? 'bg-surface-border text-text-primary'
+            : 'text-text-secondary hover:bg-surface-elevated hover:text-text-primary',
+        )}
+      >
+        <Sparkles size={16} aria-hidden="true" />
+      </button>
     </header>
   );
 }

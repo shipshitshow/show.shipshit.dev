@@ -46,7 +46,7 @@ export default async function TweetSliderPage({
 
   return (
     <TweetSlider
-      backHref={`/livestreams/${encodeURIComponent(slug)}`}
+      backHref={`/content/livestreams/${encodeURIComponent(slug)}`}
       date={date}
       slides={slides}
       title={getLivestreamTitle(date, topics, archive?.title)}

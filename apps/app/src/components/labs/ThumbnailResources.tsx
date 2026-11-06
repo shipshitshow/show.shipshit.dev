@@ -191,11 +191,7 @@ export function ThumbnailResources() {
   );
   return (
     <main className="mx-auto max-w-[1800px] px-4 py-6 md:px-7">
-      <LibraryHeader
-        active="assets"
-        blurb="Logos, people, products and branding that thumbnail renders draw on. These files stay on the producer's machine and are never committed or uploaded."
-        title="Assets"
-      />
+      <LibraryHeader title="Assets" />
       {writable ? null : (
         <p className="mt-4 text-sm text-text-muted">
           Assets live on the local lab, so this deployment shows only what the

@@ -5,10 +5,11 @@ import { useEffect, useRef, useState } from 'react';
 import { AppRail } from '@/components/AppRail';
 import { AppSidebar } from '@/components/AppSidebar';
 import { AppTitlebar } from '@/components/AppTitlebar';
+import { ContentAgent } from '@/components/agent/ContentAgent';
 import { useSidebarState } from '@/components/livestreams/SidebarStateContext';
 
 export function ProductionShell({ children }: { children: React.ReactNode }) {
-  const { collapsed } = useSidebarState();
+  const { agentOpen, collapsed } = useSidebarState();
   const pathname = usePathname();
   const [mobilePath, setMobilePath] = useState<string | null>(null);
   const mobileOpen = mobilePath === pathname;
@@ -73,6 +74,7 @@ export function ProductionShell({ children }: { children: React.ReactNode }) {
           >
             {children}
           </main>
+          {agentOpen ? <ContentAgent /> : null}
         </div>
       </div>
       {mobileOpen && (

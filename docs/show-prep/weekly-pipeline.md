@@ -80,7 +80,7 @@ public. Nothing else waits on him.
    Use `live` (red) for an actual livestream and `video` (white) for the
    recap. Shorts covers (`--format shorts`) always get the red Short video
    mark.
-3. Review them in the Thumbnail Lab (`/labs/thumbnails`), checking them at
+3. Review them in Library > Thumbnails (`/library/thumbnails`), checking them at
    real size.
    - **Gate:** Vincent approves.
 

@@ -47,7 +47,7 @@ export async function generateMetadata({
   const description =
     'Author-post impressions and engagement for this episode.';
   const pageUrl = toAbsoluteUrl(
-    `/livestreams/${encodeURIComponent(slug)}/x-posts`,
+    `/content/livestreams/${encodeURIComponent(slug)}/x-posts`,
   );
   const imageUrl = archive?.videoId
     ? await buildYouTubeThumbnailUrl(archive.videoId)
@@ -83,7 +83,7 @@ export default async function XPostsPage({
 
   if (isDateSlug(slug)) {
     const canonicalPath = await resolveStreamPathForDate(slug);
-    if (canonicalPath !== `/livestreams/${encodeURIComponent(slug)}`) {
+    if (canonicalPath !== `/content/livestreams/${encodeURIComponent(slug)}`) {
       redirect(`${canonicalPath}/x-posts`);
     }
   }

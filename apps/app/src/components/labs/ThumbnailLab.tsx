@@ -15,7 +15,6 @@ import {
   Download,
   History,
   ImagePlus,
-  Library,
   RotateCcw,
   Search,
   X,
@@ -448,24 +447,15 @@ export function ThumbnailLab() {
     return () => window.removeEventListener('keydown', handle);
   }, []);
   if (loading && !items.length)
-    return (
-      <p className="p-12 text-sm text-text-muted">Loading Thumbnail Lab…</p>
-    );
+    return <p className="p-12 text-sm text-text-muted">Loading thumbnails…</p>;
   return (
     <main className="mx-auto max-w-[1800px] px-4 py-6 md:px-7">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-surface-border bg-surface-card">
-            <BrandMark className="h-5 w-5 text-accent-red" />
-          </div>
-          <div>
-            <h1 className="text-xl font-semibold tracking-tight">
-              Thumbnail Lab
-            </h1>
-            <p className="mt-0.5 text-xs text-text-muted">
-              {awaitingCount} awaiting review
-            </p>
-          </div>
+        <div className="flex items-baseline gap-3">
+          <h1 className="text-2xl font-semibold">Thumbnails</h1>
+          <p className="text-xs text-text-muted">
+            {awaitingCount} awaiting review
+          </p>
         </div>
         <div className="flex flex-wrap gap-2">
           <input
@@ -485,10 +475,6 @@ export function ThumbnailLab() {
           >
             Import catalogue / review
           </button>
-          <a className={button} href="/library/assets">
-            <Library size={14} />
-            Resources
-          </a>
           <a className={button} href="/api/labs/thumbnails/reviews">
             <Download size={14} />
             Export review

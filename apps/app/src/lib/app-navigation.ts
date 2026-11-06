@@ -1,13 +1,6 @@
-import {
-  BarChart3,
-  FlaskConical,
-  Handshake,
-  Library,
-  Radio,
-  Share2,
-  Telescope,
-} from 'lucide-react';
+import { BarChart3, Library, Radio, Telescope, Users } from 'lucide-react';
 
+/** The five rail apps. Each app's links are its sidebar. */
 export const PRODUCTION_APPS = [
   {
     href: '/content',
@@ -16,104 +9,78 @@ export const PRODUCTION_APPS = [
     label: 'Content',
     links: [
       { href: '/content', label: 'All content' },
-      {
-        href: '/content/livestreams',
-        label: 'Livestreams',
-        match: ['/livestreams'],
-      },
+      { href: '/content/livestreams', label: 'Livestreams' },
       { href: '/content/videos', label: 'Videos' },
       { href: '/content/shorts', label: 'Shorts' },
     ],
-    // Livestream prep pages stay under /livestreams/[slug] for now.
-    roots: ['/content', '/livestreams', '/artifacts'],
+    roots: ['/content', '/artifacts'],
   },
   {
     href: '/analytics',
     icon: BarChart3,
     id: 'analytics',
-    label: 'Channel analytics',
+    label: 'Analytics',
     links: [
       { href: '/analytics', label: 'Channels' },
-      { href: '/analytics/episodes', label: 'Episode performance' },
+      { href: '/analytics/episodes', label: 'Episodes' },
+      { href: '/analytics/socials', label: 'Socials' },
     ],
     roots: ['/analytics'],
   },
   {
-    href: '/socials',
-    icon: Share2,
-    id: 'socials',
-    label: 'Socials',
-    links: [
-      { href: '/socials', label: 'Social performance' },
-      { href: '/comments', label: 'YouTube comments' },
-    ],
-    roots: ['/socials', '/comments'],
-  },
-  {
-    href: '/partnerships',
-    icon: Handshake,
-    id: 'partnerships',
-    label: 'Partnerships',
-    links: [
-      { href: '/partnerships', label: 'Partnerships' },
-      { href: '/leads', label: 'Audience leads' },
-    ],
-    roots: ['/partnerships', '/leads'],
-  },
-  {
-    href: '/research',
-    icon: Telescope,
-    id: 'research',
-    label: 'Research',
-    links: [
-      { href: '/research', label: 'Source scanner' },
-      { href: '/topics', label: 'Topic backlog' },
-    ],
-    roots: ['/research', '/trends', '/topics'],
-  },
-  {
-    href: '/library',
+    href: '/library/thumbnails',
     icon: Library,
     id: 'library',
     label: 'Library',
     links: [
-      { href: '/library', label: 'Overview' },
-      { href: '/library/assets', label: 'Assets' },
-      { href: '/library/artifacts', label: 'Artifacts' },
       { href: '/library/thumbnails', label: 'Thumbnails' },
-      { href: '/library/covers', label: 'Covers' },
+      { href: '/library/titles', label: 'Titles' },
+      { href: '/library/covers', label: 'Shorts covers' },
       { href: '/library/transcripts', label: 'Transcripts' },
+      { href: '/library/artifacts', label: 'Artifacts' },
+      { href: '/library/assets', label: 'Assets' },
     ],
     roots: ['/library'],
   },
   {
-    href: '/labs',
-    icon: FlaskConical,
-    id: 'labs',
-    label: 'Labs',
+    href: '/prep/sources',
+    icon: Telescope,
+    id: 'prep',
+    label: 'Prep',
     links: [
-      { href: '/labs', label: 'Overview' },
-      { href: '/labs/thumbnails', label: 'Thumbnail Lab' },
-      { href: '/labs/titles', label: 'Titles Lab' },
+      { href: '/prep/sources', label: 'Sources' },
+      { href: '/prep/backlog', label: 'Backlog' },
     ],
-    roots: ['/labs'],
+    roots: ['/prep'],
+  },
+  {
+    href: '/audience/comments',
+    icon: Users,
+    id: 'audience',
+    label: 'Audience',
+    links: [
+      { href: '/audience/comments', label: 'Comments' },
+      { href: '/audience/leads', label: 'Leads' },
+    ],
+    roots: ['/audience'],
   },
 ] as const;
+
+/** Page route of one livestream's prep tab. */
+export function livestreamPath(slug: string, tab?: string): string {
+  const base = `/content/livestreams/${encodeURIComponent(slug)}`;
+  return tab ? `${base}/${tab}` : base;
+}
 
 export function isNavigationActive(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
-/** `match` lists other prefixes a link owns, such as a list's detail pages. */
 export function getActiveNavigationHref(
   pathname: string,
-  links: readonly { href: string; match?: readonly string[] }[],
+  links: readonly { href: string }[],
 ): string | undefined {
   return links
-    .filter((link) =>
-      [link.href, ...(link.match ?? [])].some((prefix) =>
-        isNavigationActive(pathname, prefix),
-      ),
-    )
+    .filter((link) => isNavigationActive(pathname, link.href))
     .sort((a, b) => b.href.length - a.href.length)[0]?.href;
 }
 export function getProductionApp(pathname: string) {
@@ -123,12 +90,13 @@ export function getProductionApp(pathname: string) {
 }
 export function getProductionPageLabel(pathname: string): string {
   if (pathname.endsWith('/draw')) return 'Drawing board';
-  if (pathname.includes('/livestreams/')) {
+  if (pathname.startsWith('/content/livestreams/')) {
     const tabs: Record<string, string> = {
       distribution: 'Distribution',
       resources: 'Resources',
       'talking-points': 'Talking points',
       transcript: 'Transcript',
+      tweets: 'Tweets',
       'x-posts': 'X posts',
     };
     return tabs[pathname.split('/').at(-1) ?? ''] ?? 'Livestream';

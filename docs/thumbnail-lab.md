@@ -1,6 +1,6 @@
 # Thumbnail Lab
 
-Producer-only workspace at /labs/thumbnails, with Labs in app navigation. It covers the channel's imported video and livestream catalogue, approvals, revision requests, version history, live/recap comparisons, JPEG downloads and new variation uploads.
+Producer-only page at /library/thumbnails (Library > Thumbnails; it was /labs/thumbnails until Labs merged into the Library). It covers the channel's imported video and livestream catalogue, approvals, revision requests, version history, live/recap comparisons, JPEG downloads and new variation uploads.
 
 ## Storage and access
 

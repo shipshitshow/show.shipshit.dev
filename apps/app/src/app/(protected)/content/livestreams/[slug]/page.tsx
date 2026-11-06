@@ -38,7 +38,9 @@ export async function generateMetadata({
     slug === UPCOMING_STREAM_SLUG
   ) {
     const defaults = buildDefaultMetadata();
-    const pageUrl = toAbsoluteUrl(`/livestreams/${encodeURIComponent(slug)}`);
+    const pageUrl = toAbsoluteUrl(
+      `/content/livestreams/${encodeURIComponent(slug)}`,
+    );
 
     return {
       ...defaults,
@@ -88,7 +90,7 @@ export async function generateMetadata({
     topic.content,
   );
   const pageUrl = toAbsoluteUrl(
-    `/livestreams/${encodeURIComponent(topic.slug)}?date=${encodeURIComponent(resolvedDate)}`,
+    `/content/livestreams/${encodeURIComponent(topic.slug)}?date=${encodeURIComponent(resolvedDate)}`,
   );
   const pageTitle = `${topic.title} — Ship Sh*t Show`;
 
@@ -136,20 +138,22 @@ export default async function TopicDetailPage({
 
   if (isDateSlug(slug)) {
     const canonicalPath = await resolveStreamPathForDate(slug);
-    if (canonicalPath !== `/livestreams/${encodeURIComponent(slug)}`) {
+    if (canonicalPath !== `/content/livestreams/${encodeURIComponent(slug)}`) {
       redirect(`${canonicalPath}/${tabSegment}`);
     }
-    redirect(`/livestreams/${encodeURIComponent(slug)}/${tabSegment}`);
+    redirect(`/content/livestreams/${encodeURIComponent(slug)}/${tabSegment}`);
   }
 
   if (slug === UPCOMING_STREAM_SLUG) {
-    redirect(`/livestreams/${UPCOMING_STREAM_SLUG}/${tabSegment}`);
+    redirect(`/content/livestreams/${UPCOMING_STREAM_SLUG}/${tabSegment}`);
   }
 
   if (isYouTubeVideoId(slug)) {
     const archive = await getLivestreamArchiveByVideoId(slug);
     if (archive) {
-      redirect(`/livestreams/${encodeURIComponent(slug)}/${tabSegment}`);
+      redirect(
+        `/content/livestreams/${encodeURIComponent(slug)}/${tabSegment}`,
+      );
     }
     notFound();
   }

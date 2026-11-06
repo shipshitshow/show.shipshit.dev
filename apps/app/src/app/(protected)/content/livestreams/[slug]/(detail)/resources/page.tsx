@@ -76,7 +76,7 @@ export async function generateMetadata({
   const pageTitle = `${streamTitle} — Resources · Ship Sh*t Show`;
   const description = 'Livestream prompts, links, tweets, and resources.';
   const pageUrl = toAbsoluteUrl(
-    `/livestreams/${encodeURIComponent(slug)}/resources`,
+    `/content/livestreams/${encodeURIComponent(slug)}/resources`,
   );
   const imageUrl = archive?.videoId
     ? await buildYouTubeThumbnailUrl(archive.videoId)
@@ -112,7 +112,7 @@ export default async function ResourcesPage({
 
   if (isDateSlug(slug)) {
     const canonicalPath = await resolveStreamPathForDate(slug);
-    if (canonicalPath !== `/livestreams/${encodeURIComponent(slug)}`) {
+    if (canonicalPath !== `/content/livestreams/${encodeURIComponent(slug)}`) {
       redirect(`${canonicalPath}/resources`);
     }
   }

@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
-import { StreamRundownPanel } from '@/components/livestreams/StreamRundownPanel';
+import { LinkedInMeasurementPanel } from '@/components/livestreams/LinkedInMeasurementPanel';
+import { StreamDistributionPanel } from '@/components/livestreams/StreamDistributionPanel';
+import { getEpisodeDistribution } from '@/lib/distribution-store';
+import { getEpisodeLinkedInMeasurement } from '@/lib/linkedin-measurement';
 import {
   isDateSlug,
   isYouTubeVideoId,
@@ -17,14 +20,13 @@ import {
   resolveLivestreamDate,
 } from '@/lib/livestreams-store';
 import {
-  buildCards,
-  getEffectiveStatus,
   getLivestreamTitle,
   getVisibleTopics,
   sortTopics,
 } from '@/lib/livestreams-ui';
 import { buildYouTubeThumbnailUrl } from '@/lib/livestreams-youtube';
 import { buildDefaultMetadata, toAbsoluteUrl } from '@/lib/site';
+import { isStorageWritable } from '@/lib/storage-capability-server';
 
 async function resolveDate(slug: string): Promise<string> {
   if (isDateSlug(slug)) return slug;
@@ -73,11 +75,11 @@ export async function generateMetadata({
     visibleTopics,
     archive?.title,
   );
-  const pageTitle = `${streamTitle} — Talking Points · Ship Sh*t Show`;
+  const pageTitle = `${streamTitle} — Distribution · Ship Sh*t Show`;
   const description =
-    'Livestream talking points and topic rundown for Ship Sh*t Show.';
+    'Published episode assets, URLs, UTM click-through, and manually recorded LinkedIn post metrics.';
   const pageUrl = toAbsoluteUrl(
-    `/livestreams/${encodeURIComponent(slug)}/talking-points`,
+    `/content/livestreams/${encodeURIComponent(slug)}/distribution`,
   );
   const imageUrl = archive?.videoId
     ? await buildYouTubeThumbnailUrl(archive.videoId)
@@ -104,7 +106,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function TalkingPointsPage({
+export default async function DistributionPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -113,28 +115,30 @@ export default async function TalkingPointsPage({
 
   if (isDateSlug(slug)) {
     const canonicalPath = await resolveStreamPathForDate(slug);
-    if (canonicalPath !== `/livestreams/${encodeURIComponent(slug)}`) {
-      redirect(`${canonicalPath}/talking-points`);
+    if (canonicalPath !== `/content/livestreams/${encodeURIComponent(slug)}`) {
+      redirect(`${canonicalPath}/distribution`);
     }
   }
 
-  const requestedDate = await resolveDate(slug);
-  const [topicDates, livestreams] = await Promise.all([
-    listAvailableLivestreamDates(),
-    listLivestreamArchive(),
+  const resolvedDate = await resolveFullDate(slug);
+  const [distribution, measurement] = await Promise.all([
+    getEpisodeDistribution(resolvedDate),
+    getEpisodeLinkedInMeasurement(resolvedDate),
   ]);
-  const availableDates = Array.from(
-    new Set([...topicDates, ...livestreams.map((item) => item.date)]),
-  ).sort((a, b) => b.localeCompare(a));
-  const resolvedDate = availableDates.includes(requestedDate)
-    ? requestedDate
-    : await resolveLivestreamDate(requestedDate);
 
-  const archive = await getLivestreamArchiveByDate(resolvedDate);
-  const topics = await getTopicsForArchive(archive, resolvedDate);
-  const visibleTopics = sortTopics(getVisibleTopics(topics, resolvedDate));
-  const effectiveStatus = getEffectiveStatus(resolvedDate);
-  const cards = await buildCards(visibleTopics, effectiveStatus);
+  const isWritable = isStorageWritable();
 
-  return <StreamRundownPanel cards={cards} />;
+  return (
+    <div className="space-y-8">
+      <StreamDistributionPanel
+        date={resolvedDate}
+        initialDistribution={distribution}
+        isWritable={isWritable}
+      />
+      <LinkedInMeasurementPanel
+        isWritable={isWritable}
+        measurement={measurement}
+      />
+    </div>
+  );
 }

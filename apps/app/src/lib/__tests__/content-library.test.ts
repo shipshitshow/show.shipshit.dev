@@ -13,7 +13,7 @@ import type { VideoStat } from '@/lib/video-stats';
 const repo: RepoContent[] = [
   {
     date: '2026-11-03',
-    href: '/livestreams/live1/talking-points',
+    href: '/content/livestreams/live1/talking-points',
     key: 'livestream:2026-11-03',
     title: 'Prep title',
     transcriptWords: 8500,
@@ -22,7 +22,7 @@ const repo: RepoContent[] = [
   },
   {
     date: '2026-11-10',
-    href: '/livestreams/2026-11-10/talking-points',
+    href: '/content/livestreams/2026-11-10/talking-points',
     key: 'livestream:2026-11-10',
     title: 'Next show',
     type: 'livestream',

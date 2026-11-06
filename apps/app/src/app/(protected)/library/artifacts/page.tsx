@@ -12,11 +12,7 @@ export const metadata: Metadata = {
 export default function LibraryArtifactsPage() {
   return (
     <main className="mx-auto max-w-5xl px-4 py-6 md:px-7">
-      <LibraryHeader
-        active="artifacts"
-        blurb="Timelines and tweet slideshows made to show during a livestream. Each has a public page with its sources."
-        title="Artifacts"
-      />
+      <LibraryHeader title="Artifacts" />
       <Link
         className="mt-6 inline-flex items-center gap-1 text-xs text-text-muted hover:text-text-primary"
         href="/artifacts"

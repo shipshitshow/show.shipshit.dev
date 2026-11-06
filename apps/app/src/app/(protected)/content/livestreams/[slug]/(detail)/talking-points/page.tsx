@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
-import { TranscriptPanel } from '@/components/livestreams/TranscriptPanel';
+import { StreamRundownPanel } from '@/components/livestreams/StreamRundownPanel';
 import {
   isDateSlug,
   isYouTubeVideoId,
@@ -17,6 +17,8 @@ import {
   resolveLivestreamDate,
 } from '@/lib/livestreams-store';
 import {
+  buildCards,
+  getEffectiveStatus,
   getLivestreamTitle,
   getVisibleTopics,
   sortTopics,
@@ -71,10 +73,11 @@ export async function generateMetadata({
     visibleTopics,
     archive?.title,
   );
-  const pageTitle = `${streamTitle} — Transcript · Ship Sh*t Show`;
-  const description = 'Livestream transcript for Ship Sh*t Show.';
+  const pageTitle = `${streamTitle} — Talking Points · Ship Sh*t Show`;
+  const description =
+    'Livestream talking points and topic rundown for Ship Sh*t Show.';
   const pageUrl = toAbsoluteUrl(
-    `/livestreams/${encodeURIComponent(slug)}/transcript`,
+    `/content/livestreams/${encodeURIComponent(slug)}/talking-points`,
   );
   const imageUrl = archive?.videoId
     ? await buildYouTubeThumbnailUrl(archive.videoId)
@@ -101,7 +104,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function TranscriptPage({
+export default async function TalkingPointsPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -110,8 +113,8 @@ export default async function TranscriptPage({
 
   if (isDateSlug(slug)) {
     const canonicalPath = await resolveStreamPathForDate(slug);
-    if (canonicalPath !== `/livestreams/${encodeURIComponent(slug)}`) {
-      redirect(`${canonicalPath}/transcript`);
+    if (canonicalPath !== `/content/livestreams/${encodeURIComponent(slug)}`) {
+      redirect(`${canonicalPath}/talking-points`);
     }
   }
 
@@ -130,12 +133,8 @@ export default async function TranscriptPage({
   const archive = await getLivestreamArchiveByDate(resolvedDate);
   const topics = await getTopicsForArchive(archive, resolvedDate);
   const visibleTopics = sortTopics(getVisibleTopics(topics, resolvedDate));
-  const title = getLivestreamTitle(resolvedDate, visibleTopics, archive?.title);
+  const effectiveStatus = getEffectiveStatus(resolvedDate);
+  const cards = await buildCards(visibleTopics, effectiveStatus);
 
-  return (
-    <TranscriptPanel
-      title={archive?.transcriptTitle ?? title}
-      transcript={archive?.transcript ?? null}
-    />
-  );
+  return <StreamRundownPanel cards={cards} />;
 }

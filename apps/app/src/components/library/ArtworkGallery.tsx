@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@shipshitshow/ui';
-import { Download, ExternalLink } from 'lucide-react';
+import { Download } from 'lucide-react';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import {
@@ -110,10 +110,9 @@ export function ArtworkGallery({
         )}
         <Link
           className="ml-auto inline-flex items-center gap-1 text-xs text-text-muted hover:text-text-primary"
-          href="/labs/thumbnails"
+          href="/library/thumbnails"
         >
-          Review in Thumbnail Lab
-          <ExternalLink size={11} />
+          Review in Thumbnails
         </Link>
       </div>
       {visible.length ? (

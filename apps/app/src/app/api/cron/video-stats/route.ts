@@ -15,8 +15,8 @@ function authorized(request: Request, secret: string): boolean {
 }
 
 /**
- * Daily refresh of the per-video views, likes and durations that /videos and
- * /livestreams show. Vercel Cron (apps/app/vercel.json) calls it with
+ * Daily refresh of the per-video views, likes and durations that the Content
+ * pages and the content agent use. Vercel Cron (apps/app/vercel.json) calls it with
  * `Authorization: Bearer $CRON_SECRET`. It is public to Clerk and guarded by
  * that secret alone, and it refuses every call while CRON_SECRET is unset.
  */

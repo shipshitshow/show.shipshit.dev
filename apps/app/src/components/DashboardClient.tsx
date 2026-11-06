@@ -236,11 +236,12 @@ export function DashboardClient({
       <div className="space-y-6">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
-            <h1 className="text-2xl font-semibold">Social performance</h1>
-            <p className="mt-2 max-w-2xl text-sm text-text-secondary">
-              Latest media totals across connected accounts. These are not
-              comparable period metrics or unique audience counts.
-            </p>
+            <h1
+              className="text-2xl font-semibold"
+              title="Latest media totals across connected accounts. Not comparable period metrics or unique audience counts."
+            >
+              Socials
+            </h1>
             {cachedAt && (
               <p className="mt-1 text-xs text-text-muted">
                 Last loaded {new Date(cachedAt).toLocaleString()}

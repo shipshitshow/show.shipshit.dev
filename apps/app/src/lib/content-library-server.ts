@@ -37,7 +37,7 @@ function nextDay(date: string): string {
 }
 
 const streamPath = (slug: string) =>
-  `/livestreams/${encodeURIComponent(slug)}/talking-points`;
+  `/content/livestreams/${encodeURIComponent(slug)}/talking-points`;
 const transcriptPath = (slug: string) =>
   `/library/transcripts/${encodeURIComponent(slug)}`;
 

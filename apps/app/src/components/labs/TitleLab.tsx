@@ -202,7 +202,7 @@ export function TitleLab() {
   if (!snapshot)
     return (
       <main className="mx-auto max-w-3xl px-6 py-10">
-        <h1 className="text-3xl font-semibold tracking-tight">Titles Lab</h1>
+        <h1 className="text-2xl font-semibold">Titles</h1>
         <p className="mt-3 text-sm text-text-secondary">
           No snapshot yet. Run <code>bun run youtube:sync</code> to read the
           live titles from YouTube (it only reads). On the deployed site, add{' '}
@@ -214,18 +214,13 @@ export function TitleLab() {
 
   const drafted = Object.keys(drafts).length;
   return (
-    <main className="mx-auto max-w-6xl px-6 py-10">
-      <p className="text-[10px] uppercase tracking-[.2em] text-text-muted">
-        Producer workspace
-      </p>
-      <h1 className="mt-2 text-3xl font-semibold tracking-tight">Titles Lab</h1>
-      <p className="mt-3 max-w-2xl text-sm text-text-secondary">
-        {snapshot.channelTitle}, read from YouTube{' '}
-        {snapshot.fetchedAt.slice(0, 16).replace('T', ' ')} UTC. A title must
-        fit one line on the home feed, phone included: aim for {TITLE_TARGET}{' '}
-        characters or fewer, never over {TITLE_LIMIT}. Drafts are saved by the
-        app; nothing here changes YouTube.
-      </p>
+    <main className="mx-auto max-w-6xl px-6 py-8">
+      <h1
+        className="text-2xl font-semibold"
+        title={`${snapshot.channelTitle}, read from YouTube ${snapshot.fetchedAt.slice(0, 16).replace('T', ' ')} UTC. Aim for ${TITLE_TARGET} characters or fewer, never over ${TITLE_LIMIT}. Nothing here changes YouTube.`}
+      >
+        Titles
+      </h1>
       <p className="mt-4 text-sm">
         {summary.ok} at {TITLE_TARGET} or fewer · {summary.long} at{' '}
         {TITLE_TARGET + 1}–{TITLE_LIMIT} · {summary.over} over {TITLE_LIMIT} ·{' '}
