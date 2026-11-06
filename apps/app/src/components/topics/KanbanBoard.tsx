@@ -1,7 +1,14 @@
 'use client';
 
 import type { Topic, TopicStatus } from '@shipshitshow/types';
-import { Button } from '@shipshitshow/ui';
+import {
+  Button,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@shipshitshow/ui';
 import { useCallback, useEffect, useState } from 'react';
 import { KanbanColumn } from './KanbanColumn';
 
@@ -117,18 +124,22 @@ export function KanbanBoard() {
         </div>
         <div className="flex items-center gap-3">
           {availableDates.length > 1 && (
-            <select
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-              className="h-8 rounded-md border border-surface-border bg-surface-card px-2 text-xs text-text-secondary"
-            >
-              <option value={ALL_DATES_VALUE}>All topics</option>
-              {availableDates.map((d) => (
-                <option key={d} value={d}>
-                  {d}
-                </option>
-              ))}
-            </select>
+            <Select value={date} onValueChange={setDate}>
+              <SelectTrigger
+                aria-label="Filter by date"
+                className="h-8 px-2 py-1 text-xs text-text-secondary"
+              >
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value={ALL_DATES_VALUE}>All topics</SelectItem>
+                {availableDates.map((d) => (
+                  <SelectItem key={d} value={d}>
+                    {d}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           )}
           <Button
             onClick={fetchTopics}

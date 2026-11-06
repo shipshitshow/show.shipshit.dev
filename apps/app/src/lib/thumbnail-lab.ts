@@ -262,7 +262,11 @@ export function currentThumbnail(item: ThumbnailItem): ThumbnailVersion {
   if (!version) throw new Error('Thumbnail version is missing.');
   return version;
 }
-export function revisionPrompt(item: ThumbnailItem, feedback: string): string {
+export function revisionPrompt(
+  item: ThumbnailItem,
+  feedback: string,
+  version: ThumbnailVersion = currentThumbnail(item),
+): string {
   const isShort = item.format === 'short';
   return [
     (isShort
@@ -289,7 +293,7 @@ export function revisionPrompt(item: ThumbnailItem, feedback: string): string {
       (item.format === 'video' ? 'white' : 'red') +
       ' signature at fixed geometry.',
     'Requested visual change: ' + feedback,
-    'Previous prompt: ' + currentThumbnail(item).prompt,
+    'Previous prompt: ' + version.prompt,
   ].join('\n\n');
 }
 export function applyThumbnailDecision(
@@ -298,14 +302,11 @@ export function applyThumbnailDecision(
   by: string,
   at: string,
 ): ThumbnailItem {
-  if (
-    item.revision !== decision.revision ||
-    item.currentVersionId !== decision.versionId
-  )
+  const version = item.versions.find((v) => v.id === decision.versionId);
+  if (item.revision !== decision.revision || !version)
     throw new ThumbnailConflict(
       'This thumbnail changed. Refresh before reviewing.',
     );
-  const version = currentThumbnail(item);
   if (decision.action === 'reopen') {
     if (version.review.status !== 'approved')
       throw new ThumbnailConflict('Only an approved version can be reopened.');
@@ -320,11 +321,14 @@ export function applyThumbnailDecision(
             at,
             by,
             feedback: decision.feedback,
-            prompt: revisionPrompt(item, decision.feedback),
+            prompt: revisionPrompt(item, decision.feedback, version),
             status: 'revise',
           };
   return {
     ...item,
+    // Approving a version makes it the one the channel uses.
+    currentVersionId:
+      decision.action === 'approve' ? version.id : item.currentVersionId,
     revision: item.revision + 1,
     updatedAt: at,
     versions: item.versions.map((v) =>
@@ -353,11 +357,15 @@ export function appendThumbnailVersion(
   };
 }
 export type ThumbnailScope = 'pending' | 'all' | 'approved' | 'revise';
+export function awaitingVersions(item: ThumbnailItem): ThumbnailVersion[] {
+  return item.versions.filter((v) => v.review.status === 'pending');
+}
 export function visibleThumbnail(
   item: ThumbnailItem,
   scope: ThumbnailScope,
 ): boolean {
   const status = currentThumbnail(item).review.status;
+  if (scope === 'pending' && awaitingVersions(item).length) return true;
   return scope === 'all' || status === scope;
 }
 export function thumbnailAssetUrl(
