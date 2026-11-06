@@ -10,7 +10,8 @@ When a rule changes, change it at its source, not here.
 | Which takes become Shorts (hot takes, never features) | [product marketing context](../../.agents/memory/product-marketing-context.md) |
 | Shorts and recap edit style (locked 5 Nov 2026) | [edit-style.md](edit-style.md) |
 | Asterisk asset, colour, size and position for every format | [vault brand/placement.md](https://github.com/shipshitshow/vault/blob/master/brand/placement.md) |
-| Thumbnail art and covers | `skills/thumbnails` (art not locked yet, see "Open" below) |
+| Thumbnail art and covers (locked 6 Nov 2026) | `skills/thumbnails` and the channel profile in `shipshitshow/skills` |
+| Titles: one line on the home feed (locked 6 Nov 2026) | channel profile in `shipshitshow/skills` (`$metadata`) |
 | Editing workspace layout | [editing/README.md](../../editing/README.md) |
 | Asterisk stamp on thumbnails | `bun run thumbnail:stamp` (reads the placement table) |
 | Shorts render | `editing/scripts/shorts/` (locked template) |
@@ -86,7 +87,9 @@ public. Nothing else waits on him.
 ## 6. Metadata and private upload
 
 1. Write the title, description and chapters with `$metadata`
-   (`bun run youtube:metadata`). Use first-person show voice.
+   (`bun run youtube:metadata`). Use first-person show voice. The title fits one
+   line on the home feed, phone included: 40 characters or fewer, 45 at most.
+   Spell-check it before upload.
 2. Run `bun run youtube:upload --file <video> --meta <meta.json> --channel
    main|clips --dry-run`, then run the same command without `--dry-run`.
    Uploads go up private. The recap goes to main, the Shorts to clips.
@@ -105,10 +108,7 @@ public. Nothing else waits on him.
 3. After 7 days, compare views against the inventory median
    ([growth checklist](growth-checklist.md)).
 
-## Open (5 Nov 2026)
+## Open (6 Nov 2026)
 
-- **Thumbnail art:** the current direction is photoreal, no text and famous
-  faces only (never the hosts). Not locked yet. Rewrite `skills/thumbnails`
-  once it is.
 - **Edited-video watermark over screen shares:** proposed in placement.md, not
   confirmed.
