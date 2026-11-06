@@ -2,7 +2,11 @@ import { Badge, cn } from '@shipshitshow/ui';
 import { ThumbsUp } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import type { ContentItem, ContentType } from '@/lib/content-library';
+import {
+  type ContentItem,
+  type ContentType,
+  OUTLIER_THRESHOLD,
+} from '@/lib/content-library';
 import { formatNumber } from '@/lib/format';
 import { formatLivestreamDate } from '@/lib/livestreams-ui';
 import { formatCount, formatDuration } from '@/lib/video-stats';
@@ -11,6 +15,12 @@ const KIND: Record<ContentType, string> = {
   livestream: 'Live',
   short: 'Short',
   video: 'Video',
+};
+
+const PLURAL: Record<ContentType, string> = {
+  livestream: 'livestreams',
+  short: 'Shorts',
+  video: 'videos',
 };
 
 function ScoreChip({ score }: { score: number }) {
@@ -121,6 +131,18 @@ export function ContentCard({ item }: { item: ContentItem }) {
             <span>
               {formatCount(stat.views)} {stat.views === 1 ? 'view' : 'views'}
             </span>
+            {item.outlier !== undefined ? (
+              <span
+                title={`${item.outlier}x the median views of this channel's ${PLURAL[item.type]}`}
+                className={cn(
+                  item.outlier >= OUTLIER_THRESHOLD
+                    ? 'rounded-full border border-green-500/20 bg-green-500/10 px-1.5 font-semibold text-green-400'
+                    : undefined,
+                )}
+              >
+                {item.outlier}x
+              </span>
+            ) : null}
             {stat.likes !== undefined ? (
               <span
                 className="inline-flex items-center gap-1"

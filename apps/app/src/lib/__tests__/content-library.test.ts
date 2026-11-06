@@ -151,3 +151,40 @@ describe('filter links', () => {
     expect(parseChannel('nope')).toBe('all');
   });
 });
+
+describe('outliers', () => {
+  const video = (id: string, views: number, privacy = 'public') => ({
+    [id]: { channel: 'main', durationSeconds: 600, privacy, views },
+  });
+  const items = buildContentItems([], {
+    ...video('a', 100),
+    ...video('b', 120),
+    ...video('c', 80),
+    ...video('d', 500),
+    ...video('hidden', 9000, 'private'),
+    s1: { channel: 'clips', durationSeconds: 40, views: 50 },
+  });
+  const score = (key: string) =>
+    items.find((item) => item.key === key)?.outlier;
+
+  test('compares views with the median of the same channel and type', () => {
+    // Median of 80, 100, 120 and 500 is 110.
+    expect(score('d')).toBe(4.5);
+    expect(score('a')).toBe(0.9);
+  });
+
+  test('skips private uploads and groups too small to judge', () => {
+    expect(score('hidden')).toBeUndefined();
+    expect(score('s1')).toBeUndefined();
+  });
+
+  test('sorts by the score', () => {
+    const sorted = filterContent(items, {
+      channel: 'all',
+      missing: false,
+      sort: 'outliers',
+    });
+    expect(sorted[0].key).toBe('d');
+    expect(sorted.at(-1)?.outlier).toBeUndefined();
+  });
+});

@@ -174,25 +174,31 @@ export function formatAge(iso: string, now: Date = new Date()): string {
   return 'just now';
 }
 
-export type VideoSort = 'latest' | 'popular' | 'oldest';
+export type VideoSort = 'latest' | 'popular' | 'outliers' | 'oldest';
 export const VIDEO_SORTS: Array<{ id: VideoSort; label: string }> = [
   { id: 'latest', label: 'Latest' },
   { id: 'popular', label: 'Popular' },
+  { id: 'outliers', label: 'Outliers' },
   { id: 'oldest', label: 'Oldest' },
 ];
 
 export function parseSort(value: string | undefined): VideoSort {
-  return value === 'popular' || value === 'oldest' ? value : 'latest';
+  return value === 'popular' || value === 'outliers' || value === 'oldest'
+    ? value
+    : 'latest';
 }
 
-/** Sorts a copy. Videos without numbers go last under "popular". */
-export function sortVideos<T extends { date: string; views?: number }>(
-  videos: T[],
-  sort: VideoSort,
-): T[] {
+/** Sorts a copy. Videos without numbers go last under "popular" and "outliers". */
+export function sortVideos<
+  T extends { date: string; outlier?: number; views?: number },
+>(videos: T[], sort: VideoSort): T[] {
   const byDate = (a: T, b: T) => b.date.localeCompare(a.date);
   const copy = [...videos];
   if (sort === 'oldest') return copy.sort((a, b) => -byDate(a, b));
+  if (sort === 'outliers')
+    return copy.sort(
+      (a, b) => (b.outlier ?? -1) - (a.outlier ?? -1) || byDate(a, b),
+    );
   if (sort === 'popular')
     return copy.sort(
       (a, b) => (b.views ?? -1) - (a.views ?? -1) || byDate(a, b),

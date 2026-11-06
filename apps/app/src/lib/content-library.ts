@@ -38,6 +38,11 @@ export interface ContentItem {
   external: boolean;
   href: string;
   key: string;
+  /**
+   * Views divided by the median views of the same channel and type: 3 means
+   * three times what that kind of upload usually gets. Public uploads only.
+   */
+  outlier?: number;
   stat?: VideoStat;
   thumbnailUrl: string;
   title: string;
@@ -124,7 +129,43 @@ export function buildContentItems(
       views: stat.views,
     });
   }
+  scoreOutliers(items);
   return items;
+}
+
+/** A typical upload needs this many peers before a score means anything. */
+const OUTLIER_MIN_PEERS = 3;
+/** From this ratio up, a card marks the upload as an outlier. */
+export const OUTLIER_THRESHOLD = 2;
+
+function median(values: number[]): number {
+  const sorted = [...values].sort((a, b) => a - b);
+  const middle = Math.floor(sorted.length / 2);
+  return sorted.length % 2
+    ? sorted[middle]
+    : (sorted[middle - 1] + sorted[middle]) / 2;
+}
+
+/**
+ * Sets `outlier` on every public upload with numbers, against the median of
+ * its own channel and type, so a Short is compared with Shorts and a stream
+ * with streams. New uploads score low until their views catch up.
+ */
+function scoreOutliers(items: ContentItem[]) {
+  const groups = new Map<string, ContentItem[]>();
+  for (const item of items) {
+    if (!item.stat || item.upcoming) continue;
+    if (item.stat.privacy && item.stat.privacy !== 'public') continue;
+    const key = `${item.channel}:${item.type}`;
+    groups.set(key, [...(groups.get(key) ?? []), item]);
+  }
+  for (const group of groups.values()) {
+    if (group.length < OUTLIER_MIN_PEERS) continue;
+    const typical = median(group.map((item) => item.stat?.views ?? 0));
+    if (typical <= 0) continue;
+    for (const item of group)
+      item.outlier = Math.round(((item.stat?.views ?? 0) / typical) * 10) / 10;
+  }
 }
 
 export interface ContentFilters {
