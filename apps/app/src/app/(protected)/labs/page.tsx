@@ -45,12 +45,12 @@ export default function LabsPage() {
           <ArrowUpRight size={18} />
         </Link>
         <Link
-          href="/labs/thumbnails/resources"
+          href="/library/assets"
           className="flex max-w-xl items-start gap-4 rounded-2xl border border-surface-border bg-surface-elevated/30 p-6 transition-colors hover:border-accent-red/50"
         >
           <Library className="mt-1 text-accent-red" size={24} />
           <div className="flex-1">
-            <h2 className="text-lg font-semibold">Thumbnail Resources</h2>
+            <h2 className="text-lg font-semibold">Library assets</h2>
             <p className="mt-2 text-sm leading-6 text-text-muted">
               The logos, people, products and branding that thumbnail renders
               draw on.

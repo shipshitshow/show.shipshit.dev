@@ -3,6 +3,7 @@ import {
   FlaskConical,
   Handshake,
   Home,
+  Library,
   Radio,
   Share2,
   Telescope,
@@ -27,7 +28,6 @@ export const PRODUCTION_APPS = [
     links: [
       { href: '/livestreams', label: 'Livestreams' },
       { href: '/videos', label: 'Edited videos' },
-      { href: '/artifacts', label: 'Artifacts library' },
     ],
     roots: [
       '/livestreams',
@@ -84,6 +84,21 @@ export const PRODUCTION_APPS = [
       { href: '/topics', label: 'Topic backlog' },
     ],
     roots: ['/research', '/trends', '/topics'],
+  },
+  {
+    group: 'more',
+    href: '/library',
+    icon: Library,
+    id: 'library',
+    label: 'Library',
+    links: [
+      { href: '/library', label: 'Overview' },
+      { href: '/library/assets', label: 'Assets' },
+      { href: '/library/artifacts', label: 'Artifacts' },
+      { href: '/library/thumbnails', label: 'Thumbnails' },
+      { href: '/library/covers', label: 'Covers' },
+    ],
+    roots: ['/library'],
   },
   {
     group: 'more',

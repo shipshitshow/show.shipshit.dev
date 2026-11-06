@@ -12,7 +12,10 @@ export async function GET() {
   if (!producer.ok) return producer.response;
   try {
     return NextResponse.json(
-      { resources: await listThumbnailResources() },
+      {
+        resources: await listThumbnailResources(),
+        writable: !process.env.VERCEL,
+      },
       { headers: thumbnailHeaders },
     );
   } catch (error) {

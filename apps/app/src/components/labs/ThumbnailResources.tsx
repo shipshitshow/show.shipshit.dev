@@ -1,8 +1,8 @@
 'use client';
 
-import { ArrowLeft, ExternalLink, ImagePlus } from 'lucide-react';
-import Link from 'next/link';
+import { ExternalLink, ImagePlus } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { LibraryHeader } from '@/components/library/LibraryHeader';
 import {
   RESOURCE_CATEGORIES,
   RESOURCE_MAX_BYTES,
@@ -84,11 +84,13 @@ function ResourceSection({
   category,
   onAdd,
   resources,
+  writable,
 }: {
   busy: boolean;
   category: ResourceCategory;
   onAdd: (category: ResourceCategory, files: File[]) => void;
   resources: ThumbnailResource[];
+  writable: boolean;
 }) {
   const input = useRef<HTMLInputElement>(null);
   const { blurb, title } = SECTIONS[category];
@@ -104,27 +106,31 @@ function ResourceSection({
           </h2>
           <p className="mt-1 text-xs text-text-muted">{blurb}</p>
         </div>
-        <input
-          accept="image/png,image/jpeg,image/webp"
-          aria-label={'Add to ' + title}
-          className="hidden"
-          multiple
-          onChange={(event) => {
-            onAdd(category, Array.from(event.target.files ?? []));
-            event.target.value = '';
-          }}
-          ref={input}
-          type="file"
-        />
-        <button
-          className={button}
-          disabled={busy}
-          onClick={() => input.current?.click()}
-          type="button"
-        >
-          <ImagePlus size={14} />
-          Add
-        </button>
+        {writable ? (
+          <>
+            <input
+              accept="image/png,image/jpeg,image/webp"
+              aria-label={'Add to ' + title}
+              className="hidden"
+              multiple
+              onChange={(event) => {
+                onAdd(category, Array.from(event.target.files ?? []));
+                event.target.value = '';
+              }}
+              ref={input}
+              type="file"
+            />
+            <button
+              className={button}
+              disabled={busy}
+              onClick={() => input.current?.click()}
+              type="button"
+            >
+              <ImagePlus size={14} />
+              Add
+            </button>
+          </>
+        ) : null}
       </div>
       <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
         {resources.map((resource) => (
@@ -139,6 +145,7 @@ function ResourceSection({
 }
 export function ThumbnailResources() {
   const [resources, setResources] = useState<ThumbnailResource[] | null>(null);
+  const [writable, setWritable] = useState(true);
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
   const load = useCallback(async () => {
@@ -148,6 +155,7 @@ export function ThumbnailResources() {
     if (!response.ok) throw new Error(await responseError(response));
     const body = await response.json();
     setResources(body.resources);
+    setWritable(body.writable !== false);
   }, []);
   useEffect(() => {
     load().catch((failure: Error) => setError(failure.message));
@@ -183,18 +191,17 @@ export function ThumbnailResources() {
   );
   return (
     <main className="mx-auto max-w-[1800px] px-4 py-6 md:px-7">
-      <Link
-        className="inline-flex items-center gap-1 text-xs text-text-muted hover:text-text-primary"
-        href="/labs/thumbnails"
-      >
-        <ArrowLeft size={12} />
-        Thumbnail Lab
-      </Link>
-      <h1 className="mt-3 text-2xl font-semibold">Resources</h1>
-      <p className="mt-2 max-w-2xl text-sm leading-6 text-text-muted">
-        The inputs for thumbnail renders. These files stay on this machine and
-        are never committed or uploaded.
-      </p>
+      <LibraryHeader
+        active="assets"
+        blurb="Logos, people, products and branding that thumbnail renders draw on. These files stay on the producer's machine and are never committed or uploaded."
+        title="Assets"
+      />
+      {writable ? null : (
+        <p className="mt-4 text-sm text-text-muted">
+          Assets live on the local lab, so this deployment shows only what the
+          manifest lists. Add and review them from a local run.
+        </p>
+      )}
       {error ? (
         <p className="mt-4 text-sm text-accent-red" role="alert">
           {error}
@@ -210,6 +217,7 @@ export function ThumbnailResources() {
               category={category}
               key={category}
               onAdd={add}
+              writable={writable}
               resources={resources.filter(
                 (resource) => resource.category === category,
               )}
