@@ -1,4 +1,8 @@
-import { currentThumbnail, type ThumbnailItem } from './thumbnail-lab';
+import {
+  currentThumbnail,
+  isThumbnailKind,
+  type ThumbnailItem,
+} from './thumbnail-lab';
 
 export const LIBRARY_SECTIONS = [
   {
@@ -49,6 +53,7 @@ export function itemsForGallery(
   kind: GalleryKind,
 ): ThumbnailItem[] {
   return items
+    .filter(isThumbnailKind)
     .filter((item) => (kind === 'covers') === (item.format === 'short'))
     .sort((a, b) => a.position - b.position);
 }

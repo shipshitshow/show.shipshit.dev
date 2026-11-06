@@ -1,7 +1,12 @@
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import sharp from 'sharp';
-import type { ThumbnailItem, ThumbnailVersion } from '../lib/thumbnail-lab';
+import {
+  isThumbnailKind,
+  kindOf,
+  type ThumbnailItem,
+  type ThumbnailVersion,
+} from '../lib/thumbnail-lab';
 import {
   assetDirectory,
   readLocalThumbnailAsset,
@@ -77,6 +82,14 @@ const confirmedLive: Array<{ id: string; assetHash: string }> = [];
 
 for (const item of await listThumbnailItems()) {
   if (only && item.id !== only) continue;
+  if (!isThumbnailKind(item)) {
+    changes.push({
+      detail: `${kindOf(item)} is not a video thumbnail`,
+      id: item.id,
+      kind: 'skipped',
+    });
+    continue;
+  }
   if (item.format === 'short') {
     changes.push({
       detail: 'Shorts are skipped',

@@ -27,8 +27,11 @@ import {
   awaitingVersions,
   currentThumbnail,
   isThumbnailItem,
+  itemsOfKind,
   paginate,
+  THUMBNAIL_KINDS,
   type ThumbnailItem,
+  type ThumbnailKind,
   type ThumbnailScope,
   type ThumbnailVersion,
   thumbnailAssetUrl,
@@ -52,6 +55,11 @@ const STATUS_LABELS = {
   rejected: 'Rejected',
   revise: 'Revision requested',
 } as const;
+const KIND_LABELS: Record<ThumbnailKind, string> = {
+  banner: 'Banner',
+  pfp: 'PFP',
+  thumbnail: 'Thumbnails',
+};
 const FORMAT_LABELS: Record<ThumbnailItem['format'], string> = {
   live: 'Livestream',
   short: 'Short',
@@ -100,6 +108,7 @@ export function ThumbnailLab() {
     [error, setError] = useState(''),
     [notice, setNotice] = useState(''),
     [scope, setScope] = useState<ThumbnailScope>('pending'),
+    [kind, setKind] = useState<ThumbnailKind>('thumbnail'),
     [page, setPage] = useState(1),
     [search, setSearch] = useState('');
   const [activeId, setActiveId] = useState<string | null>(null),
@@ -384,9 +393,10 @@ export function ThumbnailLab() {
       if (importFile.current) importFile.current.value = '';
     }
   }
-  const awaitingCount = awaitingItems(items).length;
+  const kindItems = itemsOfKind(items, kind);
+  const awaitingCount = awaitingItems(kindItems).length;
   // One entry per video. The list arrives newest publish date first.
-  const visible = items.filter(
+  const visible = kindItems.filter(
     (item) =>
       visibleThumbnail(item, scope) &&
       (!search.trim() ||
@@ -397,6 +407,9 @@ export function ThumbnailLab() {
   const paged = paginate(visible, page);
   const button =
     'inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-surface-border px-3 py-2 text-xs transition-colors hover:bg-surface-elevated disabled:cursor-not-allowed disabled:opacity-40';
+  // Card actions share a row of three equal columns, so they must never size
+  // from their content or they overflow a narrow card.
+  const cardAction = button.replace(' px-3 ', ' px-1.5 ') + ' min-w-0 gap-1.5';
   const activeIndex = visible.findIndex((row) => row.id === activeId);
   function go(step: number) {
     const target = activeIndex < 0 ? undefined : visible[activeIndex + step];
@@ -513,6 +526,26 @@ export function ThumbnailLab() {
               }
             >
               {tab === 'pending' ? 'To review' : 'All'}
+            </button>
+          ))}
+        </nav>
+        <nav className="flex gap-1" aria-label="Asset type">
+          {THUMBNAIL_KINDS.map((tab) => (
+            <button
+              key={tab}
+              onClick={() => {
+                setKind(tab);
+                setPage(1);
+              }}
+              aria-pressed={kind === tab}
+              className={
+                'min-h-9 rounded-lg px-3 text-xs ' +
+                (kind === tab
+                  ? 'bg-text-primary text-surface'
+                  : 'bg-surface-elevated text-text-secondary')
+              }
+            >
+              {KIND_LABELS[tab]}
             </button>
           ))}
         </nav>
@@ -647,11 +680,11 @@ export function ThumbnailLab() {
       {!visible.length && (
         <div className="py-20 text-center">
           <p className="text-lg font-medium">
-            {items.length
+            {kindItems.length
               ? scope === 'pending'
                 ? 'Nothing is waiting for review.'
-                : 'No thumbnails match.'
-              : 'No thumbnails imported yet.'}
+                : `No ${KIND_LABELS[kind].toLowerCase()} match.`
+              : `No ${KIND_LABELS[kind].toLowerCase()} imported yet.`}
           </p>
         </div>
       )}
@@ -826,9 +859,9 @@ export function ThumbnailLab() {
                               ? ' · current'
                               : ''}
                           </p>
-                          <div className="mt-2 flex gap-2">
+                          <div className="mt-2 grid grid-cols-3 gap-1.5">
                             <button
-                              className={button + ' flex-1 text-emerald-400'}
+                              className={cardAction + ' text-emerald-400'}
                               disabled={!capabilities.writable || !!busy}
                               onClick={() => decide(active, v, 'approve')}
                             >
@@ -836,7 +869,7 @@ export function ThumbnailLab() {
                               Approve
                             </button>
                             <button
-                              className={button + ' flex-1'}
+                              className={cardAction}
                               disabled={!capabilities.writable || !!busy}
                               onClick={() => {
                                 selectVersion(active, v.id);
@@ -846,7 +879,7 @@ export function ThumbnailLab() {
                               Revise…
                             </button>
                             <button
-                              className={button}
+                              className={cardAction}
                               disabled={!capabilities.writable || !!busy}
                               onClick={() => decide(active, v, 'reject')}
                               aria-label={'Reject ' + versionLabel(active, v)}

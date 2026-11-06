@@ -82,7 +82,9 @@ import { dirname, extname, resolve } from 'node:path';
 import {
   currentThumbnail,
   isThumbnailItem,
+  isThumbnailKind,
   isVideoId,
+  kindOf,
   type ThumbnailItem,
 } from '../apps/app/src/lib/thumbnail-lab.ts';
 import { snapshotDirectory } from './youtube-sync.ts';
@@ -635,6 +637,10 @@ export function selectLabChanges(
   for (const item of items) {
     if (ids && !ids.includes(item.id)) continue;
     const skip = (reason: string) => skipped.push({ id: item.id, reason });
+    if (!isThumbnailKind(item)) {
+      skip(kindOf(item));
+      continue;
+    }
     if (item.format === 'short' && !includeShorts) {
       skip('short');
       continue;
