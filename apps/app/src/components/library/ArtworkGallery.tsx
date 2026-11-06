@@ -8,12 +8,12 @@ import {
   filterGallery,
   type GalleryKind,
   type ReviewFilter,
-  reviewCounts,
   reviewStatus,
   thumbnailDownloadUrl,
 } from '@/lib/library';
 import {
   currentThumbnail,
+  paginate,
   type ThumbnailItem,
   thumbnailAssetUrl,
 } from '@/lib/thumbnail-lab';
@@ -30,6 +30,18 @@ const FORMAT_LABELS: Record<ThumbnailItem['format'], string> = {
   short: 'Short',
   video: 'Video',
 };
+// Three views are enough: the rest (revise, rejected) live in the Thumbnail Lab.
+type View = 'all' | 'approved' | 'todo';
+const VIEWS: { id: View; label: string }[] = [
+  { id: 'approved', label: 'Approved' },
+  { id: 'todo', label: 'To review' },
+  { id: 'all', label: 'All' },
+];
+const inView = (item: ThumbnailItem, view: View) =>
+  view === 'all' ||
+  (view === 'approved'
+    ? reviewStatus(item) === 'approved'
+    : reviewStatus(item) === 'pending' || reviewStatus(item) === 'revise');
 const chip = (active: boolean) =>
   cn(
     'rounded-full border px-3 py-1 text-xs font-medium transition-colors',
@@ -45,47 +57,56 @@ export function ArtworkGallery({
   items: ThumbnailItem[];
   kind: GalleryKind;
 }) {
-  const [review, setReview] = useState<ReviewFilter>('all');
+  const [view, setView] = useState<View>('approved');
   const [format, setFormat] = useState<'' | 'video' | 'live'>('');
+  const [page, setPage] = useState(1);
   const portrait = kind === 'covers';
-  const counts = useMemo(() => reviewCounts(items), [items]);
-  const visible = useMemo(
-    () => filterGallery(items, { format, review }),
-    [format, items, review],
+  const counts = useMemo(
+    () => ({
+      all: items.length,
+      approved: items.filter((i) => inView(i, 'approved')).length,
+      todo: items.filter((i) => inView(i, 'todo')).length,
+    }),
+    [items],
   );
+  const filtered = useMemo(
+    () => filterGallery(items, { format }).filter((i) => inView(i, view)),
+    [format, items, view],
+  );
+  const paged = paginate(filtered, page);
+  const visible = paged.items;
   return (
     <div className="mt-6">
       <div className="flex flex-wrap items-center gap-2">
-        {(Object.keys(REVIEW_LABELS) as ReviewFilter[]).map((value) => (
+        {VIEWS.map(({ id, label }) => (
           <button
-            aria-pressed={review === value}
-            className={chip(review === value)}
-            key={value}
-            onClick={() => setReview(value)}
+            aria-pressed={view === id}
+            className={chip(view === id)}
+            key={id}
+            onClick={() => {
+              setView(id);
+              setPage(1);
+            }}
             type="button"
           >
-            {REVIEW_LABELS[value]}
-            <span className="ml-1.5 text-text-muted">{counts[value]}</span>
+            {label}
+            <span className="ml-1.5 text-text-muted">{counts[id]}</span>
           </button>
         ))}
         {portrait ? null : (
-          <>
-            <span
-              aria-hidden="true"
-              className="mx-1 h-4 w-px bg-surface-border"
-            />
-            {(['', 'video', 'live'] as const).map((value) => (
-              <button
-                aria-pressed={format === value}
-                className={chip(format === value)}
-                key={value || 'all'}
-                onClick={() => setFormat(value)}
-                type="button"
-              >
-                {value ? FORMAT_LABELS[value] : 'Any format'}
-              </button>
-            ))}
-          </>
+          <select
+            aria-label="Format"
+            className="rounded-full border border-surface-border bg-transparent px-3 py-1 text-xs text-text-muted"
+            onChange={(e) => {
+              setFormat(e.target.value as '' | 'video' | 'live');
+              setPage(1);
+            }}
+            value={format}
+          >
+            <option value="">Any format</option>
+            <option value="video">Video</option>
+            <option value="live">Livestream</option>
+          </select>
         )}
         <Link
           className="ml-auto inline-flex items-center gap-1 text-xs text-text-muted hover:text-text-primary"
@@ -141,6 +162,32 @@ export function ArtworkGallery({
               ? 'No Short covers imported yet.'
               : 'No thumbnails imported yet.'}
         </p>
+      )}
+      {paged.pageCount > 1 && (
+        <nav
+          aria-label="Pages"
+          className="mt-8 flex items-center justify-center gap-3 text-xs"
+        >
+          <button
+            className={chip(false)}
+            disabled={paged.page <= 1}
+            onClick={() => setPage(paged.page - 1)}
+            type="button"
+          >
+            Previous
+          </button>
+          <span className="tabular-nums text-text-muted">
+            Page {paged.page} of {paged.pageCount}
+          </span>
+          <button
+            className={chip(false)}
+            disabled={paged.page >= paged.pageCount}
+            onClick={() => setPage(paged.page + 1)}
+            type="button"
+          >
+            Next
+          </button>
+        </nav>
       )}
     </div>
   );
