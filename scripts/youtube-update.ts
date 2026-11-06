@@ -2,7 +2,12 @@
 /**
  * Update the thumbnail and metadata of videos that are already on YouTube.
  * Nothing is written without --apply. Without it, the script reads each video
- * and prints what would change.
+ * and prints what would change. Only the fields you name are touched.
+ *
+ * Before the first write, run `bun run youtube:sync` to snapshot the channel.
+ * Every --apply also saves the old values of what it changes to
+ * backups/<timestamp>.json in the snapshot folder, as a batch file that puts
+ * them back: `bun run youtube:update --batch <that file> --apply`.
  *
  * One video:
  *   bun run youtube:update <videoId> --title "New title" --thumbnail thumb.jpg
@@ -11,8 +16,9 @@
  * Several videos, from a JSON array of changes:
  *   bun run youtube:update --batch updates.json --apply
  *
- * Everything approved in the Thumbnail Lab that YouTube doesn't have yet:
+ * Thumbnails approved in the Thumbnail Lab that YouTube doesn't have yet:
  *   bun run youtube:update --from-lab --apply
+ *   bun run youtube:update --from-lab --with-titles --apply   (titles too)
  *
  * Changes:
  *   --title <text>                     Up to 100 characters
@@ -37,6 +43,8 @@
  *   --confirm-public   Allow a change that makes a video public or schedules it
  *   --channel <name>   main (default) or clips
  *   --id <a,b>         With --from-lab: only these videos
+ *   --with-titles      With --from-lab: also send the lab titles. Without it
+ *                      the lab never changes a live title
  *   --include-shorts   With --from-lab: include Shorts, skipped by default
  *   --force            With --from-lab: send items the ledger says are synced
  *   --help             Show this help
@@ -47,8 +55,9 @@
  * A thumbnail path is relative to the batch file.
  *
  * --from-lab reads apps/app/data/thumbnail-lab (or THUMBNAIL_LAB_DIR), sends
- * only the title and the current version of approved items, and records what
- * it sent in youtube-sync.json there, so a second run sends nothing new.
+ * only the current thumbnail of approved items (and their title with
+ * --with-titles), and records what it sent in youtube-sync.json there, so a
+ * second run sends nothing new.
  *
  * Auth is the same as youtube-upload.ts: YOUTUBE_CLIENT_ID,
  * YOUTUBE_CLIENT_SECRET, and a refresh token from YOUTUBE_REFRESH_TOKEN_MAIN /
@@ -63,6 +72,7 @@
 
 import {
   existsSync,
+  mkdirSync,
   readFileSync,
   renameSync,
   statSync,
@@ -75,6 +85,7 @@ import {
   isVideoId,
   type ThumbnailItem,
 } from '../apps/app/src/lib/thumbnail-lab.ts';
+import { snapshotDirectory } from './youtube-sync.ts';
 import {
   type Channel,
   fail,
@@ -142,7 +153,7 @@ export type Plan = {
   status: YouTubeStatus;
 };
 
-export type SyncRecord = { assetHash: string; at: string; title: string };
+export type SyncRecord = { assetHash?: string; at: string; title?: string };
 export type SyncLedger = Record<string, SyncRecord>;
 export type QueuedChange = {
   change: VideoChange;
@@ -160,6 +171,7 @@ export type Options = {
   ids?: string[];
   includeShorts: boolean;
   offline: boolean;
+  withTitles: boolean;
 };
 
 export class YouTubeError extends Error {
@@ -290,6 +302,50 @@ export function needsPublicConfirmation(
   );
 }
 
+/**
+ * The old values of what a plan changes, as a batch entry that puts them back.
+ * A thumbnail can't be restored this way; the sync snapshot keeps its URL.
+ */
+export function restoreEntry(
+  video: YouTubeVideo,
+  id: string,
+  plan: Plan,
+  now = new Date(),
+): VideoChange {
+  const { snippet, status } = video;
+  const entry: VideoChange = { id };
+  if (plan.parts.includes('snippet')) {
+    Object.assign(
+      entry,
+      defined({
+        categoryId: snippet.categoryId,
+        defaultAudioLanguage: snippet.defaultAudioLanguage,
+        defaultLanguage: snippet.defaultLanguage,
+        description: snippet.description,
+        tags: snippet.tags ?? [],
+        title: snippet.title,
+      }),
+    );
+  }
+  if (plan.parts.includes('status')) {
+    const scheduled =
+      status.publishAt && Date.parse(status.publishAt) > now.getTime();
+    Object.assign(
+      entry,
+      defined({
+        embeddable: status.embeddable,
+        license: status.license as License | undefined,
+        madeForKids: status.selfDeclaredMadeForKids,
+        privacy: scheduled ? undefined : status.privacyStatus,
+        publicStats: status.publicStatsViewable,
+        publishAt: scheduled ? status.publishAt : undefined,
+        syntheticMedia: status.containsSyntheticMedia,
+      }),
+    );
+  }
+  return entry;
+}
+
 function tagCharacters(tags: string[]) {
   const quoted = tags.map((tag) => tag.length + (tag.includes(' ') ? 2 : 0));
   return (
@@ -309,6 +365,8 @@ export function validateChange(change: VideoChange, now = new Date()) {
     if (/[<>]/.test(title)) errors.push('The title cannot contain < or >.');
   }
   if (description !== undefined) {
+    if (!description.trim())
+      errors.push('The description is empty; this would erase it.');
     if (Buffer.byteLength(description) > MAX_DESCRIPTION_BYTES)
       errors.push(`The description is over ${MAX_DESCRIPTION_BYTES} bytes.`);
     if (/[<>]/.test(description))
@@ -372,6 +430,7 @@ export function parseArgs(argv: string[]): Options {
     fromLab: false,
     includeShorts: false,
     offline: false,
+    withTitles: false,
   };
   const change: Partial<VideoChange> = {};
   let id: string | undefined;
@@ -449,6 +508,9 @@ export function parseArgs(argv: string[]): Options {
       case '--synthetic-media':
         change.syntheticMedia = parseBoolean(argument, value());
         break;
+      case '--with-titles':
+        options.withTitles = true;
+        break;
       case '--tags':
         change.tags = parseList(value());
         break;
@@ -481,9 +543,14 @@ export function parseArgs(argv: string[]): Options {
     throw new Error('--apply and --offline contradict each other');
   if (
     !options.fromLab &&
-    (options.ids || options.includeShorts || options.force)
+    (options.ids ||
+      options.includeShorts ||
+      options.force ||
+      options.withTitles)
   )
-    throw new Error('--id, --include-shorts and --force need --from-lab');
+    throw new Error(
+      '--id, --include-shorts, --force and --with-titles need --from-lab',
+    );
 
   const hasChange = Object.keys(change).length > 0;
   if (!id && hasChange)
@@ -549,12 +616,14 @@ export function selectLabChanges(
     force = false,
     ids,
     includeShorts = false,
+    withTitles = false,
   }: {
     assetPath: (id: string, hash: string) => string;
     exists: (path: string) => boolean;
     force?: boolean;
     ids?: string[];
     includeShorts?: boolean;
+    withTitles?: boolean;
   },
 ) {
   const queued: QueuedChange[] = [];
@@ -581,7 +650,7 @@ export function selectLabChanges(
       continue;
     }
     const synced = ledger[item.id];
-    const sendTitle = force || synced?.title !== item.title;
+    const sendTitle = withTitles && (force || synced?.title !== item.title);
     const sendThumbnail = force || synced?.assetHash !== version.assetHash;
     if (!sendTitle && !sendThumbnail) {
       skip('already synced');
@@ -593,7 +662,10 @@ export function selectLabChanges(
         ...(sendTitle ? { title: item.title } : {}),
         ...(sendThumbnail ? { thumbnail: path } : {}),
       },
-      sync: { assetHash: version.assetHash, title: item.title },
+      sync: {
+        ...(sendThumbnail ? { assetHash: version.assetHash } : {}),
+        ...(sendTitle ? { title: item.title } : {}),
+      },
     });
   }
   return { queued, skipped };
@@ -669,12 +741,14 @@ export async function runUpdates(
     apply,
     confirmPublic,
     log,
+    onBackup,
     onSynced,
     token,
   }: {
     apply: boolean;
     confirmPublic: boolean;
     log: (line: string) => void;
+    onBackup?: (restore: VideoChange) => void;
     onSynced?: (id: string, sync: Omit<SyncRecord, 'at'>) => void;
     token: string;
   },
@@ -713,6 +787,8 @@ export async function runUpdates(
         planned.push(id);
         continue;
       }
+      // The old values are saved first; if that fails, nothing is written.
+      if (plan.parts.length) onBackup?.(restoreEntry(video, id, plan));
       if (plan.parts.length) await updateVideo(token, id, plan);
       if (thumbnail) await setThumbnail(token, id, thumbnail);
       if (sync) onSynced?.(id, sync);
@@ -746,12 +822,32 @@ function readLabItems(directory: string): ThumbnailItem[] {
   return parsed;
 }
 
+function backupWriter(directory: string, now = new Date()) {
+  const path = resolve(
+    directory,
+    'backups',
+    `${now.toISOString().replace(/[:.]/g, '-')}.json`,
+  );
+  const entries: VideoChange[] = [];
+  return {
+    get count() {
+      return entries.length;
+    },
+    path,
+    save(entry: VideoChange) {
+      mkdirSync(dirname(path), { recursive: true });
+      entries.push(entry);
+      writeLedger(path, entries);
+    },
+  };
+}
+
 function readLedger(path: string): SyncLedger {
   if (!existsSync(path)) return {};
   return JSON.parse(readFileSync(path, 'utf8')) as SyncLedger;
 }
 
-function writeLedger(path: string, ledger: SyncLedger) {
+function writeLedger(path: string, ledger: SyncLedger | VideoChange[]) {
   const temporary = `${path}.tmp`;
   writeFileSync(temporary, `${JSON.stringify(ledger, null, 2)}\n`);
   renameSync(temporary, path);
@@ -778,6 +874,7 @@ function loadQueue(options: Options, ledger: SyncLedger) {
     force: options.force,
     ids: options.ids,
     includeShorts: options.includeShorts,
+    withTitles: options.withTitles,
   });
 }
 
@@ -827,12 +924,14 @@ async function main() {
   if (!options.apply)
     console.log('Dry run: add --apply to write these changes.');
 
+  const backup = backupWriter(snapshotDirectory());
   const result = await runUpdates(queued, {
     apply: options.apply,
     confirmPublic: options.confirmPublic,
     log: console.log,
+    onBackup: (entry) => backup.save(entry),
     onSynced: (id, sync) => {
-      ledger[id] = { ...sync, at: new Date().toISOString() };
+      ledger[id] = { ...ledger[id], ...sync, at: new Date().toISOString() };
       writeLedger(ledgerPath, ledger);
     },
     token,
@@ -841,6 +940,11 @@ async function main() {
   console.log(
     `${result.updated.length} updated, ${result.planned.length} planned, ${result.unchanged.length} unchanged, ${result.failed.length} failed`,
   );
+  if (backup.count) {
+    console.log(
+      `Old values saved to ${backup.path}\nTo undo: bun run youtube:update --batch ${backup.path} --apply`,
+    );
+  }
   if (result.unprocessed.length) {
     console.log(
       `Out of quota. Not attempted: ${result.unprocessed.join(', ')}`,
