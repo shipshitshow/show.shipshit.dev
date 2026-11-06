@@ -386,3 +386,20 @@ export function thumbnailCdnUrl(
     '.jpg'
   );
 }
+
+/**
+ * Newest video first by YouTube publish date. Items without a known date
+ * (not uploaded yet, or YouTube unreachable) follow, in catalogue order.
+ */
+export function sortByPublishDate<
+  T extends Pick<ThumbnailItem, 'id' | 'position'>,
+>(items: readonly T[], dates: ReadonlyMap<string, string>): T[] {
+  return [...items].sort((a, b) => {
+    const left = dates.get(a.id),
+      right = dates.get(b.id);
+    if (left && right && left !== right) return left < right ? 1 : -1;
+    if (left && !right) return -1;
+    if (right && !left) return 1;
+    return a.position - b.position;
+  });
+}
