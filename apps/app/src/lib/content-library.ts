@@ -283,10 +283,13 @@ export function parseChannel(value: string | undefined): ChannelFilter {
   return value === 'main' || value === 'clips' ? value : 'all';
 }
 
+/** Videos unless the URL says otherwise (Vincent, 6 Nov). */
+const DEFAULT_TYPE: TypeFilter = 'video';
+
 export function parseType(value: string | undefined): TypeFilter {
-  return value === 'livestream' || value === 'video' || value === 'short'
+  return value === 'livestream' || value === 'all' || value === 'short'
     ? value
-    : 'all';
+    : DEFAULT_TYPE;
 }
 
 /** Upcoming streams have no transcript yet, so they never count as missing. */
@@ -317,7 +320,7 @@ export function contentHref(
 ): string {
   const next = { ...filters, ...change };
   const params = new URLSearchParams();
-  if (next.type !== 'all') params.set('type', next.type);
+  if (next.type !== DEFAULT_TYPE) params.set('type', next.type);
   if (next.channel !== 'all') params.set('channel', next.channel);
   if (next.sort !== 'latest') params.set('sort', next.sort);
   if (next.missing) params.set('transcript', 'missing');

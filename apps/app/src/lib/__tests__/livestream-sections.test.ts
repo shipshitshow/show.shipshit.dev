@@ -1,8 +1,10 @@
 import { describe, expect, test } from 'bun:test';
 import type { Topic } from '@shipshitshow/types';
 import {
+  getResourceLinks,
   getStreamResourceSections,
   getStreamSegmentSections,
+  getTalkingPoints,
 } from '../livestream-sections';
 import type { LivestreamCard } from '../livestreams-ui';
 
@@ -66,5 +68,61 @@ describe('livestream section routing (#72)', () => {
       eyebrow: 'Segment 1',
       title: 'Open on the result',
     });
+  });
+});
+
+describe('talking points and resource links (Vincent, 6 Nov)', () => {
+  const prep = `## Sources — Livestream Notes
+
+- **Viewer question:** what should we check?
+
+### Open these first
+
+1. [Security timeline](https://show.shipshit.dev/artifacts/agent-security-timeline)
+
+## Segment 1 — PHP2Shell: check the runtime, not just the app
+
+### Evidence to open
+
+[PHP's advisory](https://www.php.net/archive/2026.php) — **Confirmed:** fixed releases.
+
+### Conversation cues
+
+- What owns our runtime updates: us, a container image, or a plugin stack? More detail here.
+- **Challenge:** "We do not write PHP." Does that answer it?
+- Budget: 10 minutes. Exit: software we install.
+- Open the timeline and name the tracks.
+- OpenAI ships agents too.
+
+## Cold Open — What is at risk?
+
+- Avoid calling it one campaign.
+- If a laptop were compromised today, what access would it expose?
+- Restream: ${STUDIO_URL}`;
+
+  test('keeps short bullets and drops sources, prose and stage directions', () => {
+    const [segment, cold] = getTalkingPoints([card(prep)]);
+    expect(segment.title).toBe(
+      'PHP2Shell: check the runtime, not just the app',
+    );
+    expect(segment.points).toEqual([
+      'What owns our runtime updates: us, a container image, or a plugin stack?',
+      '**Challenge:** "We do not write PHP."',
+      'OpenAI ships agents too.',
+    ]);
+    expect(cold.points).toEqual([
+      'If a laptop were compromised today, what access would it expose?',
+      'Restream: ' + STUDIO_URL,
+    ]);
+  });
+
+  test('lists every link once, without studio links', () => {
+    expect(getResourceLinks([card(prep)])).toEqual([
+      {
+        label: 'Security timeline',
+        url: 'https://show.shipshit.dev/artifacts/agent-security-timeline',
+      },
+      { label: "PHP's advisory", url: 'https://www.php.net/archive/2026.php' },
+    ]);
   });
 });

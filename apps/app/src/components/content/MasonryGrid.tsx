@@ -8,7 +8,7 @@ import {
   useState,
 } from 'react';
 
-const GAP = 20;
+const GAP = 12;
 
 /**
  * Cards of different heights (16:9 videos, 9:16 Shorts) in columns with no

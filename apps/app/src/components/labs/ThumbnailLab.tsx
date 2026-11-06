@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
+import { FilterSelect } from '@/components/FilterSelect';
 import {
   awaitingItems,
   awaitingVersions,
@@ -511,46 +512,30 @@ export function ThumbnailLab() {
         </div>
       </div>
       <div className="flex flex-wrap items-center gap-2 border-b border-surface-border py-3">
-        <nav className="flex gap-1" aria-label="Thumbnail view">
-          {(['pending', 'all'] satisfies ThumbnailScope[]).map((tab) => (
-            <button
-              key={tab}
-              onClick={() => {
-                setScope(tab);
-                setPage(1);
-              }}
-              aria-pressed={scope === tab}
-              className={
-                'min-h-9 rounded-lg px-3 text-xs ' +
-                (scope === tab
-                  ? 'bg-text-primary text-surface'
-                  : 'bg-surface-elevated text-text-secondary')
-              }
-            >
-              {tab === 'pending' ? 'To review' : 'All'}
-            </button>
-          ))}
-        </nav>
-        <nav className="flex gap-1" aria-label="Asset type">
-          {THUMBNAIL_KINDS.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => {
-                setKind(tab);
-                setPage(1);
-              }}
-              aria-pressed={kind === tab}
-              className={
-                'min-h-9 rounded-lg px-3 text-xs ' +
-                (kind === tab
-                  ? 'bg-text-primary text-surface'
-                  : 'bg-surface-elevated text-text-secondary')
-              }
-            >
-              {KIND_LABELS[tab]}
-            </button>
-          ))}
-        </nav>
+        <FilterSelect
+          label="Thumbnail view"
+          value={scope}
+          onChange={(next) => {
+            setScope(next);
+            setPage(1);
+          }}
+          options={[
+            { label: 'To review', value: 'pending' as const },
+            { label: 'All', value: 'all' as const },
+          ]}
+        />
+        <FilterSelect
+          label="Asset type"
+          value={kind}
+          onChange={(next) => {
+            setKind(next);
+            setPage(1);
+          }}
+          options={THUMBNAIL_KINDS.map((tab) => ({
+            label: KIND_LABELS[tab],
+            value: tab,
+          }))}
+        />
         <label className="ml-auto flex items-center gap-2 rounded-full border border-surface-border px-4 py-2">
           <Search size={14} className="text-text-muted" />
           <input

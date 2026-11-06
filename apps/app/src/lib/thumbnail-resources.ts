@@ -68,3 +68,42 @@ export function safeSource(value: unknown): string | undefined {
     return undefined;
   }
 }
+
+/** An asset pushed to the CDN, as the production manifest stores it. */
+export type PublishedResource = {
+  category: ResourceCategory;
+  ext: 'jpg' | 'png' | 'svg' | 'webp';
+  /** sha256 of the file, which is also its CDN name. */
+  hash: string;
+  label: string;
+  note?: string;
+  source?: string;
+};
+export const RESOURCE_CDN_PREFIX = 'shipshitshow/resources';
+const EXTENSIONS = new Set(['jpg', 'png', 'svg', 'webp']);
+
+export function publishedResourceUrl(hash: string, ext: string): string {
+  return `https://cdn.shipshit.dev/${RESOURCE_CDN_PREFIX}/${hash}.${ext}`;
+}
+export function isPublishedResource(
+  value: unknown,
+): value is PublishedResource {
+  if (!value || typeof value !== 'object') return false;
+  const entry = value as Record<string, unknown>;
+  return (
+    isResourceCategory(entry.category) &&
+    typeof entry.label === 'string' &&
+    typeof entry.hash === 'string' &&
+    /^[a-f0-9]{64}$/.test(entry.hash) &&
+    typeof entry.ext === 'string' &&
+    EXTENSIONS.has(entry.ext) &&
+    (entry.note === undefined || typeof entry.note === 'string') &&
+    (entry.source === undefined || safeSource(entry.source) !== undefined)
+  );
+}
+export function resourceExtension(file: string): PublishedResource['ext'] {
+  const extension = file.split('.').pop()?.toLowerCase();
+  if (extension === 'png' || extension === 'svg' || extension === 'webp')
+    return extension;
+  return 'jpg';
+}

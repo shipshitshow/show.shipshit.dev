@@ -4,6 +4,7 @@ import { cn } from '@shipshitshow/ui';
 import { Download } from 'lucide-react';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
+import { FilterSelect } from '@/components/FilterSelect';
 import {
   filterGallery,
   type GalleryKind,
@@ -78,35 +79,32 @@ export function ArtworkGallery({
   return (
     <div className="mt-6">
       <div className="flex flex-wrap items-center gap-2">
-        {VIEWS.map(({ id, label }) => (
-          <button
-            aria-pressed={view === id}
-            className={chip(view === id)}
-            key={id}
-            onClick={() => {
-              setView(id);
-              setPage(1);
-            }}
-            type="button"
-          >
-            {label}
-            <span className="ml-1.5 text-text-muted">{counts[id]}</span>
-          </button>
-        ))}
+        <FilterSelect
+          label="Review"
+          value={view}
+          onChange={(next) => {
+            setView(next);
+            setPage(1);
+          }}
+          options={VIEWS.map(({ id, label }) => ({
+            label: `${label} · ${counts[id]}`,
+            value: id,
+          }))}
+        />
         {portrait ? null : (
-          <select
-            aria-label="Format"
-            className="rounded-full border border-surface-border bg-transparent px-3 py-1 text-xs text-text-muted"
-            onChange={(e) => {
-              setFormat(e.target.value as '' | 'video' | 'live');
+          <FilterSelect
+            label="Format"
+            value={format || 'any'}
+            onChange={(next) => {
+              setFormat(next === 'any' ? '' : next);
               setPage(1);
             }}
-            value={format}
-          >
-            <option value="">Any format</option>
-            <option value="video">Video</option>
-            <option value="live">Livestream</option>
-          </select>
+            options={[
+              { label: 'Any format', value: 'any' as const },
+              { label: 'Video', value: 'video' as const },
+              { label: 'Livestream', value: 'live' as const },
+            ]}
+          />
         )}
         <Link
           className="ml-auto inline-flex items-center gap-1 text-xs text-text-muted hover:text-text-primary"

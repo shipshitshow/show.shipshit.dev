@@ -13,20 +13,10 @@ function render() {
 }
 
 describe('TrendFilters', () => {
-  test('source chips show the brand logo and keep an accessible name', () => {
+  test('the source filter is one dropdown, not a chip row', () => {
     const markup = render();
-
-    for (const [source, name] of [
-      ['hackernews', 'Hacker News'],
-      ['reddit', 'Reddit'],
-      ['youtube', 'YouTube'],
-    ]) {
-      expect(markup).toContain(`data-source-logo="${source}"`);
-      expect(markup).toContain(`<span class="sr-only">${name}</span>`);
-    }
-  });
-
-  test('the All chip stays a text label', () => {
-    expect(render()).toMatch(/>All <span[^>]*>9<\/span>/);
+    expect(markup).toContain('aria-label="Source"');
+    expect(markup).toContain('role="combobox"');
+    expect(markup).not.toContain('data-source-logo');
   });
 });

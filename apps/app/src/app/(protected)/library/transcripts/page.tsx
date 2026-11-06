@@ -3,6 +3,7 @@ import { BRAND } from '@shipshitshow/ui/brand';
 import { ExternalLink, Search } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { LinkFilterSelect } from '@/components/FilterSelect';
 import { LibraryHeader } from '@/components/library/LibraryHeader';
 import { formatNumber } from '@/lib/format';
 import {
@@ -37,7 +38,7 @@ function formatDate(date: string): string {
 }
 
 const TYPE_FILTERS: { id: TranscriptTypeFilter; label: string }[] = [
-  { id: 'all', label: 'All' },
+  { id: 'all', label: 'All types' },
   { id: 'video', label: 'Videos' },
   { id: 'livestream', label: 'Livestreams' },
   { id: 'short', label: 'Shorts' },
@@ -69,31 +70,6 @@ function pageHref(params: {
   return qs ? `/library/transcripts?${qs}` : '/library/transcripts';
 }
 
-function Pill({
-  active,
-  children,
-  href,
-}: {
-  active: boolean;
-  children: React.ReactNode;
-  href: string;
-}) {
-  return (
-    <Link
-      aria-current={active ? 'true' : undefined}
-      className={cn(
-        'rounded-full border px-3 py-1 text-xs font-medium transition-colors',
-        active
-          ? 'border-accent-red bg-accent-red/10 text-text-primary'
-          : 'border-surface-border text-text-muted hover:border-accent-red/50 hover:text-text-primary',
-      )}
-      href={href}
-    >
-      {children}
-    </Link>
-  );
-}
-
 export default async function LibraryTranscriptsPage({
   searchParams,
 }: {
@@ -103,6 +79,9 @@ export default async function LibraryTranscriptsPage({
   const q = (raw.q ?? '').trim().slice(0, 200);
   const type = parseTypeFilter(raw.type);
   const hasQuery = searchTerms(q).length > 0;
+  const sortOptions: { id: TranscriptSort; label: string }[] = hasQuery
+    ? [{ id: 'relevance', label: 'Best match' }, ...SORTS]
+    : SORTS;
   const sort = parseSort(raw.sort, hasQuery);
 
   const [entries, snapshot] = await Promise.all([
@@ -155,40 +134,35 @@ export default async function LibraryTranscriptsPage({
         </button>
       </form>
 
-      <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2">
-        <nav aria-label="Type" className="flex flex-wrap gap-2">
-          {TYPE_FILTERS.map((filter) => (
-            <Pill
-              active={filter.id === type}
-              href={pageHref({ q, sort, type: filter.id })}
-              key={filter.id}
-            >
-              {filter.label}
-            </Pill>
-          ))}
-        </nav>
-        <nav aria-label="Sort" className="flex flex-wrap items-center gap-2">
-          <span className="text-[10px] uppercase tracking-[.2em] text-text-muted">
-            Sort
-          </span>
-          {hasQuery ? (
-            <Pill
-              active={sort === 'relevance'}
-              href={pageHref({ q, sort: 'relevance', type })}
-            >
-              Best match
-            </Pill>
-          ) : null}
-          {SORTS.map((option) => (
-            <Pill
-              active={option.id === sort}
-              href={pageHref({ q, sort: option.id, type })}
-              key={option.id}
-            >
-              {option.label}
-            </Pill>
-          ))}
-        </nav>
+      <div className="mt-4 flex flex-wrap items-center gap-2">
+        <LinkFilterSelect
+          label="Type"
+          value={type}
+          options={TYPE_FILTERS.map((filter) => ({
+            label: filter.label,
+            value: filter.id,
+          }))}
+          hrefs={Object.fromEntries(
+            TYPE_FILTERS.map((filter) => [
+              filter.id,
+              pageHref({ q, sort, type: filter.id }),
+            ]),
+          )}
+        />
+        <LinkFilterSelect
+          label="Sort"
+          value={sort}
+          options={sortOptions.map((option) => ({
+            label: option.label,
+            value: option.id,
+          }))}
+          hrefs={Object.fromEntries(
+            sortOptions.map((option) => [
+              option.id,
+              pageHref({ q, sort: option.id, type }),
+            ]),
+          )}
+        />
       </div>
 
       <p aria-live="polite" className="mt-6 text-xs text-text-muted">
