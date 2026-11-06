@@ -21,11 +21,23 @@
  * It prints the diff against the previous snapshot, so a title edited in
  * YouTube Studio shows up here before anything overwrites it.
  *
+ * Titles Lab on Vercel: the deployed lab cannot read these files, so it reads
+ * a slim copy (id, title, privacy, schedule; no descriptions) from the
+ * producer Redis. Pushing it is a dry run unless --apply is passed:
+ *   bun run youtube:sync --push-redis --namespace production          Plan only
+ *   bun run youtube:sync --push-redis --namespace production --apply  Write
+ * It needs KV_REST_API_URL and KV_REST_API_TOKEN for the write, changes only
+ * the key sss:<namespace>:v1:title-lab-snapshot, and uses the main channel.
+ *
  * Auth is the same as youtube-upload.ts. Quota: about 1 unit per 50 videos.
  */
 
 import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import {
+  slimSnapshot,
+  TITLE_SNAPSHOT_KEY,
+} from '../apps/app/src/lib/title-lab.ts';
 import {
   type Channel,
   fail,
@@ -260,23 +272,101 @@ function writeJson(path: string, value: unknown) {
   renameSync(temporary, path);
 }
 
+export type PushOptions = { apply: boolean; namespace: string };
+
 export function parseArgs(argv: string[]) {
   let channels: Channel[] = ['main'];
   let diffOnly = false;
+  let apply = false;
+  let pushRedis = false;
+  let namespace: string | undefined;
   for (let index = 0; index < argv.length; index++) {
     const argument = argv[index];
     if (argument === '--diff-only') diffOnly = true;
-    else if (argument === '--channel') {
+    else if (argument === '--push-redis') pushRedis = true;
+    else if (argument === '--apply') apply = true;
+    else if (argument === '--namespace') {
+      namespace = argv[++index];
+      if (!namespace || !/^[\w.-]+$/.test(namespace))
+        throw new Error('--namespace needs a name such as production');
+    } else if (argument === '--channel') {
       const value = argv[++index];
       if (value === 'all') channels = ['main', 'clips'];
       else if (value === 'main' || value === 'clips') channels = [value];
       else throw new Error('--channel must be main, clips or all');
     } else throw new Error(`Unknown argument: ${argument}`);
   }
-  return { channels, diffOnly };
+  if (pushRedis && !namespace)
+    throw new Error('--push-redis needs --namespace production|preview|local');
+  if ((apply || namespace) && !pushRedis)
+    throw new Error('--apply and --namespace only go with --push-redis');
+  if (pushRedis && diffOnly)
+    throw new Error('--push-redis and --diff-only contradict each other');
+  if (pushRedis && !channels.includes('main'))
+    throw new Error('--push-redis sends the main channel; use --channel main');
+  const push: PushOptions | undefined =
+    pushRedis && namespace ? { apply, namespace } : undefined;
+  return { channels, diffOnly, push };
 }
 
-async function syncChannel(channel: Channel, diffOnly: boolean) {
+/** Same key as redisKey(TITLE_SNAPSHOT_KEY) in the app: sss:{env}:v1:name. */
+export function snapshotRedisKey(namespace: string) {
+  return `sss:${namespace}:v1:${TITLE_SNAPSHOT_KEY}`;
+}
+
+async function redisCommand(command: string[]): Promise<unknown> {
+  const url = process.env.KV_REST_API_URL;
+  const token = process.env.KV_REST_API_TOKEN;
+  if (!url || !token)
+    throw new Error('Set KV_REST_API_URL and KV_REST_API_TOKEN');
+  const response = await fetch(url, {
+    body: JSON.stringify(command),
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+  });
+  if (!response.ok)
+    throw new Error(`Redis ${command[0]} failed: ${response.status}`);
+  return ((await response.json()) as { result: unknown }).result;
+}
+
+/** Plan, and with --apply write, the slim snapshot for the deployed Titles Lab. */
+export async function pushSnapshot(
+  snapshot: Snapshot,
+  { apply, namespace }: PushOptions,
+  log: (line: string) => void = console.log,
+) {
+  const key = snapshotRedisKey(namespace);
+  const value = JSON.stringify(slimSnapshot(snapshot));
+  log(`Redis ${key}: ${snapshot.videos.length} videos, ${value.length} bytes`);
+  if (process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN) {
+    const stored = await redisCommand(['GET', key]);
+    if (typeof stored === 'string') {
+      const old = JSON.parse(stored) as {
+        fetchedAt?: string;
+        videos?: unknown[];
+      };
+      log(
+        `  replaces the snapshot from ${old.fetchedAt} (${old.videos?.length} videos)`,
+      );
+    } else log('  nothing is stored there yet');
+  } else log('  (no KV credentials set, so the stored copy was not read)');
+  if (!apply) {
+    log('Dry run: add --apply to write it.');
+    return false;
+  }
+  await redisCommand(['SET', key, value]);
+  log('Written.');
+  return true;
+}
+
+async function syncChannel(
+  channel: Channel,
+  diffOnly: boolean,
+  push?: PushOptions,
+) {
   const token = await getAccessToken(channel);
   await verifyChannel(token, channel);
   const { channelTitle, ids } = await listUploadIds(token);
@@ -307,6 +397,7 @@ async function syncChannel(channel: Channel, diffOnly: boolean) {
   writeJson(resolve(directory, `${channel}-${stamp}.json`), snapshot);
   writeJson(latest, snapshot);
   console.log(`\nSaved to ${directory}`);
+  if (push && channel === 'main') await pushSnapshot(snapshot, push);
 }
 
 async function main() {
@@ -323,7 +414,7 @@ async function main() {
     fail(error instanceof Error ? error.message : String(error));
   }
   for (const channel of options.channels)
-    await syncChannel(channel, options.diffOnly);
+    await syncChannel(channel, options.diffOnly, options.push);
 }
 
 if (import.meta.main) await main();

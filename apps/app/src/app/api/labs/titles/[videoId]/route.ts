@@ -13,8 +13,8 @@ export async function PUT(
   const producer = await requireProducer();
   if (!producer.ok) return producer.response;
   try {
-    if (getProducerStorageBackend() !== 'filesystem')
-      throw new Error('Drafts can only be saved from a local checkout.');
+    if (getProducerStorageBackend() === 'read-only')
+      throw new Error('Drafts need the Redis integration or a local checkout.');
     const { videoId } = await params;
     const body: unknown = await request.json();
     const text =
