@@ -27,6 +27,7 @@
     "test": "turbo test",
     "thumbnail-lab:sync-live": "bun run --cwd apps/app thumbnail-lab:sync-live",
     "thumbnail:stamp": "bun run --cwd apps/app thumbnail:stamp",
+    "transcripts:import": "bun scripts/import-transcripts.ts",
     "youtube:metadata": "bun scripts/generate-youtube-metadata.ts",
     "youtube:sync": "bun scripts/youtube-sync.ts",
     "youtube:update": "bun scripts/youtube-update.ts",

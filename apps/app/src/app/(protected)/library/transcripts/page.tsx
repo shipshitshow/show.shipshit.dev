@@ -40,7 +40,14 @@ const TYPE_FILTERS: { id: TranscriptTypeFilter; label: string }[] = [
   { id: 'all', label: 'All' },
   { id: 'video', label: 'Videos' },
   { id: 'livestream', label: 'Livestreams' },
+  { id: 'short', label: 'Shorts' },
 ];
+
+const TYPE_LABELS = {
+  livestream: 'Livestream',
+  short: 'Short',
+  video: 'Video',
+} as const;
 
 const SORTS: { id: TranscriptSort; label: string }[] = [
   { id: 'newest', label: 'Newest' },
@@ -118,7 +125,7 @@ export default async function LibraryTranscriptsPage({
     <main className="mx-auto max-w-5xl px-4 py-6 md:px-7">
       <LibraryHeader
         active="transcripts"
-        blurb={`${formatNumber(stats.total)} saved transcripts (${formatNumber(stats.videos)} videos, ${formatNumber(stats.livestreams)} livestreams, ${formatNumber(stats.words)} words)${
+        blurb={`${formatNumber(stats.total)} saved transcripts (${formatNumber(stats.videos)} videos, ${formatNumber(stats.livestreams)} livestreams, ${formatNumber(stats.shorts)} Shorts, ${formatNumber(stats.words)} words)${
           stats.firstDate && stats.lastDate
             ? `, ${formatDate(stats.firstDate)} to ${formatDate(stats.lastDate)}`
             : ''
@@ -218,7 +225,7 @@ export default async function LibraryTranscriptsPage({
                         : 'border-surface-border',
                     )}
                   >
-                    {entry.type === 'livestream' ? 'Livestream' : 'Video'}
+                    {TYPE_LABELS[entry.type]}
                   </span>
                   <span className="text-[11px] text-text-muted">
                     {formatNumber(entry.wordCount)} words
@@ -265,8 +272,8 @@ export default async function LibraryTranscriptsPage({
             Not saved yet ({formatNumber(missing.length)})
           </summary>
           <p className="mt-2 text-xs leading-relaxed text-text-muted">
-            On the channel but with no transcript in the library. Shorts are
-            included, and none have transcripts yet.
+            On the main channel but with no transcript in the library, usually
+            because the video is private, scheduled or has no captions yet.
           </p>
           <ul className="mt-3 space-y-1.5">
             {missing.map((video) => (

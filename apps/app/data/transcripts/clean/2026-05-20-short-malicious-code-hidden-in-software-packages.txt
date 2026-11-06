@@ -1,0 +1,13 @@
+I think the biggest issue is that most
+people don't know what they use because
+if you install a package it can include
+additional packages.
+&gt;&gt; You install package and then it's a
+dependency of someone else, so you can
+even track it.
+&gt;&gt; Even if you then just redeploy your
+project because you did a small update
+on something that doesn't impact
+anything, it re-installs all the
+packages and it installs all the
+malicious code.
