@@ -23,6 +23,7 @@ const NOW = new Date('2026-11-06T10:00:00Z');
 const FUTURE = '2026-11-08T16:00:00Z';
 
 const video: YouTubeVideo = {
+  processingDetails: { processingStatus: 'succeeded' },
   snippet: {
     categoryId: '28',
     defaultAudioLanguage: 'en',
@@ -411,6 +412,7 @@ const run = (
     apply: true,
     confirmPublic: false,
     log: () => {},
+    sleep: async () => {},
     token: 'token',
     ...overrides,
   });
@@ -658,4 +660,193 @@ test('a dry run saves no backup', async () => {
   const onBackup = mock(() => {});
   await run([{ change: { id: ID, title: 'New' } }], { apply: false, onBackup });
   expect(onBackup).not.toHaveBeenCalled();
+});
+
+const cover = { id: ID, thumbnail: '/covers/abcdefghijk.jpg' };
+const uploads = () =>
+  calls.filter((call) => call.url.includes('thumbnails/set'));
+
+test('a thumbnail is not set while YouTube is still processing the video', async () => {
+  responses.GET = json({
+    items: [
+      { ...video, processingDetails: { processingStatus: 'processing' } },
+    ],
+  });
+  const logged: string[] = [];
+  const result = await run([{ change: cover }], { log: (l) => logged.push(l) });
+  expect(result.skipped).toEqual([
+    { id: ID, reason: expect.stringContaining('still processing') },
+  ]);
+  expect(result.updated).toEqual([]);
+  expect(result.failed).toEqual([]);
+  expect(uploads()).toEqual([]);
+  expect(logged.join('\n')).toContain('skipped');
+});
+
+test('a video with no processing status is skipped too', async () => {
+  responses.GET = json({ items: [{ ...video, processingDetails: undefined }] });
+  const result = await run([{ change: cover }]);
+  expect(result.skipped).toHaveLength(1);
+  expect(uploads()).toEqual([]);
+});
+
+test('a skipped video does not stop the others', async () => {
+  let reads = 0;
+  responses.GET = () => {
+    reads++;
+    return json({
+      items: [
+        reads === 1
+          ? { ...video, processingDetails: { processingStatus: 'processing' } }
+          : video,
+      ],
+    });
+  };
+  const result = await run([
+    { change: cover },
+    { change: { ...cover, id: 'secondvideo' } },
+  ]);
+  expect(result.skipped.map((entry) => entry.id)).toEqual([ID]);
+  expect(result.updated).toEqual(['secondvideo']);
+});
+
+test('the live thumbnail is saved before the upload, and a failed save blocks it', async () => {
+  const order: string[] = [];
+  responses.GET = () =>
+    json({
+      items: [
+        {
+          ...video,
+          snippet: {
+            ...video.snippet,
+            thumbnails: { maxres: { url: 'https://img.test/maxres.jpg' } },
+          },
+        },
+      ],
+    });
+  responses.thumbnail = () => {
+    order.push('upload');
+    return json({});
+  };
+  await run([{ change: cover }], {
+    backupThumbnail: async (id, current) => {
+      order.push(`backup ${id} ${current.snippet.thumbnails?.maxres?.url}`);
+    },
+  });
+  expect(order).toEqual([
+    'backup abcdefghijk https://img.test/maxres.jpg',
+    'upload',
+  ]);
+
+  const blocked = await run([{ change: cover }], {
+    backupThumbnail: async () => {
+      throw new Error('Live thumbnail backup failed (maxres: 404)');
+    },
+  });
+  expect(blocked.failed[0].message).toContain('backup failed');
+  expect(blocked.updated).toEqual([]);
+  expect(order).toEqual([
+    'backup abcdefghijk https://img.test/maxres.jpg',
+    'upload',
+  ]);
+});
+
+test('a failed thumbnail backup also holds back the metadata change', async () => {
+  const result = await run([{ change: { ...cover, title: 'New' } }], {
+    backupThumbnail: async () => {
+      throw new Error('no backup');
+    },
+  });
+  expect(result.failed).toHaveLength(1);
+  expect(writes()).toEqual([]);
+});
+
+test('a dry run downloads and uploads nothing', async () => {
+  const backupThumbnail = mock(async () => {});
+  const result = await run([{ change: cover }], {
+    apply: false,
+    backupThumbnail,
+  });
+  expect(result.planned).toEqual([ID]);
+  expect(backupThumbnail).not.toHaveBeenCalled();
+  expect(writes()).toEqual([]);
+});
+
+test('a rate-limited upload waits and retries, then succeeds', async () => {
+  let attempts = 0;
+  responses.thumbnail = () => {
+    attempts++;
+    return attempts < 3 ? fails('uploadRateLimitExceeded', 429) : json({});
+  };
+  const waits: number[] = [];
+  const result = await run([{ change: cover }], {
+    sleep: async (ms) => {
+      waits.push(ms);
+    },
+  });
+  expect(result.updated).toEqual([ID]);
+  expect(uploads()).toHaveLength(3);
+  expect(waits).toEqual([30_000, 60_000]);
+});
+
+test('a rate limit that never clears stops the run and names what was left', async () => {
+  responses.thumbnail = () => fails('uploadRateLimitExceeded', 429);
+  const waits: number[] = [];
+  const result = await run(
+    [{ change: cover }, { change: { ...cover, id: 'secondvideo' } }],
+    {
+      sleep: async (ms) => {
+        waits.push(ms);
+      },
+    },
+  );
+  expect(uploads()).toHaveLength(4);
+  expect(waits).toEqual([30_000, 60_000, 120_000]);
+  expect(result.unprocessed).toEqual(['secondvideo']);
+});
+
+test('written videos are paced, and nothing waits after the last one', async () => {
+  const waits: number[] = [];
+  await run(
+    [
+      { change: cover },
+      { change: { ...cover, id: 'secondvideo' } },
+      { change: { ...cover, id: 'thirdvideo1' } },
+    ],
+    {
+      pauseMs: 3000,
+      sleep: async (ms) => {
+        waits.push(ms);
+      },
+    },
+  );
+  expect(waits).toEqual([3000, 3000]);
+});
+
+test('--thumbnail-dir is its own mode, and --id may filter it', () => {
+  const options = parseArgs(['--thumbnail-dir', 'covers', '--id', 'a,b']);
+  expect(options).toMatchObject({
+    ids: ['a', 'b'],
+    pause: 3,
+    thumbnailDir: 'covers',
+  });
+  expect(options.apply).toBe(false);
+  expect(() =>
+    parseArgs(['--thumbnail-dir', 'covers', '--batch', 'b.json']),
+  ).toThrow('Pass one of');
+  expect(() =>
+    parseArgs(['--thumbnail-dir', 'covers', '--title', 'x']),
+  ).toThrow('batch file or the lab');
+  expect(() => parseArgs(['--jpeg-dir', 'out', '--from-lab'])).toThrow(
+    '--jpeg-dir needs --thumbnail-dir',
+  );
+  expect(() => parseArgs(['--thumbnail-dir', 'covers', '--force'])).toThrow(
+    'need --from-lab',
+  );
+});
+
+test('--pause takes seconds and rejects nonsense', () => {
+  expect(parseArgs(['--from-lab', '--pause', '0.5']).pause).toBe(0.5);
+  expect(() => parseArgs(['--from-lab', '--pause', '-1'])).toThrow('--pause');
+  expect(() => parseArgs(['--from-lab', '--pause', 'soon'])).toThrow('--pause');
 });
