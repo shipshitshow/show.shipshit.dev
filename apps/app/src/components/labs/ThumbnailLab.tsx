@@ -1,5 +1,12 @@
 'use client';
-import { BrandMark } from '@shipshitshow/ui';
+import {
+  BrandMark,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@shipshitshow/ui';
 import {
   Check,
   ChevronLeft,
@@ -15,6 +22,7 @@ import {
 import { useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 import {
+  awaitingVersions,
   currentThumbnail,
   isThumbnailItem,
   type ThumbnailItem,
@@ -111,17 +119,23 @@ export function ThumbnailLab() {
   const editable = Boolean(
     active &&
       version &&
-      version.id === active.currentVersionId &&
       version.review.status !== 'approved' &&
       capabilities.writable,
   );
   const reopenable = Boolean(
     active &&
       version &&
-      version.id === active.currentVersionId &&
       version.review.status === 'approved' &&
       capabilities.writable,
   );
+  const awaiting = active ? awaitingVersions(active) : [];
+  function selectVersion(item: ThumbnailItem, id: string) {
+    const v = item.versions.find((row) => row.id === id);
+    if (!v) return;
+    setVersionId(id);
+    setRules(EMPTY_RULES);
+    setFeedback(v.review.status === 'revise' ? v.review.feedback : '');
+  }
   async function load() {
     setLoading(true);
     setError('');
@@ -220,14 +234,15 @@ export function ThumbnailLab() {
   }
   async function saveDecision(
     item: ThumbnailItem,
+    target: ThumbnailVersion,
     action: 'approve' | 'reopen' | 'revise',
-  ) {
+  ): Promise<ThumbnailItem> {
     const response = await fetch('/api/labs/thumbnails/' + item.id, {
       body: JSON.stringify({
         action,
         feedback,
         revision: item.revision,
-        versionId: item.currentVersionId,
+        versionId: target.id,
       }),
       headers: { 'Content-Type': 'application/json' },
       method: 'PATCH',
@@ -242,12 +257,13 @@ export function ThumbnailLab() {
     )
       throw new Error('Invalid saved review response.');
     updated(body.item);
+    return body.item;
   }
-  async function reopen(item: ThumbnailItem) {
+  async function reopen(item: ThumbnailItem, target: ThumbnailVersion) {
     setBusy(item.id);
     setError('');
     try {
-      await saveDecision(item, 'reopen');
+      await saveDecision(item, target, 'reopen');
       setFeedback('');
       setRules(EMPTY_RULES);
       setNotice('Reopened. It is back in Pending.');
@@ -257,17 +273,26 @@ export function ThumbnailLab() {
       setBusy(null);
     }
   }
-  async function decide(item: ThumbnailItem, action: 'approve' | 'revise') {
+  async function decide(
+    item: ThumbnailItem,
+    target: ThumbnailVersion,
+    action: 'approve' | 'revise',
+  ) {
     // The neighbour is taken before the save so the queue keeps its order.
     const at = visible.findIndex((row) => row.id === item.id);
     const next = at < 0 ? undefined : (visible[at + 1] ?? visible[at - 1]);
     setBusy(item.id);
     setError('');
     try {
-      await saveDecision(item, action);
+      const savedItem = await saveDecision(item, target, action);
       const saved =
         action === 'approve' ? 'Approved & locked.' : 'Revision saved.';
-      if (next) {
+      const stillOpen = awaitingVersions(savedItem)[0];
+      if (stillOpen) {
+        // Other variations still need a decision: stay on this thumbnail.
+        selectVersion(savedItem, stillOpen.id);
+        setNotice(saved + ' Choose the next variation.');
+      } else if (next) {
         open(next);
         setNotice(saved + ' Next thumbnail opened.');
       } else {
@@ -365,9 +390,9 @@ export function ThumbnailLab() {
   function onKey(e: KeyboardEvent) {
     if (!active || e.repeat || e.isComposing) return;
     if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
-      if (editable && !busy && feedback.trim()) {
+      if (version && editable && !busy && feedback.trim()) {
         e.preventDefault();
-        decide(active, 'revise');
+        decide(active, version, 'revise');
       }
       return;
     }
@@ -375,7 +400,10 @@ export function ThumbnailLab() {
     const el = e.target;
     if (
       el instanceof HTMLElement &&
-      (el.isContentEditable || /^(INPUT|SELECT|TEXTAREA)$/.test(el.tagName))
+      (el.isContentEditable ||
+        /^(INPUT|SELECT|TEXTAREA)$/.test(el.tagName) ||
+        el.getAttribute('role') === 'combobox' ||
+        el.closest('[role="listbox"]'))
     )
       return;
     const key = e.key.toLowerCase();
@@ -385,9 +413,9 @@ export function ThumbnailLab() {
     } else if (key === 'arrowleft') {
       e.preventDefault();
       go(-1);
-    } else if (key === 'a' && editable && !busy && !failedRules) {
+    } else if (key === 'a' && version && editable && !busy && !failedRules) {
       e.preventDefault();
-      decide(active, 'approve');
+      decide(active, version, 'approve');
     } else if (key === 'r' && editable) {
       e.preventDefault();
       note.current?.focus();
@@ -677,33 +705,30 @@ export function ThumbnailLab() {
                   src={thumbnailAssetUrl(active, version)}
                 />
                 <div className="mt-4 flex flex-wrap gap-2">
-                  <label className="flex items-center gap-2 text-xs">
-                    <History size={14} />
-                    <select
-                      aria-label="Thumbnail version"
-                      className="max-w-60 rounded-lg border border-surface-border bg-surface p-2 text-xs"
+                  <div className="flex items-center gap-2 text-xs">
+                    <History size={14} aria-hidden />
+                    <Select
                       value={version.id}
-                      onChange={(e) => {
-                        setVersionId(e.target.value);
-                        setRules(EMPTY_RULES);
-                        const v = active.versions.find(
-                          (v) => v.id === e.target.value,
-                        );
-                        setFeedback(
-                          v?.review.status === 'revise'
-                            ? v.review.feedback
-                            : '',
-                        );
-                      }}
+                      onValueChange={(id) => selectVersion(active, id)}
                     >
-                      {active.versions.map((v) => (
-                        <option key={v.id} value={v.id}>
-                          {versionLabel(active, v)}
-                          {v.id === active.currentVersionId ? ' · current' : ''}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
+                      <SelectTrigger
+                        aria-label="Thumbnail version"
+                        className="h-10 max-w-72 text-xs"
+                      >
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent container={dialog.current}>
+                        {active.versions.map((v) => (
+                          <SelectItem key={v.id} value={v.id}>
+                            {versionLabel(active, v)}
+                            {v.id === active.currentVersionId
+                              ? ' · current'
+                              : ''}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
                   {active.pairIds.length > 0 && (
                     <button
                       className={button}
@@ -735,6 +760,78 @@ export function ThumbnailLab() {
                     }}
                   />
                 </div>
+                {awaiting.length >= 2 && (
+                  <section
+                    aria-label="Compare variations"
+                    className="mt-5 rounded-xl border border-surface-border p-4"
+                  >
+                    <p className="text-xs font-medium">
+                      {awaiting.length} variations need a decision
+                    </p>
+                    <div
+                      className={
+                        'mt-3 grid gap-3 ' +
+                        (awaiting.length > 2
+                          ? 'sm:grid-cols-2 xl:grid-cols-3'
+                          : 'sm:grid-cols-2')
+                      }
+                    >
+                      {awaiting.map((v) => (
+                        <div
+                          key={v.id}
+                          className={
+                            'rounded-lg border p-2 ' +
+                            (v.id === version.id
+                              ? 'border-text-primary'
+                              : 'border-surface-border')
+                          }
+                        >
+                          <button
+                            className="block w-full"
+                            onClick={() => selectVersion(active, v.id)}
+                            aria-label={'Select ' + versionLabel(active, v)}
+                          >
+                            <img
+                              src={thumbnailAssetUrl(active, v)}
+                              alt={versionLabel(active, v)}
+                              className={
+                                active.format === 'short'
+                                  ? 'mx-auto aspect-[9/16] max-h-64 w-auto rounded object-contain'
+                                  : 'aspect-video w-full rounded object-contain'
+                              }
+                            />
+                          </button>
+                          <p className="mt-2 text-[11px] text-text-muted">
+                            {versionLabel(active, v)}
+                            {v.id === active.currentVersionId
+                              ? ' · current'
+                              : ''}
+                          </p>
+                          <div className="mt-2 flex gap-2">
+                            <button
+                              className={button + ' flex-1 text-emerald-400'}
+                              disabled={!capabilities.writable || !!busy}
+                              onClick={() => decide(active, v, 'approve')}
+                            >
+                              <Check size={14} />
+                              Approve
+                            </button>
+                            <button
+                              className={button + ' flex-1'}
+                              disabled={!capabilities.writable || !!busy}
+                              onClick={() => {
+                                selectVersion(active, v.id);
+                                setTimeout(() => note.current?.focus(), 0);
+                              }}
+                            >
+                              Revise…
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+                )}
                 {compare && (
                   <div className="mt-5 grid grid-cols-2 gap-3">
                     {active.pairIds.map((id) => {
@@ -805,7 +902,7 @@ export function ThumbnailLab() {
                   {active.format === 'video' ? 'white' : 'red'} ✱ ·{' '}
                   {version.id === active.currentVersionId
                     ? 'Current version'
-                    : 'History · read only'}
+                    : 'Not current · approving makes it current'}
                 </p>
                 <h2 id="thumbnail-title" className="sr-only">
                   {active.title}
@@ -882,7 +979,7 @@ export function ThumbnailLab() {
                   <button
                     className={button + ' mt-3 w-full'}
                     disabled={!!busy}
-                    onClick={() => reopen(active)}
+                    onClick={() => reopen(active, version)}
                   >
                     <RotateCcw size={14} />
                     Reopen for review
@@ -897,7 +994,7 @@ export function ThumbnailLab() {
                           ? 'A rule is marked Fail. Request a revision instead.'
                           : undefined
                       }
-                      onClick={() => decide(active, 'approve')}
+                      onClick={() => decide(active, version, 'approve')}
                     >
                       <Check size={14} />
                       Approve & lock
@@ -905,7 +1002,7 @@ export function ThumbnailLab() {
                     <button
                       className={button + ' flex-1'}
                       disabled={!editable || !!busy || !feedback.trim()}
-                      onClick={() => decide(active, 'revise')}
+                      onClick={() => decide(active, version, 'revise')}
                     >
                       Request revision
                     </button>

@@ -7,6 +7,7 @@ import {
   appendThumbnailVersion,
   applyThumbnailDecision,
   applyThumbnailTitle,
+  awaitingVersions,
   currentThumbnail,
   isThumbnailItem,
   parseThumbnailChange,
@@ -164,7 +165,7 @@ describe('thumbnail review contract', () => {
     );
     expect(currentThumbnail(revised).review.status).toBe('revise');
   });
-  test('only the current approved version can be reopened', () => {
+  test('only an approved version can be reopened, current or not', () => {
     const item = fixture(),
       versionId = item.currentVersionId,
       reopen = (target: ThumbnailItem, revision: number, id = versionId) =>
@@ -188,10 +189,63 @@ describe('thumbnail review contract', () => {
         ...currentThumbnail(item),
         assetHash: 'b'.repeat(64),
         id: 'b'.repeat(64),
+        review: { status: 'pending' },
       },
       1,
     );
-    expect(() => reopen(next, next.revision)).toThrow(ThumbnailConflict);
+    // The older approved version is no longer current but can still be reopened.
+    const reopened = reopen(next, next.revision);
+    expect(reopened.versions[0]?.review).toEqual({ status: 'pending' });
+    expect(reopened.currentVersionId).toBe('b'.repeat(64));
+  });
+  test('every version can be approved or revised, and approval makes it current', () => {
+    const first = fixture(),
+      second = 'b'.repeat(64),
+      third = 'c'.repeat(64),
+      base = first.versions[0];
+    if (!base) throw new Error('fixture has no version');
+    const item: ThumbnailItem = {
+      ...first,
+      versions: [
+        base,
+        { ...base, assetHash: second, id: second, prompt: 'Second prompt.' },
+        { ...base, assetHash: third, id: third, prompt: 'Third prompt.' },
+      ],
+    };
+    expect(awaitingVersions(item)).toHaveLength(3);
+    const revised = applyThumbnailDecision(
+      item,
+      { action: 'revise', feedback: 'No logos', revision: 0, versionId: third },
+      'owner',
+      'now',
+    );
+    // A revision on a non-current version keeps the current one and uses that version's prompt.
+    expect(revised.currentVersionId).toBe(item.currentVersionId);
+    const review = revised.versions[2]?.review;
+    expect(review?.status).toBe('revise');
+    if (review?.status !== 'revise') throw new Error('expected a revision');
+    expect(review.prompt).toContain('Previous prompt: Third prompt.');
+    expect(revised.versions[0]?.review.status).toBe('pending');
+    expect(awaitingVersions(revised)).toHaveLength(2);
+    const approved = applyThumbnailDecision(
+      revised,
+      { action: 'approve', revision: 1, versionId: second },
+      'owner',
+      'now',
+    );
+    expect(approved.currentVersionId).toBe(second);
+    expect(currentThumbnail(approved).review.status).toBe('approved');
+    expect(revised.currentVersionId).toBe(item.currentVersionId);
+    // An item with a still-awaiting version stays in the pending view.
+    expect(visibleThumbnail(approved, 'pending')).toBe(true);
+    expect(() =>
+      applyThumbnailDecision(
+        approved,
+        { action: 'approve', revision: 2, versionId: second },
+        'owner',
+        'now',
+      ),
+    ).toThrow('locked');
   });
   test('stale versions and untrusted decisions are refused', () => {
     const item = fixture();
