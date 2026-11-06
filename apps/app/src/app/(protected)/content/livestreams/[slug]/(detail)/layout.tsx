@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { CollapsibleSidebar } from '@/components/livestreams/CollapsibleSidebar';
-import { LivestreamTabsClient } from '@/components/livestreams/LivestreamTabsClient';
+import { EpisodeSidebarRegistrar } from '@/components/livestreams/EpisodeSidebarRegistrar';
 import { StreamInfoSidebar } from '@/components/livestreams/StreamInfoSidebar';
 import {
   isDateSlug,
@@ -94,16 +94,12 @@ export default async function LivestreamDetailLayout({
 
   return (
     <div className="mx-auto flex min-h-full max-w-6xl flex-col gap-8 p-6 lg:flex-row lg:items-start">
-      <main className="min-w-0 flex-1 space-y-6">
-        <section className="overflow-hidden rounded-xl border border-surface-border bg-surface/30">
-          <LivestreamTabsClient
-            date={resolvedDate}
-            hasTranscript={Boolean(archive?.transcript)}
-            streamSlug={streamSlug}
-          />
-          <div className="p-5">{children}</div>
-        </section>
-      </main>
+      <EpisodeSidebarRegistrar
+        hasTranscript={Boolean(archive?.transcript)}
+        slug={slug}
+        title={title}
+      />
+      <main className="min-w-0 flex-1 space-y-6">{children}</main>
       <CollapsibleSidebar>
         <StreamInfoSidebar
           cards={cards}

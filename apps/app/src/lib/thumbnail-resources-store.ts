@@ -1,11 +1,16 @@
 import { randomUUID } from 'node:crypto';
 import { mkdir, readdir, readFile, rename, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { getProducerStorageBackend } from './producer-storage';
+import { readRedisJson, redisKey } from './redis-storage';
 import { assetDirectory } from './thumbnail-lab-assets';
 import {
+  isPublishedResource,
   isResourceCategory,
   isResourceFile,
   labelFromFile,
+  type PublishedResource,
+  publishedResourceUrl,
   RESOURCE_CATEGORIES,
   RESOURCE_MAX_BYTES,
   type ResourceCategory,
@@ -55,7 +60,30 @@ async function filesIn(category: ResourceCategory): Promise<string[]> {
   );
   return names.filter(isResourceFile).sort();
 }
+/** The production manifest: every asset pushed to the CDN from a local lab. */
+export const publishedResourcesKey = () => redisKey('thumbnail-resources');
+
+async function listPublishedResources(): Promise<ThumbnailResource[]> {
+  const raw = await readRedisJson<unknown>(publishedResourcesKey());
+  if (!Array.isArray(raw)) return [];
+  return raw
+    .filter(isPublishedResource)
+    .map(({ ext, hash, ...entry }: PublishedResource) => ({
+      ...entry,
+      url: publishedResourceUrl(hash, ext),
+    }));
+}
+
+/** Production reads the CDN manifest in Redis; a local lab reads its folder. */
 export async function listThumbnailResources(): Promise<ThumbnailResource[]> {
+  const backend = getProducerStorageBackend();
+  if (backend === 'filesystem') return listLocalThumbnailResources();
+  return backend === 'redis' ? listPublishedResources() : [];
+}
+
+export async function listLocalThumbnailResources(): Promise<
+  ThumbnailResource[]
+> {
   const manifest = await readManifest();
   const resources: ThumbnailResource[] = [];
   for (const category of RESOURCE_CATEGORIES) {
@@ -82,6 +110,9 @@ export async function listThumbnailResources(): Promise<ThumbnailResource[]> {
     }
   }
   return resources;
+}
+export function localResourcePath(category: ResourceCategory, file: string) {
+  return path.join(resourceDirectory(), category, file);
 }
 export async function readThumbnailResource(
   category: string,

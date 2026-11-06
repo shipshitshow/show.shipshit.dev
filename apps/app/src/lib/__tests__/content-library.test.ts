@@ -148,9 +148,12 @@ describe('filter links', () => {
       channel: 'clips' as const,
       missing: false,
       sort: 'latest' as const,
-      type: 'all' as const,
+      type: 'video' as const,
     };
     expect(contentHref('/content', filters)).toBe('/content?channel=clips');
+    expect(contentHref('/content', filters, { type: 'all' })).toBe(
+      '/content?type=all&channel=clips',
+    );
     expect(
       contentHref('/content', filters, { sort: 'popular', type: 'short' }),
     ).toBe('/content?type=short&channel=clips&sort=popular');
@@ -160,7 +163,9 @@ describe('filter links', () => {
     expect(parseChannel('main')).toBe('main');
     expect(parseChannel('nope')).toBe('all');
     expect(parseType('short')).toBe('short');
-    expect(parseType('shorts')).toBe('all');
+    expect(parseType('shorts')).toBe('video');
+    expect(parseType(undefined)).toBe('video');
+    expect(parseType('all')).toBe('all');
   });
 });
 
