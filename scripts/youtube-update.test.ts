@@ -11,6 +11,7 @@ import {
   parseBatch,
   planChange,
   quotaFor,
+  restoreEntry,
   runUpdates,
   selectLabChanges,
   validateChange,
@@ -67,6 +68,7 @@ function item(overrides: Partial<ThumbnailItem> = {}): ThumbnailItem {
 const lab = {
   assetPath: (id: string, hash: string) => `/lab/${id}/${hash}.jpg`,
   exists: () => true,
+  withTitles: true,
 };
 
 test('a title change keeps every other writable snippet field', () => {
@@ -179,6 +181,7 @@ test('validation catches what YouTube would refuse', () => {
   expect(errors({ title: 'x'.repeat(101) })).toHaveLength(1);
   expect(errors({ title: 'a <b>' })).toHaveLength(1);
   expect(errors({ description: 'é'.repeat(2501) })).toHaveLength(1);
+  expect(errors({ description: '  ' })).toHaveLength(1);
   expect(errors({ tags: ['x'.repeat(250), 'y'.repeat(249)] })).toEqual([]);
   expect(errors({ tags: ['x'.repeat(250), 'y'.repeat(250)] })).toHaveLength(1);
   expect(errors({ tags: ['x x'] })).toEqual([]);
@@ -243,6 +246,9 @@ test('bad arguments are refused', () => {
     'contradict',
   );
   expect(() => parseArgs([ID, '--title', 'New', '--force'])).toThrow(
+    'need --from-lab',
+  );
+  expect(() => parseArgs([ID, '--title', 'New', '--with-titles'])).toThrow(
     'need --from-lab',
   );
   expect(() => parseArgs([ID, '--a', 'b', 'c'])).toThrow('Unknown flag');
@@ -526,4 +532,80 @@ test('a title change on a scheduled video does not need --confirm-public', async
   const result = await run([{ change: { id: ID, title: 'New' } }]);
   expect(result.updated).toEqual([ID]);
   expect(writes()[0].url).not.toContain('status');
+});
+
+test('the lab never sends titles unless asked', () => {
+  const renamed = item({ title: 'Renamed' });
+  const { exists, assetPath } = lab;
+  const quiet = selectLabChanges([renamed], {}, { assetPath, exists });
+  expect(quiet.queued).toEqual([
+    {
+      change: { id: ID, thumbnail: `/lab/${ID}/${'a'.repeat(64)}.jpg` },
+      sync: { assetHash: 'a'.repeat(64) },
+    },
+  ]);
+  const synced = { assetHash: 'a'.repeat(64), at: NOW.toISOString() };
+  expect(
+    selectLabChanges([renamed], { [ID]: synced }, { assetPath, exists }),
+  ).toEqual({ queued: [], skipped: [{ id: ID, reason: 'already synced' }] });
+});
+
+test('the old values of a plan are saved as a batch that puts them back', () => {
+  const plan = planChange(video, { id: ID, title: 'New' });
+  expect(restoreEntry(video, ID, plan)).toEqual({
+    categoryId: '28',
+    defaultAudioLanguage: 'en',
+    defaultLanguage: 'en',
+    description: 'Old description',
+    id: ID,
+    tags: ['ai', 'founders'],
+    title: 'Old title',
+  });
+  const hide = planChange(video, { id: ID, privacy: 'private' });
+  expect(restoreEntry(video, ID, hide)).toEqual({
+    embeddable: true,
+    id: ID,
+    license: 'youtube',
+    madeForKids: false,
+    privacy: 'public',
+    publicStats: true,
+  });
+  const scheduled: YouTubeVideo = {
+    ...video,
+    status: { ...video.status, privacyStatus: 'private', publishAt: FUTURE },
+  };
+  const reschedule = planChange(scheduled, {
+    id: ID,
+    publishAt: '2026-11-09T16:00:00Z',
+  });
+  expect(restoreEntry(scheduled, ID, reschedule, NOW)).toMatchObject({
+    publishAt: FUTURE,
+  });
+  expect(restoreEntry(scheduled, ID, reschedule, NOW).privacy).toBeUndefined();
+});
+
+test('the backup is saved before the write, and a failed backup blocks it', async () => {
+  const order: string[] = [];
+  responses.PUT = () => {
+    order.push('write');
+    return json({});
+  };
+  await run([{ change: { id: ID, title: 'New' } }], {
+    onBackup: (entry) => order.push(`backup ${entry.title}`),
+  });
+  expect(order).toEqual(['backup Old title', 'write']);
+
+  const blocked = await run([{ change: { id: ID, title: 'New' } }], {
+    onBackup: () => {
+      throw new Error('disk full');
+    },
+  });
+  expect(blocked.failed[0].message).toBe('disk full');
+  expect(order).toEqual(['backup Old title', 'write']);
+});
+
+test('a dry run saves no backup', async () => {
+  const onBackup = mock(() => {});
+  await run([{ change: { id: ID, title: 'New' } }], { apply: false, onBackup });
+  expect(onBackup).not.toHaveBeenCalled();
 });
