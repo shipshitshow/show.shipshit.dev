@@ -3,8 +3,13 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
+import type { ChannelVideo } from '@/components/channel/ChannelVideoCard';
+import {
+  ChannelVideoGrid,
+  SortChips,
+  StatsFreshness,
+} from '@/components/channel/ChannelVideoGrid';
 import { todayLocalDate } from '@/lib/date';
-import { formatNumber } from '@/lib/format';
 import {
   getTopicsForDate,
   listAvailableLivestreamDates,
@@ -13,6 +18,8 @@ import {
 import { formatLivestreamDate, isPastDate } from '@/lib/livestreams-ui';
 import { buildYouTubeThumbnailUrl } from '@/lib/livestreams-youtube';
 import { analyzeTranscriptScorecard } from '@/lib/transcript-scorecard';
+import { parseSort, sortVideos } from '@/lib/video-stats';
+import { readVideoStats } from '@/lib/video-stats-store';
 
 export const metadata: Metadata = {
   description:
@@ -22,15 +29,12 @@ export const metadata: Metadata = {
 
 interface StreamListItem {
   date: string;
-  hasTranscript: boolean;
   routeSlug: string;
   thumbnailUrl: string;
   title: string;
   topicCount: number;
-  transcriptGrade: string | null;
   transcriptScore: number | null;
-  transcriptWords: number | null;
-  transcriptMinutes: number | null;
+  videoId: string | null;
 }
 
 async function buildUpcomingStream(): Promise<StreamListItem | null> {
@@ -63,15 +67,12 @@ async function buildUpcomingStream(): Promise<StreamListItem | null> {
 
   return {
     date,
-    hasTranscript: false,
     routeSlug: archive?.videoId ?? date,
     thumbnailUrl,
     title,
     topicCount: activeTopics.length || archive?.topicCount || 0,
-    transcriptGrade: null,
-    transcriptMinutes: null,
     transcriptScore: null,
-    transcriptWords: null,
+    videoId: archive?.videoId ?? null,
   };
 }
 
@@ -110,15 +111,12 @@ async function buildDoneStreams(): Promise<StreamListItem[]> {
 
       return {
         date,
-        hasTranscript: Boolean(archive?.hasTranscript),
         routeSlug: archive?.videoId ?? date,
         thumbnailUrl,
         title,
         topicCount: publicTopics.length || archive?.topicCount || 0,
-        transcriptGrade: scorecard?.grade ?? null,
-        transcriptMinutes: scorecard?.stats.estimatedMinutes ?? null,
         transcriptScore: scorecard?.overall ?? null,
-        transcriptWords: scorecard?.stats.wordCount ?? null,
+        videoId: archive?.videoId ?? null,
       };
     }),
   );
@@ -127,18 +125,41 @@ async function buildDoneStreams(): Promise<StreamListItem[]> {
 export default async function LivestreamPage({
   searchParams,
 }: {
-  searchParams: Promise<{ date?: string; tab?: string }>;
+  searchParams: Promise<{ date?: string; sort?: string; tab?: string }>;
 }) {
-  const { date, tab } = await searchParams;
+  const { date, sort: sortParam, tab } = await searchParams;
   if (date) {
     const tabSegment = tab === 'transcript' ? 'transcript' : 'talking-points';
     redirect(`/livestreams/${encodeURIComponent(date)}/${tabSegment}`);
   }
 
-  const [upcoming, streams] = await Promise.all([
+  const sort = parseSort(sortParam);
+  const now = new Date();
+  const [upcoming, doneStreams, stats] = await Promise.all([
     buildUpcomingStream(),
     buildDoneStreams(),
+    readVideoStats(),
   ]);
+  const streams: ChannelVideo[] = sortVideos(
+    doneStreams.map((stream) => {
+      const stat = stream.videoId ? stats?.videos[stream.videoId] : undefined;
+      return {
+        agePrefix: 'Streamed',
+        date: stream.date,
+        href: `/livestreams/${encodeURIComponent(stream.routeSlug)}/talking-points`,
+        key: stream.date,
+        note:
+          stream.transcriptScore === null
+            ? undefined
+            : `Transcript ${stream.transcriptScore}/10`,
+        stat,
+        thumbnailUrl: stream.thumbnailUrl,
+        title: stream.title,
+        views: stat?.views,
+      };
+    }),
+    sort,
+  );
 
   return (
     <main className="mx-auto max-w-7xl space-y-10 px-6 py-8">
@@ -181,8 +202,8 @@ export default async function LivestreamPage({
         </section>
       ) : null}
 
-      <section className="space-y-5">
-        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+      <section className="space-y-6">
+        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-[10px] uppercase tracking-[0.24em] text-text-muted">
               Past
@@ -190,81 +211,16 @@ export default async function LivestreamPage({
             <h2 className="mt-2 text-xl font-semibold text-text-primary">
               Previous Livestreams
             </h2>
+            <p className="mt-1 text-sm text-text-muted">
+              {streams.length} stream{streams.length === 1 ? '' : 's'} ·{' '}
+              <StatsFreshness now={now} stats={stats} />
+            </p>
           </div>
-          <span className="text-xs text-text-muted">
-            {streams.length} stream{streams.length === 1 ? '' : 's'}
-          </span>
+          <SortChips basePath="/livestreams" sort={sort} />
         </div>
 
         {streams.length > 0 ? (
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {streams.map((stream) => (
-              <Link
-                key={stream.date}
-                href={`/livestreams/${encodeURIComponent(stream.routeSlug)}/talking-points`}
-                className="group overflow-hidden rounded-2xl border border-surface-border bg-surface-card transition-colors hover:border-accent-red/40"
-              >
-                <div className="relative aspect-[16/9] overflow-hidden bg-surface-elevated">
-                  {stream.thumbnailUrl === '/icon.svg' ? (
-                    <div className="flex size-full items-center justify-center">
-                      <Image src="/icon.svg" alt="" width={48} height={48} />
-                    </div>
-                  ) : (
-                    <Image
-                      src={stream.thumbnailUrl}
-                      alt=""
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                    />
-                  )}
-                </div>
-                <div className="space-y-3 p-4">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="min-w-0">
-                      <p className="text-[10px] uppercase tracking-[0.18em] text-text-muted">
-                        {formatLivestreamDate(stream.date)}
-                      </p>
-                      <h3 className="mt-1 line-clamp-2 text-sm font-semibold text-text-primary transition-colors group-hover:text-accent-red">
-                        {stream.title}
-                      </h3>
-                    </div>
-                    {stream.transcriptScore !== null ? (
-                      <span
-                        className={`shrink-0 rounded-full border px-2.5 py-1 text-[10px] font-bold ${
-                          stream.transcriptScore >= 8
-                            ? 'border-green-500/20 bg-green-500/10 text-green-400'
-                            : stream.transcriptScore >= 6
-                              ? 'border-yellow-500/20 bg-yellow-500/10 text-yellow-400'
-                              : 'border-red-500/20 bg-red-500/10 text-red-400'
-                        }`}
-                      >
-                        {stream.transcriptScore}/10
-                      </span>
-                    ) : null}
-                  </div>
-                  {stream.hasTranscript ? (
-                    <div className="flex items-center gap-3 text-[10px] text-text-muted">
-                      {stream.transcriptGrade ? (
-                        <span>Grade {stream.transcriptGrade}</span>
-                      ) : null}
-                      {stream.transcriptWords ? (
-                        <span>
-                          {formatNumber(stream.transcriptWords)} words
-                        </span>
-                      ) : null}
-                      {stream.transcriptMinutes ? (
-                        <span>~{stream.transcriptMinutes} min</span>
-                      ) : null}
-                    </div>
-                  ) : (
-                    <p className="text-[10px] text-text-muted/50">
-                      No transcript
-                    </p>
-                  )}
-                </div>
-              </Link>
-            ))}
-          </div>
+          <ChannelVideoGrid now={now} videos={streams} />
         ) : (
           <div className="rounded-2xl border border-dashed border-surface-border bg-surface-card/40 p-8 text-center">
             <p className="text-sm font-medium text-text-primary">

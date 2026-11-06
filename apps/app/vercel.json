@@ -1,5 +1,11 @@
 {
   "buildCommand": "cd ../.. && bun turbo build --filter=@shipshitshow/app",
+  "crons": [
+    {
+      "path": "/api/cron/video-stats",
+      "schedule": "0 5 * * *"
+    }
+  ],
   "installCommand": "cd ../.. && bun install",
   "outputDirectory": ".next"
 }
