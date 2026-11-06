@@ -131,6 +131,10 @@ Thumbnail prompts, art direction, image paths, and livestream vs recap vs surgic
 
 When a clip package includes `Thumbnail prompt`, invoke `$thumbnails`. Shorts, cutdowns, and recaps use that skill's recap/cutdown mode unless the user explicitly asks for livestream archive branding.
 
+## Shorts layout and brand mark
+
+The locked 9:16 template (speaker fills the frame, no title, red asterisk centred at x940/y290 at 120 px, captions at y1480) is in `docs/show-prep/edit-style.md`; the asterisk's colour, size and position for every other format come from the placement table in the vault brand kit (https://github.com/shipshitshow/vault/blob/master/brand/placement.md). Use the SVG master from the kit, never a redraw. Show one rendered example before cutting a batch.
+
 ## YouTube Performance Check
 
 When the user asks what performs best:

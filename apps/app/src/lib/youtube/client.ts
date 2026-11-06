@@ -35,7 +35,7 @@ async function fetchVideoItems(
   token: string,
   videoIds: string[],
 ): Promise<YouTubeVideoItem[]> {
-  const url = `${DATA_API}/videos?part=snippet,statistics,contentDetails,liveStreamingDetails&id=${videoIds.join(',')}`;
+  const url = `${DATA_API}/videos?part=snippet,statistics,contentDetails,liveStreamingDetails,status&id=${videoIds.join(',')}`;
   const res = await ytFetch<{ items?: YouTubeVideoItem[] }>(url, token);
   return res.items ?? [];
 }
@@ -106,6 +106,75 @@ export async function fetchChannelVideos(
 
     const items = await fetchVideoItems(token, videoIds);
     return items.map((item) => toVideoStats(item, channelId));
+  });
+}
+
+/** A channel upload with just enough detail to match it to an episode. */
+export interface ChannelUpload {
+  channelId: string;
+  isPublic: boolean;
+  publishedAt: string;
+  type: NonNullable<VideoStats['video_type']>;
+  videoId: string;
+}
+
+/** The uploads playlist ID is the channel ID with its `UC` prefix swapped for `UU`. */
+function uploadsPlaylistId(channelId: string): string | null {
+  return channelId.startsWith('UC') ? `UU${channelId.slice(2)}` : null;
+}
+
+/**
+ * Recent uploads for a channel, newest first, via the uploads playlist.
+ * `playlistItems.list` costs 1 quota unit a page where `search.list` costs 100,
+ * and the playlist reaches back past the 50 most recent videos, so older
+ * episodes can still be matched.
+ */
+export async function fetchChannelUploads(
+  token: string,
+  channelId: string,
+  maxItems = 200,
+): Promise<ChannelUpload[]> {
+  const playlistId = uploadsPlaylistId(channelId);
+  if (!playlistId) return [];
+
+  return cachedFetch(`uploads:${channelId}`, TTL.VIDEO_LIST, async () => {
+    const videoIds: string[] = [];
+    let pageToken: string | undefined;
+    while (videoIds.length < maxItems) {
+      const params = new URLSearchParams({
+        maxResults: '50',
+        part: 'contentDetails',
+        playlistId,
+      });
+      if (pageToken) params.set('pageToken', pageToken);
+      const page = await ytFetch<{
+        items?: Array<{ contentDetails?: { videoId?: string } }>;
+        nextPageToken?: string;
+      }>(`${DATA_API}/playlistItems?${params}`, token);
+      for (const item of page.items ?? []) {
+        const id = item.contentDetails?.videoId;
+        if (id) videoIds.push(id);
+      }
+      pageToken = page.nextPageToken;
+      if (!pageToken) break;
+    }
+
+    const batches = await Promise.all(
+      chunk(videoIds.slice(0, maxItems), MAX_VIDEO_IDS_PER_REQUEST).map((ids) =>
+        fetchVideoItems(token, ids),
+      ),
+    );
+
+    return batches.flat().map((item): ChannelUpload => {
+      const stats = toVideoStats(item, channelId);
+      return {
+        channelId,
+        isPublic: item.status?.privacyStatus === 'public',
+        publishedAt: stats.published_at,
+        type: stats.video_type ?? 'video',
+        videoId: item.id,
+      };
+    });
   });
 }
 

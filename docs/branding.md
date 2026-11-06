@@ -7,6 +7,7 @@ The maintained source is [the vault brand kit](https://github.com/shipshitshow/v
 | Name, mark, color, typography, photos | [Identity](https://github.com/shipshitshow/vault/blob/master/brand/identity.md) |
 | Thumbnail, avatar, banner, cover, social, app page | [Applications](https://github.com/shipshitshow/vault/blob/master/brand/applications.md) |
 | Captions, motion, broadcast layouts | [Editing](https://github.com/shipshitshow/vault/blob/master/brand/editing.md) |
+| Asterisk position, size, Short layout | [Placement](https://github.com/shipshitshow/vault/blob/master/brand/placement.md) |
 | Select a file | [Inventory](https://github.com/shipshitshow/vault/blob/master/brand/inventory.json) |
 | Export, status, approval and handoff | [Production](https://github.com/shipshitshow/vault/blob/master/brand/production.md) |
 
