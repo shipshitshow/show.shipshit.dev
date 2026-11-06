@@ -20,6 +20,20 @@
  *   bun run youtube:update --from-lab --apply
  *   bun run youtube:update --from-lab --with-titles --apply   (titles too)
  *
+ * Cover images for videos that are already on YouTube (a Shorts channel):
+ *   bun run youtube:update --thumbnail-dir editing/outputs/shorts-covers
+ *   bun run youtube:update --thumbnail-dir <dir> --id <a,b> --channel clips --apply
+ *
+ * --thumbnail-dir takes the video id from each cover's filename
+ * (YYYY-MM-DD-<videoId>-<slug>.png), converts the cover to a JPEG of up to
+ * 2 MB (quality 92 first) in the snapshot folder's cover-jpegs/, and sends it
+ * as the thumbnail. The dry run prints the file-to-video table and what it
+ * finds on YouTube. Before --apply replaces a thumbnail it saves the live one
+ * to thumbnail-backups/<timestamp>/<id>.jpg in the snapshot folder; if that
+ * fails the video is left alone. A video YouTube is still processing is
+ * skipped, and uploads are paced (--pause) with a backoff when YouTube
+ * rate-limits them.
+ *
  * Changes:
  *   --title <text>                     Up to 100 characters
  *   --description <text>               Up to 5,000 bytes
@@ -42,7 +56,10 @@
  *   --offline          Check the input and print the plan, with no API calls
  *   --confirm-public   Allow a change that makes a video public or schedules it
  *   --channel <name>   main (default) or clips
- *   --id <a,b>         With --from-lab: only these videos
+ *   --id <a,b>         With --from-lab or --thumbnail-dir: only these videos
+ *   --jpeg-dir <path>  With --thumbnail-dir: where the JPEGs go (default:
+ *                      cover-jpegs/ in the snapshot folder)
+ *   --pause <seconds>  Wait between videos that were written (default 3)
  *   --with-titles      With --from-lab: also send the lab titles. Without it
  *                      the lab never changes a live title
  *   --include-shorts   With --from-lab: include Shorts, skipped by default
@@ -87,6 +104,13 @@ import {
   kindOf,
   type ThumbnailItem,
 } from '../apps/app/src/lib/thumbnail-lab.ts';
+import {
+  formatCoverTable,
+  prepareCovers,
+  saveLiveThumbnail,
+  type ThumbnailSizes,
+  thumbnailCandidates,
+} from './youtube-covers.ts';
 import { snapshotDirectory } from './youtube-sync.ts';
 import {
   type Channel,
@@ -106,6 +130,8 @@ const MAX_TITLE_LENGTH = 100;
 const PRIVACIES: readonly Privacy[] = ['private', 'unlisted', 'public'];
 const LICENSES = ['creativeCommon', 'youtube'] as const;
 const THUMBNAIL_EXTENSIONS = ['.jpeg', '.jpg', '.png'];
+const DEFAULT_PAUSE_SECONDS = 3;
+const RATE_LIMIT_WAITS_MS = [30_000, 60_000, 120_000];
 
 type License = (typeof LICENSES)[number];
 
@@ -133,6 +159,7 @@ export type YouTubeSnippet = {
   defaultLanguage?: string;
   description?: string;
   tags?: string[];
+  thumbnails?: ThumbnailSizes;
   title: string;
 };
 
@@ -146,7 +173,11 @@ export type YouTubeStatus = {
   selfDeclaredMadeForKids?: boolean;
 };
 
-export type YouTubeVideo = { snippet: YouTubeSnippet; status: YouTubeStatus };
+export type YouTubeVideo = {
+  processingDetails?: { processingStatus?: string };
+  snippet: YouTubeSnippet;
+  status: YouTubeStatus;
+};
 
 export type Plan = {
   diffs: string[];
@@ -172,7 +203,10 @@ export type Options = {
   fromLab: boolean;
   ids?: string[];
   includeShorts: boolean;
+  jpegDir?: string;
   offline: boolean;
+  pause: number;
+  thumbnailDir?: string;
   withTitles: boolean;
 };
 
@@ -432,6 +466,7 @@ export function parseArgs(argv: string[]): Options {
     fromLab: false,
     includeShorts: false,
     offline: false,
+    pause: DEFAULT_PAUSE_SECONDS,
     withTitles: false,
   };
   const change: Partial<VideoChange> = {};
@@ -489,6 +524,9 @@ export function parseArgs(argv: string[]): Options {
       case '--include-shorts':
         options.includeShorts = true;
         break;
+      case '--jpeg-dir':
+        options.jpegDir = value();
+        break;
       case '--license':
         change.license = parseEnum(argument, value(), LICENSES);
         break;
@@ -498,6 +536,13 @@ export function parseArgs(argv: string[]): Options {
       case '--offline':
         options.offline = true;
         break;
+      case '--pause': {
+        const seconds = Number(value());
+        if (!Number.isFinite(seconds) || seconds < 0)
+          throw new Error('--pause needs a number of seconds, 0 or more');
+        options.pause = seconds;
+        break;
+      }
       case '--privacy':
         change.privacy = parseEnum(argument, value(), PRIVACIES);
         break;
@@ -519,6 +564,9 @@ export function parseArgs(argv: string[]): Options {
       case '--thumbnail':
         change.thumbnail = value();
         break;
+      case '--thumbnail-dir':
+        options.thumbnailDir = value();
+        break;
       case '--title':
         change.title = value();
         break;
@@ -536,16 +584,23 @@ export function parseArgs(argv: string[]): Options {
     change.description = readFileSync(descriptionFile, 'utf8');
   }
 
-  const modes = [id, options.batch, options.fromLab || undefined].filter(
-    (mode) => mode !== undefined,
-  );
+  const modes = [
+    id,
+    options.batch,
+    options.fromLab || undefined,
+    options.thumbnailDir,
+  ].filter((mode) => mode !== undefined);
   if (modes.length !== 1)
-    throw new Error('Pass one of <videoId>, --batch or --from-lab');
+    throw new Error(
+      'Pass one of <videoId>, --batch, --from-lab or --thumbnail-dir',
+    );
+  if (options.jpegDir && !options.thumbnailDir)
+    throw new Error('--jpeg-dir needs --thumbnail-dir');
   if (options.apply && options.offline)
     throw new Error('--apply and --offline contradict each other');
   if (
     !options.fromLab &&
-    (options.ids ||
+    ((options.ids && !options.thumbnailDir) ||
       options.includeShorts ||
       options.force ||
       options.withTitles)
@@ -704,7 +759,7 @@ async function youtubeError(response: Response, label: string) {
 
 async function fetchVideo(token: string, id: string) {
   const response = await fetch(
-    `${API}/videos?part=snippet,status&id=${encodeURIComponent(id)}`,
+    `${API}/videos?part=snippet,status,processingDetails&id=${encodeURIComponent(id)}`,
     { headers: { Authorization: `Bearer ${token}` } },
   );
   if (!response.ok) throw await youtubeError(response, 'videos.list');
@@ -743,6 +798,40 @@ async function setThumbnail(token: string, id: string, path: string) {
   if (!response.ok) throw await youtubeError(response, 'thumbnails.set');
 }
 
+function isRateLimited(error: unknown) {
+  return (
+    error instanceof YouTubeError &&
+    (error.reason === 'uploadRateLimitExceeded' || error.status === 429)
+  );
+}
+
+/**
+ * Retry a call YouTube rate-limited, waiting longer each time. After the last
+ * wait the error is thrown, which the run treats as out of quota.
+ */
+export async function withRateLimitBackoff<T>(
+  call: () => Promise<T>,
+  {
+    log,
+    sleep,
+    waits = RATE_LIMIT_WAITS_MS,
+  }: {
+    log: (line: string) => void;
+    sleep: (milliseconds: number) => Promise<unknown>;
+    waits?: number[];
+  },
+) {
+  for (let attempt = 0; ; attempt++) {
+    try {
+      return await call();
+    } catch (error) {
+      if (!isRateLimited(error) || attempt >= waits.length) throw error;
+      log(`    rate limited, waiting ${waits[attempt] / 1000}s to retry`);
+      await sleep(waits[attempt]);
+    }
+  }
+}
+
 function isOutOfQuota(error: unknown) {
   return (
     error instanceof YouTubeError &&
@@ -756,21 +845,29 @@ export async function runUpdates(
   {
     apply,
     confirmPublic,
+    backupThumbnail,
     log,
     onBackup,
     onSynced,
+    pauseMs = 0,
+    sleep = (milliseconds: number) => Bun.sleep(milliseconds),
     token,
   }: {
     apply: boolean;
     confirmPublic: boolean;
+    /** Saves the live thumbnail; a throw leaves the video untouched. */
+    backupThumbnail?: (id: string, video: YouTubeVideo) => Promise<void>;
     log: (line: string) => void;
     onBackup?: (restore: VideoChange) => void;
     onSynced?: (id: string, sync: Omit<SyncRecord, 'at'>) => void;
+    pauseMs?: number;
+    sleep?: (milliseconds: number) => Promise<unknown>;
     token: string;
   },
 ) {
   const failed: Array<{ id: string; message: string }> = [];
   const planned: string[] = [];
+  const skipped: Array<{ id: string; reason: string }> = [];
   const unchanged: string[] = [];
   const updated: string[] = [];
   let unprocessed: string[] = [];
@@ -780,6 +877,14 @@ export async function runUpdates(
     try {
       const video = await fetchVideo(token, id);
       if (!video) throw new Error('Not found on this channel');
+      // A video YouTube is still processing can't take a thumbnail yet.
+      const status = video.processingDetails?.processingStatus;
+      if (thumbnail && status !== 'succeeded') {
+        const reason = `still processing (${status ?? 'no status'}), try again later`;
+        log(`⏭️  ${id}: skipped, ${reason}`);
+        skipped.push({ id, reason });
+        continue;
+      }
       const plan = planChange(video, change);
       if (
         plan.parts.includes('status') &&
@@ -798,17 +903,28 @@ export async function runUpdates(
       }
       log(`${apply ? '✏️ ' : '🔎'} ${id}: ${video.snippet.title}`);
       for (const diff of plan.diffs) log(`    ${diff}`);
-      if (thumbnail) log(`    thumbnail → ${thumbnail}`);
+      if (thumbnail) {
+        const [best] = thumbnailCandidates(video.snippet.thumbnails);
+        log(
+          `    thumbnail → ${thumbnail} (processing ${status}; live thumbnail to back up: ${best ? best.size : 'none found'})`,
+        );
+      }
       if (!apply) {
         planned.push(id);
         continue;
       }
       // The old values are saved first; if that fails, nothing is written.
+      if (thumbnail) await backupThumbnail?.(id, video);
       if (plan.parts.length) onBackup?.(restoreEntry(video, id, plan));
       if (plan.parts.length) await updateVideo(token, id, plan);
-      if (thumbnail) await setThumbnail(token, id, thumbnail);
+      if (thumbnail)
+        await withRateLimitBackoff(() => setThumbnail(token, id, thumbnail), {
+          log,
+          sleep,
+        });
       if (sync) onSynced?.(id, sync);
       updated.push(id);
+      if (pauseMs > 0 && index < queue.length - 1) await sleep(pauseMs);
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       failed.push({ id, message });
@@ -819,7 +935,7 @@ export async function runUpdates(
       }
     }
   }
-  return { failed, planned, unchanged, unprocessed, updated };
+  return { failed, planned, skipped, unchanged, unprocessed, updated };
 }
 
 function labDirectory() {
@@ -875,7 +991,21 @@ function usage(): never {
   process.exit(0);
 }
 
-function loadQueue(options: Options, ledger: SyncLedger) {
+async function loadQueue(options: Options, ledger: SyncLedger) {
+  if (options.thumbnailDir) {
+    const { covers, skipped } = await prepareCovers(
+      resolve(options.thumbnailDir),
+      resolve(options.jpegDir ?? resolve(snapshotDirectory(), 'cover-jpegs')),
+      options.ids,
+    );
+    console.log(formatCoverTable(covers, skipped));
+    return {
+      queued: covers.map((cover) => ({
+        change: { id: cover.id, thumbnail: cover.jpeg },
+      })),
+      skipped: [] as Array<{ id: string; reason: string }>,
+    };
+  }
   if (options.change)
     return { queued: [{ change: options.change }], skipped: [] };
   if (options.batch) {
@@ -905,7 +1035,7 @@ async function main() {
   try {
     options = parseArgs(argv);
     if (options.fromLab) ledger = readLedger(ledgerPath);
-    const queue = loadQueue(options, ledger);
+    const queue = await loadQueue(options, ledger);
     queued = queue.queued;
     for (const { id, reason } of queue.skipped) {
       console.log(`· ${id}: skipped, ${reason}`);
@@ -941,8 +1071,23 @@ async function main() {
     console.log('Dry run: add --apply to write these changes.');
 
   const backup = backupWriter(snapshotDirectory());
+  const thumbnailBackups = resolve(
+    snapshotDirectory(),
+    'thumbnail-backups',
+    new Date().toISOString().replace(/[:.]/g, '-'),
+  );
+  let thumbnailsSaved = 0;
   const result = await runUpdates(queued, {
     apply: options.apply,
+    backupThumbnail: async (id, video) => {
+      const saved = await saveLiveThumbnail(
+        id,
+        video.snippet.thumbnails,
+        thumbnailBackups,
+      );
+      thumbnailsSaved++;
+      console.log(`    live thumbnail saved (${saved.size}) → ${saved.path}`);
+    },
     confirmPublic: options.confirmPublic,
     log: console.log,
     onBackup: (entry) => backup.save(entry),
@@ -950,12 +1095,16 @@ async function main() {
       ledger[id] = { ...ledger[id], ...sync, at: new Date().toISOString() };
       writeLedger(ledgerPath, ledger);
     },
+    pauseMs: options.pause * 1000,
     token,
   });
 
   console.log(
-    `${result.updated.length} updated, ${result.planned.length} planned, ${result.unchanged.length} unchanged, ${result.failed.length} failed`,
+    `${result.updated.length} updated, ${result.planned.length} planned, ${result.unchanged.length} unchanged, ${result.skipped.length} skipped, ${result.failed.length} failed`,
   );
+  if (thumbnailsSaved) {
+    console.log(`Old thumbnails saved to ${thumbnailBackups}`);
+  }
   if (backup.count) {
     console.log(
       `Old values saved to ${backup.path}\nTo undo: bun run youtube:update --batch ${backup.path} --apply`,
