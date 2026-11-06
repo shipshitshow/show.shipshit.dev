@@ -413,7 +413,7 @@ export function TopicDrawingBoard({ date, slug }: TopicDrawingBoardProps) {
             <div className="space-y-3">
               <div className="flex items-start justify-between gap-3">
                 <Link
-                  href={`/livestreams/${slug}?date=${date}`}
+                  href={`/content/livestreams/${slug}?date=${date}`}
                   className="inline-flex items-center gap-2 text-xs font-medium text-text-secondary transition-colors hover:text-text-primary"
                 >
                   <span aria-hidden="true">←</span>
@@ -518,7 +518,7 @@ export function TopicDrawingBoard({ date, slug }: TopicDrawingBoardProps) {
             </button>
 
             <Link
-              href={`/livestreams/${slug}?date=${date}`}
+              href={`/content/livestreams/${slug}?date=${date}`}
               className="flex w-full flex-col items-center gap-1 rounded-xl border border-surface-border bg-surface-elevated px-2 py-3 text-text-secondary transition-colors hover:border-accent-red/30 hover:text-text-primary"
             >
               <span aria-hidden="true" className="text-sm">

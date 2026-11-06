@@ -4,39 +4,6 @@ import {
   type ThumbnailItem,
 } from './thumbnail-lab';
 
-export const LIBRARY_SECTIONS = [
-  {
-    blurb:
-      'Logos, people, products and branding that thumbnail renders draw on.',
-    href: '/library/assets',
-    id: 'assets',
-    title: 'Assets',
-  },
-  {
-    blurb: 'Timelines and tweet slideshows made to show during a livestream.',
-    href: '/library/artifacts',
-    id: 'artifacts',
-    title: 'Artifacts',
-  },
-  {
-    blurb: '16:9 artwork for edited videos and livestreams.',
-    href: '/library/thumbnails',
-    id: 'thumbnails',
-    title: 'Thumbnails',
-  },
-  {
-    blurb: '9:16 artwork for Shorts.',
-    href: '/library/covers',
-    id: 'covers',
-    title: 'Covers',
-  },
-  {
-    blurb: 'Every saved transcript of a video or livestream, searchable.',
-    href: '/library/transcripts',
-    id: 'transcripts',
-    title: 'Transcripts',
-  },
-] as const;
 export type GalleryKind = 'thumbnails' | 'covers';
 export type ReviewFilter =
   | 'all'

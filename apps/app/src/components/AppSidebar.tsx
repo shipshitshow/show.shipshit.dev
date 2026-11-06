@@ -1,6 +1,5 @@
 'use client';
 import { cn } from '@shipshitshow/ui';
-import { BRAND } from '@shipshitshow/ui/brand';
 import { ArrowUpRight, BookOpen } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -15,19 +14,10 @@ export function AppSidebar({ onNavigate }: { onNavigate?: () => void }) {
   const activeHref = getActiveNavigationHref(pathname, app?.links ?? []);
   return (
     <aside className="flex w-[232px] min-w-0 shrink flex-col border-r border-surface-border bg-surface-elevated/30">
-      <div className="px-4 pb-3 pt-5">
-        <p className="text-sm font-semibold text-text-primary">
-          {BRAND.identity.show_name}
-        </p>
-        <p className="mt-1 text-xs text-text-muted">Production workspace</p>
-      </div>
       <nav
         aria-label={`${app?.label ?? 'Production'} navigation`}
-        className="min-h-0 flex-1 overflow-y-auto px-2"
+        className="min-h-0 flex-1 overflow-y-auto px-2 pt-4"
       >
-        <p className="px-3 pb-2 text-xs text-text-muted">
-          {app?.label ?? 'Production'}
-        </p>
         {app?.links.map((link) => {
           const active = link.href === activeHref;
           return (

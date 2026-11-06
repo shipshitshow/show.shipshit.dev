@@ -825,7 +825,7 @@ export function TopicDetailClient() {
         <div className="sticky top-0 z-20 rounded-xl border border-surface-border bg-surface-card/95 p-5 backdrop-blur supports-[backdrop-filter]:bg-surface-card/85">
           <div className="mb-4 flex flex-wrap items-center gap-2 text-[11px] font-medium uppercase tracking-widest">
             <Link
-              href={`/livestreams/${encodeURIComponent(date)}`}
+              href={`/content/livestreams/${encodeURIComponent(date)}`}
               className="text-text-muted transition-colors hover:text-text-primary"
             >
               Livestreams
@@ -1118,7 +1118,7 @@ export function TopicDetailClient() {
                 )}
 
                 <Link
-                  href={`/livestreams/${slug}/draw?date=${date}`}
+                  href={`/content/livestreams/${slug}/draw?date=${date}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 rounded-lg border border-surface-border bg-surface-elevated/50 px-4 py-3 text-sm font-semibold text-text-primary transition-colors hover:border-accent-red/30 hover:text-accent-red"

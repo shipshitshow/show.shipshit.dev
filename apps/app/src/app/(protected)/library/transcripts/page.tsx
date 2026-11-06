@@ -123,15 +123,7 @@ export default async function LibraryTranscriptsPage({
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-6 md:px-7">
-      <LibraryHeader
-        active="transcripts"
-        blurb={`${formatNumber(stats.total)} saved transcripts (${formatNumber(stats.videos)} videos, ${formatNumber(stats.livestreams)} livestreams, ${formatNumber(stats.shorts)} Shorts, ${formatNumber(stats.words)} words)${
-          stats.firstDate && stats.lastDate
-            ? `, ${formatDate(stats.firstDate)} to ${formatDate(stats.lastDate)}`
-            : ''
-        }. Search the title or anything said.`}
-        title="Transcripts"
-      />
+      <LibraryHeader title="Transcripts" />
 
       <form
         action="/library/transcripts"

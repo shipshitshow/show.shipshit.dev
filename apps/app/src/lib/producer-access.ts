@@ -29,6 +29,7 @@ const PUBLIC_PREFIXES = [
   '/sign-up',
   '/login',
   '/talking-points',
+  '/api/cron',
   '/api/og',
   '/api/public',
   '/__clerk',

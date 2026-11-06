@@ -1,3 +1,4 @@
+export { Badge, badgeVariants } from './badge';
 export { BrandMark } from './brand-mark';
 export { Button, buttonVariants } from './button';
 export { cn } from './cn';

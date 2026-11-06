@@ -27,7 +27,11 @@
  *   bun run youtube:sync --push-redis --namespace production          Plan only
  *   bun run youtube:sync --push-redis --namespace production --apply  Write
  * It needs KV_REST_API_URL and KV_REST_API_TOKEN for the write, changes only
- * the key sss:<namespace>:v1:title-lab-snapshot, and uses the main channel.
+ * the keys sss:<namespace>:v1:title-lab-snapshot (main channel only) and
+ * ...:video-stats (both channels with --channel all). video-stats (views,
+ * likes, length, title per video) is what the Content pages show; production
+ * refreshes it daily by itself through Vercel Cron, so pushing it by hand is
+ * only for an immediate update.
  *
  * Auth is the same as youtube-upload.ts. Quota: about 1 unit per 50 videos.
  */
@@ -38,6 +42,13 @@ import {
   slimSnapshot,
   TITLE_SNAPSHOT_KEY,
 } from '../apps/app/src/lib/title-lab.ts';
+import {
+  mergeVideoStats,
+  parseIsoDuration,
+  VIDEO_STATS_KEY,
+  type VideoStat,
+  type VideoStatsSnapshot,
+} from '../apps/app/src/lib/video-stats.ts';
 import {
   type Channel,
   fail,
@@ -302,8 +313,6 @@ export function parseArgs(argv: string[]) {
     throw new Error('--apply and --namespace only go with --push-redis');
   if (pushRedis && diffOnly)
     throw new Error('--push-redis and --diff-only contradict each other');
-  if (pushRedis && !channels.includes('main'))
-    throw new Error('--push-redis sends the main channel; use --channel main');
   const push: PushOptions | undefined =
     pushRedis && namespace ? { apply, namespace } : undefined;
   return { channels, diffOnly, push };
@@ -362,6 +371,66 @@ export async function pushSnapshot(
   return true;
 }
 
+/** Same key as videoStatsKey() in the app: sss:{env}:v1:video-stats. */
+export function videoStatsRedisKey(namespace: string) {
+  return `sss:${namespace}:v1:${VIDEO_STATS_KEY}`;
+}
+
+export function toVideoStats(snapshot: Snapshot): Record<string, VideoStat> {
+  return Object.fromEntries(
+    snapshot.videos.map((video) => {
+      const stat: VideoStat = {
+        channel: snapshot.channel,
+        durationSeconds: parseIsoDuration(video.duration),
+        privacy: video.privacyStatus,
+        title: video.title,
+        views: video.viewCount ?? 0,
+      };
+      if (video.thumbnail) stat.thumbnail = video.thumbnail;
+      if (video.likeCount !== undefined) stat.likes = video.likeCount;
+      if (video.commentCount !== undefined) stat.comments = video.commentCount;
+      if (video.publishedAt) stat.publishedAt = video.publishedAt;
+      return [video.id, stat];
+    }),
+  );
+}
+
+/**
+ * Plan, and with --apply write, the per-video numbers behind the channel-style
+ * grids. Merges into what is stored, so another channel's videos stay.
+ */
+export async function pushStats(
+  snapshot: Snapshot,
+  { apply, namespace }: PushOptions,
+  log: (line: string) => void = console.log,
+) {
+  const key = videoStatsRedisKey(namespace);
+  const hasCredentials = Boolean(
+    process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN,
+  );
+  let previous: VideoStatsSnapshot | null = null;
+  if (hasCredentials) {
+    const stored = await redisCommand(['GET', key]);
+    if (typeof stored === 'string') previous = JSON.parse(stored);
+  }
+  const merged = mergeVideoStats(
+    previous,
+    toVideoStats(snapshot),
+    snapshot.fetchedAt,
+  );
+  const value = JSON.stringify(merged);
+  log(
+    `Redis ${key}: ${Object.keys(merged.videos).length} videos, ${value.length} bytes`,
+  );
+  if (!apply) {
+    log('Dry run: add --apply to write it.');
+    return false;
+  }
+  await redisCommand(['SET', key, value]);
+  log('Written.');
+  return true;
+}
+
 async function syncChannel(
   channel: Channel,
   diffOnly: boolean,
@@ -397,7 +466,11 @@ async function syncChannel(
   writeJson(resolve(directory, `${channel}-${stamp}.json`), snapshot);
   writeJson(latest, snapshot);
   console.log(`\nSaved to ${directory}`);
-  if (push && channel === 'main') await pushSnapshot(snapshot, push);
+  if (push) {
+    // The Titles Lab only covers the main channel; the stats cover both.
+    if (channel === 'main') await pushSnapshot(snapshot, push);
+    await pushStats(snapshot, push);
+  }
 }
 
 async function main() {

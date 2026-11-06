@@ -68,13 +68,13 @@ export async function resolveStreamDate(slug: string): Promise<string | null> {
 
 export async function resolveStreamPathForDate(date: string): Promise<string> {
   if (date >= todayLocalDate()) {
-    return `/livestreams/${UPCOMING_STREAM_SLUG}`;
+    return `/content/livestreams/${UPCOMING_STREAM_SLUG}`;
   }
 
   const archive = await getLivestreamArchiveByDate(date);
   return archive?.videoId
-    ? `/livestreams/${encodeURIComponent(archive.videoId)}`
-    : `/livestreams/${encodeURIComponent(date)}`;
+    ? `/content/livestreams/${encodeURIComponent(archive.videoId)}`
+    : `/content/livestreams/${encodeURIComponent(date)}`;
 }
 
 export function extractSummary(content: string): string | null {

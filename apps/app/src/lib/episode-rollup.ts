@@ -314,8 +314,8 @@ function matchedAsset(
 
 function buildEpisodeHref(episode: LivestreamArchiveItem): string {
   return episode.videoId
-    ? `/livestreams/${encodeURIComponent(episode.videoId)}`
-    : `/livestreams/${encodeURIComponent(episode.date)}`;
+    ? `/content/livestreams/${encodeURIComponent(episode.videoId)}`
+    : `/content/livestreams/${encodeURIComponent(episode.date)}`;
 }
 
 /**

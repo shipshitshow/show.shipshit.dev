@@ -6,9 +6,11 @@ import {
   listUploadIds,
   parseArgs,
   pushSnapshot,
+  pushStats,
   type Snapshot,
   snapshotRedisKey,
   toRecord,
+  toVideoStats,
   type VideoRecord,
 } from './youtube-sync.ts';
 
@@ -160,15 +162,15 @@ test('pushing to Redis needs a namespace and only goes with --push-redis', () =>
   expect(() => parseArgs(['--push-redis', '--namespace', 'a b'])).toThrow(
     'needs a name',
   );
-  expect(() =>
+  expect(
     parseArgs([
       '--push-redis',
       '--namespace',
       'production',
       '--channel',
       'clips',
-    ]),
-  ).toThrow('main channel');
+    ]).channels,
+  ).toEqual(['clips']);
   expect(() =>
     parseArgs(['--push-redis', '--namespace', 'production', '--diff-only']),
   ).toThrow('contradict');
@@ -216,6 +218,73 @@ test('the push is a dry run by default and writes one slim key with --apply', as
   expect(key).toBe('sss:production:v1:title-lab-snapshot');
   expect(value).not.toContain('long description');
   expect(JSON.parse(value).videos[0].title).toBe('A title');
+  delete process.env.KV_REST_API_URL;
+  delete process.env.KV_REST_API_TOKEN;
+});
+
+test('the channel grid numbers come from the snapshot and merge into what is stored', async () => {
+  process.env.KV_REST_API_URL = 'https://redis.example';
+  process.env.KV_REST_API_TOKEN = 'token';
+  const sent: string[][] = [];
+  globalThis.fetch = mock(
+    async (_input: RequestInfo | URL, init?: RequestInit) => {
+      const command = JSON.parse(String(init?.body)) as string[];
+      sent.push(command);
+      return new Response(
+        JSON.stringify({
+          result:
+            command[0] === 'GET'
+              ? JSON.stringify({
+                  fetchedAt: '2026-11-05T05:00:00Z',
+                  videos: { clip: { durationSeconds: 30, views: 5 } },
+                })
+              : 'OK',
+        }),
+      );
+    },
+  ) as unknown as typeof fetch;
+  const snapshot = {
+    channel: 'main',
+    channelTitle: 'Show',
+    fetchedAt: '2026-11-06T11:03:27.554Z',
+    videos: [
+      record({
+        commentCount: 2,
+        duration: 'PT54M11S',
+        likeCount: 65,
+        publishedAt: '2026-11-03T15:00:00Z',
+        viewCount: 1520,
+      }),
+    ],
+  } as Snapshot;
+  expect(toVideoStats(snapshot)[snapshot.videos[0].id]).toEqual({
+    channel: 'main',
+    comments: 2,
+    durationSeconds: 3251,
+    likes: 65,
+    privacy: 'public',
+    publishedAt: '2026-11-03T15:00:00Z',
+    title: 'A title',
+    views: 1520,
+  });
+
+  expect(
+    await pushStats(
+      snapshot,
+      { apply: false, namespace: 'production' },
+      () => {},
+    ),
+  ).toBe(false);
+  expect(sent.map((command) => command[0])).toEqual(['GET']);
+
+  await pushStats(snapshot, { apply: true, namespace: 'production' }, () => {});
+  const [, key, value] = sent.at(-1) as string[];
+  expect(sent.at(-1)?.[0]).toBe('SET');
+  expect(key).toBe('sss:production:v1:video-stats');
+  const written = JSON.parse(value);
+  expect(written.fetchedAt).toBe('2026-11-06T11:03:27.554Z');
+  expect(Object.keys(written.videos)).toContain('clip');
+  expect(written.videos[snapshot.videos[0].id].views).toBe(1520);
   delete process.env.KV_REST_API_URL;
   delete process.env.KV_REST_API_TOKEN;
 });
