@@ -440,7 +440,7 @@ export function ThumbnailLab() {
           >
             Import catalogue / review
           </button>
-          <a className={button} href="/labs/thumbnails/resources">
+          <a className={button} href="/library/assets">
             <Library size={14} />
             Resources
           </a>
