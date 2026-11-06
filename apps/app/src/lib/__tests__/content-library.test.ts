@@ -1,6 +1,8 @@
 import { describe, expect, test } from 'bun:test';
 import {
+  attachVariants,
   buildContentItems,
+  cardVariants,
   classifyUpload,
   contentHref,
   filterContent,
@@ -8,6 +10,11 @@ import {
   parseChannel,
   type RepoContent,
 } from '@/lib/content-library';
+import type {
+  ThumbnailItem,
+  ThumbnailReview,
+  ThumbnailVersion,
+} from '@/lib/thumbnail-lab';
 import type { VideoStat } from '@/lib/video-stats';
 
 const repo: RepoContent[] = [
@@ -186,5 +193,106 @@ describe('outliers', () => {
     });
     expect(sorted[0].key).toBe('d');
     expect(sorted.at(-1)?.outlier).toBeUndefined();
+  });
+});
+
+describe('thumbnail versions on cards', () => {
+  const version = (
+    id: string,
+    status: ThumbnailReview['status'],
+  ): ThumbnailVersion => ({
+    assetHash: id.repeat(64).slice(0, 64),
+    createdAt: '2026-11-06T10:00:00Z',
+    id,
+    legacyRevision: null,
+    prompt: '',
+    review:
+      status === 'pending'
+        ? { status }
+        : status === 'revise'
+          ? { at: '', by: '', feedback: 'x', prompt: 'x', status }
+          : { at: '', by: '', status },
+    source: 'import',
+  });
+  const entry = (
+    id: string,
+    current: string,
+    versions: ThumbnailVersion[],
+  ): ThumbnailItem => ({
+    currentVersionId: current,
+    format: 'video',
+    id,
+    pairIds: [],
+    position: 0,
+    revision: 1,
+    title: id,
+    updatedAt: '',
+    versions,
+    visibility: 'public',
+  });
+  const url = (item: ThumbnailItem, v: ThumbnailVersion) =>
+    `${item.id}/${v.id}`;
+
+  test('puts the current version first, then the newest, and leaves out rejected ones', () => {
+    const variants = cardVariants(
+      entry('edit1', 'b', [
+        version('a', 'rejected'),
+        version('b', 'approved'),
+        version('c', 'pending'),
+        version('d', 'revise'),
+      ]),
+      url,
+    );
+    expect(variants?.shown.map((v) => v.id)).toEqual(['b', 'd', 'c']);
+    expect(variants?.shown[0]).toMatchObject({
+      current: true,
+      href: '/library/thumbnails?video=edit1&version=b',
+      label: 'Version 2 · Approved',
+      url: 'edit1/b',
+    });
+    expect(variants?.more).toBe(0);
+    expect(variants?.href).toBe('/library/thumbnails?video=edit1');
+  });
+
+  test('shows four and counts the rest', () => {
+    const versions = ['a', 'b', 'c', 'd', 'e', 'f'].map((id) =>
+      version(id, 'pending'),
+    );
+    const variants = cardVariants(entry('edit1', 'a', versions), url);
+    expect(variants?.shown.map((v) => v.id)).toEqual(['a', 'f', 'e', 'd']);
+    expect(variants?.more).toBe(2);
+  });
+
+  test('skips a video with no choice left', () => {
+    expect(
+      cardVariants(
+        entry('edit1', 'a', [
+          version('a', 'approved'),
+          version('b', 'rejected'),
+        ]),
+        url,
+      ),
+    ).toBeUndefined();
+  });
+
+  test('matches catalogue entries to cards by video ID', () => {
+    const items = attachVariants(
+      buildContentItems(repo, stats),
+      [
+        entry('edit1', 'a', [
+          version('a', 'approved'),
+          version('b', 'pending'),
+        ]),
+        entry('nobody', 'a', [
+          version('a', 'approved'),
+          version('b', 'pending'),
+        ]),
+      ],
+      url,
+    );
+    expect(
+      items.find((item) => item.key === 'video:edit1')?.variants?.shown,
+    ).toHaveLength(2);
+    expect(items.filter((item) => item.variants)).toHaveLength(1);
   });
 });

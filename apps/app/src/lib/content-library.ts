@@ -5,6 +5,7 @@
  * uploads the repo does not know about, which is where the Shorts come from.
  * Pure, so the pages and tests share it; the loader is content-library-server.
  */
+import type { ThumbnailItem, ThumbnailVersion } from './thumbnail-lab';
 import { sortVideos, type VideoSort, type VideoStat } from './video-stats';
 
 export type ContentType = 'livestream' | 'video' | 'short';
@@ -52,8 +53,96 @@ export interface ContentItem {
   transcriptWords?: number;
   type: ContentType;
   upcoming?: boolean;
+  /** Thumbnail versions from the Library, when there is a choice to see. */
+  variants?: CardVariants;
   videoId: string | null;
   views?: number;
+}
+
+/** One thumbnail version shown under a card. */
+interface CardVariant {
+  current: boolean;
+  /** Opens the Library on this video with this version selected. */
+  href: string;
+  id: string;
+  label: string;
+  status: 'approved' | 'pending' | 'revise';
+  url: string;
+}
+
+export interface CardVariants {
+  /** Opens the Library on this video. */
+  href: string;
+  /** Versions left out of the strip. */
+  more: number;
+  shown: CardVariant[];
+}
+
+/** How many versions fit under a card before the rest become "+N". */
+const VARIANTS_SHOWN = 4;
+
+const VARIANT_STATUS: Record<CardVariant['status'], string> = {
+  approved: 'Approved',
+  pending: 'Awaiting review',
+  revise: 'Revision requested',
+};
+
+function thumbnailLabHref(videoId: string, versionId?: string): string {
+  const params = new URLSearchParams({ video: videoId });
+  if (versionId) params.set('version', versionId);
+  return `/library/thumbnails?${params}`;
+}
+
+/**
+ * The versions of a video's thumbnail worth comparing on its card: the
+ * current one first, then the newest. Rejected versions stay in the Library.
+ * Nothing when there is only one version left, since there is no choice.
+ */
+export function cardVariants(
+  item: ThumbnailItem,
+  url: (item: ThumbnailItem, version: ThumbnailVersion) => string,
+): CardVariants | undefined {
+  const numbered = item.versions.map((version, index) => ({
+    index,
+    version,
+  }));
+  const open = numbered
+    .filter(({ version }) => version.review.status !== 'rejected')
+    .sort(
+      (a, b) =>
+        Number(b.version.id === item.currentVersionId) -
+          Number(a.version.id === item.currentVersionId) || b.index - a.index,
+    );
+  if (open.length < 2) return undefined;
+  return {
+    href: thumbnailLabHref(item.id),
+    more: Math.max(0, open.length - VARIANTS_SHOWN),
+    shown: open.slice(0, VARIANTS_SHOWN).map(({ index, version }) => {
+      const status = version.review.status as CardVariant['status'];
+      return {
+        current: version.id === item.currentVersionId,
+        href: thumbnailLabHref(item.id, version.id),
+        id: version.id,
+        label: `Version ${index + 1} · ${VARIANT_STATUS[status]}`,
+        status,
+        url: url(item, version),
+      };
+    }),
+  };
+}
+
+/** Puts each video's Library versions on its card, matched by video ID. */
+export function attachVariants(
+  items: ContentItem[],
+  catalogue: ThumbnailItem[],
+  url: (item: ThumbnailItem, version: ThumbnailVersion) => string,
+): ContentItem[] {
+  const byVideo = new Map(catalogue.map((entry) => [entry.id, entry]));
+  return items.map((item) => {
+    const entry = item.videoId ? byVideo.get(item.videoId) : undefined;
+    const variants = entry ? cardVariants(entry, url) : undefined;
+    return variants ? { ...item, variants } : item;
+  });
 }
 
 /** A livestream, video or Short the repo knows about, before the stats are joined. */
