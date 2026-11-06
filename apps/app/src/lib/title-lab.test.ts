@@ -5,6 +5,8 @@ import path from 'node:path';
 import {
   buildBatch,
   draftProblems,
+  hasLiveTag,
+  stripLivePrefix,
   summarise,
   type TitleSnapshot,
   titleLength,
@@ -122,4 +124,17 @@ test('a draft for an unknown video or with a bad title is refused', async () => 
     '< or >',
   );
   expect(await readTitleDrafts()).toEqual({});
+});
+
+test('no [LIVE] tag: it is flagged, stripped from the front and refused in drafts', () => {
+  expect(hasLiveTag('[LIVE] NPM Is Broken')).toBe(true);
+  expect(hasLiveTag('npm [ live ] broken')).toBe(true);
+  expect(hasLiveTag('Live coding with Codex')).toBe(false);
+  expect(stripLivePrefix('[LIVE] NPM Is Broken')).toBe('NPM Is Broken');
+  expect(stripLivePrefix('[live]: NPM Is Broken')).toBe('NPM Is Broken');
+  expect(stripLivePrefix('NPM Is Broken')).toBe('NPM Is Broken');
+  expect(draftProblems('[LIVE] NPM Is Broken')).toEqual([
+    'Titles do not carry a [LIVE] tag.',
+  ]);
+  expect(draftProblems('NPM Is Broken')).toEqual([]);
 });
