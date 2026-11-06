@@ -26,6 +26,12 @@ export const LIBRARY_SECTIONS = [
     id: 'covers',
     title: 'Covers',
   },
+  {
+    blurb: 'Every saved transcript of a video or livestream, searchable.',
+    href: '/library/transcripts',
+    id: 'transcripts',
+    title: 'Transcripts',
+  },
 ] as const;
 export type GalleryKind = 'thumbnails' | 'covers';
 export type ReviewFilter =

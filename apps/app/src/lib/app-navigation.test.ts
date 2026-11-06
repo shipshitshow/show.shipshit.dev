@@ -17,7 +17,7 @@ describe('production route ownership', () => {
       '/livestreams/example/talking-points',
       '/livestream/example',
       '/live-stream/2026-10-02',
-      '/videos/example',
+      '/videos',
     ])
       expect(getProductionApp(path)?.id).toBe('shows');
     expect(getProductionApp('/analytics/episodes')?.id).toBe('analytics');
@@ -33,6 +33,8 @@ describe('production route ownership', () => {
       '/library/artifacts',
       '/library/thumbnails',
       '/library/covers',
+      '/library/transcripts',
+      '/library/transcripts/example',
     ])
       expect(getProductionApp(path)?.id).toBe('library');
     expect(getProductionApp('/labs/thumbnails')?.id).toBe('labs');

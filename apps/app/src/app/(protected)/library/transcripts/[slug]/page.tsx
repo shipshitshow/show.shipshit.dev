@@ -71,7 +71,7 @@ function VideoTabs({
         return (
           <Link
             key={tab}
-            href={`/videos/${encodeURIComponent(slug)}?tab=${tab}`}
+            href={`/library/transcripts/${encodeURIComponent(slug)}?tab=${tab}`}
             className={`-mb-px border-b-2 px-4 py-3 text-sm font-semibold transition-colors ${
               isActive
                 ? 'border-accent-red text-text-primary'
@@ -225,7 +225,7 @@ export async function generateMetadata({
   }
 
   const pageUrl = toAbsoluteUrl(
-    `/videos/${encodeURIComponent(video.routeSlug)}`,
+    `/library/transcripts/${encodeURIComponent(video.routeSlug)}`,
   );
   const description = clampText(
     stripMarkdown(normalizeTranscript(video.transcript).plainText),
@@ -285,10 +285,10 @@ export default async function VideoDetailPage({
   return (
     <main className="mx-auto max-w-6xl px-6 py-8">
       <Link
-        href="/videos"
+        href="/library/transcripts"
         className="text-xs font-medium text-text-muted transition-colors hover:text-accent-red"
       >
-        Back to videos
+        Back to transcripts
       </Link>
 
       <div className="mt-5 grid gap-8 lg:grid-cols-[minmax(0,1fr)_360px]">

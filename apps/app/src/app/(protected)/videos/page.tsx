@@ -79,7 +79,9 @@ export default async function VideosPage() {
               key={video.routeSlug}
               className="group overflow-hidden rounded-2xl border border-surface-border bg-surface-card transition-colors hover:border-accent-red/40"
             >
-              <Link href={`/videos/${encodeURIComponent(video.routeSlug)}`}>
+              <Link
+                href={`/library/transcripts/${encodeURIComponent(video.routeSlug)}`}
+              >
                 <div className="relative aspect-[16/9] overflow-hidden bg-surface-elevated">
                   <Image
                     src={video.thumbnailUrl}
@@ -96,7 +98,7 @@ export default async function VideosPage() {
                       {formatVideoDate(video.date)}
                     </p>
                     <Link
-                      href={`/videos/${encodeURIComponent(video.routeSlug)}`}
+                      href={`/library/transcripts/${encodeURIComponent(video.routeSlug)}`}
                       className="mt-1 block line-clamp-2 text-sm font-semibold text-text-primary transition-colors group-hover:text-accent-red"
                     >
                       {video.title}
@@ -109,7 +111,7 @@ export default async function VideosPage() {
                 <div className="flex items-center justify-between gap-3 text-[11px] text-text-muted">
                   <span>{formatNumber(video.wordCount)} words</span>
                   <Link
-                    href={`/videos/${encodeURIComponent(video.routeSlug)}`}
+                    href={`/library/transcripts/${encodeURIComponent(video.routeSlug)}`}
                     className="font-medium text-text-secondary transition-colors hover:text-accent-red"
                   >
                     Transcript
