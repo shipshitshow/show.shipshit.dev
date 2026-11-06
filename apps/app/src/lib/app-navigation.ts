@@ -10,7 +10,6 @@ import {
 
 export const PRODUCTION_APPS = [
   {
-    group: 'daily',
     href: '/content',
     icon: Radio,
     id: 'content',
@@ -29,7 +28,6 @@ export const PRODUCTION_APPS = [
     roots: ['/content', '/livestreams', '/artifacts'],
   },
   {
-    group: 'daily',
     href: '/analytics',
     icon: BarChart3,
     id: 'analytics',
@@ -41,7 +39,6 @@ export const PRODUCTION_APPS = [
     roots: ['/analytics'],
   },
   {
-    group: 'daily',
     href: '/socials',
     icon: Share2,
     id: 'socials',
@@ -53,7 +50,6 @@ export const PRODUCTION_APPS = [
     roots: ['/socials', '/comments'],
   },
   {
-    group: 'more',
     href: '/partnerships',
     icon: Handshake,
     id: 'partnerships',
@@ -65,7 +61,6 @@ export const PRODUCTION_APPS = [
     roots: ['/partnerships', '/leads'],
   },
   {
-    group: 'more',
     href: '/research',
     icon: Telescope,
     id: 'research',
@@ -77,7 +72,6 @@ export const PRODUCTION_APPS = [
     roots: ['/research', '/trends', '/topics'],
   },
   {
-    group: 'more',
     href: '/library',
     icon: Library,
     id: 'library',
@@ -93,7 +87,6 @@ export const PRODUCTION_APPS = [
     roots: ['/library'],
   },
   {
-    group: 'more',
     href: '/labs',
     icon: FlaskConical,
     id: 'labs',
