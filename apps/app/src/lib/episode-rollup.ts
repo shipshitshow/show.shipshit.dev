@@ -12,6 +12,10 @@ import type {
 } from '@shipshitshow/types';
 import { todayLocalDate } from '@/lib/date';
 import { readEpisodeDistributions } from '@/lib/distribution-store';
+import {
+  type EpisodeVideoMatch,
+  matchEpisodeVideos,
+} from '@/lib/episode-video-match';
 import { countLeadsByEpisode, listLeads } from '@/lib/leads-store';
 import { getEpisodeLinkedInMeasurement } from '@/lib/linkedin-measurement';
 import {
@@ -20,7 +24,10 @@ import {
 } from '@/lib/livestreams-store';
 import { listEpisodeXMetrics } from '@/lib/livestreams-x-posts';
 import { extractVideoId } from '@/lib/livestreams-youtube';
+import { logError } from '@/lib/logger';
 import {
+  type ChannelUpload,
+  fetchChannelUploads,
   fetchVideoReachMetrics,
   fetchVideoRetentionMetrics,
   fetchVideosByIds,
@@ -29,6 +36,7 @@ import {
   getAccessToken,
   getChannelConfigs,
   hasYouTubeCredentials,
+  isYouTubeReauthError,
 } from '@/lib/youtube/token';
 
 /**
@@ -233,6 +241,77 @@ async function fetchYouTubeMetrics(
   return metrics;
 }
 
+function youtubeWatchUrl(videoId: string): string {
+  return `https://www.youtube.com/watch?v=${videoId}`;
+}
+
+/** Channel uploads across every connected channel; one failing channel is skipped. */
+async function fetchAllUploads(): Promise<ChannelUpload[]> {
+  const channels = await getChannelConfigs();
+  const perChannel = await Promise.all(
+    channels.map(async (channel) => {
+      try {
+        const token = await getAccessToken(channel);
+        return await fetchChannelUploads(token, channel.id);
+      } catch (error) {
+        // A dead refresh token must still surface as "reconnect YouTube".
+        if (isYouTubeReauthError(error)) throw error;
+        logError('episode_rollup.uploads_failed', error);
+        return [];
+      }
+    }),
+  );
+  return perChannel.flat();
+}
+
+/**
+ * The checklist (#17) wins whenever it lists published assets. Only when it has
+ * none do we fall back to the video matched from the channel's uploads, so
+ * hand-entered links are never overridden.
+ */
+function withMatchedAssets(
+  date: string,
+  distribution: EpisodeDistribution | undefined,
+  match: EpisodeVideoMatch | undefined,
+): EpisodeDistribution | undefined {
+  if (!match) return distribution;
+
+  const matched: PublishedAsset[] = [];
+  const hasFlagship = getPublishedAssets(distribution, 'flagship_video').length;
+  if (!hasFlagship && match.flagshipId) {
+    matched.push(matchedAsset('flagship_video', match.flagshipId, 1));
+  }
+  if (!getPublishedAssets(distribution, 'short').length) {
+    match.shortIds.forEach((id, index) => {
+      matched.push(matchedAsset('short', id, index + 1));
+    });
+  }
+  if (matched.length === 0) return distribution;
+
+  return {
+    assets: [...(distribution?.assets ?? []), ...matched],
+    date,
+    updatedAt: distribution?.updatedAt ?? null,
+  };
+}
+
+function matchedAsset(
+  type: 'flagship_video' | 'short',
+  videoId: string,
+  slot: number,
+): PublishedAsset {
+  return {
+    id: `${type}-matched-${slot}`,
+    isOptional: false,
+    label: type === 'short' ? `Short ${slot}` : ASSET_LABELS[type],
+    platform: 'youtube',
+    publishedAt: null,
+    status: 'published',
+    type,
+    url: youtubeWatchUrl(videoId),
+  };
+}
+
 function buildEpisodeHref(episode: LivestreamArchiveItem): string {
   return episode.videoId
     ? `/livestreams/${encodeURIComponent(episode.videoId)}`
@@ -274,9 +353,8 @@ function buildRow(
   xMetrics: XEpisodeMetrics | undefined,
   linkedinMeasurement: EpisodeLinkedInMeasurement | undefined,
   leadCount: number,
+  hasChecklist: boolean,
 ): EpisodeRollupRow {
-  const hasChecklist = distribution !== undefined;
-
   const flagshipAssets = getPublishedAssets(distribution, 'flagship_video');
   const livestreamAssets = getLivestreamAssets(distribution, episode);
   const shortAssets = getPublishedAssets(distribution, 'short');
@@ -410,9 +488,33 @@ export async function buildEpisodeRollup(): Promise<EpisodeRollupResponse> {
   );
   const leadsByEpisode = countLeadsByEpisode(leads);
 
+  // Link each episode's flagship and Shorts from the channels themselves, so
+  // the rollup works without anyone filling in the checklist first.
+  const matches = isYouTubeConnected
+    ? matchEpisodeVideos(
+        dates,
+        await fetchAllUploads(),
+        new Set(
+          episodes.flatMap((episode) =>
+            episode.videoId ? [episode.videoId] : [],
+          ),
+        ),
+      )
+    : new Map<string, EpisodeVideoMatch>();
+  const effectiveDistributions = new Map(
+    episodes.map((episode) => [
+      episode.date,
+      withMatchedAssets(
+        episode.date,
+        distributions.get(episode.date),
+        matches.get(episode.date),
+      ),
+    ]),
+  );
+
   const videoIds = new Set<string>();
   for (const episode of episodes) {
-    const distribution = distributions.get(episode.date);
+    const distribution = effectiveDistributions.get(episode.date);
     for (const assets of [
       getPublishedAssets(distribution, 'flagship_video'),
       getLivestreamAssets(distribution, episode),
@@ -433,12 +535,13 @@ export async function buildEpisodeRollup(): Promise<EpisodeRollupResponse> {
     episodes: episodes.map((episode) =>
       buildRow(
         episode,
-        distributions.get(episode.date),
+        effectiveDistributions.get(episode.date),
         metrics,
         isYouTubeConnected,
         xMetricsByDate.get(episode.date),
         linkedinByDate.get(episode.date),
         leadsByEpisode[episode.date] ?? 0,
+        distributions.has(episode.date),
       ),
     ),
     generatedAt,
