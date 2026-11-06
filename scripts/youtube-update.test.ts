@@ -306,6 +306,25 @@ test('the lab only sends approved video items with a local file', () => {
   ]);
 });
 
+test('the lab never sends banner or PFP items to a video', () => {
+  const { queued, skipped } = selectLabChanges(
+    [
+      item({ id: 'banner26110' }),
+      item({ id: 'pfpavatar01' }),
+      item({ id: 'othervideo1', kind: 'banner' }),
+      item(),
+    ],
+    {},
+    lab,
+  );
+  expect(queued.map((q) => q.change.id)).toEqual([ID]);
+  expect(skipped).toEqual([
+    { id: 'banner26110', reason: 'banner' },
+    { id: 'pfpavatar01', reason: 'pfp' },
+    { id: 'othervideo1', reason: 'banner' },
+  ]);
+});
+
 test('the lab skips what the ledger already has and sends only what moved', () => {
   const synced = {
     assetHash: 'a'.repeat(64),

@@ -1,4 +1,11 @@
 export type ThumbnailFormat = 'video' | 'live' | 'short';
+/** What the artwork is for. Only 'thumbnail' items ever go to YouTube videos. */
+export type ThumbnailKind = 'thumbnail' | 'banner' | 'pfp';
+export const THUMBNAIL_KINDS: readonly ThumbnailKind[] = [
+  'thumbnail',
+  'banner',
+  'pfp',
+];
 export type ThumbnailReview =
   | { status: 'pending' }
   | { status: 'approved'; at: string; by: string }
@@ -25,6 +32,8 @@ export interface ThumbnailItem {
   id: string;
   title: string;
   format: ThumbnailFormat;
+  /** Optional on stored data; use `kindOf` so older items resolve too. */
+  kind?: ThumbnailKind;
   visibility: string;
   position: number;
   pairIds: string[];
@@ -99,6 +108,28 @@ export function isThumbnailVersion(value: unknown): value is ThumbnailVersion {
       SOURCES.includes(value.source),
   );
 }
+/**
+ * The kind of an item. Stored items predate the field, so a missing kind is
+ * inferred from the id prefix ('banner…', 'pfp…'); everything else is a
+ * thumbnail. No data migration needed.
+ */
+export function kindOf(item: {
+  id: string;
+  kind?: ThumbnailKind;
+}): ThumbnailKind {
+  if (item.kind && THUMBNAIL_KINDS.includes(item.kind)) return item.kind;
+  if (/^banner/i.test(item.id)) return 'banner';
+  if (/^pfp/i.test(item.id)) return 'pfp';
+  return 'thumbnail';
+}
+export const isThumbnailKind = (item: { id: string; kind?: ThumbnailKind }) =>
+  kindOf(item) === 'thumbnail';
+export function itemsOfKind<T extends { id: string; kind?: ThumbnailKind }>(
+  items: readonly T[],
+  kind: ThumbnailKind,
+): T[] {
+  return items.filter((item) => kindOf(item) === kind);
+}
 export function isThumbnailItem(value: unknown): value is ThumbnailItem {
   if (
     !value ||
@@ -115,6 +146,12 @@ export function isThumbnailItem(value: unknown): value is ThumbnailItem {
     (value.format !== 'video' &&
       value.format !== 'live' &&
       value.format !== 'short')
+  )
+    return false;
+  if (
+    'kind' in value &&
+    value.kind !== undefined &&
+    !THUMBNAIL_KINDS.includes(value.kind as ThumbnailKind)
   )
     return false;
   if (
