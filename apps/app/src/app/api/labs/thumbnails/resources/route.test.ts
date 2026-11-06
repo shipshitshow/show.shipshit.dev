@@ -56,6 +56,7 @@ test('an upload is listed and served back', async () => {
   expect(created.status).toBe(201);
   const body = await (await GET()).json();
   expect(body.resources).toHaveLength(1);
+  expect(body.writable).toBe(true);
   expect(body.resources[0].label).toBe('Jane');
   const served = await resource(
     new Request(url),
@@ -104,4 +105,8 @@ test('bad paths and missing files answer without leaking anything', async () => 
   );
   expect(missing.status).toBe(404);
   expect(await missing.text()).not.toContain(directory);
+});
+test('a deployment reports that assets are read-only', async () => {
+  process.env.VERCEL = '1';
+  expect((await (await GET()).json()).writable).toBe(false);
 });

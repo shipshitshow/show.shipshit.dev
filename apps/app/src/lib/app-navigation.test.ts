@@ -26,6 +26,18 @@ describe('production route ownership', () => {
     expect(getProductionApp('/socials')?.id).toBe('socials');
     expect(isNavigationActive('/analytics-other', '/analytics')).toBe(false);
   });
+  test('keeps every library section under one rail entry', () => {
+    for (const path of [
+      '/library',
+      '/library/assets',
+      '/library/artifacts',
+      '/library/thumbnails',
+      '/library/covers',
+    ])
+      expect(getProductionApp(path)?.id).toBe('library');
+    expect(getProductionApp('/labs/thumbnails')?.id).toBe('labs');
+    expect(getProductionPageLabel('/library/covers')).toBe('Covers');
+  });
   test('keeps show preparation in the rail instead of contextual menus', () => {
     const shows = PRODUCTION_APPS.find((app) => app.id === 'shows');
     expect(shows?.group).toBe('daily');

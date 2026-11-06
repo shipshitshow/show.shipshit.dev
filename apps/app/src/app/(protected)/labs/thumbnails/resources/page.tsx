@@ -1,10 +1,6 @@
-import { BRAND } from '@shipshitshow/ui/brand';
-import type { Metadata } from 'next';
-import { ThumbnailResources } from '@/components/labs/ThumbnailResources';
+import { redirect } from 'next/navigation';
 
-export const metadata: Metadata = {
-  title: 'Thumbnail Resources — ' + BRAND.identity.show_name,
-};
+// Resources moved into the library as Assets.
 export default function ThumbnailResourcesPage() {
-  return <ThumbnailResources />;
+  redirect('/library/assets');
 }
