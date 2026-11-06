@@ -1,5 +1,5 @@
 import { BRAND } from '@shipshitshow/ui/brand';
-import { ArrowUpRight, Images } from 'lucide-react';
+import { ArrowUpRight, Images, Library } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 export const metadata: Metadata = {
@@ -15,20 +15,36 @@ export default function LabsPage() {
       <p className="mt-3 max-w-xl text-sm text-text-secondary">
         Try ideas, compare versions and keep the ones that work.
       </p>
-      <Link
-        href="/labs/thumbnails"
-        className="mt-8 flex max-w-xl items-start gap-4 rounded-2xl border border-surface-border bg-surface-elevated/30 p-6 transition-colors hover:border-accent-red/50"
-      >
-        <Images className="mt-1 text-accent-red" size={24} />
-        <div className="flex-1">
-          <h2 className="text-lg font-semibold">Thumbnail Lab</h2>
-          <p className="mt-2 text-sm leading-6 text-text-muted">
-            Review the channel wall, compare live and recap artwork, request
-            revisions, and save approved versions.
-          </p>
-        </div>
-        <ArrowUpRight size={18} />
-      </Link>
+      <div className="mt-8 grid max-w-xl gap-4">
+        <Link
+          href="/labs/thumbnails"
+          className="flex max-w-xl items-start gap-4 rounded-2xl border border-surface-border bg-surface-elevated/30 p-6 transition-colors hover:border-accent-red/50"
+        >
+          <Images className="mt-1 text-accent-red" size={24} />
+          <div className="flex-1">
+            <h2 className="text-lg font-semibold">Thumbnail Lab</h2>
+            <p className="mt-2 text-sm leading-6 text-text-muted">
+              Review the channel wall, compare live and recap artwork, request
+              revisions, and save approved versions.
+            </p>
+          </div>
+          <ArrowUpRight size={18} />
+        </Link>
+        <Link
+          href="/labs/thumbnails/resources"
+          className="flex max-w-xl items-start gap-4 rounded-2xl border border-surface-border bg-surface-elevated/30 p-6 transition-colors hover:border-accent-red/50"
+        >
+          <Library className="mt-1 text-accent-red" size={24} />
+          <div className="flex-1">
+            <h2 className="text-lg font-semibold">Thumbnail Resources</h2>
+            <p className="mt-2 text-sm leading-6 text-text-muted">
+              The logos, people, products and branding that thumbnail renders
+              draw on.
+            </p>
+          </div>
+          <ArrowUpRight size={18} />
+        </Link>
+      </div>
     </main>
   );
 }

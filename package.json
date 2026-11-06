@@ -27,6 +27,7 @@
     "test": "turbo test",
     "thumbnail:stamp": "bun run --cwd apps/app thumbnail:stamp",
     "youtube:metadata": "bun scripts/generate-youtube-metadata.ts",
+    "youtube:update": "bun scripts/youtube-update.ts",
     "youtube:upload": "bun scripts/youtube-upload.ts"
   },
   "workspaces": [

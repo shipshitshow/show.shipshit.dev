@@ -1,8 +1,19 @@
 'use client';
 import { BrandMark } from '@shipshitshow/ui';
-import { BRAND } from '@shipshitshow/ui/brand';
-import { Check, Download, History, ImagePlus, Search, X } from 'lucide-react';
+import {
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  Download,
+  History,
+  ImagePlus,
+  Library,
+  RotateCcw,
+  Search,
+  X,
+} from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import { flushSync } from 'react-dom';
 import {
   currentThumbnail,
   isThumbnailItem,
@@ -12,8 +23,24 @@ import {
   thumbnailAssetUrl,
   visibleThumbnail,
 } from '@/lib/thumbnail-lab';
+import {
+  EMPTY_RULES,
+  RealSizePreview,
+  ReferenceRail,
+  RuleChecklist,
+  type RuleChecks,
+  type RuleKey,
+  type RuleState,
+  syncRuleFeedback,
+} from './ThumbnailReviewAids';
 
 type Capabilities = { writable: boolean; uploadsAvailable: boolean };
+const FORMAT_LABELS: Record<ThumbnailItem['format'], string> = {
+  live: 'Livestream',
+  short: 'Short',
+  video: 'Video',
+};
+
 function parseItems(value: unknown): ThumbnailItem[] {
   if (
     !value ||
@@ -65,10 +92,20 @@ export function ThumbnailLab() {
     [large, setLarge] = useState(false),
     [busy, setBusy] = useState<string | null>(null);
   const [artwork, setArtwork] = useState<File | null>(null),
-    [prompt, setPrompt] = useState('');
+    [prompt, setPrompt] = useState(''),
+    [titleDraft, setTitleDraft] = useState(''),
+    [rules, setRules] = useState<RuleChecks>(EMPTY_RULES);
+  const failedRules = Object.values(rules).includes('fail');
+  function setRule(key: RuleKey, state: RuleState) {
+    const next = { ...rules, [key]: state };
+    setRules(next);
+    setFeedback((current) => syncRuleFeedback(current, next));
+  }
   const dialog = useRef<HTMLDialogElement>(null),
     importFile = useRef<HTMLInputElement>(null),
-    uploadFile = useRef<HTMLInputElement>(null);
+    uploadFile = useRef<HTMLInputElement>(null),
+    note = useRef<HTMLTextAreaElement>(null),
+    keys = useRef<(e: KeyboardEvent) => void>(() => {});
   const active = items.find((item) => item.id === activeId),
     version = active?.versions.find((v) => v.id === versionId);
   const editable = Boolean(
@@ -76,6 +113,13 @@ export function ThumbnailLab() {
       version &&
       version.id === active.currentVersionId &&
       version.review.status !== 'approved' &&
+      capabilities.writable,
+  );
+  const reopenable = Boolean(
+    active &&
+      version &&
+      version.id === active.currentVersionId &&
+      version.review.status === 'approved' &&
       capabilities.writable,
   );
   async function load() {
@@ -123,8 +167,12 @@ export function ThumbnailLab() {
     setFeedback(v.review.status === 'revise' ? v.review.feedback : '');
     setCompare(false);
     setArtwork(null);
+    setRules(EMPTY_RULES);
     setPrompt(v.prompt);
+    setTitleDraft(item.title);
     setError('');
+    setNotice('');
+    dialog.current?.scrollTo({ top: 0 });
   }
   function close() {
     setActiveId(null);
@@ -133,16 +181,21 @@ export function ThumbnailLab() {
   function updated(item: ThumbnailItem) {
     setItems((rows) => rows.map((row) => (row.id === item.id ? item : row)));
   }
-  async function decide(item: ThumbnailItem, action: 'approve' | 'revise') {
+  async function saveTitle(item: ThumbnailItem) {
+    const title = titleDraft.trim();
+    if (title === item.title) return;
+    if (!title) {
+      setTitleDraft(item.title);
+      return;
+    }
     setBusy(item.id);
     setError('');
     try {
       const response = await fetch('/api/labs/thumbnails/' + item.id, {
         body: JSON.stringify({
-          action,
-          feedback,
+          action: 'title',
           revision: item.revision,
-          versionId: item.currentVersionId,
+          title,
         }),
         headers: { 'Content-Type': 'application/json' },
         method: 'PATCH',
@@ -155,14 +208,72 @@ export function ThumbnailLab() {
         !('item' in body) ||
         !isThumbnailItem(body.item)
       )
-        throw new Error('Invalid saved review response.');
+        throw new Error('Invalid saved title response.');
       updated(body.item);
-      close();
-      setNotice(
-        action === 'approve'
-          ? 'Approved & locked. Removed from review.'
-          : 'Revision saved. Removed from review.',
-      );
+      setTitleDraft(body.item.title);
+      setNotice('Title saved.');
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'The title was not saved.');
+    } finally {
+      setBusy(null);
+    }
+  }
+  async function saveDecision(
+    item: ThumbnailItem,
+    action: 'approve' | 'reopen' | 'revise',
+  ) {
+    const response = await fetch('/api/labs/thumbnails/' + item.id, {
+      body: JSON.stringify({
+        action,
+        feedback,
+        revision: item.revision,
+        versionId: item.currentVersionId,
+      }),
+      headers: { 'Content-Type': 'application/json' },
+      method: 'PATCH',
+    });
+    if (!response.ok) throw await responseError(response);
+    const body: unknown = await response.json();
+    if (
+      !body ||
+      typeof body !== 'object' ||
+      !('item' in body) ||
+      !isThumbnailItem(body.item)
+    )
+      throw new Error('Invalid saved review response.');
+    updated(body.item);
+  }
+  async function reopen(item: ThumbnailItem) {
+    setBusy(item.id);
+    setError('');
+    try {
+      await saveDecision(item, 'reopen');
+      setFeedback('');
+      setRules(EMPTY_RULES);
+      setNotice('Reopened. It is back in Pending.');
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'It was not reopened.');
+    } finally {
+      setBusy(null);
+    }
+  }
+  async function decide(item: ThumbnailItem, action: 'approve' | 'revise') {
+    // The neighbour is taken before the save so the queue keeps its order.
+    const at = visible.findIndex((row) => row.id === item.id);
+    const next = at < 0 ? undefined : (visible[at + 1] ?? visible[at - 1]);
+    setBusy(item.id);
+    setError('');
+    try {
+      await saveDecision(item, action);
+      const saved =
+        action === 'approve' ? 'Approved & locked.' : 'Revision saved.';
+      if (next) {
+        open(next);
+        setNotice(saved + ' Next thumbnail opened.');
+      } else {
+        close();
+        setNotice(at < 0 ? saved : saved + ' Nothing left in this view.');
+      }
     } catch (e) {
       setError(e instanceof Error ? e.message : 'The review was not saved.');
     } finally {
@@ -246,20 +357,70 @@ export function ThumbnailLab() {
   );
   const button =
     'inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-surface-border px-3 py-2 text-xs transition-colors hover:bg-surface-elevated disabled:cursor-not-allowed disabled:opacity-40';
+  const activeIndex = visible.findIndex((row) => row.id === activeId);
+  function go(step: number) {
+    const target = activeIndex < 0 ? undefined : visible[activeIndex + step];
+    if (target) open(target);
+  }
+  function onKey(e: KeyboardEvent) {
+    if (!active || e.repeat || e.isComposing) return;
+    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
+      if (editable && !busy && feedback.trim()) {
+        e.preventDefault();
+        decide(active, 'revise');
+      }
+      return;
+    }
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const el = e.target;
+    if (
+      el instanceof HTMLElement &&
+      (el.isContentEditable || /^(INPUT|SELECT|TEXTAREA)$/.test(el.tagName))
+    )
+      return;
+    const key = e.key.toLowerCase();
+    if (key === 'arrowright') {
+      e.preventDefault();
+      go(1);
+    } else if (key === 'arrowleft') {
+      e.preventDefault();
+      go(-1);
+    } else if (key === 'a' && editable && !busy && !failedRules) {
+      e.preventDefault();
+      decide(active, 'approve');
+    } else if (key === 'r' && editable) {
+      e.preventDefault();
+      note.current?.focus();
+    }
+  }
+  useEffect(() => {
+    keys.current = onKey;
+  });
+  useEffect(() => {
+    const handle = (e: KeyboardEvent) => keys.current(e);
+    window.addEventListener('keydown', handle);
+    return () => window.removeEventListener('keydown', handle);
+  }, []);
   if (loading && !items.length)
     return (
       <p className="p-12 text-sm text-text-muted">Loading Thumbnail Lab…</p>
     );
   return (
     <main className="mx-auto max-w-[1800px] px-4 py-6 md:px-7">
-      <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <p className="text-[10px] uppercase tracking-[.18em] text-text-muted">
-            Producer Labs
-          </p>
-          <h1 className="mt-1 text-2xl font-semibold tracking-tight">
-            Thumbnail Lab
-          </h1>
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-surface-border bg-surface-card">
+            <BrandMark className="h-5 w-5 text-accent-red" />
+          </div>
+          <div>
+            <h1 className="text-xl font-semibold tracking-tight">
+              Thumbnail Lab
+            </h1>
+            <p className="mt-0.5 text-xs text-text-muted">
+              {items.length} videos & livestreams · {counts.pending} awaiting
+              review · {counts.approved} approved
+            </p>
+          </div>
         </div>
         <div className="flex flex-wrap gap-2">
           <input
@@ -279,34 +440,17 @@ export function ThumbnailLab() {
           >
             Import catalogue / review
           </button>
+          <a className={button} href="/labs/thumbnails/resources">
+            <Library size={14} />
+            Resources
+          </a>
           <a className={button} href="/api/labs/thumbnails/reviews">
             <Download size={14} />
             Export review
           </a>
         </div>
       </div>
-      <div className="flex min-h-24 items-center justify-between rounded-xl border-l-4 border-accent-red bg-surface-elevated px-7">
-        <p className="text-2xl font-bold tracking-tight md:text-3xl">
-          THINK AI. SHIP SH!T.
-        </p>
-        <span className="hidden text-[10px] tracking-[.16em] text-text-muted md:block">
-          THUMBNAIL LAB / 001
-        </span>
-      </div>
-      <div className="flex items-center gap-4 py-6">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-surface-border bg-surface-card">
-          <BrandMark className="h-8 w-8 text-accent-red" />
-        </div>
-        <div>
-          <h2 className="text-2xl font-semibold tracking-tight">
-            {BRAND.identity.show_name}
-          </h2>
-          <p className="mt-1 text-xs text-text-muted">
-            @shipshitshow · {items.length} videos & livestreams ·{' '}
-            {counts.pending} awaiting review
-          </p>
-        </div>
-      </div>
+      <ReferenceRail />
       <div className="flex flex-wrap items-end justify-between gap-3 border-b border-surface-border">
         <nav className="flex gap-6" aria-label="Thumbnail review status">
           {(
@@ -343,6 +487,7 @@ export function ThumbnailLab() {
             ['', 'All'],
             ['video', 'Videos · white ✱'],
             ['live', 'Live · red ✱'],
+            ['short', 'Shorts · red ✱'],
           ].map(([value, label]) => (
             <button
               key={value}
@@ -408,7 +553,12 @@ export function ThumbnailLab() {
           return (
             <article key={item.id} className="group min-w-0">
               <button
-                className="block aspect-video w-full overflow-hidden rounded-xl bg-surface-elevated outline outline-1 -outline-offset-1 outline-white/10"
+                className={
+                  (item.format === 'short'
+                    ? 'mx-auto block aspect-[9/16] w-3/5'
+                    : 'block aspect-video w-full') +
+                  ' overflow-hidden rounded-xl bg-surface-elevated outline outline-1 -outline-offset-1 outline-white/10'
+                }
                 onClick={() => open(item)}
                 aria-label={'Inspect ' + item.title}
               >
@@ -436,26 +586,11 @@ export function ThumbnailLab() {
                         ? 'Approved'
                         : v.review.status === 'revise'
                           ? 'Revision queued'
-                          : item.format === 'live'
-                            ? 'Livestream'
-                            : 'Video'}
+                          : FORMAT_LABELS[item.format]}
                     </span>
                     <code>{item.id}</code>
                   </div>
                 </div>
-                <button
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-text-muted transition-colors hover:bg-surface-elevated hover:text-emerald-400 disabled:opacity-30"
-                  title="Approve & lock"
-                  aria-label={'Approve ' + item.title}
-                  disabled={
-                    !!busy ||
-                    !capabilities.writable ||
-                    v.review.status === 'approved'
-                  }
-                  onClick={() => decide(item, 'approve')}
-                >
-                  <Check size={16} />
-                </button>
               </div>
             </article>
           );
@@ -486,20 +621,60 @@ export function ThumbnailLab() {
               <span className="text-[10px] tracking-[.15em] text-text-muted">
                 THUMBNAIL LAB
               </span>
-              <button
-                className={button}
-                onClick={close}
-                aria-label="Close thumbnail"
-              >
-                <X size={16} />
-              </button>
+              <div className="flex items-center gap-2">
+                {activeIndex >= 0 && (
+                  <>
+                    <button
+                      className={button}
+                      onClick={() => go(-1)}
+                      disabled={activeIndex === 0}
+                      aria-label="Previous thumbnail"
+                      title="Previous (←)"
+                    >
+                      <ChevronLeft size={16} />
+                    </button>
+                    <span
+                      className="min-w-16 text-center text-xs tabular-nums text-text-muted"
+                      aria-live="polite"
+                    >
+                      {activeIndex + 1} of {visible.length}
+                    </span>
+                    <button
+                      className={button}
+                      onClick={() => go(1)}
+                      disabled={activeIndex === visible.length - 1}
+                      aria-label="Next thumbnail"
+                      title="Next (→)"
+                    >
+                      <ChevronRight size={16} />
+                    </button>
+                  </>
+                )}
+                <button
+                  className={button}
+                  onClick={close}
+                  aria-label="Close thumbnail"
+                  title="Close (Esc)"
+                >
+                  <X size={16} />
+                </button>
+              </div>
             </div>
             <div className="grid lg:grid-cols-[1.7fr_1fr]">
               <div className="min-w-0 bg-surface-elevated/30 p-5">
                 <img
                   src={thumbnailAssetUrl(active, version)}
                   alt={active.title}
-                  className="aspect-video w-full rounded-lg object-contain"
+                  className={
+                    active.format === 'short'
+                      ? 'mx-auto aspect-[9/16] max-h-[70vh] w-auto rounded-lg object-contain'
+                      : 'aspect-video w-full rounded-lg object-contain'
+                  }
+                />
+                <RealSizePreview
+                  portrait={active.format === 'short'}
+                  alt={active.title + ' at real feed sizes'}
+                  src={thumbnailAssetUrl(active, version)}
                 />
                 <div className="mt-4 flex flex-wrap gap-2">
                   <label className="flex items-center gap-2 text-xs">
@@ -510,6 +685,7 @@ export function ThumbnailLab() {
                       value={version.id}
                       onChange={(e) => {
                         setVersionId(e.target.value);
+                        setRules(EMPTY_RULES);
                         const v = active.versions.find(
                           (v) => v.id === e.target.value,
                         );
@@ -533,7 +709,7 @@ export function ThumbnailLab() {
                       className={button}
                       onClick={() => setCompare(!compare)}
                     >
-                      {compare ? 'Hide comparison' : 'Compare live / recap'}
+                      {compare ? 'Hide twin' : 'Compare with video/live twin'}
                     </button>
                   )}
                   <button
@@ -600,9 +776,11 @@ export function ThumbnailLab() {
                       />
                     </label>
                     <p className="text-[11px] text-text-muted">
-                      Use unbranded 16:9 artwork under 4 MB. The app adds the{' '}
-                      {active.format === 'live' ? 'red' : 'white'} star at the
-                      fixed top-right position.
+                      Use unbranded{' '}
+                      {active.format === 'short' ? '9:16' : '16:9'} artwork
+                      under 4 MB. The app adds the{' '}
+                      {active.format === 'video' ? 'white' : 'red'} star at its
+                      fixed position.
                     </p>
                     <button
                       className={button}
@@ -623,20 +801,40 @@ export function ThumbnailLab() {
               </div>
               <aside className="border-t border-surface-border p-5 lg:border-l lg:border-t-0">
                 <p className="text-[10px] uppercase tracking-wider text-text-muted">
-                  {active.format === 'live'
-                    ? 'Livestream · red ✱'
-                    : 'Video · white ✱'}{' '}
-                  ·{' '}
+                  {FORMAT_LABELS[active.format]} ·{' '}
+                  {active.format === 'video' ? 'white' : 'red'} ✱ ·{' '}
                   {version.id === active.currentVersionId
                     ? 'Current version'
                     : 'History · read only'}
                 </p>
-                <h2
-                  id="thumbnail-title"
-                  className="mt-3 text-xl font-semibold leading-7"
-                >
+                <h2 id="thumbnail-title" className="sr-only">
                   {active.title}
                 </h2>
+                <textarea
+                  aria-label="Title"
+                  className="mt-3 w-full resize-none rounded border border-transparent bg-transparent text-xl font-semibold leading-7 outline-none hover:border-surface-border focus:border-surface-border"
+                  maxLength={100}
+                  onBlur={() => void saveTitle(active)}
+                  onChange={(e) => setTitleDraft(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      e.currentTarget.blur();
+                    }
+                    if (e.key === 'Escape') {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      flushSync(() => setTitleDraft(active.title));
+                      e.currentTarget.blur();
+                    }
+                  }}
+                  readOnly={!capabilities.writable}
+                  rows={3}
+                  value={titleDraft}
+                />
+                <p className="mt-1 text-[10px] text-text-muted">
+                  Saves here only. It does not change YouTube.
+                </p>
                 <code className="mt-3 block text-xs text-text-muted">
                   {active.id}
                 </code>
@@ -663,9 +861,15 @@ export function ThumbnailLab() {
                       ? 'Revision requested'
                       : 'Awaiting review'}
                 </p>
+                <RuleChecklist
+                  checks={rules}
+                  disabled={!editable || !!busy}
+                  onChange={setRule}
+                />
                 <label className="mt-4 block text-xs">
                   What should change?
                   <textarea
+                    ref={note}
                     value={feedback}
                     onChange={(e) => setFeedback(e.target.value)}
                     disabled={!editable || !!busy}
@@ -674,27 +878,50 @@ export function ThumbnailLab() {
                     placeholder="One clear note is enough."
                   />
                 </label>
-                <div className="mt-3 flex gap-2">
+                {reopenable ? (
                   <button
-                    className={button + ' flex-1 text-emerald-400'}
-                    disabled={!editable || !!busy}
-                    onClick={() => decide(active, 'approve')}
+                    className={button + ' mt-3 w-full'}
+                    disabled={!!busy}
+                    onClick={() => reopen(active)}
                   >
-                    <Check size={14} />
-                    Approve & lock
+                    <RotateCcw size={14} />
+                    Reopen for review
                   </button>
-                  <button
-                    className={button + ' flex-1'}
-                    disabled={!editable || !!busy || !feedback.trim()}
-                    onClick={() => decide(active, 'revise')}
-                  >
-                    Request revision
-                  </button>
-                </div>
+                ) : (
+                  <div className="mt-3 flex gap-2">
+                    <button
+                      className={button + ' flex-1 text-emerald-400'}
+                      disabled={!editable || !!busy || failedRules}
+                      title={
+                        failedRules
+                          ? 'A rule is marked Fail. Request a revision instead.'
+                          : undefined
+                      }
+                      onClick={() => decide(active, 'approve')}
+                    >
+                      <Check size={14} />
+                      Approve & lock
+                    </button>
+                    <button
+                      className={button + ' flex-1'}
+                      disabled={!editable || !!busy || !feedback.trim()}
+                      onClick={() => decide(active, 'revise')}
+                    >
+                      Request revision
+                    </button>
+                  </div>
+                )}
                 <p className="mt-3 text-[10px] leading-5 text-text-muted">
-                  Decisions save to the app and leave the active queue. Approved
-                  versions remain immutable. New variations return for review.
+                  Keys: ← → browse · A approve & lock · R write a note ·
+                  ⌘/Ctrl+Enter request revision · Esc close. A decision opens
+                  the next thumbnail in this view. Approved versions stay locked
+                  until you reopen them. New variations return for review.
                 </p>
+                {notice && (
+                  <p role="status" className="mt-3 text-xs text-emerald-400">
+                    {notice}
+                  </p>
+                )}
                 {error && (
                   <p role="alert" className="mt-3 text-xs text-accent-red">
                     {error}

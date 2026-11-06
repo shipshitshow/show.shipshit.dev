@@ -1,4 +1,4 @@
-export type ThumbnailFormat = 'video' | 'live';
+export type ThumbnailFormat = 'video' | 'live' | 'short';
 export type ThumbnailReview =
   | { status: 'pending' }
   | { status: 'approved'; at: string; by: string }
@@ -43,6 +43,7 @@ export interface ThumbnailLabResponse {
 }
 export type ThumbnailDecision =
   | { action: 'approve'; versionId: string; revision: number }
+  | { action: 'reopen'; versionId: string; revision: number }
   | { action: 'revise'; versionId: string; revision: number; feedback: string };
 export class ThumbnailConflict extends Error {}
 export const isVideoId = (value: string) => /^[\w-]{11}$/.test(value);
@@ -102,7 +103,9 @@ export function isThumbnailItem(value: unknown): value is ThumbnailItem {
     !('title' in value) ||
     !text(value.title) ||
     !('format' in value) ||
-    (value.format !== 'video' && value.format !== 'live')
+    (value.format !== 'video' &&
+      value.format !== 'live' &&
+      value.format !== 'short')
   )
     return false;
   if (
@@ -185,6 +188,12 @@ export function parseThumbnailDecision(value: unknown): ThumbnailDecision {
       revision: value.revision,
       versionId: value.versionId,
     };
+  if (value.action === 'reopen')
+    return {
+      action: 'reopen',
+      revision: value.revision,
+      versionId: value.versionId,
+    };
   if (
     value.action === 'revise' &&
     'feedback' in value &&
@@ -200,6 +209,52 @@ export function parseThumbnailDecision(value: unknown): ThumbnailDecision {
     };
   throw new Error('Add a revision note of 1–4000 characters.');
 }
+export interface ThumbnailTitleEdit {
+  action: 'title';
+  revision: number;
+  title: string;
+}
+export function parseThumbnailChange(
+  value: unknown,
+): ThumbnailDecision | ThumbnailTitleEdit {
+  if (
+    !value ||
+    typeof value !== 'object' ||
+    !('action' in value) ||
+    value.action !== 'title'
+  )
+    return parseThumbnailDecision(value);
+  if (
+    !('revision' in value) ||
+    typeof value.revision !== 'number' ||
+    !Number.isSafeInteger(value.revision) ||
+    value.revision < 0 ||
+    !('title' in value) ||
+    !text(value.title)
+  )
+    throw new Error('Invalid thumbnail title.');
+  const title = value.title.trim();
+  if (!title || title.length > 100)
+    throw new Error('Add a title of 1–100 characters.');
+  return { action: 'title', revision: value.revision, title };
+}
+// A title belongs to the video, not to a review, so it stays editable after approval.
+export function applyThumbnailTitle(
+  item: ThumbnailItem,
+  edit: ThumbnailTitleEdit,
+  at: string,
+): ThumbnailItem {
+  if (item.revision !== edit.revision)
+    throw new ThumbnailConflict(
+      'This thumbnail changed. Refresh before renaming.',
+    );
+  return {
+    ...item,
+    revision: item.revision + 1,
+    title: edit.title,
+    updatedAt: at,
+  };
+}
 export function currentThumbnail(item: ThumbnailItem): ThumbnailVersion {
   const version = item.versions.find(
     (version) => version.id === item.currentVersionId,
@@ -208,8 +263,11 @@ export function currentThumbnail(item: ThumbnailItem): ThumbnailVersion {
   return version;
 }
 export function revisionPrompt(item: ThumbnailItem, feedback: string): string {
+  const isShort = item.format === 'short';
   return [
-    'Create one clean 16:9 YouTube thumbnail for: ' + item.title,
+    (isShort
+      ? 'Create one clean 9:16 YouTube Shorts cover for: '
+      : 'Create one clean 16:9 YouTube thumbnail for: ') + item.title,
     'Share the channel camera style, lighting and material quality, not the same scene or props. Invent a composition for this topic. Do not copy a chessboard, pedestal or cathedral set from a reference.',
     /discord/i.test(item.title)
       ? 'Discord must use its official purple/blurple face, never white. Keep the official glyph geometry.'
@@ -218,12 +276,16 @@ export function revisionPrompt(item: ThumbnailItem, feedback: string): string {
       ? 'This is a company comparison: use the clean Anthropic company A-plus-slash mark, not the Claude sunburst or Claude Code mascot.'
       : '',
     'One clear idea, one or two large subjects. Strong camera angle and separation. No added text. Use the supplied official product logos or actual mascot references.',
-    'Keep this ' +
-      item.format +
-      ' composition different from its linked ' +
-      (item.format === 'video' ? 'livestream' : 'edited recap') +
-      '.',
-    'Do not draw the show asterisk. Leave the upper-right quiet; the app adds the ' +
+    isShort
+      ? ''
+      : 'Keep this ' +
+        item.format +
+        ' composition different from its linked ' +
+        (item.format === 'video' ? 'livestream' : 'edited recap') +
+        '.',
+    (isShort
+      ? 'Do not draw the show asterisk. Keep the area around x940/y290 dark and quiet, and the bottom fifth simple; the app adds the '
+      : 'Do not draw the show asterisk. Leave the upper-right quiet; the app adds the ') +
       (item.format === 'video' ? 'white' : 'red') +
       ' signature at fixed geometry.',
     'Requested visual change: ' + feedback,
@@ -244,18 +306,23 @@ export function applyThumbnailDecision(
       'This thumbnail changed. Refresh before reviewing.',
     );
   const version = currentThumbnail(item);
-  if (version.review.status === 'approved')
+  if (decision.action === 'reopen') {
+    if (version.review.status !== 'approved')
+      throw new ThumbnailConflict('Only an approved version can be reopened.');
+  } else if (version.review.status === 'approved')
     throw new ThumbnailConflict('This version is approved and locked.');
   const review: ThumbnailReview =
-    decision.action === 'approve'
-      ? { at, by, status: 'approved' }
-      : {
-          at,
-          by,
-          feedback: decision.feedback,
-          prompt: revisionPrompt(item, decision.feedback),
-          status: 'revise',
-        };
+    decision.action === 'reopen'
+      ? { status: 'pending' }
+      : decision.action === 'approve'
+        ? { at, by, status: 'approved' }
+        : {
+            at,
+            by,
+            feedback: decision.feedback,
+            prompt: revisionPrompt(item, decision.feedback),
+            status: 'revise',
+          };
   return {
     ...item,
     revision: item.revision + 1,

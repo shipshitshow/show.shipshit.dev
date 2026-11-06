@@ -29,7 +29,7 @@
  * YOUTUBE_REFRESH_TOKEN_MAIN / _CLIPS or, when unset, the app's KV store
  * (`youtube:refresh_token:<channel>`, via KV_REST_API_URL / KV_REST_API_TOKEN).
  * The app's existing youtube.force-ssl scope covers videos.insert and
- * thumbnails.set. Run `vercel env pull` in apps/app to get the values locally.
+ * thumbnails.set.
  *
  * Google locks videos uploaded from an unaudited API project to private,
  * whatever privacyStatus is sent, and each upload costs 1,600 of the default
@@ -39,8 +39,8 @@
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { dirname, extname, resolve } from 'node:path';
 
-type Channel = 'main' | 'clips';
-type Privacy = 'private' | 'unlisted' | 'public';
+export type Channel = 'main' | 'clips';
+export type Privacy = 'private' | 'unlisted' | 'public';
 
 interface Chapter {
   time: string;
@@ -79,7 +79,7 @@ function usage(): never {
   process.exit(0);
 }
 
-function fail(message: string): never {
+export function fail(message: string): never {
   console.error(`❌ ${message}`);
   process.exit(1);
 }
@@ -204,13 +204,11 @@ async function readKvRefreshToken(channel: Channel): Promise<string | null> {
   }
 }
 
-async function getAccessToken(channel: Channel): Promise<string> {
+export async function getAccessToken(channel: Channel): Promise<string> {
   const clientId = process.env.YOUTUBE_CLIENT_ID;
   const clientSecret = process.env.YOUTUBE_CLIENT_SECRET;
   if (!clientId || !clientSecret) {
-    fail(
-      'Set YOUTUBE_CLIENT_ID and YOUTUBE_CLIENT_SECRET (vercel env pull in apps/app)',
-    );
+    fail('Set YOUTUBE_CLIENT_ID and YOUTUBE_CLIENT_SECRET in the environment');
   }
 
   const envToken =
@@ -247,7 +245,7 @@ async function getAccessToken(channel: Channel): Promise<string> {
 }
 
 /** Make sure the token belongs to the channel we mean to upload to. */
-async function verifyChannel(accessToken: string, channel: Channel) {
+export async function verifyChannel(accessToken: string, channel: Channel) {
   const res = await fetch(
     'https://www.googleapis.com/youtube/v3/channels?part=snippet&mine=true',
     { headers: { Authorization: `Bearer ${accessToken}` } },
@@ -471,4 +469,4 @@ async function main() {
   if (thumbnail) await setThumbnail(accessToken, videoId, thumbnail);
 }
 
-await main();
+if (import.meta.main) await main();

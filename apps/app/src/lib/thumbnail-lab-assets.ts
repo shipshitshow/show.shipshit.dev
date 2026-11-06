@@ -24,7 +24,7 @@ export function thumbnailUploadsAvailable(): boolean {
     )
   );
 }
-function assetDirectory() {
+export function assetDirectory() {
   return (
     process.env.THUMBNAIL_LAB_DIR ||
     path.join(process.cwd(), 'data/thumbnail-lab')
@@ -95,31 +95,73 @@ export async function readLocalThumbnailAsset(
 ): Promise<Buffer> {
   return readFile(path.join(assetDirectory(), 'assets', id, hash + '.jpg'));
 }
+// Brand placement table. Landscape: 144px at x1680/y96 on 1920x1080 (96px clearance).
+// Shorts: 120px centred on x940/y290 on 1080x1920, clear of the YouTube overlays.
+const LANDSCAPE_PLACEMENT = {
+  armLength: 132,
+  armWidth: 30,
+  box: 144,
+  height: 1080,
+  label: '16:9',
+  left: 1680,
+  ratio: 16 / 9,
+  top: 96,
+  width: 1920,
+};
+const SHORT_PLACEMENT = {
+  armLength: 110,
+  armWidth: 25,
+  box: 120,
+  height: 1920,
+  label: '9:16',
+  left: 880,
+  ratio: 9 / 16,
+  top: 230,
+  width: 1080,
+};
+
 export async function renderThumbnail(
   data: Buffer,
   format: ThumbnailFormat,
 ): Promise<{ bytes: Buffer; hash: string }> {
   if (data.length > 4_000_000)
     throw new Error('Upload an image smaller than 4 MB.');
-  const image = sharp(data, { limitInputPixels: 40_000_000 }).rotate(),
+  const place = format === 'short' ? SHORT_PLACEMENT : LANDSCAPE_PLACEMENT,
+    image = sharp(data, { limitInputPixels: 40_000_000 }).rotate(),
     metadata = await image.metadata();
   if (
     !metadata.width ||
     !metadata.height ||
     !['jpeg', 'png', 'webp'].includes(metadata.format ?? '') ||
-    Math.abs(metadata.width / metadata.height - 16 / 9) > 0.04
+    Math.abs(metadata.width / metadata.height - place.ratio) > 0.04
   )
-    throw new Error('Upload 16:9 JPEG, PNG or WebP artwork.');
+    throw new Error('Upload ' + place.label + ' JPEG, PNG or WebP artwork.');
   const color =
     format === 'video' ? BRAND_COLORS.white : BRAND_COLORS.accent_red;
   const signature = Buffer.from(
-    '<svg xmlns="http://www.w3.org/2000/svg" width="144" height="144"><g fill="' +
+    '<svg xmlns="http://www.w3.org/2000/svg" width="' +
+      place.box +
+      '" height="' +
+      place.box +
+      '"><g fill="' +
       color +
-      '" transform="translate(72 72)">' +
+      '" transform="translate(' +
+      place.box / 2 +
+      ' ' +
+      place.box / 2 +
+      ')">' +
       [0, 60, 120]
         .map(
           (angle) =>
-            '<rect x="-15" y="-66" width="30" height="132" transform="rotate(' +
+            '<rect x="' +
+            -place.armWidth / 2 +
+            '" y="' +
+            -place.armLength / 2 +
+            '" width="' +
+            place.armWidth +
+            '" height="' +
+            place.armLength +
+            '" transform="rotate(' +
             angle +
             ')"/>',
         )
@@ -127,8 +169,8 @@ export async function renderThumbnail(
       '</g></svg>',
   );
   const bytes = await image
-    .resize(1920, 1080)
-    .composite([{ input: signature, left: 1704, top: 72 }])
+    .resize(place.width, place.height)
+    .composite([{ input: signature, left: place.left, top: place.top }])
     .jpeg({ quality: 93 })
     .toBuffer();
   if (bytes.length > 2_000_000)

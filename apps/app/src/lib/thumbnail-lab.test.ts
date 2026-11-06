@@ -6,9 +6,12 @@ import sharp from 'sharp';
 import {
   appendThumbnailVersion,
   applyThumbnailDecision,
+  applyThumbnailTitle,
   currentThumbnail,
   isThumbnailItem,
+  parseThumbnailChange,
   parseThumbnailDecision,
+  revisionPrompt,
   ThumbnailConflict,
   type ThumbnailItem,
   thumbnailCdnUrl,
@@ -99,6 +102,96 @@ describe('thumbnail review contract', () => {
     expect(review.prompt).toContain('photographic shell');
     expect(review.prompt).toContain('white');
     expect(review.prompt).toContain(item.title);
+  });
+  test('a title edit leaves versions alone and reviews still parse', () => {
+    const item = fixture();
+    const decision = {
+      action: 'approve' as const,
+      revision: 0,
+      versionId: item.currentVersionId,
+    };
+    expect(parseThumbnailChange(decision)).toEqual(decision);
+    const approved = applyThumbnailDecision(
+      item,
+      decision,
+      'user_lab',
+      '2026-11-05T00:00:00.000Z',
+    );
+    const renamed = applyThumbnailTitle(
+      approved,
+      { action: 'title', revision: approved.revision, title: 'Shorter' },
+      '2026-11-05T00:00:01.000Z',
+    );
+    expect(renamed.title).toBe('Shorter');
+    expect(renamed.versions).toEqual(approved.versions);
+    expect(renamed.revision).toBe(approved.revision + 1);
+    expect(() =>
+      applyThumbnailTitle(
+        renamed,
+        { action: 'title', revision: approved.revision, title: 'Stale' },
+        '2026-11-05T00:00:02.000Z',
+      ),
+    ).toThrow(ThumbnailConflict);
+    expect(() =>
+      parseThumbnailChange({ action: 'title', revision: 0, title: ' ' }),
+    ).toThrow('Add a title of 1–100 characters.');
+  });
+
+  test('reopening an approved version unlocks it for a new decision', () => {
+    const item = fixture(),
+      versionId = item.currentVersionId,
+      approved = applyThumbnailDecision(
+        item,
+        { action: 'approve', revision: 0, versionId },
+        'owner',
+        'then',
+      ),
+      reopened = applyThumbnailDecision(
+        approved,
+        parseThumbnailDecision({ action: 'reopen', revision: 1, versionId }),
+        'owner',
+        'now',
+      );
+    expect(currentThumbnail(reopened).review).toEqual({ status: 'pending' });
+    expect(reopened.revision).toBe(2);
+    expect(visibleThumbnail(reopened, 'approved')).toBe(false);
+    expect(visibleThumbnail(reopened, 'pending')).toBe(true);
+    const revised = applyThumbnailDecision(
+      reopened,
+      { action: 'revise', feedback: 'change', revision: 2, versionId },
+      'owner',
+      'now',
+    );
+    expect(currentThumbnail(revised).review.status).toBe('revise');
+  });
+  test('only the current approved version can be reopened', () => {
+    const item = fixture(),
+      versionId = item.currentVersionId,
+      reopen = (target: ThumbnailItem, revision: number, id = versionId) =>
+        applyThumbnailDecision(
+          target,
+          { action: 'reopen', revision, versionId: id },
+          'owner',
+          'now',
+        );
+    expect(() => reopen(item, 0)).toThrow('Only an approved');
+    const approved = applyThumbnailDecision(
+      item,
+      { action: 'approve', revision: 0, versionId },
+      'owner',
+      'now',
+    );
+    expect(() => reopen(approved, 0)).toThrow(ThumbnailConflict);
+    const next = appendThumbnailVersion(
+      approved,
+      {
+        ...currentThumbnail(item),
+        assetHash: 'b'.repeat(64),
+        id: 'b'.repeat(64),
+      },
+      1,
+    );
+    expect(() => reopen(next, next.revision)).toThrow(ThumbnailConflict);
   });
   test('stale versions and untrusted decisions are refused', () => {
     const item = fixture();
@@ -215,12 +308,75 @@ test('new artwork gets the exact format-specific star and upload dimensions', as
     expect(metadata.width).toBe(1920);
     expect(metadata.height).toBe(1080);
     expect(output.bytes.length).toBeLessThan(2_000_000);
-    const pixel = await decoded
-        .extract({ height: 1, left: 1776, top: 144, width: 1 })
-        .raw()
-        .toBuffer(),
-      expected = format === 'video' ? [255, 255, 255] : [232, 59, 59];
-    for (let i = 0; i < 3; i++)
-      expect(Math.abs((pixel[i] ?? 0) - (expected[i] ?? 0))).toBeLessThan(5);
+    // Shared placement table: 144px at x1680/y96 on 1920x1080.
+    const sample = (left: number, top: number) =>
+        sharp(output.bytes)
+          .extract({ height: 1, left, top, width: 1 })
+          .raw()
+          .toBuffer(),
+      expected = format === 'video' ? [255, 255, 255] : [232, 59, 59],
+      centre = await sample(1752, 168),
+      bottomArm = await sample(1752, 228),
+      aboveBox = await sample(1776, 80);
+    for (let i = 0; i < 3; i++) {
+      expect(Math.abs((centre[i] ?? 0) - (expected[i] ?? 0))).toBeLessThan(5);
+      expect(Math.abs((bottomArm[i] ?? 0) - (expected[i] ?? 0))).toBeLessThan(
+        5,
+      );
+      expect(Math.abs((aboveBox[i] ?? 0) - 0x22)).toBeLessThan(5);
+    }
   }
+});
+
+test('a Short gets the red 120px star at its own position, in portrait', async () => {
+  const source = await sharp({
+    create: { background: '#222222', channels: 3, height: 640, width: 360 },
+  })
+    .png()
+    .toBuffer();
+  const { bytes } = await renderThumbnail(source, 'short');
+  const meta = await sharp(bytes).metadata();
+  expect([meta.width, meta.height]).toEqual([1080, 1920]);
+  const pixel = async (left: number, top: number) => [
+    ...(await sharp(bytes)
+      .extract({ height: 1, left, top, width: 1 })
+      .raw()
+      .toBuffer()),
+  ];
+  for (const [left, top] of [
+    [940, 290],
+    [940, 340],
+    [940, 240],
+    [897, 258],
+  ] as const) {
+    const [r, g, b] = await pixel(left, top);
+    expect(Math.abs(r! - 0xe8)).toBeLessThan(5);
+    expect(Math.abs(g! - 0x3b)).toBeLessThan(5);
+    expect(Math.abs(b! - 0x3b)).toBeLessThan(5);
+  }
+  expect(Math.abs((await pixel(964, 220))[0]! - 0x22)).toBeLessThan(5);
+});
+
+test('each format refuses the other orientation', async () => {
+  const image = (width: number, height: number) =>
+    sharp({
+      create: { background: '#222222', channels: 3, height, width },
+    })
+      .png()
+      .toBuffer();
+  await expect(renderThumbnail(await image(640, 360), 'short')).rejects.toThrow(
+    'Upload 9:16',
+  );
+  await expect(renderThumbnail(await image(360, 640), 'video')).rejects.toThrow(
+    'Upload 16:9',
+  );
+});
+
+test('a stored Short is valid and its revision prompt is portrait', () => {
+  const item = { ...fixture(), format: 'short' as const };
+  expect(isThumbnailItem(item)).toBe(true);
+  const prompt = revisionPrompt(item, 'Bigger hero.');
+  expect(prompt).toContain('9:16 YouTube Shorts cover');
+  expect(prompt).toContain('x940/y290');
+  expect(prompt).not.toContain('linked');
 });
