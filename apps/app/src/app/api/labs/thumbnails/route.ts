@@ -1,7 +1,10 @@
 import { NextResponse } from 'next/server';
 import { requireProducer } from '@/lib/producer-auth';
 import { getProducerStorageBackend } from '@/lib/producer-storage';
-import { parseThumbnailCatalogue } from '@/lib/thumbnail-lab';
+import {
+  parseThumbnailCatalogue,
+  sortByPublishDate,
+} from '@/lib/thumbnail-lab';
 import {
   thumbnailUploadsAvailable,
   verifyThumbnailAsset,
@@ -11,15 +14,18 @@ import {
   listThumbnailItems,
   saveThumbnailItems,
 } from '@/lib/thumbnail-lab-store';
+import { fetchPublishDates } from '@/lib/thumbnail-publish-dates';
 export async function GET() {
   const producer = await requireProducer();
   if (!producer.ok) return producer.response;
   try {
+    const [items, dates] = await Promise.all([
+      listThumbnailItems(),
+      fetchPublishDates(),
+    ]);
     return NextResponse.json(
       {
-        items: (await listThumbnailItems()).sort(
-          (a, b) => a.position - b.position,
-        ),
+        items: sortByPublishDate(items, dates),
         uploadsAvailable: thumbnailUploadsAvailable(),
         writable: getProducerStorageBackend() !== 'read-only',
       },
