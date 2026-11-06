@@ -7,12 +7,7 @@ export const PRODUCTION_APPS = [
     icon: Radio,
     id: 'content',
     label: 'Content',
-    links: [
-      { href: '/content', label: 'All content' },
-      { href: '/content/livestreams', label: 'Livestreams' },
-      { href: '/content/videos', label: 'Videos' },
-      { href: '/content/shorts', label: 'Shorts' },
-    ],
+    links: [{ href: '/content', label: 'All content' }],
     roots: ['/content', '/artifacts'],
   },
   {
@@ -43,11 +38,12 @@ export const PRODUCTION_APPS = [
     roots: ['/library'],
   },
   {
-    href: '/prep/sources',
+    href: '/prep/next',
     icon: Telescope,
     id: 'prep',
     label: 'Prep',
     links: [
+      { href: '/prep/next', label: 'Next show' },
       { href: '/prep/sources', label: 'Sources' },
       { href: '/prep/backlog', label: 'Backlog' },
     ],

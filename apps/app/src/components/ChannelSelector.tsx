@@ -1,7 +1,7 @@
 'use client';
 
 import type { ChannelFilter, ChannelStats } from '@shipshitshow/types';
-import { Button } from '@shipshitshow/ui';
+import { FilterSelect } from './FilterSelect';
 
 interface ChannelSelectorProps {
   channels: ChannelStats[];
@@ -25,7 +25,7 @@ export function ChannelSelector({
   onChange,
 }: ChannelSelectorProps) {
   const options: { value: ChannelFilter; label: string }[] = [
-    { label: 'All', value: 'all' },
+    { label: 'Both channels', value: 'all' },
     ...channels.map((ch) => ({
       label: getHandle(ch),
       value: ch.channel_id,
@@ -33,22 +33,11 @@ export function ChannelSelector({
   ];
 
   return (
-    <div className="flex items-center gap-1 bg-surface-card border border-surface-border rounded-lg p-1">
-      {options.map((opt) => (
-        <Button
-          key={opt.value}
-          onClick={() => onChange(opt.value)}
-          size="sm"
-          variant={selected === opt.value ? 'accent' : 'ghost'}
-          className={`rounded-md text-xs transition-colors ${
-            selected === opt.value
-              ? 'bg-accent-red/10 text-text-primary hover:bg-accent-red/10 hover:text-text-primary'
-              : 'text-text-muted hover:bg-transparent hover:text-text-secondary'
-          }`}
-        >
-          {opt.label}
-        </Button>
-      ))}
-    </div>
+    <FilterSelect
+      label="Channel"
+      value={selected}
+      onChange={onChange}
+      options={options}
+    />
   );
 }
