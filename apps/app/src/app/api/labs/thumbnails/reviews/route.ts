@@ -18,7 +18,9 @@ export async function GET() {
     const items = await listThumbnailItems();
     const decisions = items.flatMap((item) => {
       const v = currentThumbnail(item);
-      if (v.review.status === 'pending') return [];
+      // Rejections stay in the Lab; the exchange format only carries approvals and revisions.
+      if (v.review.status === 'pending' || v.review.status === 'rejected')
+        return [];
       return [
         {
           assetHash: v.assetHash,

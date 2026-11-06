@@ -7,9 +7,11 @@ import {
   appendThumbnailVersion,
   applyThumbnailDecision,
   applyThumbnailTitle,
+  awaitingItems,
   awaitingVersions,
   currentThumbnail,
   isThumbnailItem,
+  paginate,
   parseThumbnailChange,
   parseThumbnailDecision,
   revisionPrompt,
@@ -97,7 +99,7 @@ describe('thumbnail review contract', () => {
         'now',
       );
     expect(visibleThumbnail(next, 'pending')).toBe(false);
-    expect(visibleThumbnail(next, 'revise')).toBe(true);
+    expect(visibleThumbnail(next, 'all')).toBe(true);
     const review = currentThumbnail(next).review;
     if (review.status !== 'revise') throw Error('Wrong review status');
     expect(review.prompt).toContain('photographic shell');
@@ -155,7 +157,6 @@ describe('thumbnail review contract', () => {
       );
     expect(currentThumbnail(reopened).review).toEqual({ status: 'pending' });
     expect(reopened.revision).toBe(2);
-    expect(visibleThumbnail(reopened, 'approved')).toBe(false);
     expect(visibleThumbnail(reopened, 'pending')).toBe(true);
     const revised = applyThumbnailDecision(
       reopened,
@@ -236,8 +237,14 @@ describe('thumbnail review contract', () => {
     expect(approved.currentVersionId).toBe(second);
     expect(currentThumbnail(approved).review.status).toBe('approved');
     expect(revised.currentVersionId).toBe(item.currentVersionId);
-    // An item with a still-awaiting version stays in the pending view.
-    expect(visibleThumbnail(approved, 'pending')).toBe(true);
+    // Approving one variation rejects the rest, so nothing is left to review.
+    expect(approved.versions.map((v) => v.review.status)).toEqual([
+      'rejected',
+      'approved',
+      'rejected',
+    ]);
+    expect(visibleThumbnail(approved, 'pending')).toBe(false);
+    expect(visibleThumbnail(approved, 'all')).toBe(true);
     expect(() =>
       applyThumbnailDecision(
         approved,
@@ -273,6 +280,169 @@ describe('thumbnail review contract', () => {
         item.currentVersionId +
         '.jpg',
     );
+  });
+});
+function variations(): ThumbnailItem {
+  const first = fixture(),
+    base = first.versions[0];
+  if (!base) throw new Error('fixture has no version');
+  const ids = ['b'.repeat(64), 'c'.repeat(64)];
+  return {
+    ...first,
+    versions: [base, ...ids.map((id) => ({ ...base, assetHash: id, id }))],
+  };
+}
+describe('rejecting and locking variations', () => {
+  test('a rejected version leaves the review queue and can be reopened', () => {
+    const item = variations(),
+      versionId = 'b'.repeat(64),
+      rejected = applyThumbnailDecision(
+        item,
+        parseThumbnailDecision({
+          action: 'reject',
+          reason: '  Too busy  ',
+          revision: 0,
+          versionId,
+        }),
+        'owner',
+        'now',
+      );
+    expect(rejected.versions[1]?.review).toEqual({
+      at: 'now',
+      by: 'owner',
+      reason: 'Too busy',
+      status: 'rejected',
+    });
+    expect(awaitingVersions(rejected)).toHaveLength(2);
+    expect(rejected.currentVersionId).toBe(item.currentVersionId);
+    // A rejected version cannot be decided on until it is reopened.
+    expect(() =>
+      applyThumbnailDecision(
+        rejected,
+        { action: 'approve', revision: 1, versionId },
+        'owner',
+        'now',
+      ),
+    ).toThrow('Reopen it first');
+    const reopened = applyThumbnailDecision(
+      rejected,
+      { action: 'reopen', revision: 1, versionId },
+      'owner',
+      'now',
+    );
+    expect(reopened.versions[1]?.review).toEqual({ status: 'pending' });
+  });
+  test('a reason is optional and bounded', () => {
+    const decision = parseThumbnailDecision({
+      action: 'reject',
+      revision: 0,
+      versionId: 'a'.repeat(64),
+    });
+    expect(decision).toEqual({
+      action: 'reject',
+      revision: 0,
+      versionId: 'a'.repeat(64),
+    });
+    expect(() =>
+      parseThumbnailDecision({
+        action: 'reject',
+        reason: 'x'.repeat(4001),
+        revision: 0,
+        versionId: 'a'.repeat(64),
+      }),
+    ).toThrow();
+  });
+  test('approving one version rejects every other variation in the same write', () => {
+    const item = variations(),
+      winner = 'c'.repeat(64),
+      approved = applyThumbnailDecision(
+        item,
+        { action: 'approve', revision: 0, versionId: winner },
+        'owner',
+        'now',
+      );
+    expect(approved.currentVersionId).toBe(winner);
+    expect(approved.revision).toBe(1);
+    expect(approved.versions.map((v) => v.review.status)).toEqual([
+      'rejected',
+      'rejected',
+      'approved',
+    ]);
+    expect(awaitingVersions(approved)).toHaveLength(0);
+    expect(visibleThumbnail(approved, 'pending')).toBe(false);
+    // Reopening any rejected variation brings it back for review.
+    const back = applyThumbnailDecision(
+      approved,
+      { action: 'reopen', revision: 1, versionId: item.currentVersionId },
+      'owner',
+      'now',
+    );
+    expect(back.versions[0]?.review).toEqual({ status: 'pending' });
+    expect(back.versions[2]?.review.status).toBe('approved');
+  });
+  test('a later approval supersedes an earlier one: exactly one approved version', () => {
+    const first = applyThumbnailDecision(
+        variations(),
+        { action: 'approve', revision: 0, versionId: 'b'.repeat(64) },
+        'owner',
+        'then',
+      ),
+      reopened = applyThumbnailDecision(
+        first,
+        { action: 'reopen', revision: 1, versionId: 'c'.repeat(64) },
+        'owner',
+        'then',
+      ),
+      second = applyThumbnailDecision(
+        reopened,
+        { action: 'approve', revision: 2, versionId: 'c'.repeat(64) },
+        'owner',
+        'now',
+      );
+    const approved = second.versions.filter(
+      (v) => v.review.status === 'approved',
+    );
+    expect(approved.map((v) => v.id)).toEqual(['c'.repeat(64)]);
+    expect(second.currentVersionId).toBe('c'.repeat(64));
+  });
+  test('the review queue counts videos, not variations', () => {
+    const many = variations(),
+      done = applyThumbnailDecision(
+        { ...variations(), id: 'dQw4w9WgXcQ' },
+        { action: 'approve', revision: 0, versionId: 'b'.repeat(64) },
+        'owner',
+        'now',
+      );
+    expect(many.versions.length).toBe(3);
+    expect(awaitingItems([many, done])).toEqual([many]);
+  });
+  test('YouTube-live versions are a valid source', () => {
+    const item = variations(),
+      live = { ...item.versions[0], source: 'youtube-live' };
+    expect(isThumbnailItem({ ...item, versions: [live] })).toBe(true);
+    expect(
+      isThumbnailItem({ ...item, versions: [{ ...live, source: 'nope' }] }),
+    ).toBe(false);
+  });
+});
+describe('thumbnail pagination', () => {
+  const list = Array.from({ length: 50 }, (_, i) => i);
+  test('pages of 24, clamped into range', () => {
+    expect(paginate(list, 1).items).toHaveLength(24);
+    expect(paginate(list, 3).items).toEqual([48, 49]);
+    expect(paginate(list, 3)).toMatchObject({
+      page: 3,
+      pageCount: 3,
+      total: 50,
+    });
+    expect(paginate(list, 99).page).toBe(3);
+    expect(paginate(list, 0).page).toBe(1);
+    expect(paginate([], 1)).toEqual({
+      items: [],
+      page: 1,
+      pageCount: 1,
+      total: 0,
+    });
   });
 });
 describe('durable thumbnail decisions', () => {

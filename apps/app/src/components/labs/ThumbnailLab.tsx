@@ -8,6 +8,7 @@ import {
   SelectValue,
 } from '@shipshitshow/ui';
 import {
+  Ban,
   Check,
   ChevronLeft,
   ChevronRight,
@@ -22,9 +23,11 @@ import {
 import { useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 import {
+  awaitingItems,
   awaitingVersions,
   currentThumbnail,
   isThumbnailItem,
+  paginate,
   type ThumbnailItem,
   type ThumbnailScope,
   type ThumbnailVersion,
@@ -34,7 +37,6 @@ import {
 import {
   EMPTY_RULES,
   RealSizePreview,
-  ReferenceRail,
   RuleChecklist,
   type RuleChecks,
   type RuleKey,
@@ -43,6 +45,13 @@ import {
 } from './ThumbnailReviewAids';
 
 type Capabilities = { writable: boolean; uploadsAvailable: boolean };
+type Decision = 'approve' | 'reject' | 'reopen' | 'revise';
+const STATUS_LABELS = {
+  approved: 'Approved',
+  pending: 'Awaiting review',
+  rejected: 'Rejected',
+  revise: 'Revision requested',
+} as const;
 const FORMAT_LABELS: Record<ThumbnailItem['format'], string> = {
   live: 'Livestream',
   short: 'Short',
@@ -78,7 +87,7 @@ function versionLabel(item: ThumbnailItem, v: ThumbnailVersion) {
     'Version ' +
     (item.versions.findIndex((version) => version.id === v.id) + 1) +
     ' · ' +
-    (v.review.status === 'revise' ? 'Revision requested' : v.review.status)
+    STATUS_LABELS[v.review.status]
   );
 }
 export function ThumbnailLab() {
@@ -91,7 +100,7 @@ export function ThumbnailLab() {
     [error, setError] = useState(''),
     [notice, setNotice] = useState(''),
     [scope, setScope] = useState<ThumbnailScope>('pending'),
-    [format, setFormat] = useState(''),
+    [page, setPage] = useState(1),
     [search, setSearch] = useState('');
   const [activeId, setActiveId] = useState<string | null>(null),
     [versionId, setVersionId] = useState(''),
@@ -119,13 +128,15 @@ export function ThumbnailLab() {
   const editable = Boolean(
     active &&
       version &&
-      version.review.status !== 'approved' &&
+      (version.review.status === 'pending' ||
+        version.review.status === 'revise') &&
       capabilities.writable,
   );
   const reopenable = Boolean(
     active &&
       version &&
-      version.review.status === 'approved' &&
+      (version.review.status === 'approved' ||
+        version.review.status === 'rejected') &&
       capabilities.writable,
   );
   const awaiting = active ? awaitingVersions(active) : [];
@@ -235,7 +246,7 @@ export function ThumbnailLab() {
   async function saveDecision(
     item: ThumbnailItem,
     target: ThumbnailVersion,
-    action: 'approve' | 'reopen' | 'revise',
+    action: Decision,
   ): Promise<ThumbnailItem> {
     const response = await fetch('/api/labs/thumbnails/' + item.id, {
       body: JSON.stringify({
@@ -266,7 +277,7 @@ export function ThumbnailLab() {
       await saveDecision(item, target, 'reopen');
       setFeedback('');
       setRules(EMPTY_RULES);
-      setNotice('Reopened. It is back in Pending.');
+      setNotice('Reopened. It is back in review.');
     } catch (e) {
       setError(e instanceof Error ? e.message : 'It was not reopened.');
     } finally {
@@ -276,7 +287,7 @@ export function ThumbnailLab() {
   async function decide(
     item: ThumbnailItem,
     target: ThumbnailVersion,
-    action: 'approve' | 'revise',
+    action: 'approve' | 'reject' | 'revise',
   ) {
     // The neighbour is taken before the save so the queue keeps its order.
     const at = visible.findIndex((row) => row.id === item.id);
@@ -286,7 +297,11 @@ export function ThumbnailLab() {
     try {
       const savedItem = await saveDecision(item, target, action);
       const saved =
-        action === 'approve' ? 'Approved & locked.' : 'Revision saved.';
+        action === 'approve'
+          ? 'Approved & locked. The other variations are rejected.'
+          : action === 'reject'
+            ? 'Rejected.'
+            : 'Revision saved.';
       const stillOpen = awaitingVersions(savedItem)[0];
       if (stillOpen) {
         // Other variations still need a decision: stay on this thumbnail.
@@ -369,17 +384,17 @@ export function ThumbnailLab() {
       if (importFile.current) importFile.current.value = '';
     }
   }
-  const counts = { approved: 0, pending: 0, revise: 0 };
-  for (const item of items) counts[currentThumbnail(item).review.status]++;
+  const awaitingCount = awaitingItems(items).length;
+  // One entry per video. The list arrives newest publish date first.
   const visible = items.filter(
     (item) =>
       visibleThumbnail(item, scope) &&
-      (!format || item.format === format) &&
       (!search.trim() ||
         (item.title + ' ' + item.id)
           .toLowerCase()
           .includes(search.toLowerCase().trim())),
   );
+  const paged = paginate(visible, page);
   const button =
     'inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-surface-border px-3 py-2 text-xs transition-colors hover:bg-surface-elevated disabled:cursor-not-allowed disabled:opacity-40';
   const activeIndex = visible.findIndex((row) => row.id === activeId);
@@ -416,6 +431,9 @@ export function ThumbnailLab() {
     } else if (key === 'a' && version && editable && !busy && !failedRules) {
       e.preventDefault();
       decide(active, version, 'approve');
+    } else if (key === 'x' && version && editable && !busy) {
+      e.preventDefault();
+      decide(active, version, 'reject');
     } else if (key === 'r' && editable) {
       e.preventDefault();
       note.current?.focus();
@@ -445,8 +463,7 @@ export function ThumbnailLab() {
               Thumbnail Lab
             </h1>
             <p className="mt-0.5 text-xs text-text-muted">
-              {items.length} videos & livestreams · {counts.pending} awaiting
-              review · {counts.approved} approved
+              {awaitingCount} awaiting review
             </p>
           </div>
         </div>
@@ -478,67 +495,37 @@ export function ThumbnailLab() {
           </a>
         </div>
       </div>
-      <ReferenceRail />
-      <div className="flex flex-wrap items-end justify-between gap-3 border-b border-surface-border">
-        <nav className="flex gap-6" aria-label="Thumbnail review status">
-          {(
-            ['pending', 'approved', 'revise', 'all'] satisfies ThumbnailScope[]
-          ).map((tab) => (
+      <div className="flex flex-wrap items-center gap-2 border-b border-surface-border py-3">
+        <nav className="flex gap-1" aria-label="Thumbnail view">
+          {(['pending', 'all'] satisfies ThumbnailScope[]).map((tab) => (
             <button
               key={tab}
-              onClick={() => setScope(tab)}
+              onClick={() => {
+                setScope(tab);
+                setPage(1);
+              }}
               aria-pressed={scope === tab}
               className={
-                'min-h-12 border-b-2 py-3 text-xs font-medium ' +
-                (scope === tab
-                  ? 'border-text-primary text-text-primary'
-                  : 'border-transparent text-text-muted')
-              }
-            >
-              {tab === 'pending'
-                ? 'To review'
-                : tab === 'approved'
-                  ? 'Approved'
-                  : tab === 'revise'
-                    ? 'Revisions'
-                    : 'All thumbnails'}{' '}
-              <span className="ml-1 text-[10px] text-text-muted">
-                {tab === 'all' ? items.length : counts[tab]}
-              </span>
-            </button>
-          ))}
-        </nav>
-      </div>
-      <div className="flex flex-wrap items-center gap-2 py-4">
-        <div className="flex gap-1">
-          {[
-            ['', 'All'],
-            ['video', 'Videos · white ✱'],
-            ['live', 'Live · red ✱'],
-            ['short', 'Shorts · red ✱'],
-          ].map(([value, label]) => (
-            <button
-              key={value}
-              onClick={() => setFormat(value)}
-              aria-pressed={format === value}
-              className={
                 'min-h-9 rounded-lg px-3 text-xs ' +
-                (format === value
+                (scope === tab
                   ? 'bg-text-primary text-surface'
                   : 'bg-surface-elevated text-text-secondary')
               }
             >
-              {label}
+              {tab === 'pending' ? 'To review' : 'All'}
             </button>
           ))}
-        </div>
+        </nav>
         <label className="ml-auto flex items-center gap-2 rounded-full border border-surface-border px-4 py-2">
           <Search size={14} className="text-text-muted" />
           <input
             aria-label="Search videos or ID"
             className="w-44 bg-transparent text-xs outline-none md:w-60"
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setPage(1);
+            }}
             placeholder="Search title or video ID"
           />
         </label>
@@ -576,8 +563,9 @@ export function ThumbnailLab() {
             : 'grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4')
         }
       >
-        {visible.map((item) => {
-          const v = currentThumbnail(item);
+        {paged.items.map((item) => {
+          const v = currentThumbnail(item),
+            pendingCount = awaitingVersions(item).length;
           return (
             <article key={item.id} className="group min-w-0">
               <button
@@ -609,12 +597,18 @@ export function ThumbnailLab() {
                     <span className="line-clamp-2">{item.title}</span>
                   </button>
                   <div className="mt-1 flex flex-wrap gap-x-2 text-[10px] text-text-muted">
-                    <span>
-                      {v.review.status === 'approved'
-                        ? 'Approved'
-                        : v.review.status === 'revise'
-                          ? 'Revision queued'
-                          : FORMAT_LABELS[item.format]}
+                    <span>{FORMAT_LABELS[item.format]}</span>
+                    <span
+                      className={
+                        pendingCount ? 'text-amber-400' : 'text-text-muted'
+                      }
+                    >
+                      {pendingCount
+                        ? pendingCount +
+                          (pendingCount === 1
+                            ? ' variation to review'
+                            : ' variations to review')
+                        : STATUS_LABELS[v.review.status]}
                     </span>
                     <code>{item.id}</code>
                   </div>
@@ -624,15 +618,40 @@ export function ThumbnailLab() {
           );
         })}
       </section>
+      {paged.pageCount > 1 && (
+        <nav
+          aria-label="Pages"
+          className="mt-10 flex items-center justify-center gap-3"
+        >
+          <button
+            className={button}
+            disabled={paged.page <= 1}
+            onClick={() => setPage(paged.page - 1)}
+          >
+            <ChevronLeft size={14} />
+            Previous
+          </button>
+          <span className="text-xs tabular-nums text-text-muted">
+            Page {paged.page} of {paged.pageCount}
+          </span>
+          <button
+            className={button}
+            disabled={paged.page >= paged.pageCount}
+            onClick={() => setPage(paged.page + 1)}
+          >
+            Next
+            <ChevronRight size={14} />
+          </button>
+        </nav>
+      )}
       {!visible.length && (
         <div className="py-20 text-center">
           <p className="text-lg font-medium">
             {items.length
-              ? 'No thumbnails in this view.'
+              ? scope === 'pending'
+                ? 'Nothing is waiting for review.'
+                : 'No thumbnails match.'
               : 'No thumbnails imported yet.'}
-          </p>
-          <p className="mt-2 text-xs text-text-muted">
-            Approved thumbnails and revision requests live in their own tabs.
           </p>
         </div>
       )}
@@ -826,6 +845,16 @@ export function ThumbnailLab() {
                             >
                               Revise…
                             </button>
+                            <button
+                              className={button}
+                              disabled={!capabilities.writable || !!busy}
+                              onClick={() => decide(active, v, 'reject')}
+                              aria-label={'Reject ' + versionLabel(active, v)}
+                              title="Reject this variation"
+                            >
+                              <Ban size={14} />
+                              Reject
+                            </button>
                           </div>
                         </div>
                       ))}
@@ -954,9 +983,13 @@ export function ThumbnailLab() {
                 <p className="border-t border-surface-border pt-4 text-xs text-text-muted">
                   {version.review.status === 'approved'
                     ? 'Approved & locked'
-                    : version.review.status === 'revise'
-                      ? 'Revision requested'
-                      : 'Awaiting review'}
+                    : STATUS_LABELS[version.review.status]}
+                  {version.review.status === 'rejected' &&
+                    version.review.reason && (
+                      <span className="mt-1 block">
+                        {version.review.reason}
+                      </span>
+                    )}
                 </p>
                 <RuleChecklist
                   checks={rules}
@@ -964,7 +997,7 @@ export function ThumbnailLab() {
                   onChange={setRule}
                 />
                 <label className="mt-4 block text-xs">
-                  What should change?
+                  What should change? (optional reason when rejecting)
                   <textarea
                     ref={note}
                     value={feedback}
@@ -1006,13 +1039,21 @@ export function ThumbnailLab() {
                     >
                       Request revision
                     </button>
+                    <button
+                      className={button + ' flex-1'}
+                      disabled={!editable || !!busy}
+                      title="Reject (X)"
+                      onClick={() => decide(active, version, 'reject')}
+                    >
+                      <Ban size={14} />
+                      Reject
+                    </button>
                   </div>
                 )}
                 <p className="mt-3 text-[10px] leading-5 text-text-muted">
-                  Keys: ← → browse · A approve & lock · R write a note ·
-                  ⌘/Ctrl+Enter request revision · Esc close. A decision opens
-                  the next thumbnail in this view. Approved versions stay locked
-                  until you reopen them. New variations return for review.
+                  Keys: ← → browse · A approve & lock · X reject · R write a
+                  note · ⌘/Ctrl+Enter request revision · Esc close. Approving
+                  rejects every other variation. Reopen brings one back.
                 </p>
                 {notice && (
                   <p role="status" className="mt-3 text-xs text-emerald-400">

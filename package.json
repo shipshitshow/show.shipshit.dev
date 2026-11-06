@@ -25,6 +25,7 @@
     "show:prep": "bun run --cwd apps/app show:prep",
     "storage:export": "bun run --cwd apps/app storage:export",
     "test": "turbo test",
+    "thumbnail-lab:sync-live": "bun run --cwd apps/app thumbnail-lab:sync-live",
     "thumbnail:stamp": "bun run --cwd apps/app thumbnail:stamp",
     "youtube:metadata": "bun scripts/generate-youtube-metadata.ts",
     "youtube:sync": "bun scripts/youtube-sync.ts",

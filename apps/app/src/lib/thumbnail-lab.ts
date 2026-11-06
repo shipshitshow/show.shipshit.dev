@@ -2,6 +2,7 @@ export type ThumbnailFormat = 'video' | 'live' | 'short';
 export type ThumbnailReview =
   | { status: 'pending' }
   | { status: 'approved'; at: string; by: string }
+  | { status: 'rejected'; at: string; by: string; reason?: string }
   | {
       status: 'revise';
       at: string;
@@ -16,8 +17,10 @@ export interface ThumbnailVersion {
   prompt: string;
   legacyRevision: string | null;
   review: ThumbnailReview;
-  source: 'import' | 'upload';
+  source: ThumbnailSource;
 }
+export type ThumbnailSource = 'import' | 'upload' | 'youtube-live';
+const SOURCES: readonly string[] = ['import', 'upload', 'youtube-live'];
 export interface ThumbnailItem {
   id: string;
   title: string;
@@ -44,6 +47,7 @@ export interface ThumbnailLabResponse {
 export type ThumbnailDecision =
   | { action: 'approve'; versionId: string; revision: number }
   | { action: 'reopen'; versionId: string; revision: number }
+  | { action: 'reject'; versionId: string; revision: number; reason?: string }
   | { action: 'revise'; versionId: string; revision: number; feedback: string };
 export class ThumbnailConflict extends Error {}
 export const isVideoId = (value: string) => /^[\w-]{11}$/.test(value);
@@ -61,6 +65,10 @@ function isReview(value: unknown): value is ThumbnailReview {
     return false;
   return (
     value.status === 'approved' ||
+    (value.status === 'rejected' &&
+      (!('reason' in value) ||
+        value.reason === undefined ||
+        text(value.reason))) ||
     (value.status === 'revise' &&
       'feedback' in value &&
       text(value.feedback) &&
@@ -87,7 +95,8 @@ export function isThumbnailVersion(value: unknown): value is ThumbnailVersion {
       'review' in value &&
       isReview(value.review) &&
       'source' in value &&
-      (value.source === 'import' || value.source === 'upload'),
+      text(value.source) &&
+      SOURCES.includes(value.source),
   );
 }
 export function isThumbnailItem(value: unknown): value is ThumbnailItem {
@@ -194,6 +203,18 @@ export function parseThumbnailDecision(value: unknown): ThumbnailDecision {
       revision: value.revision,
       versionId: value.versionId,
     };
+  if (value.action === 'reject') {
+    const reason =
+      'reason' in value && text(value.reason) ? value.reason.trim() : '';
+    if (reason.length > 4000)
+      throw new Error('Keep the rejection reason under 4000 characters.');
+    return {
+      action: 'reject',
+      ...(reason ? { reason } : {}),
+      revision: value.revision,
+      versionId: value.versionId,
+    };
+  }
   if (
     value.action === 'revise' &&
     'feedback' in value &&
@@ -307,16 +328,44 @@ export function applyThumbnailDecision(
     throw new ThumbnailConflict(
       'This thumbnail changed. Refresh before reviewing.',
     );
+  const status = version.review.status;
   if (decision.action === 'reopen') {
-    if (version.review.status !== 'approved')
-      throw new ThumbnailConflict('Only an approved version can be reopened.');
-  } else if (version.review.status === 'approved')
+    if (status !== 'approved' && status !== 'rejected')
+      throw new ThumbnailConflict(
+        'Only an approved or rejected version can be reopened.',
+      );
+  } else if (status === 'approved')
     throw new ThumbnailConflict('This version is approved and locked.');
+  else if (status === 'rejected')
+    throw new ThumbnailConflict('This version is rejected. Reopen it first.');
+  if (decision.action === 'approve') {
+    // One approved thumbnail per video: locking it rejects every other
+    // variation, in the same write. Reopen brings any of them back.
+    const reason = 'Another version was approved';
+    return {
+      ...item,
+      currentVersionId: version.id,
+      revision: item.revision + 1,
+      updatedAt: at,
+      versions: item.versions.map((v) =>
+        v.id === version.id
+          ? { ...v, review: { at, by, status: 'approved' } }
+          : v.review.status === 'rejected'
+            ? v
+            : { ...v, review: { at, by, reason, status: 'rejected' } },
+      ),
+    };
+  }
   const review: ThumbnailReview =
     decision.action === 'reopen'
       ? { status: 'pending' }
-      : decision.action === 'approve'
-        ? { at, by, status: 'approved' }
+      : decision.action === 'reject'
+        ? {
+            at,
+            by,
+            ...(decision.reason ? { reason: decision.reason } : {}),
+            status: 'rejected',
+          }
         : {
             at,
             by,
@@ -326,9 +375,6 @@ export function applyThumbnailDecision(
           };
   return {
     ...item,
-    // Approving a version makes it the one the channel uses.
-    currentVersionId:
-      decision.action === 'approve' ? version.id : item.currentVersionId,
     revision: item.revision + 1,
     updatedAt: at,
     versions: item.versions.map((v) =>
@@ -356,17 +402,43 @@ export function appendThumbnailVersion(
     versions: [...item.versions, version],
   };
 }
-export type ThumbnailScope = 'pending' | 'all' | 'approved' | 'revise';
+export type ThumbnailScope = 'pending' | 'all';
+export const THUMBNAIL_PAGE_SIZE = 24;
 export function awaitingVersions(item: ThumbnailItem): ThumbnailVersion[] {
   return item.versions.filter((v) => v.review.status === 'pending');
+}
+/** One entry per video with at least one pending version. */
+export function awaitingItems(
+  items: readonly ThumbnailItem[],
+): ThumbnailItem[] {
+  return items.filter((item) => awaitingVersions(item).length > 0);
 }
 export function visibleThumbnail(
   item: ThumbnailItem,
   scope: ThumbnailScope,
 ): boolean {
-  const status = currentThumbnail(item).review.status;
-  if (scope === 'pending' && awaitingVersions(item).length) return true;
-  return scope === 'all' || status === scope;
+  return scope === 'all' || awaitingVersions(item).length > 0;
+}
+export interface ThumbnailPage<T> {
+  items: T[];
+  page: number;
+  pageCount: number;
+  total: number;
+}
+/** 1-based page, clamped into range so a shrinking list never shows an empty page. */
+export function paginate<T>(
+  items: readonly T[],
+  page: number,
+  pageSize: number = THUMBNAIL_PAGE_SIZE,
+): ThumbnailPage<T> {
+  const pageCount = Math.max(1, Math.ceil(items.length / pageSize)),
+    current = Math.min(Math.max(1, Math.floor(page) || 1), pageCount);
+  return {
+    items: items.slice((current - 1) * pageSize, current * pageSize),
+    page: current,
+    pageCount,
+    total: items.length,
+  };
 }
 export function thumbnailAssetUrl(
   item: ThumbnailItem,

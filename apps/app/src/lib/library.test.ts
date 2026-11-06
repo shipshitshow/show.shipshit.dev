@@ -68,6 +68,7 @@ describe('library galleries', () => {
       all: 2,
       approved: 1,
       pending: 1,
+      rejected: 0,
       revise: 0,
     });
     expect(
