@@ -184,8 +184,10 @@ export function TitleLab() {
       <main className="mx-auto max-w-3xl px-6 py-10">
         <h1 className="text-3xl font-semibold tracking-tight">Titles Lab</h1>
         <p className="mt-3 text-sm text-text-secondary">
-          No snapshot yet. Run <code>bun run youtube:sync</code> on this machine
-          to read the live titles from YouTube. It only reads.
+          No snapshot yet. Run <code>bun run youtube:sync</code> to read the
+          live titles from YouTube (it only reads). On the deployed site, add{' '}
+          <code>--push-redis --namespace production --apply</code> to store it
+          here.
         </p>
       </main>
     );
@@ -201,8 +203,8 @@ export function TitleLab() {
         {snapshot.channelTitle}, read from YouTube{' '}
         {snapshot.fetchedAt.slice(0, 16).replace('T', ' ')} UTC. A title must
         fit one line on the home feed, phone included: aim for {TITLE_TARGET}{' '}
-        characters or fewer, never over {TITLE_LIMIT}. Drafts stay on this
-        machine; nothing here changes YouTube.
+        characters or fewer, never over {TITLE_LIMIT}. Drafts are saved by the
+        app; nothing here changes YouTube.
       </p>
       <p className="mt-4 text-sm">
         {summary.ok} at {TITLE_TARGET} or fewer · {summary.long} at{' '}
@@ -239,7 +241,7 @@ export function TitleLab() {
       </div>
       {!writable ? (
         <p className="mt-3 text-xs text-text-muted">
-          Drafts can only be saved from a local checkout.
+          Drafts need the Redis integration or a local checkout.
         </p>
       ) : null}
       <div className="mt-5 overflow-x-auto rounded-2xl border border-surface-border">

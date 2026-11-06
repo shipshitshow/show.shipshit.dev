@@ -7,6 +7,10 @@ export const TITLE_TARGET = 40;
 export const TITLE_LIMIT = 45;
 export const YOUTUBE_TITLE_CAP = 100;
 
+/** Redis key names under sss:{env}:v1: (see lib/redis-storage.ts). */
+export const TITLE_SNAPSHOT_KEY = 'title-lab-snapshot';
+export const TITLE_DRAFTS_KEY = 'title-lab-drafts';
+
 export type TitleStatus = 'ok' | 'long' | 'over';
 export type TitleDrafts = Record<string, { text: string; updatedAt: string }>;
 export type SnapshotVideo = {
@@ -96,4 +100,21 @@ export function buildBatch(snapshot: TitleSnapshot, drafts: TitleDrafts) {
     else batch.push({ id, title: text });
   }
   return { batch, skipped };
+}
+
+/**
+ * What the lab needs from a snapshot, and no more: no descriptions or stats,
+ * so the copy kept in Redis stays small.
+ */
+export function slimSnapshot(snapshot: TitleSnapshot): TitleSnapshot {
+  return {
+    channelTitle: snapshot.channelTitle,
+    fetchedAt: snapshot.fetchedAt,
+    videos: snapshot.videos.map((video) => ({
+      id: video.id,
+      privacyStatus: video.privacyStatus,
+      ...(video.publishAt ? { publishAt: video.publishAt } : {}),
+      title: video.title,
+    })),
+  };
 }

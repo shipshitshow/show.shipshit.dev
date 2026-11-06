@@ -36,7 +36,7 @@ export async function GET(request: Request) {
       {
         drafts,
         snapshot,
-        writable: getProducerStorageBackend() === 'filesystem',
+        writable: getProducerStorageBackend() !== 'read-only',
       },
       { headers },
     );
