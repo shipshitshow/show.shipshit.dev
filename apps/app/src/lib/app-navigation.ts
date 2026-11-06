@@ -97,6 +97,7 @@ export const PRODUCTION_APPS = [
       { href: '/library/artifacts', label: 'Artifacts' },
       { href: '/library/thumbnails', label: 'Thumbnails' },
       { href: '/library/covers', label: 'Covers' },
+      { href: '/library/transcripts', label: 'Transcripts' },
     ],
     roots: ['/library'],
   },
