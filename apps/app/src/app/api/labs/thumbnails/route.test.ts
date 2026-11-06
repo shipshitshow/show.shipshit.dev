@@ -106,6 +106,49 @@ test('approval saves on the server and stale writes return conflict', async () =
   );
   expect((await PATCH(request(), context)).status).toBe(409);
 });
+test('a reopened thumbnail can be decided again and a stale reopen conflicts', async () => {
+  const patch = (action: string, revision: number) =>
+    PATCH(
+      new Request('https://show.test', {
+        body: JSON.stringify({ action, revision, versionId: hash }),
+        headers: { 'Content-Type': 'application/json' },
+        method: 'PATCH',
+      }),
+      context,
+    );
+  expect((await patch('approve', 0)).status).toBe(200);
+  expect((await patch('reopen', 1)).status).toBe(200);
+  expect(currentThumbnail((await getThumbnailItem(id))!).review.status).toBe(
+    'pending',
+  );
+  expect((await patch('reopen', 1)).status).toBe(409);
+  expect((await patch('approve', 2)).status).toBe(200);
+});
+test('a title edit survives approval, keeps the review and refuses stale or bad input', async () => {
+  const request = (body: unknown) =>
+    new Request('https://show.test', {
+      body: JSON.stringify(body),
+      headers: { 'Content-Type': 'application/json' },
+      method: 'PATCH',
+    });
+  const approve = { action: 'approve', revision: 0, versionId: hash };
+  expect((await PATCH(request(approve), context)).status).toBe(200);
+  const edit = { action: 'title', revision: 1, title: '  Claw on Discord  ' };
+  expect((await PATCH(request(edit), context)).status).toBe(200);
+  const saved = (await getThumbnailItem(id))!;
+  expect(saved.title).toBe('Claw on Discord');
+  expect(saved.revision).toBe(2);
+  expect(currentThumbnail(saved).review.status).toBe('approved');
+  expect(
+    (await PATCH(request({ ...edit, title: 'Stale' }), context)).status,
+  ).toBe(409);
+  for (const title of ['   ', 'x'.repeat(101)])
+    expect(
+      (await PATCH(request({ ...edit, revision: 2, title }), context)).status,
+    ).toBe(400);
+  expect((await getThumbnailItem(id))!.title).toBe('Claw on Discord');
+});
+
 test('a bad imported review cannot partially save earlier decisions', async () => {
   const body = {
     appId: 'shipshitshow-thumbnail-review',

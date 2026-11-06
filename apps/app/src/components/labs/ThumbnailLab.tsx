@@ -7,10 +7,13 @@ import {
   Download,
   History,
   ImagePlus,
+  Library,
+  RotateCcw,
   Search,
   X,
 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import { flushSync } from 'react-dom';
 import {
   currentThumbnail,
   isThumbnailItem,
@@ -32,6 +35,12 @@ import {
 } from './ThumbnailReviewAids';
 
 type Capabilities = { writable: boolean; uploadsAvailable: boolean };
+const FORMAT_LABELS: Record<ThumbnailItem['format'], string> = {
+  live: 'Livestream',
+  short: 'Short',
+  video: 'Video',
+};
+
 function parseItems(value: unknown): ThumbnailItem[] {
   if (
     !value ||
@@ -84,6 +93,7 @@ export function ThumbnailLab() {
     [busy, setBusy] = useState<string | null>(null);
   const [artwork, setArtwork] = useState<File | null>(null),
     [prompt, setPrompt] = useState(''),
+    [titleDraft, setTitleDraft] = useState(''),
     [rules, setRules] = useState<RuleChecks>(EMPTY_RULES);
   const failedRules = Object.values(rules).includes('fail');
   function setRule(key: RuleKey, state: RuleState) {
@@ -103,6 +113,13 @@ export function ThumbnailLab() {
       version &&
       version.id === active.currentVersionId &&
       version.review.status !== 'approved' &&
+      capabilities.writable,
+  );
+  const reopenable = Boolean(
+    active &&
+      version &&
+      version.id === active.currentVersionId &&
+      version.review.status === 'approved' &&
       capabilities.writable,
   );
   async function load() {
@@ -152,6 +169,7 @@ export function ThumbnailLab() {
     setArtwork(null);
     setRules(EMPTY_RULES);
     setPrompt(v.prompt);
+    setTitleDraft(item.title);
     setError('');
     setNotice('');
     dialog.current?.scrollTo({ top: 0 });
@@ -163,19 +181,21 @@ export function ThumbnailLab() {
   function updated(item: ThumbnailItem) {
     setItems((rows) => rows.map((row) => (row.id === item.id ? item : row)));
   }
-  async function decide(item: ThumbnailItem, action: 'approve' | 'revise') {
-    // The neighbour is taken before the save so the queue keeps its order.
-    const at = visible.findIndex((row) => row.id === item.id);
-    const next = at < 0 ? undefined : (visible[at + 1] ?? visible[at - 1]);
+  async function saveTitle(item: ThumbnailItem) {
+    const title = titleDraft.trim();
+    if (title === item.title) return;
+    if (!title) {
+      setTitleDraft(item.title);
+      return;
+    }
     setBusy(item.id);
     setError('');
     try {
       const response = await fetch('/api/labs/thumbnails/' + item.id, {
         body: JSON.stringify({
-          action,
-          feedback,
+          action: 'title',
           revision: item.revision,
-          versionId: item.currentVersionId,
+          title,
         }),
         headers: { 'Content-Type': 'application/json' },
         method: 'PATCH',
@@ -188,8 +208,63 @@ export function ThumbnailLab() {
         !('item' in body) ||
         !isThumbnailItem(body.item)
       )
-        throw new Error('Invalid saved review response.');
+        throw new Error('Invalid saved title response.');
       updated(body.item);
+      setTitleDraft(body.item.title);
+      setNotice('Title saved.');
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'The title was not saved.');
+    } finally {
+      setBusy(null);
+    }
+  }
+  async function saveDecision(
+    item: ThumbnailItem,
+    action: 'approve' | 'reopen' | 'revise',
+  ) {
+    const response = await fetch('/api/labs/thumbnails/' + item.id, {
+      body: JSON.stringify({
+        action,
+        feedback,
+        revision: item.revision,
+        versionId: item.currentVersionId,
+      }),
+      headers: { 'Content-Type': 'application/json' },
+      method: 'PATCH',
+    });
+    if (!response.ok) throw await responseError(response);
+    const body: unknown = await response.json();
+    if (
+      !body ||
+      typeof body !== 'object' ||
+      !('item' in body) ||
+      !isThumbnailItem(body.item)
+    )
+      throw new Error('Invalid saved review response.');
+    updated(body.item);
+  }
+  async function reopen(item: ThumbnailItem) {
+    setBusy(item.id);
+    setError('');
+    try {
+      await saveDecision(item, 'reopen');
+      setFeedback('');
+      setRules(EMPTY_RULES);
+      setNotice('Reopened. It is back in Pending.');
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'It was not reopened.');
+    } finally {
+      setBusy(null);
+    }
+  }
+  async function decide(item: ThumbnailItem, action: 'approve' | 'revise') {
+    // The neighbour is taken before the save so the queue keeps its order.
+    const at = visible.findIndex((row) => row.id === item.id);
+    const next = at < 0 ? undefined : (visible[at + 1] ?? visible[at - 1]);
+    setBusy(item.id);
+    setError('');
+    try {
+      await saveDecision(item, action);
       const saved =
         action === 'approve' ? 'Approved & locked.' : 'Revision saved.';
       if (next) {
@@ -197,7 +272,7 @@ export function ThumbnailLab() {
         setNotice(saved + ' Next thumbnail opened.');
       } else {
         close();
-        setNotice(saved + ' Nothing left in this view.');
+        setNotice(at < 0 ? saved : saved + ' Nothing left in this view.');
       }
     } catch (e) {
       setError(e instanceof Error ? e.message : 'The review was not saved.');
@@ -365,6 +440,10 @@ export function ThumbnailLab() {
           >
             Import catalogue / review
           </button>
+          <a className={button} href="/labs/thumbnails/resources">
+            <Library size={14} />
+            Resources
+          </a>
           <a className={button} href="/api/labs/thumbnails/reviews">
             <Download size={14} />
             Export review
@@ -408,6 +487,7 @@ export function ThumbnailLab() {
             ['', 'All'],
             ['video', 'Videos · white ✱'],
             ['live', 'Live · red ✱'],
+            ['short', 'Shorts · red ✱'],
           ].map(([value, label]) => (
             <button
               key={value}
@@ -473,7 +553,12 @@ export function ThumbnailLab() {
           return (
             <article key={item.id} className="group min-w-0">
               <button
-                className="block aspect-video w-full overflow-hidden rounded-xl bg-surface-elevated outline outline-1 -outline-offset-1 outline-white/10"
+                className={
+                  (item.format === 'short'
+                    ? 'mx-auto block aspect-[9/16] w-3/5'
+                    : 'block aspect-video w-full') +
+                  ' overflow-hidden rounded-xl bg-surface-elevated outline outline-1 -outline-offset-1 outline-white/10'
+                }
                 onClick={() => open(item)}
                 aria-label={'Inspect ' + item.title}
               >
@@ -501,9 +586,7 @@ export function ThumbnailLab() {
                         ? 'Approved'
                         : v.review.status === 'revise'
                           ? 'Revision queued'
-                          : item.format === 'live'
-                            ? 'Livestream'
-                            : 'Video'}
+                          : FORMAT_LABELS[item.format]}
                     </span>
                     <code>{item.id}</code>
                   </div>
@@ -582,9 +665,14 @@ export function ThumbnailLab() {
                 <img
                   src={thumbnailAssetUrl(active, version)}
                   alt={active.title}
-                  className="aspect-video w-full rounded-lg object-contain"
+                  className={
+                    active.format === 'short'
+                      ? 'mx-auto aspect-[9/16] max-h-[70vh] w-auto rounded-lg object-contain'
+                      : 'aspect-video w-full rounded-lg object-contain'
+                  }
                 />
                 <RealSizePreview
+                  portrait={active.format === 'short'}
                   alt={active.title + ' at real feed sizes'}
                   src={thumbnailAssetUrl(active, version)}
                 />
@@ -688,9 +776,11 @@ export function ThumbnailLab() {
                       />
                     </label>
                     <p className="text-[11px] text-text-muted">
-                      Use unbranded 16:9 artwork under 4 MB. The app adds the{' '}
-                      {active.format === 'live' ? 'red' : 'white'} star at the
-                      fixed top-right position.
+                      Use unbranded{' '}
+                      {active.format === 'short' ? '9:16' : '16:9'} artwork
+                      under 4 MB. The app adds the{' '}
+                      {active.format === 'video' ? 'white' : 'red'} star at its
+                      fixed position.
                     </p>
                     <button
                       className={button}
@@ -711,20 +801,40 @@ export function ThumbnailLab() {
               </div>
               <aside className="border-t border-surface-border p-5 lg:border-l lg:border-t-0">
                 <p className="text-[10px] uppercase tracking-wider text-text-muted">
-                  {active.format === 'live'
-                    ? 'Livestream · red ✱'
-                    : 'Video · white ✱'}{' '}
-                  ·{' '}
+                  {FORMAT_LABELS[active.format]} ·{' '}
+                  {active.format === 'video' ? 'white' : 'red'} ✱ ·{' '}
                   {version.id === active.currentVersionId
                     ? 'Current version'
                     : 'History · read only'}
                 </p>
-                <h2
-                  id="thumbnail-title"
-                  className="mt-3 text-xl font-semibold leading-7"
-                >
+                <h2 id="thumbnail-title" className="sr-only">
                   {active.title}
                 </h2>
+                <textarea
+                  aria-label="Title"
+                  className="mt-3 w-full resize-none rounded border border-transparent bg-transparent text-xl font-semibold leading-7 outline-none hover:border-surface-border focus:border-surface-border"
+                  maxLength={100}
+                  onBlur={() => void saveTitle(active)}
+                  onChange={(e) => setTitleDraft(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      e.currentTarget.blur();
+                    }
+                    if (e.key === 'Escape') {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      flushSync(() => setTitleDraft(active.title));
+                      e.currentTarget.blur();
+                    }
+                  }}
+                  readOnly={!capabilities.writable}
+                  rows={3}
+                  value={titleDraft}
+                />
+                <p className="mt-1 text-[10px] text-text-muted">
+                  Saves here only. It does not change YouTube.
+                </p>
                 <code className="mt-3 block text-xs text-text-muted">
                   {active.id}
                 </code>
@@ -768,33 +878,44 @@ export function ThumbnailLab() {
                     placeholder="One clear note is enough."
                   />
                 </label>
-                <div className="mt-3 flex gap-2">
+                {reopenable ? (
                   <button
-                    className={button + ' flex-1 text-emerald-400'}
-                    disabled={!editable || !!busy || failedRules}
-                    title={
-                      failedRules
-                        ? 'A rule is marked Fail. Request a revision instead.'
-                        : undefined
-                    }
-                    onClick={() => decide(active, 'approve')}
+                    className={button + ' mt-3 w-full'}
+                    disabled={!!busy}
+                    onClick={() => reopen(active)}
                   >
-                    <Check size={14} />
-                    Approve & lock
+                    <RotateCcw size={14} />
+                    Reopen for review
                   </button>
-                  <button
-                    className={button + ' flex-1'}
-                    disabled={!editable || !!busy || !feedback.trim()}
-                    onClick={() => decide(active, 'revise')}
-                  >
-                    Request revision
-                  </button>
-                </div>
+                ) : (
+                  <div className="mt-3 flex gap-2">
+                    <button
+                      className={button + ' flex-1 text-emerald-400'}
+                      disabled={!editable || !!busy || failedRules}
+                      title={
+                        failedRules
+                          ? 'A rule is marked Fail. Request a revision instead.'
+                          : undefined
+                      }
+                      onClick={() => decide(active, 'approve')}
+                    >
+                      <Check size={14} />
+                      Approve & lock
+                    </button>
+                    <button
+                      className={button + ' flex-1'}
+                      disabled={!editable || !!busy || !feedback.trim()}
+                      onClick={() => decide(active, 'revise')}
+                    >
+                      Request revision
+                    </button>
+                  </div>
+                )}
                 <p className="mt-3 text-[10px] leading-5 text-text-muted">
                   Keys: ← → browse · A approve & lock · R write a note ·
                   ⌘/Ctrl+Enter request revision · Esc close. A decision opens
-                  the next thumbnail in this view. Approved versions remain
-                  immutable. New variations return for review.
+                  the next thumbnail in this view. Approved versions stay locked
+                  until you reopen them. New variations return for review.
                 </p>
                 {notice && (
                   <p role="status" className="mt-3 text-xs text-emerald-400">

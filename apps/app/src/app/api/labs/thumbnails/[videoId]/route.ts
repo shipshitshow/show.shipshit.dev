@@ -3,9 +3,10 @@ import { requireProducer } from '@/lib/producer-auth';
 import {
   appendThumbnailVersion,
   applyThumbnailDecision,
+  applyThumbnailTitle,
   currentThumbnail,
   isVideoId,
-  parseThumbnailDecision,
+  parseThumbnailChange,
 } from '@/lib/thumbnail-lab';
 import {
   renderThumbnail,
@@ -22,16 +23,15 @@ export async function PATCH(request: Request, { params }: Context) {
   if (!isVideoId(videoId))
     return NextResponse.json({ error: 'Invalid video ID.' }, { status: 400 });
   try {
-    const input = parseThumbnailDecision(await request.json()),
+    const change = parseThumbnailChange(await request.json()),
       item = await getThumbnailItem(videoId);
     if (!item)
       return NextResponse.json({ error: 'Video not found.' }, { status: 404 });
-    const updated = applyThumbnailDecision(
-      item,
-      input,
-      producer.userId,
-      new Date().toISOString(),
-    );
+    const at = new Date().toISOString(),
+      updated =
+        change.action === 'title'
+          ? applyThumbnailTitle(item, change, at)
+          : applyThumbnailDecision(item, change, producer.userId, at);
     await saveThumbnailItem(updated, item.revision);
     return NextResponse.json({ item: updated }, { headers: thumbnailHeaders });
   } catch (error) {
@@ -60,7 +60,7 @@ export async function POST(request: Request, { params }: Context) {
       return NextResponse.json(
         {
           error:
-            'Upload a 16:9 image under 4 MB and a prompt of at most 20,000 characters.',
+            'Upload a 16:9 image, or 9:16 for a Short, under 4 MB and a prompt of at most 20,000 characters.',
         },
         { status: 400 },
       );

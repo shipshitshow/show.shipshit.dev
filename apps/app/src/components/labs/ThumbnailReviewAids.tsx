@@ -1,5 +1,7 @@
 'use client';
 
+import { Check, type LucideIcon, Minus, X } from 'lucide-react';
+
 export type RuleKey = 'hero' | 'logo' | 'text' | 'guess' | 'distinct';
 export type RuleState = '' | 'pass' | 'fail' | 'na';
 export type RuleChecks = Record<RuleKey, RuleState>;
@@ -58,10 +60,14 @@ export function syncRuleFeedback(feedback: string, checks: RuleChecks): string {
   return (own ? own + '\n' : '') + lines.join('\n');
 }
 
-const STATES: { value: Exclude<RuleState, ''>; label: string }[] = [
-  { label: 'Pass', value: 'pass' },
-  { label: 'Fail', value: 'fail' },
-  { label: 'N/A', value: 'na' },
+const STATES: {
+  icon: LucideIcon;
+  label: string;
+  value: Exclude<RuleState, ''>;
+}[] = [
+  { icon: Check, label: 'Pass', value: 'pass' },
+  { icon: X, label: 'Fail', value: 'fail' },
+  { icon: Minus, label: 'N/A', value: 'na' },
 ];
 
 export function RuleChecklist({
@@ -93,10 +99,12 @@ export function RuleChecklist({
                     key={state.value}
                     type="button"
                     disabled={disabled}
+                    aria-label={rule.label + ': ' + state.label}
                     aria-pressed={on}
+                    title={state.label}
                     onClick={() => onChange(rule.key, on ? '' : state.value)}
                     className={
-                      'min-h-8 rounded-md border px-2 text-[11px] disabled:opacity-40 ' +
+                      'inline-flex size-8 items-center justify-center rounded-md border disabled:opacity-40 ' +
                       (on
                         ? state.value === 'fail'
                           ? 'border-accent-red bg-accent-red/15 text-accent-red'
@@ -106,7 +114,7 @@ export function RuleChecklist({
                         : 'border-surface-border text-text-muted')
                     }
                   >
-                    {state.label}
+                    <state.icon size={14} aria-hidden="true" />
                   </button>
                 );
               })}
@@ -132,8 +140,21 @@ const SIZES = [
   { label: 'Desktop feed', width: 360 },
 ];
 
+const SHORT_SIZES = [
+  { label: 'Mobile shelf', width: 120 },
+  { label: 'Desktop shelf', width: 210 },
+];
+
 /** Shows the thumbnail at the sizes YouTube really renders it. */
-export function RealSizePreview({ alt, src }: { alt: string; src: string }) {
+export function RealSizePreview({
+  alt,
+  portrait = false,
+  src,
+}: {
+  alt: string;
+  portrait?: boolean;
+  src: string;
+}) {
   return (
     <section
       aria-label="Real-size preview"
@@ -143,13 +164,15 @@ export function RealSizePreview({ alt, src }: { alt: string; src: string }) {
         Real-size check · does the hero and logo still read at feed size?
       </p>
       <div className="mt-3 flex flex-wrap items-end gap-4">
-        {SIZES.map((size) => (
+        {(portrait ? SHORT_SIZES : SIZES).map((size) => (
           <figure key={size.width} className="m-0">
             <img
               src={src}
               alt={alt}
               width={size.width}
-              height={Math.round((size.width * 9) / 16)}
+              height={Math.round(
+                portrait ? (size.width * 16) / 9 : (size.width * 9) / 16,
+              )}
               style={{ height: 'auto', width: size.width }}
               className="rounded-md outline outline-1 -outline-offset-1 outline-white/10"
             />
