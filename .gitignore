@@ -27,6 +27,8 @@ logs/
 .env*.local
 
 # youtube tokens & cache
+# youtube:sync snapshots and youtube:update backups (private and scheduled videos)
+.youtube-snapshots/
 apps/app/data/youtube-tokens.json
 apps/app/data/youtube-cache/
 
