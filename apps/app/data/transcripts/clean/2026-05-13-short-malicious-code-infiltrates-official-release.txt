@@ -1,0 +1,10 @@
+Official release workflow later pulled
+from the cache back the malicious file
+into the build and sign and publish 24
+malicious package version 20pm. Yeah,
+the attack leveraged GitHub cache
+poisoning. Commit that started the the
+chain was forged under the identity code
+impersonating Entropic code. The
+attacker used known vulnerabilities.
+Wait, it was known?

@@ -1,0 +1,13 @@
+For my Zendesk rebuild for my own ticket
+system, I had some issues when I added
+CC to an email or to a ticket. I Cloud
+said it was not completely possible. It
+had to do something different, and I
+just tried it several times, and I had a
+second issue where it was saying that I
+could not easily put images in line. I
+had to do everything through attachment.
+I didn't check it myself. Cloud did
+everything. But now, I asked CodeX 5.4,
+and within 10 minutes, both problems
+were solved.

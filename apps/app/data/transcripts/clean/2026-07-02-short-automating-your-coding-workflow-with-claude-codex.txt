@@ -1,0 +1,13 @@
+This week I've set up those automation
+in KODEX and the Cloud Desktop app. Now
+I have features implementation taking
+from GitHub every 2 hours and I have a
+pull request review every 6 hours and
+then it merged to master and I'm about
+to put a auto deploy to production later
+this week. And I also have like a
+routine of refactoring and dry the code
+that we have a lot of slope in the app
+so routine are required. And I didn't
+burn my Cloud subscription in 2 days
+this time so that's a win.

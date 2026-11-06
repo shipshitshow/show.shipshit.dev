@@ -1,0 +1,128 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.510 align:start position:0%
+ 
+Novel<00:00:00.400><c> implements</c><00:00:00.800><c> for</c><00:00:00.920><c> production</c><00:00:01.320><c> and</c>
+
+00:00:01.510 --> 00:00:01.520 align:start position:0%
+Novel implements for production and
+ 
+
+00:00:01.520 --> 00:00:03.830 align:start position:0%
+Novel implements for production and
+generated<00:00:02.000><c> signed</c><00:00:02.440><c> package</c><00:00:03.080><c> of</c><00:00:03.320><c> 10</c><00:00:03.560><c> stack</c>
+
+00:00:03.830 --> 00:00:03.840 align:start position:0%
+generated signed package of 10 stack
+ 
+
+00:00:03.840 --> 00:00:05.470 align:start position:0%
+generated signed package of 10 stack
+collection<00:00:04.280><c> of</c><00:00:04.400><c> open</c><00:00:04.600><c> source</c><00:00:04.840><c> library</c><00:00:05.280><c> for</c>
+
+00:00:05.470 --> 00:00:05.480 align:start position:0%
+collection of open source library for
+ 
+
+00:00:05.480 --> 00:00:07.430 align:start position:0%
+collection of open source library for
+web<00:00:05.640><c> development.</c><00:00:06.600><c> Attack</c><00:00:06.920><c> combined</c><00:00:07.320><c> the</c>
+
+00:00:07.430 --> 00:00:07.440 align:start position:0%
+web development. Attack combined the
+ 
+
+00:00:07.440 --> 00:00:09.190 align:start position:0%
+web development. Attack combined the
+GitHub<00:00:07.920><c> pull</c><00:00:08.160><c> request</c><00:00:08.680><c> target</c>
+
+00:00:09.190 --> 00:00:09.200 align:start position:0%
+GitHub pull request target
+ 
+
+00:00:09.200 --> 00:00:11.750 align:start position:0%
+GitHub pull request target
+vulnerability,<00:00:10.480><c> GitHub</c><00:00:10.880><c> action</c><00:00:11.440><c> cash</c>
+
+00:00:11.750 --> 00:00:11.760 align:start position:0%
+vulnerability, GitHub action cash
+ 
+
+00:00:11.760 --> 00:00:14.110 align:start position:0%
+vulnerability, GitHub action cash
+poisoning<00:00:12.240><c> and</c><00:00:12.480><c> runtime</c><00:00:12.920><c> memory</c><00:00:13.320><c> extraction.</c>
+
+00:00:14.110 --> 00:00:14.120 align:start position:0%
+poisoning and runtime memory extraction.
+ 
+
+00:00:14.120 --> 00:00:15.670 align:start position:0%
+poisoning and runtime memory extraction.
+Misconfigured<00:00:14.720><c> pull</c><00:00:14.880><c> request</c><00:00:15.280><c> target</c>
+
+00:00:15.670 --> 00:00:15.680 align:start position:0%
+Misconfigured pull request target
+ 
+
+00:00:15.680 --> 00:00:17.910 align:start position:0%
+Misconfigured pull request target
+workflow<00:00:16.040><c> gave</c><00:00:16.360><c> outside</c><00:00:16.880><c> code</c><00:00:17.040><c> access</c><00:00:17.720><c> to</c><00:00:17.800><c> the</c>
+
+00:00:17.910 --> 00:00:17.920 align:start position:0%
+workflow gave outside code access to the
+ 
+
+00:00:17.920 --> 00:00:20.030 align:start position:0%
+workflow gave outside code access to the
+repo<00:00:18.240><c> secret.</c><00:00:18.880><c> Exploit</c><00:00:19.240><c> GitHub</c><00:00:19.600><c> workflow</c>
+
+00:00:20.030 --> 00:00:20.040 align:start position:0%
+repo secret. Exploit GitHub workflow
+ 
+
+00:00:20.040 --> 00:00:23.070 align:start position:0%
+repo secret. Exploit GitHub workflow
+cash<00:00:20.320><c> poisoning</c><00:00:20.760><c> which</c><00:00:21.320><c> as</c><00:00:22.040><c> far</c><00:00:22.360><c> as</c><00:00:22.400><c> I</c><00:00:22.440><c> know</c>
+
+00:00:23.070 --> 00:00:23.080 align:start position:0%
+cash poisoning which as far as I know
+ 
+
+00:00:23.080 --> 00:00:25.630 align:start position:0%
+cash poisoning which as far as I know
+been<00:00:23.240><c> an</c><00:00:23.320><c> issue</c><00:00:23.600><c> for</c><00:00:23.800><c> a</c><00:00:23.880><c> while.</c><00:00:24.720><c> Did</c><00:00:25.200><c> GitHub</c>
+
+00:00:25.630 --> 00:00:25.640 align:start position:0%
+been an issue for a while. Did GitHub
+ 
+
+00:00:25.640 --> 00:00:27.710 align:start position:0%
+been an issue for a while. Did GitHub
+also<00:00:26.040><c> post</c><00:00:26.400><c> somewhere</c><00:00:26.800><c> that</c><00:00:26.960><c> they</c><00:00:27.160><c> are</c><00:00:27.280><c> firing</c>
+
+00:00:27.710 --> 00:00:27.720 align:start position:0%
+also post somewhere that they are firing
+ 
+
+00:00:27.720 --> 00:00:29.430 align:start position:0%
+also post somewhere that they are firing
+all<00:00:27.840><c> the</c><00:00:27.960><c> devs</c><00:00:28.280><c> and</c><00:00:28.440><c> have</c><00:00:28.680><c> everybody</c><00:00:29.240><c> in</c><00:00:29.360><c> the</c>
+
+00:00:29.430 --> 00:00:29.440 align:start position:0%
+all the devs and have everybody in the
+ 
+
+00:00:29.440 --> 00:00:31.710 align:start position:0%
+all the devs and have everybody in the
+company<00:00:29.800><c> make</c><00:00:30.080><c> pull</c><00:00:30.320><c> requests?</c>
+
+00:00:31.710 --> 00:00:31.720 align:start position:0%
+company make pull requests?
+ 
+
+00:00:31.720 --> 00:00:34.400 align:start position:0%
+company make pull requests?
+With<00:00:31.840><c> their</c>
+

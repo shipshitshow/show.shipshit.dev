@@ -32,7 +32,9 @@ export interface TranscriptQuery {
 const SNIPPET_RADIUS = 90;
 
 export function parseTypeFilter(value: string | undefined) {
-  return value === 'livestream' || value === 'video' ? value : 'all';
+  return value === 'livestream' || value === 'short' || value === 'video'
+    ? value
+    : 'all';
 }
 
 export function parseSort(
@@ -174,6 +176,7 @@ export interface TranscriptStats {
   firstDate: string | null;
   lastDate: string | null;
   livestreams: number;
+  shorts: number;
   total: number;
   videos: number;
   words: number;
@@ -187,6 +190,7 @@ export function transcriptStats(
     firstDate: dates[0] ?? null,
     lastDate: dates.at(-1) ?? null,
     livestreams: entries.filter((entry) => entry.type === 'livestream').length,
+    shorts: entries.filter((entry) => entry.type === 'short').length,
     total: entries.length,
     videos: entries.filter((entry) => entry.type === 'video').length,
     words: entries.reduce((sum, entry) => sum + entry.wordCount, 0),

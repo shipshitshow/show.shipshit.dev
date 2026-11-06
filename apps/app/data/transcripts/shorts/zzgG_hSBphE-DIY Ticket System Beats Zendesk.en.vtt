@@ -1,0 +1,96 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.230 align:start position:0%
+ 
+You<00:00:00.080><c> deleted</c><00:00:00.520><c> Zendesk</c><00:00:01.080><c> and</c><00:00:01.200><c> I</c><00:00:01.280><c> did</c><00:00:01.520><c> my</c><00:00:01.720><c> own</c><00:00:02.040><c> my</c>
+
+00:00:02.230 --> 00:00:02.240 align:start position:0%
+You deleted Zendesk and I did my own my
+ 
+
+00:00:02.240 --> 00:00:04.870 align:start position:0%
+You deleted Zendesk and I did my own my
+own<00:00:02.440><c> ticket</c><00:00:02.720><c> system.</c><00:00:03.480><c> So,</c><00:00:03.920><c> I</c><00:00:04.120><c> have</c><00:00:04.320><c> my</c><00:00:04.480><c> local</c>
+
+00:00:04.870 --> 00:00:04.880 align:start position:0%
+own ticket system. So, I have my local
+ 
+
+00:00:04.880 --> 00:00:07.950 align:start position:0%
+own ticket system. So, I have my local
+Mac<00:00:05.120><c> mini</c><00:00:05.480><c> that</c><00:00:06.320><c> copies</c><00:00:06.880><c> my</c><00:00:07.080><c> database</c><00:00:07.640><c> because</c>
+
+00:00:07.950 --> 00:00:07.960 align:start position:0%
+Mac mini that copies my database because
+ 
+
+00:00:07.960 --> 00:00:10.550 align:start position:0%
+Mac mini that copies my database because
+I<00:00:08.000><c> don't</c><00:00:08.240><c> want</c><00:00:08.480><c> it</c><00:00:08.880><c> active</c><00:00:09.480><c> in</c><00:00:09.720><c> the</c><00:00:10.200><c> in</c><00:00:10.320><c> the</c>
+
+00:00:10.550 --> 00:00:10.560 align:start position:0%
+I don't want it active in the in the
+ 
+
+00:00:10.560 --> 00:00:12.390 align:start position:0%
+I don't want it active in the in the
+actual<00:00:10.960><c> database.</c><00:00:11.600><c> So,</c><00:00:11.800><c> it</c><00:00:11.920><c> does</c><00:00:12.080><c> a</c><00:00:12.160><c> pull</c>
+
+00:00:12.390 --> 00:00:12.400 align:start position:0%
+actual database. So, it does a pull
+ 
+
+00:00:12.400 --> 00:00:14.270 align:start position:0%
+actual database. So, it does a pull
+request,<00:00:12.880><c> updates</c><00:00:13.240><c> the</c><00:00:13.320><c> database</c><00:00:13.880><c> once</c><00:00:14.120><c> per</c>
+
+00:00:14.270 --> 00:00:14.280 align:start position:0%
+request, updates the database once per
+ 
+
+00:00:14.280 --> 00:00:16.830 align:start position:0%
+request, updates the database once per
+hour,<00:00:14.920><c> and</c><00:00:15.080><c> I</c><00:00:15.120><c> can</c><00:00:15.320><c> just</c><00:00:15.600><c> say</c><00:00:15.960><c> see</c><00:00:16.280><c> ticket</c>
+
+00:00:16.830 --> 00:00:16.840 align:start position:0%
+hour, and I can just say see ticket
+ 
+
+00:00:16.840 --> 00:00:19.630 align:start position:0%
+hour, and I can just say see ticket
+five,<00:00:17.200><c> number</c><00:00:17.480><c> five,</c><00:00:18.080><c> and</c><00:00:18.600><c> read</c><00:00:18.960><c> it,</c><00:00:19.280><c> and</c><00:00:19.480><c> it</c>
+
+00:00:19.630 --> 00:00:19.640 align:start position:0%
+five, number five, and read it, and it
+ 
+
+00:00:19.640 --> 00:00:21.950 align:start position:0%
+five, number five, and read it, and it
+looks<00:00:19.920><c> up</c><00:00:20.240><c> the</c><00:00:20.440><c> tickets</c><00:00:20.880><c> in</c><00:00:21.040><c> my</c><00:00:21.200><c> database,</c><00:00:21.800><c> and</c>
+
+00:00:21.950 --> 00:00:21.960 align:start position:0%
+looks up the tickets in my database, and
+ 
+
+00:00:21.960 --> 00:00:23.670 align:start position:0%
+looks up the tickets in my database, and
+it<00:00:22.040><c> knows</c><00:00:22.280><c> the</c><00:00:22.400><c> exact</c><00:00:22.760><c> conversation</c><00:00:23.440><c> and</c><00:00:23.560><c> the</c>
+
+00:00:23.670 --> 00:00:23.680 align:start position:0%
+it knows the exact conversation and the
+ 
+
+00:00:23.680 --> 00:00:25.510 align:start position:0%
+it knows the exact conversation and the
+issue,<00:00:24.000><c> and</c><00:00:24.120><c> it</c><00:00:24.200><c> knows</c><00:00:24.480><c> what</c><00:00:24.640><c> to</c><00:00:24.760><c> do.</c><00:00:25.360><c> What</c>
+
+00:00:25.510 --> 00:00:25.520 align:start position:0%
+issue, and it knows what to do. What
+ 
+
+00:00:25.520 --> 00:00:27.960 align:start position:0%
+issue, and it knows what to do. What
+say?
+

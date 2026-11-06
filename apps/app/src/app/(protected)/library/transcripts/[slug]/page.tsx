@@ -8,6 +8,7 @@ import { formatNumber } from '@/lib/format';
 import {
   getPublishedVideoBySlug,
   getTopicsForDate,
+  type PublishedVideoType,
 } from '@/lib/livestreams-store';
 import { buildYouTubeThumbnailUrl } from '@/lib/livestreams-youtube';
 import {
@@ -47,8 +48,9 @@ function formatVideoDate(date: string): string {
   return DATE_FORMATTER.format(new Date(Date.UTC(year, month - 1, day)));
 }
 
-function formatVideoType(type: 'livestream' | 'video'): string {
-  return type === 'livestream' ? 'Livestream' : 'Video';
+function formatVideoType(type: PublishedVideoType): string {
+  if (type === 'livestream') return 'Livestream';
+  return type === 'short' ? 'Short' : 'Video';
 }
 
 function VideoTabs({
