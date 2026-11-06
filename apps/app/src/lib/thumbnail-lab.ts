@@ -248,7 +248,12 @@ export function applyThumbnailTitle(
     throw new ThumbnailConflict(
       'This thumbnail changed. Refresh before renaming.',
     );
-  return { ...item, revision: item.revision + 1, title: edit.title, updatedAt: at };
+  return {
+    ...item,
+    revision: item.revision + 1,
+    title: edit.title,
+    updatedAt: at,
+  };
 }
 export function currentThumbnail(item: ThumbnailItem): ThumbnailVersion {
   const version = item.versions.find(

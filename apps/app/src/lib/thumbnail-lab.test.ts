@@ -12,9 +12,9 @@ import {
   parseThumbnailChange,
   parseThumbnailDecision,
   revisionPrompt,
-  thumbnailCdnUrl,
   ThumbnailConflict,
   type ThumbnailItem,
+  thumbnailCdnUrl,
   visibleThumbnail,
 } from './thumbnail-lab';
 import { renderThumbnail } from './thumbnail-lab-assets';
