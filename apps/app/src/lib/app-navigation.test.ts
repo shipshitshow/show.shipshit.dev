@@ -29,10 +29,10 @@ describe('production route ownership', () => {
       '/analytics/socials': 'analytics',
       '/audience/leads': 'audience',
       '/content/livestreams/example/talking-points': 'content',
-      '/content/shorts': 'content',
       '/library/titles': 'library',
       '/library/transcripts/example': 'library',
       '/prep/backlog': 'prep',
+      '/prep/next': 'prep',
     };
     for (const [path, id] of Object.entries(owners))
       expect(getProductionApp(path)?.id as string).toBe(id);
@@ -66,7 +66,7 @@ describe('production route ownership', () => {
         '/content/livestreams/x/resources',
         content?.links ?? [],
       ),
-    ).toBe('/content/livestreams');
+    ).toBe('/content');
     expect(getActiveNavigationHref('/content', content?.links ?? [])).toBe(
       '/content',
     );
@@ -83,7 +83,7 @@ describe('production route ownership', () => {
     expect(getProductionPageLabel('/content/livestreams/x/resources')).toBe(
       'Resources',
     );
-    expect(getProductionPageLabel('/content/livestreams')).toBe('Livestreams');
+    expect(getProductionPageLabel('/prep/next')).toBe('Next show');
     expect(getProductionPageLabel('/library/covers')).toBe('Shorts covers');
     expect(livestreamPath('2026-11-03', 'transcript')).toBe(
       '/content/livestreams/2026-11-03/transcript',

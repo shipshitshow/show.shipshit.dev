@@ -79,6 +79,8 @@ export interface EpisodeRollupRow {
   title: string;
   /** In-app route to the episode detail page. */
   href: string;
+  /** YouTube thumbnail of the edited video, else of the livestream. */
+  thumbnailUrl: string | null;
   flagship: FlagshipSurface;
   livestream: LivestreamSurface;
   shorts: ShortsSurface;

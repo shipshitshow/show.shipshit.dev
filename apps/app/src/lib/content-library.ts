@@ -12,18 +12,17 @@ export type ContentType = 'livestream' | 'video' | 'short';
 type ContentChannel = 'main' | 'clips';
 export type ChannelFilter = 'all' | ContentChannel;
 
-export const CONTENT_TYPES: Array<{
-  id: ContentType;
-  label: string;
-  path: string;
-}> = [
-  { id: 'livestream', label: 'Livestreams', path: '/content/livestreams' },
-  { id: 'video', label: 'Videos', path: '/content/videos' },
-  { id: 'short', label: 'Shorts', path: '/content/shorts' },
+export type TypeFilter = 'all' | ContentType;
+
+export const TYPE_FILTERS: Array<{ id: TypeFilter; label: string }> = [
+  { id: 'all', label: 'All types' },
+  { id: 'livestream', label: 'Livestreams' },
+  { id: 'video', label: 'Videos' },
+  { id: 'short', label: 'Shorts' },
 ];
 
 export const CHANNEL_FILTERS: Array<{ id: ChannelFilter; label: string }> = [
-  { id: 'all', label: 'All' },
+  { id: 'all', label: 'Both channels' },
   { id: 'main', label: '@shipshitshow' },
   { id: 'clips', label: '@shipshitshowclips' },
 ];
@@ -236,6 +235,23 @@ function median(values: number[]): number {
 }
 
 /**
+ * Each value over the median of the group, to one decimal: 3 means three
+ * times the typical one. Undefined for missing values, and for every value
+ * when fewer than three are known or the median is zero.
+ */
+export function outlierScores(
+  values: Array<number | undefined>,
+): Array<number | undefined> {
+  const known = values.filter((value): value is number => value !== undefined);
+  const typical = known.length >= OUTLIER_MIN_PEERS ? median(known) : 0;
+  return values.map((value) =>
+    value === undefined || typical <= 0
+      ? undefined
+      : Math.round((value / typical) * 10) / 10,
+  );
+}
+
+/**
  * Sets `outlier` on every public upload with numbers, against the median of
  * its own channel and type, so a Short is compared with Shorts and a stream
  * with streams. New uploads score low until their views catch up.
@@ -249,11 +265,10 @@ function scoreOutliers(items: ContentItem[]) {
     groups.set(key, [...(groups.get(key) ?? []), item]);
   }
   for (const group of groups.values()) {
-    if (group.length < OUTLIER_MIN_PEERS) continue;
-    const typical = median(group.map((item) => item.stat?.views ?? 0));
-    if (typical <= 0) continue;
-    for (const item of group)
-      item.outlier = Math.round(((item.stat?.views ?? 0) / typical) * 10) / 10;
+    const scores = outlierScores(group.map((item) => item.stat?.views ?? 0));
+    group.forEach((item, index) => {
+      item.outlier = scores[index];
+    });
   }
 }
 
@@ -261,10 +276,17 @@ export interface ContentFilters {
   channel: ChannelFilter;
   missing: boolean;
   sort: VideoSort;
+  type: TypeFilter;
 }
 
 export function parseChannel(value: string | undefined): ChannelFilter {
   return value === 'main' || value === 'clips' ? value : 'all';
+}
+
+export function parseType(value: string | undefined): TypeFilter {
+  return value === 'livestream' || value === 'video' || value === 'short'
+    ? value
+    : 'all';
 }
 
 /** Upcoming streams have no transcript yet, so they never count as missing. */
@@ -274,13 +296,12 @@ export function isMissingTranscript(item: ContentItem): boolean {
 
 export function filterContent(
   items: ContentItem[],
-  { channel, missing, sort }: ContentFilters,
-  type?: ContentType,
+  { channel, missing, sort, type }: ContentFilters,
 ): ContentItem[] {
   return sortVideos(
     items.filter(
       (item) =>
-        (!type || item.type === type) &&
+        (type === 'all' || item.type === type) &&
         (channel === 'all' || item.channel === channel) &&
         (!missing || isMissingTranscript(item)),
     ),
@@ -296,6 +317,7 @@ export function contentHref(
 ): string {
   const next = { ...filters, ...change };
   const params = new URLSearchParams();
+  if (next.type !== 'all') params.set('type', next.type);
   if (next.channel !== 'all') params.set('channel', next.channel);
   if (next.sort !== 'latest') params.set('sort', next.sort);
   if (next.missing) params.set('transcript', 'missing');

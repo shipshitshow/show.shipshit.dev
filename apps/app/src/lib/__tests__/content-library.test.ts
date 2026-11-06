@@ -8,6 +8,7 @@ import {
   filterContent,
   isMissingTranscript,
   parseChannel,
+  parseType,
   type RepoContent,
 } from '@/lib/content-library';
 import type {
@@ -123,9 +124,10 @@ describe('one list for both channels', () => {
       channel: 'all' as const,
       missing: false,
       sort: 'latest' as const,
+      type: 'all' as const,
     };
     expect(
-      filterContent(items, all, 'livestream').map((item) => item.key),
+      filterContent(items, { ...all, type: 'livestream' }).map((i) => i.key),
     ).toEqual(['livestream:2026-11-10', 'livestream:2026-11-03']);
     expect(
       filterContent(items, { ...all, channel: 'clips' }).map((i) => i.key),
@@ -146,16 +148,19 @@ describe('filter links', () => {
       channel: 'clips' as const,
       missing: false,
       sort: 'latest' as const,
+      type: 'all' as const,
     };
     expect(contentHref('/content', filters)).toBe('/content?channel=clips');
-    expect(contentHref('/content/shorts', filters, { sort: 'popular' })).toBe(
-      '/content/shorts?channel=clips&sort=popular',
-    );
+    expect(
+      contentHref('/content', filters, { sort: 'popular', type: 'short' }),
+    ).toBe('/content?type=short&channel=clips&sort=popular');
     expect(
       contentHref('/content', filters, { channel: 'all', missing: true }),
     ).toBe('/content?transcript=missing');
     expect(parseChannel('main')).toBe('main');
     expect(parseChannel('nope')).toBe('all');
+    expect(parseType('short')).toBe('short');
+    expect(parseType('shorts')).toBe('all');
   });
 });
 
@@ -190,6 +195,7 @@ describe('outliers', () => {
       channel: 'all',
       missing: false,
       sort: 'outliers',
+      type: 'all',
     });
     expect(sorted[0].key).toBe('d');
     expect(sorted.at(-1)?.outlier).toBeUndefined();

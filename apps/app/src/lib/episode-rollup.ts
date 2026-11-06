@@ -345,6 +345,19 @@ function getLivestreamAssets(
   ];
 }
 
+/** The edited video's thumbnail when there is one, else the stream's. */
+function episodeThumbnail(
+  flagship: PublishedAsset[],
+  livestream: PublishedAsset[],
+  episode: LivestreamArchiveItem,
+): string | null {
+  const id =
+    collectVideoIds(flagship)[0] ??
+    collectVideoIds(livestream)[0] ??
+    episode.videoId;
+  return id ? `https://i.ytimg.com/vi/${id}/mqdefault.jpg` : null;
+}
+
 function buildRow(
   episode: LivestreamArchiveItem,
   distribution: EpisodeDistribution | undefined,
@@ -448,6 +461,7 @@ function buildRow(
             ),
           ),
     },
+    thumbnailUrl: episodeThumbnail(flagshipAssets, livestreamAssets, episode),
     title: episode.title,
     x: {
       assets: xAssetLinks,

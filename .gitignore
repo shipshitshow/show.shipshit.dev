@@ -63,6 +63,8 @@ yarn.lock
 assets/
 !apps/app/src/app/api/labs/thumbnails/*/assets/
 !apps/app/src/app/api/labs/thumbnails/*/assets/**
+!apps/app/src/app/(protected)/library/assets/
+!apps/app/src/app/(protected)/library/assets/**
 
 # Editing workspace: media stays local; track only the contract (editing/README.md)
 editing/*

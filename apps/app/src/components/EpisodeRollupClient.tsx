@@ -12,8 +12,10 @@ import { isErrorResponse, isReauthRequiredResponse } from '@shipshitshow/types';
 import { Button, cn } from '@shipshitshow/ui';
 import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
+import { FilterSelect } from '@/components/FilterSelect';
 import { EpisodeRollupTableSkeleton } from '@/components/PageSkeletons';
 import { readCachedSnapshot, writeCachedSnapshot } from '@/lib/client-cache';
+import { OUTLIER_THRESHOLD, outlierScores } from '@/lib/content-library';
 import { formatNumber } from '@/lib/format';
 import { parseJsonResponse } from '@/lib/parse-json-response';
 
@@ -92,19 +94,42 @@ function AssetLinks({ assets }: { assets: EpisodeAssetLink[] }) {
   );
 }
 
+function OutlierChip({ label, score }: { label: string; score: number }) {
+  return (
+    <span
+      title={`${score}x the median ${label} of these episodes`}
+      className={cn(
+        'ml-1.5 text-[10px]',
+        score >= OUTLIER_THRESHOLD
+          ? 'rounded-full border border-green-500/20 bg-green-500/10 px-1.5 font-semibold text-green-400'
+          : 'text-text-muted',
+      )}
+    >
+      {score}x
+    </span>
+  );
+}
+
 function MetricCell({
   assets = [],
   format,
   metric,
+  outlier,
 }: {
   assets?: EpisodeAssetLink[];
   format: (value: number) => string;
   metric: EpisodeMetric;
+  outlier?: { label: string; score: number | undefined };
 }) {
   return (
     <td className="whitespace-nowrap px-4 py-3 text-right align-top tabular-nums">
       {metric.state === 'tracked' ? (
-        <span className="text-text-secondary">{format(metric.value)}</span>
+        <span className="text-text-secondary">
+          {format(metric.value)}
+          {outlier?.score !== undefined ? (
+            <OutlierChip label={outlier.label} score={outlier.score} />
+          ) : null}
+        </span>
       ) : (
         <span
           title={NOT_TRACKED_COPY[metric.reason]}
@@ -118,41 +143,113 @@ function MetricCell({
   );
 }
 
-function EpisodeRow({ episode }: { episode: EpisodeRollupRow }) {
+type ViewColumn = 'flagship' | 'livestream' | 'shorts';
+type Scores = Record<ViewColumn, number | undefined>;
+
+const VIEW_COLUMNS: ViewColumn[] = ['flagship', 'livestream', 'shorts'];
+
+const OUTLIER_LABEL: Record<ViewColumn, string> = {
+  flagship: 'video views',
+  livestream: 'live views',
+  shorts: 'Shorts views',
+};
+
+const tracked = (metric: EpisodeMetric) =>
+  metric.state === 'tracked' ? metric.value : undefined;
+
+/** Each episode's views against the median of the same column. */
+function scoreEpisodes(episodes: EpisodeRollupRow[]): Map<string, Scores> {
+  const columns = Object.fromEntries(
+    VIEW_COLUMNS.map((column) => [
+      column,
+      outlierScores(episodes.map((row) => tracked(row[column].views))),
+    ]),
+  ) as Record<ViewColumn, Array<number | undefined>>;
+  return new Map(
+    episodes.map((row, index) => [
+      row.date,
+      {
+        flagship: columns.flagship[index],
+        livestream: columns.livestream[index],
+        shorts: columns.shorts[index],
+      },
+    ]),
+  );
+}
+
+type EpisodeSort = 'latest' | 'views' | 'outliers';
+
+const SORTS: Array<{ label: string; value: EpisodeSort }> = [
+  { label: 'Latest', value: 'latest' },
+  { label: 'Most viewed', value: 'views' },
+  { label: 'Outliers', value: 'outliers' },
+];
+
+function totalViews(row: EpisodeRollupRow): number {
+  return VIEW_COLUMNS.reduce(
+    (sum, column) => sum + (tracked(row[column].views) ?? 0),
+    0,
+  );
+}
+
+function bestScore(scores: Scores | undefined): number {
+  return Math.max(-1, ...VIEW_COLUMNS.map((column) => scores?.[column] ?? -1));
+}
+
+function EpisodeRow({
+  episode,
+  scores,
+}: {
+  episode: EpisodeRollupRow;
+  scores: Scores | undefined;
+}) {
   return (
     <tr className="group border-b border-surface-border/50 transition-colors hover:bg-surface-elevated/50">
       <td className="px-4 py-3 align-top">
-        <Link
-          href={episode.href}
-          className="line-clamp-2 max-w-xs text-text-primary transition-colors group-hover:text-accent-red"
-        >
-          {episode.title}
+        <Link href={episode.href} className="flex items-start gap-3">
+          <span className="relative aspect-video w-28 shrink-0 overflow-hidden rounded-md bg-surface-elevated">
+            {episode.thumbnailUrl ? (
+              <img
+                src={episode.thumbnailUrl}
+                alt=""
+                loading="lazy"
+                className="size-full object-cover"
+              />
+            ) : null}
+          </span>
+          <span className="min-w-0">
+            <span className="line-clamp-2 max-w-xs text-text-primary transition-colors group-hover:text-accent-red">
+              {episode.title}
+            </span>
+            <span className="mt-0.5 block text-[11px] text-text-muted">
+              {formatEpisodeDate(episode.date)}
+            </span>
+          </span>
         </Link>
-        <span className="mt-0.5 block text-[11px] text-text-muted">
-          {formatEpisodeDate(episode.date)}
-        </span>
       </td>
 
       <MetricCell
         metric={episode.flagship.views}
         format={formatViews}
         assets={episode.flagship.assets}
+        outlier={{ label: OUTLIER_LABEL.flagship, score: scores?.flagship }}
       />
       <MetricCell metric={episode.flagship.ctr} format={formatPercentage} />
       <MetricCell
         metric={episode.flagship.avgViewPercentage}
         format={formatPercentage}
       />
-
       <MetricCell
         metric={episode.livestream.views}
         format={formatViews}
         assets={episode.livestream.assets}
+        outlier={{ label: OUTLIER_LABEL.livestream, score: scores?.livestream }}
       />
       <MetricCell
         metric={episode.shorts.views}
         format={formatViews}
         assets={episode.shorts.assets}
+        outlier={{ label: OUTLIER_LABEL.shorts, score: scores?.shorts }}
       />
       <MetricCell
         metric={episode.x.impressions}
@@ -169,62 +266,51 @@ function EpisodeRow({ episode }: { episode: EpisodeRollupRow }) {
   );
 }
 
-const SURFACE_GROUPS: { label: string; span: number }[] = [
-  { label: 'Flagship', span: 3 },
-  { label: 'Livestream', span: 1 },
-  { label: 'Shorts', span: 1 },
-  { label: 'X', span: 1 },
-  { label: 'LinkedIn', span: 1 },
-  { label: 'Leads', span: 1 },
+/** One header row: each column says what it counts and where. */
+const HEADERS: Array<{ label: string; title: string }> = [
+  { label: 'Video views', title: 'Views of the edited video on YouTube' },
+  { label: 'Video CTR', title: 'Click-through rate of the edited video' },
+  { label: 'Avg watched', title: 'Average share of the edited video watched' },
+  { label: 'Live views', title: 'Views of the livestream on YouTube' },
+  { label: 'Shorts views', title: 'Views of every Short from the episode' },
+  { label: 'X impressions', title: 'Impressions of the X posts' },
+  { label: 'LinkedIn clicks', title: 'Clicks from LinkedIn posts (UTM)' },
+  { label: 'Leads', title: 'Leads logged for the episode' },
 ];
 
-const METRIC_HEADERS: string[] = [
-  'Views',
-  'CTR',
-  'Avg %',
-  'Views',
-  'Views',
-  'Impr.',
-  'Clicks',
-  'Count',
-];
-
-function RollupTable({ episodes }: { episodes: EpisodeRollupRow[] }) {
+function RollupTable({
+  episodes,
+  scores,
+}: {
+  episodes: EpisodeRollupRow[];
+  scores: Map<string, Scores>;
+}) {
   return (
     <div className="overflow-x-auto">
       <table className="w-full border-collapse text-sm">
         <thead>
-          <tr className="border-b border-surface-border/50">
-            <th
-              rowSpan={2}
-              className="px-4 py-3 text-left align-bottom text-xs font-medium uppercase tracking-wider text-text-secondary"
-            >
+          <tr className="border-b border-surface-border">
+            <th className="px-4 py-3 text-left text-xs font-medium text-text-secondary">
               Episode
             </th>
-            {SURFACE_GROUPS.map((group) => (
+            {HEADERS.map((header) => (
               <th
-                key={group.label}
-                colSpan={group.span}
-                className="border-l border-surface-border/50 px-4 pt-3 pb-1 text-center text-[10px] font-medium uppercase tracking-widest text-text-muted"
+                key={header.label}
+                title={header.title}
+                className="whitespace-nowrap px-4 py-3 text-right text-xs font-medium text-text-secondary"
               >
-                {group.label}
-              </th>
-            ))}
-          </tr>
-          <tr className="border-b border-surface-border">
-            {METRIC_HEADERS.map((label, index) => (
-              <th
-                key={`${label}-${index}`}
-                className="px-4 pt-1 pb-3 text-right text-xs font-medium uppercase tracking-wider text-text-secondary"
-              >
-                {label}
+                {header.label}
               </th>
             ))}
           </tr>
         </thead>
         <tbody>
           {episodes.map((episode) => (
-            <EpisodeRow key={episode.date} episode={episode} />
+            <EpisodeRow
+              key={episode.date}
+              episode={episode}
+              scores={scores.get(episode.date)}
+            />
           ))}
         </tbody>
       </table>
@@ -259,6 +345,7 @@ export function EpisodeRollupClient() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<ErrorResponse | null>(null);
   const [cachedAt, setCachedAt] = useState<string | null>(null);
+  const [sort, setSort] = useState<EpisodeSort>('latest');
 
   const load = useCallback(async (options?: { force?: boolean }) => {
     setLoading(true);
@@ -338,15 +425,19 @@ export function EpisodeRollupClient() {
     );
   }
 
-  const episodes = rollup?.episodes ?? [];
+  const episodes = [...(rollup?.episodes ?? [])];
+  const scores = scoreEpisodes(episodes);
+  if (sort === 'views') episodes.sort((a, b) => totalViews(b) - totalViews(a));
+  else if (sort === 'outliers')
+    episodes.sort(
+      (a, b) => bestScore(scores.get(b.date)) - bestScore(scores.get(a.date)),
+    );
 
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-text-primary">
-            Episode Rollup
-          </h2>
+          <h2 className="text-xl font-bold text-text-primary">Episodes</h2>
           <p className="mt-0.5 text-sm text-text-muted">
             {`${episodes.length} ${episodes.length === 1 ? 'episode' : 'episodes'} across every surface`}
             {cachedAt
@@ -354,28 +445,36 @@ export function EpisodeRollupClient() {
               : ''}
           </p>
         </div>
-        <Button
-          onClick={() => load({ force: true })}
-          aria-label="Refresh episode rollup"
-          disabled={loading}
-          className="px-2.5 hover:border-accent-red disabled:opacity-50"
-        >
-          <svg
-            viewBox="0 0 16 16"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className={cn(
-              'h-3.5 w-3.5 transition-transform',
-              loading && 'animate-spin',
-            )}
+        <div className="flex items-center gap-2">
+          <FilterSelect
+            label="Sort"
+            value={sort}
+            onChange={setSort}
+            options={SORTS}
+          />
+          <Button
+            onClick={() => load({ force: true })}
+            aria-label="Refresh episode rollup"
+            disabled={loading}
+            className="px-2.5 hover:border-accent-red disabled:opacity-50"
           >
-            <path d="M1 1v4h4M15 15v-4h-4" />
-            <path d="M13.5 6A6 6 0 0 0 3 3.5L1 5M2.5 10A6 6 0 0 0 13 12.5l2-1.5" />
-          </svg>
-        </Button>
+            <svg
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className={cn(
+                'h-3.5 w-3.5 transition-transform',
+                loading && 'animate-spin',
+              )}
+            >
+              <path d="M1 1v4h4M15 15v-4h-4" />
+              <path d="M13.5 6A6 6 0 0 0 3 3.5L1 5M2.5 10A6 6 0 0 0 13 12.5l2-1.5" />
+            </svg>
+          </Button>
+        </div>
       </div>
 
       {rollup && !rollup.isYouTubeConnected ? (
@@ -398,7 +497,7 @@ export function EpisodeRollupClient() {
         {loading ? (
           <EpisodeRollupTableSkeleton />
         ) : (
-          <RollupTable episodes={episodes} />
+          <RollupTable episodes={episodes} scores={scores} />
         )}
         <Legend />
       </div>

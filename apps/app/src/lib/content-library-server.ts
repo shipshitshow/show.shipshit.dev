@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import type { Topic } from '@shipshitshow/types';
 import {
   attachVariants,
   buildContentItems,
@@ -8,6 +9,7 @@ import {
 import { todayLocalDate } from './date';
 import {
   getTopicsForDate,
+  type LivestreamArchiveItem,
   listAvailableLivestreamDates,
   listLivestreamArchive,
   listPublishedVideos,
@@ -50,6 +52,51 @@ const streamPath = (slug: string) =>
 const transcriptPath = (slug: string) =>
   `/library/transcripts/${encodeURIComponent(slug)}`;
 
+export interface NextShow {
+  date: string;
+  /** Route slug of its prep pages: the stream's video ID, else the date. */
+  slug: string;
+  title: string;
+  topics: Topic[];
+  videoId: string | null;
+}
+
+/** The first show today or later with topics or a scheduled stream. */
+async function findNextShow(
+  topicDates: string[],
+  archive: LivestreamArchiveItem[],
+  today: string,
+): Promise<NextShow | null> {
+  const date = Array.from(
+    new Set([...topicDates, ...archive.map((item) => item.date)]),
+  )
+    .filter((day) => day >= today)
+    .sort()[0];
+  if (!date) return null;
+  const stream = archive.find((item) => item.date === date);
+  const topics = await getTopicsForDate(date);
+  const active = topics.filter((topic) => topic.status === 'in_progress');
+  return {
+    date,
+    slug: stream?.videoId ?? date,
+    title:
+      stream?.title ??
+      (active.length === 1
+        ? active[0].title
+        : `${formatLivestreamDate(date)} Livestream`),
+    topics,
+    videoId: stream?.videoId ?? null,
+  };
+}
+
+export async function loadNextShow(): Promise<NextShow | null> {
+  const [topicDates, archive] = await Promise.all([
+    listAvailableLivestreamDates(),
+    listLivestreamArchive(),
+  ]);
+  return findNextShow(topicDates, archive, todayLocalDate());
+}
+
 /**
  * The livestreams and videos in the repo. A livestream links to its prep
  * page and is joined to its saved transcript by video ID, file or date (the
@@ -78,7 +125,6 @@ async function loadRepoContent(): Promise<RepoContent[]> {
   const publishedByPath = new Map(
     published.map((item) => [item.transcriptPath, item]),
   );
-  const archiveByDate = new Map(archive.map((item) => [item.date, item]));
   const entries: RepoContent[] = [];
   const linked = new Set<string>();
 
@@ -109,28 +155,16 @@ async function loadRepoContent(): Promise<RepoContent[]> {
     });
   }
 
-  const next = Array.from(
-    new Set([...topicDates, ...archive.map((item) => item.date)]),
-  )
-    .filter((date) => date >= today)
-    .sort()[0];
+  const next = await findNextShow(topicDates, archive, today);
   if (next) {
-    const stream = archiveByDate.get(next);
-    const topics = (await getTopicsForDate(next)).filter(
-      (topic) => topic.status === 'in_progress',
-    );
     entries.push({
-      date: next,
-      href: streamPath(stream?.videoId ?? next),
-      key: `livestream:${next}`,
-      title:
-        stream?.title ??
-        (topics.length === 1
-          ? topics[0].title
-          : `${formatLivestreamDate(next)} Livestream`),
+      date: next.date,
+      href: streamPath(next.slug),
+      key: `livestream:${next.date}`,
+      title: next.title,
       type: 'livestream',
       upcoming: true,
-      videoId: stream?.videoId ?? null,
+      videoId: next.videoId,
     });
   }
 
