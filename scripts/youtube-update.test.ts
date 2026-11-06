@@ -472,6 +472,37 @@ test('a failed thumbnail is a failure and leaves the ledger alone', async () => 
   expect(onSynced).not.toHaveBeenCalled();
 });
 
+test('a failed thumbnail reports the full error body', async () => {
+  responses.PUT = () => json({});
+  responses.thumbnail = () =>
+    json(
+      {
+        error: {
+          code: 400,
+          errors: [
+            {
+              domain: 'youtube.thumbnail',
+              message: 'The image is too large.',
+              reason: 'imageTooLarge',
+            },
+          ],
+          message: 'The image is too large.',
+        },
+      },
+      400,
+    );
+  const result = await run([
+    { change: { id: ID, thumbnail: '/lab/t.jpg' }, sync: { assetHash: 'a' } },
+  ]);
+  expect(result.failed).toEqual([
+    {
+      id: ID,
+      message:
+        'thumbnails.set failed: 400 imageTooLarge (The image is too large.; domain: youtube.thumbnail)',
+    },
+  ]);
+});
+
 test('one failed video does not stop the others', async () => {
   let reads = 0;
   responses.GET = () =>

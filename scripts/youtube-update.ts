@@ -674,13 +674,23 @@ export function selectLabChanges(
 async function youtubeError(response: Response, label: string) {
   const body = await response.text();
   let reason: string | undefined;
+  let detail = '';
   try {
-    reason = JSON.parse(body).error?.errors?.[0]?.reason;
+    const error = JSON.parse(body).error;
+    const first = error?.errors?.[0];
+    reason = first?.reason;
+    // Keep the API's own explanation; it carries no credentials.
+    const parts = [
+      error?.message,
+      first?.domain && `domain: ${first.domain}`,
+      first?.location && `location: ${first.location}`,
+    ].filter((part): part is string => typeof part === 'string' && !!part);
+    detail = parts.length ? ` (${parts.join('; ')})` : '';
   } catch {
     reason = undefined;
   }
   return new YouTubeError(
-    `${label} failed: ${response.status} ${reason ?? body.slice(0, 200)}`,
+    `${label} failed: ${response.status} ${reason ?? body.slice(0, 500)}${detail}`,
     response.status,
     reason,
   );
