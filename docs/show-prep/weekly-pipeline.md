@@ -88,7 +88,7 @@ public. Nothing else waits on him.
 
 1. Write the title, description and chapters with `$metadata`
    (`bun run youtube:metadata`). Use first-person show voice. The title fits one
-   line on the home feed, phone included: 40 characters or fewer, 45 at most.
+   line on the home feed: 40 characters or fewer, 45 at most, take first.
    Spell-check it before upload.
 2. Run `bun run youtube:upload --file <video> --meta <meta.json> --channel
    main|clips --dry-run`, then run the same command without `--dry-run`.
