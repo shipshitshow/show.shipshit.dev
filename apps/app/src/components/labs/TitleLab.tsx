@@ -2,8 +2,10 @@
 import { Download, Search } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
+  hasLiveTag,
   isDrafts,
   isSnapshot,
+  stripLivePrefix,
   summarise,
   TITLE_LIMIT,
   TITLE_TARGET,
@@ -14,13 +16,14 @@ import {
   titleStatus,
 } from '@/lib/title-lab';
 
-type Filter = 'all' | 'over' | 'long' | 'ok' | 'drafted';
+type Filter = 'all' | 'over' | 'long' | 'ok' | 'drafted' | 'live';
 const FILTERS: Array<{ id: Filter; label: string }> = [
   { id: 'all', label: 'All' },
   { id: 'over', label: `Over ${TITLE_LIMIT}` },
   { id: 'long', label: `${TITLE_TARGET + 1}–${TITLE_LIMIT}` },
   { id: 'ok', label: `${TITLE_TARGET} or fewer` },
   { id: 'drafted', label: 'Has a draft' },
+  { id: 'live', label: 'Has [LIVE]' },
 ];
 const STATUS_STYLE: Record<TitleStatus, string> = {
   long: 'border-amber-500/50 text-amber-400',
@@ -85,6 +88,22 @@ function DraftRow({
         <div className="flex items-center gap-2">
           <Count title={video.title} />
           <span className="text-sm">{video.title}</span>
+          {hasLiveTag(video.title) && !text.trim() ? (
+            <button
+              className="rounded-md border border-accent-red/60 px-2 py-0.5 text-xs text-accent-red"
+              onClick={() => {
+                const stripped = stripLivePrefix(video.title);
+                setText(stripped);
+                onSave(video.id, stripped).then((failure) => {
+                  setError(failure);
+                  if (!failure) saved.current = stripped;
+                });
+              }}
+              type="button"
+            >
+              Drop [LIVE]
+            </button>
+          ) : null}
         </div>
         <div className="mt-2">
           <FeedLine title={video.title} />
@@ -169,6 +188,7 @@ export function TitleLab() {
     return (snapshot?.videos ?? []).filter((video) => {
       if (needle && !video.title.toLowerCase().includes(needle)) return false;
       if (filter === 'drafted') return Boolean(drafts[video.id]);
+      if (filter === 'live') return hasLiveTag(video.title);
       return filter === 'all' || titleStatus(video.title) === filter;
     });
   }, [snapshot, filter, query, drafts]);

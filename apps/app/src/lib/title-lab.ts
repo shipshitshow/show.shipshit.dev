@@ -36,6 +36,17 @@ export function titleStatus(title: string): TitleStatus {
   return length > TITLE_TARGET ? 'long' : 'ok';
 }
 
+/**
+ * No "[LIVE]" in livestream titles (Vincent, 2026-11-06: "it's useless").
+ * Matches [LIVE], [ live ] and any case; stripping removes a leading one and
+ * the separator after it.
+ */
+const LIVE_TAG = /\[\s*live\s*\]/i;
+const LIVE_PREFIX = /^\s*\[\s*live\s*\]\s*[:\-–—]?\s*/i;
+export const hasLiveTag = (title: string) => LIVE_TAG.test(title);
+export const stripLivePrefix = (title: string) =>
+  title.replace(LIVE_PREFIX, '').trim();
+
 /** What YouTube would refuse, or the house rule would flag, for one draft. */
 export function draftProblems(draft: string) {
   const problems: string[] = [];
@@ -43,6 +54,7 @@ export function draftProblems(draft: string) {
   if (draft.length > YOUTUBE_TITLE_CAP)
     problems.push(`YouTube allows ${YOUTUBE_TITLE_CAP} characters.`);
   if (/[<>]/.test(draft)) problems.push('A title cannot contain < or >.');
+  if (hasLiveTag(draft)) problems.push('Titles do not carry a [LIVE] tag.');
   return problems;
 }
 
