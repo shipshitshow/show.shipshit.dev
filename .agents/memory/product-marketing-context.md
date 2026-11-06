@@ -66,7 +66,8 @@ A demo like the install walkthrough can still go to LinkedIn as is.
 
 - Each Short is one hot take or founder lesson. Open on the take itself in the
   first two seconds, pulling the strongest line forward when it sits later in
-  the segment, and end on a clean payoff. 30–50 s.
+  the segment, and end on a clean payoff. No fixed length: the take decides,
+  under 60 s (Vincent, 2026-11-05; replaces 30–50 s).
 - Keep a host's opinion phrased as opinion, and keep it a lesson rather than a
   sales pitch.
 - Edit style (layout, captions, asterisk, b-roll), updated 2026-11-05: see

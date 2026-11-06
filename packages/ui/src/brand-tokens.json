@@ -98,12 +98,14 @@
       "reference_canvas": [1080, 1920],
       "safe_area_source": "https://services.google.com/fh/files/misc/universalsafezones-youtube.pdf",
       "signature": {
-        "height": 96,
-        "inset_right": 216,
-        "inset_top": 320,
-        "width": 96,
-        "x": 768,
-        "y": 320
+        "color": "#E83B3B",
+        "height": 120,
+        "inset_right": 80,
+        "inset_top": 230,
+        "source": "owner decision 2026-11-05: Shorts cover matches the locked Short video mark",
+        "width": 120,
+        "x": 880,
+        "y": 230
       },
       "video_layout": {
         "captions": {

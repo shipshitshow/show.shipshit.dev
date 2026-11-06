@@ -24,6 +24,7 @@ bun run lint          # biome check
 ```
 
 ## Editing
+- `docs/show-prep/weekly-pipeline.md` — the one-page weekly run from topic to private upload, with Vincent's sign-off points.
 - `editing/` — Tesseract media workspace (projects, raws, renders). Media is gitignored and lives only in the primary checkout; see `editing/README.md`.
 
 ## Skills

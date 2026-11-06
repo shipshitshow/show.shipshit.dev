@@ -71,6 +71,7 @@ for the next episode instead of re-deriving the layout.
 **Cut and audio**
 - Open on the take in the first 2 s, end on a clean payoff, and add about 0.25 s
   after the last word.
+- No fixed length: the take decides, under 60 s (Vincent, 5 Nov 2026).
 - Cut points sit in silence, with 15–20 ms audio fades at joins only. No video
   fades.
 - Loudness is −14 LUFS integrated, with true peak at or below −1 dBTP. Run
@@ -87,6 +88,9 @@ for the next episode instead of re-deriving the layout.
   work files to the Trash; never `rm`.
 
 **Covers**
+- The cover carries the same red asterisk as the Short video, 120 px
+  centred at x940/y290 (vault placement table). Stamp it with
+  `bun run thumbnail:stamp --format shorts`.
 - No host faces. The cover style is still open. The AI-art covers (v3) and the
   flat vector covers (v4) were both parked on 5 Nov.
 
