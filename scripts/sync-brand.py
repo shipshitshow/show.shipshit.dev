@@ -78,7 +78,7 @@ if args.check:
         if profile.read_bytes() != profiles[0].read_bytes():
             errors.append(f'Bundled profiles disagree: {skill}')
         text = profile.read_text()
-        if '**top-right**' not in text or 'x1120/y64' not in text or 'x768/y320' not in text or 'x1136/y576' in text or '**`SH*W`**' in text:
+        if '**top-right**' not in text or 'x1120/y64' not in text or 'x880/y230' not in text or 'x1136/y576' in text or '**`SH*W`**' in text:
             errors.append(f'Obsolete bundled brand profile: {profile.relative_to(root)}')
     home = (root / 'apps/app/src/app/(public)/home.module.scss').read_text()
     if re.search(r'--(?:ink|paper|red|muted|line):\s*#', home):
