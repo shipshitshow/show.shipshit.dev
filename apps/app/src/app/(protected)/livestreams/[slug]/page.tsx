@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { redirect } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { Suspense } from 'react';
 import { TopicDetailClient } from '@/components/livestreams/TopicDetailClient';
 import { LivestreamTopicContentSkeleton } from '@/components/PageSkeletons';
@@ -151,7 +151,7 @@ export default async function TopicDetailPage({
     if (archive) {
       redirect(`/livestreams/${encodeURIComponent(slug)}/${tabSegment}`);
     }
-    redirect('/livestreams');
+    notFound();
   }
 
   const requestedDate = date || todayLocalDate();

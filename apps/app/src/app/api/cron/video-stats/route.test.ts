@@ -91,8 +91,17 @@ test('with the secret it fetches each channel and stores the numbers', async () 
         {
           contentDetails: { duration: 'PT54M11S' },
           id: 'vid1',
-          snippet: { publishedAt: '2026-11-03T15:00:00Z' },
+          liveStreamingDetails: { actualStartTime: '2026-11-03T15:00:00Z' },
+          snippet: {
+            publishedAt: '2026-11-03T15:00:00Z',
+            thumbnails: {
+              default: { url: 'https://i.ytimg.com/vi/vid1/default.jpg' },
+              high: { url: 'https://i.ytimg.com/vi/vid1/hqdefault.jpg' },
+            },
+            title: 'Black October',
+          },
           statistics: { likeCount: '65', viewCount: '1520' },
+          status: { privacyStatus: 'public' },
         },
       ],
     });
@@ -110,9 +119,14 @@ test('with the secret it fetches each channel and stores the numbers', async () 
       }
     ).videos.vid1,
   ).toEqual({
+    channel: 'main',
     durationSeconds: 3251,
     likes: 65,
+    live: true,
+    privacy: 'public',
     publishedAt: '2026-11-03T15:00:00Z',
+    thumbnail: 'https://i.ytimg.com/vi/vid1/hqdefault.jpg',
+    title: 'Black October',
     views: 1520,
   });
 });

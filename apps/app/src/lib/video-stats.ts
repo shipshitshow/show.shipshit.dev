@@ -1,5 +1,6 @@
 /**
- * Per-video numbers for the channel-style grids on /videos and /livestreams.
+ * Per-video numbers for the Content pages (livestreams, videos and Shorts of
+ * both channels).
  * One Redis value, rewritten daily by /api/cron/video-stats (or by hand with
  * `bun run youtube:sync --push-redis`). The pages only read it, so they never
  * call YouTube and never fail when it is missing.
@@ -7,11 +8,19 @@
 export const VIDEO_STATS_KEY = 'video-stats';
 
 export interface VideoStat {
+  /** Which channel uploaded it: 'main' or 'clips'. */
+  channel?: string;
   comments?: number;
   /** Length in seconds; 0 while a livestream has not ended. */
   durationSeconds: number;
   likes?: number;
+  /** True when the upload was a livestream. */
+  live?: boolean;
+  /** public, unlisted or private. */
+  privacy?: string;
   publishedAt?: string;
+  thumbnail?: string;
+  title?: string;
   views: number;
 }
 
@@ -24,12 +33,18 @@ export interface VideoStatsSnapshot {
 export interface StatsSource {
   contentDetails?: { duration?: string };
   id: string;
-  snippet?: { publishedAt?: string };
+  liveStreamingDetails?: { actualStartTime?: string };
+  snippet?: {
+    publishedAt?: string;
+    thumbnails?: Record<string, { url?: string }>;
+    title?: string;
+  };
   statistics?: {
     commentCount?: string;
     likeCount?: string;
     viewCount?: string;
   };
+  status?: { privacyStatus?: string };
 }
 
 /** ISO 8601 duration (PT1H2M3S, P0D) to seconds. */
@@ -54,11 +69,28 @@ function count(value: string | undefined): number | undefined {
   return Number.isFinite(parsed) ? parsed : undefined;
 }
 
-export function toVideoStat(source: StatsSource): VideoStat {
+/** The widest thumbnail YouTube lists, 16:9 when it has one. */
+function pickThumbnail(
+  thumbnails: Record<string, { url?: string }> | undefined,
+): string | undefined {
+  for (const size of ['maxres', 'standard', 'high', 'medium', 'default']) {
+    const url = thumbnails?.[size]?.url;
+    if (url) return url;
+  }
+  return undefined;
+}
+
+export function toVideoStat(source: StatsSource, channel?: string): VideoStat {
   const stat: VideoStat = {
     durationSeconds: parseIsoDuration(source.contentDetails?.duration),
     views: count(source.statistics?.viewCount) ?? 0,
   };
+  if (channel) stat.channel = channel;
+  if (source.snippet?.title) stat.title = source.snippet.title;
+  const thumbnail = pickThumbnail(source.snippet?.thumbnails);
+  if (thumbnail) stat.thumbnail = thumbnail;
+  if (source.status?.privacyStatus) stat.privacy = source.status.privacyStatus;
+  if (source.liveStreamingDetails?.actualStartTime) stat.live = true;
   const likes = count(source.statistics?.likeCount);
   const comments = count(source.statistics?.commentCount);
   if (likes !== undefined) stat.likes = likes;

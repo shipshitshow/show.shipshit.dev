@@ -1,4 +1,4 @@
-import { redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { CollapsibleSidebar } from '@/components/livestreams/CollapsibleSidebar';
 import { LivestreamTabsClient } from '@/components/livestreams/LivestreamTabsClient';
 import { StreamInfoSidebar } from '@/components/livestreams/StreamInfoSidebar';
@@ -44,11 +44,11 @@ async function resolveSlug(slug: string): Promise<{
 
   if (isYouTubeVideoId(slug)) {
     const archive = await getLivestreamArchiveByVideoId(slug);
-    if (!archive) redirect('/livestreams');
+    if (!archive) notFound();
     return { requestedDate: archive.date, streamSlug: slug };
   }
 
-  redirect('/livestreams');
+  notFound();
 }
 
 export default async function LivestreamDetailLayout({

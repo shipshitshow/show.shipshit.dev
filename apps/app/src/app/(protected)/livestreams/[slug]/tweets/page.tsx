@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { getTweet } from 'react-tweet/api';
 import { TweetSlider } from '@/components/livestreams/TweetSlider';
 import { resolveStreamDate } from '@/lib/livestreams-routing';
@@ -36,7 +36,7 @@ export default async function TweetSliderPage({
 }) {
   const { slug } = await params;
   const date = await resolveStreamDate(slug);
-  if (!date) redirect('/livestreams');
+  if (!date) notFound();
 
   const archive = await getLivestreamArchiveByDate(date);
   const topics = sortTopics(

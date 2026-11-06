@@ -27,10 +27,11 @@
  *   bun run youtube:sync --push-redis --namespace production          Plan only
  *   bun run youtube:sync --push-redis --namespace production --apply  Write
  * It needs KV_REST_API_URL and KV_REST_API_TOKEN for the write, changes only
- * the keys sss:<namespace>:v1:title-lab-snapshot and ...:video-stats, and uses
- * the main channel. video-stats (views, likes, length per video) is what
- * /videos and /livestreams show; production refreshes it daily by itself
- * through Vercel Cron, so pushing it by hand is only for an immediate update.
+ * the keys sss:<namespace>:v1:title-lab-snapshot (main channel only) and
+ * ...:video-stats (both channels with --channel all). video-stats (views,
+ * likes, length, title per video) is what the Content pages show; production
+ * refreshes it daily by itself through Vercel Cron, so pushing it by hand is
+ * only for an immediate update.
  *
  * Auth is the same as youtube-upload.ts. Quota: about 1 unit per 50 videos.
  */
@@ -312,8 +313,6 @@ export function parseArgs(argv: string[]) {
     throw new Error('--apply and --namespace only go with --push-redis');
   if (pushRedis && diffOnly)
     throw new Error('--push-redis and --diff-only contradict each other');
-  if (pushRedis && !channels.includes('main'))
-    throw new Error('--push-redis sends the main channel; use --channel main');
   const push: PushOptions | undefined =
     pushRedis && namespace ? { apply, namespace } : undefined;
   return { channels, diffOnly, push };
@@ -381,9 +380,13 @@ export function toVideoStats(snapshot: Snapshot): Record<string, VideoStat> {
   return Object.fromEntries(
     snapshot.videos.map((video) => {
       const stat: VideoStat = {
+        channel: snapshot.channel,
         durationSeconds: parseIsoDuration(video.duration),
+        privacy: video.privacyStatus,
+        title: video.title,
         views: video.viewCount ?? 0,
       };
+      if (video.thumbnail) stat.thumbnail = video.thumbnail;
       if (video.likeCount !== undefined) stat.likes = video.likeCount;
       if (video.commentCount !== undefined) stat.comments = video.commentCount;
       if (video.publishedAt) stat.publishedAt = video.publishedAt;
@@ -463,8 +466,9 @@ async function syncChannel(
   writeJson(resolve(directory, `${channel}-${stamp}.json`), snapshot);
   writeJson(latest, snapshot);
   console.log(`\nSaved to ${directory}`);
-  if (push && channel === 'main') {
-    await pushSnapshot(snapshot, push);
+  if (push) {
+    // The Titles Lab only covers the main channel; the stats cover both.
+    if (channel === 'main') await pushSnapshot(snapshot, push);
     await pushStats(snapshot, push);
   }
 }

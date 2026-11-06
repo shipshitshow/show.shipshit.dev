@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { redirect } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { StreamXPostsPanel } from '@/components/livestreams/StreamXPostsPanel';
 import {
   isDateSlug,
@@ -22,7 +22,7 @@ import { isStorageWritable } from '@/lib/storage-capability-server';
 
 async function resolveFullDate(slug: string): Promise<string> {
   const resolved = await resolveStreamDate(slug);
-  if (!resolved) redirect('/livestreams');
+  if (!resolved) notFound();
   return resolved;
 }
 

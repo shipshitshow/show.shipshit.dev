@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { redirect } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { TranscriptPanel } from '@/components/livestreams/TranscriptPanel';
 import {
   isDateSlug,
@@ -33,11 +33,11 @@ async function resolveDate(slug: string): Promise<string> {
 
   if (isYouTubeVideoId(slug)) {
     const archive = await getLivestreamArchiveByVideoId(slug);
-    if (!archive) redirect('/livestreams');
+    if (!archive) notFound();
     return archive.date;
   }
 
-  redirect('/livestreams');
+  notFound();
 }
 
 async function resolveFullDate(slug: string): Promise<string> {

@@ -162,15 +162,15 @@ test('pushing to Redis needs a namespace and only goes with --push-redis', () =>
   expect(() => parseArgs(['--push-redis', '--namespace', 'a b'])).toThrow(
     'needs a name',
   );
-  expect(() =>
+  expect(
     parseArgs([
       '--push-redis',
       '--namespace',
       'production',
       '--channel',
       'clips',
-    ]),
-  ).toThrow('main channel');
+    ]).channels,
+  ).toEqual(['clips']);
   expect(() =>
     parseArgs(['--push-redis', '--namespace', 'production', '--diff-only']),
   ).toThrow('contradict');
@@ -258,10 +258,13 @@ test('the channel grid numbers come from the snapshot and merge into what is sto
     ],
   } as Snapshot;
   expect(toVideoStats(snapshot)[snapshot.videos[0].id]).toEqual({
+    channel: 'main',
     comments: 2,
     durationSeconds: 3251,
     likes: 65,
+    privacy: 'public',
     publishedAt: '2026-11-03T15:00:00Z',
+    title: 'A title',
     views: 1520,
   });
 

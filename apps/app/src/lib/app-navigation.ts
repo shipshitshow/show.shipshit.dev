@@ -2,7 +2,6 @@ import {
   BarChart3,
   FlaskConical,
   Handshake,
-  Home,
   Library,
   Radio,
   Share2,
@@ -12,30 +11,22 @@ import {
 export const PRODUCTION_APPS = [
   {
     group: 'daily',
-    href: '/studio',
-    icon: Home,
-    id: 'home',
-    label: 'Home',
-    links: [{ href: '/studio', label: 'Overview' }],
-    roots: ['/studio'],
-  },
-  {
-    group: 'daily',
-    href: '/livestreams',
+    href: '/content',
     icon: Radio,
-    id: 'shows',
-    label: 'Show prep',
+    id: 'content',
+    label: 'Content',
     links: [
-      { href: '/livestreams', label: 'Livestreams' },
-      { href: '/videos', label: 'Edited videos' },
+      { href: '/content', label: 'All content' },
+      {
+        href: '/content/livestreams',
+        label: 'Livestreams',
+        match: ['/livestreams'],
+      },
+      { href: '/content/videos', label: 'Videos' },
+      { href: '/content/shorts', label: 'Shorts' },
     ],
-    roots: [
-      '/livestreams',
-      '/livestream',
-      '/live-stream',
-      '/videos',
-      '/artifacts',
-    ],
+    // Livestream prep pages stay under /livestreams/[slug] for now.
+    roots: ['/content', '/livestreams', '/artifacts'],
   },
   {
     group: 'daily',
@@ -119,12 +110,17 @@ export const PRODUCTION_APPS = [
 export function isNavigationActive(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
+/** `match` lists other prefixes a link owns, such as a list's detail pages. */
 export function getActiveNavigationHref(
   pathname: string,
-  links: readonly { href: string }[],
+  links: readonly { href: string; match?: readonly string[] }[],
 ): string | undefined {
   return links
-    .filter((link) => isNavigationActive(pathname, link.href))
+    .filter((link) =>
+      [link.href, ...(link.match ?? [])].some((prefix) =>
+        isNavigationActive(pathname, prefix),
+      ),
+    )
     .sort((a, b) => b.href.length - a.href.length)[0]?.href;
 }
 export function getProductionApp(pathname: string) {

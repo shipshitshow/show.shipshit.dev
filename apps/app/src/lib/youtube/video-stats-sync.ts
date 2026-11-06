@@ -72,13 +72,14 @@ async function fetchChannelStats(
     const params = new URLSearchParams({
       id: ids.slice(start, start + PAGE_SIZE).join(','),
       maxResults: String(PAGE_SIZE),
-      part: 'snippet,statistics,contentDetails',
+      part: 'snippet,statistics,contentDetails,status,liveStreamingDetails',
     });
     const data = await youtubeGet<{ items?: StatsSource[] }>(
       token,
       `videos?${params}`,
     );
-    for (const item of data.items ?? []) stats[item.id] = toVideoStat(item);
+    for (const item of data.items ?? [])
+      stats[item.id] = toVideoStat(item, channel.label);
   }
   return stats;
 }

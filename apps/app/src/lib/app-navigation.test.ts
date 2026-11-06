@@ -14,12 +14,18 @@ describe('production route ownership', () => {
   });
   test('resolves module deep links and existing aliases without prefix collisions', () => {
     for (const path of [
+      '/content',
+      '/content/shorts',
       '/livestreams/example/talking-points',
+    ])
+      expect(getProductionApp(path)?.id).toBe('content');
+    for (const path of [
+      '/studio',
+      '/videos',
       '/livestream/example',
       '/live-stream/2026-10-02',
-      '/videos',
     ])
-      expect(getProductionApp(path)?.id).toBe('shows');
+      expect(getProductionApp(path)).toBeUndefined();
     expect(getProductionApp('/analytics/episodes')?.id).toBe('analytics');
     expect(getProductionApp('/leads')?.id).toBe('partnerships');
     expect(getProductionApp('/topics')?.id).toBe('research');
@@ -40,14 +46,15 @@ describe('production route ownership', () => {
     expect(getProductionApp('/labs/thumbnails')?.id).toBe('labs');
     expect(getProductionPageLabel('/library/covers')).toBe('Covers');
   });
-  test('keeps show preparation in the rail instead of contextual menus', () => {
-    const shows = PRODUCTION_APPS.find((app) => app.id === 'shows');
-    expect(shows?.group).toBe('daily');
-    expect(shows?.href).toBe('/livestreams');
-    for (const app of PRODUCTION_APPS.filter((app) => app.id !== 'shows')) {
-      const hrefs: string[] = app.links.map((link) => link.href);
-      expect(hrefs).not.toContain('/livestreams');
-    }
+  test('opens on Content, with no Home app', () => {
+    expect(PRODUCTION_APPS[0].id).toBe('content');
+    expect(PRODUCTION_APPS[0].href).toBe('/content');
+    expect(PRODUCTION_APPS.map((app) => app.id)).not.toContain('home');
+    const hrefs = PRODUCTION_APPS.flatMap((app) =>
+      app.links.map((link) => link.href as string),
+    );
+    for (const gone of ['/studio', '/videos', '/livestreams'])
+      expect(hrefs).not.toContain(gone);
   });
   test('marks only the most specific contextual link active', () => {
     const analytics = getProductionApp('/analytics/episodes');
@@ -61,14 +68,20 @@ describe('production route ownership', () => {
     expect(getActiveNavigationHref('/comments', socials?.links ?? [])).toBe(
       '/comments',
     );
-    const shows = getProductionApp('/livestreams/example/resources');
+    const content = getProductionApp('/livestreams/example/resources');
     expect(
       getActiveNavigationHref(
         '/livestreams/example/resources',
-        shows?.links ?? [],
+        content?.links ?? [],
       ),
-    ).toBe('/livestreams');
-    expect(getActiveNavigationHref('/sign-in', shows?.links ?? [])).toBe(
+    ).toBe('/content/livestreams');
+    expect(
+      getActiveNavigationHref('/content/shorts', content?.links ?? []),
+    ).toBe('/content/shorts');
+    expect(getActiveNavigationHref('/content', content?.links ?? [])).toBe(
+      '/content',
+    );
+    expect(getActiveNavigationHref('/sign-in', content?.links ?? [])).toBe(
       undefined,
     );
   });

@@ -28,7 +28,7 @@ export default function RootLayout({
         <ClerkProvider
           {...clerkBrand}
           signInUrl="/sign-in"
-          signInFallbackRedirectUrl="/studio"
+          signInFallbackRedirectUrl="/content"
         >
           {children}
         </ClerkProvider>
