@@ -1,7 +1,9 @@
 import { createHash } from 'node:crypto';
+import path from 'node:path';
 import sharp from 'sharp';
 import type { ThumbnailItem, ThumbnailVersion } from '../lib/thumbnail-lab';
 import {
+  assetDirectory,
   readLocalThumbnailAsset,
   uploadThumbnailAsset,
 } from '../lib/thumbnail-lab-assets';
@@ -9,11 +11,19 @@ import {
   listThumbnailItems,
   saveThumbnailItems,
 } from '../lib/thumbnail-lab-store';
+import {
+  decideLiveSync,
+  type LiveMatch,
+  readSyncLedger,
+  recordLive,
+  syncedItem,
+  writeSyncLedger,
+} from '../lib/thumbnail-lab-sync';
 
 // Makes each item's current version match the thumbnail that is live on
 // YouTube. Read-only towards YouTube; dry run unless --commit is passed.
-const MATCH_THRESHOLD = 10;
-const NOTE = 'synced from live';
+// An approved version that has not been pushed yet is never touched: it is
+// reported as "approved, pending push".
 function arg(name: string) {
   const at = process.argv.indexOf(name);
   return at < 0 ? null : (process.argv[at + 1] ?? null);
@@ -54,34 +64,16 @@ async function normalise(live: Buffer) {
 
 interface Change {
   id: string;
-  kind: 'matched' | 'added' | 'in-sync' | 'skipped' | 'error';
+  kind: 'matched' | 'added' | 'in-sync' | 'pending-push' | 'skipped' | 'error';
   detail: string;
 }
 const now = new Date().toISOString();
+const ledgerPath = path.join(assetDirectory(), 'youtube-sync.json');
+const ledger = readSyncLedger(ledgerPath);
 const changes: Change[] = [];
 const updates: Array<{ item: ThumbnailItem; expectedRevision: number }> = [];
 const uploads: Array<{ id: string; hash: string; data: Buffer }> = [];
-
-function syncedItem(
-  item: ThumbnailItem,
-  versions: ThumbnailVersion[],
-  id: string,
-) {
-  const reason = 'Superseded by the live thumbnail';
-  return {
-    ...item,
-    currentVersionId: id,
-    revision: item.revision + 1,
-    updatedAt: now,
-    versions: versions.map((v) =>
-      v.id === id
-        ? { ...v, review: { at: now, by, reason: NOTE, status: 'approved' } }
-        : v.review.status === 'approved'
-          ? { ...v, review: { at: now, by, reason, status: 'rejected' } }
-          : v,
-    ),
-  } as ThumbnailItem;
-}
+const confirmedLive: Array<{ id: string; assetHash: string }> = [];
 
 for (const item of await listThumbnailItems()) {
   if (only && item.id !== only) continue;
@@ -100,7 +92,7 @@ for (const item of await listThumbnailItems()) {
       continue;
     }
     const target = await signature(live);
-    let best: { id: string; score: number } | null = null;
+    let best: LiveMatch | null = null;
     for (const version of item.versions) {
       const score = distance(
         target,
@@ -110,27 +102,44 @@ for (const item of await listThumbnailItems()) {
       );
       if (!best || score < best.score) best = { id: version.id, score };
     }
-    const current = item.versions.find((v) => v.id === item.currentVersionId);
-    if (best && best.score < MATCH_THRESHOLD) {
-      const inSync =
-        best.id === item.currentVersionId &&
-        current?.review.status === 'approved' &&
-        item.versions.filter((v) => v.review.status === 'approved').length ===
-          1;
-      if (inSync) {
-        changes.push({
-          detail: best.id.slice(0, 8),
-          id: item.id,
-          kind: 'in-sync',
-        });
-        continue;
-      }
+    const decision = decideLiveSync(
+      item,
+      best,
+      ledger[item.id]?.assetHash ?? null,
+    );
+    const hashOf = (id: string) =>
+      item.versions.find((v) => v.id === id)?.assetHash ?? id;
+    if (decision.kind === 'pending-push') {
+      changes.push({
+        detail: `${decision.versionId.slice(0, 8)} is approved but not live yet`,
+        id: item.id,
+        kind: 'pending-push',
+      });
+      continue;
+    }
+    if (decision.kind === 'in-sync') {
+      changes.push({
+        detail: decision.versionId.slice(0, 8),
+        id: item.id,
+        kind: 'in-sync',
+      });
+      confirmedLive.push({
+        assetHash: hashOf(decision.versionId),
+        id: item.id,
+      });
+      continue;
+    }
+    if (decision.kind === 'matched') {
       updates.push({
         expectedRevision: item.revision,
-        item: syncedItem(item, item.versions, best.id),
+        item: syncedItem(item, item.versions, decision.versionId, now, by),
+      });
+      confirmedLive.push({
+        assetHash: hashOf(decision.versionId),
+        id: item.id,
       });
       changes.push({
-        detail: `existing ${best.id.slice(0, 8)} (diff ${best.score.toFixed(1)})`,
+        detail: `existing ${decision.versionId.slice(0, 8)} (diff ${decision.score.toFixed(1)})`,
         id: item.id,
         kind: 'matched',
       });
@@ -150,10 +159,11 @@ for (const item of await listThumbnailItems()) {
     uploads.push({ data, hash, id: item.id });
     updates.push({
       expectedRevision: item.revision,
-      item: syncedItem(item, [...item.versions, version], hash),
+      item: syncedItem(item, [...item.versions, version], hash, now, by),
     });
+    confirmedLive.push({ assetHash: hash, id: item.id });
     changes.push({
-      detail: `new live version ${hash.slice(0, 8)} (closest diff ${best?.score.toFixed(1) ?? 'n/a'})`,
+      detail: `new live version ${hash.slice(0, 8)} (closest diff ${decision.closest?.toFixed(1) ?? 'n/a'})`,
       id: item.id,
       kind: 'added',
     });
@@ -175,16 +185,30 @@ process.stdout.write(
     inSync: count('in-sync'),
     matched: count('matched'),
     mode: commit ? 'commit' : 'preview',
+    pendingPush: count('pending-push'),
     skipped: count('skipped'),
   }) + '\n',
 );
 for (const c of changes.filter(
   (c) => c.kind !== 'in-sync' && c.kind !== 'skipped',
 ))
-  process.stdout.write(`${c.kind}\t${c.id}\t${c.detail}\n`);
+  process.stdout.write(
+    `${c.kind === 'pending-push' ? 'approved, pending push' : c.kind}\t${c.id}\t${c.detail}\n`,
+  );
 
-if (commit && updates.length) {
-  for (const u of uploads) await uploadThumbnailAsset(u.id, u.hash, u.data);
-  await saveThumbnailItems(updates);
-  process.stdout.write(JSON.stringify({ updated: updates.length }) + '\n');
+if (commit) {
+  if (updates.length) {
+    for (const u of uploads) await uploadThumbnailAsset(u.id, u.hash, u.data);
+    await saveThumbnailItems(updates);
+    process.stdout.write(JSON.stringify({ updated: updates.length }) + '\n');
+  }
+  const stale = confirmedLive.filter(
+    (e) => ledger[e.id]?.assetHash !== e.assetHash,
+  );
+  if (stale.length) {
+    writeSyncLedger(ledgerPath, recordLive(ledger, stale, now));
+    process.stdout.write(
+      JSON.stringify({ ledgerEntries: stale.length }) + '\n',
+    );
+  }
 }
