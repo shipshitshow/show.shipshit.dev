@@ -56,7 +56,7 @@ export interface ContentItem {
   views?: number;
 }
 
-/** A livestream or video the repo knows about, before the stats are joined. */
+/** A livestream, video or Short the repo knows about, before the stats are joined. */
 export interface RepoContent {
   date: string;
   href: string;
@@ -65,7 +65,7 @@ export interface RepoContent {
   title: string;
   transcriptScore?: number;
   transcriptWords?: number;
-  type: 'livestream' | 'video';
+  type: ContentType;
   upcoming?: boolean;
   videoId: string | null;
 }
