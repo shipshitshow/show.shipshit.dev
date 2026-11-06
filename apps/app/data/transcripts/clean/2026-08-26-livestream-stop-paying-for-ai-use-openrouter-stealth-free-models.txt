@@ -1,0 +1,1319 @@
+And we are back. GMGM.
+&gt;&gt; Yes. Hello.
+&gt;&gt; How are you doing?
+&gt;&gt; I'm doing good. How are you?
+&gt;&gt; Yeah, I'm busy. Busy. Like I need more
+agents to do more agent stuff.
+[laughter]
+&gt;&gt; How many agents do you have running?
+Uh so right now I have 10 different
+walking on the side and grog boat
+&gt;&gt; and uh yeah I'm getting limited because
+I reached my limits uh monthly limit and
+weekly limit
+increase the usage and then my growth
+bot use it all uh you know so but
+&gt;&gt; how many bots do you have active to just
+reach the limit uh
+&gt;&gt; QA staff ah
+&gt;&gt; some content
+I have a CTO. I have a CEO. Yeah. No,
+it's I mean I'm not reaching the Grob
+Bot limit. I'm reaching the cursor use
+usage to
+&gt;&gt; for the Grog Bot to use the models.
+&gt;&gt; Yes, that makes sense.
+&gt;&gt; Yeah. The other one. And uh yeah, I
+spent like two three days when we had
+the super Gro EV subscription.
+&gt;&gt; Mhm.
+&gt;&gt; And then I uh use cursor to just like
+discover it again. Uh yeah, I I'm on it.
+So
+it went away fast.
+&gt;&gt; That goes fast. Yeah.
+&gt;&gt; Yeah. Yep.
+Uh but yeah, what about you?
+&gt;&gt; Yeah. Well, I'm tryingot. I've I've been
+testing it the last week. Yeah.
+&gt;&gt; And I'm really happy.
+&gt;&gt; Yeah. Thank Thanks, Alan.
+[laughter]
+&gt;&gt; You made our life so much easier.
+&gt;&gt; Subscribe to the live stream, Alan. We
+love you. But I am not I at first I
+tried I said okay check this every hour
+and then it doesn't work.
+&gt;&gt; It forgets checking it hangs and you
+know if you have a check in Outlook
+account it goes to the web version and
+every time it checks it opens a new tab.
+&gt;&gt; Oh yeah.
+&gt;&gt; So eventually the browser on their PC
+that the B is using will be so slow that
+he just stops doing the tasks.
+&gt;&gt; Yeah. They have some small uh VMs like
+behind bot, right? Like it's not the
+biggest resource ever.
+&gt;&gt; Yeah.
+&gt;&gt; Um Yeah.
+&gt;&gt; So right now I I set up a Slack.
+&gt;&gt; I didn't use Slack anymore. I switched
+to Discord, but I did set up the Slack
+right now. And every web hook from
+something that's triggering is going to
+Slack and that notifies the bot and then
+the bot checks it. So everything is real
+time. And did you
+uh use uh code Slack? So you can use
+your code on Slack?
+&gt;&gt; No, I didn't use a cloud. I used a
+crockbot.
+&gt;&gt; Yeah, but like you can connect code to
+your Slack instance. So you can use it
+like directly and you can you if you if
+you hired people but you don't because
+legends. Uh if you had a if you have a
+team the whole team can cut can build
+hey code build that blah blah blah.
+&gt;&gt; Yeah I don't know do you because I was
+watching the video about the Grockpot
+team and they were telling about trust
+compared to the usage.
+&gt;&gt; I don't know if I trust the Grockbot.
+&gt;&gt; Yeah.
+&gt;&gt; Yeah. Also in the answers I've asked it
+to every time it I get a ticket in my
+support system I said okay uh read the
+ticket read the history see what we can
+reply and create a concept and send
+concept to me so I can give feedback to
+you before you send it
+&gt;&gt; I don't trust it that good yet
+&gt;&gt; and
+&gt;&gt; it's going good for two days and on day
+three it feels like it's back to the
+stone age and it's stupid again
+&gt;&gt; it has some open claw PTSD.
+&gt;&gt; Yeah. So, I don't know if it makes a
+different decision or if it has less
+memory that it can use. I don't know.
+&gt;&gt; Memory. I think memory is still an issue
+with AI agent like uh from one week to
+another like they forget the whole read
+this file blah blah blah again every
+session blah blah blah. Like it's not
+stable yet.
+&gt;&gt; Alan request features. Please fix the
+memory. less memory to your to your
+starships, more memory to the AI.
+[laughter]
+&gt;&gt; Yeah. By the way, do you use the one
+million context and even like the
+upcoming like two million context
+windows stuff?
+&gt;&gt; No. I don't know how it is now, but a
+few weeks ago, everybody said it will
+make your model worse.
+&gt;&gt; Yeah.
+&gt;&gt; So, I disabled it.
+&gt;&gt; Yeah, me too. I can't I'm on the 200.
+&gt;&gt; Yeah. But also uh models will become
+more expensive if you use the higher
+memory or the higher the 1 million
+amount.
+&gt;&gt; Yeah. Because there is more cash to
+cache like more context to cache. So
+then it's because it's getting it's
+getting stuck in each session. So then
+it compound all together.
+&gt;&gt; Yeah. But also I was checking the API.
+Maybe we can check it here. I was asking
+Grock about uh Grock 4.6 API cost.
+&gt;&gt; Mhm. And because I was comparing it and
+it should be cheaper than Sonnet.
+&gt;&gt; Okay.
+&gt;&gt; But the the the catch is if you use up
+to 300,000 tokens, it's like it makes
+amount of sense, but if you go above it,
+it doubles the pricing.
+&gt;&gt; Ah,
+&gt;&gt; sending a bigger prompt doubles the
+pricing. And I couldn't find it here,
+but Grock found it somewhere for me. I
+don't know if it's
+&gt;&gt; okay. 2 million. 2 million cash input
+context.
+Uh a pib.
+&gt;&gt; Let me see if I can find where it was.
+&gt;&gt; Oh, yeah. No, that's a bench. LM. Okay.
+Really not. Yeah.
+Oh, and what's the Grog build?
+Because
+&gt;&gt; everybody is using it to build websites
+and stuff, and I tried it, but I was not
+happy, so I didn't try it anymore.
+&gt;&gt; But Grog build is not the terminal.
+&gt;&gt; No, no, no. It's in the grog.com.
+&gt;&gt; Okay.
+&gt;&gt; On the website, you see it as an option.
+&gt;&gt; Okay.
+&gt;&gt; Ah, here it is. Um,
+let me check.
+I will send you the
+URL.
+The Europe.
+&gt;&gt; Okay,
+&gt;&gt; you have it. That should be the one.
+&gt;&gt; This one.
+&gt;&gt; Yeah, you see it. Short context, long
+context. Oh,
+&gt;&gt; and when they send you the email that
+they updated the pricing and made it
+cheaper, it only shows the cost for the
+short contacts. But if your contacts is
+bigger, you will get a double in pricing
+and then it's expensive.
+&gt;&gt; That's okay. Fair enough.
+&gt;&gt; Yeah. And you see long contacts in Gro
+4.6 is above 200k tokens.
+&gt;&gt; Damn. I like 200k.
+&gt;&gt; Yes.
+So if you're building something, you
+have an API call,
+you probably want to optimize it because
+if you just say, "Hey, I sent everything
+because it's cheap." Well, it just
+doubled in price.
+&gt;&gt; Ah, it's only for the API.
+&gt;&gt; Yeah, this I couldn't find it on the
+other ones. Let me check if Grock knows
+it as well
+because I was comparing it and Fable
+said to me, "Hey, yeah, you're right.
+It's cheaper." And then I put it into
+Grog and Grog just said, "No, no, no,
+it's not cheaper. Only on small
+context."
+&gt;&gt; Okay. So, even Febru lied to you. Is Feb
+still lying? That's
+&gt;&gt; it couldn't find it or it just read it
+half.
+&gt;&gt; Okay. Oh, yeah. That's why I still think
+that important stuff you need to double
+check between AIS.
+&gt;&gt; Yeah. No, for real. Like the review
+everything. I don't trust anyone. It's
+it's true.
+Um Okay. But uh you know what's cheaper
+than Grog 4.6?
+&gt;&gt; Paying nothing at all.
+&gt;&gt; Exactly. Free model on Open Routter,
+man. [laughter]
+&gt;&gt; Okay, let's go.
+&gt;&gt; Forget Gro. Forget open AI.
+&gt;&gt; Yeah,
+&gt;&gt; we have something better.
+&gt;&gt; Exactly. All of that is garbage. Put
+that on the side because it's too
+expensive. I refuse to pay for my AI
+now.
+&gt;&gt; Yes. And it's not only for good
+developers. It's for everybody.
+&gt;&gt; Yeah. Yeah. Exactly. [laughter]
+&gt;&gt; Because Okay. So, last week uh Duck open
+Yes. It's not pretty. Uh last week open
+router announced the 0x alpha was in
+stealth aka like they launch a model and
+they are going to get your prompt and
+see if you like it and then launch it a
+week after which now they are uh
+announced that this model is from uh ZAI
+and it's GLM 5.3.
+&gt;&gt; Mhm. So during for a wait yes during a
+few days everyone was expecting
+analyzing the token output and okay okay
+wait let me
+&gt;&gt; zoom in
+&gt;&gt; yeah what the okay yes t uh zerox
+alpha unmask okay cooling talk about
+that
+that will be better cool so yeah now
+that we know that zerox alpha is z.ai AI
+GLM 5.3 flash and during a the full week
+everyone was uh trying to guess um based
+on the input the output of the model etc
+like which model it was it basically
+lasted like 15 minutes [laughter]
+like everyone was already talking about
+GLM 5.3
+um
+like yeah just after the launch uh and
+for a week like 42 trillion tokens in
+six g six day via open code and it's
+seven way more for open router
+yeah 6 trillion token for open router
+and how much I said for
+open code where is it
+yeah 42 trillion tokens for open code
+that's um okay back And
+yeah, that's a big lunch. And it was
+good because Did Did you try it or not?
+&gt;&gt; I didn't try it.
+&gt;&gt; Yeah. Uh you can
+&gt;&gt; It could have been like 8 billion more.
+&gt;&gt; Yeah. [laughter] For the um Yeah. You
+still have one day, I think, to try it.
+&gt;&gt; Mhm. Um
+I didn't find any crazy big mistake
+stuff because even like the benchmark
+was like in some benchmark it was on
+pair with Fable 5
+&gt;&gt; for free
+&gt;&gt; and we had that for free for a week.
+&gt;&gt; Yeah.
+&gt;&gt; But uh I had some issues trying testing
+the models where in open code sometimes
+it just like stopped working. I did I
+was not able to see the results in the
+session. It's just like a build build
+build, stop building. What's happening?
+Oh, I was building build. It stopped
+again.
+&gt;&gt; Yeah. On the free one, so many people
+are using it. Probably spikes in the
+usage and then it just goes out of a
+connection or something.
+&gt;&gt; Yeah. No, exactly. Uh
+and so that was a bit annoying. And if
+you want to like do some walk stuff,
+that's uh that was not the best um uh
+way of like putting a features. on a
+small some small scope or even audit the
+GitHub dashboard and stuff that was uh
+pretty uh interesting. Um okay so and
+basically that okay now I'm gonna do
+that here
+and because of that stealth moth um I
+decided like to retry open code and um
+even on cursor you can do that on cursor
+by changing the API key so you can bring
+your open router key to cursor to use
+the cursor interface to use free models
+&gt;&gt; and I haven't like retry open code uh
+because it was a CLI and it was like
+working the best with like the uh this
+stealth moth um
+this stealth model
+and uh yeah now I I've discovered even
+more free models because I like to pay
+but uh yeah if you can get those free
+models for free that's even better
+&gt;&gt; then why not? Yeah, for real. And
+basically if you like free models are
+getting even better and better. Like for
+example, you haven't like you have Muse
+uh 1.2 from Facebook. So you can even
+test it for free. That's cool. And I
+would say it's more intelligent that all
+of the models that we had before with
+open claw, right? So
+you can just use free AI now.
+&gt;&gt; Yeah. Well,
+&gt;&gt; it's cool. You need cursor but you don't
+need a subscription to change it or do
+you
+&gt;&gt; uh
+&gt;&gt; to put in your own API?
+&gt;&gt; I don't think so because uh it's using
+your Okay. So
+&gt;&gt; it's using the API and you just get the
+software. So that's it.
+&gt;&gt; Yes. So you have a nice UI to use AI
+basically.
+&gt;&gt; Yeah.
+&gt;&gt; But uh Okay. Maybe I'm not going to show
+my key. Let me check before models API
+keys.
+Yes. It's not displaying it. Okay, cool.
+So, I can show it
+tech
+replace. Ah,
+place window.
+Okay. So, if you go to settings
+&gt;&gt; Mhm. and models. So you need to uh
+change the override open AI key and the
+endpoint and it will works to change to
+open router.
+&gt;&gt; That's cool.
+&gt;&gt; I mean it's cool. It's a bit uh tricky
+UI stuff. You just need to know it. But
+uh then you can um use those free
+models. That's it. Okay. So if I do
+that, if I do that uh on this Mac, I
+want Oh yeah, I open
+code. But okay, let me
+on this Mac open folder
+tech ship ship show open rout.
+Nice. Let's get back to it.
+window cursor path.
+So now
+I'm in curs
+I mean open routter free I have the
+model connected hello
+who are you
+think
+plan ending soon no
+I don't want to resubscribe to I have a
+super grock subscription
+&gt;&gt; yeah maybe just update on the bottom
+left.
+&gt;&gt; Yes, let me let me just use it. But uh
+yeah, ox alpha AI coding assistant blah
+blah directly into cursor.
+&gt;&gt; Cool.
+&gt;&gt; And uh yeah, that's that's open a new
+world of possibilities. Um but okay so
+also what I want to show was
+t
+uh open routter path. So [snorts] that
+was open router but no uh open routter
+too. I don't want this tweet. I want
+this tweet.
+Uh so open code and basically yeah
+that's the that's the [laughter] that's
+one of the first state I guess they try.
+&gt;&gt; Yeah to see if it isn't a Chinese AI or
+another one
+&gt;&gt; and I guess that's working.
+&gt;&gt; Yeah. [snorts]
+&gt;&gt; Uh T. Yeah. See like 21st of August Z is
+compute constraint. Kim 2 is not quen
+minax. Ah okay. So this one was wrong.
+Mini maxi trust me 100%. Okay. Trust me
+but it's wrong. Uh this is not a Chinese
+model. It is a Chinese model. [laughter]
+It says a GLM next model of Xami Mimo V3
+on the August uh 21 21st. So yeah, like
+some people got got it right away and
+that's kind of smart because for the
+launch that also creates some engagement
+because everyone is speculating, right?
+&gt;&gt; Yes. And people will test it even if
+they don't know how open router works.
+They will test it after when it's live.
+&gt;&gt; I mean it works for me, right? I never
+spend the time to to try out all of
+those free model stuff and like use open
+code etc. So
+&gt;&gt; yeah, it works for me too. Yeah.
+&gt;&gt; And it shows why cursor again is a
+perfect product.
+&gt;&gt; Yeah. I mean it's it's it it went like
+it become really really great. I mean I
+guess with 60 billion you can have some
+nice
+&gt;&gt; you can do a lot easier.
+&gt;&gt; Well I had cursor before and I I removed
+it from the PC because I didn't like it
+and now I installed it with my Gro super
+heavy.
+&gt;&gt; Yeah.
+&gt;&gt; And I'm using it again because it's
+cool. And because you don't read the
+code anymore or at least the pull
+request less.
+&gt;&gt; Yeah. [laughter]
+&gt;&gt; But yeah, we don't need an ID anymore,
+right? Because you can just ship
+features,
+review them, review them on GitHub, but
+also like um uh on cursor, you can also
+review the PR directly into Cursor. They
+have the PR review uh review uh view. So
+yeah, it's another it's a it's it's a
+big win for cursor for sure.
+&gt;&gt; And you can also just ask Grock to
+connect to cloud and ask Fable to test
+everything to give feedback and that
+works perfect as well.
+&gt;&gt; Oh, so you have Grogbot connecting to
+your Fable 5.
+&gt;&gt; Yeah.
+&gt;&gt; And testing. Oh, interesting.
+&gt;&gt; Okay.
+&gt;&gt; It just does it in the terminal and in
+cursor. It works perfectly and it gets
+the same feedback as when I ask cloud
+myself. So,
+&gt;&gt; m Yeah. Yeah. Because Yeah. It's via the
+CLI, so it's the same, right?
+&gt;&gt; Yeah.
+&gt;&gt; Uh, okay. I just want to check if they
+talk about GLM5. Maybe we will have
+later later. Um,
+T
+GM 5.
+Okay. So max
+uh released August. Okay, fair enough.
+Speed. Okay, whatever.
+Pricing.
+I want
+chat. No, I don't want to click on ZI
+model comparison. Okay. Intelligence 9.
+Oh,
+&gt;&gt; that's good.
+Okay. So that means we had
+a top 10 model for free for a week.
+&gt;&gt; Yes. For a full week.
+&gt;&gt; And everybody was screaming when they
+got fable for for the first week where
+you could just do test that they could
+build everything.
+&gt;&gt; Jesus.
+&gt;&gt; Well, imagine what you could have built
+and what what you lost in a week.
+&gt;&gt; Yeah.
+&gt;&gt; Because you didn't use it.
+&gt;&gt; I mean, you didn't use it.
+&gt;&gt; Ah, yeah. I know [laughter]
+but sometime I have so many agents
+running.
+&gt;&gt; Yeah.
+&gt;&gt; I need to understand it myself or I need
+to trust my agents that everything is
+going okay.
+&gt;&gt; Yeah. I mean okay. So yeah I mean yeah
+like if you have like 50 session open at
+the same time uh you still need the
+bandwidth to check them and read what
+they say right.
+&gt;&gt; Yeah. We need a new MacBook or the the
+new Mac Mini.
+&gt;&gt; Yeah. or even like the new know the new
+MacBook Pro, what like 10 grand the M5
+Ultra. [laughter]
+Um, okay. So, I just want Okay, so
+five Fable 5 with fallback. What?
+Okay, then. Okay, that's that's not 4.6
+I GM 5.3 speed. It's not that crazy
+fast. What? Okay. No, no, no. Okay. No,
+let me No, it's fast. It's faster.
+Wait, it's faster than Grock.
+&gt;&gt; Yeah. And why is Grock so low?
+&gt;&gt; Because um
+&gt;&gt; it's a 4.6. 4.6 is slower than 4.5.
+&gt;&gt; Yeah, it's Yes. But uh Okay. So, Germany
+3.7 flash, which is normal then. Oh,
+maybe that could for aentic
+conversation. Maybe it's fine. It's
+good. Um,
+&gt;&gt; but
+90 TPS
+compared to 57 on Gro. Okay, that's
+interesting. Uh, but the cost per task
+same. Okay. Okay. No, it's even cheaper
+than Grock. Okay. That, bro, that that
+looks a good model, man.
+Damn.
+Do you have a ZAI subscription?
+&gt;&gt; Nope. I failed.
+&gt;&gt; Yeah. I mean, Oh, yeah. Because uh they
+closed it, right? Or it was Minax. I
+don't remember.
+&gt;&gt; No, they closed the other one. The
+Kimmy.
+&gt;&gt; Yeah, Kim. Kimmy was closed, right? But
+not the
+um Okay. So, okay. I guess uh it will
+come here after.
+&gt;&gt; Um so, yeah. 60 60, right? So, here.
+Okay. Fair enough. Uh that was a good
+model for free. And now I'm going to
+Yeah. keep following the timeline and
+when there is the next stealth mod um
+I'm gonna be there
+&gt;&gt; and if you want to be as well just
+follow ship on on next and we will
+share
+&gt;&gt; uh t and I think that's all I wanted to
+talk about about announcing all of that
+it's official no zi official release
+blah blah blah yeah we're good the
+[snorts] new year model that swept to
+the top Online usage charts with high
+performance at zero cost was created by
+China ZI also known as Zu noise
+swept to the top by giving away for free
+with no limits.
+&gt;&gt; Yeah. Imagine how many data centers are
+running to get to make the free
+possible.
+&gt;&gt; Yeah. Yeah. But I mean like the the
+compute was bit like for example for
+cursor spacics right? Um
+&gt;&gt; I don't feel that they they are still
+fighting for compute anymore
+like uh it looks like even they build
+too much compute for the usage
+&gt;&gt; so it's not the exponential of usage
+that everyone is expecting anymore. So
+well they also optimize models
+constantly.
+&gt;&gt; Yeah.
+True that.
+Okay, cool. Um, okay. So, I think we can
+jump to the
+demonstration and what we build because
+yeah, it's been 30 minutes already. Uh,
+t tech puff puff puff t. Okay. So,
+so what can we build with those little
+free models? I want to try them. I want
+to try them now by building a YouTube
+transcript.
+So we drop a link, we give a link uh we
+get the transcript and uh if it will
+build that uh correctly then I want to
+have the clip. So it will cut the clip
+of the best uh moment that we have
+during a live stream.
+&gt;&gt; Okay. So basically at the end of this
+video we can drop the URL in and it will
+create all the clips for us.
+&gt;&gt; That's uh what I hope it will build with
+a free model
+&gt;&gt; with a free model.
+&gt;&gt; Free and in 30 minutes.
+&gt;&gt; Yes, exactly.
+&gt;&gt; Let's go.
+&gt;&gt; So let's go because that's a challenge.
+&gt;&gt; T uh path. So, okay, I'm going to
+change that. Uh, replace
+window. Oh, maybe I should use cursor.
+That would be better than open. Yeah.
+Okay. Uh, yes. Open free. So, I'm in.
+Okay. I'm going to close this session
+and I'm going to open a work tree.
+Uh, new work initial. Oh, Uh, new
+folder.
+Uh,
+Zerox alpha and oh no. Uh, get ignit the
+repo and create two folders.
+Um, 0x alpha and muse.
+Okay, cool. I should have done that, but
+yeah, whatever. So, yeah, we're gonna uh
+build the app twice or at least we're
+going to compare like which uh which
+model will perform the best and I'm
+going to do that
+and oh, I didn't uh
+Okay, so maybe I will keep those
+uh replace because I have them on open
+rout. didn't
+think about uh late night. Uh
+where is my
+where is it? Okay, cool. Here. Yes.
+Okay. Nice. So, I have muse on the left
+and zero x alpha on the right.
+&gt;&gt; Mhm.
+&gt;&gt; So, uh and I want to use uh
+the prompt. So, we are building a small
+standalone TypeScript tool called
+YouTube Distiller. Past the YouTube link
+and you get back what the video actually
+said, plus a handful of moments worth
+watching. Cut and playable, etc., etc. I
+want to edit that. I'm going to put that
+here. Uh, path. Yeah. So, a prompt of 46
+line. uh and create it in the folder zer
+alpha.
+&gt;&gt; Mhm.
+&gt;&gt; Apply. I'm going to read that after. T
+create it in the Muse folder
+because I want to compare against DX
+alpha output
+T.
+So uh yeah read only do not write code
+yet. It has two faces over one engine.
+Uh it run the four step below an emit
+progress event where it goes CLI server.
+The UI is a simple static HTML 5. No
+react, no bundler, whatever. Uh,
+pipeline
+YouTube download uh download the video
+and the English auto caption in JSON 3
+pass the JSON 3 one request to open
+routter free route with the entire
+transcript.
+Um, f FMEG cuts the rank moment into
+playable file zero model request runtime
+minimax of free. Okay, fine.
+attack always
+hide.
+Confirm.
+Okay.
+Uh, cut the rank. I didn't know. I
+didn't check that it it's using the
+runtime model. So, I'm not going to do
+Oh, yeah. No, it's a backup because I
+asked for a backup of the model. If Muse
+is not working, I can
+&gt;&gt; It's not Muse. Yes. So,
+uh run model
+&gt;&gt; that comparison failed fast.
+&gt;&gt; Keep [laughter]
+keep muse for execution
+because uh it's
+working back.
+I'm gonna I'm gonna
+puff. What? Puff. Just stand it,
+bro. Uh
+uh we use model
+runtime
+model keep ZX
+alpha because it's working. So looks
+like Zerx alpha is way faster than Muse
+or maybe it's uh
+&gt;&gt; what I like to do is when it has the
+full MD ready.
+&gt;&gt; Yeah. I say convert it to HTML so I can
+read it easier and open in the browser
+and it gives you the full plan HTML.
+&gt;&gt; Yes. Okay. So, uh
+give me the plane in HTML
+so I can read it better.
+Tech
+puff puff duck. Yes.
+Okay. Okay. Okay. QQQ. Okay. Cool. Uh I
+just want to check the
+artificial analysis between Muse
+Muse 4.1, right? That
+uh Muse Spark.
+2. I think it's the old one. Um
+replace
+Okay. Wait, is that the Oh, August.
+Okay. Okay. Okay. So, that's nice.
+Even this mo Jesus, even this model is
+like cool. But okay. So for example like
+a muse spark I selected from open code
+free selection and um the ox alpha is on
+open router like
+uh tech
+replace window open router path. Uh okay
+the document it's building then
+uh open
+open the files for
+tech
+nice path tag
+I'm going to
+okay so that's the PL from use replace
+YouTube distiller. Bam.
+&gt;&gt; There it is.
+&gt;&gt; One engine in pipline two faces CLI plus
+SSC. SSC
+&gt;&gt; ship easier. [laughter]
+&gt;&gt; Yeah.
+&gt;&gt; Well, it will probably explain it when
+we read further. [laughter]
+&gt;&gt; No, it doesn't.
+&gt;&gt; Nope.
+SSE SSE server SSE endpoint what
+whatever so uh free tier environments
+okay oh that's the
+uh art constraint 20 request mean one
+request oh yeah because there is a
+limitation in the open router um
+in the free model like so if you pay 10
+bucks to open router then you have one
+request per uh per 1,000 request per day
+and if you don't have money at all then
+it's the just 20. So it has difference
+but
+&gt;&gt; if you you can pay 10 bucks to have like
+1,000 requests anyway that's fine.
+&gt;&gt; Um okay so file layout watch fone blah
+blah blah page. Okay so we have both
+the server YouTube transcript lm open
+routter whatever clip counter server and
+public which is like the static page.
+&gt;&gt; Mhm. Uh model ID fallback fallback
+models. Nice.
+Uh exact JSON parsing approach. Okay. So
+then yeah then I have the time I have
+the for the subtitle.
+&gt;&gt; Mhm. [clears throat]
+&gt;&gt; The transcript
+single request JSON schema. Nice. Okay.
+So then I have the transcript. Cool.
+Cool. Cool.
+Okay. Validation. And what happen on
+malform output? We don't need to handle
+errors. Everything will be perfect.
+&gt;&gt; We just push it.
+&gt;&gt; Yeah, exactly. Uh failure handling. Nice
+request counter user always see budget
+used. Okay, cool.
+Progress shape host CLI and SS consume
+it.
+Uh CLI download. Oh, okay. Okay. So SS
+whatever. So we going to have the CLI
+where download via the yeah clip done.
+Okay cool nice mp cut line for 90
+minutes live build project scal folding
+10 minutes okay let's see how it goes
+for minutes total one 90 minutes we
+don't we don't have time bro we don't
+have that time
+&gt;&gt; do it faster
+&gt;&gt; yeah
+uh path okay so that looks legit I mean
+if it works right like uh
+&gt;&gt; Mhm. So it goes and that's from um
+that's from uh yeah um GLM 5.3 D. Yeah,
+it's it's the same plan.
+Okay, budget blah blah blah building.
+Uh that's a bit uh
+shorter, but that looks legit. I want
+that.
+Yeah, maybe we can just say do the steps
+that can be done within 30 minutes so
+that we can see the first things.
+&gt;&gt; Yep. Uh path path
+window path.
+So I pro uh proceed
+but don't
+spend
+30 minutes to build.
+Skip end to end test.
+Um, you have five minutes.
+&gt;&gt; Yeah,
+&gt;&gt; it will be cool if we can just build
+everything in five.
+&gt;&gt; Yeah. Open your browser model not keep
+in a max free as a primary model in one
+line swap if it ever degrade. Yeah,
+whatever. Cool. Cool. Um, okay. And I
+think I will need the open router key.
+So, I'm gonna get one
+like
+uh
+keys.
+Where is it? Sign up. I don't want to
+sign up. I want to sign in.
+Okay.
+Oh.
+dev.
+Okay, so looks like the muse one is
+just went straight for it. Tech
+workspace profile
+API keys
+uh shape sheet show.
+Okay. Expiration
+1 hour
+crazy five reset every daily
+tip path.
+So I'm going to put that key in the
+repository setup. Okay. Uh create the EL
+file for each folder.
+So they can use open
+[clears throat] here the key. Don't
+share it on stream.
+&gt;&gt; Important.
+&gt;&gt; Yeah.
+Okay. So cursor has the key. Set up the
+file. We're good with that. We're good
+with it. And we have one hour from now
+to finish it up. But that's no problem.
+Uh, okay. Wait, is it already B?
+What?
+Cute.
+&gt;&gt; What did it do?
+&gt;&gt; Already did. It did everything.
+&gt;&gt; Yeah. See, if you say I only have five
+minutes. It says, "Okay, I will just
+spin up 200 more agents and run it in
+five minutes."
+&gt;&gt; But wait, like this model is free, man.
+&gt;&gt; Well, depends on quality, right?
+&gt;&gt; Yeah.
+I've had devs before where they said I'm
+done and then you open it and you look
+at it and you think I don't know what
+you did but but
+&gt;&gt; yeah [laughter]
+&gt;&gt; nothing is familiar.
+&gt;&gt; Uh been there done that
+&gt;&gt; yes I created the form and then only the
+HTML form and nothing behind it.
+&gt;&gt; Uh tech I mean the form was created
+right? Oh
+&gt;&gt; yeah. Yeah, it was created. It didn't
+work. You could not use it. You could
+not send anything. But
+&gt;&gt; yeah.
+&gt;&gt; Oh no. I'm going to take the video like
+the last video that we published on ship
+&gt;&gt; Mhm.
+&gt;&gt; If we can get some transcripts and um
+clips that would be interesting. And uh
+it's a 10 minutes video, so we'll see
+how it goes.
+Grape resolve dependency. Okay.
+Turn server. Come on. Time out. Not
+phone. Let's go. [laughter]
+Oh, server's on 30,000
+YouTube.
+&gt;&gt; Cool.
+&gt;&gt; Missing open router. Yes.
+Okay.
+Uh path.
+So both M5 created. Okay. Okay. Okay.
+Okay. Cool. V1. Okay.
+Um,
+do not display the key. Ah, [laughter]
+okay. We don't have a massive CR. So,
+yeah, whatever. It's fine. But, uh,
+&gt;&gt; we will just swap it.
+&gt;&gt; Yeah. Yeah. I mean, it it's a $5 U
+limit.
+&gt;&gt; It makes people happy. Let them be
+happy.
+&gt;&gt; Let them cook.
+Uh, tech
+tech. Okay.
+So, looks like we have everything.
+So, pro server. Okay. What does it look
+like? Uh, local 3000.
+Local lost
+3000. Okay. Uh,
+run it.
+Nah. Uh,
+open the rave window after
+build in five minutes and to escape as
+requested. Stay. Yeah. See like the time
+estimation, it's pure garbage. It's
+crazy.
+&gt;&gt; Uh, it's the same thing if you put in
+and you say create a plan for this and
+now give me the estimate in time and in
+costs. I think it still does every
+estimate in the same time that people do
+it without AI.
+&gt;&gt; Yeah. No, 100%. Like because the data
+set is estimation based on AI on human
+uh Reddit post, right? So yeah.
+&gt;&gt; Uh YouTube distiller past the YouTube
+link brief 35 ranked moment cut in
+playable one model request per video.
+Okay. Okay. Left to the estimation
+download. Start. Okay, let's go. Request
+format is not available. Use list for
+what? Matching video.
+How are you capturing the caption if
+there is no video?
+I'm going to drop that. I'm going to
+drop that.
+&gt;&gt; Download walking. Are you
+uh are you doing anything?
+&gt;&gt; It did find it
+&gt;&gt; or is it fake?
+Uh fetch video parsing. Okay. Analyzing
+transcript one request.
+Okay. I'm going to cutting five clip.
+Wait, what? Okay. Yeah, it does every
+here it is
+&gt;&gt; a live stream demo of Grog rock and
+end to end legend demo with King.
+&gt;&gt; Yeah, King was my bot.
+&gt;&gt; Yeah. Okay, wait. I'm going to cut that.
+Oh, it took the segment. Smart.
+Okay, that's sick because like see this
+um
+that effect that's what I use for the
+Oh, that works well. Um
+for the transition in the video from one
+chapter to another, right?
+&gt;&gt; Mhm.
+&gt;&gt; Walk through the full pipeline. Google
+search from end of leads prompt
+generation email draft the actual agent
+or chart. Yeah. One minute. One minute.
+Bro, that's that could be clips for
+Twitter.
+&gt;&gt; Yeah, but people are trying to do this
+with clot and they are working for an
+hour to copy paste, put the URL in, ask
+it. You can just better code your own
+solution. That's so much faster
+and it's working and it's free.
+&gt;&gt; Yeah, this is cool. Like bro, that that
+that cost zero
+&gt;&gt; and it gave results
+&gt;&gt; like [snorts]
+one prompt you find a lead that uh you
+just need to find 1,000 and
+&gt;&gt; do this automatically then it will
+example and it just you can imagine and
+why you need
+&gt;&gt; okay why is it refreshing all the time
+uh okay what's
+&gt;&gt; because it's still working
+&gt;&gt; yeah oh Every time it creates a video,
+it refreshes.
+&gt;&gt; Not fake, real bug, no fixed. You Oh my
+god, that's I love AI, bro.
+&gt;&gt; What? And again, we don't need an
+employee to do this for us.
+&gt;&gt; Like, yeah,
+&gt;&gt; you can tell uh the right was the the
+alpha model, right?
+&gt;&gt; Uh no. Yeah. So yeah, we can
+&gt;&gt; you can now tell it that it needs to
+improve because the other model did so
+such a good job. We need to be impressed
+to even
+&gt;&gt; think about using it.
+&gt;&gt; Yeah, true. [laughter]
+&gt;&gt; I don't know if that works if you tell
+it like to AI that way.
+&gt;&gt; Uh okay,
+&gt;&gt; you better do your best because the
+other model created a 10 out of 10.
+uh
+uh rate your imp
+uh muse
+uh because it's really good
+[snorts] and you are playing
+uh you
+uh you are being evaluated evaluated
+evaluated
+against it. Audit first. No updates.
+Uh okay. Uh also
+run the server
+so I can test your imp.
+Uh okay. So not fake, real bug, not
+fixed. You it's false blah blah blah but
+is dash only. Okay.
+Uh
+meaning by the way what's SS
+means
+&gt;&gt; server of what I think that it is is
+server send events.
+&gt;&gt; Oh okay. [laughter]
+Uh Dash. Okay bro. Muse is really fast.
+&gt;&gt; Yeah. Maybe they have a No. Am I I'm on
+high syncing. So, what the Uh,
+YouTube doesn't store one file but video
+plus audio. Okay. Dash dynamic
+adaptative streaming over HTTP. Okay.
+Split high quality into separate. Oh,
+yeah. Okay. So, that's why. Okay. Okay.
+Okay. Cool. Uh, server send events. Yes.
+HTTP event stream. Okay. Fair enough.
+Uh, cool. So, is it running the
+&gt;&gt; Yeah.
+&gt;&gt; Okay.
+&gt;&gt; It's taking its time. Uh what? Okay. So
+&gt;&gt; ask the same question or are you not
+going to have it raed?
+&gt;&gt; Oh, you're right. You're right.
+Uh
+where's the prompt?
+Wait, is it
+&gt;&gt; Can you also do Ctrl F just find it?
+&gt;&gt; Uh
+oh, okay. Just need to and unzoom
+attack. Uh but
+against
+the X alpha, not against yourself.
+&gt;&gt; Yeah,
+&gt;&gt; I mil 10. [laughter]
+I'm always curious if you do like this
+and you say rate the other one because
+we are comparing you if it is smart
+enough to just say, "Oh, the other one
+has more bucks so I'm better.
+&gt;&gt; [laughter]
+&gt;&gt; And
+Oh yeah, because they can trash the
+other one, right?
+&gt;&gt; Yeah.
+&gt;&gt; Okay. So that's the
+one from So that's Muse
+&gt;&gt; and that's GLM and I'm going to take the
+same video
+path path distill.
+Okay.
+What?
+Okay. I don't like that. That's I prefer
+the
+&gt;&gt; Yeah, but you said make it static HTML
+and don't add in any
+React or anything. So, it can't make it
+too fancy.
+&gt;&gt; Yeah, but like the terminal command line
+like that. It's
+&gt;&gt; much better
+model 3 whatever. Yeah. Okay. So that
+just the yeah
+2000 world pass video downloaded
+pre-flight caption. Okay. I mean there
+is no bugs on the first run.
+&gt;&gt; It doesn't show the bugs.
+&gt;&gt; Yeah.
+&gt;&gt; But I always want to see a spinner
+because you never know if it is waiting
+on you or you and him.
+&gt;&gt; Yeah. I mean like Yeah. We don't know
+what to do right now, right?
+&gt;&gt; Yeah. And hi uh if touch king what's up
+thanks for joining us tag and path.
+Okay so this one this one is cool
+uh tag I'm going to wait on the other
+one
+back to open code tag
+tag tag.
+So, it's thinking. It's sinking.
+Running in ox request time out after 10
+second. Okay.
+So, that's a bug. Um, did you fix it?
+Why don't I see it in
+the UI?
+Okay. Scroll down for sub agent. Uh, no.
+Yeah.
+Only question. Why does it take so long
+to rate the other product?
+&gt;&gt; I don't know. Audit.
+Okay.
+Audit clim implementation blah blah
+blah.
+Uh okay. Open water. Fair enough.
+&gt;&gt; [snorts]
+&gt;&gt; All files under audit versus muse
+summary val overall part partial pass
+65%
+faithful core free environment preserve
+delete from some bugs check closest to
+plan dependency budget strict
+file layout and ownership
+on spare plan
+exist
+okay that's Good critics,
+I guess. Explore. How do I get out of
+that
+up? Yes. Cool.
+Okay.
+Come on, mate.
+Yeah. Got five minute left. Oh yeah. Uh
+X X
+&gt;&gt; How far is it in the browser?
+&gt;&gt; Uh
+no. Yeah, it's it's uh it's buggy. It's
+it's uh it didn't
+it's stuck.
+&gt;&gt; Oh.
+&gt;&gt; So like the Muse one did was not stuck.
+No. And that already created the the
+shorts
+&gt;&gt; and even yeah like the CLI stuff like
+displayed and there's a brief like I
+want to see if there is a brief with
+that but um oh
+analyze transcript start segment
+integer. Okay cool interesting
+tech
+explore that. Why is that taking more
+time now? What the What the heck? What
+the heck?
+Tag. Nope. Not this one.
+Nope.
+Place window. Um,
+what's going on, mate?
+attack.
+&gt;&gt; It looks like it's still working on the
+other task. Oh, no. It's auditing.
+That's cool.
+&gt;&gt; Control X.
+Wait, what the heck? What can I Oh, you
+sub agent. No. Okay. Um, are you
+building or what?
+Yeah.
+&gt;&gt; Okay.
+Yeah. And see like for example here it
+just stopped like there is no animation
+of building or like
+what's going on.
+&gt;&gt; No it just text the messages. Oh now it
+goes to build.
+&gt;&gt; Yeah. So where
+&gt;&gt; and it's back.
+Yeah.
+Okay.
+Damn, that went deep.
+&gt;&gt; Yeah. Just ask it to push it to HTML
+again so we can read it
+&gt;&gt; easier. [snorts]
+And I get translate
+translate
+the audit to HTML so I can read it.
+Okay. So SS streams stay silent for
+minutes during download analysis. Okay.
+Okay. So looks like it's running again.
+&gt;&gt; [clears throat]
+&gt;&gt; Let's try replace tech
+[snorts]
+buff buff puff.
+Okay.
+Okay. Fback Nvidia free. Okay. Ah. Okay.
+Maybe it's a
+fallback
+natural model.
+Is it working?
+Yeah. Good.
+[snorts]
+Preparing. Writing. Okay. We are going
+to have the audit for Muse.
+&gt;&gt; Mhm.
+&gt;&gt; Uh JM 5.3 is Muse is lit.
+&gt;&gt; Yes. Muse was also a lot faster.
+&gt;&gt; Yeah.
+&gt;&gt; Less bucks
+&gt;&gt; and it worked.
+&gt;&gt; Working product.
+&gt;&gt; Yeah.
+Like what the heck? And okay, so we have
+agent team up with VM agent and it
+changed the
+Yes, it changed the clips too again.
+Interesting, right? So that's not the
+same.
+&gt;&gt; No, [clears throat] it's not the same
+one. Y
+&gt;&gt; it looks like it just keeps adding one.
+&gt;&gt; Yeah.
+&gt;&gt; Well,
+it is a start. You always need after
+your first prompt, you always need to
+optimize
+&gt;&gt; analyze zero tag. Okay, it's coming and
+looks like Wait.
+Okay.
+&gt;&gt; And open a comparison. See what it says.
+&gt;&gt; Errors.
+Okay. So uh oh yeah vic 60% uh 65% pass
+single fetch constant whatever fail
+hotspot validate clamps instead of
+reject baked under cut. Yeah. Okay. So
+he found some bugs.
+Okay. So now puff and I have it here.
+Puff. So
+one two faces
+summary veric partial pass. Yes. Cia
+skeleton intact.
+Shellot strict English only key engine
+MVP scope material dation whatever
+uh f layout ownership
+constant owned per plan evidence
+okay
+no API okay
+and parsing I mean that's good because
+like yeah you're right like those
+comparation
+stuff like you need to do that against
+like codeex and code because no matter
+what like free model or not you need to
+do that.
+&gt;&gt; Yeah.
+&gt;&gt; There is always something like the same
+way from two developers you have two
+different way to code right.
+&gt;&gt; Yes.
+&gt;&gt; Partial partial failback model retry
+after counter retry after caps second
+but counter not incremental on 41 only
+after success. Okay. Yeah. So it will uh
+loop again and again
+uh request counter progress. So yeah for
+some like critical
+it's kind of crazy that just on this one
+prompt there is that much difference.
+Uh ox alpha keeps the one fed shell out
+strict GS skeleton but react the
+contract budget versus counter type
+versus face status uh and request shape.
+So it it's not no drop in compliant with
+gpo
+okay so it will it will it will be buggy
+because they don't follow the correct
+typings.
+Well, that's something to improve for
+the for the next one because you can
+just put in the HML and say improve
+everything. But that's the next uh step.
+&gt;&gt; Yeah, but I mean like no even like the
+zero expl the GLM 5.3 flash.
+&gt;&gt; Mhm.
+&gt;&gt; It's more buggy than muse on that one
+prompt which is nuts.
+&gt;&gt; Yeah.
+&gt;&gt; Fix not fake screen validator. Yeah.
+Okay. Whatever. And okay, like
+uh that's nuts because
+like we had so much ping pong stuff, but
+like DX Alpha is still stuck on
+running the UI like it's crazy.
+&gt;&gt; Yeah.
+&gt;&gt; Okay, whatever. Muse want to freeze lit.
+Make sure you test the different models
+that are available because you see even
+if people say that it is the the best
+model.
+&gt;&gt; Yeah.
+&gt;&gt; Now you have to prove the other one is
+working.
+&gt;&gt; Yeah. I mean Yeah. Like it's crazy. I
+mean you don't have those gaps with like
+the frontier model from Entropic and I
+have Yeah. Febru 5 is still the best
+model though.
+&gt;&gt; Yeah. Also the most expensive.
+&gt;&gt; Yeah. I mean I will uh I think I will
+try to have those um I will just one
+prompt
+um the same distaler stuff with codeex
+and code I'm out of entropy so it will
+be 5.6 six. But yeah, it could be
+interesting to to try that. Uh but uh
+yeah, okay, whatever. Uh so yeah, like
+we can even work with free models now.
+&gt;&gt; Yes, it works and it showed and it it
+makes good solutions. You see, we had
+like five videos instantly.
+&gt;&gt; That's nuts. Uh like I didn't expect
+that to be that fast
+&gt;&gt; with not the model I wanted to test
+first. But the secret source is tell it
+we need it in five minutes because we're
+on live stream and it will just do
+everything in five minutes.
+&gt;&gt; True. Oh yeah. True that. Yeah. The
+shortcut is like bro you have 30 minutes
+30 seconds because uh if you don't I'm
+going to cut your electricity off.
+&gt;&gt; Yeah. Yeah. The whole world is going to
+damnation. Just do it in 30 seconds.
+&gt;&gt; Yeah. So yeah for everyone who are
+prompting right now tell your cloth that
+uh his bandwidth is going to be reduced.
+Yes. [laughter]
+&gt;&gt; But yeah, uh Michelle, thank you so much
+for your time.
+&gt;&gt; Thank you for the demo.
+&gt;&gt; That that was fun. And uh yeah, like
+next week, same place. Oh, yeah. Yeah.
+Same place, same time.
+&gt;&gt; Same online.
+&gt;&gt; Yeah. Cheers, man.
+&gt;&gt; Thank you.
+&gt;&gt; Bye. Subscribe. Yeah. Like like,
+subscribe, share. Yeah.

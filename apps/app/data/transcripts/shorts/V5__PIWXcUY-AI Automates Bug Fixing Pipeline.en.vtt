@@ -1,0 +1,168 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.790 align:start position:0%
+ 
+I<00:00:00.240><c> asked</c><00:00:00.480><c> the</c><00:00:00.719><c> AI,</c><00:00:01.280><c> okay,</c><00:00:02.159><c> what</c><00:00:02.399><c> information</c>
+
+00:00:02.790 --> 00:00:02.800 align:start position:0%
+I asked the AI, okay, what information
+ 
+
+00:00:02.800 --> 00:00:05.829 align:start position:0%
+I asked the AI, okay, what information
+for<00:00:03.040><c> me</c><00:00:03.280><c> do</c><00:00:03.439><c> you</c><00:00:03.600><c> need</c><00:00:04.240><c> to</c><00:00:04.799><c> fix</c><00:00:05.040><c> the</c><00:00:05.279><c> bug?</c><00:00:05.680><c> And</c>
+
+00:00:05.829 --> 00:00:05.839 align:start position:0%
+for me do you need to fix the bug? And
+ 
+
+00:00:05.839 --> 00:00:07.749 align:start position:0%
+for me do you need to fix the bug? And
+then<00:00:06.000><c> it</c><00:00:06.240><c> said</c><00:00:06.720><c> in</c><00:00:06.879><c> my</c><00:00:07.040><c> other</c><00:00:07.279><c> in</c><00:00:07.440><c> my</c><00:00:07.600><c> own</c>
+
+00:00:07.749 --> 00:00:07.759 align:start position:0%
+then it said in my other in my own
+ 
+
+00:00:07.759 --> 00:00:10.070 align:start position:0%
+then it said in my other in my own
+setup,<00:00:08.160><c> it</c><00:00:08.320><c> said,</c><00:00:08.559><c> okay,</c><00:00:08.800><c> we</c><00:00:08.960><c> need</c><00:00:09.120><c> to</c><00:00:09.280><c> have</c><00:00:10.000><c> a</c>
+
+00:00:10.070 --> 00:00:10.080 align:start position:0%
+setup, it said, okay, we need to have a
+ 
+
+00:00:10.080 --> 00:00:12.709 align:start position:0%
+setup, it said, okay, we need to have a
+a<00:00:10.320><c> title</c><00:00:10.800><c> bug</c><00:00:11.360><c> so</c><00:00:11.519><c> that</c><00:00:11.679><c> I</c><00:00:11.840><c> know</c><00:00:12.000><c> that's</c><00:00:12.240><c> a</c><00:00:12.400><c> bug.</c>
+
+00:00:12.709 --> 00:00:12.719 align:start position:0%
+a title bug so that I know that's a bug.
+ 
+
+00:00:12.719 --> 00:00:13.990 align:start position:0%
+a title bug so that I know that's a bug.
+We<00:00:12.880><c> need</c><00:00:12.960><c> to</c><00:00:13.120><c> make</c><00:00:13.280><c> sure</c><00:00:13.360><c> that</c><00:00:13.519><c> we</c><00:00:13.679><c> know</c><00:00:13.840><c> what</c>
+
+00:00:13.990 --> 00:00:14.000 align:start position:0%
+We need to make sure that we know what
+ 
+
+00:00:14.000 --> 00:00:16.150 align:start position:0%
+We need to make sure that we know what
+GitHub<00:00:14.480><c> repository</c><00:00:15.120><c> it</c><00:00:15.360><c> is.</c><00:00:15.679><c> I</c><00:00:15.920><c> know</c><00:00:16.000><c> where</c>
+
+00:00:16.150 --> 00:00:16.160 align:start position:0%
+GitHub repository it is. I know where
+ 
+
+00:00:16.160 --> 00:00:17.910 align:start position:0%
+GitHub repository it is. I know where
+the<00:00:16.400><c> error</c><00:00:16.640><c> logging</c><00:00:16.960><c> is</c><00:00:17.119><c> coming</c><00:00:17.279><c> from,</c><00:00:17.520><c> so</c><00:00:17.760><c> I'm</c>
+
+00:00:17.910 --> 00:00:17.920 align:start position:0%
+the error logging is coming from, so I'm
+ 
+
+00:00:17.920 --> 00:00:20.550 align:start position:0%
+the error logging is coming from, so I'm
+adding<00:00:18.160><c> it</c><00:00:18.400><c> manually.</c><00:00:19.439><c> And</c><00:00:19.680><c> it</c><00:00:19.920><c> also</c><00:00:20.240><c> added</c>
+
+00:00:20.550 --> 00:00:20.560 align:start position:0%
+adding it manually. And it also added
+ 
+
+00:00:20.560 --> 00:00:22.390 align:start position:0%
+adding it manually. And it also added
+some<00:00:20.800><c> additional.</c><00:00:21.279><c> And</c><00:00:21.520><c> here</c><00:00:21.680><c> it</c><00:00:21.920><c> comes.</c>
+
+00:00:22.390 --> 00:00:22.400 align:start position:0%
+some additional. And here it comes.
+ 
+
+00:00:22.400 --> 00:00:24.950 align:start position:0%
+some additional. And here it comes.
+Error<00:00:22.800><c> channel</c><00:00:23.119><c> watcher.</c><00:00:23.840><c> It</c><00:00:24.240><c> monitors</c><00:00:24.720><c> the</c>
+
+00:00:24.950 --> 00:00:24.960 align:start position:0%
+Error channel watcher. It monitors the
+ 
+
+00:00:24.960 --> 00:00:27.670 align:start position:0%
+Error channel watcher. It monitors the
+error<00:00:25.199><c> channel,</c><00:00:25.680><c> creates</c><00:00:26.080><c> concise</c><00:00:26.640><c> summaries</c>
+
+00:00:27.670 --> 00:00:27.680 align:start position:0%
+error channel, creates concise summaries
+ 
+
+00:00:27.680 --> 00:00:29.910 align:start position:0%
+error channel, creates concise summaries
+and<00:00:28.080><c> optional</c><00:00:28.560><c> auto</c><00:00:28.880><c> trackers</c><00:00:29.199><c> GitHub</c><00:00:29.599><c> issue</c>
+
+00:00:29.910 --> 00:00:29.920 align:start position:0%
+and optional auto trackers GitHub issue
+ 
+
+00:00:29.920 --> 00:00:32.310 align:start position:0%
+and optional auto trackers GitHub issue
+fix.<00:00:30.400><c> And</c><00:00:30.560><c> then</c><00:00:30.720><c> we</c><00:00:30.960><c> create</c><00:00:31.199><c> a</c><00:00:31.679><c> bug</c><00:00:32.000><c> fix</c>
+
+00:00:32.310 --> 00:00:32.320 align:start position:0%
+fix. And then we create a bug fix
+ 
+
+00:00:32.320 --> 00:00:34.229 align:start position:0%
+fix. And then we create a bug fix
+pipeline.<00:00:32.880><c> So</c><00:00:33.120><c> that</c><00:00:33.280><c> takes</c><00:00:33.440><c> a</c><00:00:33.680><c> new</c><00:00:33.840><c> box,</c>
+
+00:00:34.229 --> 00:00:34.239 align:start position:0%
+pipeline. So that takes a new box,
+ 
+
+00:00:34.239 --> 00:00:36.470 align:start position:0%
+pipeline. So that takes a new box,
+creates<00:00:34.559><c> a</c><00:00:34.719><c> dedicated</c><00:00:35.200><c> branch</c><00:00:35.760><c> fix</c><00:00:36.079><c> and</c><00:00:36.239><c> an</c>
+
+00:00:36.470 --> 00:00:36.480 align:start position:0%
+creates a dedicated branch fix and an
+ 
+
+00:00:36.480 --> 00:00:38.630 align:start position:0%
+creates a dedicated branch fix and an
+issue<00:00:36.719><c> name,</c><00:00:37.120><c> opens</c><00:00:37.440><c> a</c><00:00:37.600><c> pull</c><00:00:37.840><c> request,</c><00:00:38.320><c> and</c><00:00:38.480><c> it</c>
+
+00:00:38.630 --> 00:00:38.640 align:start position:0%
+issue name, opens a pull request, and it
+ 
+
+00:00:38.640 --> 00:00:40.229 align:start position:0%
+issue name, opens a pull request, and it
+can<00:00:38.800><c> keep</c><00:00:39.040><c> watching</c><00:00:39.360><c> and</c><00:00:39.680><c> handle</c><00:00:39.920><c> pull</c>
+
+00:00:40.229 --> 00:00:40.239 align:start position:0%
+can keep watching and handle pull
+ 
+
+00:00:40.239 --> 00:00:41.990 align:start position:0%
+can keep watching and handle pull
+requests,<00:00:40.640><c> reviews,</c><00:00:41.120><c> comments,</c><00:00:41.520><c> too.</c><00:00:41.760><c> So</c>
+
+00:00:41.990 --> 00:00:42.000 align:start position:0%
+requests, reviews, comments, too. So
+ 
+
+00:00:42.000 --> 00:00:43.830 align:start position:0%
+requests, reviews, comments, too. So
+this<00:00:42.239><c> is</c><00:00:42.320><c> the</c><00:00:42.559><c> first</c><00:00:42.719><c> setup</c><00:00:43.120><c> for</c><00:00:43.280><c> your</c><00:00:43.520><c> entire</c>
+
+00:00:43.830 --> 00:00:43.840 align:start position:0%
+this is the first setup for your entire
+ 
+
+00:00:43.840 --> 00:00:46.800 align:start position:0%
+this is the first setup for your entire
+buck<00:00:44.160><c> fixing</c><00:00:44.480><c> pipeline.</c>
+

@@ -40,6 +40,7 @@ const DATA_DIR =
   process.env.DATA_DIR || path.join(process.cwd(), 'data', 'livestream');
 const TRANSCRIPTS_DIR = path.join(process.cwd(), 'data', 'transcripts');
 const CLEAN_TRANSCRIPTS_DIR = path.join(TRANSCRIPTS_DIR, 'clean');
+const SHORT_TRANSCRIPTS_DIR = path.join(TRANSCRIPTS_DIR, 'shorts');
 const OVERLAY_SNAPSHOT_TTL_MS = 2000;
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -89,7 +90,7 @@ export interface LivestreamHistoryItem {
   youtubeUrl: string | null;
 }
 
-export type PublishedVideoType = 'livestream' | 'video';
+export type PublishedVideoType = 'livestream' | 'short' | 'video';
 
 export interface PublishedVideoItem {
   date: string;
@@ -225,24 +226,47 @@ function getYoutubeUrl(videoId: string | null): string | null {
   return videoId ? `https://www.youtube.com/watch?v=${videoId}` : null;
 }
 
+/**
+ * Raw caption files name the video: `<id>-<title>.en.vtt`. A `[LIVE]` title
+ * prefix marks a livestream and the `shorts/` folder holds Shorts. Clean files
+ * carry only date, type and title slug, so they are matched by title: first
+ * with the type, then by title alone when only one raw file has that title
+ * (livestream titles lost their [LIVE] tag on 2026-11-06).
+ */
 function getRawTranscriptVideoMap(): Map<
   string,
   { title: string; videoId: string }
 > {
   const videoMap = new Map<string, { title: string; videoId: string }>();
+  const titleCounts = new Map<string, number>();
 
-  if (!fs.existsSync(TRANSCRIPTS_DIR)) return videoMap;
-
-  for (const fileName of fs.readdirSync(TRANSCRIPTS_DIR)) {
+  const add = (fileName: string, shortsFolder: boolean) => {
     const match = fileName.match(/^([\w-]{11})-(.+)\.en\.vtt$/);
-    if (!match) continue;
+    if (!match) return;
 
     const [, videoId, rawTitle] = match;
     const isLive = /^\[LIVE\]\s*/i.test(rawTitle);
-    const type: PublishedVideoType = isLive ? 'livestream' : 'video';
+    const type: PublishedVideoType = shortsFolder
+      ? 'short'
+      : isLive
+        ? 'livestream'
+        : 'video';
     const title = rawTitle.replace(/^\[LIVE\]\s*/i, '');
-    videoMap.set(`${type}:${normalizeHistoryKey(title)}`, { title, videoId });
-  }
+    const key = normalizeHistoryKey(title);
+    videoMap.set(`${type}:${key}`, { title, videoId });
+    titleCounts.set(key, (titleCounts.get(key) ?? 0) + 1);
+    videoMap.set(`any:${key}`, { title, videoId });
+  };
+
+  if (fs.existsSync(TRANSCRIPTS_DIR))
+    for (const fileName of fs.readdirSync(TRANSCRIPTS_DIR))
+      add(fileName, false);
+  if (fs.existsSync(SHORT_TRANSCRIPTS_DIR))
+    for (const fileName of fs.readdirSync(SHORT_TRANSCRIPTS_DIR))
+      add(fileName, true);
+
+  for (const [key, count] of titleCounts)
+    if (count > 1) videoMap.delete(`any:${key}`);
 
   return videoMap;
 }
@@ -255,16 +279,16 @@ function listFilesystemPublishedVideos(): PublishedVideoItem[] {
   const items: PublishedVideoItem[] = [];
   for (const fileName of fs.readdirSync(CLEAN_TRANSCRIPTS_DIR)) {
     const match = fileName.match(
-      /^(\d{4}-\d{2}-\d{2})-(livestream|video)-(.+)\.txt$/,
+      /^(\d{4}-\d{2}-\d{2})-(livestream|short|video)-(.+)\.txt$/,
     );
     if (!match) continue;
 
     const [, date, type, rawTitleSlug] = match;
     const typed = type as PublishedVideoType;
     const transcriptPath = path.join(CLEAN_TRANSCRIPTS_DIR, fileName);
-    const mapped = videoMap.get(
-      `${typed}:${normalizeHistoryKey(rawTitleSlug)}`,
-    );
+    const key = normalizeHistoryKey(rawTitleSlug);
+    const mapped =
+      videoMap.get(`${typed}:${key}`) ?? videoMap.get(`any:${key}`);
     const title = mapped?.title ?? titleFromSlug(rawTitleSlug);
     const videoId = mapped?.videoId ?? null;
 

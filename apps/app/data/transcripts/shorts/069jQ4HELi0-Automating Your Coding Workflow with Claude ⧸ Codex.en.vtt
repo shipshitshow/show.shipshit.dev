@@ -1,0 +1,104 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.590 align:start position:0%
+ 
+This<00:00:00.200><c> week</c><00:00:00.600><c> I've</c><00:00:01.240><c> set</c><00:00:01.440><c> up</c><00:00:01.640><c> those</c><00:00:01.920><c> automation</c>
+
+00:00:02.590 --> 00:00:02.600 align:start position:0%
+This week I've set up those automation
+ 
+
+00:00:02.600 --> 00:00:05.110 align:start position:0%
+This week I've set up those automation
+in<00:00:02.840><c> KODEX</c><00:00:03.280><c> and</c><00:00:03.520><c> the</c><00:00:03.760><c> Cloud</c><00:00:04.040><c> Desktop</c><00:00:04.440><c> app.</c><00:00:04.840><c> Now</c>
+
+00:00:05.110 --> 00:00:05.120 align:start position:0%
+in KODEX and the Cloud Desktop app. Now
+ 
+
+00:00:05.120 --> 00:00:07.150 align:start position:0%
+in KODEX and the Cloud Desktop app. Now
+I<00:00:05.240><c> have</c><00:00:05.680><c> features</c><00:00:06.040><c> implementation</c><00:00:06.800><c> taking</c>
+
+00:00:07.150 --> 00:00:07.160 align:start position:0%
+I have features implementation taking
+ 
+
+00:00:07.160 --> 00:00:10.950 align:start position:0%
+I have features implementation taking
+from<00:00:07.400><c> GitHub</c><00:00:07.840><c> every</c><00:00:08.160><c> 2</c><00:00:08.440><c> hours</c><00:00:09.440><c> and</c><00:00:10.000><c> I</c><00:00:10.120><c> have</c><00:00:10.480><c> a</c>
+
+00:00:10.950 --> 00:00:10.960 align:start position:0%
+from GitHub every 2 hours and I have a
+ 
+
+00:00:10.960 --> 00:00:13.430 align:start position:0%
+from GitHub every 2 hours and I have a
+pull<00:00:11.120><c> request</c><00:00:11.680><c> review</c><00:00:12.160><c> every</c><00:00:12.520><c> 6</c><00:00:12.880><c> hours</c><00:00:13.320><c> and</c>
+
+00:00:13.430 --> 00:00:13.440 align:start position:0%
+pull request review every 6 hours and
+ 
+
+00:00:13.440 --> 00:00:15.830 align:start position:0%
+pull request review every 6 hours and
+then<00:00:13.640><c> it</c><00:00:13.800><c> merged</c><00:00:14.160><c> to</c><00:00:14.280><c> master</c><00:00:14.720><c> and</c><00:00:15.200><c> I'm</c><00:00:15.400><c> about</c>
+
+00:00:15.830 --> 00:00:15.840 align:start position:0%
+then it merged to master and I'm about
+ 
+
+00:00:15.840 --> 00:00:19.230 align:start position:0%
+then it merged to master and I'm about
+to<00:00:16.080><c> put</c><00:00:16.440><c> a</c><00:00:16.560><c> auto</c><00:00:16.880><c> deploy</c><00:00:17.840><c> to</c><00:00:17.960><c> production</c><00:00:18.960><c> later</c>
+
+00:00:19.230 --> 00:00:19.240 align:start position:0%
+to put a auto deploy to production later
+ 
+
+00:00:19.240 --> 00:00:21.390 align:start position:0%
+to put a auto deploy to production later
+this<00:00:19.440><c> week.</c><00:00:19.720><c> And</c><00:00:20.480><c> I</c><00:00:20.520><c> also</c><00:00:20.840><c> have</c><00:00:21.040><c> like</c><00:00:21.240><c> a</c>
+
+00:00:21.390 --> 00:00:21.400 align:start position:0%
+this week. And I also have like a
+ 
+
+00:00:21.400 --> 00:00:24.750 align:start position:0%
+this week. And I also have like a
+routine<00:00:22.160><c> of</c><00:00:22.600><c> refactoring</c><00:00:23.320><c> and</c><00:00:23.600><c> dry</c><00:00:24.120><c> the</c><00:00:24.280><c> code</c>
+
+00:00:24.750 --> 00:00:24.760 align:start position:0%
+routine of refactoring and dry the code
+ 
+
+00:00:24.760 --> 00:00:27.390 align:start position:0%
+routine of refactoring and dry the code
+that<00:00:25.120><c> we</c><00:00:25.280><c> have</c><00:00:25.440><c> a</c><00:00:25.520><c> lot</c><00:00:25.720><c> of</c><00:00:26.000><c> slope</c><00:00:26.760><c> in</c><00:00:26.920><c> the</c><00:00:27.160><c> app</c>
+
+00:00:27.390 --> 00:00:27.400 align:start position:0%
+that we have a lot of slope in the app
+ 
+
+00:00:27.400 --> 00:00:30.430 align:start position:0%
+that we have a lot of slope in the app
+so<00:00:28.480><c> routine</c><00:00:28.840><c> are</c><00:00:28.920><c> required.</c><00:00:29.760><c> And</c><00:00:29.960><c> I</c><00:00:30.040><c> didn't</c>
+
+00:00:30.430 --> 00:00:30.440 align:start position:0%
+so routine are required. And I didn't
+ 
+
+00:00:30.440 --> 00:00:32.990 align:start position:0%
+so routine are required. And I didn't
+burn<00:00:30.720><c> my</c><00:00:31.440><c> Cloud</c><00:00:31.720><c> subscription</c><00:00:32.360><c> in</c><00:00:32.520><c> 2</c><00:00:32.720><c> days</c>
+
+00:00:32.990 --> 00:00:33.000 align:start position:0%
+burn my Cloud subscription in 2 days
+ 
+
+00:00:33.000 --> 00:00:36.240 align:start position:0%
+burn my Cloud subscription in 2 days
+this<00:00:33.200><c> time</c><00:00:33.520><c> so</c><00:00:33.600><c> that's</c><00:00:33.800><c> a</c><00:00:33.880><c> win.</c>
+

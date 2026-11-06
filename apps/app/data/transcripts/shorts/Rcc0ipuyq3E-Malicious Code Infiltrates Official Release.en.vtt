@@ -1,0 +1,80 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.950 align:start position:0%
+ 
+Official<00:00:00.520><c> release</c><00:00:00.880><c> workflow</c><00:00:01.320><c> later</c><00:00:01.640><c> pulled</c>
+
+00:00:01.950 --> 00:00:01.960 align:start position:0%
+Official release workflow later pulled
+ 
+
+00:00:01.960 --> 00:00:03.870 align:start position:0%
+Official release workflow later pulled
+from<00:00:02.160><c> the</c><00:00:02.280><c> cache</c><00:00:02.720><c> back</c><00:00:03.000><c> the</c><00:00:03.120><c> malicious</c><00:00:03.640><c> file</c>
+
+00:00:03.870 --> 00:00:03.880 align:start position:0%
+from the cache back the malicious file
+ 
+
+00:00:03.880 --> 00:00:06.710 align:start position:0%
+from the cache back the malicious file
+into<00:00:04.160><c> the</c><00:00:04.280><c> build</c><00:00:04.560><c> and</c><00:00:04.760><c> sign</c><00:00:05.000><c> and</c><00:00:05.120><c> publish</c><00:00:06.000><c> 24</c>
+
+00:00:06.710 --> 00:00:06.720 align:start position:0%
+into the build and sign and publish 24
+ 
+
+00:00:06.720 --> 00:00:09.310 align:start position:0%
+into the build and sign and publish 24
+malicious<00:00:07.200><c> package</c><00:00:07.640><c> version</c><00:00:08.040><c> 20pm.</c><00:00:09.040><c> Yeah,</c>
+
+00:00:09.310 --> 00:00:09.320 align:start position:0%
+malicious package version 20pm. Yeah,
+ 
+
+00:00:09.320 --> 00:00:11.190 align:start position:0%
+malicious package version 20pm. Yeah,
+the<00:00:09.520><c> attack</c><00:00:09.880><c> leveraged</c><00:00:10.360><c> GitHub</c><00:00:10.880><c> cache</c>
+
+00:00:11.190 --> 00:00:11.200 align:start position:0%
+the attack leveraged GitHub cache
+ 
+
+00:00:11.200 --> 00:00:13.030 align:start position:0%
+the attack leveraged GitHub cache
+poisoning.<00:00:11.680><c> Commit</c><00:00:12.040><c> that</c><00:00:12.200><c> started</c><00:00:12.680><c> the</c><00:00:12.880><c> the</c>
+
+00:00:13.030 --> 00:00:13.040 align:start position:0%
+poisoning. Commit that started the the
+ 
+
+00:00:13.040 --> 00:00:15.350 align:start position:0%
+poisoning. Commit that started the the
+chain<00:00:13.280><c> was</c><00:00:13.520><c> forged</c><00:00:13.800><c> under</c><00:00:14.040><c> the</c><00:00:14.200><c> identity</c><00:00:14.800><c> code</c>
+
+00:00:15.350 --> 00:00:15.360 align:start position:0%
+chain was forged under the identity code
+ 
+
+00:00:15.360 --> 00:00:16.830 align:start position:0%
+chain was forged under the identity code
+impersonating<00:00:16.000><c> Entropic</c><00:00:16.480><c> code.</c><00:00:16.800><c> The</c>
+
+00:00:16.830 --> 00:00:16.840 align:start position:0%
+impersonating Entropic code. The
+ 
+
+00:00:16.840 --> 00:00:19.470 align:start position:0%
+impersonating Entropic code. The
+attacker<00:00:17.560><c> used</c><00:00:17.960><c> known</c><00:00:18.400><c> vulnerabilities.</c>
+
+00:00:19.470 --> 00:00:19.480 align:start position:0%
+attacker used known vulnerabilities.
+ 
+
+00:00:19.480 --> 00:00:22.640 align:start position:0%
+attacker used known vulnerabilities.
+Wait,<00:00:19.760><c> it</c><00:00:19.840><c> was</c><00:00:20.080><c> known?</c>
+

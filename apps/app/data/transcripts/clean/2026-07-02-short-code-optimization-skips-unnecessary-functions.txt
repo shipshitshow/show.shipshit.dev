@@ -1,0 +1,6 @@
+I've noticed that if you put explanation
+in your files above your function, it
+reads it first and if it understands
+that it doesn't need the function, it
+doesn't read it. Just skips it. That
+saves some time and look at

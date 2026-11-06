@@ -1,0 +1,14 @@
+I was writing code and I just after 3
+weeks it deleted my database and it said
+yeah the test failed the test failed. So
+I tried to deploy all the migrations
+again. Oh and by mistake that reset in
+your entire database. And I was like I
+have it in here that you're not allowed
+to do that if the test fails you report
+to me and we check what's wrong because
+if it before was working then only the
+last test is wrong or your last changes.
+And still it did but it's only locally
+so it doesn't matter that much but it
+deleted everything.

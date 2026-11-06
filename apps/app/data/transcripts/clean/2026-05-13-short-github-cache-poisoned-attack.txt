@@ -1,0 +1,12 @@
+Attacker open a normal looking pull
+request on the 10 stack repo, GitHub
+automatically runs CI on that PR. Code
+inside the PR still
+stole the workflow GitHub action cache
+right token during the test run. The
+attacker used that token to plant poison
+file in the shared build cache. The PR
+could be closed afterwards. The poison
+cache stays. Wait, did they even merge
+it? Holy it it poisoned GitHub
+cache.

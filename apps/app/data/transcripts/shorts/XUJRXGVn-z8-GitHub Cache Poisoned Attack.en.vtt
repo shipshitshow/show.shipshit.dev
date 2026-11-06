@@ -1,0 +1,96 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.870 align:start position:0%
+ 
+Attacker<00:00:00.520><c> open</c><00:00:00.840><c> a</c><00:00:00.920><c> normal</c><00:00:01.280><c> looking</c><00:00:01.640><c> pull</c>
+
+00:00:01.870 --> 00:00:01.880 align:start position:0%
+Attacker open a normal looking pull
+ 
+
+00:00:01.880 --> 00:00:04.030 align:start position:0%
+Attacker open a normal looking pull
+request<00:00:02.400><c> on</c><00:00:02.520><c> the</c><00:00:02.680><c> 10</c><00:00:02.920><c> stack</c><00:00:03.200><c> repo,</c><00:00:03.600><c> GitHub</c>
+
+00:00:04.030 --> 00:00:04.040 align:start position:0%
+request on the 10 stack repo, GitHub
+ 
+
+00:00:04.040 --> 00:00:06.430 align:start position:0%
+request on the 10 stack repo, GitHub
+automatically<00:00:04.600><c> runs</c><00:00:04.920><c> CI</c><00:00:05.240><c> on</c><00:00:05.400><c> that</c><00:00:05.600><c> PR.</c><00:00:06.160><c> Code</c>
+
+00:00:06.430 --> 00:00:06.440 align:start position:0%
+automatically runs CI on that PR. Code
+ 
+
+00:00:06.440 --> 00:00:07.950 align:start position:0%
+automatically runs CI on that PR. Code
+inside<00:00:06.800><c> the</c><00:00:06.880><c> PR</c><00:00:07.120><c> still</c>
+
+00:00:07.950 --> 00:00:07.960 align:start position:0%
+inside the PR still
+ 
+
+00:00:07.960 --> 00:00:10.830 align:start position:0%
+inside the PR still
+stole<00:00:08.280><c> the</c><00:00:08.480><c> workflow</c><00:00:09.560><c> GitHub</c><00:00:09.960><c> action</c><00:00:10.400><c> cache</c>
+
+00:00:10.830 --> 00:00:10.840 align:start position:0%
+stole the workflow GitHub action cache
+ 
+
+00:00:10.840 --> 00:00:13.310 align:start position:0%
+stole the workflow GitHub action cache
+right<00:00:11.160><c> token</c><00:00:11.600><c> during</c><00:00:11.840><c> the</c><00:00:12.000><c> test</c><00:00:12.400><c> run.</c><00:00:13.160><c> The</c>
+
+00:00:13.310 --> 00:00:13.320 align:start position:0%
+right token during the test run. The
+ 
+
+00:00:13.320 --> 00:00:15.590 align:start position:0%
+right token during the test run. The
+attacker<00:00:13.760><c> used</c><00:00:14.040><c> that</c><00:00:14.240><c> token</c><00:00:14.640><c> to</c><00:00:14.800><c> plant</c><00:00:15.160><c> poison</c>
+
+00:00:15.590 --> 00:00:15.600 align:start position:0%
+attacker used that token to plant poison
+ 
+
+00:00:15.600 --> 00:00:18.510 align:start position:0%
+attacker used that token to plant poison
+file<00:00:15.960><c> in</c><00:00:16.120><c> the</c><00:00:16.240><c> shared</c><00:00:16.640><c> build</c><00:00:16.960><c> cache.</c><00:00:17.880><c> The</c><00:00:18.080><c> PR</c>
+
+00:00:18.510 --> 00:00:18.520 align:start position:0%
+file in the shared build cache. The PR
+ 
+
+00:00:18.520 --> 00:00:20.470 align:start position:0%
+file in the shared build cache. The PR
+could<00:00:18.720><c> be</c><00:00:18.840><c> closed</c><00:00:19.200><c> afterwards.</c><00:00:19.880><c> The</c><00:00:20.000><c> poison</c>
+
+00:00:20.470 --> 00:00:20.480 align:start position:0%
+could be closed afterwards. The poison
+ 
+
+00:00:20.480 --> 00:00:23.150 align:start position:0%
+could be closed afterwards. The poison
+cache<00:00:20.840><c> stays.</c><00:00:21.800><c> Wait,</c><00:00:22.120><c> did</c><00:00:22.320><c> they</c><00:00:22.480><c> even</c><00:00:22.800><c> merge</c>
+
+00:00:23.150 --> 00:00:23.160 align:start position:0%
+cache stays. Wait, did they even merge
+ 
+
+00:00:23.160 --> 00:00:25.710 align:start position:0%
+cache stays. Wait, did they even merge
+it?<00:00:23.480><c> Holy</c><00:00:24.080><c> it</c><00:00:24.360><c> it</c><00:00:24.600><c> poisoned</c><00:00:25.200><c> GitHub</c>
+
+00:00:25.710 --> 00:00:25.720 align:start position:0%
+it? Holy it it poisoned GitHub
+ 
+
+00:00:25.720 --> 00:00:28.400 align:start position:0%
+it? Holy it it poisoned GitHub
+cache.
+

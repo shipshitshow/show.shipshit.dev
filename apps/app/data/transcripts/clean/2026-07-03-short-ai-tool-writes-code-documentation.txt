@@ -1,0 +1,6 @@
+The few days that we had Fable, I had
+Fable check all my projects and only
+write documentation on what was wrong,
+what we had to improve, and how to do
+it. And after Fable was banned, I just
+had Opus build everything.
