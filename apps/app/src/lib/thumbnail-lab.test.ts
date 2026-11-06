@@ -11,6 +11,9 @@ import {
   awaitingVersions,
   currentThumbnail,
   isThumbnailItem,
+  isThumbnailKind,
+  itemsOfKind,
+  kindOf,
   paginate,
   parseThumbnailChange,
   parseThumbnailDecision,
@@ -53,6 +56,34 @@ function fixture(id = 'WJJZHyhlAuI'): ThumbnailItem {
     visibility: 'unlisted',
   };
 }
+describe('asset kinds', () => {
+  test('a missing kind is inferred from the id and defaults to thumbnail', () => {
+    expect(kindOf(fixture())).toBe('thumbnail');
+    expect(kindOf(fixture('banner26110'))).toBe('banner');
+    expect(kindOf(fixture('pfp-avatar1'))).toBe('pfp');
+    expect(isThumbnailKind(fixture('banner26110'))).toBe(false);
+    expect(isThumbnailKind(fixture())).toBe(true);
+  });
+  test('a stored kind wins over the id and must be a known value', () => {
+    expect(kindOf({ ...fixture('banner26110'), kind: 'thumbnail' })).toBe(
+      'thumbnail',
+    );
+    expect(kindOf({ ...fixture(), kind: 'pfp' })).toBe('pfp');
+    expect(isThumbnailItem({ ...fixture(), kind: 'banner' })).toBe(true);
+    expect(isThumbnailItem({ ...fixture(), kind: 'poster' })).toBe(false);
+    expect(isThumbnailItem(fixture('banner26110'))).toBe(true);
+  });
+  test('items filter by kind', () => {
+    const all = [fixture(), fixture('banner26110'), fixture('pfp-avatar1')];
+    expect(itemsOfKind(all, 'thumbnail').map((i) => i.id)).toEqual([
+      'WJJZHyhlAuI',
+    ]);
+    expect(itemsOfKind(all, 'banner').map((i) => i.id)).toEqual([
+      'banner26110',
+    ]);
+    expect(itemsOfKind(all, 'pfp').map((i) => i.id)).toEqual(['pfp-avatar1']);
+  });
+});
 describe('thumbnail review contract', () => {
   test('approval locks only the exact version; a new variation preserves it', () => {
     const item = fixture(),

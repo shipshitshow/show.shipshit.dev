@@ -46,6 +46,25 @@ const items = [
 ];
 
 describe('library galleries', () => {
+  test('banners and PFPs never appear in either gallery', () => {
+    const extra = [
+      ...items,
+      item('banner26110', 'video', { status: 'pending' }, 9),
+      item('pfp-avatar', 'video', { status: 'pending' }, 10),
+      {
+        ...item('kindfield', 'short', { status: 'pending' }, 11),
+        kind: 'pfp' as const,
+      },
+    ];
+    const titles = (kind: 'covers' | 'thumbnails') =>
+      itemsForGallery(extra, kind).map((i) => i.title);
+    for (const kind of ['covers', 'thumbnails'] as const) {
+      expect(titles(kind)).not.toContain('banner26110');
+      expect(titles(kind)).not.toContain('pfp-avatar');
+      expect(titles(kind)).not.toContain('kindfield');
+    }
+  });
+
   test('covers are the Shorts and thumbnails are everything else, in order', () => {
     expect(itemsForGallery(items, 'covers').map((i) => i.title)).toEqual([
       'd-short',
