@@ -124,6 +124,56 @@ test('a reopened thumbnail can be decided again and a stale reopen conflicts', a
   expect((await patch('reopen', 1)).status).toBe(409);
   expect((await patch('approve', 2)).status).toBe(200);
 });
+test('rejecting then approving over HTTP rejects every other variation atomically', async () => {
+  const [second, third] = ['b'.repeat(64), 'c'.repeat(64)],
+    base = fixture().versions[0]!,
+    item = (await getThumbnailItem(id))!;
+  await saveThumbnailItem(
+    {
+      ...item,
+      revision: item.revision + 1,
+      versions: [
+        ...item.versions,
+        { ...base, assetHash: second, id: second },
+        { ...base, assetHash: third, id: third },
+      ],
+    },
+    item.revision,
+  );
+  const patch = (action: string, revision: number, versionId: string) =>
+    PATCH(
+      new Request('https://show.test', {
+        body: JSON.stringify({
+          action,
+          reason: 'Too busy',
+          revision,
+          versionId,
+        }),
+        headers: { 'Content-Type': 'application/json' },
+        method: 'PATCH',
+      }),
+      context,
+    );
+  expect((await patch('reject', 1, second)).status).toBe(200);
+  const rejected = (await getThumbnailItem(id))!;
+  expect(rejected.versions[1]?.review.status).toBe('rejected');
+  expect((await patch('approve', 2, second)).status).toBe(409);
+  expect((await patch('approve', 2, third)).status).toBe(200);
+  const locked = (await getThumbnailItem(id))!;
+  expect(locked.currentVersionId).toBe(third);
+  expect(locked.versions.map((v) => v.review.status)).toEqual([
+    'rejected',
+    'rejected',
+    'approved',
+  ]);
+  // Rejected variations stay out of the exchange format.
+  const exported = await (await exportReview()).json();
+  expect(JSON.stringify(exported)).not.toContain('rejected');
+  expect((await patch('reopen', 3, hash)).status).toBe(200);
+  expect((await getThumbnailItem(id))!.versions[0]?.review.status).toBe(
+    'pending',
+  );
+});
 test('a title edit survives approval, keeps the review and refuses stale or bad input', async () => {
   const request = (body: unknown) =>
     new Request('https://show.test', {

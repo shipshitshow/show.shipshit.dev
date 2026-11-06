@@ -22,6 +22,7 @@ const REVIEW_LABELS: Record<ReviewFilter, string> = {
   all: 'All',
   approved: 'Approved',
   pending: 'To review',
+  rejected: 'Rejected',
   revise: 'Revision queued',
 };
 const FORMAT_LABELS: Record<ThumbnailItem['format'], string> = {

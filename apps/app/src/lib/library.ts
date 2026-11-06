@@ -28,7 +28,12 @@ export const LIBRARY_SECTIONS = [
   },
 ] as const;
 export type GalleryKind = 'thumbnails' | 'covers';
-export type ReviewFilter = 'all' | 'approved' | 'pending' | 'revise';
+export type ReviewFilter =
+  | 'all'
+  | 'approved'
+  | 'pending'
+  | 'rejected'
+  | 'revise';
 export type ReviewCounts = Record<ReviewFilter, number>;
 
 // Covers are the same catalogue as thumbnails, narrowed to Shorts: one store,
@@ -51,6 +56,7 @@ export function reviewCounts(items: readonly ThumbnailItem[]): ReviewCounts {
     all: items.length,
     approved: 0,
     pending: 0,
+    rejected: 0,
     revise: 0,
   };
   for (const item of items) counts[reviewStatus(item)] += 1;
