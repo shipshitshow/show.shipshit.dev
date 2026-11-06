@@ -1,12 +1,12 @@
 'use client';
 import { cn } from '@shipshitshow/ui';
-import { Ellipsis, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
+import { Ellipsis } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { AppAccountButton } from '@/components/AppAccountButton';
-import { BrandMark } from '@/components/BrandMark';
 import { useSidebarState } from '@/components/livestreams/SidebarStateContext';
+import { RailLogo } from '@/components/RailLogo';
 import { getProductionApp, PRODUCTION_APPS } from '@/lib/app-navigation';
 
 export function AppRail({ onNavigate }: { onNavigate?: () => void }) {
@@ -42,21 +42,10 @@ export function AppRail({ onNavigate }: { onNavigate?: () => void }) {
       aria-label="Production apps"
       className="flex w-[52px] shrink-0 flex-col items-center gap-2 bg-surface py-3"
     >
-      <Link
-        href="/"
-        aria-label="Ship Sh*t Show home"
-        className="mb-2 flex size-9 items-center justify-center text-accent-red"
-      >
-        <BrandMark size={26} />
-      </Link>
-      <button
-        type="button"
-        onClick={toggle}
-        aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-        className="mb-4 hidden size-8 items-center justify-center rounded-lg text-text-secondary hover:bg-surface-elevated md:flex"
-      >
-        {collapsed ? <PanelLeftOpen size={16} /> : <PanelLeftClose size={16} />}
-      </button>
+      <RailLogo
+        collapsed={collapsed}
+        onToggle={onNavigate ? undefined : toggle}
+      />
       {PRODUCTION_APPS.filter((app) => app.group === 'daily').map((app) => (
         <Link
           key={app.id}
