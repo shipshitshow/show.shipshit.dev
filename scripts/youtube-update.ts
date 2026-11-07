@@ -24,10 +24,12 @@
  *   bun run youtube:update --thumbnail-dir editing/outputs/shorts-covers
  *   bun run youtube:update --thumbnail-dir <dir> --id <a,b> --channel clips --apply
  *
- * --thumbnail-dir takes the video id from each cover's filename
- * (YYYY-MM-DD-<videoId>-<slug>.png), converts the cover to a JPEG of up to
- * 2 MB (quality 92 first) in the snapshot folder's cover-jpegs/, and sends it
- * as the thumbnail. The dry run prints the file-to-video table and what it
+ * --thumbnail-dir (read without its subfolders) takes the video id from each
+ * cover's filename: YYYY-MM-DD-<videoId>-<slug>.png, or the central cover
+ * folder's <videoId>.jpg, <videoId> <label>.jpg and <videoId> <label>.png.
+ * A JPEG of up to 2 MB is sent as it is; anything else is converted to a JPEG
+ * of up to 2 MB (quality 92 first) in the snapshot folder's cover-jpegs/. A
+ * .jpg and .png of the same name count as one cover (the JPEG is used). The dry run prints the file-to-video table and what it
  * finds on YouTube. Before --apply replaces a thumbnail it saves the live one
  * to thumbnail-backups/<timestamp>/<id>.jpg in the snapshot folder; if that
  * fails the video is left alone. A video YouTube is still processing is
