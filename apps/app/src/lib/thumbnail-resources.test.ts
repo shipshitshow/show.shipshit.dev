@@ -1,10 +1,13 @@
-import { afterEach, beforeEach, expect, test } from 'bun:test';
+import { afterEach, beforeEach, describe, expect, test } from 'bun:test';
 import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
+import { type RedisLike, setRedisClientForTests } from './redis-storage';
 import {
+  isPublishedResource,
   isResourceFile,
   labelFromFile,
+  publishedResourceUrl,
   safeSource,
   sniffImage,
 } from './thumbnail-resources';
@@ -142,4 +145,73 @@ test('reading refuses traversal', async () => {
   await expect(readThumbnailResource('logos', '../x.png')).rejects.toThrow(
     'Invalid resource',
   );
+});
+
+describe('published resources (production manifest)', () => {
+  const hash = 'a'.repeat(64);
+  test('accepts a CDN entry and builds its URL', () => {
+    expect(
+      isPublishedResource({
+        category: 'people',
+        ext: 'jpg',
+        hash,
+        label: 'Sam Altman',
+      }),
+    ).toBe(true);
+    expect(publishedResourceUrl(hash, 'png')).toBe(
+      `https://cdn.shipshit.dev/shipshitshow/resources/${hash}.png`,
+    );
+  });
+  test('refuses a bad hash, extension, category or source', () => {
+    for (const entry of [
+      { category: 'people', ext: 'jpg', hash: 'abc', label: 'x' },
+      { category: 'people', ext: 'gif', hash, label: 'x' },
+      { category: 'hosts', ext: 'jpg', hash, label: 'x' },
+      {
+        category: 'logos',
+        ext: 'svg',
+        hash,
+        label: 'x',
+        source: 'javascript:alert(1)',
+      },
+    ])
+      expect(isPublishedResource(entry)).toBe(false);
+  });
+});
+
+test('production lists the CDN manifest from Redis, never the local folder', async () => {
+  const hash = 'b'.repeat(64);
+  const saved = { ...process.env };
+  process.env.VERCEL = '1';
+  process.env.VERCEL_ENV = 'production';
+  process.env.KV_REST_API_URL = 'https://kv.test';
+  process.env.KV_REST_API_TOKEN = 'token';
+  const store: Record<string, unknown> = {
+    'sss:production:v1:thumbnail-resources': [
+      { category: 'logos', ext: 'svg', hash, label: 'Anthropic' },
+      { category: 'logos', ext: 'exe', hash, label: 'Bad' },
+    ],
+  };
+  setRedisClientForTests({
+    get: async (key: string) => store[key] ?? null,
+  } as unknown as RedisLike);
+  try {
+    expect(await listThumbnailResources()).toEqual([
+      {
+        category: 'logos',
+        label: 'Anthropic',
+        url: publishedResourceUrl(hash, 'svg'),
+      },
+    ]);
+  } finally {
+    setRedisClientForTests(null);
+    for (const key of [
+      'VERCEL',
+      'VERCEL_ENV',
+      'KV_REST_API_URL',
+      'KV_REST_API_TOKEN',
+    ])
+      if (saved[key] === undefined) delete process.env[key];
+      else process.env[key] = saved[key];
+  }
 });

@@ -59,6 +59,7 @@
     "test": "bun test src",
     "thumbnail-lab:import": "bun src/cli/thumbnail-lab-import.ts",
     "thumbnail-lab:sync-live": "bun src/cli/thumbnail-lab-sync-live.ts",
+    "thumbnail-resources:push": "bun src/cli/thumbnail-resources-push.ts",
     "thumbnail:stamp": "bun src/cli/thumbnail-stamp.ts"
   },
   "version": "0.1.0"

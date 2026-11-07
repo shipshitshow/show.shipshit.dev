@@ -19,7 +19,7 @@ Order the show by the decision the viewer needs to make. Put the main proof earl
 
 If a demo is requested, verify quota/account, fixture, expected result and a short recovery path. Prepare an authorized recorded/local fallback when live usage is unreliable. Mark the slot unavailable if neither exists; do not promise it or purchase capacity silently.
 
-Use [the source-board template](references/output-template.md). Return short cues and navigable links, not an opening monologue, quotes to perform, mandatory clip lines or a forced publishable build. An opening cue states the viewer promise in the host's words. An exit cue helps move on without scripting a conclusion the evidence does not support.
+Use [the source-board template](references/output-template.md). Return terse talking points (2–5 bullets of under 12 words per segment, no full sentences, no stage directions; budgets, exits and on-screen notes go under Producer notes), an `announcement_tweet` and navigable links, not an opening monologue, quotes to perform, mandatory clip lines or a forced publishable build. An opening cue states the viewer promise in the host's words. An exit cue helps move on without scripting a conclusion the evidence does not support.
 
 For an app topic file, preserve its frontmatter and use `## Sources — <segment>` with `###` subheadings. Confirm the target renderer's section rules; avoid nesting `##` inside a segment. Use a separate complete run-of-show note when the app stores one file per topic.
 

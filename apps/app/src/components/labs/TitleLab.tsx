@@ -1,6 +1,7 @@
 'use client';
 import { Download, Search } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { FilterSelect } from '@/components/FilterSelect';
 import {
   hasLiveTag,
   isDrafts,
@@ -227,16 +228,15 @@ export function TitleLab() {
         {drafted} drafted
       </p>
       <div className="mt-5 flex flex-wrap items-center gap-2">
-        {FILTERS.map((option) => (
-          <button
-            className={`rounded-full border px-3 py-1 text-xs ${filter === option.id ? 'border-accent-red text-accent-red' : 'border-surface-border text-text-muted'}`}
-            key={option.id}
-            onClick={() => setFilter(option.id)}
-            type="button"
-          >
-            {option.label}
-          </button>
-        ))}
+        <FilterSelect
+          label="Filter titles"
+          value={filter}
+          onChange={setFilter}
+          options={FILTERS.map((option) => ({
+            label: option.label,
+            value: option.id,
+          }))}
+        />
         <label className="ml-auto flex items-center gap-2 rounded-lg border border-surface-border px-3 py-1.5 text-sm">
           <Search size={14} />
           <input

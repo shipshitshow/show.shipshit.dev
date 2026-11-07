@@ -217,3 +217,98 @@ export function getStreamPromptSections(
     }),
   );
 }
+
+/** Sub-sections that hold sources, not things to say: they go to Resources. */
+const REFERENCE_SUBSECTION =
+  /evidence|on screen|how to read|sources?\b|references?|what the docs say|open these|planned short|links?\b|producer notes?/i;
+
+/**
+ * Bullets that tell the host what to do rather than what to say: timing,
+ * transitions, screen actions and guardrails (Vincent, 6 Nov: "don't tell
+ * me what to do during the live").
+ */
+const STAGE_DIRECTION =
+  /^(budget\b|exit\b|avoid\b|do not\b|don't\b|never\b|open (the|on|with|a)\b|use (the|it|this|only)\b|treat (this|it)\b|keep (it|the|each|this)\b|viewer payoff\b|start with\b|return to\b|read (the|this|it)\b|show (the|it|only|a)\b|cut to\b|transition\b|share the\b|brief subscribe\b|chat:|how to use\b|guardrails?:|disclose\b|say it\b|frame (it|as)\b|end on\b|close on\b)/i;
+
+const MARKDOWN_LINK = /\[([^\]]+)\]\([^)]+\)/g;
+
+/** The first sentence, so a bullet reads at a glance. */
+function firstSentence(text: string): string {
+  const match = text.match(/^(.+?[.?!]["”')]?)(\s|$)/);
+  return (match ? match[1] : text).trim();
+}
+
+/** One bullet as a short point: the bold lead and its first sentence. */
+function toPoint(line: string): string | null {
+  const text = line
+    .replace(/^\s*(?:[-*]|\d+\.)\s+/, '')
+    .replace(MARKDOWN_LINK, '$1')
+    .replace(
+      /^(?:\*\*)?(?:opening |host )?question(?: for us)?:(?:\*\*)?\s*/i,
+      '',
+    )
+    .trim();
+  const plain = text.replace(/\*\*/g, '');
+  if (!plain || STAGE_DIRECTION.test(plain)) return null;
+  const lead = text.match(/^\*\*(.+?)\*\*\s*(.*)$/);
+  if (lead) {
+    const [, head, rest] = lead;
+    const label = head.replace(/[:.]\s*$/, '');
+    return rest ? `**${label}:** ${firstSentence(rest)}` : `**${label}**`;
+  }
+  const sentence = firstSentence(text);
+  return sentence.charAt(0).toUpperCase() + sentence.slice(1);
+}
+
+export interface TalkingPointSegment {
+  eyebrow: string | null;
+  points: string[];
+  title: string;
+}
+
+/**
+ * Each segment as a headline and short bullets: only list items, never
+ * prose paragraphs, sources or stage directions, one sentence each.
+ */
+export function getTalkingPoints(
+  cards: LivestreamCard[],
+): TalkingPointSegment[] {
+  return getStreamSegmentSections(cards).map((segment) => ({
+    eyebrow: segment.eyebrow,
+    points: parseSubSections(segment.body)
+      .filter((sub) => !REFERENCE_SUBSECTION.test(sub.title))
+      .flatMap((sub) =>
+        sub.body
+          .split('\n')
+          .filter((line) => /^\s*(?:[-*]|\d+\.)\s+/.test(line))
+          .map(toPoint)
+          .filter((point): point is string => point !== null),
+      ),
+    title: segment.title,
+  }));
+}
+
+export interface ResourceLink {
+  label: string;
+  url: string;
+}
+
+/**
+ * Every link in the prep file, once, in reading order: the Resources page
+ * is links only (Vincent, 6 Nov). Studio links stay out.
+ */
+export function getResourceLinks(cards: LivestreamCard[]): ResourceLink[] {
+  const seen = new Set<string>();
+  const links: ResourceLink[] = [];
+  for (const card of cards) {
+    for (const match of card.topic.content.matchAll(
+      /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)|(?<![(\w])(https?:\/\/[^\s)>\]]+)/g,
+    )) {
+      const url = (match[2] ?? match[3] ?? '').replace(/[.,;:]+$/, '');
+      if (!url || seen.has(url) || STUDIO_LINK.test(url)) continue;
+      seen.add(url);
+      links.push({ label: match[1]?.trim() || url, url });
+    }
+  }
+  return links;
+}

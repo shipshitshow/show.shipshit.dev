@@ -2,6 +2,7 @@
 
 import { ExternalLink, ImagePlus } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { FilterSelect } from '@/components/FilterSelect';
 import { LibraryHeader } from '@/components/library/LibraryHeader';
 import {
   RESOURCE_CATEGORIES,
@@ -10,29 +11,14 @@ import {
   type ThumbnailResource,
 } from '@/lib/thumbnail-resources';
 
-const SECTIONS: Record<ResourceCategory, { blurb: string; title: string }> = {
-  brand: {
-    blurb: 'The asterisk stamps and show artwork. Hosts stay off thumbnails.',
-    title: 'Branding',
-  },
-  logos: {
-    blurb: 'Official marks, passed in as inputs so the shapes stay exact.',
-    title: 'Logos',
-  },
-  people: {
-    blurb:
-      "Reference photos for people the model won't get right from a name alone.",
-    title: 'People',
-  },
-  products: {
-    blurb: 'Official product shots and mascots.',
-    title: 'Products',
-  },
-  style: {
-    blurb: 'Past work for camera, light and finish only, never to copy.',
-    title: 'Style references',
-  },
+const TITLES: Record<ResourceCategory, string> = {
+  brand: 'Branding',
+  logos: 'Logos',
+  people: 'People',
+  products: 'Products',
+  style: 'Style references',
 };
+type Filter = 'all' | ResourceCategory;
 const button =
   'inline-flex items-center gap-2 rounded-lg border border-surface-border px-3 py-1.5 text-xs font-medium transition-colors hover:border-accent-red/50 disabled:opacity-50';
 
@@ -40,28 +26,34 @@ async function responseError(response: Response) {
   const body = await response.json().catch(() => null);
   return body?.error ?? 'The request failed.';
 }
-function ResourceTile({ resource }: { resource: ThumbnailResource }) {
+function ResourceTile({
+  resource,
+  showCategory,
+}: {
+  resource: ThumbnailResource;
+  showCategory: boolean;
+}) {
   return (
-    <figure className="m-0">
+    <figure className="m-0 mb-3 break-inside-avoid overflow-hidden rounded-lg border border-surface-border bg-surface-card">
       {resource.url ? (
         <img
           alt={resource.label}
-          className="aspect-video w-full rounded-lg bg-neutral-500 object-contain outline outline-1 -outline-offset-1 outline-white/10"
+          className="block h-auto w-full bg-neutral-500 object-contain"
           loading="lazy"
           src={resource.url}
         />
       ) : (
-        <div className="flex aspect-video w-full items-center justify-center rounded-lg border border-dashed border-surface-border text-[10px] uppercase tracking-wider text-text-muted">
+        <div className="flex aspect-video w-full items-center justify-center border-b border-dashed border-surface-border text-[10px] uppercase tracking-wider text-text-muted">
           Missing
         </div>
       )}
-      <figcaption className="mt-2 text-xs">
+      <figcaption className="px-3 py-2 text-xs">
         <span className="flex items-center gap-1 font-medium">
-          {resource.label}
+          <span className="min-w-0 truncate">{resource.label}</span>
           {resource.source ? (
             <a
               aria-label={'Source for ' + resource.label}
-              className="text-text-muted hover:text-text-primary"
+              className="shrink-0 text-text-muted hover:text-text-primary"
               href={resource.source}
               rel="noreferrer"
               target="_blank"
@@ -70,6 +62,11 @@ function ResourceTile({ resource }: { resource: ThumbnailResource }) {
             </a>
           ) : null}
         </span>
+        {showCategory ? (
+          <span className="mt-0.5 block text-[10px] uppercase tracking-wider text-text-muted">
+            {TITLES[resource.category]}
+          </span>
+        ) : null}
         {resource.note ? (
           <span className="mt-1 block text-[11px] leading-4 text-text-muted">
             {resource.note}
@@ -77,70 +74,6 @@ function ResourceTile({ resource }: { resource: ThumbnailResource }) {
         ) : null}
       </figcaption>
     </figure>
-  );
-}
-function ResourceSection({
-  busy,
-  category,
-  onAdd,
-  resources,
-  writable,
-}: {
-  busy: boolean;
-  category: ResourceCategory;
-  onAdd: (category: ResourceCategory, files: File[]) => void;
-  resources: ThumbnailResource[];
-  writable: boolean;
-}) {
-  const input = useRef<HTMLInputElement>(null);
-  const { blurb, title } = SECTIONS[category];
-  return (
-    <section className="mt-8 rounded-xl border border-surface-border p-4 md:p-5">
-      <div className="flex flex-wrap items-start justify-between gap-3">
-        <div>
-          <h2 className="text-base font-semibold">
-            {title}
-            <span className="ml-2 text-xs font-normal text-text-muted">
-              {resources.length}
-            </span>
-          </h2>
-          <p className="mt-1 text-xs text-text-muted">{blurb}</p>
-        </div>
-        {writable ? (
-          <>
-            <input
-              accept="image/png,image/jpeg,image/webp"
-              aria-label={'Add to ' + title}
-              className="hidden"
-              multiple
-              onChange={(event) => {
-                onAdd(category, Array.from(event.target.files ?? []));
-                event.target.value = '';
-              }}
-              ref={input}
-              type="file"
-            />
-            <button
-              className={button}
-              disabled={busy}
-              onClick={() => input.current?.click()}
-              type="button"
-            >
-              <ImagePlus size={14} />
-              Add
-            </button>
-          </>
-        ) : null}
-      </div>
-      <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-        {resources.map((resource) => (
-          <ResourceTile
-            key={resource.file ?? resource.label}
-            resource={resource}
-          />
-        ))}
-      </div>
-    </section>
   );
 }
 export function ThumbnailResources() {
@@ -189,37 +122,84 @@ export function ThumbnailResources() {
     },
     [load],
   );
+  const [filter, setFilter] = useState<Filter>('all');
+  const input = useRef<HTMLInputElement>(null);
+  const shown =
+    resources?.filter(
+      (resource) => filter === 'all' || resource.category === filter,
+    ) ?? [];
+  const count = (category: Filter) =>
+    resources?.filter(
+      (resource) => category === 'all' || resource.category === category,
+    ).length ?? 0;
+  const options = (['all', ...RESOURCE_CATEGORIES] as Filter[]).map(
+    (value) => ({
+      label: `${value === 'all' ? 'All assets' : TITLES[value]} · ${count(value)}`,
+      value,
+    }),
+  );
   return (
     <main className="mx-auto max-w-[1800px] px-4 py-6 md:px-7">
       <LibraryHeader title="Assets" />
-      {writable ? null : (
-        <p className="mt-4 text-sm text-text-muted">
-          Assets live on the local lab, so this deployment shows only what the
-          manifest lists. Add and review them from a local run.
-        </p>
-      )}
+      <div className="mt-6 flex flex-wrap items-center gap-2">
+        <FilterSelect
+          label="Category"
+          onChange={setFilter}
+          options={options}
+          value={filter}
+        />
+        {writable && filter !== 'all' ? (
+          <>
+            <input
+              accept="image/png,image/jpeg,image/webp"
+              aria-label={'Add to ' + TITLES[filter]}
+              className="hidden"
+              multiple
+              onChange={(event) => {
+                add(filter, Array.from(event.target.files ?? []));
+                event.target.value = '';
+              }}
+              ref={input}
+              type="file"
+            />
+            <button
+              className={button}
+              disabled={busy}
+              onClick={() => input.current?.click()}
+              type="button"
+            >
+              <ImagePlus size={14} />
+              Add to {TITLES[filter]}
+            </button>
+          </>
+        ) : null}
+      </div>
       {error ? (
         <p className="mt-4 text-sm text-accent-red" role="alert">
           {error}
         </p>
       ) : null}
       {resources === null && !error ? (
-        <p className="mt-8 text-sm text-text-muted">Loading resources…</p>
+        <p className="mt-8 text-sm text-text-muted">Loading assets…</p>
       ) : null}
-      {resources
-        ? RESOURCE_CATEGORIES.map((category) => (
-            <ResourceSection
-              busy={busy}
-              category={category}
-              key={category}
-              onAdd={add}
-              writable={writable}
-              resources={resources.filter(
-                (resource) => resource.category === category,
-              )}
+      {resources && shown.length === 0 ? (
+        <p className="mt-8 text-sm text-text-muted">
+          {writable
+            ? 'No assets here yet. Pick a category to add some.'
+            : 'No assets on production yet. Push them from the lab with bun run thumbnail-resources:push.'}
+        </p>
+      ) : null}
+      {shown.length > 0 ? (
+        <div className="mt-4 columns-2 gap-3 sm:columns-3 lg:columns-4 xl:columns-6">
+          {shown.map((resource) => (
+            <ResourceTile
+              key={`${resource.category}/${resource.file ?? resource.url ?? resource.label}`}
+              resource={resource}
+              showCategory={filter === 'all'}
             />
-          ))
-        : null}
+          ))}
+        </div>
+      ) : null}
     </main>
   );
 }

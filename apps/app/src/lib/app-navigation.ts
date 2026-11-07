@@ -62,6 +62,20 @@ export const PRODUCTION_APPS = [
   },
 ] as const;
 
+/** The pages of one livestream, nested under it in the Content sidebar. */
+export const EPISODE_PAGES = [
+  { label: 'Talking points', tab: 'talking-points' },
+  { label: 'Resources', tab: 'resources' },
+  { label: 'Posts', tab: 'posts' },
+  { label: 'Transcript', tab: 'transcript' },
+] as const;
+
+/** The livestream a path is about, from /content/livestreams/<slug>/... */
+export function episodeSlugFromPath(pathname: string): string | null {
+  const match = pathname.match(/^\/content\/livestreams\/([^/]+)/);
+  return match ? decodeURIComponent(match[1]) : null;
+}
+
 /** Page route of one livestream's prep tab. */
 export function livestreamPath(slug: string, tab?: string): string {
   const base = `/content/livestreams/${encodeURIComponent(slug)}`;
@@ -88,12 +102,11 @@ export function getProductionPageLabel(pathname: string): string {
   if (pathname.endsWith('/draw')) return 'Drawing board';
   if (pathname.startsWith('/content/livestreams/')) {
     const tabs: Record<string, string> = {
-      distribution: 'Distribution',
+      posts: 'Posts',
       resources: 'Resources',
       'talking-points': 'Talking points',
       transcript: 'Transcript',
       tweets: 'Tweets',
-      'x-posts': 'X posts',
     };
     return tabs[pathname.split('/').at(-1) ?? ''] ?? 'Livestream';
   }

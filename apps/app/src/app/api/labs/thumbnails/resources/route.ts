@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { requireProducer } from '@/lib/producer-auth';
+import { getProducerStorageBackend } from '@/lib/producer-storage';
 import { thumbnailError, thumbnailHeaders } from '@/lib/thumbnail-lab-http';
 import { RESOURCE_MAX_BYTES } from '@/lib/thumbnail-resources';
 import {
@@ -14,7 +15,7 @@ export async function GET() {
     return NextResponse.json(
       {
         resources: await listThumbnailResources(),
-        writable: !process.env.VERCEL,
+        writable: getProducerStorageBackend() === 'filesystem',
       },
       { headers: thumbnailHeaders },
     );

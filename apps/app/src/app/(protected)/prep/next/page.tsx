@@ -13,8 +13,7 @@ export const metadata: Metadata = { title: 'Next show - Ship Sh*t Show' };
 const PREP_TABS = [
   { label: 'Talking points', tab: 'talking-points' },
   { label: 'Resources', tab: 'resources' },
-  { label: 'X posts', tab: 'x-posts' },
-  { label: 'Distribution', tab: 'distribution' },
+  { label: 'Posts', tab: 'posts' },
 ];
 
 const STATUS: Record<TopicStatus, { dot: string; label: string }> = {
