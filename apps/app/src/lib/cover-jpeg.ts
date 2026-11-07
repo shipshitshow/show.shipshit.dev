@@ -18,7 +18,7 @@ export async function encodeCoverJpeg(
 ) {
   for (const quality of QUALITIES) {
     const buffer = await sharp(input)
-      .flatten({ background: '#000000' })
+      .flatten({ background: { b: 0, g: 0, r: 0 } })
       .jpeg({ mozjpeg: true, quality })
       .toBuffer();
     if (buffer.length <= maxBytes) return { buffer, quality };
