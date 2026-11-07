@@ -14,6 +14,7 @@
  *   bun scripts/refresh-youtube-inventory.ts --write    # persist inventory
  *   bun scripts/refresh-youtube-inventory.ts --write --transcripts  # + yt-dlp backfill
  *   bun scripts/refresh-youtube-inventory.ts --oauth    # read with the channel's OAuth token
+ *   bun scripts/refresh-youtube-inventory.ts --include=ID1,ID2  # also add these older uploads
  *
  * --oauth is for machines whose IP the API key refuses (the key is
  * IP-restricted): it reads with the same OAuth token as `youtube:sync` instead
@@ -40,6 +41,12 @@ const args = new Set(process.argv.slice(2));
 const WRITE = args.has('--write');
 const DO_TRANSCRIPTS = args.has('--transcripts');
 const USE_OAUTH = args.has('--oauth');
+/** --include=id1,id2: also add these older uploads, which the additive merge would skip. */
+const INCLUDE_IDS = new Set(
+  (process.argv.find((a) => a.startsWith('--include='))?.slice(10) ?? '')
+    .split(',')
+    .filter(Boolean),
+);
 
 /** An API key (public data) or an OAuth access token (the channel owner). */
 type Auth = { key: string } | { token: string };
@@ -271,7 +278,7 @@ function mergeItems(
         rawTranscriptPath: prior.rawTranscriptPath,
         transcriptStatus: prior.transcriptStatus,
       });
-    } else if (item.publishedAt > newestExisting) {
+    } else if (item.publishedAt > newestExisting || INCLUDE_IDS.has(item.id)) {
       byId.set(item.id, item);
       added.push(item);
     }
@@ -308,10 +315,15 @@ function vttToClean(vtt: string): string {
   return `${lines.join('\n')}\n`;
 }
 
-function backfillTranscripts(items: InventoryItem[]): number {
-  let updated = 0;
-  const targets = items.filter((it) => it.transcriptStatus === 'missing');
-  for (const item of targets) {
+/**
+ * Download the video's original-language auto captions. The translated "en"
+ * track is rate-limited (HTTP 429) far more aggressively than "en-orig", so
+ * ask for the original first and only fall back to "en" when it is absent.
+ * The result is normalised to the repo's <id>-<title>.en.vtt naming.
+ */
+function downloadCaptions(item: InventoryItem): void {
+  let lastError: unknown;
+  for (const lang of ['en-orig', 'en']) {
     try {
       execFileSync(
         'yt-dlp',
@@ -319,17 +331,44 @@ function backfillTranscripts(items: InventoryItem[]): number {
           '--skip-download',
           '--write-auto-subs',
           '--sub-lang',
-          'en',
+          lang,
           '--sub-format',
           'vtt',
           '--convert-subs',
           'vtt',
+          '--sleep-subtitles',
+          '3',
           '-o',
           path.join(TRANSCRIPTS_DIR, '%(id)s-%(title)s.%(ext)s'),
           item.url,
         ],
         { stdio: ['ignore', 'ignore', 'inherit'] },
       );
+    } catch (error) {
+      lastError = error;
+      continue;
+    }
+    const orig = fs
+      .readdirSync(TRANSCRIPTS_DIR)
+      .find((f) => f.startsWith(`${item.id}-`) && f.endsWith('.en-orig.vtt'));
+    if (orig) {
+      fs.renameSync(
+        path.join(TRANSCRIPTS_DIR, orig),
+        path.join(TRANSCRIPTS_DIR, orig.replace(/\.en-orig\.vtt$/, '.en.vtt')),
+      );
+      return;
+    }
+    if (lang === 'en') return;
+  }
+  throw lastError ?? new Error('no captions');
+}
+
+function backfillTranscripts(items: InventoryItem[]): number {
+  let updated = 0;
+  const targets = items.filter((it) => it.transcriptStatus === 'missing');
+  for (const item of targets) {
+    try {
+      downloadCaptions(item);
     } catch {
       console.warn(`  yt-dlp failed for ${item.id} — leaving as missing`);
       continue;
