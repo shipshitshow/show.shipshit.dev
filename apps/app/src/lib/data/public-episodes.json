@@ -5,19 +5,19 @@
       "format": "video",
       "id": "WOTzkAWvb0w",
       "publishedAt": "2026-10-01",
-      "title": "Sonnet 5.5 vs Opus 5.5: Why Anthropic Won"
+      "title": "Opus 5.5: Anthropic Won"
     },
     {
       "format": "livestream",
       "id": "uSuqoiEaB1k",
       "publishedAt": "2026-09-30",
-      "title": "Opus/Sonnet 5.5 vs GPT-6 Sol/Luna vs Grok 4.7: What To Use?"
+      "title": "Opus vs GPT-6 Sol vs Grok 4.7"
     },
     {
       "format": "video",
       "id": "r6o5wFD4P-w",
       "publishedAt": "2026-09-10",
-      "title": "GPT Astra: How Do We Make Money Post-AGI?"
+      "title": "GPT Astra: How To Make Money Post-AGI"
     },
     {
       "format": "livestream",
@@ -29,7 +29,7 @@
       "format": "video",
       "id": "1ZbR2qie8rk",
       "publishedAt": "2026-09-02",
-      "title": "pstack: How The SpaceX Team Actually Runs Grok Bot"
+      "title": "pstack: How Lauren (poteto) Uses Grok Bot"
     },
     {
       "format": "livestream",
@@ -41,7 +41,7 @@
       "format": "video",
       "id": "mz5xo-QX1VM",
       "publishedAt": "2026-08-28",
-      "title": "Stop Paying for AI Models. Free Ones Are Good Enough"
+      "title": "Stop Paying for AI Models"
     },
     {
       "format": "livestream",
@@ -53,7 +53,7 @@
       "format": "video",
       "id": "zyQEwa5IYvk",
       "publishedAt": "2026-08-19",
-      "title": "I Gave Grok Bot One Job: Find Me Customers While I Sleep"
+      "title": "Grok Bot Finds Me Customers While I Sleep"
     },
     {
       "format": "video",
@@ -65,19 +65,19 @@
       "format": "video",
       "id": "BTb9O0Th8qs",
       "publishedAt": "2026-06-12T15:00:07Z",
-      "title": "Claude Fable 5: We Built an AI-Native Game Studio"
+      "title": "Fable 5: We Built an AI-Native Game Studio"
     },
     {
       "format": "video",
       "id": "49IkgeGr1kE",
       "publishedAt": "2026-06-04T03:00:02Z",
-      "title": "Opus 4.8: We Built a Browser FPS in 45 Minutes With One Prompt"
+      "title": "Opus 4.8: We Built a Browser FPS With One Prompt"
     },
     {
       "format": "video",
       "id": "bc6WbJJNWPU",
       "publishedAt": "2026-06-01T00:00:40Z",
-      "title": "Cursor Wins: Is Composer 2.5 The New King?"
+      "title": "Composer 2.5 is The New King"
     },
     {
       "format": "video",
@@ -89,79 +89,79 @@
       "format": "livestream",
       "id": "VEzRyG-jZys",
       "publishedAt": "2026-05-01T23:00:06Z",
-      "title": "GPT-5.5 vs Claude Opus 4.7: Use Both!"
+      "title": "GPT-5.5 vs Claude Opus 4.7"
     },
     {
       "format": "livestream",
       "id": "z7N1z4XtYZY",
       "publishedAt": "2026-04-29T01:08:26Z",
-      "title": "[LIVE] GPT 5.5 vs Opus 4.7: We Pushed Both to Their Limit."
+      "title": "GPT 5.5 vs Opus 4.7"
     },
     {
       "format": "livestream",
       "id": "28hDnDaAiTA",
       "publishedAt": "2026-04-22T12:00:06Z",
-      "title": "OpenAI ChatGPT Images 2.0 Is Insanely Good"
+      "title": "OpenAI ChatGPT Images 2.0 Is VERY Good!"
     },
     {
       "format": "livestream",
       "id": "b9Re90K4By8",
       "publishedAt": "2026-04-22",
-      "title": "[LIVE] ChatGPT Images 2.0 Is Insane: Best Prompts, Examples, and Use Cases"
+      "title": "ChatGPT Images 2.0: Best Prompts"
     },
     {
       "format": "livestream",
       "id": "MJp8l5ZBlI4",
       "publishedAt": "2026-04-08T10:12:28Z",
-      "title": "[LIVE] We Need to Talk About Anthropic"
+      "title": "We Need to Talk About Anthropic"
     },
     {
       "format": "livestream",
       "id": "1wSZwDps9Vg",
       "publishedAt": "2026-04-01T10:48:01Z",
-      "title": "[LIVE] Paperclip: We Rebuild Sora in 60 Minutes"
+      "title": "Paperclip: We Rebuild Sora in 60 Minutes"
     },
     {
       "format": "video",
       "id": "gnfJl0YfNHc",
       "publishedAt": "2026-03-26T15:30:34Z",
-      "title": "Claude Code Channels Just Killed OpenClaw."
+      "title": "Claude Code Channels Killed OpenClaw"
     },
     {
       "format": "livestream",
       "id": "EC59_bed_yM",
       "publishedAt": "2026-03-25T11:17:45Z",
-      "title": "[LIVE] Claude Code Channels Killed OpenClaw"
+      "title": "Claude Channels Killed OpenClaw"
     },
     {
       "format": "video",
       "id": "jryNWdxPGmI",
       "publishedAt": "2026-03-18T15:01:20Z",
-      "title": "AI Won't Kill Open Source. It Will Save It"
+      "title": "AI Won't Kill Open Source"
     },
     {
       "format": "video",
       "id": "hobkMV6hKCM",
       "publishedAt": "2026-03-11T19:00:48Z",
-      "title": "GPT 5.4 vs Claude Opus 4.6: It's Not Even Close"
+      "title": "GPT 5.4 vs Claude Opus 4.6"
     },
     {
       "format": "video",
       "id": "WJJZHyhlAuI",
       "publishedAt": "2026-02-25T04:00:25Z",
-      "title": "How to Install OpenClaw Agent Swarm on Discord"
+      "title": "How To Install OpenClaw on Discord"
     },
     {
       "format": "livestream",
       "id": "NiMvki8JqQ4",
       "publishedAt": "2026-02-12T04:00:06Z",
-      "title": "I Built Zendesk in 3 Days. SaaS is Dead."
+      "title": "SaaS is Dead: I Built Zendesk in 3 Days"
     },
     {
       "format": "video",
       "id": "K1nwHfOonDw",
       "publishedAt": "2026-02-04T20:45:00Z",
-      "title": "1 Million AI Agents Built a Social Network. It Was a Disaster"
+      "title": "Moltbook: OpenClaw Agents Built a Social Network"
     }
   ],
   "observedOn": "2026-10-02",
