@@ -101,11 +101,11 @@
         "color": "#E83B3B",
         "height": 120,
         "inset_right": 80,
-        "inset_top": 230,
-        "source": "owner decision 2026-11-05: Shorts cover matches the locked Short video mark",
+        "inset_top": 345,
+        "source": "owner decision 2026-11-07: Shorts cover mark moved down to y345 because the Shorts grid and other surfaces crop the top of the cover; the Short video mark stays at y230",
         "width": 120,
         "x": 880,
-        "y": 230
+        "y": 345
       },
       "video_layout": {
         "captions": {

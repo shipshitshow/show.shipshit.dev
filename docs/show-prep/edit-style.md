@@ -88,8 +88,10 @@ for the next episode instead of re-deriving the layout.
   work files to the Trash; never `rm`.
 
 **Covers**
-- The cover carries the same red asterisk as the Short video, 120 px
-  centred at x940/y290 (vault placement table). Stamp it with
+- The cover carries the same red asterisk as the Short video, 120 px, but
+  lower: centred at x940/y405 (box x880/y345), because the Shorts grid crops
+  the top of the cover (Vincent, 2026-11-07; vault placement table). The
+  video mark stays at y290. Stamp it with
   `bun run thumbnail:stamp --format shorts`.
 - No host faces. The cover style is still open. The AI-art covers (v3) and the
   flat vector covers (v4) were both parked on 5 Nov.

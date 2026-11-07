@@ -346,7 +346,7 @@ export function revisionPrompt(
         (item.format === 'video' ? 'livestream' : 'edited recap') +
         '.',
     (isShort
-      ? 'Do not draw the show asterisk. Keep the area around x940/y290 dark and quiet, and the bottom fifth simple; the app adds the '
+      ? 'Do not draw the show asterisk. Keep the area around x940/y405 dark and quiet, and the bottom fifth simple; the app adds the '
       : 'Do not draw the show asterisk. Leave the upper-right quiet; the app adds the ') +
       (item.format === 'video' ? 'white' : 'red') +
       ' signature at fixed geometry.',

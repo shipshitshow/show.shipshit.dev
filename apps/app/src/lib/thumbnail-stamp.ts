@@ -31,7 +31,13 @@ export function stampPlacement(format: StampFormat) {
 
 export async function stampThumbnail(
   art: Buffer,
-  options: { brandDir?: string; format: StampFormat; kind: StampKind },
+  options: {
+    brandDir?: string;
+    format: StampFormat;
+    kind: StampKind;
+    /** Overrides the vault top-left position of the mark (rare: one-off recovery). */
+    position?: { x: number; y: number };
+  },
 ): Promise<Buffer> {
   const { height, mark, width } = stampPlacement(options.format);
   const image = sharp(art, { limitInputPixels: 40_000_000 }).rotate();
@@ -44,7 +50,9 @@ export async function stampThumbnail(
     );
   const brandDir =
     options.brandDir ?? path.join(import.meta.dir, '../../public/brand');
-  // Shorts covers carry the locked Short video mark: always the red master.
+  // Shorts covers carry the red master, like the Short video. Since 2026-11-07
+  // the cover mark sits lower (y345) than the video mark (y230) because the
+  // Shorts grid crops the top of the cover.
   const kind: StampKind = options.format === 'shorts' ? 'live' : options.kind;
   const svg = await readFile(path.join(brandDir, MASTERS[kind]));
   const signature = await sharp(svg, { density: 300 })
@@ -53,7 +61,13 @@ export async function stampThumbnail(
     .toBuffer();
   return image
     .resize(width, height, { fit: 'cover' })
-    .composite([{ input: signature, left: mark.x, top: mark.y }])
+    .composite([
+      {
+        input: signature,
+        left: options.position?.x ?? mark.x,
+        top: options.position?.y ?? mark.y,
+      },
+    ])
     .png()
     .toBuffer();
 }

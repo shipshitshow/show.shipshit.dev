@@ -623,17 +623,17 @@ test('a Short gets the red 120px star at its own position, in portrait', async (
       .toBuffer()),
   ];
   for (const [left, top] of [
-    [940, 290],
-    [940, 340],
-    [940, 240],
-    [897, 258],
+    [940, 405],
+    [940, 455],
+    [940, 355],
+    [898, 385],
   ] as const) {
     const [r, g, b] = await pixel(left, top);
     expect(Math.abs(r! - 0xe8)).toBeLessThan(5);
     expect(Math.abs(g! - 0x3b)).toBeLessThan(5);
     expect(Math.abs(b! - 0x3b)).toBeLessThan(5);
   }
-  expect(Math.abs((await pixel(964, 220))[0]! - 0x22)).toBeLessThan(5);
+  expect(Math.abs((await pixel(964, 335))[0]! - 0x22)).toBeLessThan(5);
 });
 
 test('each format refuses the other orientation', async () => {
@@ -656,6 +656,6 @@ test('a stored Short is valid and its revision prompt is portrait', () => {
   expect(isThumbnailItem(item)).toBe(true);
   const prompt = revisionPrompt(item, 'Bigger hero.');
   expect(prompt).toContain('9:16 YouTube Shorts cover');
-  expect(prompt).toContain('x940/y290');
+  expect(prompt).toContain('x940/y405');
   expect(prompt).not.toContain('linked');
 });

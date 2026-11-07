@@ -78,8 +78,8 @@ public. Nothing else waits on him.
 2. Stamp the asterisk from the real SVG master at the placement-table spot:
    `bun run thumbnail:stamp --in <art.png> --out <thumb.png> --kind live|video [--format landscape|shorts]`.
    Use `live` (red) for an actual livestream and `video` (white) for the
-   recap. Shorts covers (`--format shorts`) always get the red Short video
-   mark.
+   recap. Shorts covers (`--format shorts`) always get the red mark at
+   x880/y345 (the Short video mark sits higher, at y230).
 3. Review them in Library > Thumbnails (`/library/thumbnails`), checking them at
    real size.
    - **Gate:** Vincent approves.
