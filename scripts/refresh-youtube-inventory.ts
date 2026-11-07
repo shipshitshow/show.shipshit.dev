@@ -308,10 +308,15 @@ function vttToClean(vtt: string): string {
   return `${lines.join('\n')}\n`;
 }
 
-function backfillTranscripts(items: InventoryItem[]): number {
-  let updated = 0;
-  const targets = items.filter((it) => it.transcriptStatus === 'missing');
-  for (const item of targets) {
+/**
+ * Download the video's original-language auto captions. The translated "en"
+ * track is rate-limited (HTTP 429) far more aggressively than "en-orig", so
+ * ask for the original first and only fall back to "en" when it is absent.
+ * The result is normalised to the repo's <id>-<title>.en.vtt naming.
+ */
+function downloadCaptions(item: InventoryItem): void {
+  let lastError: unknown;
+  for (const lang of ['en-orig', 'en']) {
     try {
       execFileSync(
         'yt-dlp',
@@ -319,17 +324,44 @@ function backfillTranscripts(items: InventoryItem[]): number {
           '--skip-download',
           '--write-auto-subs',
           '--sub-lang',
-          'en',
+          lang,
           '--sub-format',
           'vtt',
           '--convert-subs',
           'vtt',
+          '--sleep-subtitles',
+          '3',
           '-o',
           path.join(TRANSCRIPTS_DIR, '%(id)s-%(title)s.%(ext)s'),
           item.url,
         ],
         { stdio: ['ignore', 'ignore', 'inherit'] },
       );
+    } catch (error) {
+      lastError = error;
+      continue;
+    }
+    const orig = fs
+      .readdirSync(TRANSCRIPTS_DIR)
+      .find((f) => f.startsWith(`${item.id}-`) && f.endsWith('.en-orig.vtt'));
+    if (orig) {
+      fs.renameSync(
+        path.join(TRANSCRIPTS_DIR, orig),
+        path.join(TRANSCRIPTS_DIR, orig.replace(/\.en-orig\.vtt$/, '.en.vtt')),
+      );
+      return;
+    }
+    if (lang === 'en') return;
+  }
+  throw lastError ?? new Error('no captions');
+}
+
+function backfillTranscripts(items: InventoryItem[]): number {
+  let updated = 0;
+  const targets = items.filter((it) => it.transcriptStatus === 'missing');
+  for (const item of targets) {
+    try {
+      downloadCaptions(item);
     } catch {
       console.warn(`  yt-dlp failed for ${item.id} — leaving as missing`);
       continue;

@@ -14,16 +14,16 @@
       "duration_seconds_flat": 30,
       "duration_string_flat": "0:30",
       "id": "9QP3Ed6BHVs",
-      "likeCount": 0,
+      "likeCount": 1,
       "privacyStatus": "public",
       "publishedAt": "2026-11-06T07:00:22Z",
-      "rawTranscriptPath": null,
+      "rawTranscriptPath": "apps/app/data/transcripts/shorts/9QP3Ed6BHVs-Your AI Checked the Code, Not the Server Access.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/9QP3Ed6BHVs/maxresdefault.jpg",
-      "title": "Your AI Checked the Code, Not the Server Access",
-      "transcriptStatus": "missing",
+      "title": "Your Agent Forgot the Server Access!",
+      "transcriptStatus": "raw",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=9QP3Ed6BHVs",
-      "viewCount": 12
+      "viewCount": 16
     },
     {
       "actualEndTime": null,
@@ -40,13 +40,13 @@
       "likeCount": 4,
       "privacyStatus": "public",
       "publishedAt": "2026-11-06T05:00:05Z",
-      "rawTranscriptPath": null,
+      "rawTranscriptPath": "apps/app/data/transcripts/shorts/gR_daNttW88-_We Checked Everything_ Doesn't Mean You're Not Hacked.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/gR_daNttW88/maxresdefault.jpg",
-      "title": "\"We Checked Everything\" Doesn't Mean You're Not Hacked",
-      "transcriptStatus": "missing",
+      "title": "We Checked Everything. We Still Got Hacked!",
+      "transcriptStatus": "raw",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=gR_daNttW88",
-      "viewCount": 132
+      "viewCount": 136
     },
     {
       "actualEndTime": null,
@@ -60,16 +60,16 @@
       "duration_seconds_flat": 21,
       "duration_string_flat": "0:21",
       "id": "AEXZ4Q9TeJo",
-      "likeCount": 1,
+      "likeCount": 2,
       "privacyStatus": "public",
       "publishedAt": "2026-11-06T03:00:33Z",
-      "rawTranscriptPath": null,
+      "rawTranscriptPath": "apps/app/data/transcripts/shorts/AEXZ4Q9TeJo-Every Patch Starts a Race With Hackers.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/AEXZ4Q9TeJo/maxresdefault.jpg",
       "title": "Every Patch Starts a Race With Hackers",
-      "transcriptStatus": "missing",
+      "transcriptStatus": "raw",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=AEXZ4Q9TeJo",
-      "viewCount": 199
+      "viewCount": 200
     },
     {
       "actualEndTime": null,
@@ -83,23 +83,23 @@
       "duration_seconds_flat": 22,
       "duration_string_flat": "0:22",
       "id": "lmLaYAEpFDc",
-      "likeCount": 0,
+      "likeCount": 1,
       "privacyStatus": "public",
       "publishedAt": "2026-11-06T01:00:15Z",
-      "rawTranscriptPath": null,
+      "rawTranscriptPath": "apps/app/data/transcripts/shorts/lmLaYAEpFDc-The Server Nobody Dares to Touch.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/lmLaYAEpFDc/maxresdefault.jpg",
       "title": "The Server Nobody Dares to Touch",
-      "transcriptStatus": "missing",
+      "transcriptStatus": "raw",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=lmLaYAEpFDc",
-      "viewCount": 23
+      "viewCount": 29
     },
     {
       "actualEndTime": null,
       "actualStartTime": null,
       "channelId": "UCxuriP32znodU-8N7zkwuew",
       "channelTitle": "Ship Sh*t Show",
-      "cleanTranscriptPath": null,
+      "cleanTranscriptPath": "apps/app/data/transcripts/clean/2026-11-05-video-your-saas-will-get-hacked-do-this-now.txt",
       "commentCount": 1,
       "description": "Hackers now use AI to find and exploit known bugs faster than most teams can patch them. \n\nOld servers nobody dares to touch, API keys that never expire, backups in the building next door: that is how a small business ends up on a black ransom screen. \n\nMitchell explains why attackers wait weeks after the break-in before they strike, walks through how he locked down and patched his customers' sites, and we finish with the basics any business or SaaS can do this week.\n\nIs the server nobody dares to touch your biggest risk?\n\n0:00 Intro\n0:59 AI finds old bugs in minutes\n2:15 The server nobody dares to touch\n2:41 Backdoor first, ransom later\n4:37 How Mitchell patched his customers' sites\n7:01 What to do now: the checklist\n8:47 Hire someone who knows IT\n9:11 Outro\n\nSources we opened on the stream:\n- PHP security notices, 21 and 23 October: https://www.php.net/archive/2026.php\n- Security timeline: https://show.shipshit.dev/artifacts/agent-security-timeline\n- Talking points: https://show.shipshit.dev/talking-points/2026-11-03\n\nNew episode every week. Subscribe so you don't miss it. \nX: https://x.com/shipshitdev\n\n#CyberSecurity #Ransomware #SaaS",
       "duration": "PT9M22S",
@@ -109,20 +109,20 @@
       "likeCount": 1,
       "privacyStatus": "public",
       "publishedAt": "2026-11-05T18:30:22Z",
-      "rawTranscriptPath": null,
+      "rawTranscriptPath": "apps/app/data/transcripts/timLg3kKS4s-PHP2Shell： Is Your SaaS Next？.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/timLg3kKS4s/maxresdefault.jpg",
       "title": "Your SaaS Will Get Hacked. Do This Now!",
-      "transcriptStatus": "missing",
+      "transcriptStatus": "clean",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=timLg3kKS4s",
-      "viewCount": 75
+      "viewCount": 80
     },
     {
       "actualEndTime": "2026-11-03T15:08:21Z",
       "actualStartTime": "2026-11-03T14:14:16Z",
       "channelId": "UCxuriP32znodU-8N7zkwuew",
       "channelTitle": "Ship Sh*t Show",
-      "cleanTranscriptPath": null,
+      "cleanTranscriptPath": "apps/app/data/transcripts/clean/2026-11-04-livestream-black-october-is-your-ai-saas-next.txt",
       "commentCount": 0,
       "description": "You’re using AI to ship faster. Attackers are using it too.\n\nJoin us as we unpack PHP2Shell and October’s wider AI-security stories: from reports of AI-assisted intrusions to the tampered Claude Code extension distributed through Cursor’s marketplace.\n\nWe’ll look at:\n- PHP2Shell: how AI helped uncover critical flaws in PHP.\n- How attackers are using coding agents in real intrusion workflows.\n- What Cursor confirmed about the malicious extension—and why trusting a familiar name isn’t enough.\n- What founders should review across dependencies, extensions, credentials and agent permissions.\n\nWe’ll separate confirmed findings from reported claims and unverified connections. The Cursor extension incident is a separate story; there’s no established link to PHP2Shell.\n\nA practical conversation for founders, indie developers and small teams shipping software with AI.\n\nSubscribe so you don’t miss the next build.\nFollow us: https://x.com/shipshitdev",
       "duration": "PT54M11S",
@@ -132,10 +132,10 @@
       "likeCount": 0,
       "privacyStatus": "public",
       "publishedAt": "2026-11-04T03:13:40Z",
-      "rawTranscriptPath": null,
+      "rawTranscriptPath": "apps/app/data/transcripts/qAw_zC1_BDM-Black October： Is Your AI SaaS Next？.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/qAw_zC1_BDM/maxresdefault.jpg",
       "title": "Black October: Is Your AI SaaS Next?",
-      "transcriptStatus": "missing",
+      "transcriptStatus": "clean",
       "type": "livestream",
       "url": "https://www.youtube.com/watch?v=qAw_zC1_BDM",
       "viewCount": 88
@@ -155,10 +155,10 @@
       "likeCount": 8,
       "privacyStatus": "public",
       "publishedAt": "2026-10-30T03:00:18Z",
-      "rawTranscriptPath": null,
+      "rawTranscriptPath": "apps/app/data/transcripts/shorts/S8dj5sYSLAU-AI Keeps Making My Code Obsolete.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/S8dj5sYSLAU/maxresdefault.jpg",
       "title": "AI Keeps Making My Code Obsolete",
-      "transcriptStatus": "missing",
+      "transcriptStatus": "raw",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=S8dj5sYSLAU",
       "viewCount": 1009
@@ -178,10 +178,10 @@
       "likeCount": 0,
       "privacyStatus": "public",
       "publishedAt": "2026-10-30T02:00:10Z",
-      "rawTranscriptPath": null,
+      "rawTranscriptPath": "apps/app/data/transcripts/shorts/1Rd82x8x-dI-Give Away the Code. Sell the Service..en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/1Rd82x8x-dI/maxresdefault.jpg",
       "title": "Give Away the Code. Sell the Service.",
-      "transcriptStatus": "missing",
+      "transcriptStatus": "raw",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=1Rd82x8x-dI",
       "viewCount": 72
@@ -201,10 +201,10 @@
       "likeCount": 0,
       "privacyStatus": "public",
       "publishedAt": "2026-10-30T01:00:25Z",
-      "rawTranscriptPath": null,
+      "rawTranscriptPath": "apps/app/data/transcripts/shorts/thX_6dhGV8A-Your Brand Context Is the Real AI Moat.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/thX_6dhGV8A/maxresdefault.jpg",
       "title": "Your Brand Context Is the Real AI Moat",
-      "transcriptStatus": "missing",
+      "transcriptStatus": "raw",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=thX_6dhGV8A",
       "viewCount": 47
@@ -224,10 +224,10 @@
       "likeCount": 0,
       "privacyStatus": "public",
       "publishedAt": "2026-10-30T00:00:26Z",
-      "rawTranscriptPath": null,
+      "rawTranscriptPath": "apps/app/data/transcripts/shorts/ypW0neOBhKU-Your Feed Is Already Full of AI Content.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/ypW0neOBhKU/maxresdefault.jpg",
       "title": "Your Feed Is Already Full of AI Content",
-      "transcriptStatus": "missing",
+      "transcriptStatus": "raw",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=ypW0neOBhKU",
       "viewCount": 185
@@ -237,7 +237,7 @@
       "actualStartTime": null,
       "channelId": "UCxuriP32znodU-8N7zkwuew",
       "channelTitle": "Ship Sh*t Show",
-      "cleanTranscriptPath": null,
+      "cleanTranscriptPath": "apps/app/data/transcripts/clean/2026-10-29-video-genfeed-ai-the-open-source-higgsfield-alternative.txt",
       "commentCount": 1,
       "description": "Your moat is your brand context and our harness.\n\nWe open-sourced Genfeed.ai, our AI content factory. \nCreate on-brand images, videos and posts, then schedule them across your socials.\n\nWe tour the app, explain “draft cheap, remix expensive,” and walk through self-hosting with your own API keys.\n\nFork it. Build your own. Show us what you ship.\n\n00:00 What Genfeed is  \n00:16 Brief in, brand context out  \n01:58 The workspace tour  \n03:55 Draft cheap, remix expensive  \n05:02 Your harness, your fork  \n06:18 Brand kit and connected accounts  \n07:13 Self-hosting with your own keys  \n08:34 Fork it, baby\n\nTry genfeed.ai now\nhttps://github.com/genfeedai/genfeed.ai",
       "duration": "PT9M25S",
@@ -247,10 +247,10 @@
       "likeCount": 3,
       "privacyStatus": "public",
       "publishedAt": "2026-10-29T11:30:20Z",
-      "rawTranscriptPath": null,
+      "rawTranscriptPath": "apps/app/data/transcripts/kH3jy7CK1YU-Genfeed.ai： The Open-Source Higgsfield Alternative.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/kH3jy7CK1YU/maxresdefault.jpg",
       "title": "Genfeed.ai: The Open-Source Higgsfield Alternative",
-      "transcriptStatus": "missing",
+      "transcriptStatus": "clean",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=kH3jy7CK1YU",
       "viewCount": 276
@@ -260,7 +260,7 @@
       "actualStartTime": "2026-10-27T14:27:24Z",
       "channelId": "UCxuriP32znodU-8N7zkwuew",
       "channelTitle": "Ship Sh*t Show",
-      "cleanTranscriptPath": null,
+      "cleanTranscriptPath": "apps/app/data/transcripts/clean/2026-10-28-livestream-genfeed-ai-try-our-open-source-ai-content-studio.txt",
       "commentCount": 1,
       "description": "All internet content will be AI-generated. \nSo we built our own agentic studio, and today we open-source it.\n\nRun it yourself and make your own content: your machine, your brand, your keys, nothing published until you approve it. \n\nWe're launching Genfeed.ai live with one real B2B brief turned into posts on air, and showing what self-hosting actually takes.\n\nGitHub: https://github.com/genfeedai/genfeed.ai\nSelf-host: https://genfeed.ai/self-hosted\n\nBring your questions to the chat.\n\n#OpenSource #AI #Genfeed",
       "duration": "PT29M8S",
@@ -270,10 +270,10 @@
       "likeCount": 10,
       "privacyStatus": "public",
       "publishedAt": "2026-10-28T03:07:05Z",
-      "rawTranscriptPath": null,
+      "rawTranscriptPath": "apps/app/data/transcripts/1CFi5rzc2bU-[LIVE] Genfeed.ai： We're Launching Our Open-Source AI Content Studio.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/1CFi5rzc2bU/maxresdefault.jpg",
-      "title": "Genfeed.ai: We're Launching Our Open-Source AI Content Studio",
-      "transcriptStatus": "missing",
+      "title": "Genfeed.ai: Try Our Open-Source AI Content Studio",
+      "transcriptStatus": "clean",
       "type": "livestream",
       "url": "https://www.youtube.com/watch?v=1CFi5rzc2bU",
       "viewCount": 433
@@ -364,7 +364,7 @@
       "publishedAt": "2026-10-14T02:06:04Z",
       "rawTranscriptPath": "apps/app/data/transcripts/M1EEEl4M6-4-Muse Wonder： Better Than Fable 5.1 or Opus 5.5？.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/M1EEEl4M6-4/maxresdefault.jpg",
-      "title": "Muse Wonder: Better Than Fable 5.1 / Opus 5.5?",
+      "title": "Muse Wonder: Better Than Fable?",
       "transcriptStatus": "clean",
       "type": "livestream",
       "url": "https://www.youtube.com/watch?v=M1EEEl4M6-4",
@@ -410,7 +410,7 @@
       "publishedAt": "2026-10-07T02:11:37Z",
       "rawTranscriptPath": "apps/app/data/transcripts/zjXzkB8z5xg-Grok Bot vs Dots vs Muse： Do You Even Need an AI Personal Assistant？.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/zjXzkB8z5xg/maxresdefault.jpg",
-      "title": "Grok Bot vs Dots vs Muse: Do You Even Need an AI Personal Assistant?",
+      "title": "Grok Bot vs Dots vs Muse",
       "transcriptStatus": "clean",
       "type": "livestream",
       "url": "https://www.youtube.com/watch?v=zjXzkB8z5xg",
@@ -456,7 +456,7 @@
       "publishedAt": "2026-09-30T02:22:53Z",
       "rawTranscriptPath": "apps/app/data/transcripts/uSuqoiEaB1k-Opus⧸Sonnet 5.5 vs GPT-6 Sol⧸Luna vs Grok 4.7： What To Use？.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/uSuqoiEaB1k/maxresdefault.jpg",
-      "title": "Opus vs GPT-6 Sol vs Grok 4.7",
+      "title": "Opus 5.5 vs GPT-6 Sol vs Grok 4.7",
       "transcriptStatus": "clean",
       "type": "livestream",
       "url": "https://www.youtube.com/watch?v=uSuqoiEaB1k",
@@ -502,7 +502,7 @@
       "publishedAt": "2026-09-09T01:08:56Z",
       "rawTranscriptPath": "apps/app/data/transcripts/KPAyE6KSrQU-Fable 5.1 vs GPT-6 Astra： Did We Reach AGI？.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/KPAyE6KSrQU/maxresdefault.jpg",
-      "title": "Fable 5.1 vs GPT-6 Astra: Did We Reach AGI?",
+      "title": "Fable 5.1 vs GPT-6 Astra: Is It AGI?",
       "transcriptStatus": "clean",
       "type": "livestream",
       "url": "https://www.youtube.com/watch?v=KPAyE6KSrQU",
@@ -525,11 +525,11 @@
       "publishedAt": "2026-09-02T23:00:21Z",
       "rawTranscriptPath": "apps/app/data/transcripts/1ZbR2qie8rk-pstack： How The SpaceX Team Actually Runs Grok Bot.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/1ZbR2qie8rk/maxresdefault.jpg",
-      "title": "pstack: How Lauren (poteto) Uses Grok Bot",
+      "title": "pstack: How Poteto Uses Grok Bot",
       "transcriptStatus": "clean",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=1ZbR2qie8rk",
-      "viewCount": 4068
+      "viewCount": 4071
     },
     {
       "actualEndTime": "2026-09-01T13:12:08Z",
@@ -589,16 +589,16 @@
       "duration_seconds_flat": 652,
       "duration_string_flat": "10:52",
       "id": "zyQEwa5IYvk",
-      "likeCount": 10,
+      "likeCount": 11,
       "privacyStatus": "public",
       "publishedAt": "2026-08-19T23:15:36Z",
       "rawTranscriptPath": "apps/app/data/transcripts/zyQEwa5IYvk-I Gave Grok Bot One Job： Find Me Customers While I Sleep.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/zyQEwa5IYvk/maxresdefault.jpg",
-      "title": "Grok Bot Finds Me Customers While I Sleep",
+      "title": "Grok Bot Finds Customers While I Sleep",
       "transcriptStatus": "clean",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=zyQEwa5IYvk",
-      "viewCount": 678
+      "viewCount": 679
     },
     {
       "actualEndTime": "2026-08-18T12:59:52Z",
@@ -617,11 +617,11 @@
       "publishedAt": "2026-08-19T01:11:04Z",
       "rawTranscriptPath": "apps/app/data/transcripts/-qsSddwzjpY-How to Use Grok 4.6, Grok Bot & Cursor Origin Together.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/-qsSddwzjpY/maxresdefault.jpg",
-      "title": "How to Use Grok 4.6, Grok Bot & Cursor Origin Together",
+      "title": "Use Grok 4.6, Grok Bot & Cursor Origin Together!",
       "transcriptStatus": "clean",
       "type": "livestream",
       "url": "https://www.youtube.com/watch?v=-qsSddwzjpY",
-      "viewCount": 1253
+      "viewCount": 1254
     },
     {
       "actualEndTime": null,
@@ -709,7 +709,7 @@
       "publishedAt": "2026-07-02T01:20:06Z",
       "rawTranscriptPath": "apps/app/data/transcripts/K1ftXLD5lrg-[LIVE] Claude Fable 5 Is Back. Sonnet 5 Is REALLY Expensive..en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/K1ftXLD5lrg/maxresdefault.jpg",
-      "title": "Fable 5 Is Back. Sonnet 5 Is Pricey.",
+      "title": "Fable 5 Is Back!",
       "transcriptStatus": "clean",
       "type": "livestream",
       "url": "https://www.youtube.com/watch?v=K1ftXLD5lrg",
@@ -824,7 +824,7 @@
       "publishedAt": "2026-06-12T15:00:07Z",
       "rawTranscriptPath": "apps/app/data/transcripts/BTb9O0Th8qs-Claude Fable 5： We Built an AI-Native Game Studio.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/BTb9O0Th8qs/maxresdefault.jpg",
-      "title": "Fable 5: We Built an AI-Native Game Studio",
+      "title": "Fable 5: We Built an AI Game Studio",
       "transcriptStatus": "clean",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=BTb9O0Th8qs",
@@ -847,7 +847,7 @@
       "publishedAt": "2026-06-11T02:09:16Z",
       "rawTranscriptPath": "apps/app/data/transcripts/Ap5vza8qGy4-[LIVE] Claude Fable 5： We're Building an AI-Native Indie Game Studio.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/Ap5vza8qGy4/maxresdefault.jpg",
-      "title": "We're Building an AI Indie Game Studio",
+      "title": "Opus 4.8: We're Starting an AI Indie Game Studio!",
       "transcriptStatus": "clean",
       "type": "livestream",
       "url": "https://www.youtube.com/watch?v=Ap5vza8qGy4",
@@ -870,7 +870,7 @@
       "publishedAt": "2026-06-04T03:00:02Z",
       "rawTranscriptPath": "apps/app/data/transcripts/49IkgeGr1kE-Opus 4.8： We Built a Browser FPS in 45 Minutes With One Prompt.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/49IkgeGr1kE/maxresdefault.jpg",
-      "title": "Opus 4.8: We Built a Browser FPS With One Prompt",
+      "title": "Opus 4.8 Built A FPS In 1 Prompt!",
       "transcriptStatus": "clean",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=49IkgeGr1kE",
@@ -1008,7 +1008,7 @@
       "publishedAt": "2026-05-13T06:00:06Z",
       "rawTranscriptPath": "apps/app/data/transcripts/oYLvDwEAWN8-Stop Using Markdown Files. Are HTML Plans Better？.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/oYLvDwEAWN8/maxresdefault.jpg",
-      "title": "Stop Using Markdown Files. Are HTML Plans Better?",
+      "title": "AI Plan Mode: Markdown Files vs HTML",
       "transcriptStatus": "clean",
       "type": "livestream",
       "url": "https://www.youtube.com/watch?v=oYLvDwEAWN8",
@@ -1054,7 +1054,7 @@
       "publishedAt": "2026-05-08T04:00:46Z",
       "rawTranscriptPath": "apps/app/data/transcripts/jFztuYduv5w-GitHub Is Dying. Can GPT-5.5 ⧸goal Rewrite It？.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/jFztuYduv5w/maxresdefault.jpg",
-      "title": "GitHub Is Dying. Can GPT-5.5 /goal Rewrite It?",
+      "title": "GitHub Is Dying. Can GPT-5.5 Rewrite It?",
       "transcriptStatus": "clean",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=jFztuYduv5w",
@@ -1606,7 +1606,7 @@
       "publishedAt": "2026-02-04T20:45:00Z",
       "rawTranscriptPath": "apps/app/data/transcripts/K1nwHfOonDw-1 Million AI Agents Built a Social Network. It Was a Disaster.en.vtt",
       "thumbnail": "https://i.ytimg.com/vi/K1nwHfOonDw/maxresdefault.jpg",
-      "title": "Moltbook: OpenClaw Agents Built a Social Network",
+      "title": "Moltbook: An AI Social Network Disaster",
       "transcriptStatus": "clean",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=K1nwHfOonDw",
@@ -1638,70 +1638,9 @@
   ],
   "source": "youtube-data-api-v3",
   "summary": {
-    "cleanTranscripts": 59,
+    "cleanTranscripts": 63,
     "livestreams": 35,
-    "missingTranscripts": [
-      {
-        "id": "9QP3Ed6BHVs",
-        "title": "Your AI Checked the Code, Not the Server Access",
-        "url": "https://www.youtube.com/watch?v=9QP3Ed6BHVs"
-      },
-      {
-        "id": "gR_daNttW88",
-        "title": "\"We Checked Everything\" Doesn't Mean You're Not Hacked",
-        "url": "https://www.youtube.com/watch?v=gR_daNttW88"
-      },
-      {
-        "id": "AEXZ4Q9TeJo",
-        "title": "Every Patch Starts a Race With Hackers",
-        "url": "https://www.youtube.com/watch?v=AEXZ4Q9TeJo"
-      },
-      {
-        "id": "lmLaYAEpFDc",
-        "title": "The Server Nobody Dares to Touch",
-        "url": "https://www.youtube.com/watch?v=lmLaYAEpFDc"
-      },
-      {
-        "id": "timLg3kKS4s",
-        "title": "Your SaaS Will Get Hacked. Do This Now!",
-        "url": "https://www.youtube.com/watch?v=timLg3kKS4s"
-      },
-      {
-        "id": "qAw_zC1_BDM",
-        "title": "Black October: Is Your AI SaaS Next?",
-        "url": "https://www.youtube.com/watch?v=qAw_zC1_BDM"
-      },
-      {
-        "id": "S8dj5sYSLAU",
-        "title": "AI Keeps Making My Code Obsolete",
-        "url": "https://www.youtube.com/watch?v=S8dj5sYSLAU"
-      },
-      {
-        "id": "1Rd82x8x-dI",
-        "title": "Give Away the Code. Sell the Service.",
-        "url": "https://www.youtube.com/watch?v=1Rd82x8x-dI"
-      },
-      {
-        "id": "thX_6dhGV8A",
-        "title": "Your Brand Context Is the Real AI Moat",
-        "url": "https://www.youtube.com/watch?v=thX_6dhGV8A"
-      },
-      {
-        "id": "ypW0neOBhKU",
-        "title": "Your Feed Is Already Full of AI Content",
-        "url": "https://www.youtube.com/watch?v=ypW0neOBhKU"
-      },
-      {
-        "id": "kH3jy7CK1YU",
-        "title": "Genfeed.ai: The Open-Source Higgsfield Alternative",
-        "url": "https://www.youtube.com/watch?v=kH3jy7CK1YU"
-      },
-      {
-        "id": "1CFi5rzc2bU",
-        "title": "Genfeed.ai: We're Launching Our Open-Source AI Content Studio",
-        "url": "https://www.youtube.com/watch?v=1CFi5rzc2bU"
-      }
-    ],
+    "missingTranscripts": [],
     "total": 71,
     "videos": 36
   }
