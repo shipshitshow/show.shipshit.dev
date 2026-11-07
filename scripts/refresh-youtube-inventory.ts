@@ -14,6 +14,7 @@
  *   bun scripts/refresh-youtube-inventory.ts --write    # persist inventory
  *   bun scripts/refresh-youtube-inventory.ts --write --transcripts  # + yt-dlp backfill
  *   bun scripts/refresh-youtube-inventory.ts --oauth    # read with the channel's OAuth token
+ *   bun scripts/refresh-youtube-inventory.ts --include=ID1,ID2  # also add these older uploads
  *
  * --oauth is for machines whose IP the API key refuses (the key is
  * IP-restricted): it reads with the same OAuth token as `youtube:sync` instead
@@ -40,6 +41,12 @@ const args = new Set(process.argv.slice(2));
 const WRITE = args.has('--write');
 const DO_TRANSCRIPTS = args.has('--transcripts');
 const USE_OAUTH = args.has('--oauth');
+/** --include=id1,id2: also add these older uploads, which the additive merge would skip. */
+const INCLUDE_IDS = new Set(
+  (process.argv.find((a) => a.startsWith('--include='))?.slice(10) ?? '')
+    .split(',')
+    .filter(Boolean),
+);
 
 /** An API key (public data) or an OAuth access token (the channel owner). */
 type Auth = { key: string } | { token: string };
@@ -271,7 +278,7 @@ function mergeItems(
         rawTranscriptPath: prior.rawTranscriptPath,
         transcriptStatus: prior.transcriptStatus,
       });
-    } else if (item.publishedAt > newestExisting) {
+    } else if (item.publishedAt > newestExisting || INCLUDE_IDS.has(item.id)) {
       byId.set(item.id, item);
       added.push(item);
     }

@@ -37,7 +37,7 @@
       "duration_seconds_flat": 42,
       "duration_string_flat": "0:42",
       "id": "gR_daNttW88",
-      "likeCount": 4,
+      "likeCount": 6,
       "privacyStatus": "public",
       "publishedAt": "2026-11-06T05:00:05Z",
       "rawTranscriptPath": "apps/app/data/transcripts/shorts/gR_daNttW88-_We Checked Everything_ Doesn't Mean You're Not Hacked.en.vtt",
@@ -46,7 +46,7 @@
       "transcriptStatus": "raw",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=gR_daNttW88",
-      "viewCount": 136
+      "viewCount": 164
     },
     {
       "actualEndTime": null,
@@ -69,7 +69,7 @@
       "transcriptStatus": "raw",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=AEXZ4Q9TeJo",
-      "viewCount": 200
+      "viewCount": 201
     },
     {
       "actualEndTime": null,
@@ -115,7 +115,7 @@
       "transcriptStatus": "clean",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=timLg3kKS4s",
-      "viewCount": 80
+      "viewCount": 86
     },
     {
       "actualEndTime": "2026-11-03T15:08:21Z",
@@ -138,7 +138,7 @@
       "transcriptStatus": "clean",
       "type": "livestream",
       "url": "https://www.youtube.com/watch?v=qAw_zC1_BDM",
-      "viewCount": 88
+      "viewCount": 89
     },
     {
       "actualEndTime": null,
@@ -529,7 +529,7 @@
       "transcriptStatus": "clean",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=1ZbR2qie8rk",
-      "viewCount": 4071
+      "viewCount": 4073
     },
     {
       "actualEndTime": "2026-09-01T13:12:08Z",
@@ -578,6 +578,29 @@
       "viewCount": 154
     },
     {
+      "actualEndTime": "2026-08-26T13:04:36Z",
+      "actualStartTime": "2026-08-26T12:02:16Z",
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh*t Show",
+      "cleanTranscriptPath": "apps/app/data/transcripts/clean/2026-08-26-livestream-stop-paying-for-ai-use-openrouter-stealth-free-models.txt",
+      "commentCount": 0,
+      "description": "Cancel your AI subscription.\n\nEvery line of code in this stream is written by a model that costs zero dollars. Not a trial. Not a discount. Zero. \n\n21 free models on OpenRouter, plus the stealth routes — anonymous frontier models, free while someone evaluates them on you.\n\nWe're building the thing that means you never watch a YouTube video again: paste a link, get the transcript and the moments actually worth your time. \nLive, on models nobody paid for.\n\nSo why are you still paying for AI intelligence?\n\nSources:\nhttps://openrouter.ai/models?variant=free\n\n#OpenRouter",
+      "duration": "PT1H2M22S",
+      "duration_seconds_flat": 3742,
+      "duration_string_flat": "1:02:22",
+      "id": "eYGDOk2HsOg",
+      "likeCount": 2,
+      "privacyStatus": "public",
+      "publishedAt": "2026-08-27T01:11:07Z",
+      "rawTranscriptPath": "apps/app/data/transcripts/eYGDOk2HsOg-[LIVE] Stop Paying For AI. Use OpenRouter Stealth & Free Models..en.vtt",
+      "thumbnail": "https://i.ytimg.com/vi/eYGDOk2HsOg/maxresdefault.jpg",
+      "title": "Stop Paying For AI Models",
+      "transcriptStatus": "clean",
+      "type": "livestream",
+      "url": "https://www.youtube.com/watch?v=eYGDOk2HsOg",
+      "viewCount": 80
+    },
+    {
       "actualEndTime": null,
       "actualStartTime": null,
       "channelId": "UCxuriP32znodU-8N7zkwuew",
@@ -622,6 +645,121 @@
       "type": "livestream",
       "url": "https://www.youtube.com/watch?v=-qsSddwzjpY",
       "viewCount": 1254
+    },
+    {
+      "actualEndTime": null,
+      "actualStartTime": null,
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh*t Show",
+      "cleanTranscriptPath": "apps/app/data/transcripts/clean/2026-08-14-video-the-state-of-ai-engineering-in-2026.txt",
+      "commentCount": 0,
+      "description": "AI coding in 2026 is incredibly powerful—but using the smartest model for every task doesn’t always produce the best result.\n\nIn this conversation, we break down what actually works when using Claude, Codex, Grok and other AI coding tools to ship real software.\n\nWe cover:\n\n• Choosing the right model and reasoning effort for each task\n• Why smarter models can overcomplicate simple changes\n• Running multiple coding agents without creating chaos\n• The advantages and frustrations of browser-controlled agents\n• Why cost per completed task matters more than cost per token\n• How technical knowledge and better prompts improve the output\n• Using worktrees, CI/CD and deterministic guardrails safely\n• Why critical thinking still matters in AI-assisted development\n\nAI can write more of the code than ever—but planning, judgment and verification remain the difference between impressive demos and reliable software.\n\nWhat does your AI coding workflow look like in 2026? Share it in the comments.\nSubscribe.",
+      "duration": "PT10M7S",
+      "duration_seconds_flat": 607,
+      "duration_string_flat": "10:07",
+      "id": "tdxdLBxAJ0Q",
+      "likeCount": 2,
+      "privacyStatus": "public",
+      "publishedAt": "2026-08-14T15:00:26Z",
+      "rawTranscriptPath": "apps/app/data/transcripts/tdxdLBxAJ0Q-The State of AI Engineering in 2026.en.vtt",
+      "thumbnail": "https://i.ytimg.com/vi/tdxdLBxAJ0Q/maxresdefault.jpg",
+      "title": "The State of AI Engineering in 2026",
+      "transcriptStatus": "clean",
+      "type": "video",
+      "url": "https://www.youtube.com/watch?v=tdxdLBxAJ0Q",
+      "viewCount": 11
+    },
+    {
+      "actualEndTime": null,
+      "actualStartTime": null,
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh*t Show",
+      "cleanTranscriptPath": "apps/app/data/transcripts/clean/2026-08-13-video-i-connected-pocket-to-my-vibe-coded-zendesk.txt",
+      "commentCount": 1,
+      "description": "Get Pocket here. This is an affiliate link, so I may earn a commission at no extra cost to you.\nhttps://heypocket.com/?sca_ref=12041128.LdHwWc4uHBGl&sca_source=Youtube\n\nI connected Pocket to the customer-support system I vibe-coded; and now every customer call automatically becomes a structured support ticket.\n\nIn this video, I build the complete call-to-ticket workflow in just 45 minutes. \nPocket captures the conversation, AI extracts the useful context, and the system creates a ticket ready for follow-up.\n\nNo copying notes. \nNo forgotten action items. \nNo manually turning conversations into support requests.\n\nYou’ll see:\n• How Pocket connects to my custom support system\n• How calls are converted into structured tickets\n• How I built the AI automation\n• The complete working result\n\nWould you use this workflow for your customer calls? Let me know below. Subscribe.",
+      "duration": "PT12M18S",
+      "duration_seconds_flat": 738,
+      "duration_string_flat": "12:18",
+      "id": "bNAQtKp1pAo",
+      "likeCount": 2,
+      "privacyStatus": "public",
+      "publishedAt": "2026-08-13T14:00:05Z",
+      "rawTranscriptPath": "apps/app/data/transcripts/bNAQtKp1pAo-I Connected Pocket to My Vibe-Coded Zendesk.en.vtt",
+      "thumbnail": "https://i.ytimg.com/vi/bNAQtKp1pAo/maxresdefault.jpg",
+      "title": "HeyPocket Meets My Vibe-Coded Zendesk",
+      "transcriptStatus": "clean",
+      "type": "video",
+      "url": "https://www.youtube.com/watch?v=bNAQtKp1pAo",
+      "viewCount": 59
+    },
+    {
+      "actualEndTime": "2026-08-11T14:57:03Z",
+      "actualStartTime": "2026-08-11T14:01:03Z",
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh*t Show",
+      "cleanTranscriptPath": "apps/app/data/transcripts/clean/2026-08-11-livestream-heypocket-turn-calls-into-support-tickets.txt",
+      "commentCount": 0,
+      "description": "Get your Pocket card: https://heypocket.com/12041128\n\nA phone call ends. HeyPocket already has the transcript, summary, and action items - but someone still has to copy everything into the ticket system.\nToday we’re removing that handoff live.\n\nWe’ll connect HeyPocket to Mantella so every completed call automatically creates a useful support ticket containing a clean summary, action items as real ticket to-dos, and webhooks set up. \n\nWe’ll make one real call and prove the complete workflow works.\n\nCall ends → summary completes → ticket appears.\nIf it works, the integration ships. If it breaks, that’s the show.\n\nHeyPocket: https://heypocket.com\nDocumentation: https://docs.heypocketai.com",
+      "duration": "PT56M",
+      "duration_seconds_flat": 3360,
+      "duration_string_flat": "56:00",
+      "id": "AeTj2uU8J9U",
+      "likeCount": 3,
+      "privacyStatus": "public",
+      "publishedAt": "2026-08-12T03:09:34Z",
+      "rawTranscriptPath": "apps/app/data/transcripts/AeTj2uU8J9U-[LIVE] HeyPocket： Turn Calls Into Support Tickets.en.vtt",
+      "thumbnail": "https://i.ytimg.com/vi/AeTj2uU8J9U/maxresdefault.jpg",
+      "title": "HeyPocket: Turn Calls Into Support Tickets",
+      "transcriptStatus": "clean",
+      "type": "livestream",
+      "url": "https://www.youtube.com/watch?v=AeTj2uU8J9U",
+      "viewCount": 29
+    },
+    {
+      "actualEndTime": "2026-08-04T12:56:59Z",
+      "actualStartTime": "2026-08-04T12:05:39Z",
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh*t Show",
+      "cleanTranscriptPath": "apps/app/data/transcripts/clean/2026-08-04-livestream-ai-engineering-is-cheaper-than-engineers.txt",
+      "commentCount": 0,
+      "description": "AI software engineering is now cheaper than hiring engineers.\n\nThis week: GPT-5.6 Luna dropped 80%. \nQwen3.8-Max hit frontier benchmarks at $2/$6 per million tokens. \nKimi K3's weights went public. \nDeepSeek V4 runs on a gaming PC.\n\nMeanwhile the other direction: Fable 5 left Pro plans — credits burned, now $10/$50 per million tokens unless you're on Max. Codex silently bills 2x past 272K tokens. The Claude Code boost dies August 19.\n\nCheap got cheaper. Flagships got gates. Whether you're on the right side of that gap is a routing decision, and most people are getting it wrong.\n\nSo tonight we price AI like you'd price a hire: cost per merged PR. Real bills, real shipped pull requests, against what a junior dev actually costs. Live math, no vibes.\n\nSubscribe so you don't miss it.",
+      "duration": "PT51M24S",
+      "duration_seconds_flat": 3084,
+      "duration_string_flat": "51:24",
+      "id": "ppcMDBiJ5xc",
+      "likeCount": 2,
+      "privacyStatus": "public",
+      "publishedAt": "2026-08-05T00:59:42Z",
+      "rawTranscriptPath": "apps/app/data/transcripts/ppcMDBiJ5xc-[LIVE] AI Engineering Is Cheaper Than Engineers.en.vtt",
+      "thumbnail": "https://i.ytimg.com/vi/ppcMDBiJ5xc/maxresdefault.jpg",
+      "title": "AI Engineering Is Cheaper Than Engineers",
+      "transcriptStatus": "clean",
+      "type": "livestream",
+      "url": "https://www.youtube.com/watch?v=ppcMDBiJ5xc",
+      "viewCount": 30
+    },
+    {
+      "actualEndTime": "2026-07-28T12:59:24Z",
+      "actualStartTime": "2026-07-28T12:03:49Z",
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh*t Show",
+      "cleanTranscriptPath": "apps/app/data/transcripts/clean/2026-07-28-livestream-opus-5-gpt-5-6-build-from-the-beach.txt",
+      "commentCount": 0,
+      "description": "What happens when Claude Opus 5 and GPT-5.6 Sol keep shipping while you step away?\n\nAcross ten automated projects, we used them as an org chart:\nFable plans. Opus judges. GPT Sol executes.\n\nThe broader GitHub ledger shows more than 950 authored commits across 36 repositories in ten days.\n\nToday we’re asking the practical question:\nCan these models build companies while we’re on the beach?\nNot in theory. In the actual workflow.\n\nWe’ll show what the agents built, how the work moved from issues to reviewed pull requests, where each model fits, and what happened when the system was allowed to operate at full speed.\n\nWhat should Fable plan?\nWhat should Opus review?\nWhat should GPT-5.6 Sol execute?\nHow do you stop an autonomous coding system from generating autonomous technical debt?\nAnd what has to change when the goal is no longer shipping software—but operating a business?\n\nThe point is not “AI can write more code.”\nThe point is operational leverage.\n\nIf the agents stop when the pull request merges, you do not have an autonomous company.\nYou have an autonomous software factory.\n\nToday, we start building what comes next.",
+      "duration": "PT55M41S",
+      "duration_seconds_flat": 3341,
+      "duration_string_flat": "55:41",
+      "id": "kRUwZSY7IN8",
+      "likeCount": 1,
+      "privacyStatus": "public",
+      "publishedAt": "2026-07-29T01:04:36Z",
+      "rawTranscriptPath": "apps/app/data/transcripts/kRUwZSY7IN8-[LIVE] Opus 5 + GPT-5.6： Build From the Beach.en.vtt",
+      "thumbnail": "https://i.ytimg.com/vi/kRUwZSY7IN8/maxresdefault.jpg",
+      "title": "Opus 5 + GPT-5.6: Build From the Beach",
+      "transcriptStatus": "clean",
+      "type": "livestream",
+      "url": "https://www.youtube.com/watch?v=kRUwZSY7IN8",
+      "viewCount": 16
     },
     {
       "actualEndTime": null,
@@ -1638,10 +1776,10 @@
   ],
   "source": "youtube-data-api-v3",
   "summary": {
-    "cleanTranscripts": 63,
-    "livestreams": 35,
+    "cleanTranscripts": 69,
+    "livestreams": 39,
     "missingTranscripts": [],
-    "total": 71,
-    "videos": 36
+    "total": 77,
+    "videos": 38
   }
 }
