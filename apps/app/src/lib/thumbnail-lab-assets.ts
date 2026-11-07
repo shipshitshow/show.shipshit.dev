@@ -96,7 +96,8 @@ export async function readLocalThumbnailAsset(
   return readFile(path.join(assetDirectory(), 'assets', id, hash + '.jpg'));
 }
 // Brand placement table. Landscape: 144px at x1680/y96 on 1920x1080 (96px clearance).
-// Shorts: 120px centred on x940/y290 on 1080x1920, clear of the YouTube overlays.
+// Shorts cover: 120px centred on x940/y405 on 1080x1920 (top 345). Lower than
+// the Short video mark (y230) because the Shorts grid crops the top of the cover.
 const LANDSCAPE_PLACEMENT = {
   armLength: 132,
   armWidth: 30,
@@ -116,7 +117,7 @@ const SHORT_PLACEMENT = {
   label: '9:16',
   left: 880,
   ratio: 9 / 16,
-  top: 230,
+  top: 345,
   width: 1080,
 };
 

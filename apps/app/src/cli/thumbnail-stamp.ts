@@ -9,12 +9,15 @@ import {
 const USAGE = `Stamp the show asterisk on finished thumbnail art.
 
 Usage:
-  bun run thumbnail:stamp --in <art.png> --out <thumb.png> --kind live|video [--format landscape|shorts]
+  bun run thumbnail:stamp --in <art.png> --out <thumb.png> --kind live|video [--format landscape|shorts] [--x <px> --y <px>]
 
 --kind live    red master, for an actual livestream
 --kind video   white master, for any edited video or recap
 --format       landscape (1920x1080, default) or shorts (1080x1920).
-               Shorts covers always get the red Short video mark.
+               Shorts covers always get the red mark, at x880/y345 (the
+               Short video mark sits higher, at y230).
+--x, --y       Optional top-left override of the mark, in canvas pixels.
+               Give both. Normally leave them out: the vault table decides.
 
 Relative paths resolve from the repository root.
 Size and position come from the vault placement table via brand-tokens.json.
@@ -37,17 +40,27 @@ async function main() {
     input = inArg && path.resolve(repoRoot, inArg),
     output = outArg && path.resolve(repoRoot, outArg),
     kind = arg(args, '--kind'),
-    format = arg(args, '--format') ?? 'landscape';
+    format = arg(args, '--format') ?? 'landscape',
+    xArg = arg(args, '--x'),
+    yArg = arg(args, '--y'),
+    position =
+      xArg !== undefined && yArg !== undefined
+        ? { x: Number(xArg), y: Number(yArg) }
+        : undefined;
   if (
     !input ||
     !output ||
     (kind !== 'live' && kind !== 'video') ||
-    (format !== 'landscape' && format !== 'shorts')
+    (format !== 'landscape' && format !== 'shorts') ||
+    (xArg === undefined) !== (yArg === undefined) ||
+    (position &&
+      !(Number.isInteger(position.x) && Number.isInteger(position.y)))
   )
     throw new Error(USAGE);
   const bytes = await stampThumbnail(await readFile(input), {
     format: format as StampFormat,
     kind: kind as StampKind,
+    position,
   });
   await writeFile(output, bytes, { flag: 'wx' });
   console.log(output);

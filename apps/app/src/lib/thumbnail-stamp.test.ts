@@ -55,18 +55,34 @@ describe('stampThumbnail', () => {
     expect(b).toBeLessThan(90);
   });
 
-  test('stamps a Shorts cover with the Short video mark', async () => {
+  test('stamps a Shorts cover with the red mark at y345', async () => {
     const { mark } = stampPlacement('shorts');
-    expect(mark).toMatchObject({ height: 120, width: 120, x: 880, y: 230 });
+    expect(mark).toMatchObject({ height: 120, width: 120, x: 880, y: 345 });
     const out = await stampThumbnail(await art(1080, 1920), {
       brandDir,
       format: 'shorts',
       kind: 'video',
     });
+    const [r, g, b] = await pixel(out, 940, 405);
+    expect(r).toBeGreaterThan(200);
+    expect(g).toBeLessThan(90);
+    expect(b).toBeLessThan(90);
+    // The old Short video position (y230) stays clear on the cover.
+    expect(await pixel(out, 940, 290)).toEqual([13, 13, 13]);
+  });
+
+  test('a position override moves the mark', async () => {
+    const out = await stampThumbnail(await art(1080, 1920), {
+      brandDir,
+      format: 'shorts',
+      kind: 'video',
+      position: { x: 880, y: 230 },
+    });
     const [r, g, b] = await pixel(out, 940, 290);
     expect(r).toBeGreaterThan(200);
     expect(g).toBeLessThan(90);
     expect(b).toBeLessThan(90);
+    expect(await pixel(out, 940, 405)).toEqual([13, 13, 13]);
   });
 
   test('rejects art with the wrong aspect ratio', async () => {
