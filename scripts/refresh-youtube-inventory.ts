@@ -13,11 +13,19 @@
  *   bun scripts/refresh-youtube-inventory.ts            # dry run, prints diff
  *   bun scripts/refresh-youtube-inventory.ts --write    # persist inventory
  *   bun scripts/refresh-youtube-inventory.ts --write --transcripts  # + yt-dlp backfill
+ *   bun scripts/refresh-youtube-inventory.ts --oauth    # read with the channel's OAuth token
+ *
+ * --oauth is for machines whose IP the API key refuses (the key is
+ * IP-restricted): it reads with the same OAuth token as `youtube:sync` instead
+ * of YOUTUBE_API_KEY. The token also sees private and scheduled videos, so
+ * private ones are dropped here: this file is committed to a public repo.
+ * Both modes only read from YouTube.
  */
 
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
+import { getAccessToken, verifyChannel } from './youtube-upload.ts';
 
 const REPO_ROOT = path.resolve(import.meta.dir, '..');
 const INVENTORY_PATH = path.join(
@@ -31,6 +39,10 @@ const API = 'https://www.googleapis.com/youtube/v3';
 const args = new Set(process.argv.slice(2));
 const WRITE = args.has('--write');
 const DO_TRANSCRIPTS = args.has('--transcripts');
+const USE_OAUTH = args.has('--oauth');
+
+/** An API key (public data) or an OAuth access token (the channel owner). */
+type Auth = { key: string } | { token: string };
 
 interface InventoryItem {
   actualEndTime: string | null;
@@ -90,10 +102,17 @@ function loadEnv(): Record<string, string> {
 async function api<T>(
   endpoint: string,
   params: Record<string, string>,
-  key: string,
+  auth: Auth,
 ): Promise<T> {
-  const url = `${API}/${endpoint}?${new URLSearchParams({ ...params, key })}`;
-  const res = await fetch(url);
+  const query = new URLSearchParams(
+    'key' in auth ? { ...params, key: auth.key } : params,
+  );
+  const res = await fetch(
+    `${API}/${endpoint}?${query}`,
+    'token' in auth
+      ? { headers: { Authorization: `Bearer ${auth.token}` }, method: 'GET' }
+      : undefined,
+  );
   if (!res.ok) {
     throw new Error(
       `YouTube API ${endpoint} ${res.status}: ${await res.text()}`,
@@ -157,13 +176,13 @@ interface VideoResponse {
 
 async function fetchAllVideos(
   channelId: string,
-  key: string,
+  auth: Auth,
 ): Promise<InventoryItem[]> {
   const channels = await api<{
     items: Array<{
       contentDetails: { relatedPlaylists: { uploads: string } };
     }>;
-  }>('channels', { id: channelId, part: 'contentDetails' }, key);
+  }>('channels', { id: channelId, part: 'contentDetails' }, auth);
   const uploads =
     channels.items?.[0]?.contentDetails?.relatedPlaylists?.uploads;
   if (!uploads) throw new Error('Could not resolve uploads playlist');
@@ -179,7 +198,7 @@ async function fetchAllVideos(
         playlistId: uploads,
         ...(pageToken ? { pageToken } : {}),
       },
-      key,
+      auth,
     );
     videoIds.push(...page.items.map((i) => i.contentDetails.videoId));
     pageToken = page.nextPageToken;
@@ -194,7 +213,7 @@ async function fetchAllVideos(
         id: batch.join(','),
         part: 'snippet,contentDetails,statistics,status,liveStreamingDetails',
       },
-      key,
+      auth,
     );
     for (const v of res.items) {
       const seconds = parseIsoDuration(v.contentDetails.duration);
@@ -359,8 +378,16 @@ function buildSummary(items: InventoryItem[]): Inventory['summary'] {
 
 async function main() {
   const env = loadEnv();
-  const key = env.YOUTUBE_API_KEY;
-  if (!key) throw new Error('YOUTUBE_API_KEY is required (set it in .env)');
+  let auth: Auth;
+  if (USE_OAUTH) {
+    const token = await getAccessToken('main');
+    await verifyChannel(token, 'main');
+    auth = { token };
+  } else {
+    const key = env.YOUTUBE_API_KEY;
+    if (!key) throw new Error('YOUTUBE_API_KEY is required (set it in .env)');
+    auth = { key };
+  }
 
   const inventory = JSON.parse(
     fs.readFileSync(INVENTORY_PATH, 'utf8'),
@@ -369,7 +396,17 @@ async function main() {
   if (!channelId) throw new Error('Cannot determine channelId from inventory');
 
   console.log(`Fetching uploads for ${inventory.channel} (${channelId})…`);
-  const fetched = await fetchAllVideos(channelId, key);
+  let fetched = await fetchAllVideos(channelId, auth);
+  if (USE_OAUTH) {
+    // Private (including scheduled) videos must not reach the public repo.
+    const publicOnly = fetched.filter(
+      (item) => item.privacyStatus !== 'private',
+    );
+    console.log(
+      `Skipped ${fetched.length - publicOnly.length} private video(s)`,
+    );
+    fetched = publicOnly;
+  }
   const { merged, added } = mergeItems(inventory.items, fetched);
 
   console.log(
