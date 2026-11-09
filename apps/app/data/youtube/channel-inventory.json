@@ -152,7 +152,7 @@
       "transcriptStatus": "clean",
       "type": "video",
       "url": "https://www.youtube.com/watch?v=timLg3kKS4s",
-      "viewCount": 367
+      "viewCount": 365
     },
     {
       "actualEndTime": "2026-11-03T15:08:21Z",
@@ -3043,14 +3043,45 @@
       "type": "livestream",
       "url": "https://www.youtube.com/watch?v=tdZO0zxwtP8",
       "viewCount": 19
+    },
+    {
+      "actualEndTime": null,
+      "actualStartTime": null,
+      "categoryId": "22",
+      "channelId": "UCxuriP32znodU-8N7zkwuew",
+      "channelTitle": "Ship Sh*t Show",
+      "cleanTranscriptPath": null,
+      "commentCount": 0,
+      "description": "",
+      "duration": "P0D",
+      "duration_seconds_flat": 0,
+      "duration_string_flat": "0:00",
+      "id": "VoL0S9YUoqU",
+      "likeCount": 0,
+      "privacyStatus": "public",
+      "publishedAt": "2026-02-03T15:54:24Z",
+      "rawTranscriptPath": null,
+      "tags": [],
+      "thumbnail": "https://i.ytimg.com/vi/VoL0S9YUoqU/maxresdefault.jpg",
+      "title": "Ship Sh!t Show Live Stream",
+      "transcriptStatus": "missing",
+      "type": "livestream",
+      "url": "https://www.youtube.com/watch?v=VoL0S9YUoqU",
+      "viewCount": 0
     }
   ],
   "source": "youtube-data-api-v3",
   "summary": {
     "cleanTranscripts": 69,
-    "livestreams": 39,
-    "missingTranscripts": [],
-    "total": 77,
+    "livestreams": 40,
+    "missingTranscripts": [
+      {
+        "id": "VoL0S9YUoqU",
+        "title": "Ship Sh!t Show Live Stream",
+        "url": "https://www.youtube.com/watch?v=VoL0S9YUoqU"
+      }
+    ],
+    "total": 78,
     "videos": 38
   }
 }
