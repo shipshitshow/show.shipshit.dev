@@ -15,7 +15,7 @@ The livestream title drops "vibe editing", so the description, hashtags and tags
 ## Description (copy block)
 
 ```
-Editors spent years learning the timeline. Now Future Brian (@ForwardEditor on X), a pro with 20 years of editing, says Opus is a better editor than he is.
+Editors spent years learning the timeline. Now Future Brian (@ForwardFutureBrian), a pro with 20 years of editing, says Opus is a better editor than he is.
 
 Is video editing dead, or only the boring part of it?
 
@@ -28,7 +28,7 @@ Bring your questions to the chat.
 
 Checks before it goes anywhere:
 
-- Handle: his X handle is @ForwardEditor (display name Future Brian); his YouTube channel is @ForwardFutureBrian. The description uses the X handle because the line quotes his X post and the text doubles as the LinkedIn post. A YouTube @mention may notify him, and he has not been contacted yet.
+- Handle: the description uses his YouTube handle, @ForwardFutureBrian (channel "Future Brian"), which becomes a link on YouTube. His X handle is @ForwardEditor; use that for the LinkedIn or X version of the text. A YouTube @mention can notify the channel, and he has not been contacted yet. Tag-free fallback: "Future Brian, a pro with 20 years of editing, ...".
 - The opener quotes ForwardEditor's 7 Nov post ("I have edited for 20 years. Opus is a better editor than me"). It is his claim, not ours. If we cannot stand behind the line, use "a 20-year editor claims" instead.
 - Add the talking-points link (`https://show.shipshit.dev/talking-points/2026-11-10`) only after the page is deployed and a signed-out check shows the right title and notes. Not added yet.
 - Genfeed is Vincent's product. The thumbnail segment says so on air, so the description does not need to name it.
