@@ -6,6 +6,12 @@ import { StreamPromptsPanel } from '@/components/livestreams/StreamPromptsPanel'
 import { StreamResourcesPanel } from '@/components/livestreams/StreamResourcesPanel';
 import { StreamRundownPanel } from '@/components/livestreams/StreamRundownPanel';
 import {
+  buildEpisodeDescription,
+  buildVideoObjectJsonLd,
+  getEpisodeUploadDate,
+  serializeJsonLd,
+} from '@/lib/episode-seo';
+import {
   buildTopicImageUrl,
   isDateSlug,
   isYouTubeVideoId,
@@ -25,6 +31,7 @@ import {
   getEffectiveStatus,
   getLivestreamTitle,
   getVisibleTopics,
+  isPastDate,
   sortTopics,
 } from '@/lib/livestreams-ui';
 import { buildYouTubeThumbnailUrl } from '@/lib/livestreams-youtube';
@@ -90,7 +97,7 @@ export async function generateMetadata({
     archive?.title,
   );
   const pageTitle = `${streamTitle} - Talking Points`;
-  const description = 'Public livestream talking points for Ship Sh*t Show.';
+  const description = buildEpisodeDescription(visibleTopics);
   const pageUrl = toAbsoluteUrl(`/talking-points/${encodeURIComponent(slug)}`);
   const primaryTopic = visibleTopics[0];
   const imageUrl = archive?.videoId
@@ -145,17 +152,52 @@ export default async function PublicTalkingPointsPage({
   const visibleTopics = sortTopics(getVisibleTopics(topics, resolvedDate));
   const effectiveStatus = getEffectiveStatus(resolvedDate);
   const cards = await buildCards(visibleTopics, effectiveStatus);
+  const streamTitle = getLivestreamTitle(
+    resolvedDate,
+    visibleTopics,
+    archive?.title,
+  );
+  const youtubeUrl = archive?.youtubeUrl ?? null;
+  // Only past episodes are real uploads; an upcoming date has no video yet.
+  const videoJsonLd =
+    archive?.videoId && isPastDate(resolvedDate)
+      ? buildVideoObjectJsonLd({
+          description: buildEpisodeDescription(visibleTopics),
+          name: streamTitle,
+          pageUrl: toAbsoluteUrl(`/talking-points/${encodeURIComponent(slug)}`),
+          thumbnailUrl: await buildYouTubeThumbnailUrl(archive.videoId),
+          uploadDate: getEpisodeUploadDate(archive.videoId, resolvedDate),
+          videoId: archive.videoId,
+        })
+      : null;
 
   return (
     <main className="min-h-screen bg-surface px-5 py-6 text-text-primary md:px-8 md:py-8">
+      {videoJsonLd ? (
+        <script
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(videoJsonLd) }}
+          type="application/ld+json"
+        />
+      ) : null}
       <div className="mx-auto max-w-4xl space-y-5">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-accent-red">
-            Ship Sh*t Show
-          </p>
-          <h1 className="mt-2 text-2xl font-semibold text-text-primary">
-            Talking Points
-          </h1>
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest text-accent-red">
+              Ship Sh*t Show
+            </p>
+            <h1 className="mt-2 text-2xl font-semibold text-text-primary">
+              Talking Points
+            </h1>
+          </div>
+          {youtubeUrl ? (
+            <a
+              className="rounded-lg bg-accent-red px-4 py-2 text-sm font-semibold text-white hover:opacity-90"
+              href={youtubeUrl}
+              rel="noopener"
+            >
+              Watch on YouTube
+            </a>
+          ) : null}
         </div>
         <PublicTalkingPointsTabs
           artifacts={<StreamArtifactsPanel date={resolvedDate} slug={slug} />}
