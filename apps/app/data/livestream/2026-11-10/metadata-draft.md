@@ -15,9 +15,9 @@ The livestream title drops "vibe editing", so the description, hashtags and tags
 ## Description (copy block)
 
 ```
-Editors spent years learning the timeline. Now a 20-year pro says Opus edits better than he does.
+Editors spent years learning the timeline. Now a pro with 20 years of editing says Opus is a better editor than he is.
 
-Is the timeline dead, or only the boring part of it?
+Is video editing dead, or only the boring part of it?
 
 We're discussing vibe editing and what it changes for founders who make content every week: how we redid our channel's thumbnails with AI, what Grok, Claude and OpenAI have shipped and what may be next, and the free open-source creative apps we want to try.
 
