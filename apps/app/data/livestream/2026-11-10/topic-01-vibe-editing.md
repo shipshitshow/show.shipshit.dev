@@ -10,7 +10,7 @@ thumbnail_prompt: null
 
 ## Sources — Livestream Notes
 
-- **Ship Sh*t Show — 10 November 2026.** Join us: link added once the stream is scheduled.
+- **Ship Sh*t Show — 10 November 2026.** Join us: https://youtu.be/1bAWYklLcVo
 - **Founder question:** if AI can now do the cutting, what is left of editing for a founder who ships content every week, and what should we change in our own workflow?
 - **Spine:** open on a working editor's own claim, review the six ForwardEditor posts, then use our own channel thumbnails as the case we can speak about firsthand. The rest of the hour is the Grok Bot question, what releases are coming, and one open-source tool we have not covered.
 - **Format:** source-led discussion with the posts on screen. About 50–60 minutes, room for chat. No invented results: we show what we actually did, and what other people claim stays attributed to them.
