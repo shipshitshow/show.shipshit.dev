@@ -191,7 +191,7 @@ export default async function PublicTalkingPointsPage({
           </div>
           {youtubeUrl ? (
             <a
-              className="rounded-lg bg-accent-red px-4 py-2 text-sm font-semibold text-white hover:opacity-90"
+              className="rounded-lg bg-accent-red px-4 py-2 text-sm font-semibold text-on-accent transition-colors hover:bg-text-primary"
               href={youtubeUrl}
               rel="noopener"
             >
