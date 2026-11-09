@@ -1,6 +1,6 @@
 # Thumbnail options — 2026-11-10
 
-Asset: livestream (red asterisk). Working title: `Vibe Editing: Is the Timeline Dead?`. Story: **a working editor who edits for a big AI channel says AI edits better than he does. Is the timeline dead?**
+Asset: livestream (red asterisk). Working title: `Is Video Editing Dead?`. Story: **a working editor who edits for a big AI channel says AI edits better than he does. Is video editing dead?**
 
 ## Direction (Vincent, 9 Nov 2026) — supersedes the first no-face concepts
 

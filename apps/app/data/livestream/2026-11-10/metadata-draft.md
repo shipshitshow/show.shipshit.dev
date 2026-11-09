@@ -2,15 +2,15 @@
 
 Draft only. Nothing is scheduled or published. Title and description need Vincent's OK. Rules applied: title one line on the home feed (40 characters or fewer, 45 at most), no "[LIVE]" in the title, description is one short text that works as both the YouTube description and the LinkedIn post, no source list in a livestream description, first-person plural.
 
-## Title options
+## Title (Vincent, 9 Nov 2026)
 
-| # | Title | Characters |
-|---|---|---|
-| 1 (recommended) | Vibe Editing: Is the Timeline Dead? | 35 |
-| 2 | Vibe Editing: Can AI Out-Edit a Pro? | 36 |
-| 3 | AI Does the Cutting. What's Left? | 33 |
+**Livestream: `Is Video Editing Dead?`** (22 characters). It is a question because the answer is still open when the stream goes up.
 
-Why 1: it names the topic and asks the one question the stream answers, and it stays accurate whatever we conclude. Option 2 leans on one editor's claim, which we have not tested. Option 3 drops the searchable term "vibe editing".
+**Recap (after the stream): `Vibe Editing Is Dead`** (20 characters), Vincent's suggestion. Decide it from the transcript: use it only if the conversation actually lands there. If we conclude the cutting is dead but the taste is not, something like "Vibe Editing Is Dead. Editing Isn't." is the accurate version. Brian already has a 12-day-old video called "AI killed video editing", so the recap should add our own test or workflow to avoid reading as a copy.
+
+Other options considered for the livestream: Vibe Editing: Is Video Editing Dead? (36), Vibe Editing: Is the Timeline Dead? (35), Vibe Editing: Can AI Out-Edit a Pro? (36), AI Does the Cutting. What's Left? (33).
+
+The livestream title drops "vibe editing", so the description, hashtags and tags carry the term.
 
 ## Description (copy block)
 

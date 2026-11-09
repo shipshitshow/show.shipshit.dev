@@ -1,5 +1,5 @@
 ---
-title: "Vibe Editing: Is the Timeline Dead?"
+title: "Is Video Editing Dead?"
 slug: "vibe-editing"
 source: "ForwardEditor posts (X, read 9 Nov 2026), Anthropic Claude Apps and Platform release notes, OpenAI API changelog, xAI docs release notes, ArtCraft apps page, Higgsfield Miracle and Vibe Motion pages (all opened 9 Nov 2026)"
 status: "in_progress"
@@ -160,7 +160,7 @@ Dates below were read on 9 Nov 2026. Say “as of today” on air. Do not promis
 - Ask the chat whether anyone has tried it in the browser.
 - Budget: 5 minutes. Exit: close the loop on the opening question.
 
-## Close — Is the timeline dead?
+## Close — Is video editing dead?
 
 - Answer the title as a question, using only what we showed today: some of the mechanical work is gone, the taste is still ours, and the claims from vendors stay claims until we test them.
 - Each of us names one thing we will change in our own weekly edit this month and one claim we will not repeat as fact.
