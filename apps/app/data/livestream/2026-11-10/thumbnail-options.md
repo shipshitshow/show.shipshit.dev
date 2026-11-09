@@ -8,6 +8,8 @@ Put **Brian** ("Future Brian", [@ForwardFutureBrian](https://www.youtube.com/@Fo
 
 Brian is not a host, so the "no host faces" rule does not apply. The other locked rules from the channel profile do: photoreal, **no text**, one hero subject, readable at phone size, the 50% test, official logos only as real files.
 
+**Pick (Vincent, 9 Nov 2026): A, at the desk with Claude.** Draft files: `~/Desktop/thumbnails/261110/livestream/brian-a-desk-v1.jpg` on the MacBook. B and C stay as drafts. Not yet set on the stream.
+
 ## Rules applied
 
 - 1920×1080. The red asterisk is stamped afterwards with `bun run thumbnail:stamp --kind live` (red master, x1680 / y96, 144 px viewport). Keep the top-right 144 px square plus its 96 px margins empty in the art and never draw the asterisk.
