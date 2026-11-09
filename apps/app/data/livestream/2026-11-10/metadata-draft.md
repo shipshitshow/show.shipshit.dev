@@ -12,21 +12,22 @@ Other options considered for the livestream: Vibe Editing: Is Video Editing Dead
 
 The livestream title drops "vibe editing", so the description, hashtags and tags carry the term.
 
-## Description (copy block)
+## Description (copy block) — the version Vincent posted on 9 Nov
 
 ```
-Editors spent years learning the timeline. Now Future Brian (@ForwardFutureBrian), a pro with 20 years of editing, says Opus is a better editor than he is.
+Brian (@ForwardFutureBrian), spent 20 years on the timeline.
+Today, Opus 5.5 is a better editor than he is.
 
 Is video editing dead, or only the boring part of it?
 
-We're discussing vibe editing and what it changes for founders who make content every week: how we redid our channel's thumbnails with AI, what Grok, Claude and OpenAI have shipped and what may be next, and the free open-source creative apps we want to try.
+We're discussing vibe editing and what it changes for founders who make content every week, how we redid our channel's thumbnails with AI,  how someone without experience can now edit like a pro, and what it means for storytelling.
 
 Bring your questions to the chat.
 
 #VibeEditing #AI #ContentCreation
 ```
 
-Checks before it goes anywhere:
+Flags on the posted text (Vincent's call): his 7 Nov post says "Opus", not "Opus 5.5", and does not say which tool; "edit like a pro" is a question we have not tested. Segment 1b of the talking points covers it as a question. Other checks:
 
 - Handle: the description uses his YouTube handle, @ForwardFutureBrian (channel "Future Brian"), which becomes a link on YouTube. His X handle is @ForwardEditor; use that for the LinkedIn or X version of the text. A YouTube @mention can notify the channel, and he has not been contacted yet. Tag-free fallback: "Future Brian, a pro with 20 years of editing, ...".
 - The opener quotes ForwardEditor's 7 Nov post ("I have edited for 20 years. Opus is a better editor than me"). It is his claim, not ours. If we cannot stand behind the line, use "a 20-year editor claims" instead.
