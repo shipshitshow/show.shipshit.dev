@@ -1,46 +1,51 @@
 # Thumbnail options — 2026-11-10
 
-Asset: livestream (red asterisk). Working title: `Vibe Editing: Is the Timeline Dead?`. Story: **a working editor says AI edits better than he does. Is the timeline dead?**
+Asset: livestream (red asterisk). Working title: `Vibe Editing: Is the Timeline Dead?`. Story: **a working editor who edits for a big AI channel says AI edits better than he does. Is the timeline dead?**
 
-Rules applied (channel profile, locked 6 Nov 2026; placement table in vault): photoreal, no text, no host faces, one hero subject, readable at phone size, the 50% test. The asterisk is stamped afterwards with `bun run thumbnail:stamp --kind live`, red master, 1920×1080 at x1680 / y96, 144 px viewport. Keep the top-right 144 px square plus its 96 px margins empty in the art and do not draw the asterisk.
+## Direction (Vincent, 9 Nov 2026) — supersedes the first no-face concepts
 
-YouTube's thumbnail test does not run on scheduled live streams. Pick one for the live, then test the others on the archive once it is eligible: https://support.google.com/youtube/answer/16391400
+Put **Brian** ("Future Brian", [@ForwardFutureBrian](https://www.youtube.com/@ForwardFutureBrian) on YouTube, [@ForwardEditor](https://x.com/ForwardEditor) on X) on the thumbnail as the face of the vibe editing movement, shown **editing with Claude**. Three variations for Vincent to pick from.
 
-The recap of this stream gets a different design (white asterisk), not a reuse.
+Brian is not a host, so the "no host faces" rule does not apply. The other locked rules from the channel profile do: photoreal, **no text**, one hero subject, readable at phone size, the 50% test, official logos only as real files.
 
-## A — The face-off (recommended)
+## Rules applied
 
-- **Hypothesis:** the debate in one picture, human craft against the model, over the same footage.
-- **Viewer inference:** "a pro and an AI are fighting over the cut."
-- **Composition:** dark editing suite, shallow depth of field. In the centre a strip of film frames lies across a desk. From the left a weathered human hand holding an editing razor, from the right a glowing white robotic hand holding the same razor blade, both about to cut the same frame. No faces, no people beyond the hands.
+- 1920×1080. The red asterisk is stamped afterwards with `bun run thumbnail:stamp --kind live` (red master, x1680 / y96, 144 px viewport). Keep the top-right 144 px square plus its 96 px margins empty in the art and never draw the asterisk.
+- Anthropic's official Claude logo, as a real file passed as a reference or composited. Never invented or redrawn.
+- Face reference: two or three clear, front-facing stills from Brian's own YouTube channel. The likeness must be convincing, not an average look-alike.
+- No real company UI screenshots; the timeline on screen is generic.
+
+## A — At the desk with Claude (recommended)
+
+- **Hypothesis:** the literal reading of the title: a pro editor, Claude on his edit screen.
+- **Viewer inference:** "this editor now cuts with Claude."
+- **Composition:** Brian at a dark three-monitor edit station, three-quarter view, looking at the viewer with a "can you believe this" expression. The centre monitor shows a generic multi-track timeline and the large Claude logo glowing beside it. Warm key light on his face, cool screen light.
 - **Prompt:**
 
-> Photoreal cinematic still, 16:9, dark charcoal editing suite, shallow depth of field. Centre: a strip of film frames across a desk. A weathered human hand from the left and a glowing white robotic hand from the right both hold a razor blade over the same frame, about to cut. Warm rim light on the human hand, cool white glow on the robotic one. No faces, no text, no letters, no logos. Leave the top-right 15 percent of the frame plain dark.
+> Photoreal cinematic still, 16:9, dark editing suite. Use the supplied reference photos of Brian for his face and hair, convincing likeness. He sits at a three-monitor video editing desk, three-quarter view, looking straight at the viewer with a raised eyebrow. The centre monitor shows a generic multi-track video timeline, and the supplied official Claude logo glows large beside the timeline, reproduced exactly from the reference. Warm key light on his face, cool screen glow. No text, no letters. Leave the top-right 15 percent of the frame plain dark.
 
-- **Small-size check:** two hands and one razor read at 320 px.
+## B — Hands off
 
-## B — The empty chair
-
-- **Hypothesis:** the timeline is editing itself, and nobody is at the desk.
-- **Viewer inference:** "the editor is gone, the cut is still happening."
-- **Composition:** an empty office chair pushed back from a three-monitor edit station in a dark room. The centre monitor shows a bright multi-track timeline cutting itself, clips sliding into place. No person.
+- **Hypothesis:** the clearest picture of vibe editing: the editor leans back while the timeline cuts itself.
+- **Viewer inference:** "he isn't touching it and it still edits."
+- **Composition:** Brian leaning back in his chair with both hands raised off the keyboard, shocked half-smile, while the big screen behind him shows clips snapping into the timeline and the official Claude logo glowing.
 - **Prompt:**
 
-> Photoreal cinematic still, 16:9, dark room, an empty leather office chair pushed back from a three-monitor video editing station, the middle monitor showing a bright multi-track timeline with clips sliding into place by themselves, cool blue-white screen light on the chair, shallow depth of field. No people, no faces, no text, no letters, no logos. Leave the top-right 15 percent of the frame plain dark.
+> Photoreal cinematic still, 16:9, dark editing suite. Use the supplied reference photos of Brian for his face and hair, convincing likeness. He leans back in a chair with both hands raised in the air, away from the keyboard, with a stunned half-smile. Behind him a large monitor shows a generic multi-track timeline with clips snapping into place, and the supplied official Claude logo glows next to it, reproduced exactly from the reference. Cool blue-white screen light, warm rim light on his face. No text, no letters. Leave the top-right 15 percent of the frame plain dark.
 
-- **Small-size check:** the empty chair and the lit screen read at 320 px.
+## C — The leader
 
-## C — The razor and the cursor
-
-- **Hypothesis:** the old tool (razor) turning into the new one (prompt cursor).
-- **Viewer inference:** "the cut is now a prompt."
-- **Composition:** a steel editing razor blade resting on film, the cut line turning into a glowing blinking text cursor. One hero object, strongest at small size, least story.
+- **Hypothesis:** Vincent's "leader of the movement" idea as a hero shot.
+- **Viewer inference:** "he's ahead of everyone else."
+- **Composition:** low-angle portrait of Brian standing in a dark studio, arms folded, calm confident look. Behind him, ghostly old-style timeline windows dissolve into particles; the official Claude logo glows as a light source beside him.
 - **Prompt:**
 
-> Photoreal macro still, 16:9, a steel film-splicing razor blade resting across a strip of film frames on a dark desk, the cut line glowing white and ending in a blinking text cursor bar, shallow depth of field. No people, no text, no letters, no logos. Leave the top-right 15 percent of the frame plain dark.
+> Photoreal cinematic low-angle portrait, 16:9, dark studio. Use the supplied reference photos of Brian for his face and hair, convincing likeness. He stands with arms folded, calm and confident, looking at the viewer. Behind him, translucent video-editing timeline windows dissolve into drifting particles. The supplied official Claude logo glows beside him as a light source, reproduced exactly from the reference. Strong rim light, charcoal background. No text, no letters. Leave the top-right 15 percent of the frame plain dark.
 
-## Notes
+## Before any of this goes public
 
-- No real person's likeness and no company logo are used. The Anthropic logo could be added to B if the stream centres on Opus, but the post only says "Opus", so it is left out.
-- Generation: Codex imagen on Vincent's Mac, one folder per option, no renders loaded into the thread. Review in the Thumbnail Lab. This brief is the sign-off point; nothing is generated yet.
+- **Likeness and consent:** Brian has not been contacted. A photoreal image of a named person next to Claude's logo reads as a partnership or endorsement. Use these only as private drafts until Vincent decides whether to invite or ask him first.
+- **What the thumbnail claims:** his 7 Nov post says "I have edited for 20 years. Opus is a better editor than me." It does not say he edits with Claude. "Editing with Claude" is the framing for the image and is unverified as his workflow. Check his videos before the stream says it as fact.
+- Generation: Codex imagen on Vincent's Mac, one folder per option, no renders loaded into the thread. Review in the Thumbnail Lab.
+- YouTube's thumbnail test does not run on scheduled live streams. Pick one for the live, then test the others on the archive once it is eligible: https://support.google.com/youtube/answer/16391400
 - Do not publish a thumbnail or set it on the stream without Vincent's approval.
