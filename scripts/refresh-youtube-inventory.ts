@@ -54,6 +54,7 @@ type Auth = { key: string } | { token: string };
 interface InventoryItem {
   actualEndTime: string | null;
   actualStartTime: string | null;
+  categoryId?: string;
   channelId: string;
   channelTitle: string;
   cleanTranscriptPath: string | null;
@@ -67,6 +68,7 @@ interface InventoryItem {
   privacyStatus: string;
   publishedAt: string;
   rawTranscriptPath: string | null;
+  tags: string[];
   thumbnail: string;
   title: string;
   transcriptStatus: 'clean' | 'raw' | 'missing';
@@ -164,10 +166,12 @@ interface VideoResponse {
   items: Array<{
     id: string;
     snippet: {
+      categoryId?: string;
       channelId: string;
       channelTitle: string;
       description: string;
       publishedAt: string;
+      tags?: string[];
       title: string;
     };
     contentDetails: { duration: string };
@@ -228,6 +232,7 @@ async function fetchAllVideos(
       items.push({
         actualEndTime: v.liveStreamingDetails?.actualEndTime ?? null,
         actualStartTime: v.liveStreamingDetails?.actualStartTime ?? null,
+        ...(v.snippet.categoryId ? { categoryId: v.snippet.categoryId } : {}),
         channelId: v.snippet.channelId,
         channelTitle: v.snippet.channelTitle,
         cleanTranscriptPath: null,
@@ -241,6 +246,7 @@ async function fetchAllVideos(
         privacyStatus: v.status?.privacyStatus ?? 'public',
         publishedAt: v.snippet.publishedAt,
         rawTranscriptPath: null,
+        tags: v.snippet.tags ?? [],
         thumbnail: `https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`,
         title: v.snippet.title,
         transcriptStatus: 'missing',
