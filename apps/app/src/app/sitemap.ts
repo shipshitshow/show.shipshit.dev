@@ -10,6 +10,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     { priority: 1, url: toAbsoluteUrl('/') },
     { url: toAbsoluteUrl('/artifacts') },
+    { url: toAbsoluteUrl('/talking-points') },
     ...ARTIFACTS.map(({ slug, updated }) => ({
       lastModified: new Date(`${updated}T00:00:00Z`),
       url: toAbsoluteUrl(`/artifacts/${slug}`),

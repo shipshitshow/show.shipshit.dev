@@ -4,6 +4,10 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { BrandMark } from '@/components/BrandMark';
 import brandedThumbnails from '@/lib/data/branded-thumbnails.json';
+import {
+  episodePagePathsByVideoId,
+  listEpisodePages,
+} from '@/lib/episode-pages';
 import { getPublicEpisodes, type PublicEpisode } from '@/lib/public-episodes';
 import { showXAccounts } from '@/lib/show-accounts';
 import styles from './home.module.scss';
@@ -43,11 +47,14 @@ function EpisodeSection({
   episodes,
   format,
   id,
+  notesPaths,
   title,
 }: {
   episodes: PublicEpisode[];
   format: PublicEpisode['format'];
   id: string;
+  /** On-site episode page path by YouTube video ID. */
+  notesPaths: Map<string, string>;
   title: string;
 }) {
   const isShort = format === 'short';
@@ -59,53 +66,74 @@ function EpisodeSection({
     <section aria-labelledby={`${id}-title`} className={styles.library} id={id}>
       <div className={styles.sectionHeading}>
         <h2 id={`${id}-title`}>{title}</h2>
-        <a className={styles.textLink} href={allHref}>
-          View all <ArrowUpRight aria-hidden="true" size={18} />
-        </a>
+        <div className={styles.sectionLinks}>
+          {format === 'livestream' && (
+            <a className={styles.textLink} href="/talking-points">
+              All episode notes <ArrowUpRight aria-hidden="true" size={18} />
+            </a>
+          )}
+          <a className={styles.textLink} href={allHref}>
+            View all <ArrowUpRight aria-hidden="true" size={18} />
+          </a>
+        </div>
       </div>
       {episodes.length ? (
         <ul className={isShort ? styles.shortGrid : styles.episodeGrid}>
-          {episodes.slice(0, isShort ? 4 : 3).map((episode) => (
-            <li key={episode.id}>
-              <a className={styles.episodeCard} href={episode.url}>
-                <div
-                  className={isShort ? styles.shortThumbnail : styles.thumbnail}
+          {episodes.slice(0, isShort ? 4 : 3).map((episode) => {
+            const notesPath = notesPaths.get(episode.id);
+            return (
+              <li key={episode.id}>
+                <a
+                  className={styles.episodeCard}
+                  href={notesPath ?? episode.url}
                 >
-                  <Image
-                    alt=""
-                    height={isShort ? 640 : 360}
-                    sizes={
-                      isShort
-                        ? '(max-width: 760px) 50vw, 280px'
-                        : '(max-width: 640px) 100vw, (max-width: 900px) 50vw, 400px'
+                  <div
+                    className={
+                      isShort ? styles.shortThumbnail : styles.thumbnail
                     }
-                    src={episode.thumbnailUrl}
-                    width={isShort ? 360 : 480}
-                  />
-                  {/* Shorts carry the asterisk inside the 9:16 frame already. */}
-                  {!isShort && !signedThumbnails.has(episode.id) && (
-                    <span
-                      className={`${styles.signature} ${format === 'livestream' ? styles.liveSignature : ''}`}
-                    >
-                      <BrandMark />
-                    </span>
-                  )}
-                </div>
-                <div className={styles.episodeMeta}>
-                  <span>{label}</span>
-                  <time dateTime={episode.publishedAt}>
-                    {new Intl.DateTimeFormat('en', {
-                      day: 'numeric',
-                      month: 'short',
-                      timeZone: 'UTC',
-                      year: 'numeric',
-                    }).format(new Date(episode.publishedAt))}
-                  </time>
-                </div>
-                <h3>{episode.title}</h3>
-              </a>
-            </li>
-          ))}
+                  >
+                    <Image
+                      alt=""
+                      height={isShort ? 640 : 360}
+                      sizes={
+                        isShort
+                          ? '(max-width: 760px) 50vw, 280px'
+                          : '(max-width: 640px) 100vw, (max-width: 900px) 50vw, 400px'
+                      }
+                      src={episode.thumbnailUrl}
+                      width={isShort ? 360 : 480}
+                    />
+                    {/* Shorts carry the asterisk inside the 9:16 frame already. */}
+                    {!isShort && !signedThumbnails.has(episode.id) && (
+                      <span
+                        className={`${styles.signature} ${format === 'livestream' ? styles.liveSignature : ''}`}
+                      >
+                        <BrandMark />
+                      </span>
+                    )}
+                  </div>
+                  <div className={styles.episodeMeta}>
+                    <span>{label}</span>
+                    <time dateTime={episode.publishedAt}>
+                      {new Intl.DateTimeFormat('en', {
+                        day: 'numeric',
+                        month: 'short',
+                        timeZone: 'UTC',
+                        year: 'numeric',
+                      }).format(new Date(episode.publishedAt))}
+                    </time>
+                  </div>
+                  <h3>{episode.title}</h3>
+                </a>
+                {notesPath && (
+                  <a className={styles.watchLink} href={episode.url}>
+                    <Play aria-hidden="true" fill="currentColor" size={12} />
+                    Watch on YouTube
+                  </a>
+                )}
+              </li>
+            );
+          })}
         </ul>
       ) : (
         <p className={styles.empty}>
@@ -123,7 +151,11 @@ function EpisodeSection({
 }
 
 export default async function HomePage() {
-  const { livestreams, shorts, videos } = await getPublicEpisodes();
+  const [{ livestreams, shorts, videos }, episodePages] = await Promise.all([
+    getPublicEpisodes(),
+    listEpisodePages(),
+  ]);
+  const notesPaths = episodePagePathsByVideoId(episodePages);
   const latest = [...videos, ...livestreams].sort(
     (a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt),
   )[0];
@@ -189,18 +221,21 @@ export default async function HomePage() {
           episodes={videos}
           format="video"
           id="library"
+          notesPaths={notesPaths}
           title="Latest videos"
         />
         <EpisodeSection
           episodes={shorts}
           format="short"
           id="shorts"
+          notesPaths={notesPaths}
           title="Shorts"
         />
         <EpisodeSection
           episodes={livestreams}
           format="livestream"
           id="live"
+          notesPaths={notesPaths}
           title="The live show"
         />
         <section
