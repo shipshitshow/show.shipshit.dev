@@ -58,7 +58,7 @@ Follow us: https://x.com/shipshitdev
 - First line of the description: the one take, in plain words, not a copy of the title.
 - Second line: the full-episode link, `https://www.youtube.com/watch?v=<episode id>`, once the episode is public. While it is private or scheduled, leave the URL out of the copy and report it as pending.
 - No chapters, no source list.
-- Shorts go to the main channel (owner, 10 Nov 2026); the Clips channel is only kept. The profile's Clips line is historical until it is next updated.
+- Shorts go to the main channel (owner, 10 Nov 2026); the Clips channel is only kept, not maintained.
 - The first spoken line must make sense to a stranger. If it starts with "and", "but", "because", "that's why" or an "it" with no subject, pull a later line forward or choose another range (audit, 10 Nov 2026: Shorts with a context-dependent first line had a median of 151 views against 611 for those that open on a claim; a correlation on a small channel).
 
 ### Link every Short to its full episode

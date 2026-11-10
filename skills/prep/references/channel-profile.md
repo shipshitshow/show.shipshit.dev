@@ -4,7 +4,7 @@ Episode context was checked against September 1, 8 and 29 recordings on 2026-10-
 
 - Name: **Ship Sh*t Show**; no exclamation mark after Show.
 - Main: https://www.youtube.com/@shipshitshow
-- Clips: https://www.youtube.com/@ShipShitShowClips
+- Clips: https://www.youtube.com/@ShipShitShowClips. Kept, not maintained: Shorts now go to the main channel (owner, 10 Nov 2026). Do not upload or plan new work for it.
 - Hosts: Vincent and Mitchell. Real operator experience and disagreement are strengths.
 - Primary audience: founders, indie developers and small teams using AI in real businesses.
 - Promise: firsthand experience, practical workflows, what breaks and honest disagreement between operators. This is not a model-benchmark show; model chronology supports the business discussion.
@@ -18,7 +18,7 @@ Episode context was checked against September 1, 8 and 29 recordings on 2026-10-
 
 ## Packaging
 
-Livestreams cover a viewer decision across sources and firsthand stories. Recaps package the actual final edit, not the entire source livestream. Shorts contain a complete, narrow point. Never borrow another creator's transcript as channel history.
+Livestreams cover a viewer decision across sources and firsthand stories. Recaps package the actual final edit, not the entire source livestream. Shorts contain a complete, narrow point and are published on the main channel, each linked to its full episode (description link and Related video; see the metadata skill). Never borrow another creator's transcript as channel history.
 
 **Titles (owner, 6 November 2026): one line on the home feed.** The title must fit one line on the YouTube home feed. Aim for 40 characters or fewer, never more than 45 (owner's choice; YouTube's 100-character cap and the ~60 characters visible in search are not the target). A full-width desktop feed holds about 50 characters, so 40 leaves room for smaller windows; narrow cards can cut at about 32, so put the take in the first words. Wide letters (W, M, capitals) cost more: preview the real width in the titles lab before choosing. Lead with the take or the stakes, not the product name. Spell-check names and words before upload: a live title once read "OpenAI Will Bo Bankrupt Before 2030".
 
