@@ -21,8 +21,8 @@ Turborepo monorepo with Bun workspaces.
 
 ### Editing workspace
 - `editing/` — Tesseract media workspace (formerly standalone `~/www/tesseract`, merged 2026-10-15 so all show data lives in this repo). Git tracks only `editing/README.md`, `editing/AGENTS.md` and `editing/scripts/workspace.py`; editing uses the synced `skills/library`, `recap`, `dialogue`, `overlays` and `thumbnails` (the old `tesseract-*` skills were renamed upstream); a root `.gitignore` allowlist ignores everything else (raws, renders, `.tsrct`, transcripts, manifests, host photos, concept boards). The repo is public: never force-add from `editing/`.
-- Layout (2026-10-15): `editing/projects/<YYMMDD>/` per episode with `episode.json` (date key → `apps/app/data/livestream/<YYYY-MM-DD>`, YouTube IDs, transcripts), the recording once in `raws/`, `video/` for the long-form edit and `shorts/<NN-slug>/` per short, each a standard project; `_labs/` sits at the `editing/` root. `scripts/workspace.py init|audit|promote` enforces it.
-- Media exists only in the primary checkout (`~/www/shipshitshow/show.shipshit.dev/editing`, ~72 GB); worktrees get the contract only. The old `~/www/tesseract` path was removed; historical work files still reference it and are records only.
+- Layout (2026-11-10): media lives in the brand content tree `~/content/brands/shipshitshow` (override `SHIPSHITSHOW_CONTENT_ROOT`; labs in `~/content/_labs/shipshitshow`). `projects/<YYYY-MM-DD>_<YYMMDD>/` per episode with `episode.json` (date key → `apps/app/data/livestream/<YYYY-MM-DD>`, YouTube IDs, transcripts), the recording once in `raw/`, `out/video/` for the long-form edit and `out/shorts/<NN-slug>/` per short, each a standard project. `scripts/workspace.py init|audit|promote` enforces it and runs from any checkout.
+- Media is outside the repo, so every checkout and worktree can reach it. Thumbnail masters, sources and shorts covers (`outputs/`) have not moved yet. The old `~/www/tesseract` path was removed; historical work files still reference it and are records only.
 
 ### Data
 - `apps/app/data/livestream/` — Topic seed markdown per date (repo files, read-only in production).

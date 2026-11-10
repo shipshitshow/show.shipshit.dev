@@ -2,7 +2,7 @@
 
 Episode-agnostic scripts for the locked Shorts template in `docs/show-prep/edit-style.md`.
 Ported from the 261103 `shorts/_work` v3d scripts (5 Nov 2026). Nothing here is tied to one
-episode: everything episode-specific lives in `editing/projects/<YYMMDD>/shorts/<slug>/short.json`.
+episode: everything episode-specific lives in `<episode>/out/shorts/<slug>/short.json` (episode = `~/content/brands/shipshitshow/projects/<date>_<YYMMDD>`, see `editing/README.md`).
 
 | Script | Does |
 | --- | --- |
@@ -27,11 +27,11 @@ Run from the repo root. `EP` is the episode folder, `SLUG` the Short's folder na
 ```bash
 export PATH=/opt/homebrew/bin:$PATH
 PY=/usr/local/bin/python3
-EP=editing/projects/<YYMMDD>
+EP=${SHIPSHITSHOW_CONTENT_ROOT:-~/content/brands/shipshitshow}/projects/<date>_<YYMMDD>
 SLUG=01-your-short
 S=editing/scripts/shorts
 
-# 0. write $EP/shorts/$SLUG/short.json with "source" and "segs" (schema below); leave "chunks" out for now
+# 0. write $EP/out/shorts/$SLUG/short.json with "source" and "segs" (schema below); leave "chunks" out for now
 # 1. cut the audio, transcribe, print the numbered words
 $PY $S/align.py $SLUG --episode $EP --prep
 # 2. add "chunks" to short.json from those numbers, then time them to the audio
@@ -44,7 +44,7 @@ $PY $S/finalize.py $SLUG --episode $EP
 ```
 
 Defaults: work dir `<short>/outputs/work/tmp_v3c`, pre-loudnorm render `<short>/outputs/work/video-prenorm.mp4`,
-final `<short>/final/video.mp4`. B-roll PNGs are read from `$EP/video/assets/<asset>.png`. Override with
+final `<short>/final/video.mp4`. B-roll PNGs are read from `$EP/out/video/assets/<asset>.png`. Override with
 `--work`, `--out`, `--assets`, `--source`, `--config`. To rebuild without touching existing output, point
 `--out` at `/tmp` (finalize refuses to overwrite `final/video.mp4`).
 
@@ -55,7 +55,7 @@ If whisper mistimes a word, correct it and re-run step 2:
 
 ```json
 {
-  "source": "raws/<YYMMDD>.mp4",
+  "source": "raw/<YYMMDD>.mp4",
   "segs": [
     {"a": 897.66, "b": 906.85, "layout": "A", "tile": "mitchell"},
     {"a": 907.45, "b": 915.07, "layout": "A", "tile": "mitchell"}

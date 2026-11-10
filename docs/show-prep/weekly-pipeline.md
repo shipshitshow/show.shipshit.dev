@@ -44,13 +44,13 @@ public. Nothing else waits on him.
 
 1. Check stream, audio and chat before going live, with `$cues` and the on-air
    checklist open. The countdown is deliberate; the first sentence follows it
-   directly. Stream. Then put the recording at `editing/projects/<YYMMDD>/raws/` on the
-   Studio and create the projects:
+   directly. Stream. Then put the recording at
+   `~/content/brands/shipshitshow/projects/<YYYY-MM-DD>_<YYMMDD>/raw/` and create the projects:
    `python3 editing/scripts/workspace.py init <YYMMDD>/video`, plus
    one `init <YYMMDD>/shorts/<NN-slug>` per Short (this also creates
    `episode.json`).
 2. Fill `episode.json` with the livestream ID.
-3. Transcribe it to `raws/transcript.txt` and fix ASR names (Genfeed, Grok,
+3. Transcribe it to `raw/transcript.txt` and fix ASR names (Genfeed, Grok,
    Claude, PHP, Cloudflare).
 
 ## 3. Recap (16:9, about 10 min)
@@ -126,7 +126,7 @@ public. Nothing else waits on him.
 3. After 7 days, compare views against the inventory median
    ([growth checklist](growth-checklist.md)).
 4. Run `$coach` on the stream's transcript for each host's one-page scorecard.
-   It stays in `editing/projects/<YYMMDD>/coach.md`, not in git.
+   It stays in the episode folder (`<media root>/projects/<YYYY-MM-DD>_<YYMMDD>/coach.md`), not in git.
 
 ## Open (6 Nov 2026)
 

@@ -17,11 +17,11 @@ Status: locked. Vincent approved this template on 5 Nov 2026 ("that's way better
 then "the * is fine, lock it bigger", then white captions with the spoken word in
 red). All five 261103 Shorts are built on it. Change it only when Vincent asks.
 
-Reference: `editing/projects/261103/shorts/01-server-nobody-touches/final/video.mp4`
-on the primary checkout (media is gitignored). The build scripts live next to the
-Shorts in `editing/projects/261103/shorts/_work/` (`align_v3d.py` for caption
-timing, `build_v3d.py` for the render, `finalize_v3d.py` for loudness); copy them
-for the next episode instead of re-deriving the layout.
+Reference: `projects/2026-11-03_261103/out/shorts/01-server-nobody-touches/final/video.mp4`
+in the media root `~/content/brands/shipshitshow` (media is gitignored). The build scripts
+are tracked in `editing/scripts/shorts/` (`align.py` for caption timing, `build.py` for the
+render, `finalize.py` for loudness; see its README); reuse them for the next episode
+instead of re-deriving the layout.
 
 **Frame**
 - The person speaking fills the whole 9:16 frame: a static crop of their cam, face

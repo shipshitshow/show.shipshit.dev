@@ -13,38 +13,62 @@ import subprocess
 import tempfile
 import zipfile
 
-ROOT = Path(__file__).resolve().parents[1]
-REPO = ROOT.parent
+# Media lives outside the repository, in the brand's content tree. Override the
+# root (for tests or another machine) with SHIPSHITSHOW_CONTENT_ROOT; labs follow
+# it unless SHIPSHITSHOW_LABS_ROOT is set. REPO is the checkout this script runs
+# from (any worktree works): it only resolves the tracked show data.
+REPO = Path(__file__).resolve().parents[2]
+ROOT = Path(os.environ.get("SHIPSHITSHOW_CONTENT_ROOT", "~/content/brands/shipshitshow")).expanduser().resolve()
+LABS = Path(os.environ["SHIPSHITSHOW_LABS_ROOT"]).expanduser().resolve() if os.environ.get("SHIPSHITSHOW_LABS_ROOT") else ROOT.parent.parent / "_labs" / ROOT.name
 FOLDERS = ("raws", "assets", "outputs", "versions", "final")
-# An episode is projects/<YYMMDD> with episode.json and the shared recording in
-# raws/. Each deliverable inside it is a project: <YYMMDD>/video or
-# <YYMMDD>/shorts/<slug>. Experiments are _labs/<slug> at the workspace root.
+EPISODE_FOLDERS = ("raw", "out", "prompts")
+# An episode is projects/<YYYY-MM-DD>_<YYMMDD> with episode.json and the shared
+# recording in raw/. Each deliverable inside it is a project under out/:
+# out/video or out/shorts/<slug>. Project ids stay <YYMMDD>/video,
+# <YYMMDD>/shorts/<slug> and _labs/<slug>. Experiments live in LABS/<slug>.
 EPISODE = re.compile(r"[0-9]{6}")
+EPISODE_DIR = re.compile(r"[0-9]{4}-[0-9]{2}-[0-9]{2}_([0-9]{6})")
 DELIVERABLE = re.compile(r"([0-9]{6})/(video|shorts/[a-z0-9][a-z0-9-]*)")
 LAB = re.compile(r"_labs/[a-z0-9][a-z0-9-]*")
 
 
+def episode_dir(episode_id: str, create: bool = False) -> Path:
+    """Folder of an episode id, e.g. 261103 -> projects/2026-11-03_261103."""
+    matches = sorted((ROOT / "projects").glob(f"*_{episode_id}")) if (ROOT / "projects").is_dir() else []
+    matches = [path for path in matches if EPISODE_DIR.fullmatch(path.name) and path.is_dir()]
+    if matches:
+        return matches[0]
+    if not create:
+        raise ValueError(f"No episode folder for {episode_id} under {ROOT / 'projects'}")
+    return ROOT / "projects" / f"20{episode_id[:2]}-{episode_id[2:4]}-{episode_id[4:]}_{episode_id}"
+
+
 def project_path(slug: str) -> Path:
     if DELIVERABLE.fullmatch(slug):
-        return ROOT / "projects" / slug
+        episode_id, rest = slug.split("/", 1)
+        return episode_dir(episode_id, create=True) / "out" / rest
     if LAB.fullmatch(slug):
-        return ROOT / slug
+        return LABS / slug.removeprefix("_labs/")
     raise ValueError("Use <YYMMDD>/video, <YYMMDD>/shorts/<slug> or _labs/<slug> (lowercase, digits and hyphens).")
 
 
 def slug_of(project: Path) -> str:
-    relative = project.relative_to(ROOT).as_posix()
-    return relative.removeprefix("projects/")
+    if project.is_relative_to(LABS):
+        return "_labs/" + project.relative_to(LABS).as_posix()
+    episode, _, rest = project.relative_to(ROOT / "projects").as_posix().partition("/out/")
+    return f"{EPISODE_DIR.fullmatch(episode).group(1)}/{rest}"
 
 
 def discover_projects() -> list[Path]:
-    """Every folder holding a project.json, skipping copies inside project folders and archives."""
+    """Every deliverable and lab holding a project.json, skipping copies inside project folders and archives."""
     found = []
-    for base in (ROOT / "projects", ROOT / "_labs"):
-        if not base.is_dir():
-            continue
-        for path in base.rglob("project.json"):
-            parts = path.relative_to(base).parts[:-1]
+    for episode in discover_episodes():
+        for path in [episode / "out" / "video", *sorted((episode / "out" / "shorts").glob("*"))]:
+            if (path / "project.json").is_file() and not path.name.startswith("_"):
+                found.append(path)
+    if LABS.is_dir():
+        for path in LABS.rglob("project.json"):
+            parts = path.relative_to(LABS).parts[:-1]
             if not set(parts) & set(FOLDERS) and not any(part.startswith("_archive") for part in parts):
                 found.append(path.parent)
     return sorted(found)
@@ -52,22 +76,23 @@ def discover_projects() -> list[Path]:
 
 def discover_episodes() -> list[Path]:
     base = ROOT / "projects"
-    return sorted(path for path in base.iterdir() if path.is_dir() and EPISODE.fullmatch(path.name)) if base.is_dir() else []
+    return sorted(path for path in base.iterdir() if path.is_dir() and EPISODE_DIR.fullmatch(path.name)) if base.is_dir() else []
 
 
 def episode_of(project: Path) -> Path | None:
     match = DELIVERABLE.fullmatch(slug_of(project))
-    return ROOT / "projects" / match.group(1) if match else None
+    return episode_dir(match.group(1)) if match else None
 
 
 def ensure_episode(episode_id: str) -> Path:
-    """Create projects/<YYMMDD> with raws/ and episode.json unless it already exists."""
-    episode = ROOT / "projects" / episode_id
+    """Create projects/<date>_<YYMMDD> with raw/, out/ and episode.json unless it already exists."""
+    episode = episode_dir(episode_id, create=True)
     if (episode / "episode.json").exists():
         return episode
     date = f"20{episode_id[:2]}-{episode_id[2:4]}-{episode_id[4:]}"
     show_data = f"apps/app/data/livestream/{date}"
-    (episode / "raws").mkdir(parents=True, exist_ok=True)
+    (episode / "raw").mkdir(parents=True, exist_ok=True)
+    (episode / "out").mkdir(exist_ok=True)
     write_json(episode / "episode.json", {
         "schema_version": 1,
         "id": episode_id,
@@ -135,15 +160,18 @@ def copy_bundle(source: Path, destination: Path) -> None:
 
 def audit_episode(episode: Path, report: dict) -> None:
     name = episode.name
+    episode_id = EPISODE_DIR.fullmatch(name).group(1)
     try:
         data = json.loads((episode / "episode.json").read_text())
     except (ValueError, OSError) as error:
         report["errors"].append(f"{name}: invalid or missing episode.json ({error})")
         return
-    if data.get("id") != name:
-        report["errors"].append(f"{name}: episode.json id is {data.get('id')!r}")
-    if not (episode / "raws").is_dir():
-        report["errors"].append(f"{name}: missing raws")
+    if data.get("id") != episode_id:
+        report["errors"].append(f"{name}: episode.json id is {data.get('id')!r}, expected {episode_id}")
+    if data.get("recording_date") and not name.startswith(data["recording_date"]):
+        report["errors"].append(f"{name}: recording_date {data['recording_date']} does not match the folder")
+    if not (episode / "raw").is_dir():
+        report["errors"].append(f"{name}: missing raw")
     if data.get("recording") and not (episode / data["recording"]).is_file():
         report["errors"].append(f"{name}: missing recording {data['recording']}")
     # Repository links are relative to the repository root.
@@ -153,7 +181,7 @@ def audit_episode(episode: Path, report: dict) -> None:
         if not (REPO / transcript).is_file() and not (episode / transcript).is_file():
             report["errors"].append(f"{name}: missing transcript {transcript}")
     for entry in sorted(episode.iterdir()):
-        if entry.is_dir() and entry.name not in ("raws", "video", "shorts") and not entry.name.startswith("_archive"):
+        if entry.is_dir() and entry.name not in EPISODE_FOLDERS and not entry.name.startswith("_archive"):
             report["errors"].append(f"{name}: unexpected folder {entry.name}")
     report["episodes"].append(name)
 
@@ -298,7 +326,7 @@ def promote(slug: str) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(description=__doc__, epilog=f"Media root: {ROOT} (SHIPSHITSHOW_CONTENT_ROOT); labs: {LABS} (SHIPSHITSHOW_LABS_ROOT).")
     sub = parser.add_subparsers(dest="command", required=True)
     create = sub.add_parser("init"); create.add_argument("project"); create.add_argument("--kind", choices=("recap", "short", "branding", "design"))
     inspect = sub.add_parser("audit"); inspect.add_argument("--project")
@@ -312,7 +340,7 @@ def main() -> None:
         else:
             if args.project:
                 projects = [project_path(args.project)]
-                episodes = [episode] if (episode := episode_of(projects[0])) else []
+                episodes = [episode] if (episode := (episode_of(projects[0]) if DELIVERABLE.fullmatch(args.project) else None)) else []
             else:
                 projects, episodes = discover_projects(), discover_episodes()
             report = audit(projects, episodes)
