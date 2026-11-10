@@ -6,7 +6,9 @@ When a rule changes, change it at its source, not here.
 
 | Rule | Source |
 |---|---|
-| Episode opening, Shorts angles, the debatable question | [editorial-format.md](editorial-format.md) |
+| Episode opening, one title one promise, stance check, Shorts angles, the debatable question | [editorial-format.md](editorial-format.md) |
+| First sentence, segment shape, re-hooks, verdict close | `skills/prep` and `skills/hooks` (`opening-and-hooks.md`, `segment-playbook.md`) |
+| What the hosts do on air | `skills/prep/references/on-air-checklist.md`, attached to the `$cues` run sheet |
 | Which takes become Shorts (hot takes, never features) | [product marketing context](../../.agents/memory/product-marketing-context.md) |
 | Shorts and recap edit style (locked 5 Nov 2026) | [edit-style.md](edit-style.md) |
 | Asterisk asset, colour, size and position for every format | [vault brand/placement.md](https://github.com/shipshitshow/vault/blob/master/brand/placement.md) |
@@ -24,18 +26,25 @@ public. Nothing else waits on him.
 ## 1. Before recording (by the day before)
 
 1. Pick one founder question with a business outcome
-   ([growth checklist](growth-checklist.md)).
-2. Build the source board and talking points with `$prep`, then save the draft:
+   ([growth checklist](growth-checklist.md)). Write the title's promise in one
+   sentence; the show has at most three segments plus a close.
+2. Build the source board and talking points with `$prep` and `$hooks`: the first
+   sentence options, the segments, a story and a re-hook for each. Then save the draft:
    `bun run show:prep save --store local --file <draft.json> --if-revision new`
    ([local-show-preparation.md](../local-show-preparation.md)).
 3. Name 3–5 Shorts angles inside the segments, each with a claim, evidence,
    the opposing read and a payoff. Carry their cues into `$cues`.
-4. Livestream thumbnail: red asterisk, per placement.md.
+4. Before going live, Vincent and Mitchell each write a one-line verdict per
+   segment and approve the first sentence. The board marks the segments where they
+   differ. Nobody writes a view for a host.
+5. Livestream thumbnail: red asterisk, per placement.md.
    - **Gate:** Vincent approves the board.
 
 ## 2. Record day
 
-1. Stream. Then put the recording at `editing/projects/<YYMMDD>/raws/` on the
+1. Check stream, audio and chat before going live, with `$cues` and the on-air
+   checklist open. The countdown is deliberate; the first sentence follows it
+   directly. Stream. Then put the recording at `editing/projects/<YYMMDD>/raws/` on the
    Studio and create the projects:
    `python3 editing/scripts/workspace.py init <YYMMDD>/video`, plus
    one `init <YYMMDD>/shorts/<NN-slug>` per Short (this also creates

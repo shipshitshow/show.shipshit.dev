@@ -1,116 +1,82 @@
 ---
 name: hooks
-description: Generate, critique, and improve Ship Shit Show livestream introductions, cold opens, hooks, and intro talking points. Use when preparing a livestream topic markdown file, rewriting weak intros, turning transcript/channel context into a sharper opening, creating "Cold Open" or "READ THIS" sections, or producing host-ready talking points for AI/startup/dev-tool commentary.
+description: Write and critique the first sentence on air for a Ship Sh*t Show livestream, plus the board's Cold Open section. Use when preparing a topic file, rewriting a weak opening, or turning transcript and channel context into a sharper first claim.
 ---
 
-# Livestream Intro Hooks
+# Livestream opening
 
-## Quick Start
+The opening specialist for the `$prep` board. One rule, shared with `$prep` and `$cues`: after the countdown, the first spoken sentence is the episode's promise, said to the lens, and it is prepared and approved with the board. It is a claim plus the stake, under 15 seconds. Everything after it stays natural. This skill does not write a monologue to read.
 
-Use this skill to turn a Ship Shit Show topic into a host-ready opening that lands fast.
+The first 30 seconds of every stream are a deliberate countdown, not dead air. Open on the topic right after it. Stream and audio checks happen before going live; greetings and catch-up come after the close.
+
+## Quick start
 
 1. Load the topic file, usually `apps/app/data/livestream/YYYY-MM-DD/topic-*.md`.
-2. Run `scripts/show-context.sh <topic-file>` from this skill to inspect local transcript coverage and nearby show prep.
-3. Voice source of truth is `$prep`: read `../prep/references/brand-voice.md` and `../prep/references/live-voice-extraction.md`. This skill is the cold-open specialist, not a second brand voice.
-4. Read `references/shipshitshow-hooks.md` for the cold-open quality bar and output contract.
-5. Write or replace the topic's intro sections in this order:
-   - `## Cold Open - READ THIS`
-   - `## Summary`
-   - `## Intro Talking Points`
-6. Keep existing sources, URLs, and factual claims unless you verify new ones.
+2. Run `scripts/show-context.sh <topic-file>` from this skill to see local transcript coverage and recent boards.
+3. Read the rule and patterns in `../prep/references/opening-and-hooks.md`, and the voice in `../prep/references/brand-voice.md`. Those two files are the source of truth; this skill applies them.
+4. Read `references/shipshitshow-hooks.md` for the openings the channel's best videos use and the output contract.
+5. Write or replace `## Cold Open` in the topic file with the shape below. Keep existing sources, URLs and factual claims unless you verify new ones.
 
-## Source Priority
+## Source priority
 
-Prefer local sources in this order:
+1. Current topic markdown: title, viewer question, sources, livestream notes, existing talking points.
+2. Clean transcripts: `apps/app/data/transcripts/clean/*.txt`, then raw VTT when clean text is missing. Do not quote the auto-translated transcripts (19 August to 21 October).
+3. Recent livestream boards under `apps/app/data/livestream/`.
+4. External research only when a fact is stale, missing or high-risk.
 
-1. Current topic markdown: title, summary, sources, livestream notes, existing talking points.
-2. Clean transcripts: `apps/app/data/transcripts/clean/*.txt`.
-3. Raw VTT transcripts: `apps/app/data/transcripts/*.vtt` when clean text is missing.
-4. Recent livestream prep files: `apps/app/data/livestream/YYYY-MM-DD/topic-*.md`.
-5. External research only when facts are stale, missing, or high-risk.
+The repo holds transcript text, not video. Do not claim anything about the picture or camera from it.
 
-The repo currently has transcript text, not local video footage. Do not claim visual analysis unless actual video/media files are supplied or fetched separately.
+## Diagnose the existing opening
 
-## Workflow
+Flag directly:
 
-### Diagnose The Existing Intro
+- starts with stream logistics, a greeting or "how was your week" instead of a claim
+- names the topic late, or never names the stake
+- asks a rhetorical question with no payoff
+- asks for a like or subscribe before the first payoff
+- needs context a replay viewer does not have
+- promises something the segments do not deliver
 
-Flag these problems directly:
+## Build the first sentence
 
-- starts with setup logistics instead of a claim
-- waits too long before naming the topic
-- asks rhetorical questions without a concrete payoff
-- has banter that only works for live viewers, not replay viewers
-- lacks a reason the viewer should care today
-- lacks a promise for what the stream will prove, build, or decide
+1. **Claim:** what the hosts actually hold, or what the source actually shows.
+2. **Receipt:** one number, quote, incident or firsthand moment already on the board, with its source.
+3. **Stake:** why it matters to a founder or small team using AI in their business.
 
-### Build The Hook
-
-Use this structure for the first 20-45 seconds:
-
-1. **Contradiction:** What everyone assumes versus what is actually happening.
-2. **Receipt:** One concrete fact, metric, quote, incident, or observed behavior.
-3. **Stakes:** Why this matters for indie builders, devs, AI agents, or software companies.
-4. **Promise:** What the stream will prove, build, compare, or tear down.
-5. **Turn:** A punchy bridge into the first segment.
-
-Default shape:
+Shape:
 
 ```text
-Everyone thinks [comfortable story].
-But [specific event/fact] means [sharper interpretation].
-If you build software, this changes [concrete consequence].
-We'll [prove / build / decide the thing].
-Let's go.
+[Claim]. [Receipt]. If you [viewer situation], [consequence].
 ```
 
-Do not open with "Today we're going to talk about..." — that is a brand-voice anti-pattern unless there is no stronger claim.
+Under 15 seconds aloud (about 35 words). Return two or three options built on different patterns (claim first, receipt first, story first, fight the lazy take), each with the receipt it rests on. Never invent a number, date, quote or result, and never write a host's firsthand story for them: mark it `Host to supply` or leave it out. Mark an unchecked fact `CHECK BEFORE SAYING`.
 
-### Write Host-Ready Output
-
-Produce concise sections that can be pasted into the topic file:
+## Output
 
 ```markdown
-## Cold Open - READ THIS
+## Cold Open — "Viewer promise"
 
-> "..."
-
-## Intro Talking Points
-
-- ...
-- ...
-- ...
-
-## Better Hook Options
-
-1. ...
-2. ...
-3. ...
+- **First sentence (approve one):** "Option A, under 15 seconds."
+- Alternate B: "…" (receipt: …)
+- Alternate C: "…" (receipt: …)
+- On screen with both hosts: the source passage, screenshot or ready result.
+- By about 45 seconds: the three questions guiding the episode and the first useful point.
+- Budget: about 1 minute. Exit: into segment one.
 ```
 
-Make the cold open spoken, not essay-like. A good cold open should read naturally out loud in one breath, with short sentences and obvious emphasis points.
+The app routes any `##` heading that starts with "Cold Open" to the timeline, so keep that heading. An existing `## Cold Open - READ THIS` section is replaced by this shape, not duplicated. If rewriting a file, preserve frontmatter and unrelated sections.
 
-## Editing Rules
+## Rules
 
-- Remove "we are live", audio checks, greetings, and platform housekeeping from the planned intro.
-- Keep the hosts' blunt/operator voice, but remove transcript filler.
+- Remove "we are live", audio checks, greetings and platform housekeeping from the plan.
+- No "Welcome back", "today we're going to talk about…" or "in this video" when a stronger claim exists.
+- No like or subscribe ask in the opening.
+- Keep the hosts' blunt operator voice; use one strong swear only where it earns its place.
 - Prefer concrete claims over hype words.
-- Use one strong swear only when it earns its place; do not spray profanity as seasoning.
-- Avoid generic YouTube language like "in this video" or "today we're going to" unless it is part of a joke or there is no stronger claim.
-- Do not invent numbers, dates, quotes, launch details, or benchmark claims.
-- If the topic file has a `Cold Open - READ THIS`, improve it instead of duplicating it under a new heading.
-- If rewriting a file, preserve frontmatter and unrelated sections.
 
 ## Verification
 
-Before finalizing:
-
-- Read the cold open aloud mentally; cut any sentence that stalls.
-- Confirm the topic is named in the first 10 seconds.
-- Confirm there is at least one receipt and one stake.
-- Confirm the output can serve both live viewers and replay viewers.
-- Run the skill validator after changing this skill:
-
-```bash
-uv run --with pyyaml python /Users/decod3rs/.codex/skills/.system/skill-creator/scripts/quick_validate.py skills/hooks
-```
+- The topic is named in the first sentence and it stands alone for a replay viewer.
+- One receipt, one stake, nothing invented.
+- Read it aloud once: under 15 seconds.
+- The segments deliver what it promises.

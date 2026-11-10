@@ -2,8 +2,11 @@
 
 Vincent's editorial direction, 2026-10-08: open with a clear viewer promise and a
 useful visual, prepare clearer standalone Shorts topics, and bring at least one
-controversial angle into every episode. Give the conversation boundaries that
-make the recording easier to edit while keeping the hosts natural.
+controversial angle into every episode. Updated 2026-11-10 with the on-air rules
+from the quality audit: one title one promise, a prepared first sentence, a stance
+check, story first, re-hooks and a verdict close. Together these give the
+conversation boundaries that make the recording easier to edit while keeping the
+hosts natural.
 
 This applies to new episode preparation alongside the source-board contract in
 [`prep`](../../skills/prep/SKILL.md). It is a show about how two founders use AI in
@@ -16,16 +19,58 @@ Use [Riley Brown's opening advice](https://x.com/rileybrown/status/2108223689783
 as an editorial hypothesis, not proof of improved retention. The hosts and a
 relevant screenshot, source passage or ready result should be visible together.
 
-- First 15 seconds: name the question and why the viewer cares.
+Every stream starts with a deliberate 30-second countdown. It is not dead air and
+it is not the opening. The opening starts the moment it ends:
+
+- **First sentence, right after the countdown:** the episode's promise, said to the
+  lens. A claim plus the stake for the viewer, under 15 seconds. It is the one line
+  prepared in advance and approved with the board; everything after it is natural.
+  Options come from [`hooks`](../../skills/hooks/SKILL.md) and the
+  [opening guide](../../skills/prep/references/opening-and-hooks.md).
 - Next 20 seconds: give the reason to trust the discussion and the specific payoff.
   Use actual experience or evidence; promise only a ready demonstration.
 - By about 45 seconds: show the three questions guiding the episode and begin
   the first useful point. These are timing cues, not a mandatory speech.
-- Bring in greetings, chat and housekeeping after the first useful takeaway.
+- No like or subscribe ask before the first payoff.
+- Stream and audio checks happen **before** going live. Greetings, "how was your
+  week" and catch-up move to an after-show block of at most five minutes after the
+  verdicts, so the replay ends on the verdict. Chat comes in once per segment.
 
-If a countdown or setup check is needed live, put it before the editorial opening
-and mark it for removal from the replay. A short opening may be rehearsed; the
-body uses source links and conversational cues rather than performed lines.
+The 3 November stream names its title topic at 8:20, after catch-up and small talk;
+this rule exists to prevent that.
+
+## One title, one promise
+
+The title makes one promise and the show keeps it. At most three segments plus a
+close. Items that do not help answer the title go to the after-show block, the next
+episode or out. State the title's promise in one sentence before choosing segments.
+
+## Take sides before the show
+
+Before going live, each host writes a one-line verdict per segment. Where they
+differ, that is the segment and it gets the time. Where they agree, one host asks
+the questions a sceptical customer would ask: what did it cost, what broke, would
+you ship it. Plan the question, not the disagreement; a host never defends a view
+they do not hold, and nobody writes a view for a host.
+
+## Story first, source second
+
+Open each segment with what happened to a host and one number, labelled as theirs.
+The source is one line that both hosts read before the show; if neither read it, it
+is not in the show. A segment with no firsthand story from either host is cut or run
+as an open question.
+
+## Keep the viewer through the middle
+
+- A one-sentence re-hook every 8–10 minutes: what is answered, what is still coming.
+- One chat question per segment, read aloud. A planted one from the hosts' own notes
+  is fine.
+- A live build either has something to say while it runs or waits off air.
+- Close on a verdict: each host says in one sentence what they would do on Monday,
+  and what remains unknown.
+
+The hosts keep [the on-air checklist](../../skills/prep/references/on-air-checklist.md)
+beside the run sheet.
 
 ## Name the Shorts before recording
 
@@ -89,7 +134,7 @@ announce as results:
   title, proof shot, essential caveat and status: captured, needs context, or drop.
   Use [`clips`](../../skills/clips/SKILL.md) to verify and package the actual material.
 
-For the replay, trim the countdown, setup and opening dead air; retain failures
+For the recap, trim the countdown, setup, after-show block and any opening dead air; retain failures
 and disagreement that explain the decision. Each standalone cut needs its own
 context and payoff. Do not stitch separate answers into a stronger claim or
 remove the qualification that makes the take accurate.
