@@ -6,7 +6,7 @@ parser=argparse.ArgumentParser()
 parser.add_argument('--source',type=Path,required=True,help='Checkout of shipshitshow/skills')
 parser.add_argument('--check',action='store_true')
 args=parser.parse_args();source=args.source.resolve();root=Path(__file__).resolve().parents[1]
-mapping={'talking-points':'prep','youtube-metadata':'metadata','thumbnail-prompt-variations':'thumbnails','recap':'recap','dialogue':'dialogue','library':'library','overlays':'overlays','coach':'coach'}
+mapping={'talking-points':'prep','youtube-metadata':'metadata','thumbnail-prompt-variations':'thumbnails','recap':'recap','dialogue':'dialogue','library':'library','overlays':'overlays','coach':'coach','growth-review':'growth-review'}
 errors=[];lock={}
 for src,dst in mapping.items():
  s=source/src;d=root/'skills'/dst
@@ -15,8 +15,8 @@ for src,dst in mapping.items():
  interface=re.sub(r'(?m)^(\s*display_name: ).*$',lambda match:match[1]+'"'+dst.capitalize()+'"',interface)
  expected={Path('SKILL.md'):body.encode(),Path('agents/openai.yaml'):interface.encode()}
  for p in (s/'references').glob('*.md'):expected[Path('references')/p.name]=p.read_bytes()
- if src=='coach':
-  for name in ('coach_stats.py','test_coach_stats.py'):expected[Path('scripts')/name]=(s/'scripts'/name).read_bytes()
+ if src in ('coach','growth-review'):
+  for p in (s/'scripts').glob('*.py'):expected[Path('scripts')/p.name]=p.read_bytes()
  if src=='youtube-metadata':expected[Path('scripts/analyze-vault-performance.js')]=(s/'scripts/analyze-vault-performance.js').read_bytes()
  for relative,content in expected.items():
   target=d/relative

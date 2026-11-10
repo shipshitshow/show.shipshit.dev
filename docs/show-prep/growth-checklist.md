@@ -27,8 +27,9 @@ head-to-head model comparisons. Standalone model-news videos lagged.
 
 ## Review after 3–4 episodes
 
-Compare views at 7 days against the median in `channel-inventory.json`, plus
-click-through and average view duration from YouTube Studio. Keep, change or drop
+Run `$growth-review` (views at 7 days against the median in
+`channel-inventory.json`, retention against peers), plus click-through and average
+view duration from YouTube Studio. Keep, change or drop
 the lever based on that.
 
 ## Hiding old videos
