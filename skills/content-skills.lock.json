@@ -5,7 +5,7 @@
     "source": "https://github.com/shipshitshow/skills/tree/master/coach"
   },
   "dialogue": {
-    "contract_sha256": "c2dc219b40290327fd691980b4eda5038cfe52fd8a54f54d35bd413f160774f8",
+    "contract_sha256": "151cb954504e1061eec56e21f69feca7a03796ecb3709a6cf2cf086eb40fdcc3",
     "profile_sha256": "f11e0adf794db22626b664f231ca9aff5e7a61d399471f98fb73d182f96bc9d1",
     "source": "https://github.com/shipshitshow/skills/tree/master/dialogue"
   },
@@ -20,22 +20,22 @@
     "source": "https://github.com/shipshitshow/skills/tree/master/youtube-metadata"
   },
   "overlays": {
-    "contract_sha256": "71215e942cd713d465340185ea9e8332831fb017b92093b778ce45d718af3662",
+    "contract_sha256": "0d490e9c412c07b20145945ca9390ea3e71382c7d7a60b4eb4fc559a9d75f2a0",
     "profile_sha256": "f11e0adf794db22626b664f231ca9aff5e7a61d399471f98fb73d182f96bc9d1",
     "source": "https://github.com/shipshitshow/skills/tree/master/overlays"
   },
   "prep": {
-    "contract_sha256": "86bff465d181f4a5ae779d84bcf87b06a2bc70ef2e394af77b1e9a6f321a85a2",
+    "contract_sha256": "7584f805edfe9b6a7aa2e86f118215910d5c41a7ced3aa400ef680fad3aed2b0",
     "profile_sha256": "f11e0adf794db22626b664f231ca9aff5e7a61d399471f98fb73d182f96bc9d1",
     "source": "https://github.com/shipshitshow/skills/tree/master/talking-points"
   },
   "recap": {
-    "contract_sha256": "571831fcbb455cc39a2ff22a6e7336e0b6bf8d97dbca5f10c60739a81851dd5d",
+    "contract_sha256": "23ad86b2d28bf7bca00fa6dc94fccc69959642b5eafbb3f659ac3d941d7f32fe",
     "profile_sha256": "f11e0adf794db22626b664f231ca9aff5e7a61d399471f98fb73d182f96bc9d1",
     "source": "https://github.com/shipshitshow/skills/tree/master/recap"
   },
   "thumbnails": {
-    "contract_sha256": "49e7568aba3406562a2213f589c97b35f144f124aeea261f4523cbb49e7bfa95",
+    "contract_sha256": "6562004ac70fda0911a88e509f2986a3bd2f8685ed2db38e3ec6fa435d8ff241",
     "profile_sha256": "f11e0adf794db22626b664f231ca9aff5e7a61d399471f98fb73d182f96bc9d1",
     "source": "https://github.com/shipshitshow/skills/tree/master/thumbnail-prompt-variations"
   }
