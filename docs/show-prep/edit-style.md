@@ -3,7 +3,13 @@
 Vincent's edit rules from the 261103 recap and Shorts (3–5 November 2026). These
 apply to every edited video and Short from now on. Selection rules for which takes
 become Shorts stay in [the editorial format](editorial-format.md) and the product
-marketing context.
+marketing context. The same rules are in the
+[vault edit rules](https://github.com/shipshitshow/vault/blob/master/brand/editing.md)
+and the `recap`, `overlays`, `dialogue` and `clips` skills load them first; change
+a rule in both places.
+
+Shorts publish on the main channel. The clips channel is kept but not maintained
+(Vincent, 2026-11-10).
 
 ## Shorts (9:16, 1080x1920)
 
@@ -63,7 +69,10 @@ for the next episode instead of re-deriving the layout.
 - Crop or generate b-roll for 9:16 with the subject centred. A 16:9 crop that
   misses the subject is rejected. If the subject does not survive a vertical crop,
   generate a native 9:16 image.
-- A slow 5% push-in is fine on illustrations. Real screen captures stay still.
+- No push-in or zoom on b-roll. Real screen captures stay still.
+- From the next episode, b-roll is animated SVG made with Codex CLI (Vincent,
+  5 Nov 2026), planned before rendering, one animation per idea change. The
+  261103 Shorts used static images with a push-in; do not copy that.
 - Captions and the asterisk stay on top of b-roll.
 - Check that the asterisk does not hide the subject. It overlaps rack and
   server-grid art in a few 261103 frames; move the crop centre, not the asterisk.
@@ -71,7 +80,16 @@ for the next episode instead of re-deriving the layout.
 **Cut and audio**
 - Open on the take in the first 2 s, end on a clean payoff, and add about 0.25 s
   after the last word.
-- No fixed length: the take decides, under 60 s (Vincent, 5 Nov 2026).
+- First-line test: the first spoken line makes sense to a stranger. If it starts
+  with "and", "but", "because", "that's why", "so" or an "it" with no subject,
+  pull a later line forward or pick another range. Check it against the final
+  audio.
+- No fixed length: the take decides, under 60 s (Vincent, 5 Nov 2026). Prefer the
+  shortest cut that keeps the take: Shorts of 60 words or fewer had a median of
+  517 views against 294 for longer ones (audit of 10 Nov 2026, a correlation on a
+  small channel).
+- Prefer ranges where the speaker on the 9:16 crop looks at the lens with energy
+  over ranges where they look down or at a second screen.
 - Cut points sit in silence, with 15–20 ms audio fades at joins only. No video
   fades.
 - Loudness is −14 LUFS integrated, with true peak at or below −1 dBTP. Run
@@ -95,6 +113,11 @@ for the next episode instead of re-deriving the layout.
   `bun run thumbnail:stamp --format shorts`.
 - No host faces. The cover style is still open. The AI-art covers (v3) and the
   flat vector covers (v4) were both parked on 5 Nov.
+- The cover shows the subject of the take (a person or company only when the
+  take is about them), and the covers of one batch differ in colour so they can
+  be told apart. Plan the cover in the same pass as the cut.
+- Each Short sets its full episode as the YouTube Related video (Studio) and links
+  it in the description once the episode is live.
 
 ## Recaps (16:9)
 
@@ -102,11 +125,18 @@ for the next episode instead of re-deriving the layout.
   real screenshots and the show's existing red slash-stinger wipe.
 - Use hard cuts only: no fade to black, no dissolves, no alpha fades on overlays.
 - No zoom on people. Zoom on screen content only when it lands on a specific point.
-- Open with 30–45 s of 50/50 two-person conversation before any screenshare.
+- Cold open: the strongest 15–20 s first (the 5 Nov recap is the model), then
+  30–45 s of 50/50 two-person conversation before any screenshare. The cold open
+  must flow into the conversation.
+- Dialogue cuts: drop back-channels ("yeah", "exactly") and restarts, keep every
+  qualification that makes a claim accurate, no subscribe ask before the first
+  payoff, no blooper in the first 20 s.
 - Never let more than about a minute of talking pass without b-roll. Full-frame
   b-roll is fine (v8e was chosen over the version that kept the hosts visible).
-- Next episode: build b-roll as animated SVG made with Codex CLI, not static
-  images. Plan one animation per idea change before rendering.
+- Build b-roll as animated SVG made with Codex CLI, not static images. Plan one
+  animation per idea change before rendering.
+- The recap gets its own title and thumbnail concept, different from the
+  livestream's.
 - Generated art has no text, no faces and no brand logos, uses charcoal with a
   muted red, and is logged in the episode's `assets/manifest.json`.
 - Show the edit plan and transcript before rendering. Send one sample before

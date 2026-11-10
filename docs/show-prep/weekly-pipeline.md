@@ -62,7 +62,11 @@ public. Nothing else waits on him.
 1. Plan with `$clips`. Match each angle from step 1.3 to its actual source
    range. Every Short has one take that lands in the first 2 s and ends on a
    clean payoff. There's no fixed length: the take decides, under 60 s
-   (Vincent, 5 Nov 2026).
+   (Vincent, 5 Nov 2026), and the shortest cut that keeps the take wins. Run the
+   first-line test on each range: a first line that starts with "and", "but",
+   "because" or "that's why" gets a later line pulled forward or another range.
+   Plan each cover with its cut (the subject of the take, colour varied across
+   the batch).
 2. Render one sample with `editing/scripts/shorts/` (locked template, see its
    README).
    - **Gate:** Vincent OKs the sample, then cut the batch.
@@ -92,9 +96,13 @@ public. Nothing else waits on him.
    Spell-check it before upload.
 2. Run `bun run youtube:upload --file <video> --meta <meta.json> --channel
    main|clips --dry-run`, then run the same command without `--dry-run`.
-   Uploads go up private. The recap goes to main, the Shorts to clips.
+   Uploads go up private. The recap and the Shorts all go to main
+   (Vincent, 10 Nov 2026). The clips channel still exists but isn't maintained.
 3. Record each video ID in `episode.json` (`youtube.video`,
    `youtube.shorts.<slug>`).
+4. Link each Short to the full episode: put the episode link in its
+   description once the episode is live, and set the episode as its Related
+   video in YouTube Studio.
    - **Gate:** Vincent checks the private uploads in YouTube Studio and makes
      them public himself, or says which to schedule. Never pass
      `--confirm-public` without his word for that exact upload.
