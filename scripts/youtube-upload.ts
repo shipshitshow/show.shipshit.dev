@@ -26,8 +26,12 @@
  *   }
  *
  * Auth: YOUTUBE_CLIENT_ID and YOUTUBE_CLIENT_SECRET, plus a refresh token from
- * YOUTUBE_REFRESH_TOKEN_MAIN / _CLIPS or, when unset, the app's KV store
- * (`youtube:refresh_token:<channel>`, via KV_REST_API_URL / KV_REST_API_TOKEN).
+ * the app's KV store (`youtube:refresh_token:<channel>`, via KV_REST_API_URL /
+ * KV_REST_API_TOKEN) first, then YOUTUBE_REFRESH_TOKEN_MAIN / _CLIPS. The KV
+ * token is the one the app refreshes on every reconnect, so a stale copy in an
+ * env file must never shadow it; the env token is only a fallback, tried when
+ * KV has none or Google rejects it (invalid_grant).
+ * The channel check (YOUTUBE_CHANNEL_ID_MAIN / _CLIPS) is always on.
  * The app's existing youtube.force-ssl scope covers videos.insert and
  * thumbnails.set.
  *
@@ -38,6 +42,7 @@
 
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { dirname, extname, resolve } from 'node:path';
+import { MAIN_CHANNEL_ID } from '../apps/app/src/lib/youtube/channels.ts';
 
 export type Channel = 'main' | 'clips';
 export type Privacy = 'private' | 'unlisted' | 'public';
@@ -204,24 +209,15 @@ async function readKvRefreshToken(channel: Channel): Promise<string | null> {
   }
 }
 
-export async function getAccessToken(channel: Channel): Promise<string> {
-  const clientId = process.env.YOUTUBE_CLIENT_ID;
-  const clientSecret = process.env.YOUTUBE_CLIENT_SECRET;
-  if (!clientId || !clientSecret) {
-    fail('Set YOUTUBE_CLIENT_ID and YOUTUBE_CLIENT_SECRET in the environment');
-  }
+type Exchange =
+  | { accessToken: string; ok: true }
+  | { invalidGrant: true; ok: false };
 
-  const envToken =
-    channel === 'main'
-      ? process.env.YOUTUBE_REFRESH_TOKEN_MAIN
-      : process.env.YOUTUBE_REFRESH_TOKEN_CLIPS;
-  const refreshToken = envToken || (await readKvRefreshToken(channel));
-  if (!refreshToken) {
-    fail(
-      `No refresh token for "${channel}" in KV or YOUTUBE_REFRESH_TOKEN_${channel.toUpperCase()}`,
-    );
-  }
-
+async function exchangeRefreshToken(
+  clientId: string,
+  clientSecret: string,
+  refreshToken: string,
+): Promise<Exchange> {
   const res = await fetch('https://oauth2.googleapis.com/token', {
     body: new URLSearchParams({
       client_id: clientId,
@@ -234,18 +230,89 @@ export async function getAccessToken(channel: Channel): Promise<string> {
   });
   if (!res.ok) {
     const body = await res.text();
-    if (body.includes('invalid_grant')) {
-      fail(
-        `Refresh token for "${channel}" is revoked or expired; reconnect YouTube in the app`,
-      );
-    }
+    if (body.includes('invalid_grant'))
+      return { invalidGrant: true, ok: false };
     fail(`Token refresh failed: ${res.status} ${body}`);
   }
-  return ((await res.json()) as { access_token: string }).access_token;
+  const { access_token: accessToken } = (await res.json()) as {
+    access_token: string;
+  };
+  return { accessToken, ok: true };
+}
+
+/**
+ * Refresh tokens to try for a channel, best first and without duplicates: the
+ * KV copy (kept current by the app), then the env copy.
+ */
+export function refreshTokenCandidates(
+  kvToken: string | null,
+  envToken: string | undefined,
+): Array<{ source: 'env' | 'kv'; token: string }> {
+  const candidates: Array<{ source: 'env' | 'kv'; token: string }> = [];
+  if (kvToken) candidates.push({ source: 'kv', token: kvToken });
+  if (envToken && envToken !== kvToken) {
+    candidates.push({ source: 'env', token: envToken });
+  }
+  return candidates;
+}
+
+export async function getAccessToken(channel: Channel): Promise<string> {
+  const clientId = process.env.YOUTUBE_CLIENT_ID;
+  const clientSecret = process.env.YOUTUBE_CLIENT_SECRET;
+  if (!clientId || !clientSecret) {
+    fail('Set YOUTUBE_CLIENT_ID and YOUTUBE_CLIENT_SECRET in the environment');
+  }
+
+  const envToken =
+    channel === 'main'
+      ? process.env.YOUTUBE_REFRESH_TOKEN_MAIN
+      : process.env.YOUTUBE_REFRESH_TOKEN_CLIPS;
+  const candidates = refreshTokenCandidates(
+    await readKvRefreshToken(channel),
+    envToken,
+  );
+  if (candidates.length === 0) {
+    fail(
+      `No refresh token for "${channel}" in KV or YOUTUBE_REFRESH_TOKEN_${channel.toUpperCase()}`,
+    );
+  }
+
+  const rejected: string[] = [];
+  for (const { source, token } of candidates) {
+    const exchange = await exchangeRefreshToken(clientId, clientSecret, token);
+    if (exchange.ok) {
+      if (rejected.length > 0) {
+        console.warn(
+          `⚠️  The ${rejected.join(' and ')} refresh token for "${channel}" is revoked or expired; used the ${source} one.`,
+        );
+      }
+      return exchange.accessToken;
+    }
+    rejected.push(source);
+  }
+  fail(
+    `Refresh token for "${channel}" is revoked or expired (${rejected.join(', ')}); reconnect YouTube in the app`,
+  );
+}
+
+/** The channel id a token must belong to; unset is an error, never a skipped check. */
+export function expectedChannelId(channel: Channel): string {
+  // Main falls back to the id the public site already uses.
+  const configured =
+    channel === 'main'
+      ? process.env.YOUTUBE_CHANNEL_ID_MAIN?.trim() || MAIN_CHANNEL_ID
+      : process.env.YOUTUBE_CHANNEL_ID_CLIPS?.trim();
+  if (!configured) {
+    fail(
+      `Set YOUTUBE_CHANNEL_ID_${channel.toUpperCase()} so the script can check it is on the right channel`,
+    );
+  }
+  return configured;
 }
 
 /** Make sure the token belongs to the channel we mean to upload to. */
 export async function verifyChannel(accessToken: string, channel: Channel) {
+  const expected = expectedChannelId(channel);
   const res = await fetch(
     'https://www.googleapis.com/youtube/v3/channels?part=snippet&mine=true',
     { headers: { Authorization: `Bearer ${accessToken}` } },
@@ -257,11 +324,7 @@ export async function verifyChannel(accessToken: string, channel: Channel) {
   const mine = data.items?.[0];
   if (!mine) fail('The token is not linked to a YouTube channel');
 
-  const expected =
-    channel === 'main'
-      ? process.env.YOUTUBE_CHANNEL_ID_MAIN
-      : process.env.YOUTUBE_CHANNEL_ID_CLIPS;
-  if (expected && expected !== mine.id) {
+  if (expected !== mine.id) {
     fail(
       `Token is for "${mine.snippet.title}" (${mine.id}), expected ${expected}`,
     );

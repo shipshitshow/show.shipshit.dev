@@ -76,6 +76,10 @@ test('with the secret it fetches each channel and stores the numbers', async () 
     const url = String(input);
     if (url.includes('oauth2.googleapis.com'))
       return Response.json({ access_token: 'tok', expires_in: 3600 });
+    if (url.includes('youtubereporting.googleapis.com'))
+      return url.includes('/reports?')
+        ? Response.json({})
+        : Response.json({ id: 'job1', reportTypeId: 'channel_reach_basic_a1' });
     if (url.includes('/channels?'))
       return Response.json({
         items: [
@@ -109,8 +113,17 @@ test('with the secret it fetches each channel and stores the numbers', async () 
 
   const response = await call('Bearer right');
   expect(response.status).toBe(200);
-  expect((await response.json()).synced).toEqual([
-    { channel: 'main', videos: 1 },
+  const body = await response.json();
+  expect(body.synced).toEqual([{ channel: 'main', videos: 1 }]);
+  // The new reporting job has produced no report yet; that is shown, not hidden.
+  expect(body.reach.channels).toEqual([
+    {
+      channel: 'main',
+      jobCreated: true,
+      reports: 0,
+      rows: 0,
+      status: 'pending',
+    },
   ]);
   expect(
     (
@@ -129,4 +142,46 @@ test('with the secret it fetches each channel and stores the numbers', async () 
     title: 'Black October',
     views: 1520,
   });
+});
+
+test('a reach failure is reported and fails the run when every channel failed, but the stats stay written', async () => {
+  process.env.CRON_SECRET = 'right';
+  process.env.YOUTUBE_CHANNEL_ID_MAIN = 'UCmain';
+  process.env.YOUTUBE_CLIENT_ID = 'id';
+  process.env.YOUTUBE_CLIENT_SECRET = 'secret';
+  process.env.YOUTUBE_REFRESH_TOKEN_MAIN = 'refresh';
+  globalThis.fetch = mock(async (input: RequestInfo | URL) => {
+    const url = String(input);
+    if (url.includes('oauth2.googleapis.com'))
+      return Response.json({ access_token: 'tok', expires_in: 3600 });
+    if (url.includes('youtubereporting.googleapis.com'))
+      return new Response(
+        '{"error":{"message":"disabled","errors":[{"reason":"accessNotConfigured"}]}}',
+        {
+          status: 403,
+        },
+      );
+    if (url.includes('/channels?'))
+      return Response.json({
+        items: [
+          { contentDetails: { relatedPlaylists: { uploads: 'UUmain' } } },
+        ],
+      });
+    if (url.includes('/playlistItems?'))
+      return Response.json({
+        items: [{ contentDetails: { videoId: 'vid1' } }],
+      });
+    return Response.json({
+      items: [
+        { id: 'vid1', snippet: { title: 'T' }, statistics: { viewCount: '1' } },
+      ],
+    });
+  }) as unknown as typeof fetch;
+
+  const response = await call('Bearer right');
+  expect(response.status).toBe(502);
+  const body = await response.json();
+  expect(body.synced).toEqual([{ channel: 'main', videos: 1 }]);
+  expect(body.reach.channels[0].status).toBe('failed');
+  expect(harness.redis.strings.has('sss:test:v1:video-stats')).toBe(true);
 });

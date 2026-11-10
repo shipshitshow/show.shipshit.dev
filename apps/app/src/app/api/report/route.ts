@@ -9,12 +9,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { formatLocalDate, todayLocalDate } from '@/lib/date';
 import { requireProducer } from '@/lib/producer-auth';
 import { fetchSocialPerformance } from '@/lib/social/performance';
+import { aggregateReach, type VideoReachSnapshot } from '@/lib/video-reach';
+import { readVideoReach } from '@/lib/video-reach-store';
 import {
   fetchChannelStats,
   fetchChannelVideos,
   fetchDailyMetrics,
   fetchVideoAnalytics,
-  fetchVideoReachMetrics,
 } from '@/lib/youtube/client';
 import {
   getAccessToken,
@@ -84,6 +85,7 @@ async function fetchChannelData(
   channelConfig: { id: string; label: string; refreshToken: string },
   startDate: string,
   endDate: string,
+  reachSnapshot: VideoReachSnapshot,
 ) {
   const token = await getAccessToken(channelConfig);
 
@@ -98,22 +100,16 @@ async function fetchChannelData(
   let enrichedVideos: VideoStats[] = videos;
 
   if (videoIds.length > 0) {
-    const [analytics, reach] = await Promise.all([
-      fetchVideoAnalytics(
-        token,
-        channelConfig.id,
-        videoIds,
-        startDate,
-        endDate,
-      ),
-      fetchVideoReachMetrics(
-        token,
-        channelConfig.id,
-        videoIds,
-        startDate,
-        endDate,
-      ),
-    ]);
+    const analytics = await fetchVideoAnalytics(
+      token,
+      channelConfig.id,
+      videoIds,
+      startDate,
+      endDate,
+    );
+    // Impressions and CTR are not in the Analytics API; they come from the
+    // stored daily Reporting API reach reports (see lib/video-reach.ts).
+    const reach = aggregateReach(reachSnapshot, videoIds, startDate, endDate);
 
     enrichedVideos = videos.map((v) => {
       const a = analytics.get(v.video_id);
@@ -130,6 +126,31 @@ async function fetchChannelData(
   }
 
   return { daily, stats, videos: enrichedVideos };
+}
+
+function describeFailure(label: string, reason: unknown): string {
+  if (isYouTubeReauthError(reason)) {
+    return `${label}: YouTube authentication expired. Reconnect this channel.`;
+  }
+  const message = reason instanceof Error ? reason.message : String(reason);
+  const hint =
+    reason instanceof Error && 'hint' in reason && reason.hint
+      ? ` ${String(reason.hint)}`
+      : '';
+  return `${label}: ${message}${hint}`;
+}
+
+/** A channel with videos but no stored reach cursor has had no report yet. */
+function reachWarnings(
+  channels: Array<{ label: string }>,
+  snapshot: VideoReachSnapshot,
+): string[] {
+  return channels
+    .filter((channel) => !snapshot.cursors[channel.label])
+    .map(
+      (channel) =>
+        `${channel.label}: no thumbnail reach reports have arrived yet, so impressions and CTR are blank. The daily sync (/api/cron/video-stats) creates the YouTube reporting job; its first report comes within 48 hours.`,
+    );
 }
 
 export async function GET(req: NextRequest) {
@@ -152,14 +173,32 @@ export async function GET(req: NextRequest) {
   try {
     const startDate = daysAgoDate(days);
     const endDate = todayDate();
+    const reachSnapshotPromise = readVideoReach();
 
-    // Fetch all channels in parallel (each with its own token)
-    const [results, social] = await Promise.all([
-      Promise.all(
-        channels.map((ch) => fetchChannelData(ch, startDate, endDate)),
+    // Fetch all channels in parallel (each with its own token). One channel
+    // failing (an expired token) must not blank the other; it is reported in
+    // `warnings` instead.
+    const [settled, social, reachSnapshot] = await Promise.all([
+      Promise.allSettled(
+        channels.map(async (ch) =>
+          fetchChannelData(ch, startDate, endDate, await reachSnapshotPromise),
+        ),
       ),
       socialPerformance,
+      reachSnapshotPromise,
     ]);
+
+    const warnings: string[] = [];
+    const failures = settled.flatMap((result, index) =>
+      result.status === 'rejected'
+        ? [{ label: channels[index].label, reason: result.reason }]
+        : [],
+    );
+    // Every channel failing is a failed report, not an empty one.
+    if (failures.length === channels.length) throw failures[0].reason;
+    for (const failure of failures) {
+      warnings.push(describeFailure(failure.label, failure.reason));
+    }
 
     const perChannel: MultiChannelReport['per_channel'] = {};
     const allVideos: VideoStats[] = [];
@@ -168,7 +207,9 @@ export async function GET(req: NextRequest) {
 
     for (let i = 0; i < channels.length; i++) {
       const ch = channels[i];
-      const data = results[i];
+      const outcome = settled[i];
+      if (outcome.status === 'rejected') continue;
+      const data = outcome.value;
       perChannel[ch.id] = {
         channel: data.stats,
         daily_metrics: data.daily,
@@ -192,9 +233,18 @@ export async function GET(req: NextRequest) {
       social_videos: social.videos,
       videos: allVideos,
     };
+    const succeeded = channels.filter(
+      (_, i) => settled[i].status === 'fulfilled',
+    );
+    warnings.push(...reachWarnings(succeeded, reachSnapshot));
+    if (warnings.length > 0) report.warnings = warnings;
 
     return NextResponse.json(report, {
-      headers: { 'Cache-Control': 'private, max-age=300' },
+      // A report with warnings is not worth caching for five minutes.
+      headers: {
+        'Cache-Control':
+          warnings.length > 0 ? 'no-store' : 'private, max-age=300',
+      },
     });
   } catch (error) {
     if (isYouTubeReauthError(error)) {

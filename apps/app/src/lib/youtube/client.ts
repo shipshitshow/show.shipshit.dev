@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import type {
   ChannelStats,
   DailyMetric,
@@ -21,6 +22,17 @@ const MAX_VIDEO_IDS_PER_REQUEST = 50;
 
 function isDefined<T>(value: T | null | undefined): value is T {
   return value !== null && value !== undefined;
+}
+
+/**
+ * Cache-key part for a set of video ids: the same ids in any order give the
+ * same key, and any different set gives a different one. Keys that kept only
+ * the first few ids let two requests share an entry and return each other's data.
+ */
+export function videoIdsKey(videoIds: string[]): string {
+  const sorted = [...new Set(videoIds)].sort();
+  const digest = createHash('sha1').update(sorted.join(',')).digest('hex');
+  return `${sorted.length}:${digest.slice(0, 16)}`;
 }
 
 function chunk<T>(items: T[], size: number): T[][] {
@@ -92,21 +104,25 @@ export async function fetchChannelVideos(
   channelId: string,
   maxResults = 50,
 ): Promise<VideoStats[]> {
-  return cachedFetch(`videos:${channelId}`, TTL.VIDEO_LIST, async () => {
-    const searchUrl = `${DATA_API}/search?part=snippet&channelId=${channelId}&type=video&order=date&maxResults=${maxResults}`;
-    const searchRes = await ytFetch<{ items?: YouTubeSearchItem[] }>(
-      searchUrl,
-      token,
-    );
-    const videoIds = searchRes.items
-      ?.map((item) => item.id?.videoId)
-      .filter(isDefined);
+  return cachedFetch(
+    `videos:${channelId}:${maxResults}`,
+    TTL.VIDEO_LIST,
+    async () => {
+      const searchUrl = `${DATA_API}/search?part=snippet&channelId=${channelId}&type=video&order=date&maxResults=${maxResults}`;
+      const searchRes = await ytFetch<{ items?: YouTubeSearchItem[] }>(
+        searchUrl,
+        token,
+      );
+      const videoIds = searchRes.items
+        ?.map((item) => item.id?.videoId)
+        .filter(isDefined);
 
-    if (!videoIds?.length) return [];
+      if (!videoIds?.length) return [];
 
-    const items = await fetchVideoItems(token, videoIds);
-    return items.map((item) => toVideoStats(item, channelId));
-  });
+      const items = await fetchVideoItems(token, videoIds);
+      return items.map((item) => toVideoStats(item, channelId));
+    },
+  );
 }
 
 /** A channel upload with just enough detail to match it to an episode. */
@@ -192,7 +208,7 @@ export async function fetchVideosByIds(
   if (!videoIds.length) return [];
 
   const sortedIds = [...new Set(videoIds)].sort();
-  const cacheKey = `videosbyid:${channelId}:${sortedIds.length}:${sortedIds.slice(0, 5).join(',')}`;
+  const cacheKey = `videosbyid:${channelId}:${videoIdsKey(sortedIds)}`;
 
   return cachedFetch(cacheKey, TTL.VIDEO_LIST, async () => {
     const batches = await Promise.all(
@@ -251,7 +267,7 @@ export async function fetchVideoAnalytics(
 ): Promise<Map<string, { watch_time_minutes: number }>> {
   if (!videoIds.length) return new Map();
 
-  const cacheKey = `vidanalytics:${channelId}:${startDate}:${videoIds.slice(0, 5).join(',')}`;
+  const cacheKey = `vidanalytics:${channelId}:${startDate}:${endDate}:${videoIdsKey(videoIds)}`;
   const rows = await cachedFetch(cacheKey, TTL.VIDEO_ANALYTICS, async () => {
     const params = new URLSearchParams({
       dimensions: 'video',
@@ -280,59 +296,9 @@ export async function fetchVideoAnalytics(
 }
 
 /**
- * Reach metrics (impressions + click-through rate) come from a separate report
- * and are not available for every channel/date range. This is deliberately
- * isolated and failure-tolerant: any error degrades to an empty map so the main
- * analytics report is never taken down by a reach-metric quirk.
- */
-export async function fetchVideoReachMetrics(
-  token: string,
-  channelId: string,
-  videoIds: string[],
-  startDate: string,
-  endDate: string,
-): Promise<Map<string, { impressions: number; ctr: number }>> {
-  if (!videoIds.length) return new Map();
-
-  try {
-    const cacheKey = `vidreach:${channelId}:${startDate}:${videoIds.slice(0, 5).join(',')}`;
-    const rows = await cachedFetch(cacheKey, TTL.VIDEO_ANALYTICS, async () => {
-      const params = new URLSearchParams({
-        dimensions: 'video',
-        endDate,
-        filters: `video==${videoIds.join(',')}`,
-        ids: `channel==${channelId}`,
-        metrics: 'impressions,impressionClickThroughRate',
-        sort: '-impressions',
-        startDate,
-      });
-
-      const res = await ytFetch<YouTubeAnalyticsResponse>(
-        `${ANALYTICS_API}?${params}`,
-        token,
-      );
-      return res.rows ?? [];
-    });
-
-    const map = new Map<string, { impressions: number; ctr: number }>();
-    for (const row of rows) {
-      map.set(String(row[0] ?? ''), {
-        // impressionClickThroughRate is returned as a percentage (e.g. 8.3).
-        ctr: Number(row[2] ?? 0),
-        impressions: Number(row[1] ?? 0),
-      });
-    }
-    return map;
-  } catch {
-    return new Map();
-  }
-}
-
-/**
- * Average view percentage per video. Isolated and failure-tolerant for the same
- * reason as `fetchVideoReachMetrics`: retention is not reported for every
- * channel/date range, and a quirk there must not take down its caller. Errors
- * degrade to an empty map, which the rollup renders as not-tracked.
+ * Average view percentage per video. Errors propagate: a failed query is not
+ * the same as "not reported", and callers decide how to show it (the rollup
+ * logs it and renders not-tracked).
  */
 export async function fetchVideoRetentionMetrics(
   token: string,
@@ -343,36 +309,32 @@ export async function fetchVideoRetentionMetrics(
 ): Promise<Map<string, { avg_view_percentage: number }>> {
   if (!videoIds.length) return new Map();
 
-  try {
-    const cacheKey = `vidretention:${channelId}:${startDate}:${videoIds.slice(0, 5).join(',')}`;
-    const rows = await cachedFetch(cacheKey, TTL.VIDEO_ANALYTICS, async () => {
-      const params = new URLSearchParams({
-        dimensions: 'video',
-        endDate,
-        filters: `video==${videoIds.join(',')}`,
-        ids: `channel==${channelId}`,
-        metrics: 'averageViewPercentage',
-        sort: '-averageViewPercentage',
-        startDate,
-      });
-
-      const res = await ytFetch<YouTubeAnalyticsResponse>(
-        `${ANALYTICS_API}?${params}`,
-        token,
-      );
-      return res.rows ?? [];
+  const cacheKey = `vidretention:${channelId}:${startDate}:${endDate}:${videoIdsKey(videoIds)}`;
+  const rows = await cachedFetch(cacheKey, TTL.VIDEO_ANALYTICS, async () => {
+    const params = new URLSearchParams({
+      dimensions: 'video',
+      endDate,
+      filters: `video==${videoIds.join(',')}`,
+      ids: `channel==${channelId}`,
+      metrics: 'averageViewPercentage',
+      sort: '-averageViewPercentage',
+      startDate,
     });
 
-    const map = new Map<string, { avg_view_percentage: number }>();
-    for (const row of rows) {
-      map.set(String(row[0] ?? ''), {
-        avg_view_percentage: Number(row[1] ?? 0),
-      });
-    }
-    return map;
-  } catch {
-    return new Map();
+    const res = await ytFetch<YouTubeAnalyticsResponse>(
+      `${ANALYTICS_API}?${params}`,
+      token,
+    );
+    return res.rows ?? [];
+  });
+
+  const map = new Map<string, { avg_view_percentage: number }>();
+  for (const row of rows) {
+    map.set(String(row[0] ?? ''), {
+      avg_view_percentage: Number(row[1] ?? 0),
+    });
   }
+  return map;
 }
 
 async function ytFetch<T>(url: string, token: string): Promise<T> {
