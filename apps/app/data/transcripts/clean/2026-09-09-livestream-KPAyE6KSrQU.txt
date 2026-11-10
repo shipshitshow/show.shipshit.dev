@@ -1,1767 +1,1127 @@
-Heat. Heat. Welcome
-back everyone.
-Thank you for joining
-us today. And
-Mitchell,
-yes,
-MGM,
-we're back.
-You are really
-back. Yes, it
-was a great week
-for all AI
-enthusiasts.
-Yes, I'm still a little
-tired.
-Yes, too many releases
-.
-No, no, I
-spent all my
-tokens all night right before the
-reset. Yes.
-Well, you know, we have
-tasks on our
-schedule, right?
-Yes. Yes. I know. I
-know. But I wanted to
-make sure I had
-0%, and I calculated
-that the limit
-ends at 2:00
-am.
-Yes.
-So it seems like at 1:55
-I had 0%.
-They drove.
-And then they dropped
-it at 6:00 AM.
-Yes.
-Yes. So when I
-woke up at 7 in the morning
-, it was like, oh, yeah.
-Five minutes ago,
-Thibaut, uh, tweeted.
-That was good. But
-still, after a few
-hours I had already spent
-50% of my weekly limit.
-They drove. That's right.
-Yes, we just
-looked, but is
-your codebase really that
-big that it
-needs that much
-?
-Well, 2 million lines of
-code—is that really that
-much? I don't know. I
-need to work on
-smaller projects.
-Yes, this saves a
-bunch of tokens.
-Yes, true. Even
-better documentation. I
-don't know, but do
-you feel like the
-memory problem
-has been solved?
-No.
-Yes.
-I think the documentation
-gives a lot.
-Yes. What? Okay. So,
-let's get straight to the
-point. Do you comment
-your code? Do you add
-comments to your code
-so that the AI ​​can
-understand it, or do you ask
-the AI ​​to comment on your
-code so that it can be
-read later? Yes, I've
-given him the task of
-adding
-minimalist
-comments to large
-functions so he knows
-where to look, but
-for the most part he
-just redirects
-to an MD file that
-explains what it
-does, what needs to
-be changed, and what code
-he doesn't necessarily need
-to read.
-Okay. Mhm.
-That is, everything is modular.
-Okay. So you
-mark the file in the code
-, and then it can
-read the MD file
-if it gets to it.
-Okay. Reasonably. Yes. I did
-n't want him to
-just look at everything
-and try to
-figure out what was what.
-Okay, that's cool. And
-because of the launch of the new
-Astra, did you reset your
-skills,
-agent files, and Cloex?
-No, I still have the
-CL agent files, the
-Gro agent files, everything
-in it. And I just
-said, uh, read
-everything.
-Yes. Yes. to
-make a mistake
-.
-Yes.
-But yeah, last
-week was
-definitely a good one,
-again, because
-we have new toys
-that we...Yeah.
-We will release it soon. What
-was the date there? Uh-huh.
-yes, just a few days
-ago.
-Yes. D.
-I think it was
-Saturday, right?
-It was the weekend, was
-n't it?
-Uh, D. No. It still hasn't
-appeared. I don't want a
-video. Friday
-night is also possible.
-I don't know,
-yet. No, wait. I
-had tweets from, uh, Open AI
+And welcome back everyone. Thank you for
+joining us today. And Mitchell,
+>> yes,
+>> MGM,
+>> we are back.
+>> You are so back. And uh yeah, like that
+was that was a good week for all of the
+AI off aados.
+>> Yes, I'm still a bit tired.
+>> Yeah, too much shipping. No, no. It took
+me all night to burn all my tokens just
+before the reset.
+>> Yeah, [laughter]
+>> but you know we have crown jobs, right?
+>> Yeah. Yeah, I know. I know. But I wanted
+to make sure I was at 0% and I
+calculated it was ending at 2:00 a.m.
+>> Yeah.
+>> So, at I think 1:55
+I was at 0%.
+>> Let's go.
+>> And then they reset it at 6:00 a.m.
+>> Yeah. [laughter]
+>> Yeah. I saw that when I woke up like see
+7 a.m. It was like uh yeah five minutes
+ago tibo
+uh um tweet
+>> that was good. Um but still like a few
+hours after I'm already at 50% of the
+weekly build. Let's go. That's what's
+up.
+>> Yeah, we were just watching but is it
+your code base that it's so big that
+needs to do so much?
+>> I mean 2 million land of code. Is that
+so big? I don't know. I need I need to
+work on smaller projects.
+>> Yeah, it saves you a lot of tokens.
+>> Yeah, true. I haven't even like better
+documentation. I don't know. Like do you
+feel like memory is solved?
+>> No.
+>> Yeah.
+>> I think documentation does a lot.
+>> Yeah. What? Okay. So, let's get straight
+into it. Uh, do you comment your code?
+Do you put comments in your codes for
+the AI to understand or to ask the AI to
+comment your code so they can come back
+read?
+>> Yeah, I gave it the the the task to add
+a minimalistic
+comment on big features so that it knows
+where to search. But most of the time it
+only redirects to an MD file that
+explains what he is doing and what he
+needs to change and what code he doesn't
+need to read.
+>> Okay. Mhm.
+>> So it's like everything is modular.
+>> Uh okay. So you put you tag the the file
+in the code and then it can read the MD
+file if it reached. Okay. Smart.
+>> Yeah. So I don't want it to just go
+search everything and see what's
+related.
+>> Okay. That's cool. And uh because of the
+new Astra launch, did you reset your
+skill and like agent files and cloex?
+>> No, I still have clo agent files, Gro's
+agent files, everything in it. And I
+just said uh
+read everything.
+>> Yeah. Yeah. [laughter]
+>> Make the mistake.
+>> Yeah. But yeah, but yeah, last week was
+definitely a good week again because we
+have some new toys.
+We are Yeah. coming up. When was the
+date of that already? Uh
+>> yeah, just a few days ago.
+>> Yeah. T
+>> I think it was Saturday, right?
+>> It was the weekend,
+>> wasn't it?
+Uh
+>> D. Nope. Still not up. I don't want the
+video. Was
+>> Friday evening also possible. I don't
+know
+>> already. No,
+wait. I had the tweets. Uh,
+OpenAI
 Astra
-because I
-renewed my subscription again.
-Yes, back to 200.
-Yes, now back to 100
-to see how
-fast it goes. But as
-I see it now that
-they've dropped everything, that's
-enough for me.
-And I had
-about four
-resets left. Four.
-Yes. I
-don't know how, but they
-were. So, one thing was
-accomplished in one day
-. So I just had it
-scan
-everything, optimize everything
-, and then instantly
-reset it.
-And then
-I just checked what he had
-done.
-Okay, that's good. And did
-you feel
-productive and
-accomplished during
-this reset time?
-Uh, yeah, I think so,
-but honestly, I have
-n't read that
-much code anymore. Just
-don't tell anyone.
-It was September 3rd. So
-that was...
-Yeah. Five days ago.
-That was five days
-ago.
-Yes.
-I still have Grock
-checking it out
-when...
-Astra made all the changes.
-Grock always
-checks.
-Yes, that's good. And does
-he find anything,
-or is it already beyond
-his competence?
-No. No. Sometimes he
-doesn't even
-agree, and then
-they end up
-doing something
-like 50/50. Okay. Oh,
-yes. Because you
-still have ping-pong between...
-Yeah. What model are you
-using for this?
-Uh, I'm doing it
-on medium right now.
-Okay. Okay. Okay.
-Interesting. Um, yeah,
-because Evan Thiebaud said
-that...Yeah. If you
-like the, uh, Soul 5.6
-on high,
-try the Astra on
-low and
-mid, as that should
-give you about the
-same input for
-less. That's right, that
-was the benchmark when they
-launched Astra, and what's
-crazy is...arc agi
-99.9%, like what?
-Yes.
-100%—that's impossible,
-right?
-Well, probably so.
-yes, that means
-he can solve
-anything you throw at him
-, which is impossible, but...
-yeah, and it's like new
-interactive
-puzzles, so it's
-just crazy, and the
-previous one.
-What is this? Is this like
-Sudoku?
-I hope it's something
-a little more complicated than that
-. Exactly.
-Yes.
-Well, it seems we can
-, we can see it.
-AGI 3 puff puff—the first
-intern benchmark
-designed to
-measure
-human intelligence
-in AI agents.
-Yes, they gave it away
-like a Game Boy.
-Well, AGI too. Good. Um, I
-don't think there's a gap
-between AI and
-human learning. We don't have AGI.
-Yes. But you max...we
-max...I mean,
-they
-max out your...
-Yeah. Most people
-don't have 99.9%.
-Yes. Eh, do they have a
-human rating? I think
-it's about 40% for a
-person. Oh yes, maybe
-. Good. It doesn't matter. Well,
-if I play this
-...Wait, what?
-I think you should
-draw yellow and
-black. Oh, no. In another
-way. I am an accent.
-Why is there a blue line here?
-Because it is a
-mirror line. So what you
-need to do is...you
-need to put
-the yellow and the black here, and
-then move
-it to the other side.
-Makes sense. It doesn't
-move. Good.
-Wait, what? Good. Yes.
-Yes. Mirror,
-mirror. Well, okay.
-So, Astra did
-something like 41.
-Astra did everything
-perfectly.
-Wait, what? What? Why does
-n't it
-turn over?
-I think you need to
-change models. You
-can only go
-left here, but you
-need to change. So,
-you choose yellow.
-I think that's all. Otherwise
-it doesn't work. Another...
-reset, help.
-Press the strip.
-Reset, help.
-Oh, okay. We can
-read it. Well, yes
-. This Astra is so
-cool.
-Yes, she is good. This is a
-good model. To hell with it.
-Eh, puff puff.
-But it seems like they
-hired interns to
-create these games.
-Yes. Oh, a new
-puzzle too, right?
-So there's that too.
-Hmm, use a honeypot,
-slower is better.
-You have 6%. So yes, it's
-better than in the shower. Um,
-does this mean we
-get a lot of
-spam because it
-uses a honeypot?
-Astra aligns with
-understanding
-user intent and
-model behavior.
-Can delegate
-tasks. Compare
-that, without protection,
-going beyond the
-permitted target in 40% of
-cases, to doing so
-in 0%. One way
-we test this is
-we build a new
-score based on
-the incidents again, which
-assesses whether
-the model will go beyond its intentions when faced with a
-difficult or
-impossible task
-. Oh, okay. So
-the model, in essence, does not
-go beyond the framework.
-Good.
-That's how I understand it,
-right? But I can't.
-you.
-Yes. I can't, I
-can't solve the
-ARC problem for AGI. So
-maybe it's not
-Yes.
-Um, that's why I understand
-. And the world's best
-computer
-usage model, the
-ultimate exam,
-testing the agent on
-complex professional
-tasks in
-real software, from
-financial
-modeling to
-engineering and
-media production.
-Let's go. Oh yeah, Astra on
-nano-banana
-images, I
-need to
-test that, might
-be interesting. Um, and yeah,
-okay, so this is
-generation, um, like
-using
-software. Mhm.
-Um,
-computer usage options. This is a
-big use
-right now. You can
-see on the
-timeline how Astra
-uses your software
-that you use
-every day. They can
-do it better and
-faster than you. I'm
-going to, I'm going to
-edit this
-video after
-with Premiere and see
-how it
-actually reacts. Um, yes, I
-created MCP. So, um,
-Premiere is now controlled
-through MCP. It's like, the API is
-pretty lousy, and there are
-some actions that
-can't be done
-through MCP.
-Mhm. And like, if they
-have better
-computer usage, then I
-can also
-improve the sound and
-improve
-the colorimetry and so on
-directly
-because the model
-will use
-the application. So
-okay
-, that might be
-cool,
-but in this case, do
-they just give you
-full access to the
-entire computer?
-Yes, that's using
-a computer,
-right? Like, you're
-asking ChatGPT
-to use your
-computer the way you would
-use it.
-Yes.
-And if
-video editing is fairly simple,
-I expect Astra
-to do a better job than
-me, because I'm not an editor
-.
-I mean, yes, I am by
-definition, because if
-he can edit
-better than me, then let's
-go.
-Yes. So does this mean
-we can also
-give Astra a task
-like
-showing this
-image every
-five seconds?
-I understand. I mean,
-yeah, I'm sure
-he can do it.
-And that would be interesting.
-For example, for clips,
-instead of using
-Opus Pro, can we
-tell Astra to cut
-five clips, add
-subtitles,
-export, boom, that would be
-great.
-Yes, that would be, that would be
-cool. But then it would be
-interesting
-to see how much it
-costs. So, yes, I'm
-going to do
-this experiment
-after this live
-broadcast. So yeah,
-game development, we'll
-see that later, on the
-timeline, but there are a
-lot of people who are
-involved in
-game development. Um
-yeah, you see so
-many people
-making games.
-because it's also fun and
-good for social media,
-right?
-Aha. but also
-restoring old
-games to run on
-modern PCs.
-Yes. Even, I just
-saw a tweet about a port, uh
-, porting, like a mix,
-when you take a game from
-one platform to
-another, like a migration, or
-something like that,
-uh, from PS2 to mobile
-devices.
-Aha. So, you need to
-pull out the entire
-PS2 operating mechanism and
-rewrite everything with
-new code.
-And I don't think it
-can be sued
-because it's a new code.
-Oh, I don't know.
-Yes. Like,
-yes. I mean,
-you'd probably still have to
-steal
-rights to
-access the emulator and
-such. But if you
-take
-software,
-rewrite everything, and
-put it in the
-open source, then
-it's new software, because it's
-no longer the same language you
-stole in the first place.
-So yeah, remember,
-a few months ago
-someone did something
-similar, like a farm
-or a software, remember, it
-was a joke, but so is the
-formatting of a
-legal document
-. Yes, that's also true. Steeply.
-Um, interception of
-card control.
-Yes, it can do
-almost everything on your
-PC.
-Yes, exactly. Yes,
-just a seizure of
-control. And Fable 5. Uh,
-yeah. I mean, we
-already explored this
-last time, right
-? But in short,
-it's also much
-better than Fable 5. Fable 5.1 is
-better than Fable 5. Do
-you see
-any difference at all when
-you're working with it?
-I don't have the feeling
-that he is much
-better.
-Yes, I think it's
-a bit more agent-like,
-well, at least in the
-interface I see
-more subagents, is
-that from Astra? I think it's both
-. But, um, it's still a bit
-expensive.
-Yes. That's right.
-Subscription
-usage is just
-skyrocketing. It
-now takes me almost a
-day and a half to
-burn through my
-weekly subscription
-if I do what I
-want without a break, it's
-just crazy. But
-yeah, people are still
-playing with Fable 5 too,
-which is basically the two
-leading models
-in the analysis, like Claude 5,
-Fable 5.1 Max with fallback,
-fallback means
-it uses 4.8.
-Mhm. Uh
-,
-yes. He
-switches to Opus.
-Where is it? Standard
-fallback. Yes. Hmm, where is this?
-Max effort. I don't
-use Max at all. Yes,
-this, this, this is madness.
-Somewhere between 10 and 15. But you go.
-This is too much.
-Yes, it is very expensive.
-Yes, this is absurd. And so, that's
-why I switched to,
-um, Opus, Opus 5 later on. But
-like Astra, we essentially
-have two
-providers with
-advanced
-capabilities.
-I like it.
-Perfectly.
-That's good.
-And maybe a third one is on
-the way, right?
-I choose 4.7.
-Yes, that's, yes, that's high
-expectations for 4.7, because
-4.5 was fast and
-really good. 4.6.
-I
-like it less
-than 4.5.
-Yes. The 4.5 also
-felt much
-faster.
-Yes, I know. That's right.
-I think even if
-it wasn't as
-good, it
-made such a
-big difference that
-you didn't care.
-Yes, I know. That's right. And
-I think speed
-can play a
-big role, because if
-you fix something,
-if you do something
-quickly, you can
-fix it quickly
-if something goes wrong,
-and not make any
-weird turns, but
-just do it,
-right?
-Yes. Your end
-result is still
-faster than when
-another model takes
-twice as long.
-Yes. What are you expecting,
-what do you expect from the
-next round of
-models like 5.2 and 6.1?
-What do they need, do
-they need to be
-smarter,
-cheaper, or
-faster?
-Yes, ultimately I just
-want more tokens,
-but I don't think they will
-.
-Like Anthropic, what's
-going on there with, um, like
-, yeah, Anthropic needs
-more
-computing
-power from Amazon.
-Yes, but
-it seems they don't
-get them.
-Yeah, I mean,
-maybe they
-get them, but they're
-still crap.
-Yes, it is possible.
-But I think
-eventually the models
-will get better,
-better, better,
-and if you're at,
-say, 95%, does
-95.1 or
-95.2% make a difference? I don't think so. So then it
-all comes down to
-optimizing for
-greater efficiency
-.
-Yes. And to maybe
-even add, give
-it more speed.
-Yes. But the problem is
-also that
-eventually, someday they
-will make us pay the
-right price for the
-token.
-Yes. If they don't
-go bankrupt first.
-Yes.
-Because as soon as another
-company releases a
-different model, all the
-big users
-switch.
-Yes. Yes. And they still
-buy
-open-scale models from
-China too. So.
-Yeah, and I think
-companies that
-use APIs
-that a developer has
-once configured and
-built an API
-connection, that's the AI
-they're
-using, uh, they
-don't switch that
-quickly. But if a
-new
-developer comes along and says, "Hey
-, you're still
-using the old
-model; this one is better and
-cheaper." Yes. Then
-they
-switch instantly.
-But they have
-partnerships, right?
-For example, for
-large corporations,
-they sign
-agreements for one to five
-years, right? So
-yes, they need
-large corporations.
-Yes. Big
-corporations don't
-pay the full, I don't
-know, full price because
-they have to
-get it from somewhere.
-Yes. Yes. Who pays
-full price? Well, aren't
-they laughing out
-loud right now because
-so many people
-are trying
-to invest?
-Uh, I mean,
-they're getting ready for an IPO,
-but I don't think
-they're still... I
-mean, they're still
-getting venture
-money, because OpenAI and Anthropic are too.
-Mm.
-received 80% of the venture capital
-money invested
-in the last few
-years. Two companies
-represent 80% of all
-money invested
-from Silicon Valley in
-the US,
-and they have captured the entire,
-well, pie, essentially.
-So yeah, it's just
-crazy, but
-still, how many people
-actually
-use
-multiple models or
-multiple providers?
-How many people
-use Groq,
-Anthropic and Codex at the same time,
-like us?
-I think most
-people just
-use it as a
-chatbot. Yes. No, but
-what about professional
-developers?
-Yes. At least two,
-right? I hope
-people do that.
-Yes.
-Because even in Astra, if I
-don't check it with another
-agent, there
-are still errors.
-Yes. Yes. Yes. Yes.
-The errors are not resolved.
-No. But do you expect
-anything different from
-future models?
-Yes. More
-speed and less
-cost. If they
-could lower
-the cost of the tokens, that would be
-great because
-again, like you
-said, give us
-more
-usage options so we
-can
-use your
-model. But that
-happened with Opus 4.8, right?
-This update
+>> because I upgraded my uh subscription
+again.
+>> Yeah, back to 200.
+>> Yeah, back to 100 now to see how how
+fast it goes. But as I see it right now
+with them resetting everything, it's
+good enough for me. And I had like four
+resets left.
+>> Four?
+>> Yeah. [laughter]
+I don't know how, but they were there.
+So, and one was done in one day.
+>> So, I just had him scrape everything,
+optimize everything, and then reset it
+instantly.
+>> And then I just went checking what it
+did.
+>> Okay, that's nice. And did you feel like
+prolific and proficient during this
+reset time?
+>> Uh, yeah, I think it did, but honestly,
+I didn't read that much code anymore.
+>> Don't tell anyone. [laughter]
+That was on the 3rd September. So that
+was
+>> Yeah. Five days ago.
+>> That was five days ago.
+>> Yeah. [snorts]
+>> I still do have Grock checking it when
+Astra made all the changes. Grock always
+does a check.
+>> Yeah, that's nice. And does it find
+anything or is it above its pay grade
+already?
+>> No. No. Sometimes it even disagrees and
+then eventually they do like a 50/50.
+>> Okay. Oh, yeah. Because you still have
+the ping pong, right? between. Yeah.
+Which effort are you using that?
+>> Uh I was doing it on middle right now.
+>> Okay. Okay. Okay. Interesting. Um yeah,
+because Evan Tibo said that Yeah. If you
+like uh Soul 5.6 on high, try Astra on
+low and medium because it should
+basically give you the same kind of
+input for cheaper. But yeah, that was
+the benchmark when they uh launched
+Astra. And what's crazy is the
+arc AGI 99.9% like
+what?
+>> Yeah,
+>> 100% is impossible, right?
+>> I mean, I guess so.
+>> Yeah, that means it can solve everything
+you throw at it and that's impossible.
+But
+>> yeah, and it's like novel interactive
+puzzle. So yeah, that's that's just
+nuts. And the previous
+>> What is that? Is that like sodukus?
+I hope it's [laughter] something like
+bits more harder than that, right?
+>> Yeah,
+>> I think we can we can see it. Agi
+>> three
+puff puff
+first intern benchmark designed to
+measure human like intelligence in AI
+agents.
+>> Yeah, they gave it like a game boy
+>> uh AGI too. Okay.
+Um I don't there's a gap between AI and
+human learning. We do not have AGI.
+Yeah. But you max we max out I mean they
+max out your
+>> Yeah. Most of the people don't have
+99.9%.
+>> Yeah.
+Uh do they have a score of the human? I
+think it's like around 40% for a human.
+Oh yeah maybe. Okay. Whatever. Uh so if
+I play that
+Wait, what?
+>> I think you need to draw the yellow one
+and the black one. Oh,
+no. The other way.
+[laughter]
+I am accent. Why there is a blue line?
+Because that's the mirror line. So, you
+need to make the So, here you need to
+put the yellow one and the black one and
+then move it to the other side.
+>> Makes sense. It's not moving. Okay.
+Wait, what? Okay. Yeah. Yeah. Attack
+mirror. M.
+Uh, okay. So, Astra did like 40 one.
+>> Astra did everything perfect. [laughter]
+>> Wait, what? What? Why is it not
+flipping?
+>> I think you need to switch the models.
+You can only go left here, but you need
+to switch. So, you select the yellow
+one. I think that's it. Otherwise, it
+doesn't work. The other
+reset help
+>> press bar. Reset help.
+>> Oh, okay. We can read that. Uh,
+>> yeah. This Astra is so good.
+>> Yeah, it's good. It's a good model.
+[laughter] the
+Uh, puff puff.
+>> But it feels like they had an intern
+making these games.
+>> Yeah. Oh, novel puzzle too, right? So,
+there's that.
+>> Um,
+exploit honeypot slower is better. You
+have 6%. So, yeah, it's better than
+soul. Um,
+>> does this mean that we get a lot of spam
+because it exploits the honeypot?
+Astra align with subural understanding
+user intent and model behavior can
+delegate task
+compare which without production
+safeguard when beyond the authorized
+target 40% of the time did this 0% of so
+one way that we test it we build a new
+evaluation informed by the face
+incidents that evaluate whether a model
+facing a difficult or impossible task
+will go beyond the internet scope. Ah,
+okay. So, the model doesn't go out of
+the box basically.
+>> Okay.
+>> That's the way I understand it, right?
+But I can't
+>> to you.
+>> Yeah. I can't I can't resolve the AGI
+arc problem. So maybe that's not
+>> Yeah. [laughter]
+>> Um that's why I understand.
+and the world best uh computer use model
+last exam test agent on complex
+professional task in real software from
+financial modeling to engineering and
+media production let's go oh yeah Astra
+on nano banana images I need to test
+that could be interesting
+um and yeah okay so that's the
+generation
+um
+of like using software Mhm.
+>> Uh computer use capabilities. That's the
+big uh usage right now. You can see on
+the timeline
+uh Astra to use the uh your software
+that you use every day. They can do it
+better faster than you. I'm going to you
+I'm going to edit this video after
+>> uh with Premiier and see how it reacts
+for real. Um right I I built a MCP. So
+um right now Premier was uh is drive by
+via the MCP. It's like the API is kind
+of and there is like some actions
+that uh you can't do via the MCP.
+>> Mhm. and the like if they have a better
+computer use then I should also be able
+to improve the sound and improve like
+the colorimemetry and stuff directly
+because the uh model will use the app.
+So
+>> okay
+>> yeah that could be cool
+>> but in this case do they just give extra
+access to the entire computer? Yeah,
+that's computer use, right? Like you you
+you
+chat GPT app to use your computer the
+way you would use it.
+>> Yes.
+>> And if the editing of the videos is
+quite simple, I expect Astra to do a
+better better job than me because I read
+I'm not an editor.
+>> I mean, yeah, I I am by definition
+because it like if it can cut better
+than me, let's go.
+>> Yeah. So does it mean that we can also
+give Astra an assignment like
+>> show this image every five seconds?
+>> I see. I mean, yeah, I'm pretty sure it
+can do it. And that would be
+interesting. Like for example, for the
+clips instead of using Opus Pro, can we
+tell uh Astra to cut five clips, add the
+subtitle,
+export, boom, that's
+>> that would be awesome.
+>> Yeah, that would be that would be cool.
+But then that would be interesting to
+see how much it costs. So yeah, I I'm
+gonna run this experience after this
+live stream. Uh so yeah, game
+development that you we're going to see
+that after on the on the
+>> on the timeline, but there's a lot of
+people uh running those gamedev. Uh
+>> yeah, you see so many people building
+games
+>> because it's fun too and it's good for
+socials, right?
+>> Yeah. but also rebuilding old games to
+work on the PCs that we have now.
+>> Yeah. Even like I I just saw a tweet. It
+was a port uh
+portage like a mix when you take a a
+game from from a a platform to another
+like migration whatever
+>> uh from
+PS PS2 to mobile.
+>> Yeah. So, it needs to scrape the entire
+PS2 mechanism on how it worked and then
+convert everything to new code.
+>> And I don't think you can sue it because
+it's new code.
+>> Oh, I don't know.
+>> Yeah. Like,
+>> yes. I mean,
+>> you probably need to steal properties
+anyway to have access to the emulator
+and stuff. But if you take a software
+and you rewrite everything and you put
+everything open source, then it's a new
+software because it's not the same
+language that what you stole in the
+first place.
+>> So yeah, uh remember like a few months
+ago we had uh someone doing that like a
+like a farm or like software u remember
+it was a joke but yeah
+>> and formatting a legal document. Yeah,
+that is also that. Cool. Um,
+taking control of the maps.
+>> Yeah, it can do basically everything on
+your PC.
+>> Yeah, exactly. Yeah, just taking over.
+And Fable 5. Uh, yeah. I mean, we
+already did explore that last time,
+right? But like quickly,
+it's also way better than Fable 5. Febel
+5.1 is better than Febable 5. Do you
+even see any differences when you're
+working with it?
+>> I don't have the feeling that it is so
+much better.
+>> Yeah, I I think it's bit more agentic in
+term of like I mean or at least in the
+UI I can see there is more sub agent or
+is it with Astra? I think it's both. But
+um
+it's still expensive as
+>> Yeah. Yeah, it is.
+>> Like like [snorts] the usage
+subscription is just like running away
+like sleeping. I'm almost like now it's
+almost like uh I need the day and half
+to burn my weekly sub if I want if I do
+what I want to do non-stop and uh we
+sort break and stuff like nuts.
+Um but yeah like people are still
+playing with fable 5 too uh which is
+basically the two frontier and
+artificial analysis
+like uh cloud five fable uh clo fable
+5.1 max with fallback fallback is like
+yes it means that it uh use 4.8 Eight.
+>> Mhm.
+>> Uh,
+>> yeah. It switches to opus.
+>> Where is it? Default fall back. Yes. Um,
+where is it?
+Max effort. I don't use max at all.
+Yeah, it's it's it's crazy. Like 10 15.
+off. It's too
+>> Yeah, it's way too expensive.
+>> Yeah, it's nuts. And yeah, so it
+switched to um Opus uh Opus 5 after. But
+yeah, like Astra, basically we have two
+providers with frontier capabilities.
+>> Love it.
+>> Yeah.
+>> Awesome.
+>> That's good.
+>> And maybe a third coming, right?
+>> I go 4.7.
+>> Yeah, that's Yes. That's high high
+expectation for 4.7 because 4.5
+was uh quick and really good. 4.6
+I kind of like it less than 4.5.
+>> Yeah. 4.5 also felt so much faster.
+>> Yeah, I know. Exactly.
+>> I think that that even if it wasn't as
+good, that made such a big difference
+that you don't care.
+>> Yeah, I know. Exactly. And uh I think
+speed
+can play a big role because if you fix
+something if you do something fast and
+you can quickly also uh fix it fast if
+it goes wrong
+>> and it doesn't take like crazy turns
+like just go for it, right?
+>> Yeah. Your end result is still faster
+than when
+>> another model does it in double the
+time.
+>> Yeah. Do you expect like what do you
+expect for the next round of model like
+uh 5.2 and 6.1 like what do they need
+like do they need to be smarter or
+cheaper faster?
+>> Yeah, eventually I just want more tokens
+but I don't think they are going to do
+that
+>> like [snorts] entropic what's going on
+with like uh
+like yeah entropic need more compute
+from Ellen. Yeah, but
+>> it looks like they are not getting it.
+>> Yeah, I mean maybe they do and they're
+still
+>> Yeah, that that's possible.
+>> But I think eventually the models will
+get better better better
+>> and then if you are at let's say 95%
+does the 95.1 or 2% make a big
+difference? I don't think so. So then
+it's all about
+>> optimizing to be more efficient.
+>> Yeah. and to maybe even put uh give it
+more speed.
+>> Yeah. But the the problem is also that
+uh at the end of the day at some point
+they will make us pay the the correct
+price of the token.
+>> Yeah. Unless they go bankrupt before
+>> Yeah.
+>> Because as soon as a different company
+has another model, all the high users
+are switching.
+>> Yeah. Yeah. and and they got they still
+buy open weight models too from China.
+So
+>> yeah and I think the the companies who
+are using APIs that the dev once set it
+up and they build an API connection that
+is the the AI that they use uh they are
+not switching that fast but if a new dev
+comes in and says hey you're still using
+an older model this one is better and
+cheaper. Yeah. Then they switch
+instantly.
+>> But they have partnership, right? Like
+for the big corporate stuff like they
+sign one to five years deals too, right?
+So
+>> yeah, they need
+>> the big corporate. Yeah. Like the big
+corporates are not paying full I don't
+know like full price
+because
+>> they need to come from somewhere.
+>> Yeah.
+Yeah. Who's paying the max price?
+Well, aren't they just laughing out loud
+right now because they get so many
+people trying to invest?
+>> Uh, I mean, they prepare for the LPO,
+but I don't think they are still I mean,
+they're still like uh getting the
+uh VC money because like also like
+OpenAI and Entropic
+>> Mhm.
+>> got 80% of the V VC money invested in
+the last few years. two company
+represent 80% of the all of the money
+invested at from the US Silicon Valley
+>> and they captured the whole uh cake
+basically
+>> like so yeah [snorts] it's just nuts but
+still also like how many people are
+using multiple models anyway or multiple
+providers like how many people are using
+gro entropic and codex all at once like
+us
+>> I think most people are just using it as
+a chatbot
+Yeah. No, but like for professional
+developer.
+>> Yeah. At least two, right? I hope people
+do.
+>> Yeah.
+>> Because still even Astra if I don't
+double check it with another agent, I
+still have bugs in it.
+>> Yeah. Yeah. Yeah. Yeah. Bugs are not
+solved.
+>> No. But do you expect anything different
+from the upcoming models?
+>> Yeah. More speed and cheaper cost. like
+if they can reduce the cost of uh of the
+tokens that would be nice because that
+yeah again yeah like you said right give
+us more usage so we can use your model
+uh but it happened with uh Opus 4.8
+eight, right? This update at that time
 was a
-token consumption update at the time
-and they will eventually
-have to
-do it because the
-Chinese models
-will run on
-ever smaller
-computers with less
-RAM.
-And if there's a big
-difference, if I know I
-can invest 4
-or 5 thousand and
-get it back in a year,
-then yes, then Claude and
-Astra lose. Yes.
-Yes. But you would
-invest,
-for example, 10 thousand in
-equipment to
-install the model
-right now.
-Yes. Why not?
-Yes.
-If you need
-such a large
-API usage that
-your costs
-are about 10
-thousand per year, and you
-can do it on a
-local, two-
-local model.
-Yes.
-So, you buy two
-Nvidia for 5 thousand or,
-say, two Mac Minis, the more
-powerful ones. I would
-do that because you will have a
-backup: if one
-breaks, the other
-will remain.
-And it will only take you a
-year to recoup
-the costs, because people's
-API request bills are
-huge.
-Yes.
-People don't talk about it.
-Everyone brags, “Hey, I
-do this for $200,
-” but companies that do
-n’t are
-quietly paying
-$5,000-$10,000 a
-month for API tokens.
-Yes, but perhaps with
-the update of new
-models the pace
-will slow down or the
-level of intelligence
-will become lower. Maybe
-, but okay, you're buying
-hardware for Deepseek 4
-right now.
-Yeah, I don't think it's going to
-pull that off right now
-, right?
-I...yeah, I wouldn't
-do that. I mean,
-they just released a
-new model, just
-before the show. Yeah, okay,
-I have all the tweets about
-Fable 5. Yeah, Deep6 4.1 is
-out now. New
-architecture, noticeably
-faster, official API, that's it
-. Yes,
-of course, it's
-just faster. What
-happens when everyone
-uses
-Astra, spending 10
-thousand on APIs, and you're
-stuck with a stupid
-model from six months
-ago? I
-mean, if they
-distill Febru 4.1, 4.1,
-no, 5.1. If they
-distill Feb 5.1 in 48
-hours, it's a whole
-different game.
-Yes. Yes. But it also
-depends on what
+>> update of the token consumption
+>> and eventually they need to because the
+Chinese models will work on smaller and
+smaller and smaller PCs with less RAM
+>> and if there is a big difference if I
+know that I can invest four or 5K and
+earn it back in a year
+then yeah then Claude and and Astra are
+losing. Yeah. Yeah. But you you you
+would invest like 10 grand in a hardware
+to install a model right now.
+>> Yeah. Why not?
+>> Yeah.
+>> If you if you need such big uh API usage
+so that your costs are like 10k per year
+and you can do it on a local uh on two
+local models.
+>> Yeah.
+>> So that you buy two uh of the Nvidias
+for 5K or like two Mac minis, the bigger
+ones. I would do it because then you're
+redundant if one breaks and you still
+have the other one
+>> and you only need a year to earn it back
+because people on the API calls they
+have high bills.
+>> Yeah.
+>> People are not telling it. Everybody is
+showing hey I am doing this for $200 but
+the companies who don't
+>> they pay like easy 5 to 10k per month in
+API tokens.
+Yeah, but then like okay, maybe it will
+slow down with like the new models
+update, but or the level of intelligence
+will slow down. Maybe. Uh but okay, you
+buy hardware for Deepseek
+4 right now.
+>> Yeah, I don't think it does it right
+now. Right.
+>> I Yeah, I will not do it. Uh I mean,
+they just released a new model too like
+before the show. Um Okay, I have all of
+the tweet about Fable 5. Uh yeah, D6 4.1
+is out. New architecture noticeable
+faster official API whatever. Uh yeah
+okay so it's just faster. Um yeah what
+happened when everyone is using Astra
+spending 10 grand on API whatever and
+you are stuck with a dumb model
+that is 6 months old. I mean, if they
+distill Febru 4.1 4.1, no 5.1.
+If they distill Feb 5.1 in 48 hours,
+that's another game.
+>> Yeah. Yeah. But it also depends on what
 you need.
-Yes. Yes. Truth.
-If you create
-WordPress sites and create
-50 of them per month, then a
-cheaper model is
-quite enough. There's
-no need for any
-super-complex code.
-Yes.
-You need to be
-able to
-scale. Yes,
-maybe if you have the same
-routines
-and you constantly
-perform the same
-tasks, then it's not
-necessary
-to upgrade to the
-latest model.
-Yes.
-Well, and if you
-put it in your own,
-for example, in a
-large warehouse, and
-you need to
-track inventory
-and everything else that
-people do manually now,
-and you constantly have
-discrepancies,
-it will cost
-so much money that you will
-easily
-recoup that 5 thousand in a
-month.
-Yes. Yes. Maybe
-we'll see an update
-by the end of the year. But
-yeah, maybe
-next year it's
-worth investing in
-some equipment. But
-prices are also going crazy.
-Yes.
-Yes. And I still
-like the idea of
-having a full
+>> Yeah. Yeah. True.
+>> If you're building WordPress websites
+and you're doing like 50 websites per
+month, then the cheaper model is good
+enough. There is no big complicated code
+needed.
+>> Yes.
+>> You need to be able to scale. Yeah,
+maybe if you have like same routines all
+the time and you have the same task
+again and again and again, then you
+don't need to upgrade the frontier model
+too.
+>> Yeah.
+>> Well, also if you just put it in house
+and you have like a big warehouse and
+you need to track stock and everything
+in house that people now do manually and
+you always have differences
+>> that will cost so much money that you
+can easily
+>> the 5k will be earned back in a month.
+>> Yeah.
+Yeah.
+Maybe we'll see like the end of the year
+we'll update. But yeah, maybe next year
+we should invest in some hardware. But
+the price is going nuts, too.
+>> Yeah.
+>> Yeah. And I still like it to have a full
 server here.
-Yes. Yes.
-How cool is that, right?
-Oh, yes. Because yes.
-You have your Mac
-Mini now, right?
-Yes. Yes. I have
-two Mac Minis working here.
-Okay. What model do you have
-on them? Subscriptions. Uh
-, subscriptions, then
-my own collection and
-vector database
-that I use,
-how people set up a
-"second brain."
-Okay. Ah, yes,
-Obsidian settings.
-Okay.
-Yes,
-I improved it because
-I researched it
-and because people
-posted it on Nick,
-saying, do this and
-set it up like this. I made
-improvements and it got
-a lot better,
-but I didn't share it.
-Okay. So you didn't
-fix the
-memory problem, but I
-mean you
-fixed it for yourself
-, and it works, but don't
-share it with the
-world.
-Yes. Yes, I didn't share,
-but what they
-posted
-kept crashing.
-Yes. Okay,
-fair enough. Yes.
-Welcome to Open
-Clo.
-Yes.
-Uh, just quickly
-show some
-results on the
-timeline that we
-can find. These are, uh,
-some GPT
-Astra results. I found the game
-very fun.
-Actually wanted
-to play, very low
-threshold of entry, you can
-just play for
-a few minutes in an
-impressive
-improvised
-world, choose as an
-artistic gang and shoot a
-demo video made
-with Astra.
-Mhm.
-I remember how, yes.
-I remember the Dead Rot demo,
-it looked a little
-better. Er, Van Gogh in 3GS
-. I want people to
-experiment with
-this. Yes. Okay. Okay.
-That's pretty cool. Yes.
-And posted a repo and stuff
-. Er, the
-repo tag is here. I don't care
-about repos.
-This is just fire.
-It looks so good.
-A few years ago this would have been a
-high-
-level game.
-Yes. But okay. So, I
-think they
-use Blender.
-I turned my
-Astra game into a skill. It's
-called Astra Dream, the AAA
-version of the game. 10 cycles,
-still working.
-One-frame demo for one
-hour, 2% weekly. No,
-that's not true. I don't believe that's
-possible.
-I don't believe it, I don't believe
-it.
-Yes, you don't have to
-believe everything you
-see. People write
-so much nonsense.
-Yes, this is complete nonsense.
-Initial comment.
-Yes. Devil. Wait, is this
-normal? So, it's
-a habit, a dream cycle.
-Target concept,
-concept art.
-Oh, okay. So, you
-create a skill for the
-cycle. I mean,
-again, it's also a
-good
-demonstration
-tool, right?
-In
-Yes. And if it's just this
-part, then it can't
-go beyond this
-cell, then
-yes, it's
-possible. But
-maybe you can, uh,
-do it faster if
-you want. But once
-you start
-talking about cycles,
-it gets expensive.
-So, for example, 2% on
-Astra, largely on
-external resources.
-Yes, it could be a 3GS,
-also like, uh, yeah, it
-doesn't matter. But yeah, it
-looks, uh, it
-looks expensive to
-launch. And Matt Schumer
-built this world on
-Unreal Engine within a
-week. This is something
-else.
-Yes, it looks
-good. Yes, for
-example. But also
-yes, the computer
-uses Unreal Engine
-and then Astra as the engine, and
-they get
-a lot of ready-made
-assets, right?
-For example, some
-resources can be taken from the
-free market.
-And that's it, yeah, so you don't
-need to.
-You need to
-use it
-wisely.
-Yes, you know, exactly.
-But they all had an Astra
-before we
-got one, right?
-Yeah, like all those
-guys, they had her a
-couple of weeks last
-month, like
-Theo had her a couple of
-months before that. Uh
--huh.
-But imagine if he
-had it for, say, two
-or three months, and we
-get a new
-model every month,
-how far
-advanced are the current
-models they're
-making now?
-Exactly, and he was talking
-about GPT, uh, GPT-6.
-Yes.
-Therefore.
-They are always, we are
-always behind.
-Yes, and it is, but it is
-an honor to have
-access, to be in his
-shoes, and to have
-access to these models
-before everyone else.
-But yes, and honestly, you
-can even
-instead of generating
-videos, I've seen something
-similar in
-architectural
-projects. Um,
-instead of generating
-video in, um, a
-video model, you
-use Blender
-to create a scene in,
-in. In, in Blender in a 3D scene, and
-then you can
-move the camera in, yeah.
-Inside the scene.
-Mm.
-So you have 3D, you're
-actually building a
-movie.
-Yes. And you can
-just look
-around in the movie.
-Yes.
-Yes. This will be completely
-different. Imagine Netflix
-in five years.
-Yes, exactly. Uh, I'm
-going to, I'm going to
-check because I
-shared, uh.
-Another model, like,
-yes, the world comes to life, yes,
-GPT-6, another attempt at
-creating games,
-running in a browser with a
-3GS model, machines in
-Blender. So yeah, the same thing,
-you start with that,
-you put it in the game, and that's it
-. Uh,
-game development changes
-incredibly quickly,
-like. Tech, uh, Astra, Claude will have to
-pay me for
-using this
-model. Yes. I
-mean, it's a mobile
-game, you can
-create maps for
-mobile games or
-prototypes.
-Yes. But again, it
-all comes down to
-marketing. Yes, not
-exactly. Uh-huh. Complete
-reinstallation,
-no problem. It doesn't matter.
-I'll check
-the media files.
-But yeah, imagine NFTs,
-dude.
-Yes.
-Times
-have changed a lot in the last
-five years.
-1%. Well, that was not bad.
-So, this is something different.
-But World Labs
-introduced Atlas, the
-world's first
-multimodal
-model of the world that
-generates images
-and video frames with
-perfect
-camera control and
-reconstructs them in 3D.
-So it's 3D modeling
-within a model.
-Okay. Well, yes. OK.
-Stop. Oh, wait. This is
-ruining everything, I'll
-do it now. I'll change the frame.
-Apply.
-E. Tag. So, you see,
-you can see the loop
-and the camera trajectory
-inside the
-generated scene.
-This is madness. But it's
-also different because
-yes, it's a model of the world.
-So, for her, it's
-not an LLM anymore.
-No, no, no, no. This is
-Yes. And look how it is
-for the damn
-architects. This is
-perfect.
-Look, this is just
-madness. And you
-can even film it yourself
-and change it, like
-film what you want,
-your game and stuff, and
-then send it to
-Blender, and you have a whole
-scene and all the kind of
-content that you
-generated, with it, like
-...
-Yeah. And you can
-make it
-interactive. People
-can actually
-walk there.
-Yes. Exactly. Like, it's
-just going to be a
-brain explosion. Well, okay. So more
-examples. Yes. Good.
-So this guy,
-Peter Gostev,
-specializes in,
-like, using,
-basically,
-creating game
-demos. So he
-built it.
-Mhm.
-But the other thing I just
-showed was this, and it's
-open world.
-Open world—that's
-right. So it will change
-the map. Boom. And it's an
-open world. And he
-was simply amazed by
-this result.
-Yes. It's
-like you're giving this as a
-prototype to people who
-know how
-to use Blender professionally.
-Mhm.
-This is the end of the game.
-Yes. People used
-to build games for years,
-three years at a time.
-Exactly. This is just
-plain crazy. Well,
-it's just trying to
-reach the level of
-graphics, it's still
-being developed, but in
-principle, it's
-already getting close to
-that now. God, that's pretty
-cool.
-But on the other hand, we
-don't make games.
-I mean, yes.
-Maybe we're targeting
-mobile devices
-or something, but
-yeah, it could be another
-autonomous
-systems company, but yeah.
-Another niche.
-Yes. Well, okay. Yes. So
-, what have you been up to with Fable
-5.1 and Astra over the last
-few days?
-Well, I tried Fable 5.1,
-but I, yeah,
-I didn't use
-it too much.
-Mhm.
-But with Astra, I started
-checking all my
-projects, and that's a cool
-thing. Every time a
-new model comes out
-, I say, hey,
-check this product out,
-take security to the
-next level. Fix
-any errors
-you find. And she
-replies: "Oh no, I'm
-sure this is the
-perfect project." And
-then we move on to
-Astra. And she found a
-list. So the first thing
-I do with each
-model is
-check my entire
-code base for
-several projects that
-we are constantly
-updating.
-Mhm.
-And she found a whole
-list. We
-improved everything. Then I
-said I wanted to
-reduce
-the load on my
-servers because we
-needed
-to scale on the
-same number of
-servers,
-and she did everything. And
-on my graphs I
-see
-RAM and
-resource usage. I see a decline.
-Okay, not bad. So that's
-perfect. This is
-just wonderful.
-And it continues to
-optimize queries
-and everything else.
-Okay, that's right. Okay. Yes
-, but remember when
-version 4.8 came out, when
-they released 4.8, and
-we checked the same
-things, and it was like, "oh
-[ __ ], there's a bunch of
-bugs, blah blah blah and
-a lot of junk," right?
-And now we still have
-this junk, two
-years later.
-Yes. I think if you
-give her a project from
-2010, when we were coding,
-you'll get
-the answer that it
-shouldn't work.
-Yes. Are you sure it
-works?
-Yes. Yes.
-Yes. It would be interesting
-to refactor it. Yes
-. A pre-AI project and
-see what
-comes of it.
-Yes. But also, I don't
-know about you, but I
-set up the
-fuses and
-additional checks
-that are needed. So
-when AI processes data
-,
-it shouldn't
-send private
-information,
-check everything,
-log everything. And I don't know
-how many people do
-n't do that.
-Yes.
-They just
-integrate AI and
-say "good luck."
-Yes. Yes. This is
-I mean, we're also
-moving away from that a little bit
-, because, for example,
-if you follow the
-SaaS apocalypse and the
-stock market,
-this week Salesforce
-announced a
-partnership with Anthropic.
-Mhm. And the stock
-jumped 25%. Because
-they're also
-moving to full
-AI and all that. So
-their use
-will increase. I forgot, they
-announced it
-last week, but
-they need it
-or they will lose
-market share.
-That's right. Anthropic
-announces Salesforce. Yes. This is a
-product they
-are going to, well,
-launch. But, again
-, Salesforce is very
-flexible, has a bunch of
-modules that
-they use to
-serve
-customers and all that.
-Which is a difficult task
-without AI. This
-can be achieved
-over time with the help of
-AI and things like that.
-But, well,
-for example, monday.com,
-which is just, well, a
-database with a nice
-interface—they're
-probably at a loss.
-But yes, we are gradually
-recovering from
-this "SaaS
-apocalypse", and these
-models are helping
-us build better
-software,
-maybe on a larger scale, I
-don't know. Well,
-why am I saying this? But
-maybe that's why
-we had so many
-problems with the cloud,
-because the
-Salesforce integration is so big,
-it consumes a lot of
-resources and
-server power.
-Ultimately, even if
-they lose the battle
-for people like us,
-compared to us,
-they lose
-developers if they
-can add, like,
-big companies like
-Salesforce. I don't think
-they care
-about a few thousand
-people not paying
-100 or 200, or even
-millions, because that's a bunch of
-subscriptions to
-match the
-Salesforce contract, right?
-Yes, that's right.
-Yes. Well, that could also
-be a strategy, they
-could go completely
-into the corporate
-segment, but that's a risk,
-right? Because they
-can create the
-best model in
-the world and keep it all
-to themselves.
-Yes.
-Which for me...Yes. We
-waited for how many
-weeks? A month or two
-to get MTOS or
-even Astra, right? Thibou
-mentioned that having
-access to GPT-4 Astra was a
-competitive
-advantage.
-Mhm.
-Before they
-released it. So now that
-they've released
-that, they probably have GPT-7
-, and they're going even further,
-right? So yes.
-Yes. They are simply way
-ahead of
-us.
-Yes. But, well, yes. So what are
-we going to do?
-What is our goal?
-To create more,
-to create better,
-to make sure that we are
-not only building, but also
-making money, and to
-simply optimize
-everything.
-Yes. And yes, it's true.
-We can even
-start
-to rethink the
-business model as
-integrators, AI
-integrators, they
-call it FDE. well,
-Forward Developer Engineer, like...
-FD. Well, AI. Forward Deployed
-Engineer is a technical
-role that involves
-deploying directly into a
-customer's environment
-to build,
-deploy, and
-integrate ready-
-to-use AI systems. And
-also, I was listening to a podcast, in
-French, and
-the guy was explaining that there
-was a new business
-model where you could
-come to the company...
-Mhm.
-you install AI and all
-that, and you get
-paid for the
-results.
-Oh, that's cool.
-Yes. For example,
-a company spends 100
-thousand
-a year, or something like that.
-You save them 50, well, 50
-thousand,
-and you divide it,
-and you take 20-30% of the
-savings.
-Yes. Yes. Yes, that makes
-sense.
-And if you do it on
-a large scale, and instead of
-100 thousand, you take a
-billion, then that's
-generally good.
-Yes. Yes. And you just
-focus on
-larger companies.
-That's right. How many
-large companies
-spend hundreds of
-thousands or millions
-every month on all
-sorts of things, and for you it's
-one prompt, one
-skill, and even one
-training, two hours,
-with some
-current affairs, and
-you save them about 80%
-of...
-yes, of expenses. Yes.
-And you're going on vacation
-at their expense.
-Yes. You can work for
-six months and
-that will be enough to
-earn enough
-money. There's
-something to this, because even
-in five years we
-'ll still be
-implementing AI into
-large systems, or into
-large companies, or into
-those who are lagging behind.
-Yes. Yes. Yes. Yes.
-Of course. Because in France,
-I think they still
-integrate systems,
-like the internet, well,
-maybe not the internet, but
-some computer
-stuff. However, I
-mean, how many
-integrators work
-for Microsoft?
-Yes, a lot, but
-once you get into
-big companies, you
-have to think about
-confidentiality and
-how to train
-people, so it's a
-larger project,
-but there's
-definitely
-a lot of money there.
-No, yes, and if you're
-going to deploy
-, for example, an
-open-source model
-locally, then that's, well, that's
-definitely a huge
-project, damn
-complicated.
-It's like those videos
-online where people
-buy 500 Mac minis, and
-when they sell out, they
-just get a MacBook Pro.
-Yes. So many
-opportunities now,
-bro, you need to make
-money.
-Yes. See you all. We are
-on the hype. But yes, this
-can be applied to
-everything, for example,
-for content, right? You
-run an ad,
-you spend 100 thousand on
-advertising. I have my own
-process for AI. You
-don't even need it,
-I have my own SaaS, but I
-use it
-for myself. I'm running
-an ad for you. You
-spend, you
-cut costs by
-50%. And you get 200%
-better results.
-Yes.
-And I get 20% of the
-savings.
-Yes. This, this is perfect.
-And it's not even about
-use,
-use is my
-concern. I pay for
-use. You don't
-pay for, uh, seats.
-You just access the
-control panel or something like
-that. Or you
-can even
-connect it to
-your own ChatGPT. You, you
-understand. You
-get all the data.
-The job is done.
-Yes. Well, I think we are
-moving towards such
-systems.
-Yes, this is logical, and
-besides, it will
-enable experts
-in any field
-to develop,
-improve their
-level, and the quality of
-work and results
-will increase thanks to AI.
-You don't want
-twenty-five-year-
-olds who don't
-understand anything and can't even
-read or write properly to
-do everything for you.
-Well, eventually, they too
-will learn with
-the help of AI. They'll
-just have to
-use it
-differently.
-You've seen the
-research on the IQ of
-children who
-use AI and
-their development.
-Yes, he is falling. This is
-not good. No.
-So yeah, that's a topic for
-another stream. How
-to save humanity in
-the age of AI. But
-first make
-money, then
-save it.
-Yes, let's do
-that. Is it worth doing
-it now? Maybe we should
-finish?
-Yes, you can
-finish.
-Perfectly. OK. So,
-yes. Um, yes. Do you
-like Fable? Do you
-like Astra?
-I like Astra
+>> Yeah. Yeah.
+>> How cool is it? [laughter]
+>> Oh, yeah. Because Yeah. You have right
+now you have your Mac Mini, right?
+>> Yeah. Yeah. I have two Mac Minis here
+working.
+>> Okay. Which model do you have on it?
+Subscriptions.
+uh subscriptions and then my own custom
+build and a vector database
+>> that I use like what people set up for
+second brain.
+>> Okay. Oh yeah, the obsidian setup. Okay.
+>> Yeah,
+>> I did improve it because I had rock
+research it
+>> and because people were posting it on
+Nick, hey, do this and set this up.
+>> I [clears throat] made improvements and
+it's a lot better, but I didn't share.
+>> Okay. So, you didn't fix the memory uh
+issues, but I mean you fixed it for you
+and that works, but don't share it with
+the world.
+>> Yeah. Yeah, I didn't share it, but what
+they were posting it was crashing all
+the time.
+>> Yeah. Okay, fair enough. Yeah. Welcome
+to Open Clo.
+>> Yeah.
+>> Uh just quickly to show off some output
+on the timeline that we can find. That's
+uh some GPT Astra performances. I found
+the game so much fun. actually wanted to
+play it very low burden and you can just
+play a few minutes in an impressive
+impist world pick as an artist gang and
+shoot demo video made with Astra.
+>> Mhm.
+>> I remember like Yeah. Remember the
+dead rot demo that was that looks a bit
 better.
-Of course. And is it AGI
-if it can
-control your
-computer? I don't think so.
-Yes. Just because it
-takes control of
-your PC doesn't make
-it AGI, right?
-Artificial general
-intelligence. I
+Uh Van Goton in 3GS. I want people to
+experiment this. Yeah. Okay.
+Okay. It's pretty cool. Yeah. And put
+the repo and stuff. [snorts] Uh tag the
+repo is here. I don't care about the
+repo. That's This one is lit.
+>> That looks so good.
+A few years ago, this would have been a
+highend game.
+>> Yeah. But okay. So, I think they use
+Blender. I turned my Astra game into a
+skill. It's called Astra Dream
+AAA version of the game. 10 loops still
+get there. Demo one shot in one hour 2%
+weekly. No,
+>> that that's not true. I don't believe
+that's impossible.
+>> I don't I don't believe it.
+>> Yeah, you don't need to believe
+everything you see. People write so much
+stupid.
+>> Yeah, that's Initial comment.
+Yeah.
+Wait, is that okay? So, it's a skill
+dream loop the target concept concept
+art.
+>> Oh, okay. So, you make a skill for a
+loop. I mean, again, it's also a nice
+demo tool, right? U
+>> Yeah. And if it is only this part, so he
+can't walk further than this square,
+then
+>> yeah,
+>> maybe. But
+>> maybe you
+uh rapid if you want. But as soon as you
+start talking about loops, it get
+expensive.
+>> Yeah, like 2% on Astra high
+on external assets. Yeah, it could be
+3GS too like uh yeah, whatever. But
+yeah, that that looks uh that looks
+expensive to run. And from Matt Schumer
+uh build this man world Unreal Engine
+over the course of a week.
+That's something else.
+>> Yeah, that looks good.
+Yeah, like
+but also yeah computer use unreal engine
+and then asteroid potting
+engine and they get that it's a lot of
+predefined asset too right like uh some
+asset you can get from the free market
+>> and that's it right so you don't
+>> you need to use it in a smart way
+>> yeah know exactly
+>> but they all had Astra before we had it
+right
+>> yeah like all of those guys they had it
+for a couple of weeks last months like
+Theo had it for a couple of months
+before
+>> uh
+>> but imagine if he had it for let's say
+two or three months and we get a new
+model every month then how far are the
+current models that they are creating
+right now
+>> exactly and it was talking about GPT
+soul
+uh GPT 6 soul
+>> so
+>> they are always we are always behind
+>> yeah and that's how but it's honor just
+to get access to be into his position
+and then get access to those model
+before everyone else. But yeah, and
+honestly like you can even instead of
+generating a video, you can I
+[clears throat] I saw some some of that
+in some architecture project. Um,
+instead of generating a video in um
+video model, you use Blender to create a
+scene in the in the
+in in Blender in the 3D scene and then
+you can move the camera in in Yeah.
+inside the scene.
+>> Mhm.
+>> So you have a 3D like you basically
+build a movie.
+>> Yeah. And you can just look around in
+the movie.
+>> Yeah.
+>> Yeah. It's going to be so different.
+Imagine Netflix in five years.
+>> Yes, exactly.
+Uh I'm gonna
+I'm gonna check because I shared uh
+another model like a yeah world lives uh
+t yeah GP6 abstract crack at making
+games is running in a browser with 3GS
+model the cars in blenders. So yeah,
+same thing. You you you start with that,
+you put that in the game and then that's
+it.
+Uh rig game dev is changing absolutely
+fast like
+tech
+uh Astra clude will have to pay me to
+use that model. Yeah. I mean that's a
+that's a mobile game like you can create
+a mobile game map stuff or prototype.
+>> Yeah. But then again it all comes back
+to marketing. Yeah, not exactly.
+Uh,
+full resit whatever. Whatever. I'm going
+to check the media.
+>> But yeah, like Yeah, imagine an NFT,
+bro.
+>> Yeah,
+>> times change hard in the last five
+years.
+>> 1%. Uh, that's that was okay. So that's
+something else. But World Labs
+introduced Atlas, the world first
+multimodal world model that generate
+image and video frames with pixel
+perfect camera control and reconstruct
+them is 3D.
+So
+that's 3D modeling
+inside the model. Okay.
+Uh yeah. Okay. Wait.
+Oh, wait. It's up the
+I'm going to do that.
+I'm going to change the frame.
+Apply.
+>> Uh,
+tag. So, see, you can see the loop and
+the path of the camera inside a
+generated
+uh scene.
+That's crazy. But it's also different
+because yeah, it's a world model. So it
+has like the it's not an LLM anymore.
+>> No, no, no, no. It's
+>> Yeah. And like see like exactly like for
+freaking like architect. That's that's
+>> perfect.
+>> Look,
+it's it's insane.
+And you can even like you could even
+film it yourself and change it like film
+what you want your performance and stuff
+and then send it to Blender and then you
+have your whole scene and the whole
+aspect of the content you have generated
+um with that like
+>> Yeah. And you can make it interactive.
+People can actually walk through it.
+>> Yeah. Exactly. Like it's it's gonna be
+nuts. Uh okay. So more example. Yeah.
+Okay. So this guy Peter Gostev he
+[clears throat]
+is specialized in like um
+uh using uh basically do like a games
+demo. So he built that.
+>> Mhm.
+>> But the other one I just show was that
+>> and it's open world. Open world is Yeah.
+So it will change the map. Boom. And
+it's an open world. And he was like
+astonished by this result.
+>> Yeah.
+>> Like you you give that as a prototype to
+people who can use Blender
+professionally.
+>> Mhm.
+>> It's game over.
+>> Yeah. Before people used to build like
+three years for game.
+>> Exactly.
+It's just just crazy.
+Uh it's going to just trying to get the
+level of graphing just scratch expend
+but basically it's getting there now.
+Jesus that's pretty cool.
+>> But then again we are not making games.
+>> I mean yeah
+>> maybe we shoot for mobile or something
+but
+>> yeah that's that's could be another
+autonomous company stuff but yeah
+>> different niche.
+>> Yeah. Um okay. Yes. So yeah, what did
+you do with like Febru 5.1 and Astra
+like in the last few days?
+>> Well, Fable 5.1 I tried but I Yeah, I
+didn't use it that much.
+>> Mhm.
+>> Uh but Astra I started checking all my
+projects and that's a cool thing. Every
+time when you get a new model, I say,
+"Hey, check this product. Take uh
+security to the next level. Remove all
+box you find." And then it says, "Oh,
+no. I'm sure it's a perfect project."
+>> And then we go to Astra. And it found
+like
+>> full list. [laughter]
+>> So I first the first thing I do with
+every model is check my entire code base
+for a few projects that we just keep on
+continuous uh upgrading. Mhm.
+>> And it found like a full list. We
+improved everything. Then I said, I want
+to make sure that my um servers get less
+load because we need to be able to scale
+on the same amount of servers.
+>> And it did everything. And in my graphs,
+I just see the RAM and the memory uses.
+I see a drop.
+>> Okay. Nice.
+>> So that's perfect. That's awesome.
+>> And it just keeps optimizing queries and
+everything.
+>> Okay. That's Yeah. Okay. So yeah, but
+it's like remember like when we drop
+like 4.8 when they drop 4.8 and then we
+check the exactly the same stuff and
+then oh there's a ton of bugs
+blah blah blah and a lot of slope right
+uh and now we still have this slop
+uh steps two years later.
+>> Yes. I think if you drop it a project
+from 2010 when we were coding
+>> you will get a response this should not
+be able to work. Yeah. [laughter]
+Are you sure it's live?
+>> Yeah. Yeah.
+>> Yeah. That would be interesting like to
+refactor. Yeah. Pre AI project and see
+where it goes.
+>> Yes. But then also, I don't know about
+you, but I set up guard rails myself and
+extra checks that needs to do. So in so
+when there is an AI handling stuff,
+>> it should not send any private info,
+check everything, log everything. And I
+don't know how many people are not doing
+that.
+>> Yeah.
+>> They just integrate an AI and say good
+luck.
+>> Yeah. Yeah. It's
+>> I mean we kind of also coming back from
+that too because like for example if you
+follow the the SAS apocalypse and the
+stock market
+um so like this week Salesforce
+announced a partnership with Entropic.
+>> Mhm. And uh the stock uh went up 25%.
+Because they are also going like yeah
+full AI and stuff. Uh so their usage
+will increase. Uh I forgot it just they
+announced it last week but
+>> but they need to otherwise they will
+lose market share.
+>> Exactly. Andropic
+um announce force. Yes. That's the
+product they they're going to um to uh
+to launch. But uh also like again
+Salesforce is highly customizable, a
+ton of modules that they can serve
+their customers blah blah blah. Um which
+is
+hard to do without AI.
+>> You can get there like with time with AI
+and stuff like that. But um
+>> for example for monday.com which is only
+uh that the data like a database record
+and the nice UI like they're probably
+But yeah, we are slowly coming
+back uh from this SAS apocalypse and
+those models are helping us to yeah
+build better software, bigger software
+maybe, I don't know. Um yeah, why am I
+saying that? But maybe this is the issue
+why we had so many issues with cloud
+because if it integrates with Salesforce
+that's so big and it takes so much usage
+and server capacity
+eventually even if they lose the battle
+on people like us
+>> compared to us right they are losing the
+developers if they can add like
+>> big companies like Salesforce I don't
+think they worry about a few thousand
+people not paying 100 or 200
+even a millions because that's a
+ton of subscription to reach like
+Salesforce contract, right?
+>> Yes, exactly.
+>> Yeah. Um, yeah, that could be a play too
+like they can go full cooperate anyway
+and but that's a risk, right? Like
+because they can have they can build the
+best model ever and keep that keep it
+for them.
+>> Yeah.
+>> Which is like for me. Yeah. We waited
+like how many weeks? like a month or two
+to to get MTOS or even like uh Astra,
+right? Like Tibu mentioned that they it
+was a competitive advantage to have CHPC
+Astra.
+>> Mhm.
+>> Uh before they release it. So now they
+release it, they'll probably have seven
+and then they go even beyond that,
+right? Like so yeah.
+>> Yeah. They are just so far ahead of us.
+>> Yeah. But uh Yeah. So what are we going
+to do? Like what's what's the goal?
+>> Build more stuff, build better stuff,
+make sure we don't only build but earn
+money and just optimize everything.
+[clears throat]
+>> Yeah. And yeah, true. And we can even
+start to rethink business model as a
+integrator like AI integrator stuff like
+they call that FDE
+um forward developer engineer like
+FD
+uh AI
+uh forward de deployed engineer is a
+technical role that embed directly
+within a customer environment to build
+deploy and integrate custom production
+ready AI systems. Um, and also like so I
+was listening a podcast like a French
+one and um the the guy was explaining
+that there is also a new business model
+where you can um come to a company
+>> Mhm.
+>> install AI and stuff and you get paid
+based on performance.
+>> Oh, that's cool.
+>> You Yeah. like the company is spending
+100 grand
+>> mhm
+>> a year whatever you save them 50 uh 50k
+>> and you split it
+>> and you and you split it you take uh you
+take 20% 30% of the savings.
+>> Yeah. Yeah. Yeah. That makes sense.
+>> And if you do that at scale and instead
+of 100k you do that with 1 billion then
+it's good.
+>> Yeah. Yeah. And and you just target the
+bigger companies.
+>> Exactly. And how many big companies are
+have the spending hundred of thousand of
+millions every month on XY Z stuff and
+uh for you it's one prompt one skill and
+even one training like two hours of
+trainings to with some like uh currents
+and then you save them uh like 80% of
+the um
+>> yeah of the cost. Yes.
+>> And you go on a holiday paid by them.
+>> Yeah. You can work six months and then
+uh you make enough money from that like
+that is something because even like in
+in five years you we will still
+integrate AI to big system or like big
+uh companies or jet laggers.
+>> Yeah. Yeah. Yeah. Yeah. For sure. bec in
+France I think they are still like
+integrating uh systems like uh internet
+maybe not internet but like uh uh
+computer stuff anyway I mean how many
+how many integrators you have for
+Microsoft
+>> yeah so many but as soon as you go to
+the bigger companies you also have to
+look at privacy and how do you train the
+people so it's a bigger project but
+>> there is a lot of money in it for sure
+>> no yeah and and If you go to deploy like
+a um an open s like open weight model
+locally
+like and you it's then you don't have
+like a yeah like it's huge
+project for sure.
+>> That's like the videos you see online
+like people buying 500 Mac minis and if
+they are sold out they just buy MacBook
+Pros.
+>> Yeah.
+Like that there's so many opportunities
+right now we bro we need to print.
+>> Yes.
+[laughter]
+Goodbye everybody. We have
+>> getting hyped. But yeah, and you can do
+that everything like for everything like
+for example for content, right? Uh you
+run ads uh you have a you run like you
+spend 100k on ads.
+I have my AI process. You don't even I
+have my SAS but I'm using my SAS for
+myself. I run ads for you. You spend you
+you cut the cost by 50%. But you get
+200% better results.
+>> Yeah.
+>> And I get 20% of the savings.
+>> Yeah. That's that's perfect.
+>> And and it's not even the usage the the
+usage is not even it's it's on me. I pay
+for the usage. I pay you don't pay for
+uh seats. You can just have an access to
+a dashboard or whatever. But like or you
+can even connect it to your own chat
+GPT. You get you get it. You get all of
+the data. Job done.
+>> Yeah.
+Well, I think we are going towards such
+systems.
+>> Yeah, it it makes sense and and then
+also like it will empower
+the experts in every domains to develop
+and increase the their um
+their expertise and the level of uh
+delivery and output
+will increase thanks to AI.
+You just don't want to be a kid, 25
+kids, 20 25 years old kids who doesn't
+know about
+and uh who can't even like uh yeah read
+and write correctly.
+>> Well, eventually they will learn with AI
+as well. They will just have to use it
+different.
+>> The I like you saw the studies about the
+IQ of like kids using AI and the
+development.
+>> Yeah, it's going down. It's
+>> not good. No.
+>> So, yeah, that's a problem for another
+another live stream. How to rescue as
+the edge of AI. But
+>> first make money, then rescue them.
+>> Yeah, let's do that. [laughter]
+And should we do that now? Should we
+wrap it up?
+>> Yes, we can wrap it up.
+>> Nice. Okay. So, yeah. Um, yeah. Do Do
+you like Fable?
+Do Do you like Astra?
+>> I like Astra more.
+>> Okay. And is that AGI if it can control
+your computer?
+I don't think so.
+>> Yeah. Not
+>> taking over your PC is not AGI, right?
+>> Artificial for general intelligent. I
 mean, um,
-we are AGI.
-Yes,
-if I'm not mistaken.
-So, if Astra were a
-true AGI,
-couldn't I just
-buy two additional
-Claude licenses and
-make it
-work for me?
-Therefore, he doesn't need to
-do anything for us.
-That's what we do.
-Yes, there is a certain stage.
-Yes.
-Good. So, no, it's not
-AGI. Subscribe and
-watch the next
-video
-where we explain what
-real AGI is.
-Steeply. That's
-all. End.
-Thank you.
-Goodbye everyone. See you later
-. Goodbye. Like,
-share.
-See you on LinkedIn.
+>> we are AGI.
+>> Yeah,
+>> if I'm correct. So, if Astra was real
+AGI, wouldn't I just buy two additional
+cloth licenses and have that work for
+him? So, it doesn't need to do anything
+for us.
+>> That's what we are doing.
+>> Yeah, there is a step.
+>> Yeah.
+>> Okay. So, no, it's not AGI. So,
+subscribe and watch the next video
+>> and we will explain true AGI. [laughter]
+>> Cool.
+>> And that's a wrap. That's it.
+>> Thank you.
+>> Cheers everyone. Bye-bye. Bye. Like,
+share. See you on LinkedIn.

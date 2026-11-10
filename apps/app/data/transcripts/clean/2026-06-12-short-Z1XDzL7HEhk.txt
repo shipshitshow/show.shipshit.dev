@@ -1,0 +1,57 @@
+It's cost me
+7 cents.
+That's not too bad.
+Yeah, 7 cents to generate one image.
+Uh hand drawn game sprite of imaginary
+score. Yeah, okay. Okay. So, yeah, we
+need to work on that. We need to work on
+the prompt. We need to work on like the
+input.
+Uh
+Um
+I want to be able to uh generate batches
+of images. Also, use the skill to prompt
+the asset and to keep the consistency in
+it.
+Um because it should be from the game we
+want to select to prompt for.
+Also, explain to me which kind of sprite
+we are going to in need if we want to
+add those sprites into the games. And
+what's the workflow for the next
+um
+asset management
+for the integration to the game
+directly.
+Uh I want to be able to generate a bunch
+of image. Uh
+It's like uh a swarm reaper enemy
+lurking forward.
+Uh those prompts are
+I like I like I like AI generation.
+I mean, I can't do that with this
+generation
+the with this generated assets because
+like the small flies needs to be out.
+>> Mhm.
+>> But
+uh
+that's sick.
+I love it. So, I with those like a
+pipeline on CI, then we have like
+recursive like not recursive but uh
+fully automated test testing. So,
+it should improve the quality of the
+software shipped because then you have
+CI and QA guardrails.
+I love that. Pose, idle, attacking,
+running, jumping, side views.
+I Did I Did I pass that or did Is it
+paint one sprite and reprint it in
+different ways? Um
+I yeah, I like Ultra Ultra code is
+really really nice.
+>> I love AI.
+>> So cool.
+>> It's so easy. You say what you want and
+you get it.

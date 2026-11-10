@@ -1,557 +1,310 @@
-And you see a lot of
-people saying, "
-If my company went
-bankrupt and I
-needed $
-100,000 at the end of the
-month, here's what I would
-do." And they
-come up with these
-incredible ideas where
-AI can just
-optimize your SEO,
-create pages,
-automatically
-send
-emails, find
-leads
-for new websites,
-or whatever. So I
-thought I'd call
-him King, and King
-would be the king of
-getting clients and
-getting me
-projects so I could make
-money. Do you
-want to learn about
-Rockbot? Watch this
-video because it will be
-golden.
-So, on August 11, um,
-Grogbot launched. This is
-essentially a public
-key that works.
-Yes. And the entire Cursor team
-wrote about it, saying
-that he was doing everything for
-them. It's cool, and it
-works. I tested it out
-and it
-even
-gave me a resume this morning.
-But then again,
-I had a meeting and I
-told him he
-needed to give me an
-update at 9:00 AM
-on how late I
-needed to be out. And
-then he started
-working at 9:00 AM.
-So the update
-came a little
-later, and he gave
-me a time and said, "
-Yeah, you were supposed to
-leave five minutes
-ago."
-Okay. So you write
-code with it?
-No.
-With his help?
-No, no. I use
-it as a personal
-assistant. Are you writing
-code with it?
-No. I'm trying,
-essentially, what I'm doing—I'm
-setting this up as a
-company, all the time,
-when I launch these,
-uh, these, uh, I'm
-testing these agents,
-like agent
-workflows. So I hire a
-CEO, a CTO, uh, a CMO
-, and so on
-, and then I see how
-they interact with
-each other, which, frankly
-,
-agent-to-agent conversation—that's a
-pretty cool feature.
-It's pretty well
-implemented, isn't
-it? You can see,
-um, yeah, the chief of
-staff, for example, the
-chief of staff,
-uh, talking to the
-inbox manager
-or the
-sales department
-or whoever, and
-give them a couple of months
-, and it would be—it could
-be very powerful.
-It's cool to see that you
-made a different
+You see a lot of people saying if my
+company went bankrupt and I needed 100k
+at the end of the month, this is what I
+would do and they come with these
+incredible ideas where AI can just
+optimize your entire CEO, create pages
+where it can automatically email where
+it can find you leads for new websites
+and whatever. So, I thought I named it
+King and King is going to be a king in
+lead generation and getting me projects.
+So, I can make money. Do you want to
+know about Grogbot?
+>> Watch this video because it's going to
+be golden.
+>> On August 11th,
+Grogbot launched. It's basically an open
+code that works.
+>> Yeah, and the entire Cursor team was
+posting about it saying that it was
+doing everything for them. It is cool
+and it works. I tested it and it even
+made me a summary this morning. But then
+again, I had a meeting and I told it you
+need to give me an update at 9:00 a.m.
+on how late I need to leave and then it
+started working at 9:00 a.m. So, the
+update came a bit later. And that's And
+it gave me a time and it said, "Yeah,
+you needed to leave 5 minutes ago."
+>> Okay, so do you code with it?
+>> No.
+>> From it?
+>> No, no. I use it as a PA. Do you code
+with it?
+>> No, that I tried. Basically, what I do I
+set up is as a company like all the time
+when I start those
+the
+I try those agents like agentic workflow
+stuff. So, I hire a CEO, CTO,
+marketing officer, blah blah blah and
+then I see how they
+interact between each other. Which is
+like honestly the agent to agent
+conversation, that's a pretty nice
+feature. It's pretty well executed,
+right? And you can see
+Yeah, chief of staff for example like
+chief of staff
+talk to inbox manager or sales inbound
+whatever and give them a couple of
+months and that that would be that could
+be really powerful.
+>> That's cool to see you did a different
 setup than I did.
-So they all have
-French names
-because I can, uh, the
-chief of staff—that's
-basically my main,
-uh, bot, and yeah, I
-basically talk
-mostly to him, and he
-hires other agents
-when there's a new
-need and stuff. QA
-engineers, whom I really
-love because it's the
-main function
-I use. This is
-testing, and,
-for example, an application that
-I am working on
-directly from
-production.
-Yes. So, essentially,
-Grogbot has its own
-virtual machine
-that it runs, and
-everything it does
-happens within
-that VM.
-That's right. And you have
-one computer for
-your
-account, and a new virtual desktop is created for all the
-agents you have
-.
-Yes. Everyone has their own
-virtual machine.
-That's right. Well, if
-your system
-encounters an error or
-a notification that something
-went wrong, you
-can redirect
-it to the bot.
-Yes.
-He will check it and
-create a ticket on GitHub.
-That's exactly what
-happened here. I'm testing the
-feed agent and
-trying to "
-break" it. This was
-done very quickly.
-He just
-generated one
-image, a simple
-red apple on a
-board, and immediately the first
-error—boom, let's go
-. But it was
-automated. So
-now I can
-deploy to
-production. The QA engineer
-will get a notification,
-try again,
-send the same
-request, hit retry,
-or send a new one
-to see if the
-failure occurs again.
-Create,
-monitor errors in
-Sentry, and fix them
-immediately. This, this is
-just incredible!
-All these agents
-are connected, and I, yes,
-discovered that you can
-create something
-like folders there. Would you
-create one
-project or have
-one CTOC code in
-each repository?
-Well, I'm starting from the base of the
-project because I don't want
-him to do everything in a
-row. There are a few
-projects for which I
-don't want him
-to check anything, so that he doesn't
-touch mail or anything
-else, or bugs. So I
-created a project
-manager for
-each project and
-told them that they could
-only handle
-things related to that
-project and nothing
-else.
-What do you think about the UX/UI
-here? Because he is so "
-raw". Very raw.
-It's very "raw", but
-it works right out of
-the box. And if
-you compare this to Gro or
-other interfaces
-where there are these two goals—you
-assign a project,
-assign a folder,
-assign a cloud VM
-or something like that—which one is
-better?
-Well, it depends on what
-you
-need. In the ones where there are
-folders, rails, and everything
-else, you decide
-what you want to do, but
-here you just throw in a
-task and he
-solves it, and it doesn't matter
-how.
-Yes. So you
-need to trust that
-it works
-properly. You do the same thing
-when you hire
-an assistant—a real
-person. You give him
-or her a task and
-then you get the
-result. And this bot
-does exactly the same thing.
-Yes, you learn to
-delegate more tasks to
-little helpers
-.
-and what you can
-do if
-you open a
-Linux virtual machine is
-record one of
-your routines and it
-will execute it
-every day just like you do.
-You can say "
-teach task",
-click on it,
-record yourself
-doing the task, and
-the system will learn
-the steps and be able to
-repeat them on its
-own.
-Go crazy.
-So, you just
-need to show her
-how you do it. And I
-think it's similar to
-macros in Excel.
-Remember, in Excel you
-click here,
-click there, and the
-Excel macro exactly
-repeats your steps
-and does it over and over again
-. It's exactly the same
-.
-OK. So I could
-even test
-the app, record
-it, say, "Oh, that's
-why it clicks, clicks, clicks,
-and then..."
-so if you spend
-a little time, you
-can teach it
-what to
-do. And he has
-routines and everything else.
-Okay, that's great.
-Now we have a demo from
-you, right?
-Yes, I think we can
-do some
-tests with Crockbot.
-Yes, let's
-do it.
-I've been looking around and seen
-a lot of people
-say, "if my
-company went
-bankrupt and I
-needed
-100k at the end of the
-month, here's what I would
-do." And they
-come up with these
-incredible ideas
-where AI can just
-optimize your SEO,
-create pages,
-automatically
-send
-emails, find leads
-for new websites,
-and so on. So I decided to
-call him King, and King
-would be the king of
-generating leads and
-getting projects
-so I could make
-money. So what I want to
-do is: I wanted to
-explore the internet and
-here in the Netherlands,
-find three or
-more companies
-every day that don't have a
-proper website
-or need a
-new one while we
-think we can
-improve it. Then
-we use GR
-build to create
-the website, and King
-will actually write
-emails to these
-people and respond
-to initial inquiries. So,
-you are my personal
-sales assistant
-for the English-language YouTube
-broadcast. You see, I've
-already given him some
-information. I told
-him we had 30
-minutes. So he
-spent a maximum of two or
-three minutes on the
-task. Well, it's
-just now, but it
-usually takes
-a little longer for it to work. And I want to
-find small
-companies in or
-around here, with
-two to eight
-people, not
-multinational
-corporations, not chains
-that need a new
-website. Goal is five.
-If it's urgent,
-one is enough
-just for demo now
-. And I asked Grok to
-conduct a study of
-companies that have
-money but don't have a
-website. And he
-said, well, if you
-have plumbers,
-electricians, uh, people...
-it's like engineers who
-don't know how
-to build a website,
-they have money because they have a
-high hourly
-rate, but they don't
-want to do anything.
-I wanted him to
-go to Google and
-actually do
-a search, read it on
-camera. It's here, in
-the upper right
-corner, you see, it
-works. Yes. So, he just
-told me
-what I should
-read to you.
-So, you see, you're just a
-puppet, bro.
-Yes, yes, yes, I have
-no choice, but on
-the screen are the sites: installassi
-technique inov. So, it's
-installers,
-technicians, a
-one-man shop, a
-weak website, a logo
-, two links. Therefore.
-Dude, that's good. Okay.
-And then he says, "I
-found one." And you
-see here in the
-virtual machine,
-he actually launched
-Google and started
-searching for something, and I can
-use that too. But
-yes, this is exactly the
-client I want.
-They have a website and we
-can just
-try to
+>> So, all of those are French name because
+I came. Uh of Staff, basically that's my
+main uh bot and yeah, like I basically
+talk mainly to this one and he hire the
+other agents uh when there's a new need
+and stuff. QA engineers, which I like a
+lot because it's that's the main feature
+that I use. It's testing and like the
+upper work on directly from production.
+>> Yeah. So, basically the Grok bot has its
+own VM that it spins up
+>> Yes.
+>> and everything it does it does it in the
+VM.
+>> Exactly. And you have one computer for
+your account and all of the agents that
+you have it's a new virtual desktop.
+>> Yes, each one has a virtual machine.
+>> Exactly.
+>> Well, if you get an an error in your
+system or a notification something went
+wrong, you can push it to the bot
+>> Yes.
+>> and it will check it and it will create
+a GitHub issue.
+>> That's exactly that what happened here.
+I'm testing the feed agent and I'm
+trying to break it. So, it it was really
+fast to break it. You just like generate
+one image a simple red apple on a white
+board and then first error, boom, let's
+go. But that was automated. So, now I
+can deploy production, get the QA
+engineer will be notified and try again
+same request, click on retry, whatever,
+send a new request, see if it breaks,
+create monitor the century errors, uh
+fix it right away. This is this is huge.
+>> Yeah.
+>> All of those agents are linked and I
+like I yeah, discovered that you can
+create like folders there. Do you would
+you create one project or having like
+one CTO that code in every repo?
+>> Well, I started project base because I
+don't want it to do everything. A few
+projects I don't want them to to check
+and do make sure that they do nothing
+with the emails or whatever or with the
+bots. So, I made a project manager for
+each project and said only stuff related
+to this project can can handled
+otherwise nothing.
+>> What do you about the UX/UI like here
+because it's raw, it's really raw, it's
+really but it's really out of the box
+and when you compare that to Grok or
+every like other interface when you have
+those two girls like you assign a
+project, you assign a folder, you assign
+cloud, VM, whatever and you have that.
+Which one is better?
+>> Well, it depends what you want to have
+it in the in the ones where you have
+your folders and your guardrails and
+everything, you decide what you want to
+do. But here, you drop a task and then
+it just fixes it doesn't matter how it
+does it.
+>> Yeah.
+>> So, you need to trust that's working
+properly and you do the same thing when
+you have a PA hired, she has a real
+person. You give it a give him or her a
+task and you get a result later and this
+bot is doing the exact same thing.
+>> Like yeah, you you learn how to delegate
+more to the little AI.
+>> And what you can do if you open the the
+Linux virtual machine, the VM, you can
+record one of your routines and it will
+do it the exact same way every day as
+you do it.
+>> Oh, yeah.
+>> say teach it a task and if you click it,
+yeah, record yourself doing a task and
+Curie learns the steps and can run them
+again on its own.
+>> Holy
+>> So, you just need to show it how you do
+it and I think it it is like Excel
+macros. You remember? You do an Excel,
+you click here, you click there and the
+Excel macro repeats exactly your steps
+and does it over and over again. This is
+the exact same thing.
+>> Okay, so I could have an QA the app
+recorded say oh, this is why click click
+click and then voice.
+>> So, if you spend some time, you can
+teach it what it needs to do and it has
+routines and everything.
+>> Okay, that's nice. Now, we have a demo
+from you, right?
+>> Yeah. I
+I think we can do some testing with the
+Grok bot.
+>> Yes, let's do that.
+>> I was checking and you see a lot of
+people saying if my company went
+bankrupt and I needed 100K at the end of
+the month, this is what I would do and
+they come with these incredible ideas
+where AI can just optimize your entire
+CEO, create pages where it can
+automatically email where it can find
+you leads for new websites and whatever.
+So, I thought I named it King and King
+is going to be a king in lead generation
+and getting me projects so
+I can make money. So, what I want to do
+I wanted to research the internet and
+here in the in the Netherlands around
+Eindhoven find me three or four
+companies every day
+that don't have website or need a new
+website where we think that we can
 improve it.
-It is
-publicly available.
-So create me a
-prompt that I can
-use. Yes.
-New website.
-Yes. So, create me a
-prompt that I can
-paste into Grok to
-create a new site
-for this case.
-Yes. Yes. Whatever it
-did.
-Yes. So it will create
-a prompt, and everyone knows
-that with this prompt I
-can just paste
-it in, and it generates a
-website. I was making one
-for another, but here it is
-.
-And then you
-connect to Resend,
-and you have the entire
-pipeline for
-sending emails, and the
-job is done.
-Yes. Can you also
-send emails, uh,
-with a proper
-offer to the lead
-you just
-found? I'm
-going through this a little quickly now, but
-now he has to
-ask me if
-he can access my
-mail. So, it gives
-me the option of Outlook, Gmail, and,
-well, whatever. So
-he says I can
-now...
-we don't send the
-letter?
-But it's actually
-smart, because when I was
-doing examples
-before, it just
-asked me to come in and
-send it...
-in one prompt. You
-find a lead, you
-just need to find
-1,000, and then you have
-passive income,
-right?
-So what do you want to
-do next—can
-you create a routine out of this
-and schedule
-it every day? Because if I
-do it myself,
-after five or ten
-letters I'll "fly out."
-I need to create a
-website. It will take
-too much time, and
-if you
-only get one or two
-clients, it won't be
-enough for
-income. But if the bot
-does this
-automatically, it will
-constantly
-generate leads and
-then customers, and you
-can ask for
-referrals,
-building a real
-business. Here, now this is the
-finished algorithm. You
-can also
-deactivate it. You can
-start the test
-mode.
-Yes.
-It created a description of
-what needs to be done,
-which is essentially your
-prompt, and it will be
-Yes.
-Yes. That's my whole
-example. Yes.
-He just does it
-on weekdays at 8:56 AM
-. You will also have a
-complete history. So,
-this is a bot—Grobot. We've
-only given one example,
-but any
-repetitive task
-you can
-imagine, even if
-it's terribly boring,
-just assign it to a bot.
-That is, you can
-do exactly this for
-any application in the
-world. You
-can even generate
-leads for apps
-that have referral
-affiliate discounts.
-I think it's a great
-demonstration, man.
-Yes. I think
-we can end it there,
-right? Overall, last
-week was
-not bad. We had a
-fantastic model.
-Now we have a great
-tool to
-play around with and
-launch even 10,000
-new businesses, or
-at least one where
-you can create
-sites for companies
-that need a better
-option.
-Yes. Start the
-vending machine.
-That's right. Yes. Finally
-. Yes. Thank you,
-Mitchell, and thank you for
-your time and
-demonstration. It was
-wonderful. See you at the
-same place, same
-time.
-Like and follow
-us on LinkedIn and Twitter. We
-will be everywhere.
-Yes. Goodbye. Oh no.
+Then we use Grok Builds to build a
+website and King is actually going to
+email those people and do the first
+responses. So, you are my sales personal
+assistant for an English YouTube live
+stream. So, you see it already gave some
+information. I told it we have 30
+minutes so I gave you two to three
+minutes maximum per task. Well, that is
+just for now but normally you need to
+have it work a little bit longer. And I
+want it to find small companies in or
+around Eindhoven that have two to eight
+people, no multinationals, no chains
+that need a new website. Target five if
+it's instant one is enough just for the
+demo right now. And I had Grok do some
+research for companies that have money
+but don't have a website and it said
+well, if you have plumbing, electrical
+people um
+those are like engineers who don't know
+how to build a website. They have money
+because they have a high hourly rate but
+they want to don't want to do anything.
+I wanted it to go to Google and to
+actually search. Read this on camera.
+Here in the top right you see it's going
+to Google. Yeah. So, it actually told me
+right now what I need to read to you.
+>> So, see you are a meat puppet, bro.
+>> Yeah, yeah. I I don't have a choice but
+sides on a screen then slash technique
+in Veldhoven so it's installation
+technical people one person shop. Inside
+logo two links. So,
+>> Man, that's good.
+>> Okay. And then it says, "I found one."
+And you can see here in the VM,
+actually started Google and it went
+searching for something. And I can use
+it as well, but yeah, this is exactly
+the customer that I want. They have a
+website and we can just try to improve
+it.
+>> It's public, so build me a prompt that I
+can go into Grok Yeah, any website.
+>> Yeah. So, build me a prompt that I can
+put into Grok Build to create a new
+website for this one.
+>> Yeah. Yeah, whatever it says. And then
+we'll do.
+>> Yeah. So, it will create a prompt and
+everybody knows that with prompt I can
+just put it in and generate a website. I
+did one for another one, but here it is.
+>> And then like you connect to Resend and
+then you have the whole pipe to send
+emails and job done.
+>> Yeah. Can you send emails as well?
+Uh with a proper proposal to the lead
+that you just found? I'm going a bit
+fast through it right now, but now it
+should ask me if it can log into my
+email. So, and it gives me the option
+for Outlook, Gmail, and yeah, whatever I
+want. So, it says I can now
+>> sending the email or
+>> But it's actually smart because when I
+did like examples before, it would just
+ask me to log in and to just send it.
+>> In one prompt you find a lead that
+uh you just need to find 1,000 and then
+you have some passive revenue, right?
+>> So, what you want to do next is, can you
+create a routine from this and schedule
+it daily? So, me doing this after five
+or 10 emails, I am out. I need to create
+a website, so it will take just too much
+time and if you only get like one or two
+customers, it's not enough income. But
+if you can have the bot do this
+automatically, then it will just keep on
+creating leads and then customers and
+you can ask for references and it is
+like a real business that you're
+building. See, and now this is the
+routine. You can also deactivate it. You
+can test run it.
+>> Yeah.
+>> And it created the description what it
+needs to do.
+>> Which is basically your prompt and like
+that's going to Yeah.
+>> Yeah, that's my entire example. And it
+just does it on weekdays at 8:56 a.m.
+And you will also have a full history.
+So, basically this is the bot, the Grok
+bot. We just gave one example, but
+whatever you can imagine and when you
+need to repair or a task that's going to
+keep on repeating, even if it's boring
+as hell, just have the bot do it.
+>> I mean, and you can do exactly that for
+every app on Earth. And you can even
+like do lead gen for apps that have a
+referral affiliate uh discount. I think
+that's a nice demo, man. Yeah, and I
+think we can wrap it up on that, right?
+Like basically, last week was a good
+week. We had a fantastic model, then we
+have nice tool to play with, and to
+start even like 10,000 new business or
+at least one where you can make websites
+to for company that's need a better one.
+>> Yeah, start a selling machine.
+>> Exactly. Yeah. Finally, well, yeah.
+Yeah, thank you, Mitchell. And thank you
+for your time and your demo. Like that
+was great. And we will see you same
+place, same time, and like, subscribe,
+follow us on LinkedIn, Twitter. We're
+going to be everywhere.
+>> Yes.
+>> Bye.
+Bye.
