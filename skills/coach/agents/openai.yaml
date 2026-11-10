@@ -1,0 +1,4 @@
+interface:
+  display_name: "Coach"
+  short_description: "Per-host scorecards from the latest livestream"
+  default_prompt: "Use $coach to review this stream's transcript and give each host a scorecard."
