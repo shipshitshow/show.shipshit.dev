@@ -27,7 +27,7 @@ Bring your questions to the chat.
 #VibeEditing #AI #ContentCreation
 ```
 
-Flags on the posted text (Vincent's call): his 7 Nov post says "Opus", not "Opus 5.5", and does not say which tool; "edit like a pro" is a question we have not tested. Segment 2 of the talking points covers it as a question. Other checks:
+Flags on the posted text (Vincent's call): his 7 Nov post says "Opus", not "Opus 5.5", and does not say which tool; "edit like a pro" is a question we have not tested. Segment 3 of the talking points covers it as a question. Other checks:
 
 - Handle: the description uses his YouTube handle, @ForwardFutureBrian (channel "Future Brian"), which becomes a link on YouTube. His X handle is @ForwardEditor; use that for the LinkedIn or X version of the text. A YouTube @mention can notify the channel, and he has not been contacted yet. Tag-free fallback: "Future Brian, a pro with 20 years of editing, ...".
 - The opener quotes ForwardEditor's 7 Nov post ("I have edited for 20 years. Opus is a better editor than me"). It is his claim, not ours. If we cannot stand behind the line, use "a 20-year editor claims" instead.

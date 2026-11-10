@@ -11,6 +11,7 @@ import {
   getArtifact,
   getArtifactsForStream,
 } from '@/lib/artifacts/registry';
+import { VIBE_EDITING_TWEET_DECK } from '@/lib/artifacts/vibe-editing-2026-11';
 
 describe('artifacts registry', () => {
   test('slugs are unique and resolve to their entry', () => {
@@ -33,10 +34,11 @@ describe('artifacts registry', () => {
     expect(getArtifactsForStream('2020-01-07')).toEqual([]);
   });
 
-  test('has one timeline and one tweet slideshow for the security story', () => {
-    expect(ARTIFACTS.map(({ kind }) => kind).sort()).toEqual([
-      'timeline',
-      'tweets',
+  test('has the security timeline plus one tweet slideshow per story', () => {
+    expect(ARTIFACTS.map(({ slug }) => slug).sort()).toEqual([
+      'agent-security-timeline',
+      'agent-security-tweets',
+      'vibe-editing-tweets',
     ]);
   });
 });
@@ -80,6 +82,21 @@ describe('agent security tweet deck', () => {
     const ids = TWEET_DECK.map(({ id }) => id);
     expect(new Set(ids).size).toBe(ids.length);
     for (const entry of TWEET_DECK) {
+      expect(entry.id).toMatch(/^\d+$/);
+      expect(entry.url).toBe(
+        `https://x.com/${entry.handle}/status/${entry.id}`,
+      );
+      expect(entry.note.length).toBeGreaterThan(0);
+    }
+  });
+});
+
+describe('vibe editing tweet deck', () => {
+  test('entries are unique X status links that match their id and handle', () => {
+    const ids = VIBE_EDITING_TWEET_DECK.map(({ id }) => id);
+    expect(ids.length).toBe(12);
+    expect(new Set(ids).size).toBe(ids.length);
+    for (const entry of VIBE_EDITING_TWEET_DECK) {
       expect(entry.id).toMatch(/^\d+$/);
       expect(entry.url).toBe(
         `https://x.com/${entry.handle}/status/${entry.id}`,
