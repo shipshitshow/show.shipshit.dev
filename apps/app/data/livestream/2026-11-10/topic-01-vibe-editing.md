@@ -1,7 +1,7 @@
 ---
 title: "Is Video Editing Dead?"
 slug: "vibe-editing"
-source: "ForwardEditor posts (X, read 9 Nov 2026), Nevo David (@wickedguro) posts (X, read 10 Nov 2026), Anthropic Claude Apps and Platform release notes, OpenAI API changelog, Higgsfield Miracle and Vibe Motion pages (opened 9 Nov 2026)"
+source: "ForwardEditor posts (X, read 9 Nov 2026), Nevo David (@wickedguro), Riley Brown, Mathias Chapelon and @claudeai posts (X, read 10 Nov 2026), Anthropic Claude Apps and Platform release notes (Platform notes read 10 Nov), OpenAI API changelog, Higgsfield Miracle and Vibe Motion pages (opened 9 Nov 2026)"
 status: "in_progress"
 date: "2026-11-10"
 announcement_tweet: null
@@ -12,19 +12,20 @@ thumbnail_prompt: null
 
 - **Ship Sh*t Show — 10 November 2026.** Join us: https://youtu.be/1bAWYklLcVo
 - **Founder question:** if AI can now do the cutting, what is left of editing for a founder who ships content every week, and what should we change in our own workflow?
-- **Spine:** open on a working editor's own claim, review the six ForwardEditor posts, then the $10k AI video Nevo David says he paid for, and finally our own channel thumbnails as the case we can speak about firsthand.
+- **Spine:** open on a working editor's own claim, review the six ForwardEditor posts, then what people made with the new Claude Fable 5.2 (9 Nov), then the $10k AI video Nevo David says he paid for, and finally our own channel thumbnails as the case we can speak about firsthand.
 - **Format:** source-led discussion with the posts on screen. About 55–60 minutes, room for chat. No invented results: we show what we actually did, and what other people claim stays attributed to them.
 - **Evidence rule:** Confirmed means a primary page (vendor docs, the post itself) supports the exact claim. Reported means attributed third-party reporting. Unverified means we could not check it. A view count is one account's reach, not proof of a trend.
 - **Disclosure:** Genfeed is Vincent's product and made the new channel thumbnails. Say so when it comes up, so it never sounds like an outside endorsement.
-- **Not checked:** the videos inside the posts (only the text and quoted posts were read). Watch the 1.4M-view video, the Higgsfield clip and Nevo David's 2:32 video before the show.
+- **Not checked:** the videos inside the posts (only the text and quoted posts were read). Watch the 1.4M-view video, the Higgsfield clip, Nevo David's 2:32 video and the three Fable 5.2 clips (ForwardEditor, Riley Brown, Mathias Chapelon) before the show.
 
 ### Open these first
 
 1. [ForwardEditor on X](https://x.com/ForwardEditor) — profile, bio and the six posts below
 2. [Higgsfield Miracle page](https://higgsfield.ai/miracle)
 3. [Nevo David's AI video](https://x.com/wickedguro/status/2119762008878850555) and [his cost post](https://x.com/wickedguro/status/2119413408982298971)
-4. [Claude Apps release notes](https://support.claude.com/en/articles/12138966-release-notes) and [Claude Platform release notes](https://platform.claude.com/docs/en/release-notes/overview)
-5. [OpenAI API changelog](https://developers.openai.com/api/docs/changelog)
+4. [Claude's Fable 5.2 launch post](https://x.com/claudeai/status/2119867114450268322), plus the Fable 5.2 posts from [ForwardEditor](https://x.com/ForwardEditor/status/2119867743965163994), [Riley Brown](https://x.com/rileybrown/status/2119902109709537708) and [Mathias Chapelon](https://x.com/mathiaschpl/status/2119878412181676283)
+5. [Claude Apps release notes](https://support.claude.com/en/articles/12138966-release-notes) and [Claude Platform release notes](https://platform.claude.com/docs/en/release-notes/overview)
+6. [OpenAI API changelog](https://developers.openai.com/api/docs/changelog)
 
 ## Cold Open — "Is editing the old way gone forever?"
 
@@ -76,7 +77,28 @@ The six posts, newest first (counts as read 9 Nov 2026, via the public fxtwitter
 - Capture: Segment 1; entry at the post, exit after the answer and its caveat.
 - After recording: coverage and exact start/end unverified; verify against the video/VTT.
 
-## Segment 2 — Can a beginner edit like a pro, and what is left for storytelling?
+## Segment 2 — Fable 5.2 just dropped: is it good for editing?
+
+Vincent's view, not a source claim: Claude Fable 5.2 is really good for editing. The posts below show what people made with it; none of them shows a finished edit of a real episode, so say what each one is.
+
+### Evidence to open
+
+- **Confirmed (Anthropic's Platform release notes, 9 Nov):** Claude Fable 5.2 (`claude-fable-5-2`) launched, "built for demanding reasoning and long-horizon agentic work"; Claude Mythos 5.2 is the same capability for verified organizations only. [@claudeai's launch post](https://x.com/claudeai/status/2119867114450268322) (9 Nov, 12.4M views, 88k likes, counts read 10 Nov) says improvements in "coding, reasoning, and vision". **Neither mentions video editing.** The "good for editing" claim comes from the users below and from Vincent.
+- **Reported (first-hand test, his own words):** [ForwardEditor (Future Brian), 9 Nov](https://x.com/ForwardEditor/status/2119867743965163994) — "I got early access to Fable 5.2 and tested it with VIDEO EDITING, games in UE and 3JS, existing codebases, and ANIMATION." 27.9k views, 446 likes. The attached 38-second video is a dragon-riding sim, his "First" example, not an edit. We did not find his video-editing result in this post; check his replies and timeline before the show.
+- **Reported (self-reported cost and time):** [Riley Brown, 9 Nov](https://x.com/rileybrown/status/2119902109709537708) — says one prompt made a Blender 3D scene (13 camera shots, animation, 4K render on 10 rented RunPod GPUs in 52 minutes for $5.75), then grading, titles, and ElevenLabs music and sound effects. 445k views, 4.8k likes. It is his account of his own live stream. **Not an edit of recorded footage:** it is generated 3D animation, so it shows long-running agent work, not cutting a podcast. Not checked: the video, and the "More info below" part of his post.
+- **Reported (one-line claim):** [Mathias Chapelon, 9 Nov](https://x.com/mathiaschpl/status/2119878412181676283) — "Fable 5.2 did this in 10 minutes", a 36-second video, 137k views. The post does not say what was asked or how it was made.
+- **Our own test, if we do one:** give Fable 5.2 the same raw clip and brief we would give an editor, and show the result on screen. Prepare a ready fallback clip; do not promise a live demo. Not tested: whether it can cut our actual episodes.
+
+### Conversation cues
+
+- Brian said Opus beats him two days ago; Fable 5.2 landed on 9 Nov. Does the new model change the answer, or the question?
+- What is the difference between "made a video from code" (Riley, Mathias) and "edited our footage" (what a founder with a weekly show needs)?
+- Challenge: $5.75 and 52 minutes is the cost of rendering, not of a good idea. What did the human still decide?
+- Why is a vendor model "good for editing" when Anthropic's own post never says editing? Who is it good for?
+- Ask the chat: who has tried Fable 5.2 on real footage, and what broke?
+- Budget: 8 minutes. Exit: that is the new model; now what does a pro do with it, and what would a beginner do.
+
+## Segment 3 — Can a beginner edit like a pro, and what is left for storytelling?
 
 This segment follows the description Vincent posted for the stream. Both claims in it are discussion questions, not results: we have not tested a beginner editing like a pro, and no source we found shows it.
 
@@ -103,9 +125,9 @@ This segment follows the description Vincent posted for the stream. Both claims 
 - Open: the on-screen comparison if we run it. No test, no Short.
 - Challenge: taste can be prompted versus taste is experience.
 - Payoff: what a beginner still has to learn.
-- Capture: Segment 2; after recording, verify boundaries against the video/VTT.
+- Capture: Segment 3; after recording, verify boundaries against the video/VTT.
 
-## Segment 3 — The $10k edit: what does a high-end AI video cost?
+## Segment 4 — The $10k edit: what does a high-end AI video cost?
 
 ### Evidence to open
 
@@ -120,11 +142,11 @@ This segment follows the description Vincent posted for the stream. Both claims 
 - What does $10k buy for two minutes: the editing, the taste, the tools, or the creator's name?
 - Is the money in the cutting or in the result? If AI cuts cheaply, what is a buyer still paying a person for?
 - Challenge: one buyer's self-reported price is not a market rate. What would we need to see before we call it normal?
-- Tie back to Segment 1: if Opus beats a 20-year pro, why would anyone pay $10k for a video?
+- Tie back to Segment 1 and 2: if Opus beats a 20-year pro, why would anyone pay $10k for a video?
 - Ask the chat: what would you pay for a polished two-minute AI video, and what would make it worth it?
 - Budget: 6 minutes. Exit: that is the high end; now our own case.
 
-## Segment 4 — Our own case: we redid the channel's thumbnails with AI
+## Segment 5 — Our own case: we redid the channel's thumbnails with AI
 
 ### Evidence to open
 
@@ -147,17 +169,17 @@ This segment follows the description Vincent posted for the stream. Both claims 
 - Open: before and after of one thumbnail from the Library page.
 - Challenge: the strongest opposing read is that viewers click on faces and drama, which we removed.
 - Payoff: what we keep human.
-- Capture: Segment 4; after recording, verify boundaries.
+- Capture: Segment 5; after recording, verify boundaries.
 
 ## Close — Is video editing dead?
 
 - Answer the title as a question, using only what we showed today: some of the mechanical work is gone, the taste is still ours, and the claims from vendors stay claims until we test them.
 - Each of us names one thing we will change in our own weekly edit this month and one claim we will not repeat as fact.
-- Share the ForwardEditor posts, the Higgsfield Miracle page, Nevo David's two posts and the thumbnails article.
+- Share the ForwardEditor posts, the Fable 5.2 launch post and the three Fable 5.2 posts, the Higgsfield Miracle page, Nevo David's two posts and the thumbnails article.
 - Brief subscribe reminder at the end. Budget: 2 minutes.
 
 ## Notes for the editor
 
-- Planned Shorts S1–S3 above. A fourth candidate, “Layer-by-layer editing: the end of After Effects?” (Miracle), needs a real test first, because the product is in private beta.
+- Planned Shorts S1–S3 above. Candidates that need a real test first: “Layer-by-layer editing: the end of After Effects?” (Miracle, private beta) and “Can Fable 5.2 edit our episode?” (Segment 2; only if we run it on our own footage).
 - The debatable question for the episode: if AI does the cutting, is taste the only thing left? Strongest opposing case: taste was always the job. Neither host has to defend a view they do not hold.
 - Verify every clip boundary against the video and VTT after recording.
