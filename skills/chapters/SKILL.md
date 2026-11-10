@@ -48,6 +48,14 @@ Treat script output as a draft. Rewrite titles for meaning, remove weak buckets,
 - Space chapters by real topic turns, not fixed intervals.
 - For YouTube compatibility, include at least 3 chapters and keep the first timestamp exactly `0:00`.
 
+## Livestream Archives
+
+Add chapters to every livestream archive after the stream, once the archive has processed and a raw VTT exists. 0 of 35 archives had chapters on 10 Nov 2026.
+
+- Use the archive's own clock, not the recording's. The archive starts with the 30-second countdown, so the first chapter is `0:00 Countdown` until the start is trimmed in Studio. Do not shift timestamps to hide it.
+- Follow the rules in [the metadata skill](../metadata/references/description-template.md) for where the chapters go and for tags. Applying chapters to a public archive needs Vincent's approval; show the list first, then use `bun run youtube:update <videoId> --description-file <file>` as a dry run before `--apply`.
+- A recap's chapters come from the final edit's own clock, never the livestream's.
+
 ## Naming Style
 
 Use Ship Shit Show phrasing: short, direct, builder-native.

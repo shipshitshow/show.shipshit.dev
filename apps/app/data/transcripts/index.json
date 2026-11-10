@@ -1,0 +1,1007 @@
+{
+  "version": 1,
+  "videos": {
+    "_OGYPRogIkw": {
+      "date": "2026-06-12",
+      "lang": "en",
+      "title": "Building AI Native Gaming Studios",
+      "type": "short"
+    },
+    "-qsSddwzjpY": {
+      "date": "2026-08-19",
+      "lang": "en",
+      "title": "Use Grok 4.6, Grok Bot & Cursor Origin Together!",
+      "type": "livestream"
+    },
+    "0BsdC05aQp4": {
+      "date": "2026-07-08",
+      "lang": "en",
+      "title": "Fable 5: One More Week!",
+      "type": "video"
+    },
+    "1CFi5rzc2bU": {
+      "date": "2026-10-27",
+      "lang": "en",
+      "title": "Genfeed.ai: Try Our Open-Source AI Content Studio",
+      "type": "livestream"
+    },
+    "1kAQcxetUQo": {
+      "date": "2026-06-12",
+      "lang": "en",
+      "title": "AI Security: Does Your Code Pass the Hack Test?",
+      "type": "short"
+    },
+    "1Rd82x8x-dI": {
+      "date": "2026-10-30",
+      "lang": "en",
+      "title": "Give Away the Code. Sell the Service.",
+      "type": "short"
+    },
+    "1wSZwDps9Vg": {
+      "date": "2026-04-01",
+      "lang": "en",
+      "title": "Paperclip: We Rebuild Sora in 60 Minutes",
+      "type": "livestream"
+    },
+    "1ZbR2qie8rk": {
+      "date": "2026-09-02",
+      "lang": "en",
+      "title": "pstack: How Poteto Uses Grok Bot",
+      "type": "video"
+    },
+    "2PxiWbHQzwo": {
+      "date": "2026-04-02",
+      "lang": "en",
+      "title": "Paperclip: We Hired AI Agents to Rebuild Sora",
+      "type": "video"
+    },
+    "3F8SPSZJ1AA": {
+      "date": "2026-04-01",
+      "lang": "en",
+      "title": "Paperclip: Autonomous Business Orchestration",
+      "type": "short"
+    },
+    "5ib6SYunKdI": {
+      "date": "2026-03-04",
+      "lang": "en",
+      "title": "You Are Going To Lose Your Tech Job",
+      "type": "video"
+    },
+    "5VSiexTohak": {
+      "date": "2026-06-24",
+      "lang": "en",
+      "title": "Automate GitHub Issue Monitoring",
+      "type": "short"
+    },
+    "6SJIPl6Pccs": {
+      "date": "2026-07-08",
+      "lang": "en",
+      "title": "AI Configured My Server in Minutes",
+      "type": "short"
+    },
+    "7oTmz8nItP0": {
+      "date": "2026-02-04",
+      "lang": "en",
+      "title": "My OpenClaw Agent Just Called Me",
+      "type": "short"
+    },
+    "9aNgiS2C7vU": {
+      "date": "2026-02-12",
+      "lang": "en",
+      "title": "AI Codes Better? Sometimes It Just Improves",
+      "type": "short"
+    },
+    "9QP3Ed6BHVs": {
+      "date": "2026-11-06",
+      "lang": "en",
+      "title": "Your Agent Forgot the Server Access!",
+      "type": "short"
+    },
+    "10BTSup2I58": {
+      "date": "2026-03-12",
+      "lang": "en",
+      "title": "GPT 5.4 vs Opus 4.6: The Verdict",
+      "type": "short"
+    },
+    "11UOZiFBTRM": {
+      "date": "2026-05-07",
+      "lang": "en",
+      "title": "GitHub Is Dead. GPT 5.5 is Rebuilding It",
+      "type": "livestream"
+    },
+    "28hDnDaAiTA": {
+      "date": "2026-04-22",
+      "lang": "en",
+      "title": "OpenAI ChatGPT Images 2.0 Is VERY Good!",
+      "type": "video"
+    },
+    "49IkgeGr1kE": {
+      "date": "2026-06-04",
+      "lang": "en",
+      "title": "Opus 4.8 Built A FPS In 1 Prompt!",
+      "type": "video"
+    },
+    "85sRdO3khR0": {
+      "date": "2026-06-17",
+      "lang": "en",
+      "title": "You Are Too Poor To Run AI Loops",
+      "type": "video"
+    },
+    "069jQ4HELi0": {
+      "date": "2026-07-02",
+      "lang": "en",
+      "title": "Automating Your Coding Workflow with Claude / Codex",
+      "type": "short"
+    },
+    "080b3orLQug": {
+      "date": "2026-05-20",
+      "lang": "en",
+      "title": "Malicious Code Hidden in Software Packages?",
+      "type": "short"
+    },
+    "AayKYzNNkl0": {
+      "date": "2026-05-20",
+      "lang": "en",
+      "title": "Fear of Downloading: A Developer's Dilemma",
+      "type": "short"
+    },
+    "AEXZ4Q9TeJo": {
+      "date": "2026-11-06",
+      "lang": "en",
+      "title": "Every Patch Starts a Race With Hackers",
+      "type": "short"
+    },
+    "AeTj2uU8J9U": {
+      "date": "2026-08-11",
+      "lang": "en",
+      "title": "HeyPocket: Turn Calls Into Support Tickets",
+      "type": "livestream"
+    },
+    "Ap5vza8qGy4": {
+      "date": "2026-06-11",
+      "lang": "en",
+      "title": "Opus 4.8: We're Starting an AI Indie Game Studio!",
+      "type": "livestream"
+    },
+    "AvJvsLprXek": {
+      "date": "2026-02-25",
+      "lang": "en",
+      "title": "Discord Swarm Agents Demo",
+      "type": "short"
+    },
+    "aB8Xsqnwn9o": {
+      "date": "2026-03-04",
+      "lang": "en",
+      "title": "Block Cuts 4,000, Citing AI",
+      "type": "short"
+    },
+    "adYWnWTJibs": {
+      "date": "2026-03-04",
+      "lang": "en",
+      "title": "Software Engineering Is DEAD",
+      "type": "livestream"
+    },
+    "ashs_xXPwE8": {
+      "date": "2026-02-25",
+      "lang": "en",
+      "title": "Setup OpenClaw Agents On Discord",
+      "type": "livestream"
+    },
+    "B2Sw4FqemtI": {
+      "date": "2026-06-24",
+      "lang": "en",
+      "title": "How To Use AI Loops With Claude & Codex",
+      "type": "video"
+    },
+    "BaMjLYIRRcY": {
+      "date": "2026-05-07",
+      "lang": "en",
+      "title": "Test It Yourself: AI vs. Human Speed",
+      "type": "short"
+    },
+    "BCZGgnl_BxU": {
+      "date": "2026-05-30",
+      "lang": "en",
+      "title": "Cursor Composer 2.5: Cheap & Fast",
+      "type": "short"
+    },
+    "BfRN1Velxt8": {
+      "date": "2026-03-25",
+      "lang": "en",
+      "title": "AI Agents Chatting and Self-Organizing",
+      "type": "short"
+    },
+    "BTb9O0Th8qs": {
+      "date": "2026-06-12",
+      "lang": "en",
+      "title": "Fable 5: We Built an AI Game Studio",
+      "type": "video"
+    },
+    "b0YzyC8mnb8": {
+      "date": "2026-05-20",
+      "lang": "en",
+      "title": "AI War: Attackers vs Defenders",
+      "type": "short"
+    },
+    "bc6WbJJNWPU": {
+      "date": "2026-06-01",
+      "lang": "en",
+      "title": "Composer 2.5 is The New King",
+      "type": "video"
+    },
+    "bNAQtKp1pAo": {
+      "date": "2026-08-13",
+      "lang": "en",
+      "title": "HeyPocket Meets My Vibe-Coded Zendesk",
+      "type": "video"
+    },
+    "CbN6XTTf_Rs": {
+      "date": "2026-03-25",
+      "lang": "en",
+      "title": "Claude Code Channels vs OpenClaw",
+      "type": "short"
+    },
+    "CSjg6avBUYU": {
+      "date": "2026-04-08",
+      "lang": "en",
+      "title": "Claude Mythos: Too Powerful to Withhold?",
+      "type": "short"
+    },
+    "ceOIFfz6zcU": {
+      "date": "2026-05-20",
+      "lang": "en",
+      "title": "Trusting NPM Packages Blindly?",
+      "type": "short"
+    },
+    "cNAv_6C415g": {
+      "date": "2026-05-12",
+      "lang": "en",
+      "title": "The First Signed NPM Worm",
+      "type": "short"
+    },
+    "dAHUYCAucLs": {
+      "date": "2026-05-06",
+      "lang": "en",
+      "title": "Database Deleted by Test Failure",
+      "type": "short"
+    },
+    "dCea9lYNUjU": {
+      "date": "2026-02-25",
+      "lang": "en",
+      "title": "Openclaw Agent Swarm: Automating Bug Fixes",
+      "type": "short"
+    },
+    "dmVmI49msS4": {
+      "date": "2026-07-08",
+      "lang": "en",
+      "title": "Fable 5 is gone: What are the alternatives?",
+      "type": "short"
+    },
+    "E4Ycv5MkL2s": {
+      "date": "2026-06-12",
+      "lang": "en",
+      "title": "Claude Fable 5: AI Gaming Studio Launch",
+      "type": "short"
+    },
+    "E8yB2WzWMkE": {
+      "date": "2026-03-12",
+      "lang": "en",
+      "title": "OpenClaw & GPT 5.4: The Ultimate Combo",
+      "type": "short"
+    },
+    "EC59_bed_yM": {
+      "date": "2026-03-25",
+      "lang": "en",
+      "title": "Claude Channels Killed OpenClaw",
+      "type": "livestream"
+    },
+    "EKql6Xv014E": {
+      "date": "2026-03-12",
+      "lang": "en",
+      "title": "Codex 5.4 Solves Zendesk Ticket System Issues",
+      "type": "short"
+    },
+    "ehW7WGPb_tk": {
+      "date": "2026-05-30",
+      "lang": "en",
+      "title": "Cursor Composer 2.5: The Model You're Missing",
+      "type": "short"
+    },
+    "eYGDOk2HsOg": {
+      "date": "2026-08-26",
+      "lang": "en",
+      "title": "Stop Paying For AI Models",
+      "type": "livestream"
+    },
+    "ezK2lXmzgmM": {
+      "date": "2026-03-18",
+      "lang": "en",
+      "title": "Fake GitHub PRs With AI?",
+      "type": "short"
+    },
+    "FhYgZWv7_H8": {
+      "date": "2026-06-24",
+      "lang": "en",
+      "title": "AI Can Code, But Will It Be Crappy?",
+      "type": "short"
+    },
+    "FOZCNAwZyMY": {
+      "date": "2026-06-03",
+      "lang": "en",
+      "title": "Opus 4.8: Smarter AI Task Management",
+      "type": "short"
+    },
+    "ffVOe6n7xok": {
+      "date": "2026-06-17",
+      "lang": "en",
+      "title": "Mythos Jailbroken at Amazon?",
+      "type": "short"
+    },
+    "fJl3YoRIvuQ": {
+      "date": "2026-06-17",
+      "lang": "en",
+      "title": "WTF Is Going On With Anthropic?",
+      "type": "livestream"
+    },
+    "gbv3sghrAU4": {
+      "date": "2026-04-08",
+      "lang": "en",
+      "title": "Mythos Is Here. You Can't Use It!",
+      "type": "video"
+    },
+    "gnfJl0YfNHc": {
+      "date": "2026-03-26",
+      "lang": "en",
+      "title": "Claude Code Channels Killed OpenClaw",
+      "type": "video"
+    },
+    "gR_daNttW88": {
+      "date": "2026-11-06",
+      "lang": "en",
+      "title": "We Checked Everything. We Still Got Hacked!",
+      "type": "short"
+    },
+    "HDYgsS2D0CM": {
+      "date": "2026-03-04",
+      "lang": "en",
+      "title": "Don't Get Replaced By AI",
+      "type": "short"
+    },
+    "HKdtfOadYsA": {
+      "date": "2026-06-17",
+      "lang": "en",
+      "title": "From Bugs to Backlog: Full Project Analysis",
+      "type": "short"
+    },
+    "HO9iUtzjPlE": {
+      "date": "2026-04-16",
+      "lang": "en",
+      "title": "Elon Musk's Bold Space Data Centers",
+      "type": "short"
+    },
+    "h0EzR9Sqkz0": {
+      "date": "2026-07-08",
+      "lang": "en",
+      "title": "Fable 5 is Gone!",
+      "type": "livestream"
+    },
+    "hobkMV6hKCM": {
+      "date": "2026-03-11",
+      "lang": "en",
+      "title": "GPT 5.4 vs Claude Opus 4.6",
+      "type": "video"
+    },
+    "hqBL0ZA4LDw": {
+      "date": "2026-05-29",
+      "lang": "en",
+      "title": "Cursor Tracks Every Action",
+      "type": "short"
+    },
+    "hZQTJsi6Asw": {
+      "date": "2026-04-17",
+      "lang": "en",
+      "title": "Hating AI Won’t Make It Go Away",
+      "type": "video"
+    },
+    "IT6EcYwWMXc": {
+      "date": "2026-07-08",
+      "lang": "en",
+      "title": "Is Code Review Obsolete?",
+      "type": "short"
+    },
+    "JkVr0zl5xxs": {
+      "date": "2026-06-03",
+      "lang": "en",
+      "title": "Opus 4.8 Testing: Collision Bugs",
+      "type": "short"
+    },
+    "j1GsJ0CYN3Y": {
+      "date": "2026-03-11",
+      "lang": "en",
+      "title": "GPT-5.4 Is The Best Model Ever Created",
+      "type": "livestream"
+    },
+    "jEobDeO6fPk": {
+      "date": "2026-05-06",
+      "lang": "en",
+      "title": "AI Software in One Day?",
+      "type": "short"
+    },
+    "jFztuYduv5w": {
+      "date": "2026-05-12",
+      "lang": "en",
+      "title": "GitHub Is Dying. Can GPT-5.5 Rewrite It?",
+      "type": "video"
+    },
+    "jryNWdxPGmI": {
+      "date": "2026-03-18",
+      "lang": "en",
+      "title": "AI Won't Kill Open Source",
+      "type": "video"
+    },
+    "jyhcakhr2jQ": {
+      "date": "2026-05-01",
+      "lang": "en",
+      "title": "GPT 5.5 Understands Faster",
+      "type": "short"
+    },
+    "K1ftXLD5lrg": {
+      "date": "2026-07-02",
+      "lang": "en",
+      "title": "Fable 5 Is Back!",
+      "type": "livestream"
+    },
+    "K1nwHfOonDw": {
+      "date": "2026-02-04",
+      "lang": "en",
+      "title": "Moltbook: An AI Social Network Disaster",
+      "type": "video"
+    },
+    "KPAyE6KSrQU": {
+      "date": "2026-09-09",
+      "lang": "en",
+      "title": "Fable 5.1 vs GPT-6 Astra: Is It AGI?",
+      "type": "livestream"
+    },
+    "k_msQZIcjqo": {
+      "date": "2026-03-25",
+      "lang": "en",
+      "title": "AI Pair Programming Powerhouse",
+      "type": "short"
+    },
+    "kBMQnF38-RU": {
+      "date": "2026-04-15",
+      "lang": "en",
+      "title": "You Reject AI. It Doesn’t Matter.",
+      "type": "livestream"
+    },
+    "kH3jy7CK1YU": {
+      "date": "2026-10-29",
+      "lang": "en",
+      "title": "Genfeed.ai: The Open-Source Higgsfield Alternative",
+      "type": "video"
+    },
+    "kRUwZSY7IN8": {
+      "date": "2026-07-28",
+      "lang": "en",
+      "title": "Opus 5 + GPT-5.6: Build From the Beach",
+      "type": "livestream"
+    },
+    "kvtQwsAOibs": {
+      "date": "2026-06-12",
+      "lang": "en",
+      "title": "I Burned All My Tokens Before Fable 5 Launched",
+      "type": "short"
+    },
+    "kw95OeFGkMU": {
+      "date": "2026-03-18",
+      "lang": "en",
+      "title": "AI Costs: Usage vs. Subscription",
+      "type": "short"
+    },
+    "LAybWTMH_Pw": {
+      "date": "2026-07-08",
+      "lang": "en",
+      "title": "Open Source AI Will Catch Up In 18 Months",
+      "type": "short"
+    },
+    "LbCRcGRLYaU": {
+      "date": "2026-09-02",
+      "lang": "en",
+      "title": "How The SpaceX Team Ships Grok Bot",
+      "type": "livestream"
+    },
+    "LHTGDkStW5Y": {
+      "date": "2026-06-12",
+      "lang": "en",
+      "title": "Claude Fable 5 Launches AI Gaming Studio",
+      "type": "short"
+    },
+    "lmLaYAEpFDc": {
+      "date": "2026-11-06",
+      "lang": "en",
+      "title": "The Server Nobody Dares to Touch",
+      "type": "short"
+    },
+    "M1EEEl4M6-4": {
+      "date": "2026-10-14",
+      "lang": "en",
+      "title": "Muse Wonder: Better Than Fable?",
+      "type": "livestream"
+    },
+    "MJp8l5ZBlI4": {
+      "date": "2026-04-07",
+      "lang": "en",
+      "title": "We Need to Talk About Anthropic",
+      "type": "livestream"
+    },
+    "MTbYJ4o2EQg": {
+      "date": "2026-10-21",
+      "lang": "en",
+      "title": "OpenAI Will Go Bankrupt Before 2030",
+      "type": "video"
+    },
+    "mTMojeiIX0o": {
+      "date": "2026-07-03",
+      "lang": "en",
+      "title": "Fable 5 Is Back!",
+      "type": "video"
+    },
+    "mX9yX-W9QF0": {
+      "date": "2026-07-08",
+      "lang": "en",
+      "title": "Build Software in Days, Not Years",
+      "type": "short"
+    },
+    "mYkxfB4ib7E": {
+      "date": "2026-10-14",
+      "lang": "en",
+      "title": "Is Meta Muse Wonder Any Good?",
+      "type": "video"
+    },
+    "mz5xo-QX1VM": {
+      "date": "2026-08-28",
+      "lang": "en",
+      "title": "Stop Paying for AI Models",
+      "type": "video"
+    },
+    "NGwebivCfeg": {
+      "date": "2026-05-06",
+      "lang": "en",
+      "title": "Coding with AI on Production Server?",
+      "type": "short"
+    },
+    "NiMvki8JqQ4": {
+      "date": "2026-02-12",
+      "lang": "en",
+      "title": "SaaS is Dead: I Built Zendesk in 3 Days",
+      "type": "video"
+    },
+    "NS4L89gnvO0": {
+      "date": "2026-07-03",
+      "lang": "en",
+      "title": "Fable Audited, Opus Fixed",
+      "type": "short"
+    },
+    "nhfWTbeqLR8": {
+      "date": "2026-05-13",
+      "lang": "en",
+      "title": "5 Design Versions, Pick One",
+      "type": "short"
+    },
+    "nUjdzNdvQVg": {
+      "date": "2026-03-18",
+      "lang": "en",
+      "title": "OpenClaw Summarizes YouTube Videos",
+      "type": "short"
+    },
+    "O5cSbn2CHT8": {
+      "date": "2026-06-03",
+      "lang": "en",
+      "title": "Opus 4.8: Testing Planning Capabilities",
+      "type": "short"
+    },
+    "Ovgc6j4g1eQ": {
+      "date": "2026-02-13",
+      "lang": "en",
+      "title": "Replace Your Dashboard with an MCP server",
+      "type": "short"
+    },
+    "ocZKEai71dM": {
+      "date": "2026-05-12",
+      "lang": "en",
+      "title": "How TanStack Got Hacked",
+      "type": "short"
+    },
+    "oYLvDwEAWN8": {
+      "date": "2026-05-13",
+      "lang": "en",
+      "title": "AI Plan Mode: Markdown Files vs HTML",
+      "type": "video"
+    },
+    "PuIJaW_YRdg": {
+      "date": "2026-05-20",
+      "lang": "en",
+      "title": "NPM Is Broken",
+      "type": "livestream"
+    },
+    "p-WXHu2gU2s": {
+      "date": "2026-06-03",
+      "lang": "en",
+      "title": "Opus 4.8 Masterclass: Everything to Know",
+      "type": "livestream"
+    },
+    "pgWuEkCrgIc": {
+      "date": "2026-05-01",
+      "lang": "en",
+      "title": "Blocked by Claude Code",
+      "type": "short"
+    },
+    "ph_TL_4fxX0": {
+      "date": "2026-07-03",
+      "lang": "en",
+      "title": "Claude Code Extension: Browser Automation",
+      "type": "short"
+    },
+    "ppcMDBiJ5xc": {
+      "date": "2026-08-04",
+      "lang": "en",
+      "title": "AI Engineering Is Cheaper Than Engineers",
+      "type": "livestream"
+    },
+    "QoQjddWCnKA": {
+      "date": "2026-05-27",
+      "lang": "en",
+      "title": "Composer 2.5: Cursor Is a Frontier Lab",
+      "type": "livestream"
+    },
+    "Quyk439obxM": {
+      "date": "2026-06-25",
+      "lang": "en",
+      "title": "Automate AI Checks with Local Cron",
+      "type": "short"
+    },
+    "qAw_zC1_BDM": {
+      "date": "2026-11-04",
+      "lang": "en",
+      "title": "Black October: Is Your AI SaaS Next?",
+      "type": "livestream"
+    },
+    "qsja0My36VE": {
+      "date": "2026-05-01",
+      "lang": "en",
+      "title": "Prompting Perfection: Ask Better, Get Better",
+      "type": "short"
+    },
+    "Rcc0ipuyq3E": {
+      "date": "2026-05-13",
+      "lang": "en",
+      "title": "TanStack: 24 Malicious Releases",
+      "type": "short"
+    },
+    "RIIpSGFIoio": {
+      "date": "2026-04-08",
+      "lang": "en",
+      "title": "Anthropic Unveils Mythos AI",
+      "type": "short"
+    },
+    "RkTUXO0B-Xw": {
+      "date": "2026-04-16",
+      "lang": "en",
+      "title": "AI Art vs. Artists: The Great Debate",
+      "type": "short"
+    },
+    "RUFwPUS_7gE": {
+      "date": "2026-04-08",
+      "lang": "en",
+      "title": "Anthropic's Nightmare Week: Leaks & Bans",
+      "type": "short"
+    },
+    "r6o5wFD4P-w": {
+      "date": "2026-09-10",
+      "lang": "en",
+      "title": "GPT Astra: How To Make Money Post-AGI",
+      "type": "video"
+    },
+    "S1O9Kij1baE": {
+      "date": "2026-06-17",
+      "lang": "en",
+      "title": "Finding a Husband Online?",
+      "type": "short"
+    },
+    "S8dj5sYSLAU": {
+      "date": "2026-10-30",
+      "lang": "en",
+      "title": "AI Keeps Making My Code Obsolete",
+      "type": "short"
+    },
+    "StGpcMmyEfI": {
+      "date": "2026-06-03",
+      "lang": "en",
+      "title": "Opus 4.8 Says It's Done. It Isn't.",
+      "type": "short"
+    },
+    "sPiz8DSWyu0": {
+      "date": "2026-02-11",
+      "lang": "en",
+      "title": "Is AI Really Killing B2B SaaS?",
+      "type": "livestream"
+    },
+    "sSXY7qI1aZY": {
+      "date": "2026-02-04",
+      "lang": "en",
+      "title": "Moltbook Data Breach Exposes Secret APIs",
+      "type": "short"
+    },
+    "tdxdLBxAJ0Q": {
+      "date": "2026-08-14",
+      "lang": "en",
+      "title": "The State of AI Engineering in 2026",
+      "type": "video"
+    },
+    "tdZO0zxwtP8": {
+      "date": "2026-02-04",
+      "lang": "en",
+      "title": "Don't Connect OpenClaw to Moltbook",
+      "type": "livestream"
+    },
+    "tgfn-ojFTqo": {
+      "date": "2026-05-01",
+      "lang": "en",
+      "title": "OpenAI vs Anthropic: The AI Quality Debate",
+      "type": "short"
+    },
+    "thX_6dhGV8A": {
+      "date": "2026-10-30",
+      "lang": "en",
+      "title": "Your Brand Context Is the Real AI Moat",
+      "type": "short"
+    },
+    "timLg3kKS4s": {
+      "date": "2026-11-05",
+      "lang": "en",
+      "title": "Your SaaS Will Get Hacked. Do This Now!",
+      "type": "video"
+    },
+    "tZvjK4aV-MU": {
+      "date": "2026-04-01",
+      "lang": "en",
+      "title": "Paperclip: Open-Source Orchestration",
+      "type": "short"
+    },
+    "UKCOa35jBoc": {
+      "date": "2026-03-18",
+      "lang": "en",
+      "title": "Next Claude Eats Your Product?",
+      "type": "short"
+    },
+    "u6DDFK09600": {
+      "date": "2026-06-17",
+      "lang": "en",
+      "title": "OpenClaw & Hermes: Paid Plan, Free Execution",
+      "type": "short"
+    },
+    "uSuqoiEaB1k": {
+      "date": "2026-09-30",
+      "lang": "en",
+      "title": "Opus 5.5 vs GPT-6 Sol vs Grok 4.7",
+      "type": "livestream"
+    },
+    "uZsCpLv4m9s": {
+      "date": "2026-02-13",
+      "lang": "en",
+      "title": "Building takes a year? No. MVP in a week. Test. Iterate.",
+      "type": "short"
+    },
+    "V5__PIWXcUY": {
+      "date": "2026-02-25",
+      "lang": "en",
+      "title": "AI Automates Bug Fixing Pipeline",
+      "type": "short"
+    },
+    "VEzRyG-jZys": {
+      "date": "2026-05-01",
+      "lang": "en",
+      "title": "GPT-5.5 vs Claude Opus 4.7",
+      "type": "video"
+    },
+    "VLeiwal57JA": {
+      "date": "2026-03-04",
+      "lang": "en",
+      "title": "Give Everyone AI. Scale 10x.",
+      "type": "short"
+    },
+    "v7haFmQED98": {
+      "date": "2026-04-16",
+      "lang": "en",
+      "title": "90% of AI Content Is Slop",
+      "type": "short"
+    },
+    "v86W5bRHAFg": {
+      "date": "2026-05-07",
+      "lang": "en",
+      "title": "AI Project Planning: From Hours to Minutes",
+      "type": "short"
+    },
+    "vI0VlQ5lULo": {
+      "date": "2026-05-13",
+      "lang": "en",
+      "title": "Stop Planning in Markdown. Use HTML.",
+      "type": "livestream"
+    },
+    "vZZRx4g6tcs": {
+      "date": "2026-06-24",
+      "lang": "en",
+      "title": "WTF Is Loop Engineering?",
+      "type": "livestream"
+    },
+    "WJJZHyhlAuI": {
+      "date": "2026-02-25",
+      "lang": "en",
+      "title": "How To Install OpenClaw on Discord",
+      "type": "video"
+    },
+    "WL2weCGHPdg": {
+      "date": "2026-06-25",
+      "lang": "en",
+      "title": "Control Over Code Merges",
+      "type": "short"
+    },
+    "WOTzkAWvb0w": {
+      "date": "2026-10-01",
+      "lang": "en",
+      "title": "Opus 5.5: Anthropic Won",
+      "type": "video"
+    },
+    "WuysWWDiX_A": {
+      "date": "2026-06-03",
+      "lang": "en",
+      "title": "Opus 4.8 Fast Mode Explained",
+      "type": "short"
+    },
+    "wmZl7ROJ14Q": {
+      "date": "2026-05-21",
+      "lang": "en",
+      "title": "Your NPM Packages Are Compromised",
+      "type": "video"
+    },
+    "wQcUPsm9PVM": {
+      "date": "2026-05-07",
+      "lang": "en",
+      "title": "AI Coding vs. Real Development Setup",
+      "type": "short"
+    },
+    "X5JfYCLIYC8": {
+      "date": "2026-05-13",
+      "lang": "en",
+      "title": "MD to HTML: The Unexpected Result",
+      "type": "short"
+    },
+    "XCyY0VDiRps": {
+      "date": "2026-10-21",
+      "lang": "en",
+      "title": "OpenAI vs Anthropic: Game Over?",
+      "type": "livestream"
+    },
+    "XkPuKFYwTJk": {
+      "date": "2026-07-08",
+      "lang": "en",
+      "title": "Fable: Your Technical Co-Founder",
+      "type": "short"
+    },
+    "XUJRXGVn-z8": {
+      "date": "2026-05-13",
+      "lang": "en",
+      "title": "One PR Poisoned TanStack's Cache",
+      "type": "short"
+    },
+    "XZoN9F6nr3g": {
+      "date": "2026-05-01",
+      "lang": "en",
+      "title": "AI Approaches to Problem Solving",
+      "type": "short"
+    },
+    "xKOu2TRWaHs": {
+      "date": "2026-06-17",
+      "lang": "en",
+      "title": "AI Brainstorming: 3 Hours or 10 Minutes?",
+      "type": "short"
+    },
+    "Y2bOBy6tXrE": {
+      "date": "2026-05-20",
+      "lang": "en",
+      "title": "Crypto Scammers Use PDFs",
+      "type": "short"
+    },
+    "Ybr8YYvQNXs": {
+      "date": "2026-04-01",
+      "lang": "en",
+      "title": "Paperclip: AI for Zero-Human Companies",
+      "type": "short"
+    },
+    "YpVwNGXVwJ4": {
+      "date": "2026-03-04",
+      "lang": "en",
+      "title": "Software Engineering Is Dead?",
+      "type": "short"
+    },
+    "y4cgzYQLltQ": {
+      "date": "2026-03-18",
+      "lang": "en",
+      "title": "AI Is the Future of Open Source",
+      "type": "livestream"
+    },
+    "ypW0neOBhKU": {
+      "date": "2026-10-30",
+      "lang": "en",
+      "title": "Your Feed Is Already Full of AI Content",
+      "type": "short"
+    },
+    "yWYCVI9JsfA": {
+      "date": "2026-10-07",
+      "lang": "en",
+      "title": "Grok vs. Muse vs. Dots",
+      "type": "video"
+    },
+    "Z1XDzL7HEhk": {
+      "date": "2026-06-12",
+      "lang": "en",
+      "title": "7 Cents Per AI Game Sprite",
+      "type": "short"
+    },
+    "ZkXO2n7pL10": {
+      "date": "2026-07-02",
+      "lang": "en",
+      "title": "Automated Agents Drain Your Funds",
+      "type": "short"
+    },
+    "z7N1z4XtYZY": {
+      "date": "2026-04-28",
+      "lang": "en",
+      "title": "GPT 5.5 vs Opus 4.7",
+      "type": "livestream"
+    },
+    "zjXzkB8z5xg": {
+      "date": "2026-10-07",
+      "lang": "en",
+      "title": "Grok Bot vs Dots vs Muse",
+      "type": "livestream"
+    },
+    "zOK5RwFq1zM": {
+      "date": "2026-06-12",
+      "lang": "en",
+      "title": "Fable 5 Pricing: $10 In, $50 Out",
+      "type": "short"
+    },
+    "zOlq-xxs6rQ": {
+      "date": "2026-05-29",
+      "lang": "en",
+      "title": "Composer 2.5 On Your Backlog",
+      "type": "short"
+    },
+    "zSdtYx7NwCs": {
+      "date": "2026-07-02",
+      "lang": "en",
+      "title": "Code Optimization: Skips Unnecessary Functions",
+      "type": "short"
+    },
+    "zwQLw7rZBoM": {
+      "date": "2026-02-12",
+      "lang": "en",
+      "title": "I Built My Own Zendesk in 3 Days!",
+      "type": "short"
+    },
+    "zyQEwa5IYvk": {
+      "date": "2026-08-19",
+      "lang": "en",
+      "title": "Grok Bot Finds Customers While I Sleep",
+      "type": "video"
+    },
+    "zzgG_hSBphE": {
+      "date": "2026-06-24",
+      "lang": "en",
+      "title": "DIY Ticket System Beats Zendesk",
+      "type": "short"
+    }
+  }
+}

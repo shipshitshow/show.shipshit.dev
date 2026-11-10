@@ -17,6 +17,10 @@ Use this skill to convert a finished episode (topic file + transcript + publishe
 6. Run the **Quality Gate** checklist. Fix failures before handing anything back.
 7. After posts go live, record URLs and dates per **Publish Tracking**.
 
+## Description Is the Source Text
+
+The livestream description written with `$metadata` is one short text that is also the LinkedIn post: hook line with stakes, one question, "We're discussing...", "Bring your questions to the chat.", three hashtags (see `skills/metadata/references/description-template.md`). For the pre-stream or live-day post, start from that text and do not write a second description. Then apply this skill's register rules (spell out insider terms, no swearing) and tag the link with UTMs. A recap or Build Recap post is written below from the final edit, not from the livestream description.
+
 ## Source Priority
 
 Prefer local sources in this order:

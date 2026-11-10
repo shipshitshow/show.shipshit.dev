@@ -1,0 +1,13 @@
+Some people told me, "Why do you even
+test it yourself because AI is smarter
+and it will save you a lot of time if
+you just have AI test everything." But,
+I tried it.
+Yeah.
+>> And me doing it in steps and testing
+myself as well just as a final part
+after all the AIs debugging each other,
+have a look at my total time, I'm faster
+doing every branch checking myself than
+fully trusting AI and then needing to
+debug everything. Yeah.

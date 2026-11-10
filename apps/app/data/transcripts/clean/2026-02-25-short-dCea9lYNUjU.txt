@@ -1,0 +1,10 @@
+But it takes a new box, creates a
+dedicated branch fix and an issue name,
+opens a pull request and it can keep
+watching and handle pull request reviews
+comments too.
+So this is the first setup for your
+entire buck fixing pipeline.
+>> Wow. Did you set up like uh this
+protocol yourself or is it doing it in
+>> It's all doing this by himself.

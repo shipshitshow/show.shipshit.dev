@@ -1,42 +1,42 @@
 {
   "coach": {
     "contract_sha256": "42a9fdd3fd1efd35cadac00cbefc9923e271dd51387e1ace4c6ff7d2ecd67f91",
-    "profile_sha256": "bb1a101e546c9d1071453bcac6fd1110e34ca2b938736b3e5ae2f724fcdff0d7",
+    "profile_sha256": "f11e0adf794db22626b664f231ca9aff5e7a61d399471f98fb73d182f96bc9d1",
     "source": "https://github.com/shipshitshow/skills/tree/master/coach"
   },
   "dialogue": {
     "contract_sha256": "c2dc219b40290327fd691980b4eda5038cfe52fd8a54f54d35bd413f160774f8",
-    "profile_sha256": "bb1a101e546c9d1071453bcac6fd1110e34ca2b938736b3e5ae2f724fcdff0d7",
+    "profile_sha256": "f11e0adf794db22626b664f231ca9aff5e7a61d399471f98fb73d182f96bc9d1",
     "source": "https://github.com/shipshitshow/skills/tree/master/dialogue"
   },
   "library": {
     "contract_sha256": "0878d2e730dda109807de72eae57151ad6803a5e9a9a51d1b9b692219250708d",
-    "profile_sha256": "bb1a101e546c9d1071453bcac6fd1110e34ca2b938736b3e5ae2f724fcdff0d7",
+    "profile_sha256": "f11e0adf794db22626b664f231ca9aff5e7a61d399471f98fb73d182f96bc9d1",
     "source": "https://github.com/shipshitshow/skills/tree/master/library"
   },
   "metadata": {
-    "contract_sha256": "4fb8dbdf5a51103d2cec94c3a43b9c60ff2134031700969a331423090f2a8c1f",
-    "profile_sha256": "bb1a101e546c9d1071453bcac6fd1110e34ca2b938736b3e5ae2f724fcdff0d7",
+    "contract_sha256": "a415e0eea6c1fb2db6b51f962f014ee2f3d8937f79362c3e455225d35c5ad9b1",
+    "profile_sha256": "f11e0adf794db22626b664f231ca9aff5e7a61d399471f98fb73d182f96bc9d1",
     "source": "https://github.com/shipshitshow/skills/tree/master/youtube-metadata"
   },
   "overlays": {
     "contract_sha256": "71215e942cd713d465340185ea9e8332831fb017b92093b778ce45d718af3662",
-    "profile_sha256": "bb1a101e546c9d1071453bcac6fd1110e34ca2b938736b3e5ae2f724fcdff0d7",
+    "profile_sha256": "f11e0adf794db22626b664f231ca9aff5e7a61d399471f98fb73d182f96bc9d1",
     "source": "https://github.com/shipshitshow/skills/tree/master/overlays"
   },
   "prep": {
-    "contract_sha256": "2f2511542315d8743706a8421ff4eec3ea89ae14b9ac6bbee1e94a34b724a99e",
-    "profile_sha256": "bb1a101e546c9d1071453bcac6fd1110e34ca2b938736b3e5ae2f724fcdff0d7",
+    "contract_sha256": "86bff465d181f4a5ae779d84bcf87b06a2bc70ef2e394af77b1e9a6f321a85a2",
+    "profile_sha256": "f11e0adf794db22626b664f231ca9aff5e7a61d399471f98fb73d182f96bc9d1",
     "source": "https://github.com/shipshitshow/skills/tree/master/talking-points"
   },
   "recap": {
     "contract_sha256": "571831fcbb455cc39a2ff22a6e7336e0b6bf8d97dbca5f10c60739a81851dd5d",
-    "profile_sha256": "bb1a101e546c9d1071453bcac6fd1110e34ca2b938736b3e5ae2f724fcdff0d7",
+    "profile_sha256": "f11e0adf794db22626b664f231ca9aff5e7a61d399471f98fb73d182f96bc9d1",
     "source": "https://github.com/shipshitshow/skills/tree/master/recap"
   },
   "thumbnails": {
-    "contract_sha256": "6562004ac70fda0911a88e509f2986a3bd2f8685ed2db38e3ec6fa435d8ff241",
-    "profile_sha256": "bb1a101e546c9d1071453bcac6fd1110e34ca2b938736b3e5ae2f724fcdff0d7",
+    "contract_sha256": "49e7568aba3406562a2213f589c97b35f144f124aeea261f4523cbb49e7bfa95",
+    "profile_sha256": "f11e0adf794db22626b664f231ca9aff5e7a61d399471f98fb73d182f96bc9d1",
     "source": "https://github.com/shipshitshow/skills/tree/master/thumbnail-prompt-variations"
   }
 }

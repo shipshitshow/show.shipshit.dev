@@ -11,13 +11,26 @@ Use the user's channel profile and actual source asset. For Ship Sh*t Show, read
 
 For the bundled show, read the canonical kit's editing rules and asset inventory linked in the profile. Record the kit revision, logo hash, actual fonts and approved overrides in the project's supported manifest or handoff notes. Generated board scenes are not source footage. Place the asterisk exactly as [the placement table](https://github.com/shipshitshow/vault/blob/master/brand/placement.md) says, from the same three SVG masters; never redraw it or pick a corner or size by eye.
 
+## Locked edit style (load it first, every time)
+
+For Ship Sh*t Show, read [the edit rules](https://github.com/shipshitshow/vault/blob/master/brand/editing.md) before planning, and in a checkout of the show repo also `docs/show-prep/edit-style.md` (the build values and scripts). They record Vincent's decisions of 3 to 5 November 2026. If a note, an old project or this skill disagrees, those two files win. The rules that decide most edits:
+
+- No text title cards and no topic-label cards, ever. Mark an idea change with b-roll, a real screenshot or the show's red slash-stinger wipe.
+- Hard cuts only. No fade to black, no dissolves, no alpha fades on overlays. The slash-stinger is the one exception.
+- No zoom or push-in on the hosts. Zoom on screen content only when it lands on a specific point.
+- Cold open: the strongest 15 to 20 seconds first (the 5 November recap is the model), then 30 to 45 seconds of proper 50/50 two-person conversation before any screenshare. The 50/50 layout is the default; screenshare only while something is shown.
+- B-roll at least every minute of talking. Full-frame is fine. For the show it is animated SVG made with Codex CLI, one per idea change, planned before rendering (see `$overlays`). Not static images with a push-in.
+- Dialogue cuts: drop back-channels ("yeah", "exactly", "mhm") and restarts, no subscribe ask before the first payoff, no blooper in the first 20 seconds, and keep the qualifications that make a claim accurate (see `$dialogue`).
+- Captions: corrected grammar, spelling and ASR names (Grok, Claude, PHP, Cloudflare), even where that is no longer word for word.
+- Show Vincent the edit plan and transcript before rendering, and one sample before cutting a batch.
+
 Read the existing project manifest. Use the full-source transcript to select the viewer question, evidence and verdict. Keep disagreement and uncertainty where they change the answer. Select complete exchanges with enough context; do not manufacture a stronger claim by removing qualifications.
 
-Build an edit brief and source-to-edit cut map before operations. Put the useful answer/proof early when it remains truthful; remove logistics and redundant chronology. Let actual dialogue determine cut boundaries. Review word joins, speaker reactions and audiovisual sync. Preserve the hosts' rhythm rather than imposing a uniform montage.
+Build an edit brief and source-to-edit cut map before operations. The brief names the cold-open lines, the 50/50 opening, every chapter with its source range, one b-roll idea per idea change, what is cut and the claims to protect. Put the useful answer/proof early when it remains truthful; remove logistics, small talk, the countdown and redundant chronology. The recap is not a replay: it needs its own title and thumbnail concept, different from the livestream's (see `$metadata` and `$thumbnails`). Let actual dialogue determine cut boundaries. Review word joins, speaker reactions and audiovisual sync. Preserve the hosts' rhythm rather than imposing a uniform montage, and prefer stretches where the host speaking is looking at the lens and their energy is up over stretches where they read from a second screen.
 
 Use the existing local folder/version contract. Native project, export, external mastering and caption timing must be reproducible from the manifest. Generate edited transcripts/captions/chapters from the final timeline, not full-stream timestamps. Recheck source meaning after changed cuts. Do not copy a one-recording sample offset to another project.
 
-Return the editable project/export when requested plus cuts, final transcript, chapter cues and description context. Report technical checks separately from playback/listening review. Draft title/thumbnail briefs from the final edit; derive Shorts as complete points with their own clocks and links to the source stream.
+Return the editable project/export when requested plus cuts, final transcript, chapter cues and description context. Report technical checks separately from playback/listening review. Draft title/thumbnail briefs from the final edit; derive Shorts as complete points with their own clocks, using `$clips`. Shorts publish on the main channel and link the full episode.
 
 ## Current editor
 

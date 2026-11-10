@@ -1,0 +1,243 @@
+You know what's cheaper than Grok 4.6?
+>> Paying nothing at all.
+>> Exactly. Free model on OpenRouter, man.
+>> Okay, let's go.
+>> Yeah.
+>> Forget Grok, forget OpenAI.
+>> Yeah.
+>> We have something better.
+>> Exactly. All of that is garbage. Put
+that on the side because it's too
+expensive. I refuse to pay for my AI
+now.
+>> Yes, and it's not only for good
+developers, it's for everybody.
+>> Yeah.
+>> Last week OpenRouter announced 0x Alpha
+was in stealth mode, aka like the
+launcher model, and they are going to
+get your prompt and see if you like it,
+and then launch it a week after. So,
+yeah, now that we know that 0x Alpha is
+z.ai 5.3 flash, and during a full week
+everyone was trying to guess based on
+the input, the output of the model,
+etc., like which model it was.
+>> It basically lasted like 15 minutes.
+Everyone was already talking about GLM
+5.3
+>> just after the launch.
+>> And for a week, like 42 trillion tokens
+in six six days via OpenCode. Did you
+try it or not?
+>> I didn't try it.
+>> Yeah.
+>> So, it could have been like 8 billion
+more.
+>> I didn't find any crazy big mistake
+stuff because even like the benchmark
+was like in some benchmark it was on par
+with Fable 5.
+>> Ooh.
+>> So,
+>> And for free.
+>> and we had that for free for a week.
+>> Yeah.
+>> But I had some issues try testing the
+model. Well, in OpenCode sometimes it
+just like stop working. I did I was not
+able to see the result in the station.
+It just like a build build build, stop
+building, what's happening? I was
+building, build build build, it stopped
+again.
+>> Yeah.
+>> On the free one, so many people are
+using it. Probably spikes in usage, and
+then it just goes out of a connection or
+something.
+>> Yeah. Because [snorts] of that stealth
+mode, I decided like to retry OpenCode,
+and even on Cursor you can do that on
+Cursor by changing the API key. So, you
+can bring your open router key to cursor
+to use the cursor interface to use free
+models. And I haven't like retry open
+code because it was a CLI and it was
+like working the best with like this
+stealth model. And yeah, now I've
+discovered even more free models because
+I like to pay, but yeah, if you can get
+those free models for free, that's even
+better. You can just use free AI, no?
+>> Yeah. Well,
+>> It's cool.
+>> you need cursor, but you don't need a
+subscription to change it or do you put
+in your own API?
+>> I don't think so because it's using your
+Okay, so
+>> It's using the API and you just get the
+software, so that's it.
+>> Yes. So, you have a nice UI to use AI
+basically. What can we build with those
+little free models? I want to try them.
+I want to try them now by building a
+YouTube transcript. So, we drop a link,
+we give a link, we get the transcript,
+and if it will build that correctly,
+then I want to have the clip. So, it
+will get the clip of the best moments
+that we have doing a live stream.
+>> Okay. So, basically, at the end of this
+video, we can drop the URL in and it
+will create all the clips for us.
+>> That's what I hope it will build with a
+free model.
+>> With a free model.
+>> Yeah. And in 30 minutes.
+>> Yes, exactly. Let's go.
+>> Okay, [snorts] nice. So, I have Muse on
+the left and Zero X Alpha on the right.
+So, and I want to use the prompt. So, we
+are building a small standalone
+TypeScript tool called YouTube
+Distiller. Paste the YouTube link and
+you get back what the video actually
+said, plus a handful of moments worth
+watching, cut and playable. Yeah, read
+only, do not write code yet. It has two
+phases of a one engine. It run the full
+state below and I made progress. And so,
+this goes CLI server. The UI is a simple
+static HTML file, no react, no bundler,
+whatever. Pipeline, YouTube downloads,
+download the video and the English auto
+caption in JSON 3, pass the JSON 3, one
+request to open router free route with
+the entire transcript. Built in 5
+minutes and 2 escape as requested. Stay
+Yeah, see like the the time estimation,
+it's pure garbage. It's great.
+>> It's the same thing if you put in and
+you say create a plan for this and now
+give me the estimate in time and in
+costs. I think it still does every
+estimate in the same time that people do
+it without AI.
+>> Yeah, 100%. Because the data set is
+estimate time estimation based on the AI
+on human Reddit post, right? So, yeah.
+YouTube distiller, pass the YouTube link
+brief, three five ranked moments, cut in
+playable, one model request per video.
+Left to the estimation, download start.
+Okay, let's go. Request format is not
+available. Use this from what? Matching
+video. How are you capturing the caption
+if there is no video? I'm going to drop
+that. I'm going to drop that.
+>> Download done.
+>> Walking. You Are you doing anything?
+>> It did find it.
+>> Is it fake? A fetch video parsing, okay.
+Analyzing transcript, one request. Okay.
+I'm going to cutting five people. Wait.
+Okay.
+>> Yes, yes, it does every Here it is.
+>> A live stream demo of raw raw good and
+one legion demo with king.
+>> Yeah, king was my thought.
+>> Yeah. Okay, wait. I'm going to cut that
+to the segment smart. Okay, that's sick.
+Because like see this that's effect,
+that's what I use for the for the
+transition in the video from one chapter
+to another, right? Walk through the full
+pipeline, Google search from end of an
+leads, prompt generation, email draft,
+the actual agent walk shots. Yeah, 1
+minute, 1 minute. Bro, that that could
+be clips for Twitter.
+>> Yeah, but people are trying to do this
+with cloud and they working for an hour
+to copy, paste, put the URL in, ask it,
+you can just better code your own
+solution. That's so much faster.
+>> And it's working, and it's free.
+>> Yeah, this is cool.
+>> Like, bro, that that that cost zero.
+>> And it gave results.
+>> Like, I'm prompt to find a lead that you
+just need to find 1,000
+>> But do this automatically, then it would
+be example, and anything you can
+imagine, the way you need a
+>> Okay, why is it refreshing all the time?
+Okay, what's up?
+>> working.
+>> Yeah, but
+>> Every time it creates a video, it
+refreshes.
+>> Yes, not fake, real bug, not fixed. You
+eat Oh my god, that's I love AI bro.
+>> Well, and again, we don't need an MP to
+do this for us.
+>> Sleep.
+>> Make sure you [snorts] test the
+different models that are available,
+because you see, even if people say that
+it is the the best model,
+>> Yeah.
+>> now you have to prove that the other one
+is working.
+>> Yeah. I mean, yeah, like it's crazy. I
+mean, you don't have those gaps with
+like the Frontier model from Anthropic
+and yeah. February 5 is still the best
+model, though.
+>> Yeah, also the most expensive.
+>> Yeah. I mean, I will I think I will try
+to have those I will just one prompt the
+same Distiller stuff with Codex and
+Claude amount of Anthropic. So, it will
+be 5.6 or but yeah, it could be
+interesting to to try that. But yeah,
+okay, whatever. So, yeah, like we can
+even work with free models now.
+>> Yes, it works, and it showed and it it
+makes good solutions. You see, we had
+like five videos instantly.
+>> That's not like I didn't expect that to
+be that fast. Yes, not the model I
+wanted to test first.
+>> But the secret sauce is tell it we need
+it in 5 minutes because we're on live
+stream, and it will just do everything
+in 5 minutes.
+>> True. Oh yeah, yeah, true that. Yeah,
+the shortcut is like, bro, you have 30
+minutes 30 seconds, because if you
+don't, I'm going to cut your electricity
+off.
+>> Yeah, yeah. The whole world is going to
+damnation. Just do it in 30 seconds.
+>> Yeah. So, yeah, for everyone who are
+prompting right now, tell your Claude
+that his bandwidth is going to be
+reduced.
+>> Yes.
+>> Oh, yeah. Mitchell, thank you so much
+for your time.
+>> Yeah, thank you for the demo. That was
+fun.
+>> And uh yeah, like next week, some place
+Oh, yeah. No, yeah. Same place, same
+time.
+>> Same online.
+>> Yeah. Cheers, man.
+>> Thank you.
+>> Bye.
+>> Oh, yeah. Like Like, subscribe, share.
+>> Yeah, yeah.
+>> Ching ching.

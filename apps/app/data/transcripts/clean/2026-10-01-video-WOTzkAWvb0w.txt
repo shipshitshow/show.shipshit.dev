@@ -1,0 +1,351 @@
+If you can do more with Sony 5.5 with
+one or two point out of office, which is
+already save you a ton of money
+compared to Fable.
+>> Yeah, that's perfect.
+>> Yeah, exactly.
+And the big big one was uh
+Claude Opus 5.5,
+which uh took the timeline big time
+because uh yeah, 27 million views. Yeah.
+>> Um they somehow do good on marketing.
+Yeah.
+>> Because people are happy, right?
+>> Yeah.
+Um
+>> 5.5 better than Fable
+uh 5.1.
+And what's happening? I I expect them to
+have Fable 5.5
+and they and Fable 5.5 or whatever the
+next version is getting distilled into
+Opus and from yesterday Sony and those
+models are really good.
+>> Yeah, because at this moment, why would
+you even want to use Fable?
+>> It's one of It's It's too expensive for
+the output that you have and you have
+more or less the same output with today
+Opus.
+>> Mhm. [clears throat]
+>> I just closed all of my Fable session.
+>> Yeah. Bye-bye.
+>> And the coding
+50% to 66, 10% more multi-person
+reasoning, okay, two point more.
+Business workflow 40%. It's
+>> [music]
+nuts. Computer use I I still
+prefer the
+Open AI computer use in Codex. I think
+it's better. [music]
+The Claude one is bit like knowing.
+>> Mhm.
+>> Uh knowledge work uh 1846
+mental.
+Um and yesterday because uh we are
+always good on timing,
+>> Mhm.
+>> Sony 5.5.
+>> Yes. And you tried it.
+>> Yes, the whole morning. I had um
+I was on my Claude's weekly subscription
+um
+24%.
+I worked the whole morning and I'm still
+running on fume right now.
+I have 100%
+>> Mhm.
+>> But it's still going. I I love Sony.
+Like I think I will run an audit of all
+of the pull request with Claude.
+>> Mhm.
+>> I need to see if it's using more
+tokens and more usage that
+>> [music]
+>> to have the verifier as a smarter model
+than Sony. Basically it's high. No, this
+this one is excite.
+Looks like they're [snorts] both high.
+Opus 5 have the same result.
+So
+>> And it's cheaper, so that's a better
+choice.
+>> Input token two instead of four and
+output 10 instead of 20.
+>> Yeah.
+>> So that's big discount.
+>> And yeah, the pricing
+>> [music]
+>> is cheaper, so we like that. So we can
+spend more task. Working with Opus feel
+a bit like not unlimited, but at least
+we have a usage. I go from 36 hours to
+72.
+>> Yeah, well, I never go through my usage,
+so I'm happy.
+>> [music]
+>> And yeah, okay, so we're above 55
+um
+cheaper and perform at
+the same level than
+Astra, [music] so let's go.
+Uh
+>> But I had the same issue on Grok bot.
+>> Mhm.
+>> That's running on 4.7 hours as well,
+right?
+>> Yeah.
+>> Because I gave it like tasks and then I
+have my manager that just does managing
+and it talks to all the bots that have
+that task.
+>> Yeah.
+>> And then after a while when a bot
+doesn't do its task, instead of
+reminding him and checking the the the
+prompts on that did you do it, the
+manager just decides, "Hey, he isn't
+doing it, so from now on I am going to
+do it."
+>> [music]
+>> Yeah.
+>> So there are
+your manager has real things in it.
+>> So your manager is implementing instead
+of managing?
+>> Yeah.
+>> So yeah, I I think you can run something
+that is been defined by Opus
+on a PRD,
+>> Mhm.
+>> implemented with Sony and have a
+verifyer um after that. [music]
+That would make sense, I think. But
+that's what I'm going to experiment
+this week
+>> Mhm.
+>> and see where it goes and
+>> Yeah, I just thought that Opus, if it
+does sub agents, it would use Sony as
+always.
+>> Yeah, I know Opus. So yeah, you have
+your orchestrator in Opus and then you
+can put all of the Sony guys as Sony
+agents
+behind it.
+Uh and I dropped that and said, "Okay,
+no, don't do not use favor
+five anymore.
+Um
+use Sony as the default model
+and Opus for scheduling and
+orchestration." Okay, yeah, this one I
+like a lot.
+Ask Opus five for a video of data
+center. The result is beyond what I
+could imagine.
+Um and the thing is uh
+Where is my tweet? I told Claude to
+browse the internet and find whatever he
+wanted to use.
+So it didn't generate the video, it just
+went on internet and put them all
+together.
+>> Our civilization was built on
+technology. It is the glory of human
+ambition and achievement.
+>> And we have invented a new technology
+>> Nice, like you can see that on Netflix.
+Because it took a video from the
+internet and put them together.
+All right, let's go.
+>> Yeah, it's getting really smart.
+>> Yeah, and and even the timing and stuff,
+everything is lit.
+Uh
+>> By the end, it forgot the beginning.
+>> of AI.
+>> But one small word refused to fade.
+Then the summer of 2017, [music]
+>> every word saw every other word.
+Not one after another, all at [music]
+once.
+>> And, yeah.
+Before you you would need a team to just
+create something like that
+>> [music]
+>> in a week.
+>> Like, 12 hours, one prompt code, and
+quietly build something so good the
+creator give it away for free.
+Uh I gave my Opus
+5155
+one of the French theory analysis that
+got 80 million views and simply asked to
+donate it to a video.
+And then, yeah.
+>> Garbage of our time. The author is dead.
+>> Right.
+>> And the reader reigns.
+Deleuze taught us to prefer the rhizome
+to the tree, the nomad to the settler,
+>> [music]
+>> desire to law, becoming to being.
+>> Like, you can see it's always the same
+animation, the same style, but
+>> But that's is the same as websites,
+right? Everybody who has their website
+built fully by Cloud,
+>> Mhm. [music]
+>> you just recognize this.
+>> Yeah.
+But, it works.
+>> What?
+>> Nice.
+>> I don't mind.
+>> It looks good. It does what it needs to
+do.
+>> Yeah.
+>> So.
+Yeah. And otherwise, just spend a few
+hours more doing the details and asking
+it to change it.
+>> Exactly. One guy spent 15 minutes on a
+video. If you want to make it perfect,
+spend the next 3 hours, and then you
+will have something even better, right?
+>> Yeah. And it's still pretty fast.
+>> And also the topic, um
+did you this article or drop your agent?
+Uh getting the most out of Opus 55 in
+Cloud Code in Cloud and Cloud Guard. Uh
+how to ask so bad guidelines to what's
+new and what you should do, how you
+should talk to it. It's so say what's
+done look like and let it run. So, you
+have a stop and you have a proof of what
+Opus is going to
+search for. For example, take a
+screenshot, send me a screenshot of the
+videos, let me verify it. A clear stop
+um
+>> [music]
+>> it it's even better than requirement,
+right?
+And uh you can ask for a proof of it. Um
+so my good the payment endpoint from the
+whole uh
+old client to the new one. That means
+every endpoint use the new client, the
+old client is deleted, and the test
+suite passes. Stop us and ask me only if
+there is a test file for a reason you
+can't explain. [music]
+Okay, so you I can use like
+negative
+>> When you pro when you prompt an image or
+a video?
+>> Mhm.
+Steering and on the cloud card, tell me
+where it tell it which uh stop you want.
+Yeah, so it's the same same stuff.
+>> [music]
+>> You drop that?
+Do you tell Claude to
+um rewrite your Claude MD and agent MD
+and
+>> That all is great.
+>> Yeah, and see like X
+Okay,
+>> [music]
+>> so max what is
+>> Max is lower than X I.
+>> Yes, because uh okay, so Sonis scores
+lower at max effort than X I for which
+our code evaluate whether a code change
+>> [music]
+>> could be merged without human edits. It
+penalizes out-of-scope change even
+if they are high quality or helpful.
+At mask mask max effort, Sonis 55 more
+often run Claude code code review
+skills. Yeah, okay. Because [music]
+an effort allow you to increase the
+amount of uh effort/rounds that you want
+to put in a task. So that's why. That's
+the time
+>> Okay, so for example, the time to think
+between for the same prompt. So 1 minute
+on low, medium, 4 minutes, high, 11
+minutes,
+and max 1 hour. Yeah, but
+it's not that crazy.
+>> [music]
+>> I don't like the max one.
+>> I was going to say I like one of the
+first two.
+>> Yeah, exactly. Medium is looks better.
+My goal was to iterate in the feedback.
+Low effort will be get there much
+faster, but max effort give me something
+more more polished right off the bat.
+Run the apps, you find a bug, you drop
+it, it fix it right away, and it it
+worked great with Grok 4.52 because it
+was fast as
+>> Yes.
+>> And you can and you can pile up the
+prompt.
+You test the app, you you throw all of
+the bugs, it fixing it for cheap, you
+check it again, and while you are
+checking it and like testing something
+else in the app, it just like got got
+got and then you come back to it and
+then boom.
+That was sick.
+>> So far, which one is best one for you?
+>> [music]
+>> So,
+right now I can say last night I'm using
+Sonnet. I was using Sonnet until my
+subscription run out.
+I want to try until next week. I can
+tell you if it was a mistake or not.
+I will build with Sonnet 5.5
+and check it maybe at the end of the day
+or every few hours inside all of the
+pull request. I will check them with
+Opus. If you can do more with Sonnet 5.5
+with one or two point out of Opus, which
+is already save you a ton of money
+compared to Fable.
+>> Yeah, that's perfect.
+>> Yeah, exactly. [music]
+>> Using Opus because I didn't try Sonnet
+yet, but I'm in the middle of a project
+so I don't want to switch. I'm always
+afraid that everything will break and I
+have to explain everything again. So,
+>> I'm pretty sure that Opus will use
+Sonnet in the background anyway. You
+just not going to notice it. So, yeah.
+That's you will use Sonnet one way or
+another with agents.
+>> Yeah, just hope that they use the the
+cheaper token usage as well.
+>> Yeah. And don't just say, "Hey, you're
+using Opus."
+>> Michel, thank you so much for your time.
+And that was nice
+getting back online. Next week, same
+time, same place.
+>> Yes, same time, same place.
+>> Let's go. Thank you so much everyone.
+Thank you for joining us and like,
+subscribe, share the video and we will
+see you next week.
+>> Yes.
+>> Bye-bye.
+>> Bye. Cheers.

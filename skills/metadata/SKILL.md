@@ -19,4 +19,11 @@ Apply the channel profile’s narrator and format-specific link-placement rules.
 
 Chapters must use actual edit timestamps, begin at 0:00, and satisfy YouTube's current chapter requirements. Omit uncertain chapters rather than invent them. Supply a focused comma-separated tag list plus `youtube_tags` YAML when requested. Tags primarily help spelling/ambiguity; do not promise reach from keyword stuffing.
 
+## Packaging by format
+
+- **Titles.** Draft from [the title patterns](references/title-patterns-by-channel.md): head-to-head, tool plus outcome, tool plus stake, and the checks (character count, tool in the first words, a stake, no "[LIVE]", spelling). Search drove a quarter of main-channel views, so name the tool.
+- **Descriptions.** Follow [the description template](references/description-template.md). A livestream description is one short text in a fixed order (hook with stakes, one question, "We're discussing...", "Bring your questions to the chat.", three hashtags) that also serves as the LinkedIn post. A recap differs from its livestream in title, thumbnail and description, and all three are checked against the livestream's before upload.
+- **Shorts.** Shorts go to the main channel. Every Short links its full episode in the description and sets it as the Short's Related video, as part of the upload.
+- **After every stream.** Add chapters from the archive's VTT and 5 to 10 focused tags once the archive has processed. Applying them to a public video needs the owner's approval.
+
 Use [the output contract](references/output-template.md). Recommend packaging tests as hypotheses. Recheck current [YouTube title/thumbnail testing](https://support.google.com/youtube/answer/16391400?hl=en) before describing availability or a winning metric. Publication and platform changes require the user's authorization.

@@ -1,0 +1,10 @@
+For example, you have a new project, you
+can run composer on the on all of the
+GitHub task and stuff. You start
+bootstrapping and then you pull
+everything, you test everything, and
+then you can you can have like some good
+asynchronous work done that way.
+>> That can be a cheap good project, a good
+setup.
+>> That's cool.

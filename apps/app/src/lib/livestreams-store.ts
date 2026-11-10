@@ -97,6 +97,8 @@ export interface PublishedVideoItem {
   routeSlug: string;
   title: string;
   transcriptPath: string;
+  /** Caption language, from transcripts/index.json (id-keyed files only). */
+  language?: string;
   type: PublishedVideoType;
   videoId: string | null;
   wordCount: number;
@@ -227,7 +229,8 @@ function getYoutubeUrl(videoId: string | null): string | null {
 }
 
 /**
- * Raw caption files name the video: `<id>-<title>.en.vtt`. A `[LIVE]` title
+ * Older raw caption files name the video: `<id>-<title>.en.vtt` (new ones are
+ * `<id>.<lang>.vtt` and are described by the index). A `[LIVE]` title
  * prefix marks a livestream and the `shorts/` folder holds Shorts. Clean files
  * carry only date, type and title slug, so they are matched by title: first
  * with the type, then by title alone when only one raw file has that title
@@ -271,10 +274,32 @@ function getRawTranscriptVideoMap(): Map<
   return videoMap;
 }
 
+interface TranscriptIndexEntry {
+  date: string;
+  lang: string;
+  title: string;
+  type: PublishedVideoType;
+}
+
+/**
+ * transcripts/index.json maps a video id to its date, type, title and caption
+ * language. Files are named by id (`<date>-<type>-<id>.txt`), so a retitle on
+ * YouTube changes one line here and never the file name.
+ */
+function readTranscriptIndex(): Record<string, TranscriptIndexEntry> {
+  const indexPath = path.join(TRANSCRIPTS_DIR, 'index.json');
+  if (!fs.existsSync(indexPath)) return {};
+  const parsed = JSON.parse(fs.readFileSync(indexPath, 'utf-8')) as {
+    videos?: Record<string, TranscriptIndexEntry>;
+  };
+  return parsed.videos ?? {};
+}
+
 function listFilesystemPublishedVideos(): PublishedVideoItem[] {
   if (!fs.existsSync(CLEAN_TRANSCRIPTS_DIR)) return [];
 
   const videoMap = getRawTranscriptVideoMap();
+  const index = readTranscriptIndex();
 
   const items: PublishedVideoItem[] = [];
   for (const fileName of fs.readdirSync(CLEAN_TRANSCRIPTS_DIR)) {
@@ -286,6 +311,27 @@ function listFilesystemPublishedVideos(): PublishedVideoItem[] {
     const [, date, type, rawTitleSlug] = match;
     const typed = type as PublishedVideoType;
     const transcriptPath = path.join(CLEAN_TRANSCRIPTS_DIR, fileName);
+
+    const indexed = index[rawTitleSlug];
+    if (indexed) {
+      items.push({
+        date,
+        language: indexed.lang,
+        routeSlug: getPublishedVideoRouteSlug(
+          date,
+          typed,
+          rawTitleSlug,
+          rawTitleSlug,
+        ),
+        title: indexed.title,
+        transcriptPath,
+        type: typed,
+        videoId: rawTitleSlug,
+        wordCount: getTranscriptWordCount(transcriptPath),
+        youtubeUrl: getYoutubeUrl(rawTitleSlug),
+      } satisfies PublishedVideoItem);
+      continue;
+    }
     const key = normalizeHistoryKey(rawTitleSlug);
     const mapped =
       videoMap.get(`${typed}:${key}`) ?? videoMap.get(`any:${key}`);

@@ -1,0 +1,11 @@
+Yeah, that was one of my big hard moment
+with AI when I set up a server for
+GenFit and Claude did the whole
+configuration. Three years, five years
+ago, it would have take me three days to
+a week, maybe even more because then you
+set up the configuration, but then you
+forgot a comma in the ngix config file
+and then the redirection is not working
+and it took you like three weeks to
+find this comma.
