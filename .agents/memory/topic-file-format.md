@@ -1,10 +1,10 @@
 # Topic file and source-board format
 
-last_verified: 2026-10-18
+last_verified: 2026-11-10
 
 Topics live at `apps/app/data/livestream/YYYY-MM-DD/topic-NN-slug.md`. Preserve frontmatter keys (`title`, `slug`, `source`, `status`, `date`, `thumbnail_prompt`) and the zero-padded topic filename convention. The filename slug equals the frontmatter `slug`, and topic numbers and slugs are unique per date (enforced by `topic-archive.test.ts`). Other Markdown notes beside topics are not treated as topics.
 
-Current show preparation uses short source boards: one viewer question, primary/X evidence, firsthand example, host challenge, consequence, rough timing and exit cue. Hosts navigate Ressources; they do not read scripted opening/clip lines. Canonical instructions are mirrored from `shipshitshow/skills`; use `scripts/sync-content-skills.py --source <skills-checkout> --check` to detect contract drift.
+Current show preparation uses short source boards: one viewer question, primary/X evidence, firsthand example, host challenge, consequence, rough timing and exit cue. Hosts navigate Ressources; they do not read scripted clip lines or an opening monologue. The one prepared line is the first sentence under `## Cold Open — "<promise>"`: claim plus stake, under 15 seconds, spoken right after the deliberate 30-second countdown and approved with the board (2026-11-10). Canonical instructions are mirrored from `shipshitshow/skills`; use `scripts/sync-content-skills.py --source <skills-checkout> --check` to detect contract drift.
 
 Editorial addition, Vincent 2026-10-08: follow
 [`docs/show-prep/editorial-format.md`](../../docs/show-prep/editorial-format.md)

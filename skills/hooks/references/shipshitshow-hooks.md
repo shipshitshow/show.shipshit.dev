@@ -1,125 +1,47 @@
-# Ship Shit Show Hook Reference
+# Ship Sh*t Show opening reference
 
-## Local Corpus
+Rule and patterns live in [`../../prep/references/opening-and-hooks.md`](../../prep/references/opening-and-hooks.md). This file holds the channel's evidence and the output contract. Evidence is from the 10 November 2026 audit; read the numbers as direction.
 
-Useful local inputs:
+## Local corpus
 
-- Clean transcripts: `apps/app/data/transcripts/clean/*.txt`
-- Raw VTT transcripts: `apps/app/data/transcripts/*.vtt`
-- Topic prep: `apps/app/data/livestream/YYYY-MM-DD/topic-*.md`
+- Clean transcripts: `apps/app/data/transcripts/clean/*.txt` (159 files at the audit; count them, do not trust this number)
+- Raw VTT: `apps/app/data/transcripts/*.vtt`
+- Boards: `apps/app/data/livestream/YYYY-MM-DD/topic-*.md`
+- The 14 transcripts from 19 August to 21 October are auto-translated captions. Do not quote them.
 
-As of the latest archive update, the repo has 23 clean transcripts and 23 raw VTT transcripts. The corpus covers livestreams and edited videos from February-May 2026.
+## What the transcripts show
 
-## What The Transcripts Show
+- After the 30-second countdown, the livestream archives start with "and we are live", a stream check and small talk. 1 of 35 states the topic and why it matters inside 30 seconds; about half do not inside two minutes.
+- The strongest material usually comes late. On 3 November the title topic is named at 8:20 and the best firsthand story sits at 28:00.
+- The edited videos that open on a claim or firsthand moment hold best. The recap cut from the 3 November stream opens on the 28-minute story and is one of the seven best-rated videos.
 
-Recurring weak intro pattern:
+## Openings worth studying
 
-- stream starts with "we are live", audio checks, comments, retweeting, chat greetings
-- the real topic often starts 1-4 minutes late
-- strong lines appear after the hosts warm up
-- banter has good voice, but the first replay minute often lacks a clear promise
+| Video | What the opening does |
+| --- | --- |
+| *Your SaaS Will Get Hacked* | Opens on a firsthand number ("400 websites within 24 hours") before any setup. |
+| *Claude Code Channels Killed OpenClaw* | Sharp claim in the first sentence. Its like-and-subscribe ask at about 33 seconds sits in a stretch where 58% of viewers leave. |
+| *GPT 5.4 vs Claude Opus 4.6* | Names both tools and the question. It keeps a few lines of "intro done" banter, which a first sentence would remove. |
+| *Composer 2.5* | Opens on "Are you still using Cursor?", then the claim and the stake. The question shape is fine once; six of 34 videos use it. |
+| *Grok Bot Finds Customers While I Sleep* | Opens on the viewer's own situation, then the experiment. |
 
-Keep the authentic cadence, but move the strongest claim to the first sentence.
+These describe structure. Do not copy wording.
 
 ## Voice
 
-The show voice is:
+Blunt founder and operator commentary, practical and cost-aware, willing to say the impolite but useful thing. Read [the voice guide](../../prep/references/brand-voice.md) before writing. Lines that sound like the show: "The model is not the product. The harness is." "Cheaper per task is not the same as cheaper per token."
 
-- blunt founder/operator commentary
-- AI/dev-tool obsessed
-- practical, cost-aware, shipping-focused
-- willing to say the impolite but useful thing
-- skeptical of corporate narratives and benchmark theater
-- informal without being incoherent
-
-Good lines sound like:
-
-- "The model is not the product. The harness is."
-- "GitHub is now just the input queue. Codex is the output machine."
-- "Cheaper per task is not the same as cheaper per token."
-- "Every pre-AI codebase is undiscovered bug reports."
-
-## Hook Patterns
-
-### Narrative Reversal
-
-Use when the topic has a consensus take.
-
-```text
-Everyone thinks [consensus].
-The real story is [reversal].
-And if that is true, [stake].
-```
-
-### Receipt First
-
-Use when there is a hard number, outage, quote, benchmark, or launch.
-
-```text
-[Receipt].
-That is not a small detail.
-That is [interpretation].
-```
-
-### Builder Stakes
-
-Use when the stream is about tools, models, agents, or SaaS.
-
-```text
-If you are building with AI agents, this changes [workflow/cost/risk].
-Not someday. This week.
-```
-
-### Fight The Lazy Take
-
-Use when the audience likely has a simplistic take.
-
-```text
-The lazy take is [obvious opinion].
-The useful take is [operator interpretation].
-```
-
-## Cold Open Quality Bar
-
-A finished cold open should:
-
-- name the topic immediately
-- contain one specific receipt
-- make a claim strong enough to disagree with
-- explain why the claim matters now
-- promise what the stream will do
-- end with a clean bridge into segment one
-
-Cut:
-
-- "Welcome back"
-- "Let's check if we're live"
-- "How was your week?"
-- "Today we're going to talk about..." when a stronger claim exists
-- meta-comments about not having an intro
-
-## Output Contract
-
-For a new or weak topic, return:
+## Output contract
 
 ```markdown
-## Cold Open - READ THIS
+## Cold Open — "Viewer promise"
 
-> "60-120 spoken words."
-
-## Intro Talking Points
-
-- Hook receipt:
-- Stakes:
-- Contrarian claim:
-- Stream promise:
-- Segment bridge:
-
-## Better Hook Options
-
-1. Claim-first option.
-2. Receipt-first option.
-3. Dark/funny option.
+- **First sentence (approve one):** "Claim plus stake, under 15 seconds."
+- Alternate B: "…" (receipt: …)
+- Alternate C: "…" (receipt: …)
+- On screen with both hosts: the source passage, screenshot or ready result.
+- By about 45 seconds: the three questions guiding the episode and the first useful point.
+- Budget: about 1 minute. Exit: into segment one.
 ```
 
-When editing an existing topic file, keep this section order near the top, after `## Livestream Notes` when that section exists.
+Keep the section near the top, after `## Sources — Livestream Notes` when that section exists. No monologue and no "READ THIS" block: only the first sentence is prepared.

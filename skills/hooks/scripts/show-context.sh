@@ -26,4 +26,4 @@ fi
 
 echo
 echo "== Existing cold opens =="
-rg -n "^(## Cold Open|## Cold Open - READ THIS|## Intro Talking Points)" apps/app/data/livestream || true
+rg -n "^## (Cold Open|Intro Talking Points)" apps/app/data/livestream || true
