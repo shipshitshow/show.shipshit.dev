@@ -90,7 +90,7 @@ Read [the brand entry point](docs/branding.md) before making thumbnails, caption
 
 ## Skills
 
-- `skills/` — show-runtime skills: `prep`, `cues`, `hooks`, `clips`, `chapters`, `metadata`, `linkedin`, `x`, `thumbnails`.
+- `skills/` — show-runtime skills: `prep`, `cues`, `hooks`, `clips`, `chapters`, `metadata`, `linkedin`, `x`, `thumbnails`, `coach`.
 - `.agents/skills/` — dev-workflow skills, managed by `./scripts/skills.sh` against `github.com/shipshitshow/skills`.
   Also contains discovery links to the repo-owned show skills in `skills/` and
   the `debug`, `refactor` and `review` dev skills.
@@ -105,3 +105,10 @@ In Claude Code, invoke `/cues` instead of the Codex `$` form.
 
 The other show skills use the same short names: `/prep`, `/hooks`, `/clips`,
 `/chapters`, `/metadata`, `/linkedin`, `/x` and `/thumbnails` (use `$` in Codex).
+
+After a stream, `/coach` reads the latest livestream transcript and writes a
+one-page scorecard per host (first claim, agreement against push-back, fillers,
+longest monologue, stories against read-aloud sources, chat use, close, three to
+keep and three to change against last week). Speakers come from caption change
+marks, so it reports its confidence. Scorecards stay in the episode's editing
+folder, never in git.

@@ -125,6 +125,8 @@ public. Nothing else waits on him.
    LinkedIn as it is.
 3. After 7 days, compare views against the inventory median
    ([growth checklist](growth-checklist.md)).
+4. Run `$coach` on the stream's transcript for each host's one-page scorecard.
+   It stays in `editing/projects/<YYMMDD>/coach.md`, not in git.
 
 ## Open (6 Nov 2026)
 

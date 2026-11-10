@@ -1,4 +1,9 @@
 {
+  "coach": {
+    "contract_sha256": "42a9fdd3fd1efd35cadac00cbefc9923e271dd51387e1ace4c6ff7d2ecd67f91",
+    "profile_sha256": "f11e0adf794db22626b664f231ca9aff5e7a61d399471f98fb73d182f96bc9d1",
+    "source": "https://github.com/shipshitshow/skills/tree/master/coach"
+  },
   "dialogue": {
     "contract_sha256": "c2dc219b40290327fd691980b4eda5038cfe52fd8a54f54d35bd413f160774f8",
     "profile_sha256": "f11e0adf794db22626b664f231ca9aff5e7a61d399471f98fb73d182f96bc9d1",
