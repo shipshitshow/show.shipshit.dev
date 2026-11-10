@@ -13,7 +13,7 @@ thumbnail_prompt: null
 - **Ship Sh*t Show — 10 November 2026.** Join us: https://youtu.be/1bAWYklLcVo
 - **Founder question:** if AI can now do the cutting, what is left of editing for a founder who ships content every week, and what should we change in our own workflow?
 - **Spine:** open on a working editor's own claim, review the six ForwardEditor posts, then use our own channel thumbnails as the case we can speak about firsthand. The rest of the hour is the Grok Bot question, what releases are coming, and one open-source tool we have not covered.
-- **Format:** source-led discussion with the posts on screen. About 50–60 minutes, room for chat. No invented results: we show what we actually did, and what other people claim stays attributed to them.
+- **Format:** source-led discussion with the posts on screen. About 55–60 minutes, room for chat. No invented results: we show what we actually did, and what other people claim stays attributed to them.
 - **Evidence rule:** Confirmed means a primary page (vendor docs, the post itself) supports the exact claim. Reported means attributed third-party reporting. Unverified means we could not check it. A view count is one account's reach, not proof of a trend.
 - **Disclosure:** Genfeed is Vincent's product and made the new channel thumbnails. Say so when it comes up, so it never sounds like an outside endorsement.
 - **Not checked:** the videos inside the posts (only the text and quoted posts were read). Watch the 1.4M-view video and the Higgsfield clip before the show. Vincent's Grok Bot usage examples are his to bring; we have not seen them.
@@ -76,6 +76,35 @@ The six posts, newest first (counts as read 9 Nov 2026, via the public fxtwitter
 - Payoff: a conditional verdict on what we would still do by hand.
 - Capture: Segment 1; entry at the post, exit after the answer and its caveat.
 - After recording: coverage and exact start/end unverified; verify against the video/VTT.
+
+## Segment 1b — Can a beginner edit like a pro, and what is left for storytelling?
+
+This segment follows the description Vincent posted for the stream. Both claims in it are discussion questions, not results: we have not tested a beginner editing like a pro, and no source we found shows it.
+
+### Evidence to open
+
+- **Confirmed (his own posts):** Brian says he has edited for 20 years, and that Opus is a better editor than he is ([7 Nov](https://x.com/ForwardEditor/status/2119050987931336831)). The post names "Opus", not a version, a tool or a kind of editing. Say "Opus", not "Opus 5.5", unless he says which one.
+- **Confirmed:** Brian's route in was vibe coding, not editing: his [2 Jul video for beginners on Codex](https://x.com/ForwardEditor/status/2072747541104296380) (55.6k views) is what first got his X account attention. That is a worked example of a non-specialist path, not proof for editing.
+- **Reported (Higgsfield's claim, 6 Nov):** layer-by-layer, pixel-level editing is meant to give "human taste but super human control" (Brian's words about Miracle). It is in private beta, so it stays a claim.
+- **Our own test, if we do one:** give the same raw clip and a plain-language brief to a beginner prompt and to a pro cut, and compare the two on screen. Only claim what we actually show. Prepare a ready fallback clip before the stream; do not promise a live demo.
+
+### Conversation cues
+
+- What does "edit like a pro" mean: speed, clean cuts, pacing, or the story?
+- Challenge: AI can match the mechanical cuts, but a beginner still has to know what a good edit is. Who supplies that judgment?
+- Storytelling: what does AI not know about our story, our guests or our audience until we tell it? Where did a cut change the meaning?
+- Strongest opposing case: taste can be written down in a prompt, so the gap closes faster than pros expect. What would change our mind: a blind comparison.
+- Ask the chat: what is one thing you would not let AI cut?
+- Budget: 8 minutes. Exit: from the claims to our own case.
+
+### Planned Short S4 — Can a beginner edit like a pro with AI?
+
+- Working title: named subject plus one clear tension.
+- Point: the tools lower the cost of cutting, but does the judgment come with them?
+- Open: the on-screen comparison if we run it. No test, no Short.
+- Challenge: taste can be prompted versus taste is experience.
+- Payoff: what a beginner still has to learn.
+- Capture: Segment 1b; after recording, verify boundaries against the video/VTT.
 
 ## Segment 2 — Our own case: we redid the channel's thumbnails with AI
 
@@ -169,6 +198,6 @@ Dates below were read on 9 Nov 2026. Say “as of today” on air. Do not promis
 
 ## Notes for the editor
 
-- Planned Shorts S1–S3 above. A fourth candidate, “Layer-by-layer editing: the end of After Effects?” (Miracle), needs a real test first, because the product is in private beta.
+- Planned Shorts S1–S4 above. A fourth candidate, “Layer-by-layer editing: the end of After Effects?” (Miracle), needs a real test first, because the product is in private beta.
 - The debatable question for the episode: if AI does the cutting, is taste the only thing left? Strongest opposing case: taste was always the job. Neither host has to defend a view they do not hold.
 - Verify every clip boundary against the video and VTT after recording.
