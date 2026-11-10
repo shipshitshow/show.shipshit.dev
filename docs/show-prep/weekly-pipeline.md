@@ -101,8 +101,9 @@ public. Nothing else waits on him.
 
 ## 7. After publishing
 
-1. Add the transcript to `apps/app/data/transcripts/`, and add the livestream
-   talking points if they're missing.
+1. Add the transcript with `bun run transcripts:import --write` (files are
+   keyed on the video id and `index.json` carries the title), and add the
+   livestream talking points if they're missing.
 2. Post to LinkedIn and X with `$linkedin` and `$x`. A 16:9 demo can go to
    LinkedIn as it is.
 3. After 7 days, compare views against the inventory median

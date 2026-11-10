@@ -1,0 +1,11 @@
+Do you have more bugs when you start a
+project from scratch with AI than having
+code base you add AI layer on top of it?
+>> You need to have AI do an
+inventorization of all the rules, the
+code, the framework. Then you don't get
+any bugs. But if you say, "Hey, this is
+the system. Go create this." You're
+getting a lot of bugs because it just
+focuses on that step and doesn't read
+everything else in the frame.

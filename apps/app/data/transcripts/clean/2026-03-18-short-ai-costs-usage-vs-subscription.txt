@@ -1,9 +1,0 @@
-People don't like that they don't know
-what it will cost. But, eventually, the
-AI is going to run, and it will cost you
-API calls. It's so hard to say what the
-cost will be.
-&gt;&gt; The receipt model doesn't make sense
-anyway, because you you don't need the
-10,000 seat on your software anymore.
-You just need one.
