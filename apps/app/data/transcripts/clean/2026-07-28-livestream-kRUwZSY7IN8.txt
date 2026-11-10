@@ -1,0 +1,1406 @@
+And we are back. Welcome home everyone.
+It's been a minute.
+>> Yeah, it has been two weeks. Yeah. Two
+weeks. Two weeks. 10 days off. Um and
+yeah, I'm I'm excited. Like it's it's
+good to be back.
+>> Yes.
+>> So, how was your little break?
+>> It was good.
+>> Yeah.
+>> I had a break. My Mac Minim didn't.
+>> Yeah. That's the goal, right? Like the
+new slaves or computers now.
+>> Yes. Exactly. So, it was good to be on
+holiday. Yeah. And that was good to
+actually be forced to use uh your Mac
+Mini from a large distance and to keep
+on going creating new branches, new new
+commits and everything.
+>> Yes. Now, exactly like uh that was a
+nice experience that you you're doing
+literally nothing but still the the pull
+request start coming out.
+>> Yes. You're just checking your your
+phone for notifications.
+>> Yeah. Oh, bro. like uh I went so I went
+away in the in the it was by night. Yes.
+And around like 2 3:00 a.m. I checked
+and I had the uh GitHub authorization
+issues.
+I said, "Fuck, I can't validate with my
+computer because like uh Codex was
+telling me, yeah, uh you need to click
+on your computers and stuff." Uh oh, I'm
+not on my computer. So, um,
+>> can you give me a mobile link to click
+it to say? Yeah, I can do that.
+[laughter]
+>> Yeah, it does everything.
+>> Exactly.
+>> I had Fable connected so to my uh to my
+app on my phone.
+>> Nice.
+>> And I gave it full access to my Mac Mini
+because it's it only has the code on it.
+Nothing else. Only some projects.
+>> And it doesn't matter what I asked it.
+It just said, I can do that for you. No
+problem.
+>> Yeah. It it reminds you like the
+open close day.
+>> Yeah. Only better. Much better.
+>> Yeah, it works.
+>> This works. And even if it doesn't work,
+you ask it to get a workar around or to
+give a solution and says, "Oh, we can do
+this, this, and this. Perfect."
+>> Oh, yeah. No, no, it's not like it's
+it's a new here. And um it's even like
+getting better with all of the new
+models that we got during those 10 days.
+>> Yes.
+>> Yeah. And so what you do is like talking
+to cloud on mobile, right? Cloud on
+mobile or codex.
+>> Yeah. Yeah. Cloud on mobile.
+>> Yeah. Yeah. I do that.
+>> And it doesn't matter just one of the
+two that's good enough.
+>> I I use Codex because uh we got more
+reset.
+>> So uh I burn three resets during those
+10 days though.
+>> That's a lot.
+>> I like how many projects were you
+handling? So I had automation for 10
+project like non-critical project like
+small stuff
+>> um like couple of mobile apps like the
+TV show tracker for me and my girlfriend
+so we can share the show and share the
+status of the shows. So that's cool. um
+the meta bar like the CEX bar but uh
+mine and it's better uh than Peter
+Codex bar it's better
+um what did they do
+a couple of other project and uh yeah uh
+website factory for restaurant because
+that's going to be the first autonomous
+company that fully autonomous company
+that I want to launch
+>> and [clears throat]
+uh Genfe
+what did I what else did I
+Uh okay I can check
+and uh yeah some other noncritical
+project uh the game stuff I continue
+also those like but slower like not
+every two or three hours just less like
+four hours for those ones
+>> just because you can.
+>> Yeah, exactly. [cough]
+Also know I use Figma. So I had a
+routine
+>> to put all of the screen to Figma uh
+because the MC and also the MCP is
+limited to 200 calls a day. So uh I had
+a daily routine to just burn those 200
+[clears throat]
+>> maximize it.
+>> Yeah. Uh Max rip like the cleaner like
+the tools to clean your hard drive on
+your Mac after all of those work trees
+and branches.
+>> Uh Open TV tracker that's done. Uh ship
+cut. Yeah, ship code too and uh yeah in
+the games that's it. Yeah, around 10 10
+C uh 10 customers 10 project like that.
+Love it.
+>> And you just burned every token
+available
+>> like everything.
+I burned two subscription on code and
+four
+weekly equivalent of codex on weekly.
+[laughter]
+>> Awesome.
+And it's everything is coming out uh
+soon. No, it's getting honestly it's
+getting I shipped it didn't like uh just
+burn token to burn token like the
+project are coming out now like metava
+is done. I send you the link.
+>> Mhm.
+>> Sorry. Uh ship code I need to check it.
+I need to QA and the other same thing
+like QA or more progress. So nice.
+>> Well, I think if you do the intro we see
+the numbers. Oh [ __ ]
+>> that's even better.
+>> I forgot.
+>> So
+yeah, okay. I I didn't think about that
+for [laughter] that introduction.
+>> We can edit it after, so that's no
+problem.
+>> Um Okay,
+but we we're not doing videos anymore,
+do we?
+>> Yeah, maybe a small one. I don't know.
+It is better to have shorts, right?
+>> Yes. Yeah, we we don't. Okay. So, um
+Okay.
+We went away for 10 days, but Codex and
+Clo didn't take any time off while we
+were on the beach
+[laughter]
+swimming.
+while we were on the beach. Um, those
+our agent keep shipping pull request
+every hour and we are going to show you
+what we have shipped and uh not not how
+much money we made because
+no [laughter]
+>> first you have to build.
+>> Yeah.
+>> And we are going to show you which
+product we are shipped and how we are uh
+how how we set up those automation. So,
+subscribe, like the video, and uh enjoy.
+>> Nice. Good. Good job.
+>> I need to check because I think
+>> Oh. Ah. Let me connect my mouse almost.
+>> Okay.
+Now I can scroll
+because I build a cost tracker.
+Oh, YouTube.
+>> Yeah. Yeah. But [laughter] I make a
+difference between how much cost I made
+within my subscription that I just pay
+like the the $90 for cloud or the 200 or
+whatever
+>> and then I made a difference in what do
+I actually use in API cost and
+I have one cloud um $200 subscription
+connected and I have one codeex $90
+subscription connected. And in during my
+holiday, I've burned for
+$3,19
+worth of tokens.
+>> Yeah, I'm not surprised.
+>> So that's a 10x.
+>> Yeah. Yeah. No, no. Like for for Codex,
+I think we we get like worth 15 grand of
+token and for cloud we get 5k or
+something. Yeah, that's possible because
+uh cloud was $2,100 and Codex
+[clears throat] was almost 1K.
+>> Yeah, like
+>> and I'm using Codex to do the review. So
+that's less.
+>> Yeah. Codex for Okay. Nice.
+>> And this is just on the the
+uh on the task that I put in the system.
+This is not everything I did additional
+on the side myself.
+>> Only the automation part.
+>> Yeah. Okay.
+>> But that that's big. paying like $300
+and getting 3K in 10 days back.
+>> Yeah. I mean, if you can convert that
+into dollars, that's a win, right?
+That's unlimited employees basically.
+>> Yeah. Yeah. For sure. [laughter]
+>> Yeah. Like the goal for us is like to
+convert those token into dollars and
+that's all.
+>> Well, it just getting projects and
+>> just having or having us automate your
+business because we know how to
+automate.
+>> Yeah. And uh I I I think like with those
+all of those release I think we're
+getting like really close to uh the
+quality of the output is good enough to
+be fully automated
+maybe with like a human review in the
+like yeah room
+in the loop to review at the end
+>> but like it's getting there.
+>> Yeah. I had Codex 5.6 soul review my
+opus
+and after five rounds of reviewing they
+would give me a final result if it went
+wrong
+>> and sometimes they had like really good
+issues.
+>> Mhm.
+>> They found stuff that honestly I don't
+know if I would have found it correctly
+>> but you don't know if those issues are
+real or not though like you know like
+because sometime it can find something
+that is not here.
+>> Yeah. If you say it has to do a CLI
+check or has to do a discord
+notification doesn't have the rights to
+do it then it will crash on it but
+that's why I have cloud fable connected
+on that Mac mini who runs everything it
+can fix it can give the the rights that
+are needed and everything
+>> do you use or open cloud to orchestrate
+those subscription
+>> nope everything was built by myself by
+fable
+>> yeah
+yeah I I I don't feel I have the need
+for those.
+>> It was like one day of work and I didn't
+even sit at my PC. I just told him what
+to do and
+>> it's on the side working and then I come
+back and I say, "Hey, I'm missing this."
+And it does it.
+>> Yeah. Know exactly because even like uh
+if you So I updated my global and codeex
+and code when um Opus 5 dropped.
+>> Mhm. to even like to change the aliases
+even like to [clears throat] set up the
+orchestration to tell
+Clo to use uh GPT 5.6 as a sub agent or
+even like they can talk to each other
+plus define the aliases. So now if it's
+OPUS it will always be the latest OPUS
+[clears throat] and GPT same thing like
+I use like 5.6 six high for everything.
+>> Yeah, me too.
+>> Yeah. Um
+and uh but like what's Hermes
+doing more than that?
+>> I don't know. And honestly, I don't want
+external software built by someone else
+or my PC because I don't know what
+they're putting in.
+>> Exactly. Yeah. And and again, you are
+like one prompt way of like uh
+implementing yourself and you have you
+know what's up, right? Yeah. So why
+should I do it if we can do it better
+ourselves and easier and we have the
+tokens because we have big
+subscriptions.
+>> I mean uh kind of like I I burned my CL
+subscription. I think it's because of
+the skill and MCP like I burned them in
+two days.
+>> Yeah, that's that's going hard.
+>> I I got the reset on Friday and on
+Monday afternoon. So okay, I'm going to
+use Codex now.
+>> Yeah, but that's the cool thing here.
+Every time that I see that I'm burning a
+lot, the first question I ask is, hey,
+we are burning so fast, this is
+impossible to maintain. What can we do
+to make it burn less tokens?
+>> Uh, and if he needs to set up something
+manual, just do it, but improve it. And
+that works
+>> all the time.
+>> Yeah. And even like I saw some tweets
+about like one of the French
+entrepreneurs saying like yeah on Friday
+um
+I just clean up my context or like my
+code MD and like the
+agent MD because it gets so much [ __ ] so
+fast. Even on Twitter you can yeah I
+don't know if you saw that but um some
+people were saying u for opus for five
+>> Mhm. [clears throat]
+that let you scale and uh review your
+code and then the model will will work
+better.
+>> Oh, that's cool.
+>> Yeah. So, it need like a big cleanup.
+[clears throat] Uh yeah. So, did you use
+uh Opus 5?
+>> Uh I just started using it.
+>> Yeah.
+>> But I did it only in a terminal. I
+didn't add it to my automation yet
+because I didn't want to crash
+everything by accident when I was like
+1,600 kilometers away.
+>> Yeah, you you know what uh what you do
+like it's what when it works don't break
+it, right?
+>> Yeah. Yeah, exactly. And just make sure
+that you have full access. I did have
+access because UniFi has these uh travel
+routers. It is amazing.
+>> Not promoting a product but uh I have
+the entire UniFi setup at home. Okay.
+>> And they have a travel router. So, in
+the apartment that we rented, I just put
+their router uh internet cable into my
+UniFi router, put the power in, and it
+set up a a local VI network with the
+same thing as at home and a VPN
+connection to my home router, my
+firewall.
+>> Oh, that's slick. So working in Spain, I
+was on my Dutch IP all the time, working
+from my home lab uh from my home and all
+the IP filters, everything was set up
+just within 5 minutes.
+>> That's sick. That's pretty cool. Yeah.
+Okay. Because uh before I was changing
+my AWS uh cloud watch to access my
+instance from Airbnb IP.
+>> Yeah. Yeah. That's not fun. I have IP
+blocks everywhere. Yeah.
+>> So, I just have the travel router. I put
+it in and I get my own Wi-Fi. All the
+devices are instantly connected and I'm
+using my home IP address.
+>> That's nice.
+>> H interesting. Uh, how much does it
+cost?
+>> Uh, the thing costs like 70 or 80, but
+you have to uh set up your entire UniFi
+>> network at home as well, and that's a
+bit more expensive.
+Oh,
+>> it works perfectly.
+>> Can't you connect it to Telkal to be
+part of the network?
+>> Yeah, you can. But I like this because
+it just works.
+>> Yeah.
+>> And it's tech, so it's cool to have.
+[laughter]
+>> Um that that's interesting. Um okay,
+what about the 5.6 soul? Like what's
+your feedback on it?
+Sometimes it's annoying. Or is it just
+me?
+>> Yeah, like Yeah, this morning I was mad
+against it. [laughter]
+>> Cloud Fable just worked perfectly like
+like a good employee. And then 5.6,
+>> it just does weird stuff. And then when
+you say, "Why are you doing this? I
+didn't give you the the task to do it."
+And you are now changing a lot of stuff
+that was working and said, "Oh yeah,
+you're right. It's like going back in
+time
+>> when you were just arguing with the AI
+all the time. This one goes rogue.
+>> Well, like uh it um I had the issue with
+like ver version like the deployer
+versioning
+and it was just instead of increasing
+the patch, he was uh increasing the
+minor. So every deployment I had a new
+minor [ __ ] release. [laughter]
+Yeah,
+>> like stuff like that. And and oh yeah,
+this morning so uh I had you know like
+the so I have um the authorization as a
+custom like uh just don't ask me the
+just just go don't ask me for GitHub
+authorization.
+>> So like yes to everything.
+>> Yes.
+And
+this [ __ ]
+wrote the whole branch into the temp
+folder and the temp folder doesn't have
+the authorization of
+um the author the authorization like the
+perms.
+>> Yeah.
+>> So it was asking me to use GitHub
+command line like GitHub pull request
+create GitHub read GitHub read. It was
+asking me to confirm a GitHub read. I
+said, "Bro, stop doing that." And 30
+minutes after, then I found the, you
+know, in the block of files edited. It
+was all in PI in temp folder. Say, why
+the [ __ ] did you do that?
+>> Yeah. And I think this is one of the
+perfect examples why you need us
+>> just to say because we understand what
+what goes wrong.
+>> Yeah. I don't know. Exactly. Other
+people just have to delete everything
+and restart and hope that it doesn't
+make the same mistake and eventually
+after two days of testing they get it
+working.
+>> We just know why it's not working.
+>> Yeah. No, exactly. I mean you're not
+never like uh you never know if you are
+you are going to find the bug solution
+in the next five minutes or five hours,
+right?
+>> Yeah. But knowing what you're doing and
+then debugging and asking the right
+questions that helps a lot.
+>> Oh 100%. But uh I mean [snorts]
+those instruction file like the code and
+agent MD we are like the models are
+still not listening to it.
+>> Nope.
+>> Nuts.
+>> No. But that's why I like review rounds
+because eventually I force uh in a first
+review round to check everything versus
+the agents.md and the readme.md files.
+Oh, you
+>> so even when uh Opus does the first
+coding even if it skips some parts then
+I have a rule in the first uh checking
+round from codeex
+>> that it checks the read me the agents
+and everything and it compares it to
+what has been coded
+>> and that has been going good so far
+because I log um the conversation
+between the two agents. I just tell them
+to write down all the findings and then
+open has Opus has to reply on each
+finding and why he thinks it's correct,
+why he thinks it's not correct. So I can
+read back the entire conversation they
+had and it's really funny to see.
+>> They even say you are wrong.
+>> But like all of that [ __ ] goes to the
+context
+window.
+>> No, I just write it in comments under
+the issue in GitHub. Oh yeah, in the
+thread right but like the whole
+conversation between codeex and code is
+it not going into the context of your
+session?
+>> Yeah, it is. But it's max
+>> Yeah, but it's max five rounds and then
+I just clear everything.
+>> Okay.
+>> So it's per task.
+>> Yeah. Okay. Okay, that makes sense.
+Yeah. Okay. So you have a thread on on
+GitHub or in the MD file?
+>> Uh yeah. Well, they do it in MD file,
+but eventually they write it in a
+comment on GitHub in the issue so that I
+can see the issue, what was written down
+and see the entire conversation.
+>> Yeah. No, it makes sense. I I love I
+love GitHub like for tracking like the
+age and stuff.
+>> I just hope they keep give it as a good
+software because it had some issues
+lately.
+Last week he had like a uh 500 error
+like I was not able to use GitHub for I
+think half a day or a couple of
+implementation like
+>> I can't read finally
+>> that's a big issue
+>> bro like GitHub goes down there is no
+more software in the world.
+>> Yeah and the weird thing is almost
+everybody uses it and when you speak to
+somebody using GitLab or something they
+say yeah we use GitLab but it doesn't
+have all the options GitHub has. Yeah.
+>> Yeah. No way.
+>> Yeah. Yeah.
+It's Yeah, I know it's uh but like curs
+wants to build its own agentic
+competition to GitHub.
+>> Yeah.
+>> So Elon is building it.
+>> Yeah, we'll see how it goes. But uh
+Okay, so we talk about 4.6 5 Feb 5. Fe,
+bro, Feb 5. Oh uh it's going away in
+seven days.
+Oh,
+>> it's going away. We're going to keep it
+for another seven days.
+>> [clears throat]
+>> No, my joke is falling because I can't.
+[laughter]
+No,
+>> they they keep saying that it was going
+away again and again.
+>> Three times.
+>> But we knew it.
+>> Yeah.
+>> As soon as they have competition, they
+won't if they delete it from
+subscription, they will lose people and
+they they lose subscribers.
+>> No, for sure. But still like uh code
+looks better than 5.6, right? like
+>> for for all the front end task as soon
+as I I start talking to Codex
+uh I'm getting I I'm getting anxiety
+>> because I know the front will be [ __ ]
+>> but I also don't get it. It's like they
+have been telling us so many times Fable
+went out
+>> and you only still only get 50% of your
+subscription in Fable tokens.
+>> Yes. And now they released Opus 5 and on
+some parts Fable is better but on coding
+opus is better
+>> and that you can just use it at half the
+price 100% of your subscription. So
+what's the use of Fable?
+>> Maybe some cyber stuff that's all of
+those basic uh yeah all of the stuff we
+don't do but for coding like CRUD apps
+it's fine. Yeah, but even if you use
+Fable to do it after you you did the
+coding, you just do it for a check.
+>> Yeah.
+>> Then you can just have Fable check
+everything and you're still within your
+limit easily.
+>> Oh yeah. Like I'm I'm not I'm not
+implementing anything with Fable. Fable
+is too precious. Like it's only doing
+the
+uh the planing
+like Yeah. And uh Yeah. and the
+execution on 5.6 text that's why I
+archived so I can save save my CL
+subscription but also like we are we
+have a bonus right now on the session
+right so we are like 50% more so we need
+to like until the August of end of the
+week
+>> uh we have more session but after that
+limitation are going down what's going
+on with like the the the
+deal with Ellen are they not supposed to
+have like more now.
+>> Yeah, I think. But doesn't it they have
+a different u a different promotion
+every time?
+>> Yeah. Oh, what? What?
+>> Every time they have a different
+promotion. So now they are saying you
+have it on till August, but before they
+had it as well. I just keep keep getting
+free resets. I don't know. But I always
+get enough tokens, so I don't mind. and
+reset on codex like on entropic side.
+I'm waiting for them like they need a
+button. They need a better button.
+>> Yeah. Yeah. Yeah. But they will they
+have to compete. So they will add
+something eventually.
+>> Yeah.
+>> The only thing I still haven't tried was
+the new Grock.
+>> Oh yes. Uh now we have it in Europe like
+it has been available um [clears throat]
+uh la last week I think.
+>> Mhm.
+>> So we had a two two weeks delay on Gro.
+Um, yeah, I I have it. I need to run it.
+It's It's included in the metabar uh
+monitoring, so I have a backup AI stuff,
+but I I don't know. Yeah, we need to
+test it. But um
+>> yeah, but if it can do a a a final check
+or whatever, even if you use it for
+simple things, maybe it finds more than
+>> uh Codeex does or something different,
+that would be awesome.
+>> What was the benchmark on 4.5?
+>> It was good. Yeah. Benchmark 4.5
+versus
+oh 4.5 Grock because I'm going to get OP
+uh T man studio
+t puff
+t.
+Uh okay. What the [ __ ] is is benchmark?
+I don't think I'm going to use that.
+Oh yeah, Grock is way cheaper though
+than uh 4.8 at the time. Uh artificial
+artificial analysis. Yes.
+Intelligence. So Opus 5 Fable 5. Yeah,
+that was fun too.
+>> Oh [ __ ]
+>> this is just outside of the window.
+>> Ah, perfect.
+>> Clo is one point above Fable 5. Yeah.
+>> Opus 5 Max.
+[cough]
+>> Yeah. So, it's almost the same quality.
+[snorts]
+>> Kim 3. Okay. Open source model. That's
+going to be fun, too.
+>> Yeah. But did you see how much RAM you
+needed for the Kimmy 3?
+>> Oh, yeah. You No, but you need open
+source model doesn't need it's going to
+run on your computer, right? It just
+need it means it's it it means it's
+coming from China.
+>> Yeah. Yeah. It is. But I I think they
+block new subscribers. really
+>> you're not getting. Yeah. Because
+eventually uh when cloud was up almost
+at the full usage and they wanted to
+keep selling subscription, they just
+halfed all the capacity from everybody.
+>> [ __ ]
+>> And Kimmy said, "Okay, we are almost at
+full capacity. We block all new people
+coming in. So if you have a
+subscription, you're lucky and otherwise
+>> you're out of luck. You can't get a
+one." So, I don't know if they opened it
+by now, but this shows a big difference
+in how they treat it.
+>> Damn. Oh, yeah. Kimmy 3 just ended
+premium AI subscription. What the [ __ ]
+>> That was okay. Wait, that was one week
+ago.
+>> Yeah, it was one I don't know if they
+upgraded the usage at this moment.
+>> Uh, has received far more love than we
+expected and our GPS are feeling it.
+Over the past 48 hours, demon has pushed
+close to the limit of for current
+capacity to protect the experience of
+existing subscribers. We are temporary
+posing new subscription and practice
+compute for current members. Wow.
+Jesus. Uh, give me AI.
+>> Yeah, I think this is good. They just
+give give you what you pay for. That's
+perfect.
+Okay. Uh, where's the Okay. Login.
+I don't even have a [ __ ] account. Uh,
+give me pricing.
+[snorts]
+No, there is no pricing. What the heck?
+>> Yeah, let me check.
+>> I think you have to sign up first. Yeah.
+>> And I didn't sign up yet, but this shows
+that if you want to have an open model
+that's going good, you better get a
+subscription.
+>> Yeah.
+>> And I just pay for it because once
+you're out, you're out. And I even don't
+know if it's possible to upgrade.
+>> Oh,
+why am I in
+Italian?
+[laughter]
+Allegto what?
+Wait, is that is that the what the how
+they name their plane?
+>> Yeah, because you have English below it.
+>> What? Where? What?
+>> Yeah. Yeah, this is good.
+>> Okay.
+>> And you can just uh say join weight
+list.
+>> Where? Oh, join. [ __ ]
+>> You got scrolled like five times over
+it. [laughter]
+Yeah,
+>> it's a white button.
+>> Damn.
+Really?
+Damn. Well, yeah, I was talked on the
+[ __ ] Allegro Vivach stuff. Why are
+you doing selling music stuff?
+>> Because it's possible.
+>> Okay. Yeah, why not? Uh, so even on the
+annually plan, you have to join a weight
+list.
+>> Yes.
+>> Okay,
+fair enough. [snorts] New membership
+plan coming in. Yeah, we really need
+more compute.
+>> Yeah. Yeah. Yeah. We if you want to keep
+scaling we do.
+>> That's crazy. I mean yeah so that that
+means like even the inference battle
+like Elon Musk is right then because uh
+that's that's the game in town because
+nobody can offer the best model to the
+people at full capacity like
+>> no but for the easy things you can do it
+locally. I'm using Olama on a 16
+gigabyte RAM just for chatting,
+communicating, and giving me answers on
+the open progress and everything.
+>> Yeah. Really? You can only say hello and
+then maybe
+>> it works.
+>> Okay. It's like I have Fable connected
+to my MMIN, but I also have Oola, it's
+connected to Discord.
+>> And if I want to know how many tasks are
+open, what the status of a task is and
+everything,
+>> but also builds a database of every task
+that I've put in.
+>> So, it has uh like a database in the
+back end, and I can just say, hey, okay,
+um, give me an overview of what we did
+for this customer on this task. And it
+will give me all the tasks.
+Which which model do you run on Olama?
+>> Um I don't know. Fable chose it. Oh
+[laughter]
+>> maybe you have Mistral. You are one of
+the user of Mistral and you don't know
+it.
+>> I then I don't know it but it works
+really good and it it is on the same
+mini Mini.
+>> Yeah. A local vector database. That's
+it.
+>> Yeah. Okay. It's like the equivalent of
+your AU model basically.
+>> Yeah. And that's good enough. And for
+those small questions just getting
+status updates
+>> I save all those tokens.
+>> Yeah
+like yeah sense I mean yeah if I if I
+use all of my code I can always have a
+hama or crock
+alternative stuff. Um but okay no yeah
+we were talking about gro and on the
+benchmark. Yeah, it's uh so Kimmy 3
+>> Kim Yeah, Kimmy 3 and just after Yeah,
+after after
+>> I would just say even if you don't want
+it, just join the wait list
+>> because you never know when they are
+scaling up and if they do it by the time
+that they make an even better model,
+>> then you wish you had joined it in time.
+>> Yeah, 100%.
+Like that's nuts.
+That's nuts. Uh new Oh, yeah. like
+Nvidia is starting to do some uh models
+too.
+>> Well, you have to start somewhere.
+>> Yeah. Uh T and Muse. Yeah. Also like the
+same day Mark uh Zuk like dropped the uh
+Facebook model. Did you try it?
+>> Nope.
+>> Yeah. Me neither.
+>> Do people even want to try a Facebook
+model? Because Facebook is known for
+selling all your data.
+>> Yeah. Like
+>> so why give them even more on AI?
+>> Yeah, exactly. Right.
+And and again like entropic and codex
+are in my workflow now. So I don't have
+a point. I'm not even using gro and I
+have installed it and I don't even talk
+to it. So
+>> well I think that's the thing right once
+a setup in your entire infrastructure
+>> and you're making money so you don't
+care that it costs like a few hundred
+dollars then they are not leaving unless
+they have a big fallback and other
+models are much better.
+>> Yeah. I mean maybe there is a play for
+open source model I don't know but okay
+so yeah about the the cost per task
+that's nuts
+>> that's crazy
+uh why is that so expens like it's twice
+5.6
+to run cloud opus max
+than 5.6 six max like what?
+>> Yeah, but this is just the AI tokens
+compared.
+>> Yeah, true.
+>> And you get like a big
+>> multiplier in your subscription. So
+eventually for you it's cheaper.
+>> Yeah. And also like the cost waited
+average cost USD intelligence task. So
+lower is better. Yeah. Thank you. Um no
+that's the cost of the task. So it's not
+the token used anyway. It's just like
+how much it cost to do one task, right?
+>> Oh,
+>> so it's all relative. It's not the cost
+per token.
+>> Yeah. I thought it was for the token
+usage for the same task and then
+comparing it on different models.
+>> Yeah, but that wait that doesn't make
+sense because like deepse why not
+everyone is using deepseek if we have a
+task and it cost two bucks with opus
+everyone should use deepse.
+>> Yeah. Don't you think that for sure
+companies in the US hear the Deep Seek
+is from China and they just don't trust
+it?
+>> There is a huge discussion right now on
+Twitter about that because um like did
+you have you seen like the attack from
+the next model from OpenAI that hacked
+again face?
+>> Yeah. And then again faced uh again face
+use a Chinese model like open source
+because they were not able to use
+[clears throat] fable or 5.6 because it
+was too much of a guard rail stuff.
+>> Oh I missed that one. I just I only read
+that OpenAI had a model going rogue and
+hacking hugging face. Yes.
+>> And they didn't even notice it in the
+first few days.
+>> Yes. And
+>> I didn't check anything further.
+>> And the the rest of the story, the last
+20% of the story,
+>> I missed it.
+>> They tried to use Fable
+>> and then they Fable told them, "Oh, you
+know, it's a security. Go back to 4.8."
+>> Mhm.
+>> And then 4.8 was not able to attack them
+to defend them properly.
+>> So they installed Kimmy uh 3 or 2.5
+maybe [clears throat] whatever one of
+the Kim instance and then they were able
+to defend themselves against the attack.
+Oh, that's cool.
+>> They use a Chinese model to defend
+themsel against a US model.
+>> Yeah, that was supposed to help them.
+>> Yeah, like fun.
+>> Yeah, I think they should just tell
+OpenAI we want a full year of free
+tokens for this [ __ ]
+>> Yeah, exactly.
+I mean, yeah, click one to uh three more
+times reset button, please. Yeah, but
+eventually this shows that you need some
+good devs who understand
+>> how to use models and everything and
+to defend your company because
+>> Oh, it's going to be fun.
+>> Yeah, this is going wild.
+>> Do you still have a clear vision of the
+architecture of all of the project that
+you vibe coded in the next in the last
+12 months?
+>> Um, yes and no.
+>> Yeah. Would you be able to stop using AI
+and keep working?
+>> Yes. Well, except for two projects
+because I did two test projects uh where
+I had them build a website with SAS
+product
+>> and I said everything needs to be AI
+built. I don't want to do anything.
+>> Um and every time that I have tokens
+left in my account,
+>> I just burn them on those projects. But
+they are not like my main focus. But on
+everything I do for a customer,
+>> I still do all the writing down of the
+the the projects. At least I discuss
+them with the AI. I read everything and
+I know how the infrastructure works.
+>> Right. Okay. [clears throat] Yeah. More
+sense. Yeah. Like uh you your customers
+are doing like half a million a day. So
+>> yeah, they need to be secure.
+>> Yeah. And uh but where when do you think
+you will stop looking at the code?
+Um
+I don't think I will do it in the next
+two years.
+>> Yeah,
+>> of course you you keep trusting your AI
+more and more and more because it finds
+so much stuff that
+>> to be honest some some projects that we
+have been working on for for years and
+have been working perfectly.
+>> It found an issue like created five
+years ago and it never went wrong. It
+never had something. But um I've been
+sharing it in in some groups and other
+people had the same issue as well.
+>> So but it's like the the finding the
+leak that has been in Linux for 16
+years.
+>> Yeah. Know exactly. It's the same thing.
+>> Yeah. It's they will always find
+something. So you trust on it to fix it,
+but you still want to know what it does.
+>> Yeah. And the problem is like when you
+catch the AI doing something wrong, it
+it's really really wrong. And uh so then
+it it makes me like question everything
+that you have done and just like pushed
+just like that.
+>> Yeah.
+>> And you don't know what the [ __ ] it
+introduced.
+>> Yeah. And then the question is what
+other AI can you ask to check the entire
+project?
+>> Yeah. Yeah. and and there is like some
+um articles on X that turn like talk
+about like yeah the software factory uh
+don't really doesn't really work right
+now because again like spaghetti code
+and stuff and when you have a bug in
+production at 3M
+uh [clears throat] you have no idea how
+to debug it uh without a cloud
+subscription or something like that. So
+maybe at scale that going to be a
+problem.
+>> Yeah. Yeah. Yeah. And then bigger
+companies for sure. [clears throat]
+>> Yeah. But and also Okay. Yeah. Also like
+um I saw levels
+uh IO saying that the revenue of the is
+in the aer um project
+>> are all going down
+>> because of AI. because of AI and because
+like the value
+um
+the value of his software is not high
+enough to uh
+um to not be vioded and also his
+audience are like tech tech bros so they
+will vibe code everything.
+>> Yeah.
+>> Like
+>> he is giving them free information on
+how to do it.
+>> Exactly. But plus like everyone is also
+uh a tech guys on on X, right? like his
+audience is are techies so that everyone
+has a club subscription.
+>> Yeah.
+>> Um
+could I talk about the good and bad? I
+noticed our signup conversion are pretty
+weak this month. Uh everything is
+downstream of us getting less traffic to
+the site.
+>> Mhm.
+>> Also like yeah like people are not going
+to the website anymore. They just like
+uh speak with chip.
+Uh I find myself using code less and
+less. Yeah true. What's the answer? No
+short fix needs to explore other
+channel, YouTube newsletter, etc. Um,
+and levels. Um, I'm seeing a trend here.
+Declining revenue and traffic with indie
+hackers on my own project too. Maybe big
+VC project too, but I will not know
+because they don't share revenue. To me,
+it's clear like big AI is canabilizing
+everything that used to be apps. Not
+bad, by the way. Just time to changing
+and to adapt. Yeah.
+>> Um, yeah, that's
+>> that's big drop.
+>> But that's the guy from uh Tailwind.
+>> Mhm.
+>> Nobody is going to the website because
+now the agent knows how to use the
+framework.
+>> Yeah.
+>> So it doesn't have visit at all. Uh page
+view for tailwind blah blah.
+>> Nobody needs to read the documentation
+anymore.
+>> Exactly. No, no. Exactly. like you just
+check visually what's the components you
+want in your codebase and then you just
+drop it, right?
+[clears throat] Um take take a close but
+you got some um
+other counter examples.
+Um okay
+creation project just going to keep
+going. This guy is tweeting a lot.
+>> Yeah, but does he also tweet about the
+functionality in his project?
+Not really, but I think like look like
+his bio,
+he used his bio as a [ __ ] uh [snorts]
+driver
+>> because honestly if I can just have uh
+Cloud scrape his entire uh ex account
+>> also the the products and the mentions
+of the products I can just make a full
+documentation of everything he has, how
+he's doing it, what he's coding about
+it, what he's telling about it. that
+makes it so easy to just copy as
+products.
+>> Yeah. No, exactly. I mean if like we are
+in the industrialization phase of apps,
+right? But um so okay uh your
+application is developer. Okay. So this
+is common reply but I need to see my
+girlfriend. Yeah I uh I see my
+girlfriend who also stop using mo most
+SAS and just ask code and sh whatever
+she wants.
+>> I know Evan makes her own apps to solve
+problem. uh highly personalized and
+firmware interface we predicted AI would
+generate on the fly to solve whatever
+problem nor me have it's happening and
+it's here
+>> yeah and it's the same thing right
+people are looking for MCPS to connect
+everything but you don't need an MCP you
+can just give cloud your APIs and it
+just can build everything you want
+>> and you don't even know it's MCP you
+just uh ask CL to figure it out
+>> uh [clears throat] so that was the u
+answer like is your application is
+developer in the interface ing you might
+have a hard time competing with
+self-made solution. If your c customers
+are consumer and SMBs, most people don't
+like uh tinkering or making their own
+solution.
+>> Yeah. Well, now you will see who are the
+people that are there creative. They
+will just go with flow and use the new
+and latest AIs to keep on building
+something that is used and not keep
+>> doing the indie stuff.
+Yeah, it's a new era, man. Like, uh,
+internet is changing for real. Uh,
+there's a tweet. [ __ ] I should have
+Maybe I did bookmark it. T.
+Uh, nope.
+Nope. Nope. I didn't. [ __ ]
+Okay. Too bad. But um yeah, there was
+like one guy saying uh we are still
+serving
+um our customers or SMBs and they don't
+have like the like for example um
+[clears throat]
+uh yeah airy salon or stylist or nail
+lady will not build her own clothes
+website app stuff. Yeah, I think people
+will
+>> because I I have some marketing agencies
+who are now instead of hiring uh
+designers
+>> just using cloud.ai/design.
+>> Yeah, but they're already marketing uh
+companies.
+>> Yeah, but they have no knowledge of
+design or whatever and it does
+everything for them.
+>> Yeah, but I'm talking about like the
+nail lady that uh doing nails.
+>> Ah, yeah. Even if you just ask cloud and
+ask them
+>> people are building their own websites
+how do I do it and cloud says hey here
+tell me what you want go to design and
+you will get a website
+and they can even just ask them how to
+deploy it
+>> that will be automated and imagine cloud
+selling AWS uh hosting that will be an
+insane product with big margins
+>> there is site now on chat GPT that you
+can host a website on chat directly.
+>> Yeah, that can kill the entire hosting
+industry.
+>> But like bro, you say the mode deploy
+like a nails lady doesn't ever use that
+word, you know, it's
+>> but if she asks how do I visit it and
+how do my my customers see the website
+then cloud knows she means deploy.
+>> Yeah. Yeah. Yeah. How do I get my
+customers seeing this website? Yeah.
+>> Yeah. That's enough.
+>> Yeah.
+>> And then says, "Oh, hey, it needs to be
+online. Normally, you need a hosting
+party, but please click here. Pay me 10
+bucks. It will be live."
+>> Yeah. Yeah. Give me the API key stuff or
+whatever.
+>> Yeah.
+>> Um Okay. Maybe last section. I think we
+uh What about um
+>> just just back on the last part? Didn't
+uh cloud because I'm not using the cloud
+desktop app. didn't have the browser
+included.
+>> Yes.
+>> Then it's fixed. It will go to a hosting
+website for you and tell you pay here.
+>> Yeah.
+>> And it will just log in, get the FTP in
+your account or the API or whatever and
+it will connect, it will upload and
+that's it.
+>> There is even the iOS simulator now
+inside the app.
+So, how cool would it be if we just
+automate a hosting party and the only
+thing we do is try to get into CHP and
+tell CHP that if it has a customer pay
+here, we will just show instantly and
+share the FTP. So, that chat GPT sells
+customers to us.
+>> Then we need to be good at the GEO. So,
+we are the high reference stuff. So then
+we need gen feed to spam UGC videos
+about oh yeah I'm most
+>> solved.
+>> Yeah
+>> next product is incoming.
+>> Okay let's go. [laughter]
+>> But I mean few um you know like the the
+content creator guy he built his own um
+I don't know infrastructure but like
+hosting leg bed product stuff. Don't
+know exactly why I did that but uh
+because it doesn't have servers so
+behind it is that like what Amazon
+>> I think so but still so many people on
+ex post they built something and
+eventually it was a prompt to cloud and
+they don't know how it works but it
+works and they say hey look what I've
+built
+>> look look M look what Matt Schumer built
+uh
+[clears throat]
+one prompt Cloud five, Opus 5.
+>> Yeah, that's insane. And he also gave
+the prompt, right?
+>> Yes, he get he get the he gave the Yes.
+Yeah.
+>> So,
+uh, first person shooter building a
+brother with 3GS and WebGL2.
+There's no art assets.
+Uh texture blah blah blah [snorts]
+tooling performances
+before optimization after. Yeah. Okay.
+Honest assessment. The goal was to
+maturity. It does not. Yeah. No [ __ ] Uh
+okay. Felt short. Uh ends block blocks
+blocky fingers. Material surfaces read
+as procedural noise. Characters enemy
+reads as maner at distance. indirect
+light blah blah blah. But all of that
+you can you can fix it with like some um
+3D generation from Codex or CL or
+whatever.
+>> Yeah, this was a one shot and then it's
+optimizing.
+>> Yeah. Uh where is the where is the
+prompt prompt?
+I want you to build a first person
+shooter. That's three lines.
+>> Yeah.
+>> [ __ ] nuts.
+>> But then eventually Cloud decided
+everything by himself.
+>> Yeah. So does everybody who puts in this
+this prompt get the same result?
+>> Uh yeah, I saw some people uh
+having [clears throat]
+similar output
+uh zero shot uh GPT. Yeah. Awesome.
+Um I'm pretty sure it's on Mumumer.
+Uh okay.
+Okay.
+Where is it? [ __ ] Yes,
+much rumor was right. I don't game. It's
+I'm almost a boomer and I already
+learned to cut three years ago with AI.
+My son birthday one prom changed my view
+on AI gaming completely. My son has been
+a gamer his entire life. He was
+everything I kept asking. Whatever. What
+do you buy when I saw my post?
+>> One prompt a 20our run on ultra. Jesus
+[ __ ] Christ.
+>> That's expensive. At the end of it, my
+son had a playable built specifically
+for him running on a 85 inch TV. Yep.
+>> Yeah. And then seeing like gaming
+studios working for years on it. It's
+Lego style.
+>> Yeah. Lego. That's That's cool.
+Downtown. Yeah,
+>> bro. That's That's sick. A 20. Number
+20.
+>> Yeah.
+>> A 20. Yeah. Fair question. I ask us to
+pull the receipt. The run is 24 million
+token across 85 sub aent and 8,000 tool
+calls.
+Wait,
+>> he put it online.
+>> Yeah, he published it.
+>> Yes,
+>> he deployed. [laughter]
+>> Exactly.
+like the question, have other people
+play my game?
+>> Yeah. Oh, wait, wait. Okay, I'm going
+I'm going to close it because it killed
+my computer. It's probably [laughter]
+>> It's heavy. It downloads everything. And
+>> yeah. Uh maybe I should not click some
+links on X.
+>> There is still a difference between
+building a a shooter game that one
+person plays and building a shooter game
+that like 50 million people at the same
+time play.
+>> No. No. Exactly. Like it's like, "Oh
+yeah, I want to rebuild Twitch
+>> for live streaming." Yeah, you have no
+idea how video network works, right? So
+enjoy.
+>> But yeah, looks like my own version is
+loading on true 3GS, bro.
+>> It looks good.
+>> Yeah.
+Like one shot like remember what we
+produced with one shot stuff like the in
+the arena? Like that's that's 10 times
+better than the [ __ ] arena we had.
+>> It was only a few weeks ago.
+>> Yeah.
+still like mental. Yeah, also this Oh,
+no, that's not the game I sent you, but
+like the space stuff.
+>> Clothe punk. Jesus.
+>> Wow.
+>> Yeah, also the [snorts] entire gaming
+industry is changing, not just
+development and coding. CL
+to make Call of Duty using Mumer Pro
+single shot 120 at 4K. What the heck?
+That's mental.
+Mhm.
+And probably it has cloud scraping all
+this data of people discussing what they
+want better and they just load it in for
+the next next version.
+>> Oh yeah. Yeah. Because Yeah. And then
+Entropic has the data and
+>> yeah and everybody is publishing live
+what they like and what they don't like.
+So the only thing they need is scrape
+it, load it in, improve it and push it
+to the next Opus version and people will
+be blown away. Oh, it's so much better
+this time. Well, yeah, you told it what
+should be better.
+>> Yeah, exactly. Plus like yeah, everyone
+like can push it like open source on
+GitHub blah blah blah. You get the code
+and you can get the get history. See,
+yeah, you can even avoid like the G
+history story and have the best output
+at the end. Like,
+>> yeah,
+>> it's not like the world is wide, man.
+Like, it's getting even better.
+>> Yes.
+>> Every 10 days at the time.
+>> So, what are you going to do next?
+>> I'm trying to finish the projects, the
+25 project I'm working on right now.
+>> Yeah.
+>> Uh because Yeah. like uh we can we can
+start a new prompt and like one prompt
+something but at the end of the day you
+need to transform those tokens into
+money right?
+>> Yes. So yeah, but again after this like
+10 days experience stuff like those
+um autonomous company like if it's sync
+as an it's it's like sort out and plain
+out as an autonomous company I think
+there is like [ __ ] ton of stuff that
+could be done and even like with the
+speed of AI you if you don't talk to AI
+bros
+>> Mhm. There is a world when you can have
+a sustainable business at least for a
+few months slash years and uh it's
+enough fully output AI stuff.
+>> Yeah.
+>> Because there is a new step with like
+those uh Opus 5 fable five 5.6
+soul
+>> threshold. Yeah.
+>> Yeah.
+>> What what do you think? What's your
+take? [snorts]
+>> I think I would say let's go.
+>> Yeah. Let's go.
+>> Just just keep the pace up. Keep going.
+Keep coding, see what works, drop the
+other parts, and don't try to do too
+much yourself because the next version
+will even be better.
+>> Yeah, I that's true. It's hard to do
+something that's going to survive the
+next model, too, right?
+>> Yeah.
+Okay, man. I think we could wrap it up
+here. Yeah.
+>> Yes, we can make some amazing shorts.
+>> Yes, that's I think that's the goal. So,
+yeah, subscribe to the channel because
+maybe we're not going to do any more
+videos anymore. It's going to be short
+and it's going to be live stream only.
+>> Yes. And let us know what you think.
+>> Yes. Thank you so much. Uh enjoy the
+rest of your weeks. Thank you, Mitchell.
+And uh see you in the chat. Yes.

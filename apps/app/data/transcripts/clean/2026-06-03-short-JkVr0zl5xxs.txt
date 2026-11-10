@@ -1,0 +1,9 @@
+They have actually a working game ready.
+>> Jesus.
+>> Oh, that was a bug. He walked right
+through the pillar.
+>> Oh yeah, there is no collision yet. But
+maybe we can fix that. Car kills
+enemies.
+>> Yeah, it it counts it all.
+>> That's crazy. That's kind of cool.

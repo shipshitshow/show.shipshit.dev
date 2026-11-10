@@ -32,7 +32,8 @@ interface InventoryItem {
   thumbnail?: string;
   title: string;
   transcriptStatus?: string;
-  type?: VideoType;
+  /** A premiere is a pre-recorded video, so it is written up as one. */
+  type?: VideoType | 'premiere';
   url?: string;
   viewCount?: number;
 }
@@ -848,7 +849,8 @@ function buildMarkdown(args: CliArgs): { markdown: string; outPath: string } {
   const cues = transcriptPath?.endsWith('.vtt')
     ? parseVttCues(rawTranscript)
     : [];
-  const mode = args.mode || item?.type || 'video';
+  const mode: VideoType =
+    args.mode || (item?.type === 'premiere' ? 'video' : item?.type) || 'video';
   const title = args.title || item?.title || topicTitle(topicText, topicPath);
   const descriptionChapters = item?.description
     ? extractDescriptionChapters(item.description)

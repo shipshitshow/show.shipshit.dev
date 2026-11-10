@@ -25,7 +25,19 @@
 
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
+import { pickCaptionFile } from './import-transcripts.ts';
+import { classifyUpload, type InventoryType } from './lib/inventory-type.ts';
+import {
+  CLEAN_DIR,
+  cleanFileName,
+  rawDir,
+  rawFileName,
+  readIndex,
+  vttToClean,
+  writeIndex,
+} from './lib/transcripts.ts';
 import { getAccessToken, verifyChannel } from './youtube-upload.ts';
 
 const REPO_ROOT = path.resolve(import.meta.dir, '..');
@@ -33,8 +45,6 @@ const INVENTORY_PATH = path.join(
   REPO_ROOT,
   'apps/app/data/youtube/channel-inventory.json',
 );
-const TRANSCRIPTS_DIR = path.join(REPO_ROOT, 'apps/app/data/transcripts');
-const CLEAN_DIR = path.join(TRANSCRIPTS_DIR, 'clean');
 const API = 'https://www.googleapis.com/youtube/v3';
 
 const args = new Set(process.argv.slice(2));
@@ -72,7 +82,7 @@ interface InventoryItem {
   thumbnail: string;
   title: string;
   transcriptStatus: 'clean' | 'raw' | 'missing';
-  type: 'livestream' | 'video';
+  type: InventoryType;
   url: string;
   viewCount: number;
 }
@@ -86,6 +96,8 @@ interface Inventory {
     cleanTranscripts: number;
     livestreams: number;
     missingTranscripts: Array<{ id: string; title: string; url: string }>;
+    premieres: number;
+    shorts: number;
     total: number;
     videos: number;
   };
@@ -144,17 +156,6 @@ function formatDurationString(totalSeconds: number): string {
   const s = totalSeconds % 60;
   const pad = (n: number) => String(n).padStart(2, '0');
   return h > 0 ? `${h}:${pad(m)}:${pad(s)}` : `${m}:${pad(s)}`;
-}
-
-/** Match the existing clean/ slug convention: date-type-slug. */
-function cleanSlug(item: InventoryItem): string {
-  const date = item.publishedAt.slice(0, 10);
-  const title = item.title
-    .replace(/^\[[^\]]+\]\s*/, '') // strip a leading [LIVE]-style tag
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-  return `${date}-${item.type}-${title}`;
 }
 
 interface PlaylistResponse {
@@ -228,7 +229,6 @@ async function fetchAllVideos(
     );
     for (const v of res.items) {
       const seconds = parseIsoDuration(v.contentDetails.duration);
-      const isLive = Boolean(v.liveStreamingDetails);
       items.push({
         actualEndTime: v.liveStreamingDetails?.actualEndTime ?? null,
         actualStartTime: v.liveStreamingDetails?.actualStartTime ?? null,
@@ -250,7 +250,12 @@ async function fetchAllVideos(
         thumbnail: `https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`,
         title: v.snippet.title,
         transcriptStatus: 'missing',
-        type: isLive ? 'livestream' : 'video',
+        type: classifyUpload({
+          actualStartTime: v.liveStreamingDetails?.actualStartTime ?? null,
+          durationSeconds: seconds,
+          hasLiveDetails: Boolean(v.liveStreamingDetails),
+          publishedAt: v.snippet.publishedAt,
+        }),
         url: `https://www.youtube.com/watch?v=${v.id}`,
         viewCount: Number(v.statistics?.viewCount ?? 0),
       });
@@ -295,115 +300,90 @@ function mergeItems(
   return { added, merged };
 }
 
-/** Strip inline <timestamp><c> tags and de-duplicate the rolling caption window. */
-function vttToClean(vtt: string): string {
-  const lines: string[] = [];
-  let last = '';
-  for (const block of vtt.split(/\r?\n\r?\n/)) {
-    const rows = block.split(/\r?\n/);
-    for (const row of rows) {
-      if (
-        !row ||
-        row.startsWith('WEBVTT') ||
-        row.startsWith('Kind:') ||
-        row.startsWith('Language:') ||
-        row.includes('-->')
-      ) {
-        continue;
-      }
-      const text = row.replace(/<[^>]+>/g, '').trim();
-      if (text && text !== last) {
-        lines.push(text);
-        last = text;
-      }
-    }
-  }
-  return `${lines.join('\n')}\n`;
-}
-
 /**
- * Download the video's original-language auto captions. The translated "en"
- * track is rate-limited (HTTP 429) far more aggressively than "en-orig", so
- * ask for the original first and only fall back to "en" when it is absent.
- * The result is normalised to the repo's <id>-<title>.en.vtt naming.
+ * Download the video's original-language captions (the `<lang>-orig` track)
+ * and save them id-keyed, like `transcripts:import`. The translated track is
+ * never used as a fallback: it reads like a translation and has no speaker
+ * markers. Returns the saved language, or null when no original exists.
  */
-function downloadCaptions(item: InventoryItem): void {
-  let lastError: unknown;
-  for (const lang of ['en-orig', 'en']) {
-    try {
-      execFileSync(
-        'yt-dlp',
-        [
-          '--skip-download',
-          '--write-auto-subs',
-          '--sub-lang',
-          lang,
-          '--sub-format',
-          'vtt',
-          '--convert-subs',
-          'vtt',
-          '--sleep-subtitles',
-          '3',
-          '-o',
-          path.join(TRANSCRIPTS_DIR, '%(id)s-%(title)s.%(ext)s'),
-          item.url,
-        ],
-        { stdio: ['ignore', 'ignore', 'inherit'] },
-      );
-    } catch (error) {
-      lastError = error;
-      continue;
-    }
-    const orig = fs
-      .readdirSync(TRANSCRIPTS_DIR)
-      .find((f) => f.startsWith(`${item.id}-`) && f.endsWith('.en-orig.vtt'));
-    if (orig) {
-      fs.renameSync(
-        path.join(TRANSCRIPTS_DIR, orig),
-        path.join(TRANSCRIPTS_DIR, orig.replace(/\.en-orig\.vtt$/, '.en.vtt')),
-      );
-      return;
-    }
-    if (lang === 'en') return;
+function downloadCaptions(item: InventoryItem): string | null {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'sss-captions-'));
+  try {
+    execFileSync(
+      'yt-dlp',
+      [
+        '--skip-download',
+        '--write-subs',
+        '--write-auto-subs',
+        '--sub-langs',
+        '.*-orig',
+        '--sub-format',
+        'vtt',
+        '--sleep-subtitles',
+        '3',
+        '-o',
+        path.join(dir, '%(id)s.%(ext)s'),
+        item.url,
+      ],
+      { stdio: ['ignore', 'ignore', 'inherit'] },
+    );
+    const caption = pickCaptionFile(fs.readdirSync(dir), item.id);
+    if (!caption) return null;
+    const vtt = fs.readFileSync(path.join(dir, caption.name), 'utf8');
+    const type =
+      item.type === 'livestream'
+        ? 'livestream'
+        : item.type === 'short'
+          ? 'short'
+          : 'video';
+    const date = (item.actualStartTime ?? item.publishedAt).slice(0, 10);
+    const clean = vttToClean(vtt);
+    if (!clean) return null;
+    fs.mkdirSync(rawDir(type), { recursive: true });
+    fs.mkdirSync(CLEAN_DIR, { recursive: true });
+    const raw = path.join(rawDir(type), rawFileName(item.id, caption.lang));
+    fs.writeFileSync(raw, vtt);
+    fs.writeFileSync(
+      path.join(CLEAN_DIR, cleanFileName(date, type, item.id)),
+      clean,
+    );
+    const index = readIndex();
+    index.videos[item.id] = {
+      date,
+      lang: caption.lang,
+      title: item.title,
+      type,
+    };
+    writeIndex(index);
+    item.rawTranscriptPath = path.relative(REPO_ROOT, raw);
+    item.cleanTranscriptPath = path.relative(
+      REPO_ROOT,
+      path.join(CLEAN_DIR, cleanFileName(date, type, item.id)),
+    );
+    return caption.lang;
+  } finally {
+    fs.rmSync(dir, { force: true, recursive: true });
   }
-  throw lastError ?? new Error('no captions');
 }
 
 function backfillTranscripts(items: InventoryItem[]): number {
   let updated = 0;
   const targets = items.filter((it) => it.transcriptStatus === 'missing');
   for (const item of targets) {
+    let lang: string | null;
     try {
-      downloadCaptions(item);
+      lang = downloadCaptions(item);
     } catch {
       console.warn(`  yt-dlp failed for ${item.id} — leaving as missing`);
       continue;
     }
-
-    const vtt = fs
-      .readdirSync(TRANSCRIPTS_DIR)
-      .find((f) => f.startsWith(`${item.id}-`) && f.endsWith('.en.vtt'));
-    if (!vtt) {
-      console.warn(`  no captions produced for ${item.id}`);
+    if (!lang) {
+      console.warn(`  no original-language captions for ${item.id}`);
       continue;
     }
-
-    const rawRel = path.relative(REPO_ROOT, path.join(TRANSCRIPTS_DIR, vtt));
-    const cleanRel = path.join(
-      'apps/app/data/transcripts/clean',
-      `${cleanSlug(item)}.txt`,
-    );
-    fs.mkdirSync(CLEAN_DIR, { recursive: true });
-    fs.writeFileSync(
-      path.join(REPO_ROOT, cleanRel),
-      vttToClean(fs.readFileSync(path.join(TRANSCRIPTS_DIR, vtt), 'utf8')),
-      'utf8',
-    );
-    item.rawTranscriptPath = rawRel;
-    item.cleanTranscriptPath = cleanRel;
     item.transcriptStatus = 'clean';
     updated += 1;
-    console.log(`  transcript backfilled: ${item.id}`);
+    console.log(`  transcript backfilled: ${item.id} (${lang})`);
   }
   return updated;
 }
@@ -416,6 +396,8 @@ function buildSummary(items: InventoryItem[]): Inventory['summary'] {
     missingTranscripts: items
       .filter((i) => i.transcriptStatus === 'missing')
       .map((i) => ({ id: i.id, title: i.title, url: i.url })),
+    premieres: items.filter((i) => i.type === 'premiere').length,
+    shorts: items.filter((i) => i.type === 'short').length,
     total: items.length,
     videos: items.filter((i) => i.type === 'video').length,
   };
@@ -485,7 +467,7 @@ async function main() {
     );
     console.log(`Wrote ${INVENTORY_PATH}`);
     console.log(
-      `Summary: total=${next.summary.total} livestreams=${next.summary.livestreams} videos=${next.summary.videos} cleanTranscripts=${next.summary.cleanTranscripts} missing=${next.summary.missingTranscripts.length}`,
+      `Summary: total=${next.summary.total} livestreams=${next.summary.livestreams} premieres=${next.summary.premieres} shorts=${next.summary.shorts} videos=${next.summary.videos} cleanTranscripts=${next.summary.cleanTranscripts} missing=${next.summary.missingTranscripts.length}`,
     );
   } else {
     console.log(
@@ -494,7 +476,9 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  console.error(err instanceof Error ? err.message : err);
-  process.exit(1);
-});
+if (import.meta.main) {
+  main().catch((err) => {
+    console.error(err instanceof Error ? err.message : err);
+    process.exit(1);
+  });
+}

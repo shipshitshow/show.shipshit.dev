@@ -1,0 +1,8 @@
+Did you ever leak your production key?
+Okay, no, that was me. Did you ever leak
+your source code in an NPM package, ban
+open source project, and have your
+product completely unusable for days?
+Maybe not you, but Anthropic did that in
+the last few days, and we need to talk
+about it.
