@@ -1,7 +1,7 @@
 ---
 title: "Is Video Editing Dead?"
 slug: "vibe-editing"
-source: "ForwardEditor posts (X, read 9 Nov 2026), Anthropic Claude Apps and Platform release notes, OpenAI API changelog, xAI docs release notes, ArtCraft apps page, Higgsfield Miracle and Vibe Motion pages (all opened 9 Nov 2026)"
+source: "ForwardEditor posts (X, read 9 Nov 2026), Nevo David (@wickedguro) posts (X, read 10 Nov 2026), Anthropic Claude Apps and Platform release notes, OpenAI API changelog, Higgsfield Miracle and Vibe Motion pages (opened 9 Nov 2026)"
 status: "in_progress"
 date: "2026-11-10"
 announcement_tweet: null
@@ -12,20 +12,19 @@ thumbnail_prompt: null
 
 - **Ship Sh*t Show — 10 November 2026.** Join us: https://youtu.be/1bAWYklLcVo
 - **Founder question:** if AI can now do the cutting, what is left of editing for a founder who ships content every week, and what should we change in our own workflow?
-- **Spine:** open on a working editor's own claim, review the six ForwardEditor posts, then use our own channel thumbnails as the case we can speak about firsthand. The rest of the hour is the Grok Bot question, what releases are coming, and one open-source tool we have not covered.
+- **Spine:** open on a working editor's own claim, review the six ForwardEditor posts, then the $10k AI video Nevo David says he paid for, and finally our own channel thumbnails as the case we can speak about firsthand.
 - **Format:** source-led discussion with the posts on screen. About 55–60 minutes, room for chat. No invented results: we show what we actually did, and what other people claim stays attributed to them.
 - **Evidence rule:** Confirmed means a primary page (vendor docs, the post itself) supports the exact claim. Reported means attributed third-party reporting. Unverified means we could not check it. A view count is one account's reach, not proof of a trend.
 - **Disclosure:** Genfeed is Vincent's product and made the new channel thumbnails. Say so when it comes up, so it never sounds like an outside endorsement.
-- **Not checked:** the videos inside the posts (only the text and quoted posts were read). Watch the 1.4M-view video and the Higgsfield clip before the show. Vincent's Grok Bot usage examples are his to bring; we have not seen them.
+- **Not checked:** the videos inside the posts (only the text and quoted posts were read). Watch the 1.4M-view video, the Higgsfield clip and Nevo David's 2:32 video before the show.
 
 ### Open these first
 
 1. [ForwardEditor on X](https://x.com/ForwardEditor) — profile, bio and the six posts below
 2. [Higgsfield Miracle page](https://higgsfield.ai/miracle)
-3. [Claude Apps release notes](https://support.claude.com/en/articles/12138966-release-notes) and [Claude Platform release notes](https://platform.claude.com/docs/en/release-notes/overview)
-4. [OpenAI API changelog](https://developers.openai.com/api/docs/changelog)
-5. [xAI release notes](https://docs.x.ai/docs/release-notes)
-6. [ArtCraft Craft Apps](https://getartcraft.com/apps)
+3. [Nevo David's AI video](https://x.com/wickedguro/status/2119762008878850555) and [his cost post](https://x.com/wickedguro/status/2119413408982298971)
+4. [Claude Apps release notes](https://support.claude.com/en/articles/12138966-release-notes) and [Claude Platform release notes](https://platform.claude.com/docs/en/release-notes/overview)
+5. [OpenAI API changelog](https://developers.openai.com/api/docs/changelog)
 
 ## Cold Open — "Is editing the old way gone forever?"
 
@@ -46,7 +45,7 @@ The six posts, newest first (counts as read 9 Nov 2026, via the public fxtwitter
 1. [8 Nov, 3.4k views](https://x.com/ForwardEditor/status/2119424640267190442) — quotes his own 2 Jul video “How I use Codex to build what I want (for beginners)” (55.6k views): “This video is what got my X account any attention at all.” **Confirmed:** he came in through vibe coding.
 2. [7 Nov, 2.8k views](https://x.com/ForwardEditor/status/2119154675434004842) — “How I started editing”, vertical video, no text. Watch it first.
 3. [7 Nov, 4.5k views](https://x.com/ForwardEditor/status/2119110297114034340) — quote-post of a Dunder Mifflin “Blue Tsunami” clip about shows “impossible to come back the way we remember”. Off-topic for editing. Skip it or use it for one line on AI-resurrected shows.
-4. [7 Nov, 41k views, 658 likes](https://x.com/ForwardEditor/status/2119050987931336831) — “I have edited for 20 years. Opus is a better editor than me.” **Confirmed:** that is the whole text. It does not say which Opus, which tool or what kind of editing. The current Anthropic model is Claude Opus 5.5 (see Segment 5); do not assume that is the one he means.
+4. [7 Nov, 41k views, 658 likes](https://x.com/ForwardEditor/status/2119050987931336831) — “I have edited for 20 years. Opus is a better editor than me.” **Confirmed:** that is the whole text. It does not say which Opus, which tool or what kind of editing. Anthropic's release notes (read 9 Nov) list Claude Opus 5.5 as the current Opus; do not assume that is the one he means.
 5. [6 Nov, 385k views, 3.4k likes](https://x.com/ForwardEditor/status/2118733714175726063) — reacts to Higgsfield Miracle: “this is not AI slop, it's literally just letting you edit layer by layer with human taste but with super human control.”
 6. [28 Oct, 1.4M views](https://x.com/ForwardEditor/status/2115412009806414253) — the cold-open post, a 4K demo video with no further text.
 
@@ -97,7 +96,7 @@ This segment follows the description Vincent posted for the stream. Both claims 
 - Ask the chat: what is one thing you would not let AI cut?
 - Budget: 8 minutes. Exit: from the claims to our own case.
 
-### Planned Short S4 — Can a beginner edit like a pro with AI?
+### Planned Short S2 — Can a beginner edit like a pro with AI?
 
 - Working title: named subject plus one clear tension.
 - Point: the tools lower the cost of cutting, but does the judgment come with them?
@@ -106,7 +105,26 @@ This segment follows the description Vincent posted for the stream. Both claims 
 - Payoff: what a beginner still has to learn.
 - Capture: Segment 2; after recording, verify boundaries against the video/VTT.
 
-## Segment 3 — Our own case: we redid the channel's thumbnails with AI
+## Segment 3 — The $10k edit: what does a high-end AI video cost?
+
+### Evidence to open
+
+- **Confirmed (the post):** [Nevo David (@wickedguro), 9 Nov](https://x.com/wickedguro/status/2119762008878850555) — 613k views, 1.0k likes, 136 replies (counts read 10 Nov). The attached video runs 2:32. The post is a satirical “The internet is dead” piece about bots making all the content. We read the text and the video length; we have not watched the video.
+- **Confirmed (the post, self-reported):** [Nevo David, 8 Nov](https://x.com/wickedguro/status/2119413408982298971) — “I paid $10k for a creator to make me a full AI video (2 minutes), something insane, releasing tomorrow!” 14.9k views, 172 likes, 35 replies. It is his own number. There is no invoice and no breakdown of what the money bought.
+- **Unverified:** that the 8 Nov cost post is about the 9 Nov video. The timing fits (“releasing tomorrow”, 2 minutes versus 2:32), but neither post says so. Say “he says he paid $10k for a 2-minute AI video the day before this one dropped”, not “this video cost $10k”.
+- **Not checked:** the video itself. Watch it before the show and decide what to say about the craft.
+- **Vincent's framing, not a source claim:** an editor or creator can earn a lot when the output is excellent. Present it as our view, not as something the posts show.
+
+### Conversation cues
+
+- What does $10k buy for two minutes: the editing, the taste, the tools, or the creator's name?
+- Is the money in the cutting or in the result? If AI cuts cheaply, what is a buyer still paying a person for?
+- Challenge: one buyer's self-reported price is not a market rate. What would we need to see before we call it normal?
+- Tie back to Segment 1: if Opus beats a 20-year pro, why would anyone pay $10k for a video?
+- Ask the chat: what would you pay for a polished two-minute AI video, and what would make it worth it?
+- Budget: 6 minutes. Exit: that is the high end; now our own case.
+
+## Segment 4 — Our own case: we redid the channel's thumbnails with AI
 
 ### Evidence to open
 
@@ -120,84 +138,26 @@ This segment follows the description Vincent posted for the stream. Both claims 
 - Ask the chat first: did you think these were made with Genfeed, or with a normal model? Do the new thumbnails look better or worse than the old ones?
 - Then explain how we made them and what we would not let a model decide (topic, no faces, no text, our asterisk).
 - Challenge: do AI thumbnails get clicks, or do they only get made faster? We have no measured click data yet; say so. Watch click-through over the next weeks.
-- Budget: 8 minutes. Exit: if thumbnails changed this much, what about the assistant we use daily?
+- Budget: 8 minutes. Exit: close the loop on the opening question.
 
-### Planned Short S2 — We redid every thumbnail with AI. Was it worth it?
+### Planned Short S3 — We redid every thumbnail with AI. Was it worth it?
 
 - Working title: our own result, one clear tension.
 - Point: faster is not the same as better; what did we keep human?
 - Open: before and after of one thumbnail from the Library page.
 - Challenge: the strongest opposing read is that viewers click on faces and drama, which we removed.
 - Payoff: what we keep human.
-- Capture: Segment 3; after recording, verify boundaries.
-
-## Segment 4 — The assistant bot: usage down, and what is the EU option?
-
-### Evidence to open
-
-- **Vincent's firsthand claim:** Grok Bot usage went down and it works worse than before. He has examples; bring them on screen. **Unverified** until we show them.
-- The channel's own data: Grok Bot videos are among our best (for example [pstack: How Poteto Uses Grok Bot](https://youtu.be/1ZbR2qie8rk), the top video in the 7 Nov inventory). Our past enthusiasm is on record, so say what changed.
-- **Confirmed (xAI docs):** the xAI docs site lists a Grok Bot product and Grok 4.7 as the current API model (see Segment 5).
-- EU options: **Mistral Vibe**, formerly Le Chat ([Mistral's product page](https://mistral.ai/products/le-chat)). **Confirmed:** the page says “Mistral Vibe (formerly Le Chat)”, describes an AI chat and coding agent, and Mistral positions itself around “sovereign AI”. **Unverified:** where the free tier is hosted and what it retains. Read Mistral's own data terms before claiming EU-only hosting or no training on inputs.
-- Other EU or EFTA names from directory sites (**Reported**, not checked on vendor pages): GreenPT (Netherlands), Lumo (Switzerland), HuggingChat. Do not recommend these on air without opening each vendor page.
-
-### Conversation cues
-
-- What exactly got worse: speed, answers, uptime, price, or our workflow around it?
-- What would make us switch: the model, the integrations, or where the data is stored?
-- Challenge: “EU-hosted” does not automatically make an assistant better or safer; it answers a legal question, not a quality one.
-- Ask the chat which assistant they use and why.
-- Budget: 10 minutes. Exit: whichever we pick depends on what ships next.
-
-### Planned Short S3 — Why we stopped relying on our AI bot
-
-- Working title: named product plus one clear tension (pending Vincent's examples).
-- Point: a tool we praised on the channel now works worse; what do founders do?
-- Open: Vincent's real examples on screen. No examples, no Short.
-- Challenge: maybe our prompts and setup changed, not the product.
-- Payoff: a rule for when to switch tools.
 - Capture: Segment 4; after recording, verify boundaries.
-
-## Segment 5 — What is coming: Grok, Claude, OpenAI
-
-Dates below were read on 9 Nov 2026. Say “as of today” on air. Do not promise dates.
-
-- **Claude — Confirmed (Anthropic Claude Apps and Platform release notes):** newest models are Claude Opus 5.5 (22 Sep), Sonnet 5.5 (28 Sep) and Haiku 5.5 (7 Oct). Claude Fable 5.1 launched on the API on 1 Sep. The latest release-note entries (5–6 Nov) are Enterprise security and admin controls, Personal Finance (US only) and cost-code tags. Claude Duet, a research preview for Pro and Max, opened on 21 Oct. **No new model is announced in November as of 6 Nov.** Dated cleanups: Claude Sonnet 4.5 retires on the API on 30 Nov, and fast mode for Opus 4.8 is removed on 30 Nov.
-- **OpenAI — Confirmed (OpenAI API changelog):** GPT-6 Astra (3 Sep), GPT-6 Sol and Luna (22 Sep), GPT-6.1 Sol (29 Sep), GPT-6.1 Terra (26 Oct), GPT-6 Rosalind (30 Oct), GPT-Image-2.6 Sunburst and Flare (4 Nov), and GPT-6-Cyber (5 Nov). **Reported, unconfirmed:** an earlier report said new Astra, Sol and cyber models could come “as early as 6 Nov”; the cyber model and the image models did appear, but we found no new Astra or Sol release.
-- **Grok — Confirmed (xAI docs release notes):** Grok 4.7 is the current API model, released 21 Sep. **Reported, not from xAI:** Grok 4.8 was announced by Elon Musk on X on 14 Sep as a 2.5T-parameter model entering reinforcement learning. We found no official date, model card or API docs for 4.8. Do not name a release date.
-
-### Conversation cues
-
-- Which release matters for what we do weekly, and which is only noise?
-- Challenge: do we need a new model every month, or did the harness and workflow matter more? (This ties to our own “the harness is the IP” take from 27 Oct.)
-- Ask the chat what they are waiting for.
-- Budget: 8 minutes. Exit: one open-source tool that fits the editing theme.
-
-## Segment 6 — ArtCraft: free open-source creative apps
-
-### Evidence to open
-
-- **Confirmed (ArtCraft Craft Apps page):** sixteen free, open-source apps built in Rust, including FilmCraft (video editor), PhotoCraft, VectorCraft, EffectCraft (motion graphics and VFX) and SoundCraft. Most are labelled “In development”; PhotoCraft, PdfCraft, FigCraft and Craft Anything are labelled “Early alpha”. Many also run in a browser tab. Per the page, every app can be driven from a CLI, a JSON control channel or an MCP server.
-- **Not confirmed:** release dates, and whether FilmCraft is usable for real edits today. Test it before we say it works.
-- **Have we covered it? Not in the repo.** We found no mention of ArtCraft in the 77 titles of the 7 Nov channel inventory or in the 69 clean transcripts. The grep on transcripts covers what is in the repo only; do a last search of the channel in YouTube Studio if it matters.
-- ArtCraft Studio, their AI image and video app, is a separate product from the Craft Apps. The page links it but we did not review it.
-
-### Conversation cues
-
-- If an open-source editor is agent-ready from day one, does it change how we would edit?
-- Challenge: free and open source is not the same as good; what would we need to see to move an edit into it?
-- Ask the chat whether anyone has tried it in the browser.
-- Budget: 5 minutes. Exit: close the loop on the opening question.
 
 ## Close — Is video editing dead?
 
 - Answer the title as a question, using only what we showed today: some of the mechanical work is gone, the taste is still ours, and the claims from vendors stay claims until we test them.
 - Each of us names one thing we will change in our own weekly edit this month and one claim we will not repeat as fact.
-- Share the ForwardEditor posts, the Higgsfield Miracle page, the thumbnails article and the ArtCraft apps page.
+- Share the ForwardEditor posts, the Higgsfield Miracle page, Nevo David's two posts and the thumbnails article.
 - Brief subscribe reminder at the end. Budget: 2 minutes.
 
 ## Notes for the editor
 
-- Planned Shorts S1–S4 above. A fourth candidate, “Layer-by-layer editing: the end of After Effects?” (Miracle), needs a real test first, because the product is in private beta.
+- Planned Shorts S1–S3 above. A fourth candidate, “Layer-by-layer editing: the end of After Effects?” (Miracle), needs a real test first, because the product is in private beta.
 - The debatable question for the episode: if AI does the cutting, is taste the only thing left? Strongest opposing case: taste was always the job. Neither host has to defend a view they do not hold.
 - Verify every clip boundary against the video and VTT after recording.
