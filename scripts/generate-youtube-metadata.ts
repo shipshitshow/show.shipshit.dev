@@ -918,6 +918,9 @@ ${sourceLines.join('\n')}
 - First chapter starts at \`0:00\`.
 - Every chapter title is 3 words max.
 - Open the description with the concrete hook, not channel housekeeping.
+- Every title is 45 characters or fewer (aim for 40). Count each one.
+- A livestream description follows \`$metadata\`'s fixed order: hook with stakes, one question, "We're discussing...", "Bring your questions to the chat.", three hashtags.
+- A recap or Short differs from its livestream: new title, new description, and a Short links its full episode.
 - Name the model, tool, company, repo, or game in the first paragraph.
 - Keep claims grounded in the transcript, topic file, or existing description.
 - Use short paragraphs and remove generic SEO filler.
@@ -985,11 +988,11 @@ Return exactly:
 
 ### Title Candidates
 
-- 8-12 candidates.
+- 3-5 distinct candidates from the \`$metadata\` title patterns, each with its character count (45 maximum).
 
 ### Description Draft
 
-- Full YouTube description.
+- Full YouTube description in the \`$metadata\` format for this type.
 - Include \`CHAPTERS:\` using the draft chapters as evidence.
 - Rewrite chapter titles if needed, but keep every chapter title to 3 words max.
 - Keep timestamps monotonic and start at \`0:00\`.
@@ -1000,7 +1003,7 @@ Return exactly:
 
 ### youtube_tags
 
-- 15-25 phrase tags.
+- 5-10 focused tags: tool and model names, the show name and common misspellings.
 
 ### Why This Should Work
 
