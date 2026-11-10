@@ -48,7 +48,7 @@ python3 scripts/sync-content-skills.py --source /path/to/shipshitshow-skills
 python3 scripts/sync-content-skills.py --source /path/to/shipshitshow-skills --check
 ```
 
-The first command refreshes `skills/` and `skills/content-skills.lock.json`; the second checks drift. Use the permitted verification host for checks. Update the vault source and public profile first; do not hand-edit generated profile copies or create another palette here.
+The first command refreshes `skills/` and `skills/content-skills.lock.json`; the second checks drift. CI runs the check against the public `shipshitshow/skills` master on every push and pull request, so a skills change that lands without a regenerated lock turns CI red here. Use the permitted verification host for checks. Update the vault source and public profile first; do not hand-edit generated profile copies or create another palette here.
 
 The homepage rollout implements the validated identity in the live app. It does not change existing stingers or publish new artwork to the YouTube account. The shared commercial/show family has distinct wordmarks; shipshit.dev owns its commercial offers and the show links there for build enquiries.
 ## Surface coverage for future changes
