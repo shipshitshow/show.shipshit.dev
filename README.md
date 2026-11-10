@@ -80,7 +80,7 @@ Vercel. See `apps/app/.env.example` for the full variable list.
 ## Data & content
 
 - `apps/app/data/livestream/YYYY-MM-DD/` — per-date topic markdown (stream prep).
-- `apps/app/data/transcripts/` — VTT + cleaned transcripts.
+- `apps/app/data/transcripts/` — VTT + cleaned transcripts, keyed by YouTube video id (`<id>.<lang>.vtt`, `clean/<date>-<type>-<id>.txt`); `index.json` holds each id's date, type, title and language. Import: `bun run transcripts:import`.
 - `apps/app/data/youtube/channel-inventory.json` — cached channel video inventory.
 - Refresh inventory + backfill transcripts: `bun scripts/refresh-youtube-inventory.ts` (see `--help`).
 

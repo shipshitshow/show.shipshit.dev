@@ -1,0 +1,8 @@
+I have automation that grab GitHub issue
+every 4 hours between 10:00 p.m. and
+6:00 a.m. So, I can monitor it in the
+morning. And it also take features to
+implement that is already on the GitHub
+board and with a special label on it.
+And it's working only when I'm not
+working myself.

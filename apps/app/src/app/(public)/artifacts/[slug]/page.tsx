@@ -13,11 +13,17 @@ import {
   TWEET_DECK,
 } from '@/lib/artifacts/agent-security-2026-10';
 import { ARTIFACTS, getArtifact } from '@/lib/artifacts/registry';
+import { VIBE_EDITING_TWEET_DECK } from '@/lib/artifacts/vibe-editing-2026-11';
 import { logError } from '@/lib/logger';
 import { buildDefaultMetadata } from '@/lib/site';
-import { loadTweetSlides } from '@/lib/tweet-slider';
+import { loadTweetSlides, type TweetDeckEntry } from '@/lib/tweet-slider';
 
 export const revalidate = 600;
+
+const TWEET_DECKS: Record<string, TweetDeckEntry[]> = {
+  'agent-security-tweets': TWEET_DECK,
+  'vibe-editing-tweets': VIBE_EDITING_TWEET_DECK,
+};
 
 export function generateStaticParams() {
   return ARTIFACTS.map(({ slug }) => ({ slug }));
@@ -57,7 +63,9 @@ export default async function ArtifactPage({
   if (!artifact) notFound();
 
   if (artifact.kind === 'tweets') {
-    const slides = await loadTweetSlides(TWEET_DECK, fetchTweet);
+    const deck = TWEET_DECKS[artifact.slug];
+    if (!deck) notFound();
+    const slides = await loadTweetSlides(deck, fetchTweet);
     return (
       <TweetSlider
         backHref="/artifacts"
@@ -68,7 +76,9 @@ export default async function ArtifactPage({
     );
   }
 
-  const slideshow = ARTIFACTS.find(({ kind }) => kind === 'tweets');
+  const slideshow = ARTIFACTS.find(
+    ({ slug }) => slug === 'agent-security-tweets',
+  );
 
   return (
     <main className="mx-auto min-h-screen max-w-5xl px-6 py-10 md:py-16">

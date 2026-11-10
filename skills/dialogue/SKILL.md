@@ -9,6 +9,19 @@ description: Improve dialogue in an edit with recording-specific treatment, sync
 
 Use the user's channel profile and actual source asset. For Ship Sh*t Show, read [the bundled profile](references/channel-profile.md); viewers using another channel should provide their audience, voice, formats, links and visual references. A profile is context, not permission to publish, upload footage, buy generation or contact a partner.
 
+## Cutting the dialogue (Ship Sh*t Show)
+
+The locked rules are in [the edit rules](https://github.com/shipshitshow/vault/blob/master/brand/editing.md) and, in a checkout of the show repo, `docs/show-prep/edit-style.md`. Apply them when you choose what stays in an edit:
+
+- Cut back-channels ("yeah", "exactly", "mhm") and false starts or restarts in recaps, so one host's point is not interrupted by agreement. Keep a reaction that moves the story, such as a question, a push-back or a laugh the other host answers.
+- No subscribe ask before the first payoff, and no blooper ("and that's a clip") in the first 20 seconds.
+- Keep every qualification and opposing view that changes the answer. Cutting filler must not make a host's claim stronger than it was.
+- Cut points sit in silence, with 15 to 20 ms audio fades at joins only. No video fades.
+- Captions: fix grammar, spelling and ASR names (Grok, Claude, PHP, Cloudflare) even where the text no longer matches the voice word for word.
+- Loudness: two-pass loudnorm to -14 LUFS integrated with true peak at or below -1 dBTP, as the locked Shorts do. The live mix measured -19 LUFS with no headroom on 3 November, so expect to raise it.
+- Check whether the recording has one stereo mix or a track per host and note it in the handoff. With one mix, one voice cannot be fixed without the other.
+- Re-transcribe every finished cut to check the joins, then listen.
+
 Inspect the actual recording: levels, clipping, room sound, noise, overlapping voices and music. Read the existing project recipe. Use recording-specific treatment; a historical Premiere preset or one episode's timing offset is not a universal default.
 
 Apply only supported operations within the edit request. External tools/libraries require availability and authorization; do not install or bill a cloud denoiser implicitly. Preserve source audio. Record processing chain, parameters, tool versions and how mastered audio rejoins the native timeline.

@@ -74,7 +74,13 @@ function formatDate(value: string): string {
   return Number.isNaN(date.getTime()) ? '' : DATE_FORMATTER.format(date);
 }
 
-function TweetText({ className, text }: { className: string; text: string }) {
+export function TweetText({
+  className,
+  text,
+}: {
+  className: string;
+  text: string;
+}) {
   return (
     <p className={`whitespace-pre-line break-words leading-snug ${className}`}>
       {splitTweetText(text).map((part, index) =>
@@ -169,7 +175,7 @@ function Author({
   );
 }
 
-function MediaItem({
+export function MediaItem({
   className,
   item,
 }: {

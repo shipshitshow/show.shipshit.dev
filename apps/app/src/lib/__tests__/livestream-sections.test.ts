@@ -126,3 +126,41 @@ describe('talking points and resource links (Vincent, 6 Nov)', () => {
     ]);
   });
 });
+
+describe("each segment's tweet slider", () => {
+  const A = 'https://x.com/wickedguro/status/2119762008878850555';
+  const B = 'https://x.com/wickedguro/status/2119413408982298971';
+  const prep = `## Cold Open — Hook
+
+- Open with the post.
+- [Post A](${A})
+
+## Segment 1 — High end
+
+### Evidence
+
+- [Post A again](${A}), 613k views.
+- [Post B](${B}), self-reported cost.
+
+### Conversation cues
+
+- What does 10k buy?`;
+
+  test('evidence links feed the slider while bullets stay clean', () => {
+    const [, segment] = getTalkingPoints([card(prep)]);
+    expect(segment.points).toEqual(['What does 10k buy?']);
+    expect(segment.tweets.map((tweet) => tweet.id)).toEqual([
+      '2119413408982298971',
+    ]);
+  });
+
+  test('a post shown by an earlier segment is not repeated', () => {
+    const [cold, segment] = getTalkingPoints([card(prep)]);
+    expect(cold.tweets.map((tweet) => tweet.id)).toEqual([
+      '2119762008878850555',
+    ]);
+    expect(
+      segment.tweets.some((tweet) => tweet.id === '2119762008878850555'),
+    ).toBe(false);
+  });
+});

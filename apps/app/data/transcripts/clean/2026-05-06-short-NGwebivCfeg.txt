@@ -1,0 +1,7 @@
+Why are you coding with an AI agent in a
+production server?
+>> Because it's way simpler, bro. I gave
+like SSH access to my production server
+to close to restart the container. Maybe
+I will stop doing that when I generate 1
+million from Genfit for sure.

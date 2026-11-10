@@ -34,6 +34,15 @@ export const ARTIFACTS: ArtifactEntry[] = [
     title: 'Bot Swarm Tweets',
     updated: '2026-11-02',
   },
+  {
+    kind: 'tweets',
+    slug: 'vibe-editing-tweets',
+    streams: ['2026-11-10'],
+    summary:
+      'The X posts for "Is Video Editing Dead?" as a full-screen slideshow: ForwardEditor on editing with Opus, Fable 5.2 demos, and what a high-end AI video costs.',
+    title: 'Vibe Editing Tweets',
+    updated: '2026-11-10',
+  },
 ];
 
 export function getArtifact(slug: string): ArtifactEntry | undefined {
