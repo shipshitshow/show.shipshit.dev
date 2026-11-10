@@ -13,6 +13,7 @@
  * The title lives only in index.json, so a retitle is a one-line edit.
  */
 
+import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { decodeTranscriptEntities } from '../../apps/app/src/lib/transcript-normalize.ts';
@@ -92,18 +93,23 @@ export function readIndex(): TranscriptIndex {
   return JSON.parse(fs.readFileSync(INDEX_PATH, 'utf8')) as TranscriptIndex;
 }
 
-/** Newest first, then by id, so a re-run never reorders unrelated rows. */
+/**
+ * Biome's `useSortedKeys` rule orders JSON keys its own way (natural order,
+ * not plain string order), and lint fails when index.json differs. So write
+ * the file, then let Biome put the keys in its order.
+ */
 export function writeIndex(index: TranscriptIndex): void {
-  const videos = Object.fromEntries(
-    Object.entries(index.videos).sort(
-      ([idA, a], [idB, b]) =>
-        b.date.localeCompare(a.date) || idA.localeCompare(idB),
-    ),
-  );
-  fs.writeFileSync(
-    INDEX_PATH,
-    `${JSON.stringify({ version: 1, videos }, null, 2)}\n`,
-  );
+  fs.writeFileSync(INDEX_PATH, `${JSON.stringify(index, null, 2)}\n`);
+  try {
+    execFileSync('bunx', ['biome', 'check', '--write', INDEX_PATH], {
+      cwd: REPO_ROOT,
+      stdio: 'ignore',
+    });
+  } catch {
+    console.warn(
+      'Could not run biome on index.json; run `bun run lint:write` before committing.',
+    );
+  }
 }
 
 /** Drop trailing hashtags such as #shorts; they are not part of the title. */
