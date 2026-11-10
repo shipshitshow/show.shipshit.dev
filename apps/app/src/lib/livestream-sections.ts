@@ -1,5 +1,6 @@
 import type { LivestreamCard, MarkdownSection } from '@/lib/livestreams-ui';
 import { parseSections, parseSubSections } from '@/lib/livestreams-ui';
+import { buildTweetDeck, type TweetDeckEntry } from '@/lib/tweet-slider';
 
 export interface SidebarNote {
   body: string;
@@ -263,16 +264,21 @@ function toPoint(line: string): string | null {
 export interface TalkingPointSegment {
   eyebrow: string | null;
   points: string[];
+  /** X posts linked anywhere in the segment, evidence included, for its slider. */
+  tweets: TweetDeckEntry[];
   title: string;
 }
 
 /**
  * Each segment as a headline and short bullets: only list items, never
- * prose paragraphs, sources or stage directions, one sentence each.
+ * prose paragraphs, sources or stage directions, one sentence each. The
+ * posts a segment links, evidence included, become its tweet slider; a post
+ * linked by two segments appears only in the first.
  */
 export function getTalkingPoints(
   cards: LivestreamCard[],
 ): TalkingPointSegment[] {
+  const seenTweets = new Set<string>();
   return getStreamSegmentSections(cards).map((segment) => ({
     eyebrow: segment.eyebrow,
     points: parseSubSections(segment.body)
@@ -285,6 +291,13 @@ export function getTalkingPoints(
           .filter((point): point is string => point !== null),
       ),
     title: segment.title,
+    tweets: buildTweetDeck([
+      { content: segment.body, title: segment.title },
+    ]).filter((entry) => {
+      if (seenTweets.has(entry.id)) return false;
+      seenTweets.add(entry.id);
+      return true;
+    }),
   }));
 }
 
