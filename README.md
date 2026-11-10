@@ -90,7 +90,7 @@ Read [the brand entry point](docs/branding.md) before making thumbnails, caption
 
 ## Skills
 
-- `skills/` — show-runtime skills: `prep`, `cues`, `hooks`, `clips`, `chapters`, `metadata`, `linkedin`, `x`, `thumbnails`, `coach`.
+- `skills/` — show-runtime skills: `prep`, `cues`, `hooks`, `clips`, `chapters`, `metadata`, `linkedin`, `x`, `thumbnails`, `coach`, `growth-review`.
 - `.agents/skills/` — dev-workflow skills, managed by `./scripts/skills.sh` against `github.com/shipshitshow/skills`.
   Also contains discovery links to the repo-owned show skills in `skills/` and
   the `debug`, `refactor` and `review` dev skills.
@@ -112,3 +112,8 @@ longest monologue, stories against read-aloud sources, chat use, close, three to
 keep and three to change against last week). Speakers come from caption change
 marks, so it reports its confidence. Scorecards stay in the episode's editing
 folder, never in git.
+
+`/growth-review` compares an episode's views, retention and title length with the
+channel's own history (seven days after publishing, or after three or four
+episodes) and lists old videos that meet the unlist rule. It only reads; nothing
+is unlisted or published without a named go-ahead.

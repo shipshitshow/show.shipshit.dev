@@ -9,6 +9,11 @@
     "profile_sha256": "f11e0adf794db22626b664f231ca9aff5e7a61d399471f98fb73d182f96bc9d1",
     "source": "https://github.com/shipshitshow/skills/tree/master/dialogue"
   },
+  "growth-review": {
+    "contract_sha256": "e37915cb4b0d6786835778b0531466f52a9a9656e2cdc86fbd19483343fbadf4",
+    "profile_sha256": "f11e0adf794db22626b664f231ca9aff5e7a61d399471f98fb73d182f96bc9d1",
+    "source": "https://github.com/shipshitshow/skills/tree/master/growth-review"
+  },
   "library": {
     "contract_sha256": "0878d2e730dda109807de72eae57151ad6803a5e9a9a51d1b9b692219250708d",
     "profile_sha256": "f11e0adf794db22626b664f231ca9aff5e7a61d399471f98fb73d182f96bc9d1",

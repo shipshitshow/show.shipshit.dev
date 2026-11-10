@@ -1,0 +1,4 @@
+interface:
+  display_name: "Growth-review"
+  short_description: "Compare an episode with the channel's own history"
+  default_prompt: "Use $growth-review to review how this episode performed against the channel's history."
