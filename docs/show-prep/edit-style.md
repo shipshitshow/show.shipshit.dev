@@ -125,12 +125,18 @@ for the next episode instead of re-deriving the layout.
   real screenshots and the show's existing red slash-stinger wipe.
 - Use hard cuts only: no fade to black, no dissolves, no alpha fades on overlays.
 - No zoom on people. Zoom on screen content only when it lands on a specific point.
-- Opening (Vincent, 2026-11-11, replaces the cold open): no cold open, no teaser
-  montage, no greetings. Start on the topic. The first sentence is the viewer
-  promise (a claim plus the stake, under 15 s) from the best real line in the
-  source, then 30–45 s of 50/50 two-person conversation before any screenshare,
-  with the first useful point by about 45 s. `## Cold Open` on a topic board means
-  only that on-air first sentence, never an edit-side teaser.
+- Opening (Vincent, 2026-11-11, replaces the cold open): no greetings, chit-chat
+  or filler. Open on the strongest lines from anywhere in the transcript (the
+  central question, the bold answer, the counter-argument), not the chronological
+  start; an opening on "hmm" was rejected as "weak AF". No cut starts on a filler
+  word ("hmm", "yeah", "no no, I mean"). The opening flows into the conversation
+  and does not read as a trailer; its first sentence is the viewer promise (a
+  claim plus the stake, under 15 s). Then 30–45 s of 50/50 two-person
+  conversation before any screenshare, with the first useful point by about 45 s.
+  `## Cold Open` on a topic board means the on-air first sentence.
+- Key stats: when a host says a proving number (a view count, impressions), punch
+  in hard on it on screen content, about 4x, with a fast eased push timed to the
+  spoken word, then hard-cut back. Never on people.
 - J and L cuts: at speaker turns and reactions the audio may lead (J) or trail
   (L) the picture. The picture cut stays hard; never land one mid-word or use one
   to hide a changed claim.

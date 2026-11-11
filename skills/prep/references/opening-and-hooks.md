@@ -2,7 +2,7 @@
 
 The first sentence on air is the one line the hosts prepare and approve. It goes on the board under `## Cold Open`, next to the viewer question. Everything after it stays conversational.
 
-Terms: `## Cold Open` is only this on-air first sentence, the viewer promise. It is not a teaser montage and not a recap-edit device; a recap opens the same way (promise first, then 50/50 conversation, no cold open montage). Say "opening" in edit plans and chapters.
+Terms: `## Cold Open` is only this on-air first sentence, the viewer promise. A recap edit opens on the strongest lines from anywhere in the transcript, never on filler or greetings, then flows into 50/50 conversation. Say "opening" in edit plans and chapters.
 
 ## The rule
 
