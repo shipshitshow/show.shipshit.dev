@@ -7,6 +7,8 @@ description: Write and critique the first sentence on air for a Ship Sh*t Show l
 
 The opening specialist for the `$prep` board. One rule, shared with `$prep` and `$cues`: after the countdown, the first spoken sentence is the episode's promise, said to the lens, and it is prepared and approved with the board. It is a claim plus the stake, under 15 seconds. Everything after it stays natural. This skill does not write a monologue to read.
 
+`## Cold Open` is only this on-air first sentence, the viewer promise. It is not a teaser montage and not a recap-edit device; recaps open on the topic the same way (see `$recap`).
+
 The first 30 seconds of every stream are a deliberate countdown, not dead air. Open on the topic right after it. Stream and audio checks happen before going live; greetings and catch-up come after the close.
 
 ## Quick start

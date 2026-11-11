@@ -125,9 +125,19 @@ for the next episode instead of re-deriving the layout.
   real screenshots and the show's existing red slash-stinger wipe.
 - Use hard cuts only: no fade to black, no dissolves, no alpha fades on overlays.
 - No zoom on people. Zoom on screen content only when it lands on a specific point.
-- Cold open: the strongest 15–20 s first (the 5 Nov recap is the model), then
-  30–45 s of 50/50 two-person conversation before any screenshare. The cold open
-  must flow into the conversation.
+- Opening (Vincent, 2026-11-11, replaces the cold open): no cold open, no teaser
+  montage, no greetings. Start on the topic. The first sentence is the viewer
+  promise (a claim plus the stake, under 15 s) from the best real line in the
+  source, then 30–45 s of 50/50 two-person conversation before any screenshare,
+  with the first useful point by about 45 s. `## Cold Open` on a topic board means
+  only that on-air first sentence, never an edit-side teaser.
+- J and L cuts: at speaker turns and reactions the audio may lead (J) or trail
+  (L) the picture. The picture cut stays hard; never land one mid-word or use one
+  to hide a changed claim.
+- 16:9 safe zone (proposed, confirm with Vincent): text, captions and readable UI
+  stay inside a 5% margin on every edge (96 px at 1920×1080) and clear of the
+  asterisk box (x1680–1824, y96–240) where the mark appears. Full-frame b-roll
+  may fill the frame; its subject stays inside the margin.
 - Dialogue cuts: drop back-channels ("yeah", "exactly") and restarts, keep every
   qualification that makes a claim accurate, no subscribe ask before the first
   payoff, no blooper in the first 20 s.

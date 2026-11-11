@@ -5,7 +5,7 @@
     "source": "https://github.com/shipshitshow/skills/tree/master/coach"
   },
   "dialogue": {
-    "contract_sha256": "151cb954504e1061eec56e21f69feca7a03796ecb3709a6cf2cf086eb40fdcc3",
+    "contract_sha256": "dedd1298b94473dfb79f2000ebe025c212dd174be685a776087d77abdd8b863f",
     "profile_sha256": "f11e0adf794db22626b664f231ca9aff5e7a61d399471f98fb73d182f96bc9d1",
     "source": "https://github.com/shipshitshow/skills/tree/master/dialogue"
   },
@@ -25,7 +25,7 @@
     "source": "https://github.com/shipshitshow/skills/tree/master/youtube-metadata"
   },
   "overlays": {
-    "contract_sha256": "0d490e9c412c07b20145945ca9390ea3e71382c7d7a60b4eb4fc559a9d75f2a0",
+    "contract_sha256": "2deaa9131100964e271b81cbf6d5bbb2eb08f7b8ddaf58904d943ef984b2696d",
     "profile_sha256": "f11e0adf794db22626b664f231ca9aff5e7a61d399471f98fb73d182f96bc9d1",
     "source": "https://github.com/shipshitshow/skills/tree/master/overlays"
   },
@@ -35,7 +35,7 @@
     "source": "https://github.com/shipshitshow/skills/tree/master/talking-points"
   },
   "recap": {
-    "contract_sha256": "23ad86b2d28bf7bca00fa6dc94fccc69959642b5eafbb3f659ac3d941d7f32fe",
+    "contract_sha256": "46bf3bfd71d24af0d78c503ed74bd411543e149865bc445e323a9a89936d9419",
     "profile_sha256": "f11e0adf794db22626b664f231ca9aff5e7a61d399471f98fb73d182f96bc9d1",
     "source": "https://github.com/shipshitshow/skills/tree/master/recap"
   },
