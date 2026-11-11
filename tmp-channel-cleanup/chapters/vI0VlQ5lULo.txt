@@ -1,0 +1,11 @@
+0:00 Countdown
+0:28 Codex Limits
+3:09 TanStack Attack
+11:38 Cache Poisoning
+24:30 Package Updates
+26:58 HTML Plans
+33:53 Sharing HTML
+37:23 HTML Use Cases
+43:40 Shield Check
+59:10 Token Comparison
+1:05:26 Final Takes

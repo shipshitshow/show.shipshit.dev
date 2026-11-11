@@ -1,0 +1,16 @@
+0:00 Countdown
+0:31 Hosts Catch Up
+2:38 First Impressions
+6:51 Usage Limits
+10:40 Claude Pro Rumor
+14:06 Gemini Accounts
+16:51 Early Benchmarks
+24:32 Token Efficiency
+28:20 Multi-Model Workflow
+34:30 Effort Levels
+39:46 Context Management
+41:54 Anthropic Postmortem
+47:47 Model Pricing
+50:35 Token Tools
+54:03 Comparison Caveats
+55:49 Wrap Up

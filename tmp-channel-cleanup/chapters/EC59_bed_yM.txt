@@ -1,0 +1,13 @@
+0:00 Countdown
+0:26 Hosts Catch Up
+2:57 Channels Launch
+5:05 Bots Talking
+10:58 Agent Setups
+14:05 Discord Demo
+22:57 CLI Versus Discord
+24:42 Company Use
+29:18 Open Source Rewrites
+36:23 Local Models
+38:11 Claude Updates
+42:39 OpenAI Deal
+43:44 Wrap Up

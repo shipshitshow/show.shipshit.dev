@@ -1,0 +1,14 @@
+0:00 Countdown
+0:34 Going Live
+3:00 Token Costs
+12:58 Moltbook
+17:43 Moltbook Security
+21:35 Agent Sandboxing
+24:39 Exposed Database
+26:24 Agent Networks
+30:57 OpenClaw Setup
+34:51 Security Checks
+39:04 OpenClaw Use Cases
+46:41 Henry Demo
+48:31 Agent Access
+50:36 Wrap Up

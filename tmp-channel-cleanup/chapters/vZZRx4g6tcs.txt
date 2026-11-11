@@ -1,0 +1,13 @@
+0:00 Countdown
+0:31 Hosts Catch Up
+4:20 Loops Explained
+8:07 Repo Loops
+12:16 Sakana Model
+13:59 Loop Library
+20:11 Loop Risks
+25:43 Loops Repo
+30:43 Loops Versus Prompts
+35:11 Ticket System
+40:43 Skills Repo
+46:11 User Story Loop
+47:55 Wrap Up
