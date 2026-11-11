@@ -63,7 +63,7 @@ Use Ship Shit Show phrasing: short, direct, builder-native.
 Good:
 
 ```text
-0:00 Cold Open
+0:00 Opening
 0:42 Opus Test
 2:06 First Build
 5:49 Boss Fight
@@ -86,7 +86,7 @@ Return this structure unless the user asks for a different format:
 ```markdown
 ### Chapters
 
-0:00 Cold Open
+0:00 Opening
 0:42 Opus Test
 2:06 First Build
 ```
@@ -96,7 +96,7 @@ If timestamps are approximate:
 ```markdown
 ### Chapters
 
-0:00 Cold Open approx
+0:00 Opening approx
 ```
 
 ## Verification

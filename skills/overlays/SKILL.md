@@ -17,6 +17,7 @@ Before any graphic, read [the edit rules](https://github.com/shipshitshow/vault/
 
 - No text title cards, no topic-label cards between segments, no lower-third topic labels. Graphics are illustrations, real screenshots and the red slash-stinger wipe.
 - Hard cuts in and out. No fades to black, no dissolves, no alpha fades on overlays. Motion inside an animation is fine; the cut into and out of it is hard.
+- 16:9 safe zone (proposed, confirm with Vincent): keep text, captions and readable UI inside a 5% margin on every edge (96 px at 1920×1080) and clear of the top-right asterisk box (x1680 to 1824, y96 to 240 at 1920×1080) where the mark appears. Full-frame b-roll may fill the frame, but its subject stays inside the margin. Values come from the placement table's 16:9 rows; scale uniformly for other sizes.
 - No zoom or push-in on the hosts. Zoom on screen content only when it lands on a specific point.
 - B-roll is animated SVG generated with Codex CLI, not static images with a slow push-in. Plan the whole list before rendering: one animation per idea change, and no more than about a minute of talking without one. Real screen captures stay still.
 - Generated art has no text, no faces and no brand logos, uses charcoal with a muted red, and is logged in the episode's `assets/manifest.json` with prompt, tool, date and rights. A real logo or screenshot comes from a supplied file.

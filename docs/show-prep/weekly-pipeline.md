@@ -55,7 +55,7 @@ public. Nothing else waits on him.
 
 ## 3. Recap (16:9, about 10 min)
 
-1. Write the edit plan with `$recap`: chapters, source ranges, the cold open,
+1. Write the edit plan with `$recap`: chapters, source ranges, the opening line,
    what gets cut, and the claims to protect.
    - **Gate:** Vincent approves the plan and transcript before rendering.
 2. Render following edit-style.md. That means hard cuts only, no title cards,
