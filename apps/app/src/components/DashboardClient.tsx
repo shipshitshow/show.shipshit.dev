@@ -333,6 +333,20 @@ export function DashboardClient({
         </div>
       </div>
 
+      {report?.warnings?.length ? (
+        <div
+          role="status"
+          className="rounded-lg border border-accent-red/40 px-4 py-3 text-xs text-text-secondary space-y-1"
+        >
+          <p className="font-medium text-text-primary">
+            Some analytics could not be loaded
+          </p>
+          {report.warnings.map((warning) => (
+            <p key={warning}>{warning}</p>
+          ))}
+        </div>
+      ) : null}
+
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <StatCard
           label="Views"

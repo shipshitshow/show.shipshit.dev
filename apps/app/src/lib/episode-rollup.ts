@@ -25,10 +25,10 @@ import {
 import { listEpisodeXMetrics } from '@/lib/livestreams-x-posts';
 import { extractVideoId } from '@/lib/livestreams-youtube';
 import { logError } from '@/lib/logger';
+import { getVideoReach } from '@/lib/video-reach-store';
 import {
   type ChannelUpload,
   fetchChannelUploads,
-  fetchVideoReachMetrics,
   fetchVideoRetentionMetrics,
   fetchVideosByIds,
 } from '@/lib/youtube/client';
@@ -201,29 +201,39 @@ async function fetchYouTubeMetrics(
   const channels = await getChannelConfigs();
   if (!channels.length) return metrics;
 
+  // Impressions and CTR are not in the Analytics API. They come from the stored
+  // daily Reporting API reach reports, which cover both channels at once.
+  const reach = await getVideoReach(videoIds, startDate, endDate);
+
   const perChannel = await Promise.all(
     channels.map(async (channel) => {
       const token = await getAccessToken(channel);
-      const [videos, reach, retention] = await Promise.all([
+      const [videos, retention] = await Promise.all([
         fetchVideosByIds(token, channel.id, videoIds),
-        fetchVideoReachMetrics(token, channel.id, videoIds, startDate, endDate),
+        // Retention is a nice-to-have on this page: a failed query is logged
+        // and the cell renders as not tracked, but the failure is never silent.
         fetchVideoRetentionMetrics(
           token,
           channel.id,
           videoIds,
           startDate,
           endDate,
-        ),
+        ).catch((error: unknown) => {
+          logError('episode_rollup.retention_failed', error, {
+            channel: channel.label,
+          });
+          return new Map<string, { avg_view_percentage: number }>();
+        }),
       ]);
-      return { reach, retention, videos };
+      return { retention, videos };
     }),
   );
 
-  for (const { reach, retention, videos } of perChannel) {
+  for (const { retention, videos } of perChannel) {
     for (const video of videos) {
       if (metrics.has(video.video_id)) continue;
 
-      // A zero from the Analytics API means "not reported for this range", the
+      // A zero (or a video absent from the stored reach data) means "not reported for this range", the
       // same convention VideoTable already applies to CTR. Null keeps it out of
       // the tracked state instead of rendering a misleading 0%.
       const ctr = reach.get(video.video_id)?.ctr ?? 0;

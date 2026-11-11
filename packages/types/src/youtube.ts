@@ -59,6 +59,11 @@ export interface MultiChannelReport {
       daily_metrics: DailyMetric[];
     }
   >;
+  /**
+   * Parts of the report that failed or are not available yet (a channel whose
+   * token expired, reach data still pending). Shown instead of leaving blanks.
+   */
+  warnings?: string[];
 }
 
 export type ChannelFilter = 'all' | string;

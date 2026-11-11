@@ -1,3 +1,5 @@
+import { MAIN_CHANNEL_ID } from '@/lib/youtube/channels';
+
 export type PublicVideo = {
   id: string;
   publishedAt: string;
@@ -6,7 +8,6 @@ export type PublicVideo = {
   url: string;
 };
 
-const MAIN_CHANNEL_ID = 'UCxuriP32znodU-8N7zkwuew';
 const FEED_URL = 'https://www.youtube.com/feeds/videos.xml?channel_id=';
 
 export function youtubeChannelId(): string {
