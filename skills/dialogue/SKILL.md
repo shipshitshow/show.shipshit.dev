@@ -17,6 +17,7 @@ The locked rules are in [the edit rules](https://github.com/shipshitshow/vault/b
 - No subscribe ask before the first payoff, and no blooper ("and that's a clip") in the first 20 seconds.
 - Keep every qualification and opposing view that changes the answer. Cutting filler must not make a host's claim stronger than it was.
 - Cut points sit in silence, with 15 to 20 ms audio fades at joins only. No video fades.
+- Filler never opens a video or a cut. No cut starts on a filler word ("hmm", "yeah", "no no, I mean", "so"); start on the next real word and check the first second by ear.
 - Silence audit: find pauses on the speech, not on the level alone. Steady background noise (a passing car, wind, room hum) counts as silence when nobody is speaking; cut or tighten those pauses, then re-check every join.
 - J and L cuts: at a speaker turn or reaction, let the audio lead the picture (J) or trail it (L) by a few tenths of a second, judged by ear. The picture cut stays hard and the audio fades stay at 15 to 20 ms. Check that the overlap does not clip a word or double an echo, and do not use one to hide a changed claim.
 - Sound effects, such as the stinger whoosh, stay quiet under speech and never compete with a voice.
