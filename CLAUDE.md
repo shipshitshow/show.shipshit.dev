@@ -26,6 +26,7 @@ bun run lint          # biome check
 ## Editing
 - `docs/show-prep/weekly-pipeline.md` — the one-page weekly run from topic to private upload, with Vincent's sign-off points.
 - `editing/` — Tesseract media workspace (projects, raws, renders). Media is not in the repo: it lives in `~/content/brands/shipshitshow` (see `editing/README.md`).
+- `editing/scripts/README.md` — which edit scripts are tracked (shorts, host matte) and which 261111 build scripts exist only in the content tree, episode-agnostic vs episode-specific.
 
 ## Skills
 - `skills/` — show-specific runtime skills (prep, cues, hooks, clips, chapters, metadata, linkedin, x, thumbnails, coach, growth-review, plus recap, dialogue, library, overlays for editing)

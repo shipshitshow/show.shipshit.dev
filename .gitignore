@@ -76,6 +76,12 @@ editing/scripts/*
 !editing/scripts/shorts/
 !editing/scripts/shorts/*.py
 !editing/scripts/shorts/README.md
+!editing/scripts/README.md
+!editing/scripts/matte/
+editing/scripts/matte/*
+!editing/scripts/matte/vmatte.swift
+!editing/scripts/matte/matte_post.py
+!editing/scripts/matte/README.md
 __pycache__/
 
 # Private thumbnail catalogue and local image drafts
