@@ -10,13 +10,14 @@ When a rule changes, change it at its source, not here.
 | First sentence, segment shape, re-hooks, verdict close | `skills/prep` and `skills/hooks` (`opening-and-hooks.md`, `segment-playbook.md`) |
 | What the hosts do on air | `skills/prep/references/on-air-checklist.md`, attached to the `$cues` run sheet |
 | Which takes become Shorts (hot takes, never features) | [product marketing context](../../.agents/memory/product-marketing-context.md) |
-| Shorts and recap edit style (locked 5 Nov 2026) | [edit-style.md](edit-style.md) |
+| Edit rules for recaps and Shorts (single source) | [vault brand/editing.md](https://github.com/shipshitshow/vault/blob/master/brand/editing.md) |
+| Edit build values and script names (caption sizes, loudness, cover stamp) | [edit-style.md](edit-style.md) |
 | Asterisk asset, colour, size and position for every format | [vault brand/placement.md](https://github.com/shipshitshow/vault/blob/master/brand/placement.md) |
 | Thumbnail art and covers (locked 6 Nov 2026) | `skills/thumbnails` and the channel profile in `shipshitshow/skills` |
 | Titles: one line on the home feed (locked 6 Nov 2026) | channel profile in `shipshitshow/skills` (`$metadata`) |
 | Editing workspace layout | [editing/README.md](../../editing/README.md) |
 | Asterisk stamp on thumbnails | `bun run thumbnail:stamp` (reads the placement table) |
-| Shorts render | `editing/scripts/shorts/` (locked template) |
+| Shorts render | `editing/scripts/shorts/` (see edit-style.md for what it covers) |
 | Upload safety | `scripts/youtube-upload.ts` (private by default) |
 
 **Vincent signs off at five points:** the topic board, the recap transcript and
@@ -58,9 +59,9 @@ public. Nothing else waits on him.
 1. Write the edit plan with `$recap`: chapters, source ranges, the opening line,
    what gets cut, and the claims to protect.
    - **Gate:** Vincent approves the plan and transcript before rendering.
-2. Render following edit-style.md. That means hard cuts only, no title cards,
-   30–45 s of two-person talk before the first screenshare, and b-roll at least
-   every minute. Loudness is two-pass.
+2. Render following the [vault edit rules](https://github.com/shipshitshow/vault/blob/master/brand/editing.md)
+   (hosts first, hard cuts, no title cards, the opening and ending rules, the
+   chapter gates). Build values are in [edit-style.md](edit-style.md).
 3. Re-transcribe the render, check that the chapters match the final cut, and
    watch it once all the way through.
 4. Put the result in `video/final/` (video, captions, chapters, title,
@@ -76,8 +77,8 @@ public. Nothing else waits on him.
    "because" or "that's why" gets a later line pulled forward or another range.
    Plan each cover with its cut (the subject of the take, colour varied across
    the batch).
-2. Render one sample with `editing/scripts/shorts/` (locked template, see its
-   README).
+2. Render one sample with `editing/scripts/shorts/` (build values in
+   [edit-style.md](edit-style.md), layout in the vault edit rules).
    - **Gate:** Vincent OKs the sample, then cut the batch.
 3. Re-transcribe every clip and check the joins by ear. When a claim belongs
    to a guest (numbers, timelines), add `HOLD.txt` until they confirm it.
