@@ -30,7 +30,7 @@ def find_bin(name, override=None):
 def load_short(episode, slug, config=None):
     """Returns (cfg, episode_dir, short_dir). Config defaults to <short>/short.json."""
     episode = Path(episode).resolve()
-    short_dir = episode / "shorts" / slug
+    short_dir = episode / "out" / "shorts" / slug
     cfg_path = Path(config) if config else short_dir / "short.json"
     if not cfg_path.exists():
         die(f"{cfg_path} not found (see editing/scripts/shorts/README.md)")

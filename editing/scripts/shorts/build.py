@@ -2,7 +2,7 @@
 """Build one Short (pre-loudnorm) in the locked v3c/v3d template.
 
 Ported from 261103/shorts/_work v3d (build_v3d.py), 5 Nov 2026, and made episode-agnostic:
-everything episode-specific lives in <episode>/shorts/<slug>/short.json (see README.md).
+everything episode-specific lives in <episode>/out/shorts/<slug>/short.json (see README.md).
 
 Template (docs/show-prep/edit-style.md): full-bleed 9:16 static cam crop (no zoom, no blurred
 background), red canonical asterisk top-right, white uppercase Arial Bold captions at y~1480 with
@@ -10,7 +10,7 @@ the spoken word in red, nothing below y1570, 2-3 s 9:16 b-roll cutaways, hard cu
 fades at the joins. Loudness is applied afterwards by finalize.py.
 
 Usage:
-  build.py <slug> --episode editing/projects/<YYMMDD> [--still T] [--out FILE] [--work DIR]
+  build.py <slug> --episode $SHIPSHITSHOW_CONTENT_ROOT/projects/<date>_<YYMMDD> [--still T] [--out FILE] [--work DIR]
            [--config FILE] [--source FILE] [--assets DIR] [--font TTF] [--chrome PATH]
 Reads <work>/capsw.json (written by align.py). Writes <short>/outputs/work/video-prenorm.mp4.
 """
@@ -137,12 +137,12 @@ def make_pieces(cfg, crops_a, crops_b):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("slug")
-    ap.add_argument("--episode", required=True, help="episode dir, e.g. editing/projects/261103")
-    ap.add_argument("--config", help="short.json (default <episode>/shorts/<slug>/short.json)")
+    ap.add_argument("--episode", required=True, help="episode dir, e.g. $SHIPSHITSHOW_CONTENT_ROOT/projects/2026-11-03_261103")
+    ap.add_argument("--config", help="short.json (default <episode>/out/shorts/<slug>/short.json)")
     ap.add_argument("--work", help="work dir holding capsw.json (default <short>/outputs/work/tmp_v3c)")
     ap.add_argument("--out", help="pre-loudnorm mp4 (default <short>/outputs/work/video-prenorm.mp4)")
     ap.add_argument("--source", help="override the source video")
-    ap.add_argument("--assets", help="b-roll PNG dir (default <episode>/video/assets)")
+    ap.add_argument("--assets", help="b-roll PNG dir (default <episode>/out/video/assets)")
     ap.add_argument("--font", default=CAPFONT)
     ap.add_argument("--chrome", help="headless Chromium for the asterisk (or $CHROME)")
     ap.add_argument("--still", metavar="T", help="write a single frame at clip second T to <work>/still.png")
@@ -155,7 +155,7 @@ def main():
     work.mkdir(parents=True, exist_ok=True)
     tmp = str(work)
     out = args.out or str(sdir / "outputs" / "work" / "video-prenorm.mp4")
-    assets = args.assets or str(episode / "video" / "assets")
+    assets = args.assets or str(episode / "out" / "video" / "assets")
     crops_a = {**CROPS_A, **cfg.get("crops", {}).get("A", {})}
     crops_b = {**CROPS_B, **cfg.get("crops", {}).get("B", {})}
 

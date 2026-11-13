@@ -7,8 +7,8 @@ short.json and snapped to real pauses (silencedetect -32 dB). Writes <work>/caps
 [[a, b, text, [[word, start], ...]], ...] in clip time, which build.py reads.
 
 Usage:
-  align.py <slug> --episode editing/projects/<YYMMDD> --prep      # make a.wav + w.json, print numbered words
-  align.py <slug> --episode editing/projects/<YYMMDD> [--fixes f.json]
+  align.py <slug> --episode $SHIPSHITSHOW_CONTENT_ROOT/projects/<date>_<YYMMDD> --prep      # make a.wav + w.json, print numbered words
+  align.py <slug> --episode $SHIPSHITSHOW_CONTENT_ROOT/projects/<date>_<YYMMDD> [--fixes f.json]
 fixes: {"W": {"<1-based word idx>": [start, end]}} hand-corrects whisper word times (clip seconds).
 """
 import argparse

@@ -5,7 +5,7 @@ Ported from 261103/shorts/_work v3d (finalize_v3d.py), 5 Nov 2026.
 Target (docs/show-prep/edit-style.md): I=-14 LUFS, TP=-1.5 dBTP, LRA=11.
 
 Usage:
-  finalize.py <slug> --episode editing/projects/<YYMMDD> [--in FILE] [--out FILE]
+  finalize.py <slug> --episode $SHIPSHITSHOW_CONTENT_ROOT/projects/<date>_<YYMMDD> [--in FILE] [--out FILE]
 Defaults: --in <short>/outputs/work/video-prenorm.mp4, --out <short>/final/video.mp4.
 Refuses to overwrite an existing output.
 """
@@ -41,7 +41,7 @@ def main():
     ap.add_argument("--out")
     args = ap.parse_args()
     ff, fp = C.find_bin("ffmpeg"), C.find_bin("ffprobe")
-    short_dir = Path(args.episode).resolve() / "shorts" / args.slug
+    short_dir = Path(args.episode).resolve() / "out" / "shorts" / args.slug
     src = Path(args.src) if args.src else short_dir / "outputs" / "work" / "video-prenorm.mp4"
     out = Path(args.out) if args.out else short_dir / "final" / "video.mp4"
     if not src.exists():

@@ -7,37 +7,56 @@ October 2026; it now lives here so show data and edits share one repository.
 ## What is tracked
 
 This repository is public. Git tracks only the workspace contract: this README,
-`AGENTS.md` and `scripts/workspace.py`. Everything else under
-`editing/` is ignored by an allowlist in the root `.gitignore`: raw footage,
-renders, native projects, transcripts, manifests, host photos, brand concept
-boards and recovery archives. Never force-add files from `editing/`, and keep
-the allowlist when changing `.gitignore`.
+`AGENTS.md`, `scripts/workspace.py` and `scripts/shorts/`. Everything else under
+`editing/` is ignored by an allowlist in the root `.gitignore`. Never force-add
+media or project files from `editing/`, and keep the allowlist when changing
+`.gitignore`.
 
-Media exists only in the primary checkout, at
-`~/www/shipshitshow/show.shipshit.dev/editing`. Worktrees contain the tracked
-contract but no media, so run edits and `workspace.py` from the primary
-checkout. Historical work scripts and `work/` JSON still contain absolute
-`~/www/tesseract/...` paths from before the merge; treat them as records.
-Manifest `external_artifacts` were rewritten to the current locations.
+## Where the media lives
+
+Media is not in this repository. It lives in the brand's content tree, outside
+any checkout:
+
+```text
+~/content/brands/shipshitshow/     # the media root (override: SHIPSHITSHOW_CONTENT_ROOT)
+~/content/_labs/shipshitshow/      # experiments (override: SHIPSHITSHOW_LABS_ROOT)
+```
+
+Because `workspace.py` resolves these from the environment, it runs from any
+checkout or worktree of this repository, not only a primary one. Set
+`SHIPSHITSHOW_CONTENT_ROOT` to point it elsewhere (another machine, a test
+fixture). `workspace.py --help` prints the roots currently in effect. The media
+root has its own `README.md` with the layout and the old-to-new path map.
+
+Not yet moved and still under `editing/` in the original checkout: `outputs/`
+(shorts covers and audits), `thumbnail-masters/`, `sources/`, `assets/thumbnails/`
+and the thumbnail scripts, which `docs/thumbnail-lab.md` and
+`docs/thumbnail-sources.md` describe. Historical work scripts and `work/` JSON
+inside moved projects still contain absolute paths from earlier layouts
+(`~/www/tesseract/...`, the old `editing/` tree); treat them as records.
 
 ## Layout
 
-One folder per recorded episode, keyed by recording date. The recording is
-stored once per episode; every deliverable cut from it is its own project.
+One folder per recorded episode, named `<YYYY-MM-DD>_<YYMMDD>`. The recording is
+stored once per episode; every deliverable cut from it is its own project under
+`out/`. Project ids in commands stay `<YYMMDD>/video`, `<YYMMDD>/shorts/<slug>`
+and `_labs/<slug>`; the script maps them to folders.
 
 ```text
-editing/
-  projects/<YYMMDD>/
+~/content/brands/shipshitshow/
+  README.md             layout and the old-to-new path map
+  projects/<YYYY-MM-DD>_<YYMMDD>/
     episode.json        episode identity and links to the rest of the show data
-    raws/               stream recording and full-source transcript, stored once
-    video/              long-form edit (recap) project
-    shorts/<NN-slug>/   one project per short
-    shorts/_archive-*/  superseded collection material, not a project
-  _labs/<slug>/         branding, motion and design experiments (projects)
-  assets/               shared original host photos (pfps/) and logos
-  raws/                 inbox for footage not yet assigned to an episode
-  outputs/              workspace audits, migration records (legacy/)
-  _archive-recovery/    recovered downloads and transcripts, kept for reference
+    project.md          hand-off notes for the episode
+    raw/                stream recording and full-source transcript, stored once
+    out/video/          long-form edit (recap) project
+    out/shorts/<NN-slug>/   one project per short
+    out/shorts/_archive-*/  superseded collection material, not a project
+    prompts/            generation prompts and briefs, when kept
+  _assets/              shared originals: profile/ (host photos), logo/, banner/,
+                        fonts/, music/, docs/, references/
+  _archive/             recovered downloads and transcripts, kept for reference
+~/content/_labs/shipshitshow/<slug>/   branding, motion and design experiments
 ```
 
 `episode.json` links an episode to the rest of the show by its date key.
@@ -50,9 +69,9 @@ Repository paths are relative to the repository root; `recording` and
   "id": "261013",
   "recording_date": "2026-10-13",
   "show_data": "apps/app/data/livestream/2026-10-13",
-  "recording": "raws/261013.mp4",
+  "recording": "raw/261013.mp4",
   "youtube": {"livestream": "M1EEEl4M6-4", "video": null, "shorts": {}},
-  "transcripts": ["raws/transcript.vtt"]
+  "transcripts": ["raw/transcript.vtt"]
 }
 ```
 
@@ -65,7 +84,7 @@ and delivery filenames:
   project.json          id, kind, status, current revision and artifact paths
   README.md             editorial intent and review notes when useful
   raws/                 deliverable-only sources (often empty; the recording is
-                        in the episode's raws/)
+                        in the episode's raw/)
   assets/               reusable audio, references, keyframes and briefs
   outputs/
     video.mp4           current working render, when present
@@ -94,12 +113,13 @@ need a video or editable project. A short's portrait export is its main
 Generated YouTube thumbnails stay in the show's dated Desktop library
 (`~/Desktop/thumbnails/<YYMM>/<YYMMDD>/`); `final/manifest.json` records their
 paths as `external_artifacts`. Always refresh a face from the originals in
-`assets/pfps/`, never from a previously generated face.
+`_assets/profile/` in the media root, never from a previously generated face.
 
 ## Commands
 
-Run from `editing/` in the primary checkout. `init` creates the episode
-(`episode.json`, `raws/`) on first use and infers the kind (`recap` for
+Run from `editing/` in any checkout; the media root comes from
+`SHIPSHITSHOW_CONTENT_ROOT` (default `~/content/brands/shipshitshow`). `init`
+creates the episode (`episode.json`, `raw/`, `out/`) on first use and infers the kind (`recap` for
 `video`, `short` for shorts, `design` for labs). A bare `audit` checks every
 episode and project.
 
