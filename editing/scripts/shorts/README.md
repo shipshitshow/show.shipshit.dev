@@ -1,6 +1,6 @@
 # Shorts pipeline
 
-Episode-agnostic scripts for the locked Shorts template in `docs/show-prep/edit-style.md`.
+Episode-agnostic scripts for the 261103 Shorts template (single speaker, full-bleed crop). The edit rules are in the [vault edit rules](https://github.com/shipshitshow/vault/blob/master/brand/editing.md), which now describe the stacked two-host layout; build values are in `docs/show-prep/edit-style.md`.
 Ported from the 261103 `shorts/_work` v3d scripts (5 Nov 2026). Nothing here is tied to one
 episode: everything episode-specific lives in `<episode>/out/shorts/<slug>/short.json` (episode = `~/content/brands/shipshitshow/projects/<date>_<YYMMDD>`, see `editing/README.md`).
 
@@ -79,7 +79,7 @@ If whisper mistimes a word, correct it and re-run step 2:
 - `crops` (optional): per-episode override of the cam crops, `{"A": {"tiles": {...}}, "B": {"speakers": {...}}}`.
   Defaults are the 261103 crops for the 1920×1080 cam (see `CROPS_A` / `CROPS_B` in `build.py`).
 
-## Locked template values
+## Template values
 
 Constants at the top of the scripts, from `docs/show-prep/edit-style.md`; change them in the style doc first.
 

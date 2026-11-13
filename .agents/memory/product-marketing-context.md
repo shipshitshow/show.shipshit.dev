@@ -70,11 +70,13 @@ A demo like the install walkthrough can still go to LinkedIn as is.
   under 60 s (Vincent, 2026-11-05; replaces 30–50 s).
 - Keep a host's opinion phrased as opinion, and keep it a lesson rather than a
   sales pitch.
-- Edit style (layout, captions, asterisk, b-roll), updated 2026-11-05: see
-  [the edit style](../../docs/show-prep/edit-style.md). The speaker fills the
-  9:16 frame, there is no title, the red asterisk sits top-right, and captions
-  are white with the spoken word in red. This replaces the 2026-10-29 blurred
-  layout.
+- Edit style (layout, captions, asterisk, b-roll): the single source is the
+  [vault edit rules](https://github.com/shipshitshow/vault/blob/master/brand/editing.md);
+  build values and script names are in
+  [edit-style.md](../../docs/show-prep/edit-style.md). The 2026-11-05 "speaker
+  fills the frame" layout was replaced by the stacked two-host layout (approved
+  2026-11-12); the red asterisk and the white captions with the spoken word in
+  red stay. This also replaces the 2026-10-29 blurred layout.
 - Send a plan with candidate takes and source ranges, plus one layout example,
   before recutting a batch.
 
