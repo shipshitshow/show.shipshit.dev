@@ -60,4 +60,5 @@ Caption, loudness and timing values below apply to both layouts.
   readable UI stay inside a 5% margin on every edge (96 px at 1920×1080) and
   clear of the asterisk box (x1680–1824, y96–240). Treat as a starting value.
 - Chapters, gates, transitions, outro and the matte are in the vault page;
-  scripts are in `editing/scripts/` (`matte/` for the host matte).
+  scripts are in `editing/scripts/` (`matte/` for the host matte, `chapters/` for
+  the chapter-by-chapter runner).
