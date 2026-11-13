@@ -8,6 +8,7 @@ Only a small part of the edit pipeline lives in this repository (the repo is pub
 |---|---|
 | `workspace.py` | resolves the content/labs roots; runs from any checkout |
 | `shorts/` | Shorts build scripts (own README) |
+| `chapters/` | chapter-by-chapter runner: `plan`, `chapter`, `all`, `stitch` from an episode's `chapters.json` (own README) |
 | `matte/` | host matte: Apple Vision person segmentation (`vmatte.swift`) plus `matte_post.py` (own README) |
 
 ## What exists for the 261111 episode (not tracked)
@@ -31,7 +32,7 @@ Pipeline order: ASR, cuts, plan, audio, captions, render, EDL. Versions v1 to v4
 | `mascot_pos*.py`, `mascot_sheet.py`, `review_page.py` | **episode-specific** | review and placement helpers for this episode's overlays |
 | `gen_subscribe.py`, `lift_subscribe*.py` | **one-off assets** | a placeholder subscribe pill, and a pill lifted from a previous recap video; the lifted pill sits in the project assets and is reused as is |
 
-**Chapter split:** there is no standalone chapter-split script. Chapters are segment boundaries in the plan (`seg_starts` in `plan_final.py`), the chapter names are a list in `build_edl_final.py`, and the stingers/whoosh at each chapter start come from the same plan. Cutting an episode into individually edited chapters is not implemented as a tool; the 261111 edit was one timeline with chapter markers.
+**Chapter split:** there is no standalone chapter-split script. Chapters are segment boundaries in the plan (`seg_starts` in `plan_final.py`), the chapter names are a list in `build_edl_final.py`, and the stingers/whoosh at each chapter start come from the same plan. Cutting an episode into individually edited chapters is now covered by `chapters/` for plain cuts (no matte or overlays); the 261111 edit itself was one timeline with chapter markers.
 
 ## If you rebuild this for another episode
 
