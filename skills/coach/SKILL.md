@@ -101,8 +101,9 @@ Rules:
 ## 5. Save and share
 
 Save one Markdown file per stream in the episode's working folder, outside any
-public repository (for Ship Sh*t Show: `editing/projects/<YYMMDD>/coach.md`, which
-git ignores). The scorecards are for the hosts; do not publish them, post them or
+public repository (for Ship Sh*t Show: `coach.md` in that episode's project folder
+under `~/content/brands/shipshitshow/projects/`, next to its `project.md`). The
+scorecards are for the hosts; do not publish them, post them or
 send them to anyone without the hosts' approval. If a page is wanted for sharing,
 make a private one and give the link to the hosts only.
 Return the path and the three biggest changes per host in chat, not every card.
