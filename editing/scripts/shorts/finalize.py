@@ -3,7 +3,7 @@
 
 Ported from 261103/shorts/_work v3d (finalize_v3d.py), 5 Nov 2026.
 Target (docs/show-prep/edit-style.md): I=-14 LUFS, TP=-1.5 dBTP, LRA=11.
-Voice chain before the loudnorm (owner, 14 Nov 2026): high-pass, level to a reference, compress, de-ess.
+Voice chain before the loudnorm (added 14 Nov 2026; tool defaults, not an owner decision): high-pass, level to a reference, compress, de-ess.
 The level is measured on each Short, so the compressor and the de-esser act the same on every recording.
 
 Usage:
