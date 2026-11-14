@@ -55,6 +55,8 @@ jobs:
         run: python3 -m unittest discover -s editing/scripts/trim -p 'test_*.py'
       - name: Revisions and credits tests
         run: python3 -m unittest discover -s editing/scripts/revisions -p 'test_*.py'
+      - name: Cut audit tests
+        run: python3 -m unittest discover -s editing/scripts/cutaudit -p 'test_*.py'
 
       - name: Typecheck
         run: bun run check:types

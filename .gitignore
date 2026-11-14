@@ -96,6 +96,11 @@ editing/scripts/revisions/*
 !editing/scripts/revisions/revlog.py
 !editing/scripts/revisions/test_revlog.py
 !editing/scripts/revisions/README.md
+!editing/scripts/cutaudit/
+editing/scripts/cutaudit/*
+!editing/scripts/cutaudit/audit.py
+!editing/scripts/cutaudit/test_audit.py
+!editing/scripts/cutaudit/README.md
 !editing/scripts/matte/
 editing/scripts/matte/*
 !editing/scripts/matte/vmatte.swift
