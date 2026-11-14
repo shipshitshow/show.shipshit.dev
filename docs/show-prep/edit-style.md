@@ -13,14 +13,20 @@ Selection rules for which takes become Shorts stay in
 ## Shorts build values (9:16, 1080x1920)
 
 Scripts are tracked in `editing/scripts/shorts/`: `align.py` for caption timing,
-`build.py` for the render, `finalize.py` for loudness (see its README). Reuse
-them instead of re-deriving values. Which scripts exist and which 261111 build
-scripts live only in the content tree is in `editing/scripts/README.md`.
+`stacked.py` for the stacked two-host render (the current layout), `build.py` for
+the older 261103 single-speaker render, `finalize.py` for loudness (see its
+README). Reuse them instead of re-deriving values. Which scripts exist and which
+261111 build scripts live only in the content tree is in `editing/scripts/README.md`.
 
-Status of the scripts: `build.py` still renders the 261103 layout (one speaker
-as a full-bleed static crop). The stacked two-host layout the vault page now
-describes (approved 261111 Short 01 v2) is not scripted in this repo yet.
-Caption, loudness and timing values below apply to both layouts.
+Status of the scripts: `stacked.py` renders the layout the vault page describes
+(approved 261111 Short 01 v2): two 1080x960 panels, Vincent above Mitchell, hard
+cuts, karaoke captions on the seam, the red asterisk, no title text and no cam
+zoom. Default panel crops from the 261111 raw (1920x1080 two-shot): a 960x853
+window per host, Vincent at x0 y0, Mitchell at x960 y100, scaled 1.125x; the name
+labels start near y985, so a window ends above that. Per-episode override in
+`short.json` (`crops.S`). It does not place b-roll or mascot beats; those and the
+Related video link are separate steps. Caption, loudness and timing values below
+apply to both layouts.
 
 **Captions**
 - Bold uppercase Arial Bold, 2–4 words and at most about 19 characters per chunk.
@@ -31,8 +37,9 @@ Caption, loudness and timing values below apply to both layouts.
   pauses with ffmpeg `silencedetect` (−32 dB, ≥0.2 s), so captions drop out when
   nobody speaks. The highlight steps word by word inside a chunk. The timing is
   heuristic: a person still checks it by ear.
-- Caption position follows the vault Shorts layout (middle seam). The 261103
-  build in `build.py` still puts the line at about y1480.
+- Caption position follows the vault Shorts layout (middle seam): `stacked.py`
+  centres the line on y960. The older 261103 build in `build.py` still puts the
+  line at about y1480.
 
 **B-roll sizing**
 - Crop or generate b-roll for 9:16 with the subject centred. A 16:9 crop that

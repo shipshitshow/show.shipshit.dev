@@ -24,9 +24,9 @@ from PIL import Image, ImageDraw, ImageFont
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import common as C
+from common import AAC, CANVAS, FPS, UNSHARP, X264  # shared encode values
 
 # ---- Locked template values (docs/show-prep/edit-style.md). Change them there first. ----------
-CANVAS = (1080, 1920)
 RED = (232, 59, 59, 255)                 # #E83B3B, brand red
 AST = dict(cx=940, cy=290, size=120)     # red asterisk (vault asterisk-red.svg), centred x940/y290, 120 px
 CAPFONT = "/System/Library/Fonts/Supplemental/Arial Bold.ttf"   # Arial Bold, uppercase
@@ -37,11 +37,6 @@ CAP_CY = 1480                            # caption vertical centre
 CAP_FLOOR = 1570                         # nothing below this (YouTube Shorts UI zone)
 CAP_STROKE = (20, 12, 12, 255)           # 3 px dark outline
 CAP_SHADOW = (0, 0, 0, 110)              # soft drop shadow, offset (+3, +4)
-AUDIO_FADE = 0.018                       # s, at hard-cut joins only
-FPS = 30
-X264 = ["-c:v", "libx264", "-crf", "16", "-preset", "medium", "-pix_fmt", "yuv420p", "-r", str(FPS)]
-AAC = ["-c:a", "aac", "-b:a", "192k", "-ar", "48000"]
-UNSHARP = "unsharp=5:5:0.6:5:5:0.0"
 # Default speaker crops on the 1920x1080 cam recording; override per episode in short.json "crops".
 CROPS_A = dict(w=259, h=460, tiles={"vincent": [115, 0], "mitchell": [70, 540]})   # [x0, y0]
 CROPS_B = dict(w=579, h=1030, speakers={"V": 211, "M": 1091})                       # x0 (two-up)
@@ -60,9 +55,9 @@ def overlay(path, asterisk_png):
     im.save(path)
 
 
-def cap_words(prefix, text, words, font_path):
+def cap_words(prefix, text, words, font_path, cy=CAP_CY):
     """One transparent 1080x1920 PNG per spoken word of a chunk: the chunk in white, that word in red.
-    Returns (cap_h, top, bottom, [png paths])."""
+    `cy` is the vertical centre of the line (stacked.py passes the seam). Returns (cap_h, top, bottom, [png paths])."""
     text = text.upper()
     for cap_h in (CAP_H, *CAP_H_FALLBACKS):
         size = round(cap_h / 0.716)
@@ -72,7 +67,7 @@ def cap_words(prefix, text, words, font_path):
             break
     assert w <= CAP_MAX_W, (text, w)
     hb = f.getbbox("H")
-    y = CAP_CY - (hb[1] + hb[3]) / 2
+    y = cy - (hb[1] + hb[3]) / 2
     x0 = (CANVAS[0] - w) / 2
     toks = text.split()
     assert len(toks) == len(words), (text, words)
@@ -88,7 +83,7 @@ def cap_words(prefix, text, words, font_path):
         p = f"{prefix}_{k}.png"
         im.save(p)
         paths.append(p)
-    return cap_h, CAP_CY - cap_h / 2 - 4, CAP_CY + cap_h / 2 + 4, paths
+    return cap_h, cy - cap_h / 2 - 4, cy + cap_h / 2 + 4, paths
 
 
 def broll_clip(ff, tmp, assets, name, cx, dur):
@@ -189,13 +184,7 @@ def main():
             fc += f"[{i}:v]crop={cw}:{ch}:{c[0]}:{c[1]},scale=1080:1920:flags=lanczos,{UNSHARP}[l{i}];"
         vin += f"[l{i}]"
         d = b - a
-        af = []
-        if first is not None and first > 0:
-            af.append(f"afade=t=in:st=0:d={AUDIO_FADE}")
-        if first == 0 and cfg.get("fadein0"):
-            af.append(f"afade=t=in:st=0:d={cfg['fadein0']}")
-        if last is not None and last < nseg - 1:
-            af.append(f"afade=t=out:st={d - AUDIO_FADE:.3f}:d={AUDIO_FADE}")
+        af = C.audio_fades(first, last, d, nseg, cfg.get("fadein0"))
         fc += f"[{i}:a]{','.join(af) if af else 'anull'}[au{i}];"
         ain += f"[au{i}]"
     ii = n

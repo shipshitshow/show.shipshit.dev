@@ -14,6 +14,14 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import workspace  # noqa: E402  (shared content-root helpers)
 
+# ---- Locked encode values shared by build.py and stacked.py (docs/show-prep/edit-style.md) ----
+CANVAS = (1080, 1920)
+AUDIO_FADE = 0.018                       # s, at hard-cut joins only
+FPS = 30
+X264 = ["-c:v", "libx264", "-crf", "16", "-preset", "medium", "-pix_fmt", "yuv420p", "-r", str(FPS)]
+AAC = ["-c:a", "aac", "-b:a", "192k", "-ar", "48000"]
+UNSHARP = "unsharp=5:5:0.6:5:5:0.0"
+
 REPO = Path(__file__).resolve().parents[3]
 ASTERISK_RED_SVG = REPO / "apps" / "app" / "public" / "brand" / "asterisk-red.svg"
 
@@ -53,6 +61,19 @@ def source_path(cfg, episode, override=None):
     if not p.exists():
         die(f"source video not found: {p}")
     return p
+
+
+def audio_fades(first, last, dur, nseg, fadein0=None):
+    """afade filters for one piece of a hard-cut edit. `first`/`last` are the seg index when the piece starts/ends
+    a seg (else None); 18 ms fades only at joins between segs, plus an optional opening fade (`fadein0`)."""
+    af = []
+    if first is not None and first > 0:
+        af.append(f"afade=t=in:st=0:d={AUDIO_FADE}")
+    if first == 0 and fadein0:
+        af.append(f"afade=t=in:st=0:d={fadein0}")
+    if last is not None and last < nseg - 1:
+        af.append(f"afade=t=out:st={dur - AUDIO_FADE:.3f}:d={AUDIO_FADE}")
+    return af
 
 
 def clip_time(segs, t):
