@@ -54,6 +54,9 @@ jobs:
       - name: Revisions and credits tests
         run: python3 -m unittest discover -s editing/scripts/revisions -p 'test_*.py'
 
+      - name: Chapter runner tests
+        run: python3 -m unittest discover -s editing/scripts/chapters -p 'test_*.py'
+
       - name: Typecheck
         run: bun run check:types
 
