@@ -11,6 +11,9 @@ import subprocess
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import workspace  # noqa: E402  (shared content-root helpers)
+
 REPO = Path(__file__).resolve().parents[3]
 ASTERISK_RED_SVG = REPO / "apps" / "app" / "public" / "brand" / "asterisk-red.svg"
 
@@ -45,7 +48,8 @@ def default_work(short_dir):
 
 
 def source_path(cfg, episode, override=None):
-    p = Path(override) if override else Path(episode) / cfg["source"]
+    # the config names the recording; its colour-corrected copy is used when current (--source bypasses this)
+    p = Path(override) if override else workspace.graded_source(Path(episode) / cfg["source"])
     if not p.exists():
         die(f"source video not found: {p}")
     return p

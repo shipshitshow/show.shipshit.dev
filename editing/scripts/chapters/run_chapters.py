@@ -131,7 +131,7 @@ class Project:
         ep = self.dir / "episode.json"
         self.episode_id = json.loads(ep.read_text()).get("id") if ep.exists() else self.dir.name.split("_")[-1]
         src = self.cfg.get("source") or f"raw/{self.episode_id}.mp4"
-        self.source = (self.dir / src).resolve()
+        self.source = workspace.graded_source(self.dir / src).resolve()
         self.out = self.dir / "out" / "chapters"
         self.work = self.out / ".work"
         self.errors: list[str] = []

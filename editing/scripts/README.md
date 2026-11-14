@@ -10,6 +10,7 @@ Only a small part of the edit pipeline lives in this repository (the repo is pub
 | `shorts/` | Shorts build scripts (own README) |
 | `chapters/` | chapter-by-chapter runner: `plan`, `chapter`, `all`, `stitch` from an episode's `chapters.json` (own README) |
 | `matte/` | host matte: Apple Vision person segmentation (`vmatte.swift`) plus `matte_post.py` (own README) |
+| `grade/` | automatic colour correction: `grade.py` measures each recording's own footage and corrects the host cameras before the recap and Shorts are cut (own README) |
 
 ## What exists for the 261111 episode (not tracked)
 
