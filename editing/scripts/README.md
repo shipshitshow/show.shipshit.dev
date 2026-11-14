@@ -16,6 +16,8 @@ Only a small part of the edit pipeline lives in this repository (the repo is pub
 | `privacy/` | privacy and on-screen text sweep: `sweep.py` samples frames, OCRs them (Apple Vision, tesseract fallback) and flags keys, tokens, `.env` lines, emails, phones, IBAN/cards, URL secrets, home paths and denylisted names; writes a redacted JSON and markdown report plus merged review ranges, optionally a blur filter that is never applied for you (own README, unit tests run in CI) |
 | `matte/` | host matte: Apple Vision person segmentation (`vmatte.swift`) plus `matte_post.py` (own README) |
 | `grade/` | automatic colour correction: `grade.py` measures each recording's own footage and corrects the host cameras before the recap and Shorts are cut (own README) |
+| `package/` | release-package check: `check.py` validates the title (about 45 characters, Title Case), the tweet (link in the first reply, hashtags), five Shorts, three thumbnails and the caption safe zones, and writes a PASS/WARN/FAIL report citing the vault rule for each; says where no rule exists; `safezone.py` is the zone shared with `render/` (own README, unit tests run in CI) |
+| `render/` | dual render: `dual.py` turns one finished master into a clean YouTube copy (stream copy) and a burned-caption X/LinkedIn copy at full quality, with one shared audio encode at about -14 LUFS under a limiter and Shorts-style captions inside the package-check safe zone; `--dry-run` prints the ffmpeg commands (own README, unit tests run in CI) |
 
 ## What exists for the 261111 episode (not tracked)
 

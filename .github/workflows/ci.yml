@@ -64,6 +64,12 @@ jobs:
       - name: Chapter runner tests
         run: python3 -m unittest discover -s editing/scripts/chapters -p 'test_*.py'
 
+      - name: Package check tests
+        run: python3 -m unittest discover -s editing/scripts/package -p 'test_*.py'
+
+      - name: Dual render tests
+        run: python3 -m unittest discover -s editing/scripts/render -p 'test_*.py'
+
       - name: Typecheck
         run: bun run check:types
 
