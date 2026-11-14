@@ -81,6 +81,11 @@ editing/scripts/*
 editing/scripts/chapters/*
 !editing/scripts/chapters/run_chapters.py
 !editing/scripts/chapters/README.md
+!editing/scripts/takes/
+editing/scripts/takes/*
+!editing/scripts/takes/pick.py
+!editing/scripts/takes/test_pick.py
+!editing/scripts/takes/README.md
 !editing/scripts/matte/
 editing/scripts/matte/*
 !editing/scripts/matte/vmatte.swift

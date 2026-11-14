@@ -48,6 +48,9 @@ jobs:
       - name: Skills lock consistency
         run: python3 scripts/sync-content-skills.py --source .skills-source --check
 
+      - name: Take-picker tests
+        run: python3 -m unittest discover -s editing/scripts/takes -p 'test_*.py'
+
       - name: Typecheck
         run: bun run check:types
 
