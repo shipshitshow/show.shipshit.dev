@@ -1,0 +1,9 @@
+# Public values that are fine on screen: one entry per line. Anything matching is ignored by the sweep.
+#   example.org         a domain: covers emails at it, URLs on it and subdomains
+#   @example.org        email addresses ending in it
+#   hello@example.org   one exact value
+#   /Users/shared       a path prefix
+#   re:^support@        a regular expression
+example.org
+hello@example.org
+/Users/shared
