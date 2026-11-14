@@ -43,7 +43,8 @@ Caption, loudness and timing values below apply to both layouts.
 - Two-pass loudnorm: I=−14, TP=−1.5, LRA=11. After AAC encoding the 261103 Shorts
   measured −14.1 to −14.5 LUFS and −1.3 to −1.4 dBTP.
 - Voice chain before the loudnorm, in the chapter runner and in `finalize.py`
-  (owner, 14 Nov 2026): the voice is measured and brought to −19 LUFS, then
+  (added 14 Nov 2026; tool defaults, not an owner decision): the voice is
+  measured and brought to −19 LUFS, then
   compressed (ratio 3, threshold 3 dB above that level, attack 10 ms, release
   150 ms, knee 4) and de-essed (ffmpeg `deesser`, intensity 0.5). The level step
   comes first so both act the same on every recording. `finalize.py` also adds
@@ -63,9 +64,11 @@ Caption, loudness and timing values below apply to both layouts.
 
 ## Recap build values (16:9)
 
-- 16:9 safe zone (proposed, still unconfirmed by Vincent): text, captions and
-  readable UI stay inside a 5% margin on every edge (96 px at 1920×1080) and
-  clear of the asterisk box (x1680–1824, y96–240). Treat as a starting value.
+- 16:9 safe zone (owner, 14 Nov 2026; the rule is in the vault's
+  `brand/placement.md`): text, captions and readable UI stay inside a 5% margin
+  on every edge (96 px at 1920×1080) and clear of the asterisk box (x1680–1824,
+  y96–240) wherever the mark appears. Full-frame b-roll may fill the frame; its
+  subject stays inside the margin.
 - Chapters, gates, transitions, outro and the matte are in the vault page;
   scripts are in `editing/scripts/` (`matte/` for the host matte, `chapters/` for
   the chapter-by-chapter runner).

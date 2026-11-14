@@ -87,7 +87,7 @@ Constants at the top of the scripts, from `docs/show-prep/edit-style.md`; change
 - Captions: Arial Bold, uppercase, cap height ~62 px, centred at y1480, white with the spoken word in `#E83B3B`,
   nothing below y1570 (YouTube Shorts UI zone).
 - Audio: voice chain, then `loudnorm I=-14 TP=-1.5 LRA=11`, two-pass, then AAC 192k / 48 kHz.
-- Voice chain (owner, 14 Nov 2026; tool defaults, the same values as the chapter runner): high-pass 80 Hz, level
+- Voice chain (added 14 Nov 2026; tool defaults, not an owner decision, the same values as the chapter runner): high-pass 80 Hz, level
   measured and brought to -19 LUFS, `acompressor` (ratio 3, threshold 3 dB above that level, attack 10 ms,
   release 150 ms, knee 4, no makeup gain), `deesser` at intensity 0.5. The level step comes first because the
   de-esser and the compressor threshold depend on the absolute level. A Short's audio is the voice only, so the

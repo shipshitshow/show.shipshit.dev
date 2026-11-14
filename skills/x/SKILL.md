@@ -17,7 +17,7 @@ This skill **drafts**. It never posts, never drives the X UI, never fires the X 
 2. Read `../prep/references/brand-voice.md` and `../prep/references/live-voice-extraction.md` before writing a line.
 3. Read `references/x-algorithm-2026.md` (Aug 2026 dump of https://github.com/xai-org/x-algorithm). Ignore the stale `x-content` plugin ("1 report = 468 likes", April 2023 75.0 / 13.5 weights).
 4. Draft the set using the **Formats** contracts. One original post per beat. Do not dump several originals in a row.
-5. Tag every outbound link with the **UTM convention**.
+5. Put the link in the first reply, never in the post, and tag it with the **UTM convention** (see **Link Placement**).
 6. Write drafts into the topic's `## X Pipeline` section (see **Where Output Goes**).
 7. Run the **Quality Gate**. Fix failures before handing anything back.
 
@@ -86,7 +86,7 @@ Contract:
 - One concrete receipt (date, dollar, percent, named product, what broke).
 - Optional second beat: the operator rule.
 - 0-2 hashtags, niche only, or none. Never `#ai`.
-- One link, last, UTM-tagged. Clip lines from the stream (`## Tweets — Paste Live`) stay link-free so they can be posted as-is or used as article pull-quotes.
+- No link in the post. One link, UTM-tagged, in the first reply (see **Link Placement**). Clip lines from the stream (`## Tweets — Paste Live`) stay link-free so they can be posted as-is or used as article pull-quotes.
 - Under ~240 characters unless the receipt needs the room. Do not pad to 280.
 
 Shape, from the Aug 18 topic (draft, not a claim it posted):
@@ -105,7 +105,7 @@ Use a thread when the viewer needs a sequence they can steal (how we ran the bot
 
 - 4-8 posts. Each post stands alone.
 - Hook post has no "1/" tax if the line is strong; number from the second post if the sequence matters.
-- Last post is the artifact + UTM link, not "that's it thanks."
+- Last post is the artifact, not "that's it thanks." Its UTM link goes in the reply under it.
 - The thread is one conversation. Do not also drop three unrelated originals beside it the same hour.
 
 ### 3. X Article — the argument
@@ -133,7 +133,9 @@ Allowed when the topic has pull. Never replaces the recap post.
 
 ### 5. Recap post — flagship day
 
-Problem as the reader feels it. What was built. Honest result. Link to the flagship with UTM. Same story as LinkedIn's Build Recap, show voice not buyer register.
+Problem as the reader feels it. What was built. Honest result. Same story as LinkedIn's Build Recap, show voice not buyer register.
+
+The episode tweet follows the **Episode Tweet Standard**: the take first, one real receipt, the burned-caption video attached, and the flagship link with UTM in the first reply.
 
 ## Cadence
 
@@ -141,6 +143,29 @@ Problem as the reader feels it. What was built. Honest result. Link to the flags
 - Recap on flagship day. Playbook-style thread or article later if the steps are stealable — not the same afternoon.
 - Replies can happen the same hour as an original. They are not a second original.
 - After 48 hours, do not "boost" a dead For You post by rewriting it slightly. Write the next real ship.
+
+## Episode Tweet Standard
+
+Owner decision, 14 Nov 2026. The source is the "Tweet and X copy" section of the
+[vault edit rules](https://github.com/shipshitshow/vault/blob/master/brand/editing.md);
+if this page and the vault differ, the vault wins.
+
+- Open on the take.
+- One real receipt from the episode: a real line, a number or the hosts' clash.
+- Attach the burned-caption copy of the video: the final video with captions burned in, at full quality.
+- The episode's YouTube link goes in the first reply, not in the tweet.
+
+Three checks before a draft reaches Vincent:
+
+1. It quotes a real line, number or host clash from the episode.
+2. It leads with the opinion, not with how the video was made.
+3. It is short and blunt, in Vincent's voice, and does not read as AI-written.
+
+## Link Placement
+
+The post itself carries no link. Draft the link as a separate first reply under
+the post, tagged with the UTM convention below, and label it "First reply" in the
+draft so it is pasted in the right place.
 
 ## UTM Convention
 
@@ -150,7 +175,7 @@ Same campaign as LinkedIn. Source changes:
 ?utm_source=x&utm_medium=social&utm_campaign=ep-<NN>-<slug>
 ```
 
-No untagged links.
+No untagged links. The tag goes on the link in the first reply.
 
 ## Where Output Goes
 
@@ -169,7 +194,8 @@ All must pass before a draft leaves this skill:
 - [ ] First line is the take. No warmup, no engagement-bait closer.
 - [ ] Voice matches brand-voice / live-voice-extraction, not the LinkedIn buyer register, not `x-content` bait patterns.
 - [ ] Algorithm check: written for reply / dwell / profile click / share. Not for like-farming or report-bait. No stacked originals in one hour.
-- [ ] Links UTM-tagged. Clip lines stay link-free unless they are the recap.
+- [ ] No link in the post. The link is drafted as the first reply and is UTM-tagged. Clip lines stay link-free.
+- [ ] Episode tweet: passes the three checks in **Episode Tweet Standard** and names the burned-caption video as its attachment.
 - [ ] Article (if any) has a stealable close and 3-5 extractable clip lines.
 - [ ] Draft only. Nothing was posted.
 
