@@ -10,6 +10,9 @@ to <episode>/out/chapters/, and joins the approved chapters into the full recap.
   run_chapters.py all     <episode> [--force]        render every chapter whose inputs changed
   run_chapters.py stitch  <episode> [--draft]        join the chapters with the stinger, append the outro
 
+A chapter may carry an optional "motion" list (b-roll, mascot, layout change, keyword pop); `plan` prints and
+validates it without rendering. Chapters without it render exactly as before. See motion.py and the README.
+
 <episode> is the episode folder (projects/<YYYY-MM-DD>_<YYMMDD>) or just its id (<YYMMDD>).
 Common options: --height 720 (review copy, default) or 1080.
 
@@ -30,6 +33,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import motion  # noqa: E402  (optional per-chapter motion layer: b-roll, mascot, layouts, keyword pops)
 import workspace  # noqa: E402  (shared content-root and episode lookup)
 
 VERSION = 2  # bump when the render recipe changes; it is part of every cache key
@@ -184,11 +189,16 @@ class Project:
                 if inner and e0 - s0 < RULES["merge_cut_s"]:
                     self.warnings.append(f"{name} ({cid}): kept piece {s0:.1f}..{e0:.1f} is under {RULES['merge_cut_s']} s between two cuts (merge the cuts)")
             dur = sum(e - s for s, e in segs)
+            items = []
+            if c.get("motion") is not None and segs:
+                items, errs, warns = motion.build(c["motion"], self._motion_ctx(segs))
+                self.errors += [f"{name} ({cid}): {e}" for e in errs]
+                self.warnings += [f"{name} ({cid}): {w}" for w in warns]
             chapters.append({
                 "n": i, "id": cid, "title": c.get("title", cid), "notes": c.get("notes", ""),
                 "approved": bool(c.get("approved", False)), "denoise": bool(c.get("denoise", False)),
                 "start": a, "end": b, "segs": segs, "dur": dur, "recap_start": recap_t,
-                "slug": f"{i:02d}-{cid}",
+                "slug": f"{i:02d}-{cid}", "motion": items,
             })
             recap_t += dur
         if len(chapters) < RULES["min_chapters"]:
@@ -197,6 +207,39 @@ class Project:
             if ch["dur"] < RULES["min_chapter_gap_s"]:
                 self.warnings.append(f"chapter {ch['n']} ({ch['id']}) is {ch['dur']:.1f}s, under the {RULES['min_chapter_gap_s']:.0f} s minimum between chapters")
         return chapters
+
+    def _motion_ctx(self, segs) -> motion.Ctx:
+        """What the motion parser needs: asset lookups (probed lazily), word timings, the layouts block."""
+        words_path = self.cfg.get("words")
+        cache: dict = {}
+
+        def words() -> list:
+            if "w" not in cache:
+                wp = Path(words_path).expanduser()
+                wp = wp if wp.is_absolute() else self.dir / wp
+                cache["w"] = json.loads(wp.read_text()) if wp.exists() else []
+            return cache["w"]
+
+        def info(p: Path) -> dict:
+            if str(p) not in cache:
+                try:
+                    cache[str(p)] = probe(p, "stream=width,height:format=duration")
+                except SystemExit:
+                    cache[str(p)] = {}
+            return cache[str(p)]
+
+        def size(p: Path):
+            st = (info(p).get("streams") or [{}])[0]
+            return (st["width"], st["height"]) if st.get("width") else None
+
+        def dur(p: Path):
+            if p.suffix.lower() in motion.IMAGE_EXT:
+                return None
+            d = info(p).get("format", {}).get("duration")
+            return float(d) if d else None
+
+        return motion.Ctx(segs=segs, base_dir=self.dir, layouts=self.cfg.get("layouts", {}),
+                          words=words if words_path else None, asset_size=size, asset_dur=dur)
 
     def chapter(self, n: int) -> dict:
         if not 1 <= n <= len(self.chapters):
@@ -230,7 +273,8 @@ def assets() -> dict:
 
 # --- keys: what makes a chapter clip stale ----------------------------------------------------------------
 def video_key(pr: Project, ch, h) -> str:
-    return digest({"v": VERSION, "src": stat_key(pr.source), "segs": ch["segs"], "h": h, "fps": RULES["fps"]})
+    base = {"v": VERSION, "src": stat_key(pr.source), "segs": ch["segs"], "h": h, "fps": RULES["fps"]}
+    return digest(motion.key_payload(base, ch["motion"], stat_key))  # no motion: the payload is `base`, the key is unchanged
 
 
 def audio_key(pr: Project, ch, h, a) -> str:
@@ -259,16 +303,32 @@ def clip_state(pr: Project, ch, h, a) -> str:
 
 
 # --- chapter render ---------------------------------------------------------------------------------------
+def motion_graph(pr: Project, ch, h, a0: float, extra: list) -> list:
+    """Filter parts for a chapter with motion; appends the extra ffmpeg inputs (assets, pop PNGs) to `extra`."""
+    pr.work.mkdir(parents=True, exist_ok=True)
+    for j, it in enumerate(x for x in ch["motion"] if x.kind == "pop"):
+        png = pr.work / f"{ch['slug']}-{h}p.pop{j}.png"
+        try:
+            motion.render_pop_png(it.text, it.color, it.size, h / motion.H, png)
+        except ImportError:
+            die("keyword pops draw their text with Pillow; run the runner with a Python that has it installed")
+        it.asset = png
+    inputs, parts = motion.motion_parts(ch["segs"], a0, h, RULES["fps"], ch["motion"])
+    for args in inputs:
+        extra += args
+    return parts
+
+
 def render_video(pr: Project, ch, h, out: Path) -> None:
     a0 = ch["segs"][0][0]
     span = ch["segs"][-1][1] - a0
-    parts, labels = [], []
-    for k, (s, e) in enumerate(ch["segs"]):
-        parts.append(f"[0:v]trim={s - a0:.4f}:{e - a0:.4f},setpts=PTS-STARTPTS,fps={RULES['fps']},"
-                     f"scale=-2:{h}:flags=lanczos,setsar=1,format=yuv420p[v{k}]")
-        labels.append(f"[v{k}]")
-    parts.append(f"{''.join(labels)}concat=n={len(labels)}:v=1:a=0[v]")
-    ffm("-ss", f"{a0:.4f}", "-t", f"{span:.4f}", "-i", pr.source, "-filter_complex", ";".join(parts), "-map", "[v]",
+    extra: list = []
+    if ch["motion"]:
+        parts = motion_graph(pr, ch, h, a0, extra)
+    else:
+        parts, labels = motion.base_parts(ch["segs"], a0, h, RULES["fps"])
+        parts.append(motion.concat_part(labels, "v"))
+    ffm("-ss", f"{a0:.4f}", "-t", f"{span:.4f}", "-i", pr.source, *extra, "-filter_complex", ";".join(parts), "-map", "[v]",
         "-c:v", "libx264", "-preset", "medium", "-crf", "20" if h <= 720 else "16", "-profile:v", "high",
         "-pix_fmt", "yuv420p", "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709",
         "-color_range", "tv", "-g", "120", "-an", "-movflags", "+faststart", out)
@@ -568,6 +628,11 @@ def cmd_plan(pr: Project, h, vault) -> int:
         print(f"{c['n']:>2}  {c['id']:<22} {fmt_clock(c['start'])}-{fmt_clock(c['end'])}  {len(c['segs']) - 1:>4} "
               f"{c['dur']:>6.1f}s {fmt_clock(c['recap_start']):>9}  {clip_state(pr, c, h, a):<8} {'yes' if c['approved'] else 'no'}")
     print(f"\ntotal recap before the outro: {fmt_clock(sum(c['dur'] for c in pr.chapters))}")
+    for c in pr.chapters:
+        if c["motion"]:
+            print(f"\nmotion, chapter {c['n']} ({c['id']}), {len(c['motion'])} item(s); times are m:ss.ss, chapter time starts at 0:00.00")
+            for row in motion.describe(c["motion"]):
+                print("  " + row)
     if vault:
         text = Path(vault).expanduser().read_text()
         missing = [m for m in VAULT_MARKERS if m not in text]

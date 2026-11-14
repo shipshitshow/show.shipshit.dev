@@ -80,6 +80,8 @@ editing/scripts/*
 !editing/scripts/chapters/
 editing/scripts/chapters/*
 !editing/scripts/chapters/run_chapters.py
+!editing/scripts/chapters/motion.py
+!editing/scripts/chapters/test_motion.py
 !editing/scripts/chapters/README.md
 !editing/scripts/takes/
 editing/scripts/takes/*

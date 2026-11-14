@@ -50,12 +50,52 @@ A chapter is re-rendered only when its inputs change: the source file, its segme
 
 `stitch` joins the chapter clips and the outro (built with `_assets/outro/src/build_outro.py`) with one filter graph. At each chapter boundary it overlays `_assets/transitions/stinger-standard.mov` so its full-frame swap (frame 10) lands on the boundary, and mixes its whoosh. The outro joins with a hard cut. The output gets a -1.5 dBTP limiter.
 
+## Motion layer (optional, per chapter)
+
+A chapter may carry a `motion` list. A chapter without one renders exactly as before (same filter graph, same cache key). `plan` prints the motion timeline and validates it without rendering: overlaps, times outside the chapter or inside a dropped span, missing asset files, overlays that land on a face, the safe margin, the asterisk box or the lower-third band. Errors stop `chapter`/`all`; warnings do not.
+
+```json
+{
+  "words": "out/video/outputs/work/words_all.json",
+  "layouts": {
+    "wide": { "faces": [[150, 20, 370, 640], [1260, 100, 380, 560]] },
+    "closeup": { "crop": [0, 0, 1280, 720], "owner_approved": true, "faces": [[0, 0, 1920, 1080]] }
+  },
+  "chapters": [{ "id": "vibe-editing", "start": "1:12", "end": "1:52", "motion": [
+    { "type": "broll",  "mode": "overlay", "asset": "assets/eighty-twenty.mp4", "at": "1:20", "dur": 2.5, "box": [720, 240, 480, 270] },
+    { "type": "broll",  "mode": "cutaway", "asset": "assets/screen.mp4", "at": "1:30", "dur": 4, "from": 12 },
+    { "type": "mascot", "asset": "assets/claude.png", "at": "1:14", "dur": 4, "corner": "bl", "width": 230 },
+    { "type": "layout", "layout": "closeup", "at": "1:36", "dur": 5 },
+    { "type": "pop",    "keyword": "five videos", "near": "1:44", "text": "5 VIDEOS", "color": "red" }
+  ] }]
+}
+```
+
+- Times are **source** seconds or `MM:SS`, the same clock as `start`, `end` and `drop`. Windows are `at` + `dur` (or `end`). A time inside a dropped span or outside the chapter is an error. Asset paths are relative to the episode folder.
+- `broll`: `mode` is `cutaway` (full frame) or `overlay` (needs `box` `[x, y, w, h]` in 1920x1080 pixels); `asset` is a video or an image; `from` seeks into a video. The hosts' audio, J/L edits included, keeps playing underneath.
+- `mascot`: `asset` (sprite or alpha video), `corner` `tl|tr|bl|br`, `width`, `margin`, `enter`/`exit` seconds. It slides in and out along an x expression: a hard slide, no alpha fade.
+- `layout`: `layout` names an entry of `layouts` in `chapters.json` (nothing is built in, the crops belong to the recording). `{"crop": [x, y, w, h]}` is a 16:9 closeup; `{"two_up": [[x, y, w, h], [x, y, w, h]]}` joins two 8:9 crops. `faces` are `[x, y, w, h]` rects in the output frame; overlays are checked against them. A scaled-up crop is a zoom on people, so it needs `"owner_approved": true` or `plan` refuses it; two-up crops of full half-frames (960 wide) need no approval.
+- `pop`: `keyword` (timed from the word timings in `words`, `near` picks the occurrence) or `at`/`dur`; `text`, `color` `white|red`, `size`, `center`. It scales from 70% to 100% over 0.18 s with an ease-out and cuts away hard. It is drawn with Pillow: run the runner with a Python that has it installed (the other kinds need only ffmpeg).
+- Layer order is plate, then motion, then the hosts' layer on top. Each overlay is gated with `enable` and `eof_action=pass`, so nothing is held after its window.
+
+Brand rules the validator enforces (from the vault pages `brand/editing.md` and `brand/placement.md`):
+
+- Hosts first: hosts on screen at least 80% of the runtime (a cutaway share over 20% warns).
+- Calm cutting: no window under 0.5 s, and layout windows closer than 2 s are merged or flagged.
+- Hard cuts only: no fades, dissolves or alpha fades, and no zoompan, xfade or blend in the generated graph (unit-tested).
+- No text cards: a pop is a few words over the hosts, never a full-frame card.
+- No zoom on people: zoom on screen content only; a host closeup needs the owner's approval.
+- Visible zones only (above the heads, on the centre seam, or at the edges), brand colours only (charcoal, white, red #E83B3B), the mascot kept off faces, a 5% safe margin, clear of the asterisk box (x 1680 to 1824, y 96 to 240).
+
+The motion list, its assets and the layouts enter the video cache key only when present, so adding or editing motion re-renders that chapter's video and nothing else. Unit tests (`test_motion.py`, standard library only) run in CI.
+
 ## Not in v1 (use the per-episode scripts for these)
 
-- Matte, b-roll and mascot layers (the host matte in `../matte/` is only needed with background overlays).
-- J/L split edits, and the music lift under the goodbye and end screen.
+- A host matte under the motion layer (the host matte in `../matte/` is only needed with background overlays): overlays sit on top of the plate and are kept off the faces by the `faces` rects, not by a matte, so they cannot go behind a host.
+- Beat or silence aware placement of motion (windows are given by hand or by a spoken keyword), and the 80% hosts-share check counts cutaways only.
+- J/L split edits (motion never touches audio, so it does not conflict with them), and the music lift under the goodbye and end screen.
 - An independent caption-sync check (captions come from the clip's own audio, and the joined SRT is shifted by clip length, not re-transcribed). A product name split across two cues is not fixed.
 - Whisper output here has no punctuation or capitalisation beyond the name fixes.
 - Per-chapter masters are not re-normalised across the stitch (the joined recap reads about 0.5 LU under the chapter target).
 - The whoosh level (peak -19 dBFS) and the duck settings are starting values carried from 261111, not confirmed.
-- Nobody has listened to any output.
+- Nobody has listened to any output, and the motion animation (slide, pop scale) has been checked on still frames only, not for smoothness.
