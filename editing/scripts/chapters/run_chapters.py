@@ -32,7 +32,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import workspace  # noqa: E402  (shared content-root and episode lookup)
 
-VERSION = 1  # bump when the render recipe changes; it is part of every cache key
+VERSION = 2  # bump when the render recipe changes; it is part of every cache key
 
 # --- Rules, from the vault page brand/editing.md (the page wins; see `plan --vault`) -----------------------
 RULES = {
@@ -43,6 +43,14 @@ RULES = {
     "min_chapter_gap_s": 10.0,      # each at least 10 s apart (first one at 0:00)
     "highpass_hz": 80,              # cleanup: high-pass about 80 Hz; denoise only if needed
     "denoise": "afftdn=nr=6:nf=-75:tn=0",  # gentle denoise carried from 261111 (per chapter: "denoise": true)
+    "voice_ref_lufs": -19.0,        # voice chain: the dialogue is first brought to this level, so the
+    "voice_gain_limit_db": 20.0,    # compressor and the de-esser act the same on every recording
+    "voice_comp_over_ref_db": 3.0,  # compressor threshold, dB above the reference level
+    "voice_comp_ratio": 3,
+    "voice_comp_attack_ms": 10,
+    "voice_comp_release_ms": 150,
+    "voice_comp_knee": 4,
+    "voice_deess": 0.5,             # de-esser intensity (ffmpeg deesser, 0..1)
     "lufs": -14.5,                  # master per chapter: about -14.5 LUFS integrated,
     "true_peak": -1.5,              # true peak at or below -1.5 dBTP
     "lra": 11,
@@ -226,7 +234,9 @@ def video_key(pr: Project, ch, h) -> str:
 
 
 def audio_key(pr: Project, ch, h, a) -> str:
-    keep = {k: RULES[k] for k in ("highpass_hz", "denoise", "lufs", "true_peak", "lra", "bed_db_under_voice",
+    keep = {k: RULES[k] for k in ("highpass_hz", "denoise", "voice_ref_lufs", "voice_gain_limit_db",
+                                  "voice_comp_over_ref_db", "voice_comp_ratio", "voice_comp_attack_ms",
+                                  "voice_comp_release_ms", "voice_comp_knee", "voice_deess", "lufs", "true_peak", "lra", "bed_db_under_voice",
                                   "bed_fade_in_s", "cut_fade_s", "loop_xfade_s")}
     return digest({"v": VERSION, "src": stat_key(pr.source), "segs": ch["segs"], "denoise": ch["denoise"],
                    "music": stat_key(a["music"]), "bed_at": round(ch["recap_start"], 3), "rules": keep})
@@ -264,6 +274,18 @@ def render_video(pr: Project, ch, h, out: Path) -> None:
         "-color_range", "tv", "-g", "120", "-an", "-movflags", "+faststart", out)
 
 
+def voice_chain(measured_i: float) -> str:
+    """Level to the reference, then compress, then de-ess. The level step comes first because ffmpeg's
+    de-esser and the compressor threshold both depend on the absolute level of what they are given."""
+    r = RULES
+    lim = r["voice_gain_limit_db"]
+    gain = max(-lim, min(lim, r["voice_ref_lufs"] - measured_i))
+    thr = 10 ** ((r["voice_ref_lufs"] + r["voice_comp_over_ref_db"]) / 20)
+    return (f"volume={gain:.2f}dB,acompressor=threshold={thr:.4f}:ratio={r['voice_comp_ratio']}:"
+            f"attack={r['voice_comp_attack_ms']}:release={r['voice_comp_release_ms']}:knee={r['voice_comp_knee']}:"
+            f"makeup=1,deesser=i={r['voice_deess']}")
+
+
 def render_dialog(pr: Project, ch, out: Path) -> None:
     a0 = ch["segs"][0][0]
     span = ch["segs"][-1][1] - a0
@@ -275,8 +297,12 @@ def render_dialog(pr: Project, ch, out: Path) -> None:
         labels.append(f"[a{k}]")
     clean = f"highpass=f={RULES['highpass_hz']}:poles=2" + (f",{RULES['denoise']}" if ch["denoise"] else "")
     parts.append(f"{''.join(labels)}concat=n={len(labels)}:v=0:a=1,{clean},aformat=channel_layouts=stereo[a]")
+    pcm = ("-c:a", "pcm_f32le", "-ar", "48000")
+    raw = out.with_name(out.stem + ".clean.wav")
     ffm("-ss", f"{a0:.4f}", "-t", f"{span:.4f}", "-i", pr.source, "-filter_complex", ";".join(parts), "-map", "[a]",
-        "-c:a", "pcm_f32le", "-ar", "48000", out)
+        *pcm, raw)
+    ffm("-i", raw, "-af", voice_chain(loudness(raw)["I"]), *pcm, out)
+    raw.unlink()
 
 
 def loudness(path, extra=()) -> dict:

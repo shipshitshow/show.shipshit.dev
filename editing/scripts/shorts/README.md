@@ -8,7 +8,7 @@ episode: everything episode-specific lives in `<episode>/out/shorts/<slug>/short
 | --- | --- |
 | `align.py` | `--prep`: cut the Short's audio, run whisper, print numbered words. Then: map your caption chunks to word times and snap them to real pauses → `capsw.json`. |
 | `build.py` | Crop the cam to full-bleed 9:16, add b-roll, the red asterisk and per-word captions → `video-prenorm.mp4`. |
-| `finalize.py` | Two-pass loudnorm (video copied) → `final/video.mp4`. Refuses to overwrite. |
+| `finalize.py` | Voice chain (high-pass, level, compress, de-ess), then two-pass loudnorm (video copied) → `final/video.mp4`. Refuses to overwrite. |
 | `common.py` | Shared helpers (not run directly). |
 
 ## Requirements (the edit machine)
@@ -86,7 +86,14 @@ Constants at the top of the scripts, from `docs/show-prep/edit-style.md`; change
 - Red asterisk (`asterisk-red.svg`, `apps/app/public/brand/`): 120 px, centred at x940 / y290.
 - Captions: Arial Bold, uppercase, cap height ~62 px, centred at y1480, white with the spoken word in `#E83B3B`,
   nothing below y1570 (YouTube Shorts UI zone).
-- Audio: `loudnorm I=-14 TP=-1.5 LRA=11`, two-pass, then AAC 192k / 48 kHz.
+- Audio: voice chain, then `loudnorm I=-14 TP=-1.5 LRA=11`, two-pass, then AAC 192k / 48 kHz.
+- Voice chain (owner, 14 Nov 2026; tool defaults, the same values as the chapter runner): high-pass 80 Hz, level
+  measured and brought to -19 LUFS, `acompressor` (ratio 3, threshold 3 dB above that level, attack 10 ms,
+  release 150 ms, knee 4, no makeup gain), `deesser` at intensity 0.5. The level step comes first because the
+  de-esser and the compressor threshold depend on the absolute level. A Short's audio is the voice only, so the
+  chain runs on the whole track. Checked by meter on one 60 s stretch of the 11 Nov 2026 livestream, not
+  auditioned: loudness range 5.5 to 4.4 LU, loudest sibilant frame 3 dB lower, true peak after AAC from +0.3 to
+  -1.2 dBTP. The de-esser is deliberately mild; listen before raising it.
 - Video: x264 crf16, 30 fps, yuv420p, `+faststart`.
 
 ## Notes
