@@ -9,6 +9,7 @@ Only a small part of the edit pipeline lives in this repository (the repo is pub
 | `workspace.py` | resolves the content/labs roots; runs from any checkout |
 | `shorts/` | Shorts build scripts (own README) |
 | `chapters/` | chapter-by-chapter runner: `plan`, `chapter`, `all`, `stitch` from an episode's `chapters.json` (own README) |
+| `takes/` | transcript take-picker: `pick.py` ranks self-contained 20 to 90 s candidate Shorts from an episode transcript and emits `short.json` `segs` (own README, unit tests run in CI) |
 | `matte/` | host matte: Apple Vision person segmentation (`vmatte.swift`) plus `matte_post.py` (own README) |
 | `grade/` | automatic colour correction: `grade.py` measures each recording's own footage and corrects the host cameras before the recap and Shorts are cut (own README) |
 
