@@ -58,6 +58,9 @@ jobs:
       - name: Cut audit tests
         run: python3 -m unittest discover -s editing/scripts/cutaudit -p 'test_*.py'
 
+      - name: Privacy sweep tests
+        run: python3 -m unittest discover -s editing/scripts/privacy -p 'test_*.py'
+
       - name: Typecheck
         run: bun run check:types
 

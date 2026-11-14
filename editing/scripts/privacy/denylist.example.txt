@@ -1,0 +1,6 @@
+# Private names that must never show on screen: one entry per line, case-insensitive, whole-word match.
+# A line starting with re: is a regular expression. Keep the real list outside the repository.
+Example Client Inc
+Project Falcon
+internal-tool.example.invalid
+re:acme-[a-z]+-staging
