@@ -91,6 +91,11 @@ editing/scripts/trim/*
 !editing/scripts/trim/trim.py
 !editing/scripts/trim/test_trim.py
 !editing/scripts/trim/README.md
+!editing/scripts/revisions/
+editing/scripts/revisions/*
+!editing/scripts/revisions/revlog.py
+!editing/scripts/revisions/test_revlog.py
+!editing/scripts/revisions/README.md
 !editing/scripts/matte/
 editing/scripts/matte/*
 !editing/scripts/matte/vmatte.swift
