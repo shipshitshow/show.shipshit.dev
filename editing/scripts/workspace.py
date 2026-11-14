@@ -10,6 +10,7 @@ from pathlib import Path
 import re
 import shutil
 import subprocess
+import sys
 import tempfile
 import zipfile
 
@@ -41,6 +42,20 @@ def episode_dir(episode_id: str, create: bool = False) -> Path:
     if not create:
         raise ValueError(f"No episode folder for {episode_id} under {ROOT / 'projects'}")
     return ROOT / "projects" / f"20{episode_id[:2]}-{episode_id[2:4]}-{episode_id[4:]}_{episode_id}"
+
+
+def graded_source(path: Path) -> Path:
+    """Colour-corrected sibling of a recording (<stem>.graded<suffix>, written by grade/grade.py) when it is current.
+
+    A corrected file older than the recording is stale: the recording is returned and a note goes to stderr.
+    """
+    graded = path.with_name(f"{path.stem}.graded{path.suffix}")
+    if not (graded.exists() and path.exists()):
+        return path
+    if graded.stat().st_mtime < path.stat().st_mtime:
+        print(f"note: {graded.name} is older than {path.name}; using the uncorrected recording", file=sys.stderr)
+        return path
+    return graded
 
 
 def project_path(slug: str) -> Path:

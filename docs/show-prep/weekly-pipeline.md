@@ -18,6 +18,7 @@ When a rule changes, change it at its source, not here.
 | Editing workspace layout | [editing/README.md](../../editing/README.md) |
 | Asterisk stamp on thumbnails | `bun run thumbnail:stamp` (reads the placement table) |
 | Shorts render | `editing/scripts/shorts/` (see edit-style.md for what it covers) |
+| Colour correction | `editing/scripts/grade/` (automatic, measured per recording; own README) |
 | Upload safety | `scripts/youtube-upload.ts` (private by default) |
 
 **Vincent signs off at five points:** the topic board, the recap transcript and
@@ -53,6 +54,13 @@ public. Nothing else waits on him.
 2. Fill `episode.json` with the livestream ID.
 3. Transcribe it to `raw/transcript.txt` and fix ASR names (Genfeed, Grok,
    Claude, PHP, Cloudflare).
+4. Correct the colour once per recording:
+   `/usr/local/bin/python3 editing/scripts/grade/grade.py run <YYMMDD>`.
+   It measures the recording's own footage (no fixed look), writes a
+   corrected copy beside the recording in `raw/` and prints each host's skin
+   reading before and after. The recap and Shorts builders use that copy
+   automatically. Look at one two-shot and one screen-share frame before
+   cutting.
 
 ## 3. Recap (16:9, about 10 min)
 
