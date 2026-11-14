@@ -86,6 +86,11 @@ editing/scripts/takes/*
 !editing/scripts/takes/pick.py
 !editing/scripts/takes/test_pick.py
 !editing/scripts/takes/README.md
+!editing/scripts/trim/
+editing/scripts/trim/*
+!editing/scripts/trim/trim.py
+!editing/scripts/trim/test_trim.py
+!editing/scripts/trim/README.md
 !editing/scripts/revisions/
 editing/scripts/revisions/*
 !editing/scripts/revisions/revlog.py
