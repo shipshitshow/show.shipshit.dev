@@ -1,13 +1,14 @@
 # Shorts pipeline
 
-Episode-agnostic scripts for the 261103 Shorts template (single speaker, full-bleed crop). The edit rules are in the [vault edit rules](https://github.com/shipshitshow/vault/blob/master/brand/editing.md), which now describe the stacked two-host layout; build values are in `docs/show-prep/edit-style.md`.
+Episode-agnostic scripts for the Shorts template: the stacked two-host layout (`stacked.py`, current) and the older 261103 single-speaker layout (`build.py`). The edit rules are in the [vault edit rules](https://github.com/shipshitshow/vault/blob/master/brand/editing.md), which now describe the stacked two-host layout; build values are in `docs/show-prep/edit-style.md`.
 Ported from the 261103 `shorts/_work` v3d scripts (5 Nov 2026). Nothing here is tied to one
 episode: everything episode-specific lives in `<episode>/out/shorts/<slug>/short.json` (episode = `~/content/brands/shipshitshow/projects/<date>_<YYMMDD>`, see `editing/README.md`).
 
 | Script | Does |
 | --- | --- |
 | `align.py` | `--prep`: cut the Short's audio, run whisper, print numbered words. Then: map your caption chunks to word times and snap them to real pauses → `capsw.json`. |
-| `build.py` | Crop the cam to full-bleed 9:16, add b-roll, the red asterisk and per-word captions → `video-prenorm.mp4`. |
+| `stacked.py` | Stacked two-host 9:16 (Vincent above Mitchell, both always visible), karaoke captions on the seam, the red asterisk, hard cuts → `video-prenorm.mp4`. No title text, no zoom, no b-roll. |
+| `build.py` | Older 261103 layout: crop the cam to one full-bleed speaker, add b-roll, the red asterisk and per-word captions → `video-prenorm.mp4`. |
 | `finalize.py` | Voice chain (high-pass, level, compress, de-ess), then two-pass loudnorm (video copied) → `final/video.mp4`. Refuses to overwrite. |
 | `common.py` | Shared helpers (not run directly). |
 
@@ -37,11 +38,15 @@ $PY $S/align.py $SLUG --episode $EP --prep
 # 2. add "chunks" to short.json from those numbers, then time them to the audio
 $PY $S/align.py $SLUG --episode $EP
 # 3. quick still to check framing, captions and the asterisk (written to the work dir)
-$PY $S/build.py $SLUG --episode $EP --still 5
+$PY $S/stacked.py $SLUG --episode $EP --still 5        # stacked two-host; use build.py for the 261103 single-speaker layout
 # 4. full render, then loudness
-$PY $S/build.py $SLUG --episode $EP
+$PY $S/stacked.py $SLUG --episode $EP
 $PY $S/finalize.py $SLUG --episode $EP
 ```
+
+`stacked.py` takes the same `short.json` and `capsw.json` as `build.py` and ignores per-seg `layout` / `tile` / `splits`
+and `broll`. It warns when a seg falls outside a two-shot run of `$EP/out/grade/layouts.json` (check the stills then).
+Tests: `python3 -m unittest discover -s editing/scripts/shorts` (CI runs them through `bun test` in `apps/app`).
 
 Defaults: work dir `<short>/outputs/work/tmp_v3c`, pre-loudnorm render `<short>/outputs/work/video-prenorm.mp4`,
 final `<short>/final/video.mp4`. B-roll PNGs are read from `$EP/out/video/assets/<asset>.png`. Override with
@@ -76,16 +81,21 @@ If whisper mistimes a word, correct it and re-run step 2:
 - `chunks`: caption lines as `[text, [word numbers]]`; the numbers come from `align.py --prep`.
   Word count must match. Keep lines short enough to stay under 940 px.
 - `broll`: cutaways in **clip** seconds; `asset` is a 16:9 PNG, `cx` the horizontal centre of the 9:16 crop in that PNG.
-- `crops` (optional): per-episode override of the cam crops, `{"A": {"tiles": {...}}, "B": {"speakers": {...}}}`.
-  Defaults are the 261103 crops for the 1920×1080 cam (see `CROPS_A` / `CROPS_B` in `build.py`).
+- `crops` (optional): per-episode override of the cam crops, `{"A": {"tiles": {...}}, "B": {"speakers": {...}}, "S": {...}}`.
+  `A` / `B` defaults are the 261103 crops for the 1920×1080 cam (see `CROPS_A` / `CROPS_B` in `build.py`).
+  `S` is the stacked layout: `{"w": 960, "h": 853, "V": [x, y], "M": [x, y]}`, one window per host (V on top, M below),
+  each scaled to a 1080×960 panel; keys you leave out keep the defaults (`DEFAULT_CROPS` in `stacked.py`, measured on the
+  1920×1080 two-shot of 11 Nov 2026: V at 0,0, M at 960,100). `w:h` must match 1080:960 within 1%, the window must sit
+  inside the source, and it should end above y985, where the name labels start (a warning prints otherwise).
 
 ## Template values
 
 Constants at the top of the scripts, from `docs/show-prep/edit-style.md`; change them in the style doc first.
 
 - Red asterisk (`asterisk-red.svg`, `apps/app/public/brand/`): 120 px, centred at x940 / y290.
-- Captions: Arial Bold, uppercase, cap height ~62 px, centred at y1480, white with the spoken word in `#E83B3B`,
-  nothing below y1570 (YouTube Shorts UI zone).
+- Captions: Arial Bold, uppercase, cap height ~62 px, white with the spoken word in `#E83B3B`, nothing below y1570
+  (YouTube Shorts UI zone). Centred on the seam (y960) in `stacked.py`, at y1480 in `build.py`.
+- Stacked layout: two 1080×960 panels, SAR 1:1 / DAR 9:16, no title text, no zoom.
 - Audio: voice chain, then `loudnorm I=-14 TP=-1.5 LRA=11`, two-pass, then AAC 192k / 48 kHz.
 - Voice chain (added 14 Nov 2026; tool defaults, not an owner decision, the same values as the chapter runner): high-pass 80 Hz, level
   measured and brought to -19 LUFS, `acompressor` (ratio 3, threshold 3 dB above that level, attack 10 ms,
