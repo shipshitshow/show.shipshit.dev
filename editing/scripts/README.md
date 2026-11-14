@@ -10,7 +10,10 @@ Only a small part of the edit pipeline lives in this repository (the repo is pub
 | `shorts/` | Shorts build scripts (own README) |
 | `chapters/` | chapter-by-chapter runner: `plan`, `chapter`, `all`, `stitch` from an episode's `chapters.json`, with an optional per-chapter `motion` layer (b-roll, mascot, layouts, keyword pops; own README, unit tests run in CI) |
 | `takes/` | transcript take-picker: `pick.py` ranks self-contained 20 to 90 s candidate Shorts from an episode transcript and emits `short.json` `segs` (own README, unit tests run in CI) |
+| `trim/` | dead-air and filler trimming: `trim.py` reads word timings plus the source media and writes a cut list (EDL) and an audit report, optionally rendering the trimmed media (own README, unit tests run in CI) |
+| `cutaudit/` | cut audit: `audit.py` checks every cut of an EDL, `chapters.json` or Short `short.json` against the waveform and the word timings (mid-word, clipped edges, double pause, doubled phrase), writes `cut-audit.json`, a PASS/WARN/FAIL report, waveform PNGs and an unapplied nudged EDL (own README, unit tests run in CI) |
 | `revisions/` | `revlog.py`: append-only per-episode revisions log (input hashes, tool versions, output sha256/duration/loudness, EDL summary) with `add`/`show`/`diff`, plus `credits` for b-roll attribution (`UNVERIFIED` when metadata is missing); own README, unit tests run in CI |
+| `privacy/` | privacy and on-screen text sweep: `sweep.py` samples frames, OCRs them (Apple Vision, tesseract fallback) and flags keys, tokens, `.env` lines, emails, phones, IBAN/cards, URL secrets, home paths and denylisted names; writes a redacted JSON and markdown report plus merged review ranges, optionally a blur filter that is never applied for you (own README, unit tests run in CI) |
 | `matte/` | host matte: Apple Vision person segmentation (`vmatte.swift`) plus `matte_post.py` (own README) |
 | `grade/` | automatic colour correction: `grade.py` measures each recording's own footage and corrects the host cameras before the recap and Shorts are cut (own README) |
 
