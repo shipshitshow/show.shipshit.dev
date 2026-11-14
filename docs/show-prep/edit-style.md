@@ -42,6 +42,13 @@ Caption, loudness and timing values below apply to both layouts.
 **Loudness**
 - Two-pass loudnorm: I=−14, TP=−1.5, LRA=11. After AAC encoding the 261103 Shorts
   measured −14.1 to −14.5 LUFS and −1.3 to −1.4 dBTP.
+- Voice chain before the loudnorm, in the chapter runner and in `finalize.py`
+  (owner, 14 Nov 2026): the voice is measured and brought to −19 LUFS, then
+  compressed (ratio 3, threshold 3 dB above that level, attack 10 ms, release
+  150 ms, knee 4) and de-essed (ffmpeg `deesser`, intensity 0.5). The level step
+  comes first so both act the same on every recording. `finalize.py` also adds
+  the 80 Hz high-pass that Shorts did not have. Tool defaults, picked by meter
+  on the 11 Nov 2026 livestream and not auditioned.
 
 **Files**
 - Each Short's `final/` folder keeps only `video.mp4`, `title.txt` and
