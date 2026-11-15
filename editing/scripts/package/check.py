@@ -47,6 +47,8 @@ UNSPECIFIED = [
     "Three thumbnails: an audit gap (gap 5), not a rule in brand/editing.md; a different count WARNs.",
     "Thumbnail content (hosts at the edges, no title text) and size: not checked; the check only counts files.",
     "X/LinkedIn copy caption style and zone: brand/editing.md lists it as an open gap; the landscape zone in safezone.py is a measured house default, not a vault rule.",
+    "Words per Shorts caption chunk: only checked when the package lists the chunks (captions.chunks) or the longest chunk (captions.max_words); a chunk over 3 words WARNs.",
+    "Overlay graphics (asterisk, b-roll, mascot) inside the Shorts graphics safe box x48-888 / y400-1248: the package carries no graphics data, so this is not checked here (unit-tested for the asterisk, documented for the rest).",
     "Burned captions over host faces: only the face band measured on the 261111 two-shot is known; a different framing needs a different profile.",
 ]
 
@@ -171,8 +173,29 @@ def check_captions(profile, spec, subject, rule):
         how = "declared"
     bad = Z.violations(profile, box, cy)
     if bad:
-        return [item(FAIL, "captions.zone", subject, f"outside the {profile['name']} safe zone ({how}): " + "; ".join(bad), rule)]
-    return [item(PASS, "captions.zone", subject, f"inside the {profile['name']} safe zone ({how}; {Z.zone_summary(profile)})", rule)]
+        out = [item(FAIL, "captions.zone", subject, f"outside the {profile['name']} safe zone ({how}): " + "; ".join(bad), rule)]
+    else:
+        out = [item(PASS, "captions.zone", subject, f"inside the {profile['name']} safe zone ({how}; {Z.zone_summary(profile)})", rule)]
+    return out + check_caption_words(profile, spec, subject, rule)
+
+
+def check_caption_words(profile, spec, subject, rule):
+    """WARN when a Shorts caption chunk has more than the profile's word limit (3). `spec` may list the chunk texts
+    (`chunks`) or give the largest chunk's word count (`max_words`); without either nothing is known and nothing is said."""
+    limit = profile.get("max_words")
+    if not limit:
+        return []
+    spec = spec or {}
+    counts = [len(str(t).split()) for t in spec.get("chunks") or []]
+    if spec.get("max_words") is not None:
+        counts.append(int(spec["max_words"]))
+    if not counts:
+        return []
+    over = [n for n in counts if n > limit]
+    if over:
+        return [item(WARN, "captions.words", subject,
+                     f"{len(over)} caption chunk(s) over {limit} words (longest {max(over)}); the Shorts rule is {limit} words a chunk at most", rule)]
+    return [item(PASS, "captions.words", subject, f"every caption chunk has {limit} words or fewer", rule)]
 
 
 def _exists(path, base):

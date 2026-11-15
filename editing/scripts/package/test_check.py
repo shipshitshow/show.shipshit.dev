@@ -32,7 +32,7 @@ def good_package(base):
                   "first_reply": "Full episode: https://youtu.be/abc?utm_source=x&utm_medium=social"},
         "thumbnails": ["t1.png", "t2.png", "t3.png"],
         "shorts": [{"id": f"short-0{i}", "title": f"Short {i}", "file": "a.mp4", "duration_s": 60,
-                    "layout": "stacked", "captions": {"cap_h": 62, "cy": 960, "width": 800}} for i in range(1, 6)],
+                    "layout": "stacked", "captions": {"cap_h": 62, "cy": 960, "width": 760}} for i in range(1, 6)],
         "x_copy": {"file": "x.mp4", "profile": "landscape", "cap_h": 48, "cy": 872, "width": 1500},
     }
 
@@ -41,9 +41,33 @@ class SafeZone(unittest.TestCase):
     def test_shorts_numbers_are_read_from_the_shorts_scripts_not_copied(self):
         st = Z.PROFILES["stacked"]
         self.assertEqual(st["cy"], S.SEAM_Y)
-        self.assertEqual((st["cap_h"], st["cap_h_fallbacks"], st["max_w"], st["floor"]), (62, (58, 54, 50), 940, 1570))
-        self.assertEqual(Z.PROFILES["full"]["cy"], 1480)
-        self.assertEqual(Z.PROFILES["stacked"]["keepouts"]["asterisk"], (880, 230, 1000, 350))
+        self.assertEqual((st["cap_h"], st["cap_h_fallbacks"], st["max_w"], st["floor"]), (62, (58, 54, 50), 780, 1248))
+        self.assertEqual(Z.PROFILES["full"]["cy"], 1056)
+        self.assertEqual(Z.PROFILES["stacked"]["keepouts"]["asterisk"], (760, 400, 880, 520))
+
+    def test_shorts_zone_is_the_ad_safe_zone_for_1080x1920(self):
+        # Universal Video Ad Safe Zones: 48 left, 192 right, 288 top, 672 bottom.
+        for name in ("stacked", "full"):
+            p = Z.PROFILES[name]
+            self.assertEqual((p["x_range"], p["top"], p["floor"], p["max_words"]), ((48, 888), 288, 1248, 3), name)
+            self.assertEqual(p["cx"], (48 + 888) // 2)
+            self.assertEqual(Z.center_x(p), 468)
+            box = Z.caption_box(p, p["cap_h"], p["max_w"])
+            self.assertEqual((box[0], box[2]), (78, 858))   # 468 +/- 390: clear of the right rail from x917
+
+    def test_old_full_frame_caption_position_is_now_a_violation(self):
+        p = Z.PROFILES["full"]
+        self.assertTrue(any("1248" in b for b in Z.violations(p, Z.caption_box(p, 62, 780, 1480), 1480)))   # was y1480
+        self.assertTrue(any("wide" in b or "x" in b for b in Z.violations(p, Z.caption_box(p, 62, 940, 1056), 1056)))   # was 940 wide
+        off = Z.caption_box(p, 62, 780, 1056)
+        shifted = (off[0] + 200, off[1], off[2] + 200, off[3])                                              # not on x468
+        self.assertTrue(Z.violations(p, shifted, 1056))
+
+    def test_graphics_box_holds_the_asterisk_and_rejects_the_old_spot(self):
+        self.assertEqual(Z.GRAPHICS_SAFE_BOX, (48, 400, 888, 1248))
+        self.assertEqual(Z.graphics_violations(Z.PROFILES["stacked"]["keepouts"]["asterisk"]), [])
+        self.assertTrue(Z.graphics_violations((880, 230, 1000, 350)))     # old spot: under the chips, clipped by the right edge
+        self.assertTrue(Z.graphics_violations((0, 500, 1080, 1100)))     # a 16:9 b-roll card scaled to full width
 
     def test_stacked_box_matches_the_seam_helper(self):
         top, bottom = S.seam_caption_box(62)
@@ -62,7 +86,7 @@ class SafeZone(unittest.TestCase):
     def test_full_caption_below_the_floor_is_flagged(self):
         p = Z.PROFILES["full"]
         bad = Z.violations(p, Z.caption_box(p, 62, 800, 1600), 1600)
-        self.assertTrue(any("1570" in b for b in bad))
+        self.assertTrue(any("1248" in b for b in bad))
 
     def test_landscape_flags_faces_labels_margin_width_and_asterisk(self):
         p = Z.PROFILES["landscape"]
@@ -187,13 +211,26 @@ class Package(unittest.TestCase):
 
     def test_caption_zone_failures_and_missing_spec(self):
         pkg = good_package(self.base)
-        pkg["shorts"][0]["captions"] = {"cap_h": 62, "cy": 1100, "width": 800}   # off the seam
+        pkg["shorts"][0]["captions"] = {"cap_h": 62, "cy": 1100, "width": 760}   # off the seam
         pkg["shorts"][1].pop("captions")                                         # unspecified
         pkg["x_copy"].update(cy=700)                                             # over the faces
         rep = K.run_checks(pkg, self.base)
         zones = [c for c in rep["checks"] if c["id"] == "captions.zone"]
         self.assertEqual([c["level"] for c in zones].count(K.FAIL), 2)
         self.assertEqual([c["level"] for c in zones].count(K.WARN), 1)
+
+    def test_caption_chunks_over_three_words_warn_and_do_not_fail(self):
+        pkg = good_package(self.base)
+        pkg["shorts"][0]["captions"]["chunks"] = ["one two three", "this is four words"]
+        pkg["shorts"][1]["captions"]["chunks"] = ["one two three"]
+        pkg["shorts"][2]["captions"]["max_words"] = 5
+        pkg["x_copy"]["chunks"] = ["a long landscape caption chunk of many words"]   # landscape has no word rule
+        rep = K.run_checks(pkg, self.base)
+        words = [c for c in rep["checks"] if c["id"] == "captions.words"]
+        self.assertEqual([c["level"] for c in words].count(K.WARN), 2)
+        self.assertEqual([c["level"] for c in words].count(K.PASS), 1)
+        self.assertEqual(len(words), 3)
+        self.assertNotIn(K.FAIL, [c["level"] for c in rep["checks"] if c["id"] == "captions.zone"])
 
     def test_measured_extent_from_the_dual_report_wins(self):
         pkg = good_package(self.base)

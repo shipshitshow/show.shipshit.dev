@@ -29,17 +29,26 @@ Related video link are separate steps. Caption, loudness and timing values below
 apply to both layouts.
 
 **Captions**
-- Bold uppercase Arial Bold, 2–4 words and at most about 19 characters per chunk.
+- Bold uppercase Arial Bold, at most 3 words (and about 19 characters) per chunk. `align.py` and `stacked.py` WARN on a longer chunk.
 - Cap height about 62 px. Drop to 58 or 54 px only when a chunk would not fit.
-- Keep the box at most about 920 px wide, with nothing below y1570.
+- Shorts UI safe zone (1080x1920): captions stay inside x48–888, y288–1248, at most about 780 px wide and centred on
+  x468 (the middle of that range), so nothing sits under the right rail or the title block.
 - Thin dark outline (about 3 px) and a soft shadow, no box.
 - Word timing: whisper `small.en` on the Short's own audio, snapped to real
   pauses with ffmpeg `silencedetect` (−32 dB, ≥0.2 s), so captions drop out when
   nobody speaks. The highlight steps word by word inside a chunk. The timing is
   heuristic: a person still checks it by ear.
 - Caption position follows the vault Shorts layout (middle seam): `stacked.py`
-  centres the line on y960. The older 261103 build in `build.py` still puts the
-  line at about y1480.
+  centres the line on y960 (inside the zone). The full-frame build in `build.py` puts
+  the line at y1056 (55% down), moved up from y1480 on 15 Nov 2026.
+
+**Overlays (asterisk, b-roll, mascot)**
+- Graphics safe box x48–888, y400–1248 (below the header and chips, left of the right rail).
+  The red asterisk is centred at x820 / y460 at 120 px; it was x940 / y290, under the chips
+  and clipped by the right edge on a phone.
+- Animations (b-roll, mascots, pops) are made natively for each format from the next episode
+  (week of 22 Nov 2026): a 9:16 version inside the Shorts safe box and a 16:9 version for the
+  long video, never a shrunken 16:9 clip in a Short. The published 261111 Shorts are not rebuilt.
 
 **B-roll sizing**
 - Crop or generate b-roll for 9:16 with the subject centred. A 16:9 crop that

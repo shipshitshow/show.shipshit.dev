@@ -3,7 +3,13 @@
 
 Three profiles:
   stacked    1080x1920 two-host Shorts layout: caption line centred on the seam (shorts/stacked.py SEAM_Y).
-  full       1080x1920 full-bleed Short (shorts/build.py): caption at y1480, nothing below y1570.
+  full       1080x1920 full-bleed Short (shorts/build.py): caption at y1056 (55% down).
+Both 1080x1920 profiles share the Shorts safe zone (Google's Universal Video Ad Safe Zones: 48 left, 192 right,
+288 top, 672 bottom reserved for the phone UI): the caption box stays inside x48-888, y288-1248, is centred on the
+middle of that range (x468, not the canvas centre) and carries at most 3 words a chunk. Overlay graphics (the red
+asterisk, b-roll, mascot) use the tighter GRAPHICS_SAFE_BOX x48-888, y400-1248: the phone header and chip row cover the
+video down to about y375. The package check does not receive graphics data, so the box is enforced by the unit tests
+for the asterisk (shorts/build.py AST) and documented for the rest.
   landscape  1920x1080 episode / X copy: caption in the lower band, above the host name labels and below the faces.
 
 The Shorts numbers are read from shorts/stacked.py and shorts/build.py, not copied. build.py imports Pillow, which
@@ -18,6 +24,7 @@ from pathlib import Path
 SHORTS = Path(__file__).resolve().parents[1] / "shorts"
 sys.path.insert(0, str(SHORTS))
 import stacked as S  # noqa: E402  (pure logic: SEAM_Y, LABEL_Y, seam_caption_box)
+from common import CAP_MAX_WORDS  # noqa: E402  (pure: words per caption chunk)
 
 PAD = 4  # px above and below the cap height, the same padding build.cap_words uses
 
@@ -30,7 +37,7 @@ def _literal(node):
 
 
 def build_constants(path=SHORTS / "build.py"):
-    """Module-level literal constants of shorts/build.py (CAP_H, CAP_MAX_W, CAP_FLOOR, AST, ...) without importing it."""
+    """Module-level literal constants of shorts/build.py (CAP_H, CAP_MAX_W, CAP_CX, CAP_FLOOR, AST, ...) without importing it."""
     out = {}
     for node in ast.parse(Path(path).read_text()).body:
         if isinstance(node, ast.Assign) and len(node.targets) == 1 and isinstance(node.targets[0], ast.Name):
@@ -63,17 +70,24 @@ LANDSCAPE = dict(
     keepouts={"asterisk": (1680, 96, 1824, 240)},
 )
 
+# The Shorts safe zone, shared by both 1080x1920 profiles (all from shorts/build.py): x range, top and bottom.
+SHORTS_ZONE = dict(cx=B["CAP_CX"], x_range=tuple(B["CAP_SAFE_X"]), top=B["CAP_CEIL"], floor=B["CAP_FLOOR"],
+                   max_words=CAP_MAX_WORDS)
+# Overlay graphics (the asterisk, b-roll, mascot) have a tighter top than captions: the header and chip row cover the
+# video down to about y375 on a phone. (x0, y0, x1, y1), from shorts/build.py.
+GRAPHICS_SAFE_BOX = tuple(B["GRAPHICS_SAFE_BOX"])
+
 PROFILES = {
     "landscape": LANDSCAPE,
     "stacked": dict(
         name="stacked", canvas=(1080, 1920), margin=0,
         cy=S.SEAM_Y, cap_h=B["CAP_H"], cap_h_fallbacks=tuple(B["CAP_H_FALLBACKS"]), max_w=B["CAP_MAX_W"],
-        floor=B["CAP_FLOOR"], seam_tol=2, keepouts={"asterisk": _asterisk_rect()},
+        seam_tol=2, keepouts={"asterisk": _asterisk_rect()}, **SHORTS_ZONE,
     ),
     "full": dict(
         name="full", canvas=(1080, 1920), margin=0,
         cy=B["CAP_CY"], cap_h=B["CAP_H"], cap_h_fallbacks=tuple(B["CAP_H_FALLBACKS"]), max_w=B["CAP_MAX_W"],
-        floor=B["CAP_FLOOR"], keepouts={"asterisk": _asterisk_rect()},
+        keepouts={"asterisk": _asterisk_rect()}, **SHORTS_ZONE,
     ),
 }
 
@@ -92,11 +106,16 @@ def cap_sizes(profile):
     return (profile["cap_h"], *profile["cap_h_fallbacks"])
 
 
+def center_x(profile):
+    """Horizontal centre of a caption: the safe-zone centre for the Shorts profiles, the canvas centre otherwise."""
+    return profile.get("cx", profile["canvas"][0] / 2)
+
+
 def caption_box(profile, cap_h, width, cy=None):
     """(x0, y0, x1, y1) of a caption line: centred horizontally, `width` px wide, cap height `cap_h`, centre `cy`."""
     cy = profile["cy"] if cy is None else cy
-    cw = profile["canvas"][0]
-    return ((cw - width) / 2, cy - cap_h / 2 - PAD, (cw + width) / 2, cy + cap_h / 2 + PAD)
+    cx = center_x(profile)
+    return (cx - width / 2, cy - cap_h / 2 - PAD, cx + width / 2, cy + cap_h / 2 + PAD)
 
 
 def _overlap(a, b):
@@ -110,14 +129,20 @@ def violations(profile, box, cy=None):
     cw, ch = p["canvas"]
     x0, y0, x1, y1 = box
     m = p["margin"]
-    if x0 < m or x1 > cw - m:
+    if "x_range" in p:
+        lo, hi = p["x_range"]
+        if x0 < lo or x1 > hi:
+            bad.append(f"x {x0:.0f}-{x1:.0f} outside the Shorts safe zone x{lo}-{hi} (phone UI at the edges)")
+    elif x0 < m or x1 > cw - m:
         bad.append(f"x {x0:.0f}-{x1:.0f} outside the {m} px side margin" if m else f"x {x0:.0f}-{x1:.0f} outside the canvas")
     if x1 - x0 > p["max_w"] + 0.5:
         bad.append(f"{x1 - x0:.0f} px wide, over the {p['max_w']} px limit")
-    if abs((x0 + x1) / 2 - cw / 2) > 2:
-        bad.append(f"not centred (centre x {(x0 + x1) / 2:.0f}, canvas {cw / 2:.0f})")
+    if abs((x0 + x1) / 2 - center_x(p)) > 2:
+        bad.append(f"not centred (centre x {(x0 + x1) / 2:.0f}, expected {center_x(p):.0f})")
     if "floor" in p and y1 > p["floor"]:
         bad.append(f"bottom y{y1:.0f} is below y{p['floor']} (Shorts UI zone)")
+    if "top" in p and y0 < p["top"]:
+        bad.append(f"top y{y0:.0f} is above y{p['top']} (Shorts UI zone)")
     if "face_bottom" in p and y0 < p["face_bottom"]:
         bad.append(f"top y{y0:.0f} reaches the host faces (clear below y{p['face_bottom']})")
     if "label_top" in p and y1 > p["label_top"] - p["label_gap"]:
@@ -132,13 +157,26 @@ def violations(profile, box, cy=None):
     return bad
 
 
+def graphics_violations(rect, box=GRAPHICS_SAFE_BOX):
+    """Reasons an overlay graphic box (x0, y0, x1, y1) leaves the Shorts graphics safe box; empty means inside."""
+    x0, y0, x1, y1 = rect
+    bx0, by0, bx1, by1 = box
+    bad = []
+    if x0 < bx0 or x1 > bx1:
+        bad.append(f"x {x0:.0f}-{x1:.0f} outside x{bx0}-{bx1}")
+    if y0 < by0 or y1 > by1:
+        bad.append(f"y {y0:.0f}-{y1:.0f} outside y{by0}-{by1}")
+    return bad
+
+
 def zone_summary(profile):
     """The rules as short text for the reports."""
     p = profile
-    parts = [f"{p['canvas'][0]}x{p['canvas'][1]}", f"centre y{p['cy']}", f"cap height {p['cap_h']} (down to {p['cap_h_fallbacks'][-1]})",
+    parts = [f"{p['canvas'][0]}x{p['canvas'][1]}", f"centre y{p['cy']}"]
+    if "cx" in p:
+        parts.append(f"centre x{p['cx']}, inside x{p['x_range'][0]}-{p['x_range'][1]}, y{p['top']}-{p['floor']}, {CAP_MAX_WORDS} words a chunk at most")
+    parts += [f"cap height {p['cap_h']} (down to {p['cap_h_fallbacks'][-1]})",
              f"max width {p['max_w']}"]
-    if "floor" in p:
-        parts.append(f"nothing below y{p['floor']}")
     if "face_bottom" in p:
         parts.append(f"clear of faces above y{p['face_bottom']} and of the name labels from y{p['label_top'] - p['label_gap']}")
     if p["margin"]:

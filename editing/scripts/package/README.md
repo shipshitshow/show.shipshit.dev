@@ -42,7 +42,7 @@ Every field is optional; what is missing is reported (FAIL for a missing title o
 | Tweet | present; the episode link is not in the tweet; the first reply holds one link, with UTM parameters; 0 to 2 niche hashtags, never `#ai`; no announcement opener (take first) | vault `brand/editing.md` tweet standard; `skills/x` |
 | Tweet length | WARN over 240 characters, FAIL over 280 | `skills/x` and X's own limit (the vault sets none) |
 | Shorts | five; each has a title (YouTube's 100 character limit), a file, a duration of 45 to 90 s (WARN outside) | vault `brand/editing.md` |
-| Shorts captions | inside the locked Shorts caption zone | `shorts/stacked.py`, `shorts/build.py` (read through `safezone.py`, not copied) |
+| Shorts captions | inside the Shorts caption zone (x48-888, y288-1248, centred on x468); a chunk over 3 words WARNs when the package lists `captions.chunks` or `captions.max_words` | `shorts/stacked.py`, `shorts/build.py` (read through `safezone.py`, not copied) |
 | Thumbnails | three, files present | vault audit `2026-11-14/editing-automation-audit.md`, gap 5 |
 | X/LinkedIn copy | file present, full size (1920x1080 with `--probe`), burned captions inside the landscape zone | vault `brand/editing.md` |
 
@@ -63,5 +63,5 @@ Written to `package-check.json` as `unspecified` and not turned into rules:
 | File | What it is |
 |---|---|
 | `check.py` | the checks, the report and the CLI |
-| `safezone.py` | the caption safe zones (`landscape`, `stacked`, `full`); shared with `../render/dual.py` so the render and the check cannot disagree |
+| `safezone.py` | the caption safe zones (`landscape`, `stacked`, `full`) and the Shorts graphics safe box (x48-888, y400-1248; documented and unit-tested, not checked per package because the package carries no graphics data); shared with `../render/dual.py` so the render and the check cannot disagree |
 | `test_check.py` | unit tests, stdlib only, no media |

@@ -70,12 +70,16 @@ class SeamPlacement(unittest.TestCase):
             self.assertGreater(bottom, S.SEAM_Y)
 
     def test_caption_stays_clear_of_the_shorts_ui_zone(self):
-        self.assertLess(S.seam_caption_box(62)[1], 1570)
+        self.assertLess(S.seam_caption_box(62)[1], 1248)   # was 1570; the bottom UI starts at y1248
+        self.assertGreaterEqual(S.seam_caption_box(62)[0], 288)
 
     def test_asterisk_geometry_is_the_locked_one(self):
         # needs build.py's constants but not Pillow: parse them without importing build
         src = (HERE / "build.py").read_text()
-        self.assertIn("AST = dict(cx=940, cy=290, size=120)", src)
+        self.assertIn("AST = dict(cx=820, cy=460, size=120)", src)      # was cx940 cy290: under the chips, clipped by the edge
+        self.assertIn("GRAPHICS_SAFE_BOX = (48, 400, 888, 1248)", src)
+        self.assertIn("CAP_CX = 468", src)
+        self.assertIn("CAP_CY = 1056", src)
 
     def test_piece_filter_stacks_vincent_over_mitchell(self):
         f = S.piece_filter(2, S.crop_spec({}))
@@ -175,6 +179,9 @@ class CaptionImage(unittest.TestCase):
             bbox = im.getbbox()
             self.assertAlmostEqual((bbox[1] + bbox[3]) / 2, S.SEAM_Y, delta=10)
             self.assertLessEqual(bbox[2] - bbox[0], B.CAP_MAX_W + 12)
+            self.assertGreaterEqual(bbox[0], B.CAP_SAFE_X[0])
+            self.assertLessEqual(bbox[2], B.CAP_SAFE_X[1])
+            self.assertAlmostEqual((bbox[0] + bbox[2]) / 2, B.CAP_CX, delta=12)
             red = [(x, y) for x in range(0, im.width, 2) for y in range(bbox[1], bbox[3], 2)
                    if im.getpixel((x, y))[:3] == B.RED[:3]]
             xs = [x for x, _ in red]

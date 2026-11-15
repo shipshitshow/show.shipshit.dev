@@ -5,9 +5,9 @@ Ported from 261103/shorts/_work v3d (build_v3d.py), 5 Nov 2026, and made episode
 everything episode-specific lives in <episode>/out/shorts/<slug>/short.json (see README.md).
 
 Template (docs/show-prep/edit-style.md): full-bleed 9:16 static cam crop (no zoom, no blurred
-background), red canonical asterisk top-right, white uppercase Arial Bold captions at y~1480 with
-the spoken word in red, nothing below y1570, 2-3 s 9:16 b-roll cutaways, hard cuts with 18 ms audio
-fades at the joins. Loudness is applied afterwards by finalize.py.
+background), red canonical asterisk top-right inside the graphics safe box (centre x820/y460), white uppercase Arial Bold captions of at most 3 words at
+y~1056 (55% down), centred on x468, spoken word in red, inside the Shorts safe zone (x48-888, y288-1248),
+2-3 s 9:16 b-roll cutaways, hard cuts with 18 ms audio fades at the joins. Loudness is applied afterwards by finalize.py.
 
 Usage:
   build.py <slug> --episode $SHIPSHITSHOW_CONTENT_ROOT/projects/<date>_<YYMMDD> [--still T] [--out FILE] [--work DIR]
@@ -24,17 +24,26 @@ from PIL import Image, ImageDraw, ImageFont
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import common as C
-from common import AAC, CANVAS, FPS, UNSHARP, X264  # shared encode values
+from common import AAC, CANVAS, CAP_MAX_WORDS, FPS, UNSHARP, X264  # shared encode / caption values
 
 # ---- Locked template values (docs/show-prep/edit-style.md). Change them there first. ----------
 RED = (232, 59, 59, 255)                 # #E83B3B, brand red
-AST = dict(cx=940, cy=290, size=120)     # red asterisk (vault asterisk-red.svg), centred x940/y290, 120 px
+# Overlay graphics (asterisk, b-roll, mascot) stay inside this box (x0, y0, x1, y1): the phone UI covers the header and
+# chip row down to about y375 and clips the right edge (measured on owner iPhone screenshots, 15 Nov 2026), so the
+# graphics box starts at y400 where captions may start at y288. Same x range and floor as the captions.
+GRAPHICS_SAFE_BOX = (48, 400, 888, 1248)
+AST = dict(cx=820, cy=460, size=120)     # red asterisk (vault asterisk-red.svg), centred x820/y460, 120 px: box x760-880, y400-520
 CAPFONT = "/System/Library/Fonts/Supplemental/Arial Bold.ttf"   # Arial Bold, uppercase
 CAP_H = 62                               # target cap height, px at 1080 wide (fallbacks below)
 CAP_H_FALLBACKS = (58, 54, 50)
-CAP_MAX_W = 940                          # caption width limit
-CAP_CY = 1480                            # caption vertical centre
-CAP_FLOOR = 1570                         # nothing below this (YouTube Shorts UI zone)
+# Shorts safe zone, from Google's Universal Video Ad Safe Zones for 1080x1920: 48 left, 192 right, 288 top and
+# 672 bottom are reserved for the phone UI, so captions live in x48-888, y288-1248 (rail and title block excluded).
+CAP_SAFE_X = (48, 888)                   # safe left / right edge
+CAP_CEIL = 288                           # nothing above this (top UI reserve)
+CAP_FLOOR = 1248                         # nothing below this: 1920 - 672 (bottom UI reserve: title, channel, music)
+CAP_CX = 468                             # caption horizontal centre: middle of CAP_SAFE_X, not the canvas centre (540)
+CAP_MAX_W = 780                          # caption width limit (safe width 840 less breathing room)
+CAP_CY = 1056
 CAP_STROKE = (20, 12, 12, 255)           # 3 px dark outline
 CAP_SHADOW = (0, 0, 0, 110)              # soft drop shadow, offset (+3, +4)
 # Default speaker crops on the 1920x1080 cam recording; override per episode in short.json "crops".
@@ -55,9 +64,9 @@ def overlay(path, asterisk_png):
     im.save(path)
 
 
-def cap_words(prefix, text, words, font_path, cy=CAP_CY):
+def cap_words(prefix, text, words, font_path, cy=CAP_CY, cx=CAP_CX):
     """One transparent 1080x1920 PNG per spoken word of a chunk: the chunk in white, that word in red.
-    `cy` is the vertical centre of the line (stacked.py passes the seam). Returns (cap_h, top, bottom, [png paths])."""
+    `cy` / `cx` are the centre of the line (stacked.py passes the seam as cy; both sit on CAP_CX, the safe-zone centre). Returns (cap_h, top, bottom, [png paths])."""
     text = text.upper()
     for cap_h in (CAP_H, *CAP_H_FALLBACKS):
         size = round(cap_h / 0.716)
@@ -68,7 +77,7 @@ def cap_words(prefix, text, words, font_path, cy=CAP_CY):
     assert w <= CAP_MAX_W, (text, w)
     hb = f.getbbox("H")
     y = cy - (hb[1] + hb[3]) / 2
-    x0 = (CANVAS[0] - w) / 2
+    x0 = cx - w / 2
     toks = text.split()
     assert len(toks) == len(words), (text, words)
     xs = [x0 + f.getlength(" ".join(toks[:i]) + (" " if i else "")) for i in range(len(toks))]
@@ -159,10 +168,11 @@ def main():
     if not capw_path.exists():
         C.die(f"{capw_path} missing: run align.py first")
     capw = json.loads(capw_path.read_text())
+    C.warn_long_chunks([t for _, _, t, _ in capw])
     capinfo, caps = [], []
     for k, (a, b, t, ws) in enumerate(capw):
-        _, _, bot, paths = cap_words(f"{tmp}/cap{k}", t, [w for w, _ in ws], args.font)
-        assert bot <= CAP_FLOOR, (t, bot)
+        _, top, bot, paths = cap_words(f"{tmp}/cap{k}", t, [w for w, _ in ws], args.font)
+        assert CAP_CEIL <= top and bot <= CAP_FLOOR, (t, top, bot)
         starts = [st for _, st in ws] + [b]
         for j, p in enumerate(paths):
             capinfo.append((starts[j], starts[j + 1], p))

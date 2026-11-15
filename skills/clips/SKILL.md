@@ -161,7 +161,7 @@ Every Short gets a custom cover, planned in the same pass as the cut, not after 
 
 ## Shorts layout and brand mark
 
-The locked 9:16 template (speaker fills the frame, no title, red asterisk centred at x940/y290 at 120 px, captions at y1480) is in `docs/show-prep/edit-style.md`; the asterisk's colour, size and position for every other format come from the placement table in the vault brand kit (https://github.com/shipshitshow/vault/blob/master/brand/placement.md). Use the SVG master from the kit, never a redraw. Show one rendered example before cutting a batch.
+The locked 9:16 template (speaker fills the frame, no title, red asterisk centred at x820/y460 at 120 px, captions at y1056 and at most 3 words, inside x48-888 / y288-1248) is in `docs/show-prep/edit-style.md`; the asterisk's colour, size and position for every other format come from the placement table in the vault brand kit (https://github.com/shipshitshow/vault/blob/master/brand/placement.md). Use the SVG master from the kit, never a redraw. Show one rendered example before cutting a batch.
 
 ## YouTube Performance Check
 

@@ -4,7 +4,7 @@
 Locked layout (vault brand/editing.md, mirrored in docs/show-prep/edit-style.md): a 9:16 frame split into two
 equal panels, both hosts always visible, one above the other (Vincent on top, Mitchell below). Karaoke word
 captions sit on the seam between the panels: white uppercase Arial Bold, the spoken word in #E83B3B. No title
-text, no cam zooms, no b-roll. The red asterisk sits top-right (120 px, centred x940 / y290). Hard cuts with
+text, no cam zooms, no b-roll. The red asterisk sits top-right (120 px, centred x820 / y460, inside the graphics safe box). Hard cuts with
 18 ms audio fades at the joins. Loudness is applied afterwards by finalize.py, same as build.py.
 
 Reads the same short.json as build.py (source, segs, tail, fadein0, chunks, optional crops) and the capsw.json that
@@ -28,7 +28,7 @@ from common import AAC, CANVAS, UNSHARP, X264
 
 # ---- Locked layout values (docs/show-prep/edit-style.md). Change them there first. ----------------
 PANEL_W, PANEL_H = CANVAS[0], CANVAS[1] // 2     # two 1080x960 panels
-SEAM_Y = PANEL_H                                  # captions are centred on the seam, y960
+SEAM_Y = PANEL_H                                  # captions are centred on the seam, y960 (inside the Shorts safe zone, y288-1248)
 # Default crops for the 1920x1080 two-shot recording (Vincent left half, Mitchell right half), measured on the
 # 11 Nov 2026 raw. A 960x853 window scales to a panel at 1.125x (no zoom in the edit). The name labels sit at the
 # bottom of the cam (below ~y985), so a window must end above that. Override per episode in short.json "crops.S".
@@ -163,6 +163,7 @@ def main():
     if not capw_path.exists():
         C.die(f"{capw_path} missing: run align.py first")
     capw = json.loads(capw_path.read_text())
+    C.warn_long_chunks([t for _, _, t, _ in capw])
     capinfo = []
     for k, (a, b, t, ws) in enumerate(capw):
         cap_h, _, _, paths = B.cap_words(f"{tmp}/cap{k}", t, [w for w, _ in ws], font, cy=SEAM_Y)
