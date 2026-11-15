@@ -38,6 +38,7 @@ Input formats, detected from the file: whisper.cpp `-oj` (word level, `-ml 1 -so
 - With an SRT: phrase times only, so plain white. There is no way to invent word timing from it.
 - Style follows the Shorts: Arial Bold, uppercase, 3 px dark outline, soft shadow, at most 6 words or 32 characters per line, a new line after a 0.35 s pause. Rendered with the libass `ass` filter; the font size is the Shorts cap height converted to the ASS cell (cap height 48 gives a 48 px cap measured on the render).
 - Zone: `../package/safezone.py`, the same definition the package check uses. Every chunk is measured, stepped down through the Shorts cap heights (48, 44, 40, 36), then split in two, until it fits; anything that still does not fit, or leaves the zone, makes the run exit 1 and is listed in the report.
+- The Shorts profiles (`stacked`, `full`) also split any chunk over 3 words and centre the ASS position on x468, the middle of the safe x range (48-888); landscape is unchanged.
 - The profile defaults by orientation (landscape for a 16:9 master, the stacked Shorts layout otherwise).
 
 ## Verified and not

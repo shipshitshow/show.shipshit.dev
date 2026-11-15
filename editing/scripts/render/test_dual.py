@@ -144,6 +144,17 @@ class Fit(unittest.TestCase):
         ext = D.extent(out, LAND)
         self.assertEqual(Z.violations(LAND, tuple(ext)), [])
 
+    def test_shorts_chunks_are_split_to_three_words_and_fit_the_zone(self):
+        full = Z.PROFILES["full"]
+        c = D.chunk(["one", "two", "three", "four", "five"], None, 0, 5.0)
+        out, unfit = D.fit([c], full, mono)
+        self.assertEqual(unfit, [])
+        self.assertTrue(all(len(o["tokens"]) <= 3 for o in out))
+        self.assertEqual([t for o in out for t in o["tokens"]], c["tokens"])
+        self.assertEqual(Z.violations(full, tuple(D.extent(out, full))), [])
+        land, _ = D.fit([c], LAND, mono)       # landscape keeps its own rule: one line
+        self.assertEqual(len(land), 1)
+
     def test_extent_empty(self):
         self.assertIsNone(D.extent([], LAND))
 
@@ -184,6 +195,12 @@ class Ass(unittest.TestCase):
         self.assertIn(f"\\an5\\pos(960,{LAND['cy']})", ass)
         self.assertIn(f"\\fs{round(D.em_size(48) * D.ASS_CELL)}", ass)
         self.assertIn("\\bord3\\xshad3\\yshad4", ass)
+
+    def test_shorts_caption_is_centred_on_the_safe_zone_x(self):
+        full = Z.PROFILES["full"]
+        out, _ = D.fit([D.chunk(["go", "now"], None, 1.0, 2.0)], full, mono)
+        ass = D.build_ass(out, full, "phrases")
+        self.assertIn(f"\\an5\\pos(468,{full['cy']})", ass)      # not x540, the middle of the canvas
 
     def test_override_braces_are_stripped(self):
         c = D.chunk(["a{\\b1}b"], None, 0, 1)

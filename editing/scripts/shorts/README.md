@@ -79,7 +79,7 @@ If whisper mistimes a word, correct it and re-run step 2:
 - `tail`: seconds to hold the last frame and pad the audio after the last word.
 - `fadein0`: optional audio fade-in (s) at the very start, for a clip that opens mid-word.
 - `chunks`: caption lines as `[text, [word numbers]]`; the numbers come from `align.py --prep`.
-  Word count must match. Keep lines short enough to stay under 940 px.
+  Word count must match. At most 3 words a line (`align.py` and `stacked.py` WARN on more); keep lines short enough to stay under 780 px.
 - `broll`: cutaways in **clip** seconds; `asset` is a 16:9 PNG, `cx` the horizontal centre of the 9:16 crop in that PNG.
 - `crops` (optional): per-episode override of the cam crops, `{"A": {"tiles": {...}}, "B": {"speakers": {...}}, "S": {...}}`.
   `A` / `B` defaults are the 261103 crops for the 1920×1080 cam (see `CROPS_A` / `CROPS_B` in `build.py`).
@@ -92,9 +92,12 @@ If whisper mistimes a word, correct it and re-run step 2:
 
 Constants at the top of the scripts, from `docs/show-prep/edit-style.md`; change them in the style doc first.
 
-- Red asterisk (`asterisk-red.svg`, `apps/app/public/brand/`): 120 px, centred at x940 / y290.
-- Captions: Arial Bold, uppercase, cap height ~62 px, white with the spoken word in `#E83B3B`, nothing below y1570
-  (YouTube Shorts UI zone). Centred on the seam (y960) in `stacked.py`, at y1480 in `build.py`.
+- Red asterisk (`asterisk-red.svg`, `apps/app/public/brand/`): 120 px, centred at x820 / y460 (box x760-880, y400-520). It used to sit at x940 / y290, under the Shorts header chips and clipped by the right edge on a phone.
+- Shorts safe zones (1080x1920; YouTube's ad safe zones reserve 48 left, 192 right, 288 top, 672 bottom, and owner phone screenshots show the header and chips down to about y375, the right rail from about y995 at x917+ and the title block from about y1660):
+  captions stay inside x48-888 / y288-1248; any other overlay (asterisk, b-roll, mascot) stays inside the graphics safe box x48-888 / y400-1248. `GRAPHICS_SAFE_BOX` in `build.py`; `package/safezone.py` exposes it.
+- Captions: Arial Bold, uppercase, cap height ~62 px, white with the spoken word in `#E83B3B`, at most 3 words a chunk, at most 780 px wide and
+  centred on x468 (the middle of the safe x range, not the canvas middle), nothing below y1248. Centred on the seam (y960)
+  in `stacked.py`, at y1056 (55% down) in `build.py`.
 - Stacked layout: two 1080×960 panels, SAR 1:1 / DAR 9:16, no title text, no zoom.
 - Audio: voice chain, then `loudnorm I=-14 TP=-1.5 LRA=11`, two-pass, then AAC 192k / 48 kHz.
 - Voice chain (added 14 Nov 2026; tool defaults, not an owner decision, the same values as the chapter runner): high-pass 80 Hz, level
@@ -112,7 +115,7 @@ Constants at the top of the scripts, from `docs/show-prep/edit-style.md`; change
   Mitchell tile (x 114, y 540 instead of 70, 540), so reproducing it needs
   `"crops": {"A": {"tiles": {"mitchell": [114, 540]}}}` in its `short.json`. Use `build.py ... --still 5` to check framing
   before a full render.
-- Caption size steps down from cap height 62 to 58 / 54 / 50 until the line fits 940 px. A line such as
+- Caption size steps down from cap height 62 to 58 / 54 / 50 until the line fits 780 px. A line such as
   "THEY'RE NOT GETTING" lands on 58 here. The 261103 Short 01 final shows it about 7% narrower (an earlier revision
   of the script), so a rebuild of that Short has slightly larger captions.
 

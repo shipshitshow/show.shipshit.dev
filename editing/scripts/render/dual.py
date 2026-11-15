@@ -188,9 +188,13 @@ def fit(chunks, profile, measure):
     """Fit every chunk inside profile['max_w']: largest cap height first, then smaller, then split the chunk.
     Returns (chunks with 'cap_h', 'width', 'text'), and the chunks that still do not fit (a single word too wide)."""
     sizes = Z.cap_sizes(profile)
+    max_words = profile.get("max_words")
     out, unfit, todo = [], [], list(reversed(chunks))
     while todo:
         c = todo.pop()
+        if max_words and len(c["tokens"]) > max_words:        # Shorts: at most 3 words a chunk
+            todo.extend(reversed(split_chunk(c)))
+            continue
         text = " ".join(c["tokens"]).upper()
         for cap_h in sizes:
             w = measure(text, cap_h)
@@ -250,7 +254,7 @@ def build_ass(fitted, profile, kind):
     ev = []
     for c in fitted:
         fs = round(em_size(c["cap_h"]) * ASS_CELL)
-        pre = f"{{\\an5\\pos({cw // 2},{profile['cy']})\\fs{fs}\\bord3\\xshad3\\yshad4}}"
+        pre = f"{{\\an5\\pos({round(Z.center_x(profile))},{profile['cy']})\\fs{fs}\\bord3\\xshad3\\yshad4}}"
         toks = [esc(t).upper() for t in c["tokens"]]
         if c["starts"]:
             ends = c["starts"][1:] + [c["b"]]

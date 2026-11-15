@@ -21,9 +21,20 @@ FPS = 30
 X264 = ["-c:v", "libx264", "-crf", "16", "-preset", "medium", "-pix_fmt", "yuv420p", "-r", str(FPS)]
 AAC = ["-c:a", "aac", "-b:a", "192k", "-ar", "48000"]
 UNSHARP = "unsharp=5:5:0.6:5:5:0.0"
+CAP_MAX_WORDS = 3                        # words per caption chunk (big, readable; see brand/editing.md)
 
 REPO = Path(__file__).resolve().parents[3]
 ASTERISK_RED_SVG = REPO / "apps" / "app" / "public" / "brand" / "asterisk-red.svg"
+
+
+def long_chunks(texts, max_words=CAP_MAX_WORDS):
+    """Caption chunk texts with more than `max_words` words, as (text, word count). Pure; callers WARN, never fail."""
+    return [(t, len(t.split())) for t in texts if len(t.split()) > max_words]
+
+
+def warn_long_chunks(texts, max_words=CAP_MAX_WORDS):
+    for t, n in long_chunks(texts, max_words):
+        print(f"WARN: caption chunk has {n} words (max {max_words}): {t!r}", file=sys.stderr)
 
 
 def die(msg):

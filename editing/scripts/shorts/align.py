@@ -93,6 +93,7 @@ def align(cfg, work, ff, fixes):
                 W[i][1] = max(W[i][0] + 0.05, min(W[i][1], s_))
             print("moved", [W[i][2] for i in run], "before pause", round(s_, 2))
     caps = []
+    C.warn_long_chunks([t for t, _ in cfg["chunks"]])
     for t, idx in cfg["chunks"]:
         assert len(t.split()) == len(idx), (t, idx)
         assert max(idx) <= len(W), (t, idx, len(W))
