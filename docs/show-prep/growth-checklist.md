@@ -18,9 +18,10 @@ head-to-head model comparisons. Standalone model-news videos lagged.
    useful visual on screen, payoff stated, first useful point by about 45 seconds.
 3. Prepare 3–5 narrow Shorts angles with one debatable question. Do not script
    disagreement or invent results.
-4. Thumbnails never show the hosts' faces, because viewers do not know the
-   hosts yet. Art style and the asterisk follow `skills/thumbnails` and the
-   vault placement table; see [the weekly pipeline](weekly-pipeline.md).
+4. Thumbnails and Shorts covers follow [the host template](thumbnails.md):
+   both hosts big and level at the edges, the subject in greyscale between them,
+   a vivid topic graphic behind, and no text. The asterisk follows the vault
+   placement table; see [the weekly pipeline](weekly-pipeline.md).
 5. After recording, mark the actual clip boundaries against the video and VTT.
 6. Refresh the inventory with `bun scripts/refresh-youtube-inventory.ts --write`
    (needs `YOUTUBE_API_KEY` in the root `.env`).
