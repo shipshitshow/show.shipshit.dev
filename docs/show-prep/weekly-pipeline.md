@@ -13,7 +13,7 @@ When a rule changes, change it at its source, not here.
 | Edit rules for recaps and Shorts (single source) | [vault brand/editing.md](https://github.com/shipshitshow/vault/blob/master/brand/editing.md) |
 | Edit build values and script names (caption sizes, loudness, cover stamp) | [edit-style.md](edit-style.md) |
 | Asterisk asset, colour, size and position for every format | [vault brand/placement.md](https://github.com/shipshitshow/vault/blob/master/brand/placement.md) |
-| Thumbnail art and covers (locked 6 Nov 2026) | `skills/thumbnails` and the channel profile in `shipshitshow/skills` |
+| Thumbnail art and covers (template set 11 to 15 Nov 2026) | [thumbnails.md](thumbnails.md), with `skills/thumbnails` and the channel profile in `shipshitshow/skills` |
 | Titles: one line on the home feed (locked 6 Nov 2026) | channel profile in `shipshitshow/skills` (`$metadata`) |
 | Editing workspace layout | [editing/README.md](../../editing/README.md) |
 | Asterisk stamp on thumbnails | `bun run thumbnail:stamp` (reads the placement table) |
@@ -101,7 +101,7 @@ public. Nothing else waits on him.
    `bun run thumbnail:stamp --in <art.png> --out <thumb.png> --kind live|video [--format landscape|shorts]`.
    Use `live` (red) for an actual livestream and `video` (white) for the
    recap. Shorts covers (`--format shorts`) always get the red mark at
-   x880/y345 (the Short video mark sits higher, at y230).
+   x880/y345 (the Short video mark is centred at x820/y460).
 3. Review them in Library > Thumbnails (`/library/thumbnails`), checking them at
    real size.
    - **Gate:** Vincent approves.

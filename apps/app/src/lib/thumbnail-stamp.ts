@@ -51,8 +51,8 @@ export async function stampThumbnail(
   const brandDir =
     options.brandDir ?? path.join(import.meta.dir, '../../public/brand');
   // Shorts covers carry the red master, like the Short video. Since 2026-11-07
-  // the cover mark sits lower (y345) than the video mark (y230) because the
-  // Shorts grid crops the top of the cover.
+  // the cover mark sits at y345 (the video mark is centred x820/y460) because
+  // the Shorts grid crops the top of the cover.
   const kind: StampKind = options.format === 'shorts' ? 'live' : options.kind;
   const svg = await readFile(path.join(brandDir, MASTERS[kind]));
   const signature = await sharp(svg, { density: 300 })

@@ -15,7 +15,7 @@ Usage:
 --kind video   white master, for any edited video or recap
 --format       landscape (1920x1080, default) or shorts (1080x1920).
                Shorts covers always get the red mark, at x880/y345 (the
-               Short video mark sits higher, at y230).
+               Short video mark is centred at x820/y460).
 --x, --y       Optional top-left override of the mark, in canvas pixels.
                Give both. Normally leave them out: the vault table decides.
 
