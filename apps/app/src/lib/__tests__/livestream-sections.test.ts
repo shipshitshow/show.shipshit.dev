@@ -100,14 +100,14 @@ describe('talking points and resource links (Vincent, 6 Nov)', () => {
 - If a laptop were compromised today, what access would it expose?
 - Restream: ${STUDIO_URL}`;
 
-  test('keeps short bullets and drops sources, prose and stage directions', () => {
+  test('keeps whole bullets and drops sources, prose and stage directions', () => {
     const [segment, cold] = getTalkingPoints([card(prep)]);
     expect(segment.title).toBe(
       'PHP2Shell: check the runtime, not just the app',
     );
     expect(segment.points).toEqual([
-      'What owns our runtime updates: us, a container image, or a plugin stack?',
-      '**Challenge:** "We do not write PHP."',
+      'What owns our runtime updates: us, a container image, or a plugin stack? More detail here.',
+      '**Challenge:** "We do not write PHP." Does that answer it?',
       'OpenAI ships agents too.',
     ]);
     expect(cold.points).toEqual([

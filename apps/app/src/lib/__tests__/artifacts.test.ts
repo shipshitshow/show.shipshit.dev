@@ -11,6 +11,7 @@ import {
   getArtifact,
   getArtifactsForStream,
 } from '@/lib/artifacts/registry';
+import { TIMELINE_DEAD_TWEET_DECK } from '@/lib/artifacts/timeline-dead-2026-11';
 import { VIBE_EDITING_TWEET_DECK } from '@/lib/artifacts/vibe-editing-2026-11';
 
 describe('artifacts registry', () => {
@@ -38,6 +39,7 @@ describe('artifacts registry', () => {
     expect(ARTIFACTS.map(({ slug }) => slug).sort()).toEqual([
       'agent-security-timeline',
       'agent-security-tweets',
+      'timeline-dead-tweets',
       'vibe-editing-tweets',
     ]);
   });
@@ -97,6 +99,21 @@ describe('vibe editing tweet deck', () => {
     expect(ids.length).toBe(12);
     expect(new Set(ids).size).toBe(ids.length);
     for (const entry of VIBE_EDITING_TWEET_DECK) {
+      expect(entry.id).toMatch(/^\d+$/);
+      expect(entry.url).toBe(
+        `https://x.com/${entry.handle}/status/${entry.id}`,
+      );
+      expect(entry.note.length).toBeGreaterThan(0);
+    }
+  });
+});
+
+describe('timeline dead tweet deck', () => {
+  test('entries are unique X status links that match their id and handle', () => {
+    const ids = TIMELINE_DEAD_TWEET_DECK.map(({ id }) => id);
+    expect(ids.length).toBe(4);
+    expect(new Set(ids).size).toBe(ids.length);
+    for (const entry of TIMELINE_DEAD_TWEET_DECK) {
       expect(entry.id).toMatch(/^\d+$/);
       expect(entry.url).toBe(
         `https://x.com/${entry.handle}/status/${entry.id}`,

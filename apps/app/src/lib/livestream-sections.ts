@@ -233,13 +233,7 @@ const STAGE_DIRECTION =
 
 const MARKDOWN_LINK = /\[([^\]]+)\]\([^)]+\)/g;
 
-/** The first sentence, so a bullet reads at a glance. */
-function firstSentence(text: string): string {
-  const match = text.match(/^(.+?[.?!]["”')]?)(\s|$)/);
-  return (match ? match[1] : text).trim();
-}
-
-/** One bullet as a short point: the bold lead and its first sentence. */
+/** One bullet as a point: the bold lead and the whole bullet, never cut short. */
 function toPoint(line: string): string | null {
   const text = line
     .replace(/^\s*(?:[-*]|\d+\.)\s+/, '')
@@ -255,10 +249,9 @@ function toPoint(line: string): string | null {
   if (lead) {
     const [, head, rest] = lead;
     const label = head.replace(/[:.]\s*$/, '');
-    return rest ? `**${label}:** ${firstSentence(rest)}` : `**${label}**`;
+    return rest ? `**${label}:** ${rest.trim()}` : `**${label}**`;
   }
-  const sentence = firstSentence(text);
-  return sentence.charAt(0).toUpperCase() + sentence.slice(1);
+  return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
 export interface TalkingPointSegment {
@@ -271,7 +264,7 @@ export interface TalkingPointSegment {
 
 /**
  * Each segment as a headline and short bullets: only list items, never
- * prose paragraphs, sources or stage directions, one sentence each. The
+ * prose paragraphs, sources or stage directions, each kept whole. The
  * posts a segment links, evidence included, become its tweet slider; a post
  * linked by two segments appears only in the first.
  */
