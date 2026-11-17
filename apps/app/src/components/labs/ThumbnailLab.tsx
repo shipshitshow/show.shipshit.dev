@@ -7,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@shipshitshow/ui';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import {
   Ban,
   Check,
@@ -91,6 +92,42 @@ async function responseError(response: Response): Promise<Error> {
   } catch {}
   return new Error('The request failed (' + response.status + '). Try again.');
 }
+interface LabCatalogue {
+  capabilities: Capabilities;
+  items: ThumbnailItem[];
+}
+const NO_ITEMS: ThumbnailItem[] = [];
+const NO_CAPABILITIES: Capabilities = {
+  uploadsAvailable: false,
+  writable: false,
+};
+const LAB_KEY = ['thumbnail-lab'] as const;
+
+async function fetchCatalogue(signal: AbortSignal): Promise<LabCatalogue> {
+  const response = await fetch('/api/labs/thumbnails', {
+    cache: 'no-store',
+    signal,
+  });
+  if (!response.ok) throw await responseError(response);
+  const body: unknown = await response.json();
+  return {
+    capabilities: {
+      uploadsAvailable: !!(
+        body &&
+        typeof body === 'object' &&
+        'uploadsAvailable' in body &&
+        body.uploadsAvailable === true
+      ),
+      writable: !!(
+        body &&
+        typeof body === 'object' &&
+        'writable' in body &&
+        body.writable === true
+      ),
+    },
+    items: parseItems(body),
+  };
+}
 function versionLabel(item: ThumbnailItem, v: ThumbnailVersion) {
   return (
     'Version ' +
@@ -100,18 +137,25 @@ function versionLabel(item: ThumbnailItem, v: ThumbnailVersion) {
   );
 }
 export function ThumbnailLab() {
-  const [items, setItems] = useState<ThumbnailItem[]>([]),
-    [capabilities, setCapabilities] = useState<Capabilities>({
-      uploadsAvailable: false,
-      writable: false,
-    });
-  const [loading, setLoading] = useState(true),
-    [error, setError] = useState(''),
+  const queryClient = useQueryClient();
+  const catalogueQuery = useQuery({
+    queryFn: ({ signal }) => fetchCatalogue(signal),
+    queryKey: LAB_KEY,
+  });
+  const items = catalogueQuery.data?.items ?? NO_ITEMS;
+  const capabilities = catalogueQuery.data?.capabilities ?? NO_CAPABILITIES;
+  const loading = catalogueQuery.isPending;
+  const [actionError, setError] = useState(''),
     [notice, setNotice] = useState(''),
     [scope, setScope] = useState<ThumbnailScope>('pending'),
     [kind, setKind] = useState<ThumbnailKind>('thumbnail'),
     [page, setPage] = useState(1),
     [search, setSearch] = useState('');
+  const loadError = catalogueQuery.isError
+    ? catalogueQuery.error.message || 'Could not load thumbnails.'
+    : '';
+  const error = actionError || loadError;
+  const [deepLinked, setDeepLinked] = useState(false);
   const [activeId, setActiveId] = useState<string | null>(null),
     [versionId, setVersionId] = useState(''),
     [feedback, setFeedback] = useState(''),
@@ -157,66 +201,13 @@ export function ThumbnailLab() {
     setRules(EMPTY_RULES);
     setFeedback(v.review.status === 'revise' ? v.review.feedback : '');
   }
-  async function load(signal?: AbortSignal): Promise<ThumbnailItem[]> {
-    setLoading(true);
-    setError('');
-    try {
-      const response = await fetch('/api/labs/thumbnails', {
-        cache: 'no-store',
-        signal,
-      });
-      if (!response.ok) throw await responseError(response);
-      const body: unknown = await response.json();
-      const rows = parseItems(body);
-      setItems(rows);
-      setCapabilities({
-        uploadsAvailable: !!(
-          body &&
-          typeof body === 'object' &&
-          'uploadsAvailable' in body &&
-          body.uploadsAvailable === true
-        ),
-        writable: !!(
-          body &&
-          typeof body === 'object' &&
-          'writable' in body &&
-          body.writable === true
-        ),
-      });
-      return rows;
-    } catch (e) {
-      if (signal?.aborted) return [];
-      setError(e instanceof Error ? e.message : 'Could not load thumbnails.');
-      return [];
-    } finally {
-      if (!signal?.aborted) setLoading(false);
-    }
-  }
-  useEffect(() => {
-    // A video card's version strip links here with ?video=<id>&version=<id>:
-    // open that video, on that version, whatever the filters were.
-    const controller = new AbortController();
-    load(controller.signal).then((rows) => {
-      if (controller.signal.aborted) return;
-      const params = new URLSearchParams(window.location.search);
-      const item = rows.find((row) => row.id === params.get('video'));
-      if (!item) return;
-      setKind(kindOf(item));
-      setScope('all');
-      setSearch(item.id);
-      open(item);
-      const version = params.get('version');
-      if (version) selectVersion(item, version);
-    });
-    return () => controller.abort();
-  }, []);
   // use-effect-audit: ignore syncs the native dialog element with showModal and close (DOM API)
   useEffect(() => {
     const d = dialog.current;
     if (activeId && d && !d.open) d.showModal();
     else if (!activeId && d?.open) d.close();
   }, [activeId]);
-  function open(item: ThumbnailItem) {
+  function openState(item: ThumbnailItem) {
     const v = currentThumbnail(item);
     setActiveId(item.id);
     setVersionId(v.id);
@@ -228,6 +219,9 @@ export function ThumbnailLab() {
     setTitleDraft(item.title);
     setError('');
     setNotice('');
+  }
+  function open(item: ThumbnailItem) {
+    openState(item);
     dialog.current?.scrollTo({ top: 0 });
   }
   function close() {
@@ -235,7 +229,16 @@ export function ThumbnailLab() {
     setArtwork(null);
   }
   function updated(item: ThumbnailItem) {
-    setItems((rows) => rows.map((row) => (row.id === item.id ? item : row)));
+    queryClient.setQueryData<LabCatalogue>(LAB_KEY, (catalogue) =>
+      catalogue
+        ? {
+            ...catalogue,
+            items: catalogue.items.map((row) =>
+              row.id === item.id ? item : row,
+            ),
+          }
+        : catalogue,
+    );
   }
   async function saveTitle(item: ThumbnailItem) {
     const title = titleDraft.trim();
@@ -402,7 +405,7 @@ export function ThumbnailLab() {
         },
       );
       if (!response.ok) throw await responseError(response);
-      await load();
+      await catalogueQuery.refetch();
       setNotice(
         catalogue
           ? 'Catalogue imported. Existing reviews and versions are preserved.'
@@ -484,7 +487,23 @@ export function ThumbnailLab() {
     window.addEventListener('keydown', handle);
     return () => window.removeEventListener('keydown', handle);
   }, []);
-  if (loading && !items.length)
+  // A video card's version strip links here with ?video=<id>&version=<id>:
+  // once the catalogue is in, open that video, on that version, whatever the
+  // filters were. The URL is read once, in the render that first has the rows.
+  if (!deepLinked && catalogueQuery.isSuccess) {
+    setDeepLinked(true);
+    const params = new URLSearchParams(window.location.search);
+    const linked = items.find((row) => row.id === params.get('video'));
+    if (linked) {
+      setKind(kindOf(linked));
+      setScope('all');
+      setSearch(linked.id);
+      openState(linked);
+      const linkedVersion = params.get('version');
+      if (linkedVersion) selectVersion(linked, linkedVersion);
+    }
+  }
+  if (loading)
     return <p className="p-12 text-sm text-text-muted">Loading thumbnails…</p>;
   return (
     <main className="mx-auto max-w-[1800px] px-4 py-6 md:px-7">
@@ -567,7 +586,13 @@ export function ThumbnailLab() {
           className="mb-4 flex items-center justify-between gap-4 rounded-lg border border-accent-red/40 bg-accent-red/10 p-3 text-xs"
         >
           <span>{error}</span>
-          <button className={button} onClick={() => load()}>
+          <button
+            className={button}
+            onClick={() => {
+              setError('');
+              void catalogueQuery.refetch();
+            }}
+          >
             Refresh
           </button>
         </div>

@@ -21,6 +21,7 @@ import {
   useEffect,
   useMemo,
   useState,
+  useSyncExternalStore,
 } from 'react';
 import {
   splitTweetText,
@@ -41,9 +42,28 @@ function hiddenKey(date: string) {
   return `sss:tweet-slider:hidden:${date}`;
 }
 
-function readHidden(date: string): string[] {
+/** Listeners for same-tab writes, which the `storage` event does not report. */
+const hiddenListeners = new Set<() => void>();
+
+function subscribeHidden(onChange: () => void) {
+  hiddenListeners.add(onChange);
+  window.addEventListener('storage', onChange);
+  return () => {
+    hiddenListeners.delete(onChange);
+    window.removeEventListener('storage', onChange);
+  };
+}
+
+function readHiddenRaw(date: string): string | null {
   try {
-    const raw = window.localStorage.getItem(hiddenKey(date));
+    return window.localStorage.getItem(hiddenKey(date));
+  } catch {
+    return null;
+  }
+}
+
+function parseHidden(raw: string | null): string[] {
+  try {
     const parsed: unknown = raw ? JSON.parse(raw) : [];
     return Array.isArray(parsed) ? parsed.map(String) : [];
   } catch {
@@ -55,6 +75,12 @@ function writeHidden(date: string, ids: string[]) {
   try {
     window.localStorage.setItem(hiddenKey(date), JSON.stringify(ids));
   } catch {}
+  for (const listener of hiddenListeners) listener();
+}
+
+function subscribeHash(onChange: () => void) {
+  window.addEventListener('hashchange', onChange);
+  return () => window.removeEventListener('hashchange', onChange);
 }
 
 function textSize(length: number, hasMedia: boolean): string {
@@ -452,10 +478,27 @@ export function TweetSlider({
   slides: TweetSlide[];
   title: string;
 }) {
-  const [hidden, setHidden] = useState<Set<string>>(() => new Set());
-  const [currentId, setCurrentId] = useState<string | null>(
-    slides[0]?.id ?? null,
+  // Hidden slides and the starting slide live in the browser, so the server
+  // render sees none of them and the client picks them up after hydration.
+  const hiddenRaw = useSyncExternalStore(
+    subscribeHidden,
+    () => readHiddenRaw(date),
+    () => null,
   );
+  const hidden = useMemo(() => new Set(parseHidden(hiddenRaw)), [hiddenRaw]);
+  const hash = useSyncExternalStore(
+    subscribeHash,
+    () => window.location.hash,
+    () => '',
+  );
+  // The slide picked with the controls; until then the URL hash, then the first.
+  const [pickedId, setCurrentId] = useState<string | null>(null);
+  const fromHash = Number.parseInt(hash.slice(1), 10);
+  const currentId =
+    pickedId ??
+    (fromHash >= 1 ? slides[fromHash - 1]?.id : undefined) ??
+    slides[0]?.id ??
+    null;
   const [showNotes, setShowNotes] = useState(false);
   const [showOverview, setShowOverview] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -471,14 +514,6 @@ export function TweetSlider({
   );
   const slide = visible[index] ?? null;
   const next = visible[index + 1] ?? null;
-
-  useEffect(() => {
-    setHidden(new Set(readHidden(date)));
-    const fromHash = Number.parseInt(window.location.hash.slice(1), 10);
-    if (fromHash >= 1 && slides[fromHash - 1]) {
-      setCurrentId(slides[fromHash - 1].id);
-    }
-  }, [date, slides]);
 
   // use-effect-audit: ignore mirrors the current slide into the URL hash with history.replaceState (browser history)
   useEffect(() => {
@@ -507,7 +542,6 @@ export function TweetSlider({
           setCurrentId((visible[index + 1] ?? visible[index - 1])?.id ?? null);
         }
       }
-      setHidden(updated);
       writeHidden(date, Array.from(updated));
     },
     [date, hidden, index, slide, visible],
