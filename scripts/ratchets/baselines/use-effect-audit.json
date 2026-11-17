@@ -6,7 +6,7 @@
     },
     "apps/app/src/components/comments/CommentsView.tsx": {
       "async_effect_without_abort": 0,
-      "use_effect": 4
+      "use_effect": 1
     },
     "apps/app/src/components/DashboardClient.tsx": {
       "async_effect_without_abort": 0,
@@ -62,7 +62,7 @@
     },
     "apps/app/src/components/trends/TrendsView.tsx": {
       "async_effect_without_abort": 0,
-      "use_effect": 3
+      "use_effect": 2
     },
     "apps/app/src/components/YouTubeAuthPageClient.tsx": {
       "async_effect_without_abort": 0,
@@ -78,7 +78,7 @@
     },
     "apps/desktop/src/renderer/components/comments/CommentsView.tsx": {
       "async_effect_without_abort": 0,
-      "use_effect": 3
+      "use_effect": 1
     },
     "apps/desktop/src/renderer/components/TerminalView.tsx": {
       "async_effect_without_abort": 0,
