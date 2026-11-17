@@ -1,7 +1,8 @@
 'use client';
 
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { ExternalLink, ImagePlus } from 'lucide-react';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { FilterSelect } from '@/components/FilterSelect';
 import { LibraryHeader } from '@/components/library/LibraryHeader';
 import {
@@ -10,6 +11,8 @@ import {
   type ResourceCategory,
   type ThumbnailResource,
 } from '@/lib/thumbnail-resources';
+
+const RESOURCES_KEY = ['thumbnail-resources'];
 
 const TITLES: Record<ResourceCategory, string> = {
   brand: 'Branding',
@@ -77,51 +80,53 @@ function ResourceTile({
   );
 }
 export function ThumbnailResources() {
-  const [resources, setResources] = useState<ThumbnailResource[] | null>(null);
-  const [writable, setWritable] = useState(true);
-  const [error, setError] = useState('');
+  const queryClient = useQueryClient();
+  const [uploadError, setError] = useState('');
   const [busy, setBusy] = useState(false);
-  const load = useCallback(async () => {
-    const response = await fetch('/api/labs/thumbnails/resources', {
-      cache: 'no-store',
-    });
-    if (!response.ok) throw new Error(await responseError(response));
-    const body = await response.json();
-    setResources(body.resources);
-    setWritable(body.writable !== false);
-  }, []);
-  useEffect(() => {
-    load().catch((failure: Error) => setError(failure.message));
-  }, [load]);
-  const add = useCallback(
-    async (category: ResourceCategory, files: File[]) => {
-      if (!files.length) return;
-      setBusy(true);
-      setError('');
-      try {
-        for (const file of files) {
-          if (file.size > RESOURCE_MAX_BYTES)
-            throw new Error(file.name + ' is over 8 MB.');
-          const form = new FormData();
-          form.set('category', category);
-          form.set('file', file);
-          const response = await fetch('/api/labs/thumbnails/resources', {
-            body: form,
-            method: 'POST',
-          });
-          if (!response.ok) throw new Error(await responseError(response));
-        }
-        await load();
-      } catch (failure) {
-        setError(
-          failure instanceof Error ? failure.message : 'The upload failed.',
-        );
-      } finally {
-        setBusy(false);
-      }
+  const resourcesQuery = useQuery({
+    queryFn: async ({ signal }) => {
+      const response = await fetch('/api/labs/thumbnails/resources', {
+        cache: 'no-store',
+        signal,
+      });
+      if (!response.ok) throw new Error(await responseError(response));
+      const body = await response.json();
+      return {
+        resources: body.resources as ThumbnailResource[],
+        writable: body.writable !== false,
+      };
     },
-    [load],
-  );
+    queryKey: RESOURCES_KEY,
+  });
+  const resources = resourcesQuery.data?.resources ?? null;
+  const writable = resourcesQuery.data?.writable ?? true;
+  const error = uploadError || (resourcesQuery.error?.message ?? '');
+  const add = async (category: ResourceCategory, files: File[]) => {
+    if (!files.length) return;
+    setBusy(true);
+    setError('');
+    try {
+      for (const file of files) {
+        if (file.size > RESOURCE_MAX_BYTES)
+          throw new Error(file.name + ' is over 8 MB.');
+        const form = new FormData();
+        form.set('category', category);
+        form.set('file', file);
+        const response = await fetch('/api/labs/thumbnails/resources', {
+          body: form,
+          method: 'POST',
+        });
+        if (!response.ok) throw new Error(await responseError(response));
+      }
+      await queryClient.invalidateQueries({ queryKey: RESOURCES_KEY });
+    } catch (failure) {
+      setError(
+        failure instanceof Error ? failure.message : 'The upload failed.',
+      );
+    } finally {
+      setBusy(false);
+    }
+  };
   const [filter, setFilter] = useState<Filter>('all');
   const input = useRef<HTMLInputElement>(null);
   const shown =

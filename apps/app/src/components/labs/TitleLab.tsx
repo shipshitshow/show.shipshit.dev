@@ -1,6 +1,7 @@
 'use client';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Download, Search } from 'lucide-react';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { FilterSelect } from '@/components/FilterSelect';
 import {
   hasLiveTag,
@@ -16,6 +17,9 @@ import {
   titleLength,
   titleStatus,
 } from '@/lib/title-lab';
+
+const TITLES_KEY = ['title-lab'];
+const NO_DRAFTS: TitleDrafts = {};
 
 type Filter = 'all' | 'over' | 'long' | 'ok' | 'drafted' | 'live';
 const FILTERS: Array<{ id: Filter; label: string }> = [
@@ -134,34 +138,37 @@ function DraftRow({
 }
 
 export function TitleLab() {
-  const [snapshot, setSnapshot] = useState<TitleSnapshot | null>(null);
-  const [drafts, setDrafts] = useState<TitleDrafts>({});
-  const [writable, setWritable] = useState(false);
-  const [state, setState] = useState<'loading' | 'ready' | 'error'>('loading');
+  const queryClient = useQueryClient();
+  const titlesQuery = useQuery({
+    queryFn: async ({ signal }) => {
+      const response = await fetch('/api/labs/titles', { signal });
+      const body: unknown = await response.json();
+      if (!response.ok || !body || typeof body !== 'object')
+        throw new Error('Could not load the titles.');
+      const { drafts, snapshot, writable } = body as Record<string, unknown>;
+      if (snapshot !== null && !isSnapshot(snapshot))
+        throw new Error('The snapshot was invalid.');
+      if (!isDrafts(drafts)) throw new Error('The drafts were invalid.');
+      return { drafts, snapshot, writable: writable === true };
+    },
+    queryKey: TITLES_KEY,
+  });
+  const snapshot = titlesQuery.data?.snapshot ?? null;
+  const drafts = titlesQuery.data?.drafts ?? NO_DRAFTS;
+  const state = titlesQuery.isError
+    ? 'error'
+    : titlesQuery.isPending
+      ? 'loading'
+      : 'ready';
+  const writable = titlesQuery.data?.writable ?? false;
+  function setDrafts(next: TitleDrafts) {
+    queryClient.setQueryData<NonNullable<typeof titlesQuery.data>>(
+      TITLES_KEY,
+      (data) => (data ? { ...data, drafts: next } : data),
+    );
+  }
   const [filter, setFilter] = useState<Filter>('over');
   const [query, setQuery] = useState('');
-
-  useEffect(() => {
-    const controller = new AbortController();
-    fetch('/api/labs/titles', { signal: controller.signal })
-      .then(async (response) => {
-        const body: unknown = await response.json();
-        if (!response.ok || !body || typeof body !== 'object')
-          throw new Error('Could not load the titles.');
-        const { drafts, snapshot, writable } = body as Record<string, unknown>;
-        if (snapshot !== null && !isSnapshot(snapshot))
-          throw new Error('The snapshot was invalid.');
-        if (!isDrafts(drafts)) throw new Error('The drafts were invalid.');
-        setSnapshot(snapshot);
-        setDrafts(drafts);
-        setWritable(writable === true);
-        setState('ready');
-      })
-      .catch(() => {
-        if (!controller.signal.aborted) setState('error');
-      });
-    return () => controller.abort();
-  }, []);
 
   async function save(id: string, text: string) {
     const response = await fetch(`/api/labs/titles/${id}`, {
