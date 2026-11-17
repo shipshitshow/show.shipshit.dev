@@ -199,6 +199,19 @@ export default async function PublicTalkingPointsPage({
             </a>
           ) : null}
         </div>
+        {archive?.videoId ? (
+          <div className="aspect-video w-full overflow-hidden rounded-xl border border-surface-border bg-black">
+            <iframe
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="h-full w-full"
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              src={`https://www.youtube-nocookie.com/embed/${archive.videoId}`}
+              title={streamTitle}
+            />
+          </div>
+        ) : null}
         <PublicTalkingPointsTabs
           artifacts={<StreamArtifactsPanel date={resolvedDate} slug={slug} />}
           prompts={<StreamPromptsPanel cards={cards} />}
