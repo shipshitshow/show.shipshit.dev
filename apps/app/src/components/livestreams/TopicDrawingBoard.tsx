@@ -221,13 +221,14 @@ export function TopicDrawingBoard({ date, slug }: TopicDrawingBoardProps) {
   );
 
   useEffect(() => {
-    let cancelled = false;
+    const controller = new AbortController();
+    const { signal } = controller;
 
     const load = async () => {
       try {
         const [topicsRes, drawingRes] = await Promise.all([
-          fetch(`/api/livestreams?date=${date}`),
-          fetch(`/api/livestreams/${slug}/drawing?date=${date}`),
+          fetch(`/api/livestreams?date=${date}`, { signal }),
+          fetch(`/api/livestreams/${slug}/drawing?date=${date}`, { signal }),
         ]);
 
         const topicsData = (await topicsRes.json()) as
@@ -257,7 +258,7 @@ export function TopicDrawingBoard({ date, slug }: TopicDrawingBoardProps) {
           throw new Error(`Failed to load drawing ${drawingRes.status}`);
         }
 
-        if (cancelled) return;
+        if (signal.aborted) return;
 
         const livestreamData = topicsData as LivestreamListResponse;
         const topicDrawingData = drawingData as TopicDrawingResponse;
@@ -293,21 +294,19 @@ export function TopicDrawingBoard({ date, slug }: TopicDrawingBoardProps) {
         setLastSavedAt(topicDrawingData.updatedAt);
         setSaveStatus(topicDrawingData.updatedAt ? 'saved' : 'idle');
       } finally {
-        if (!cancelled) {
+        if (!signal.aborted) {
           setLoading(false);
         }
       }
     };
 
     load().catch(() => {
-      if (!cancelled) {
+      if (!signal.aborted) {
         setInitialScene(EMPTY_SCENE);
       }
     });
 
-    return () => {
-      cancelled = true;
-    };
+    return () => controller.abort();
   }, [date, slug]);
 
   useEffect(() => {

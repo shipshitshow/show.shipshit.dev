@@ -28,7 +28,11 @@ export function YouTubeAuthPageClient() {
   const [selectedChannel, setSelectedChannel] = useState('main');
 
   useEffect(() => {
-    fetch('/api/auth/youtube/status', { cache: 'no-store' })
+    const controller = new AbortController();
+    fetch('/api/auth/youtube/status', {
+      cache: 'no-store',
+      signal: controller.signal,
+    })
       .then((res) => parseJsonResponse<YouTubeAuthStatus>(res))
       .then((data) => {
         setStatus(data);
@@ -40,19 +44,28 @@ export function YouTubeAuthPageClient() {
         }
       })
       .catch(() => {
+        if (controller.signal.aborted) return;
         setStatus({
           channelLabelsNeedingAuth: ['main'],
           connected: false,
           status: 'reauth_required',
         });
       });
+    return () => controller.abort();
   }, [next, router]);
 
   useEffect(() => {
-    fetch('/api/auth/youtube/config', { cache: 'no-store' })
+    const controller = new AbortController();
+    fetch('/api/auth/youtube/config', {
+      cache: 'no-store',
+      signal: controller.signal,
+    })
       .then((res) => parseJsonResponse<YouTubeAuthConfigResponse>(res))
       .then((data) => setRedirectUri(data.redirectUri))
-      .catch(() => setRedirectUri(null));
+      .catch(() => {
+        if (!controller.signal.aborted) setRedirectUri(null);
+      });
+    return () => controller.abort();
   }, []);
 
   const channelOptions = useMemo(() => {

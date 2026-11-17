@@ -157,12 +157,13 @@ export function ThumbnailLab() {
     setRules(EMPTY_RULES);
     setFeedback(v.review.status === 'revise' ? v.review.feedback : '');
   }
-  async function load(): Promise<ThumbnailItem[]> {
+  async function load(signal?: AbortSignal): Promise<ThumbnailItem[]> {
     setLoading(true);
     setError('');
     try {
       const response = await fetch('/api/labs/thumbnails', {
         cache: 'no-store',
+        signal,
       });
       if (!response.ok) throw await responseError(response);
       const body: unknown = await response.json();
@@ -184,16 +185,19 @@ export function ThumbnailLab() {
       });
       return rows;
     } catch (e) {
+      if (signal?.aborted) return [];
       setError(e instanceof Error ? e.message : 'Could not load thumbnails.');
       return [];
     } finally {
-      setLoading(false);
+      if (!signal?.aborted) setLoading(false);
     }
   }
   useEffect(() => {
     // A video card's version strip links here with ?video=<id>&version=<id>:
     // open that video, on that version, whatever the filters were.
-    load().then((rows) => {
+    const controller = new AbortController();
+    load(controller.signal).then((rows) => {
+      if (controller.signal.aborted) return;
       const params = new URLSearchParams(window.location.search);
       const item = rows.find((row) => row.id === params.get('video'));
       if (!item) return;
@@ -204,6 +208,7 @@ export function ThumbnailLab() {
       const version = params.get('version');
       if (version) selectVersion(item, version);
     });
+    return () => controller.abort();
   }, []);
   useEffect(() => {
     const d = dialog.current;
@@ -559,7 +564,7 @@ export function ThumbnailLab() {
           className="mb-4 flex items-center justify-between gap-4 rounded-lg border border-accent-red/40 bg-accent-red/10 p-3 text-xs"
         >
           <span>{error}</span>
-          <button className={button} onClick={load}>
+          <button className={button} onClick={() => load()}>
             Refresh
           </button>
         </div>

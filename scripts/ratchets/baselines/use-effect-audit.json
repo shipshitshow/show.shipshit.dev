@@ -1,7 +1,7 @@
 {
   "files": {
     "apps/app/src/components/agent/ContentAgent.tsx": {
-      "async_effect_without_abort": 1,
+      "async_effect_without_abort": 0,
       "use_effect": 2
     },
     "apps/app/src/components/comments/CommentsView.tsx": {
@@ -17,7 +17,7 @@
       "use_effect": 1
     },
     "apps/app/src/components/labs/ThumbnailLab.tsx": {
-      "async_effect_without_abort": 1,
+      "async_effect_without_abort": 0,
       "use_effect": 4
     },
     "apps/app/src/components/labs/ThumbnailResources.tsx": {
@@ -25,7 +25,7 @@
       "use_effect": 1
     },
     "apps/app/src/components/labs/TitleLab.tsx": {
-      "async_effect_without_abort": 1,
+      "async_effect_without_abort": 0,
       "use_effect": 1
     },
     "apps/app/src/components/leads/LeadsView.tsx": {
@@ -41,7 +41,7 @@
       "use_effect": 5
     },
     "apps/app/src/components/livestreams/TopicDrawingBoard.tsx": {
-      "async_effect_without_abort": 1,
+      "async_effect_without_abort": 0,
       "use_effect": 2
     },
     "apps/app/src/components/livestreams/TweetSlider.tsx": {
@@ -53,7 +53,7 @@
       "use_effect": 1
     },
     "apps/app/src/components/SocialAuthPageClient.tsx": {
-      "async_effect_without_abort": 1,
+      "async_effect_without_abort": 0,
       "use_effect": 1
     },
     "apps/app/src/components/topics/KanbanBoard.tsx": {
@@ -65,7 +65,7 @@
       "use_effect": 3
     },
     "apps/app/src/components/YouTubeAuthPageClient.tsx": {
-      "async_effect_without_abort": 2,
+      "async_effect_without_abort": 0,
       "use_effect": 2
     },
     "apps/desktop/src/renderer/App.tsx": {
@@ -81,7 +81,7 @@
       "use_effect": 3
     },
     "apps/desktop/src/renderer/components/TerminalView.tsx": {
-      "async_effect_without_abort": 1,
+      "async_effect_without_abort": 0,
       "use_effect": 1
     },
     "apps/desktop/src/renderer/components/topics/KanbanBoard.tsx": {

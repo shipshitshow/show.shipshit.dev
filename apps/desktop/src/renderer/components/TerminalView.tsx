@@ -12,7 +12,7 @@ export function TerminalView({ className }: TerminalViewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let cancelled = false;
+    const controller = new AbortController();
     let detachData: (() => void) | null = null;
     let detachExit: (() => void) | null = null;
     let observer: ResizeObserver | null = null;
@@ -28,7 +28,7 @@ export function TerminalView({ className }: TerminalViewProps) {
         import('xterm-addon-fit'),
       ]);
 
-      if (cancelled || !containerRef.current) {
+      if (controller.signal.aborted || !containerRef.current) {
         return;
       }
 
@@ -52,7 +52,7 @@ export function TerminalView({ className }: TerminalViewProps) {
       const { terminal } = window.electronAPI;
       const spawnResult = await terminal.spawn(term.cols, term.rows);
 
-      if (cancelled) {
+      if (controller.signal.aborted) {
         await terminal.kill();
         term.dispose();
         return;
@@ -88,7 +88,7 @@ export function TerminalView({ className }: TerminalViewProps) {
     void init();
 
     return () => {
-      cancelled = true;
+      controller.abort();
       observer?.disconnect();
       inputSubscription?.dispose();
       resizeSubscription?.dispose();

@@ -142,7 +142,8 @@ export function TitleLab() {
   const [query, setQuery] = useState('');
 
   useEffect(() => {
-    fetch('/api/labs/titles')
+    const controller = new AbortController();
+    fetch('/api/labs/titles', { signal: controller.signal })
       .then(async (response) => {
         const body: unknown = await response.json();
         if (!response.ok || !body || typeof body !== 'object')
@@ -156,7 +157,10 @@ export function TitleLab() {
         setWritable(writable === true);
         setState('ready');
       })
-      .catch(() => setState('error'));
+      .catch(() => {
+        if (!controller.signal.aborted) setState('error');
+      });
+    return () => controller.abort();
   }, []);
 
   async function save(id: string, text: string) {
