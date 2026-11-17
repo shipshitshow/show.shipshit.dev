@@ -48,7 +48,7 @@ export function ProductionShell({ children }: { children: React.ReactNode }) {
   return (
     <div
       id="app-content-shell"
-      className="production-shell flex h-dvh min-h-0 bg-surface text-text-primary"
+      className="production-shell relative flex h-dvh min-h-0 overflow-hidden bg-surface text-text-primary"
     >
       <a
         href="#production-content"
@@ -70,7 +70,7 @@ export function ProductionShell({ children }: { children: React.ReactNode }) {
           <main
             id="production-content"
             tabIndex={-1}
-            className="min-h-0 min-w-0 flex-1 overflow-auto outline-none"
+            className="relative min-h-0 min-w-0 flex-1 overflow-auto outline-none"
           >
             {children}
           </main>
