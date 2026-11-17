@@ -5,11 +5,11 @@ recording is stored once, and every deliverable cut from it is its own project.
 
 ```text
 assets/                         shared licensed logos, host photos, music
-raws/                           inbox for footage not yet assigned to an episode
+raw/                            inbox for footage not yet assigned to an episode
 _labs/<slug>/                   branding and motion experiments (projects)
-projects/<YYMMDD>/              one recorded episode, keyed by recording date
+projects/<YYYY-MM-DD>_<YYMMDD>/ one recorded episode, keyed by recording date
   episode.json                  episode identity, source and published IDs, links
-  raws/                         original recording and raw transcript/captions
+  raw/                          original recording and raw transcript/captions
   video/                        long-form edit (recap) project
   shorts/<NN-slug>/             one project per Short
 ```
@@ -29,7 +29,7 @@ Every project (`video/`, each Short, each lab) has the same folders:
                                 cuts, description context, audio treatment, manifest
 ```
 
-`episode.json` records stable episode identity independently of folder or display names: recording date, source livestream ID, published long-form and Short IDs, recording and transcript paths, and links to the channel's prep notes when they exist. Deliverables read the recording from the episode's `raws/` rather than copying it. A Short is published on its own schedule, so it keeps its own versions and final; a portrait export can sit beside a `landscape/` variant in the same final.
+`episode.json` records stable episode identity independently of folder or display names: recording date, source livestream ID, published long-form and Short IDs, recording and transcript paths, and links to the channel's prep notes when they exist. Deliverables read the recording from the episode's `raw/` rather than copying it. A Short is published on its own schedule, so it keeps its own versions and final; a portrait export can sit beside a `landscape/` variant in the same final.
 
 Each manifest identifies the native project and final export, media references/hashes, tools/versions, treatment recipes and checks with dates. Preserve existing supported schemas; this guide does not replace the installed plugin's format.
 
