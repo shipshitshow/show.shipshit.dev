@@ -14,6 +14,7 @@ export function ProductionShell({ children }: { children: React.ReactNode }) {
   const [mobilePath, setMobilePath] = useState<string | null>(null);
   const mobileOpen = mobilePath === pathname;
   const drawerRef = useRef<HTMLDivElement>(null);
+  // use-effect-audit: ignore traps focus and listens for Escape and Tab on the mobile drawer (DOM events)
   useEffect(() => {
     if (!mobileOpen) return;
     const previous = document.activeElement as HTMLElement | null;

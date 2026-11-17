@@ -210,6 +210,7 @@ export function ThumbnailLab() {
     });
     return () => controller.abort();
   }, []);
+  // use-effect-audit: ignore syncs the native dialog element with showModal and close (DOM API)
   useEffect(() => {
     const d = dialog.current;
     if (activeId && d && !d.open) d.showModal();
@@ -473,9 +474,11 @@ export function ThumbnailLab() {
       note.current?.focus();
     }
   }
+  // use-effect-audit: ignore keeps the latest key handler in a ref for the window keydown listener below
   useEffect(() => {
     keys.current = onKey;
   });
+  // use-effect-audit: ignore subscribes to window keydown (browser event)
   useEffect(() => {
     const handle = (e: KeyboardEvent) => keys.current(e);
     window.addEventListener('keydown', handle);

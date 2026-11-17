@@ -45,6 +45,7 @@ export function ContentAgent() {
   });
   const capability = capabilityQuery.data ?? null;
 
+  // use-effect-audit: ignore scrolls the thread element to the bottom after new messages render (DOM)
   useEffect(() => {
     const element = thread.current;
     if (element && messages.length > 0)

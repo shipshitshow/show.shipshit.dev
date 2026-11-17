@@ -95,6 +95,7 @@ export function TrendsView() {
     (page + 1) * PAGE_SIZE,
   );
 
+  // use-effect-audit: ignore moves DOM focus to the preview or feed item after the pane renders
   useEffect(() => {
     if (!focusRequest) return;
     if (focusRequest.pane === 'preview') {
