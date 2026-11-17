@@ -35,6 +35,10 @@ export function CardLink({
   );
 }
 
+/** Image sizes for the grid: 4 columns on wide screens, fewer below. */
+const SIZES =
+  '(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw';
+
 const DOT: Record<CardVariants['shown'][number]['status'], string> = {
   approved: 'bg-green-400',
   pending: 'bg-yellow-400',
@@ -72,22 +76,32 @@ export function CardThumbnail({
         external={external}
         href={href}
         className={cn(
-          'relative block overflow-hidden bg-surface-elevated',
-          short ? 'aspect-[9/16]' : 'aspect-video',
+          'relative block aspect-video overflow-hidden bg-surface-elevated',
         )}
       >
         {hasThumbnail ? (
-          <Image
-            src={thumbnailUrl}
-            alt=""
-            fill
-            sizes={
-              short
-                ? '(min-width: 1280px) 16vw, (min-width: 768px) 25vw, 50vw'
-                : '(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 100vw'
-            }
-            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-          />
+          <>
+            {short ? (
+              <Image
+                src={thumbnailUrl}
+                alt=""
+                fill
+                sizes={SIZES}
+                aria-hidden="true"
+                className="scale-110 object-cover opacity-60 blur-xl"
+              />
+            ) : null}
+            <Image
+              src={thumbnailUrl}
+              alt=""
+              fill
+              sizes={SIZES}
+              className={cn(
+                'transition-transform duration-300 group-hover:scale-[1.02]',
+                short ? 'object-contain' : 'object-cover',
+              )}
+            />
+          </>
         ) : (
           <div className="flex size-full items-center justify-center">
             <Image src="/icon.svg" alt="" width={48} height={48} />
@@ -97,7 +111,10 @@ export function CardThumbnail({
           <img
             src={preview}
             alt=""
-            className="absolute inset-0 size-full object-cover"
+            className={cn(
+              'absolute inset-0 size-full bg-surface-elevated',
+              short ? 'object-contain' : 'object-cover',
+            )}
           />
         ) : null}
         {children}
@@ -118,7 +135,7 @@ export function CardThumbnail({
               onBlur={() => setPreview(null)}
               className={cn(
                 'relative min-w-0 overflow-hidden rounded-md bg-surface-elevated outline-none transition-opacity hover:opacity-100 focus-visible:ring-2 focus-visible:ring-accent-red/40',
-                short ? 'aspect-[9/16] w-1/6' : 'aspect-video w-1/5',
+                'aspect-video w-1/5',
                 variant.current
                   ? 'ring-1 ring-white/40'
                   : 'opacity-70 outline outline-1 -outline-offset-1 outline-white/10',
@@ -128,7 +145,10 @@ export function CardThumbnail({
                 src={variant.url}
                 alt=""
                 loading="lazy"
-                className="size-full object-cover"
+                className={cn(
+                  'size-full',
+                  short ? 'object-contain' : 'object-cover',
+                )}
               />
               <span
                 aria-hidden="true"
