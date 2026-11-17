@@ -20,6 +20,7 @@ import type {
 } from '@shipshitshow/types';
 import { isErrorResponse } from '@shipshitshow/types';
 import { Button } from '@shipshitshow/ui';
+import { useQuery } from '@tanstack/react-query';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -137,6 +138,81 @@ function serializePersistedScene(
   );
 }
 
+interface LoadedDrawing {
+  /** The persisted scene as serialized, to tell later edits from it. */
+  savedContent: string;
+  scene: ExcalidrawInitialDataState;
+  topic: Topic | null;
+  updatedAt: string | null;
+}
+
+async function loadDrawing(
+  date: string,
+  slug: string,
+  signal: AbortSignal,
+): Promise<LoadedDrawing> {
+  const [topicsRes, drawingRes] = await Promise.all([
+    fetch(`/api/livestreams?date=${date}`, { signal }),
+    fetch(`/api/livestreams/${slug}/drawing?date=${date}`, { signal }),
+  ]);
+
+  const topicsData = (await topicsRes.json()) as
+    | LivestreamListResponse
+    | { error: string };
+  const drawingData = (await drawingRes.json()) as
+    | TopicDrawingResponse
+    | { error: string };
+
+  if (!topicsRes.ok || isErrorResponse(topicsData)) {
+    throw new Error(
+      isErrorResponse(topicsData)
+        ? topicsData.error
+        : `Failed to load topic ${topicsRes.status}`,
+    );
+  }
+
+  if (!drawingRes.ok) {
+    throw new Error(
+      isErrorResponse(drawingData)
+        ? drawingData.error
+        : `Failed to load drawing ${drawingRes.status}`,
+    );
+  }
+
+  if (isErrorResponse(drawingData)) {
+    throw new Error(`Failed to load drawing ${drawingRes.status}`);
+  }
+
+  const livestreamData = topicsData as LivestreamListResponse;
+  const topicDrawingData = drawingData as TopicDrawingResponse;
+  const sceneAppState = {
+    ...(topicDrawingData.scene?.appState ?? EMPTY_SCENE.appState),
+    viewBackgroundColor: DRAWING_BACKGROUND,
+  };
+
+  return {
+    savedContent: topicDrawingData.scene
+      ? serializePersistedScene(
+          (topicDrawingData.scene.elements ?? []) as SerializedSceneElements,
+          sceneAppState as AppState,
+          (topicDrawingData.scene.files ?? {}) as BinaryFiles,
+        )
+      : serializePersistedScene(
+          [] as SerializedSceneElements,
+          EMPTY_SCENE.appState as AppState,
+          {} as BinaryFiles,
+        ),
+    scene: topicDrawingData.scene
+      ? ({
+          ...topicDrawingData.scene,
+          appState: sceneAppState,
+        } as ExcalidrawInitialDataState)
+      : EMPTY_SCENE,
+    topic: livestreamData.topics.find((item) => item.slug === slug) || null,
+    updatedAt: topicDrawingData.updatedAt ?? null,
+  };
+}
+
 export function TopicDrawingBoard({ date, slug }: TopicDrawingBoardProps) {
   const apiRef = useRef<ExcalidrawImperativeAPI | null>(null);
   const saveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -144,12 +220,29 @@ export function TopicDrawingBoard({ date, slug }: TopicDrawingBoardProps) {
   const lastSavedContentRef = useRef<string | null>(null);
   const savingRef = useRef(false);
 
-  const [topic, setTopic] = useState<Topic | null>(null);
-  const [initialScene, setInitialScene] =
-    useState<ExcalidrawInitialDataState | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [saveStatus, setSaveStatus] = useState<SaveStatus>('idle');
-  const [lastSavedAt, setLastSavedAt] = useState<string | null>(null);
+  // Saves go to the server, so a cached copy would hide them: drop it on unmount.
+  const drawingQuery = useQuery({
+    gcTime: 0,
+    queryFn: async ({ signal }) => {
+      const loaded = await loadDrawing(date, slug, signal);
+      lastSavedContentRef.current = loaded.savedContent;
+      return loaded;
+    },
+    queryKey: ['topic-drawing', date, slug],
+    staleTime: Number.POSITIVE_INFINITY,
+  });
+  const loaded = drawingQuery.data;
+  const topic = loaded?.topic ?? null;
+  // A failed load still opens an empty board, as before.
+  const initialScene =
+    loaded?.scene ?? (drawingQuery.isError ? EMPTY_SCENE : null);
+  const loading = drawingQuery.isPending;
+  // Set by saving; until then what the load found.
+  const [savedStatus, setSaveStatus] = useState<SaveStatus | null>(null);
+  const [savedAt, setLastSavedAt] = useState<string | null>(null);
+  const saveStatus: SaveStatus =
+    savedStatus ?? (loaded?.updatedAt ? 'saved' : 'idle');
+  const lastSavedAt = savedAt ?? loaded?.updatedAt ?? null;
   const [exporting, setExporting] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -219,95 +312,6 @@ export function TopicDrawingBoard({ date, slug }: TopicDrawingBoardProps) {
     },
     [saveDrawing],
   );
-
-  useEffect(() => {
-    const controller = new AbortController();
-    const { signal } = controller;
-
-    const load = async () => {
-      try {
-        const [topicsRes, drawingRes] = await Promise.all([
-          fetch(`/api/livestreams?date=${date}`, { signal }),
-          fetch(`/api/livestreams/${slug}/drawing?date=${date}`, { signal }),
-        ]);
-
-        const topicsData = (await topicsRes.json()) as
-          | LivestreamListResponse
-          | { error: string };
-        const drawingData = (await drawingRes.json()) as
-          | TopicDrawingResponse
-          | { error: string };
-
-        if (!topicsRes.ok || isErrorResponse(topicsData)) {
-          throw new Error(
-            isErrorResponse(topicsData)
-              ? topicsData.error
-              : `Failed to load topic ${topicsRes.status}`,
-          );
-        }
-
-        if (!drawingRes.ok) {
-          throw new Error(
-            isErrorResponse(drawingData)
-              ? drawingData.error
-              : `Failed to load drawing ${drawingRes.status}`,
-          );
-        }
-
-        if (isErrorResponse(drawingData)) {
-          throw new Error(`Failed to load drawing ${drawingRes.status}`);
-        }
-
-        if (signal.aborted) return;
-
-        const livestreamData = topicsData as LivestreamListResponse;
-        const topicDrawingData = drawingData as TopicDrawingResponse;
-        const sceneAppState = {
-          ...(topicDrawingData.scene?.appState ?? EMPTY_SCENE.appState),
-          viewBackgroundColor: DRAWING_BACKGROUND,
-        };
-
-        setTopic(
-          livestreamData.topics.find((item) => item.slug === slug) || null,
-        );
-        setInitialScene(
-          topicDrawingData.scene
-            ? ({
-                ...topicDrawingData.scene,
-                appState: sceneAppState,
-              } as ExcalidrawInitialDataState)
-            : EMPTY_SCENE,
-        );
-        if (topicDrawingData.scene) {
-          lastSavedContentRef.current = serializePersistedScene(
-            (topicDrawingData.scene.elements ?? []) as SerializedSceneElements,
-            sceneAppState as AppState,
-            (topicDrawingData.scene.files ?? {}) as BinaryFiles,
-          );
-        } else {
-          lastSavedContentRef.current = serializePersistedScene(
-            [] as SerializedSceneElements,
-            EMPTY_SCENE.appState as AppState,
-            {} as BinaryFiles,
-          );
-        }
-        setLastSavedAt(topicDrawingData.updatedAt);
-        setSaveStatus(topicDrawingData.updatedAt ? 'saved' : 'idle');
-      } finally {
-        if (!signal.aborted) {
-          setLoading(false);
-        }
-      }
-    };
-
-    load().catch(() => {
-      if (!signal.aborted) {
-        setInitialScene(EMPTY_SCENE);
-      }
-    });
-
-    return () => controller.abort();
-  }, [date, slug]);
 
   // use-effect-audit: ignore flushes a pending save on window pointerup (browser event)
   useEffect(() => {
