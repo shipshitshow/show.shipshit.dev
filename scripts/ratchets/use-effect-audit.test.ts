@@ -204,3 +204,22 @@ test('the baseline serializes with sorted keys and round-trips', () => {
     'b.tsx': { async_effect_without_abort: 0, use_effect: 1 },
   });
 });
+
+test('the baseline orders paths case-insensitively, as Biome does', () => {
+  const text = serializeBaseline(
+    Object.fromEntries([
+      [
+        'apps/app/src/components/DashboardClient.tsx',
+        { async_effect_without_abort: 0, use_effect: 1 },
+      ],
+      [
+        'apps/app/src/components/agent/ContentAgent.tsx',
+        { async_effect_without_abort: 0, use_effect: 2 },
+      ],
+    ]),
+  );
+  expect(Object.keys(parseBaseline(text))).toEqual([
+    'apps/app/src/components/agent/ContentAgent.tsx',
+    'apps/app/src/components/DashboardClient.tsx',
+  ]);
+});

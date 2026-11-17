@@ -28,17 +28,24 @@ export function SocialAuthPageClient() {
   const [statuses, setStatuses] = useState<StatusResponse['statuses']>([]);
 
   useEffect(() => {
+    const controller = new AbortController();
+    const { signal } = controller;
     Promise.all([
-      fetch('/api/auth/social/config', { cache: 'no-store' }).then((res) =>
-        parseJsonResponse<ConfigResponse>(res),
+      fetch('/api/auth/social/config', { cache: 'no-store', signal }).then(
+        (res) => parseJsonResponse<ConfigResponse>(res),
       ),
-      fetch('/api/auth/social/status', { cache: 'no-store' }).then((res) =>
-        parseJsonResponse<StatusResponse>(res),
+      fetch('/api/auth/social/status', { cache: 'no-store', signal }).then(
+        (res) => parseJsonResponse<StatusResponse>(res),
       ),
-    ]).then(([configData, statusData]) => {
-      setConfigs(configData.platforms);
-      setStatuses(statusData.statuses);
-    });
+    ])
+      .then(([configData, statusData]) => {
+        setConfigs(configData.platforms);
+        setStatuses(statusData.statuses);
+      })
+      .catch((error) => {
+        if (!signal.aborted) throw error;
+      });
+    return () => controller.abort();
   }, []);
 
   return (

@@ -194,9 +194,16 @@ export function compareCounts(baseline: Counts, current: Counts): string[] {
   return problems;
 }
 
+// Biome's useSortedKeys orders keys case-insensitively; match it so a written
+// baseline passes `bun run lint` untouched.
+function compareKeys(a: string, b: string): number {
+  const lower = a.toLowerCase().localeCompare(b.toLowerCase(), 'en');
+  return lower !== 0 ? lower : a < b ? -1 : a > b ? 1 : 0;
+}
+
 export function serializeBaseline(counts: Counts): string {
   const sorted: Counts = {};
-  for (const file of Object.keys(counts).sort()) {
+  for (const file of Object.keys(counts).sort(compareKeys)) {
     const entry = counts[file];
     if (entry) {
       sorted[file] = {

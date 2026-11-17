@@ -29,10 +29,14 @@ export function ContentAgent() {
     app && label !== app.label ? `${app.label} / ${label}` : label;
 
   useEffect(() => {
-    fetch('/api/agent', { cache: 'no-store' })
+    const controller = new AbortController();
+    fetch('/api/agent', { cache: 'no-store', signal: controller.signal })
       .then((response) => (response.ok ? response.json() : null))
       .then(setCapability)
-      .catch(() => setCapability(null));
+      .catch(() => {
+        if (!controller.signal.aborted) setCapability(null);
+      });
+    return () => controller.abort();
   }, []);
 
   useEffect(() => {
