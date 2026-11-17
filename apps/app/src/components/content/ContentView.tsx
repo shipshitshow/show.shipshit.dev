@@ -4,7 +4,6 @@ import { LinkFilterSelect } from '@/components/FilterSelect';
 import {
   CHANNEL_FILTERS,
   type ContentFilters,
-  type ContentItem,
   contentHref,
   filterContent,
   parseChannel,
@@ -19,7 +18,6 @@ import {
   type VideoStatsSnapshot,
 } from '@/lib/video-stats';
 import { ContentCard } from './ContentCard';
-import { MasonryGrid } from './MasonryGrid';
 
 export interface ContentSearchParams {
   channel?: string;
@@ -29,13 +27,6 @@ export interface ContentSearchParams {
 }
 
 const PATH = '/content';
-
-/** A card's height in column widths: the image, the text, the version strip. */
-function cardHeight(item: ContentItem): number {
-  return (
-    (item.type === 'short' ? 16 / 9 : 9 / 16) + 0.55 + (item.variants ? 0.2 : 0)
-  );
-}
 
 /** One filter as a dropdown whose options are links keeping the others. */
 function Filter<K extends 'channel' | 'sort' | 'type'>({
@@ -152,11 +143,11 @@ export async function ContentView({
       </div>
 
       {shown.length > 0 ? (
-        <MasonryGrid heights={shown.map(cardHeight)}>
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-x-4 gap-y-6">
           {shown.map((item) => (
             <ContentCard key={item.key} item={item} />
           ))}
-        </MasonryGrid>
+        </div>
       ) : (
         <Empty />
       )}

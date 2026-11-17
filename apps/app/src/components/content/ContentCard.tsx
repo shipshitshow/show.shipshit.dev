@@ -51,7 +51,7 @@ export function ContentCard({ item }: { item: ContentItem }) {
   const privacy =
     stat?.privacy && stat.privacy !== 'public' ? stat.privacy : null;
   const className =
-    'group self-start overflow-hidden rounded-2xl border border-surface-border bg-surface-card transition-colors hover:border-accent-red/40 has-[>a:focus-visible]:ring-2 has-[>a:focus-visible]:ring-accent-red/40';
+    'group flex h-full flex-col overflow-hidden rounded-2xl border border-surface-border bg-surface-card transition-colors hover:border-accent-red/40 has-[>a:focus-visible]:ring-2 has-[>a:focus-visible]:ring-accent-red/40';
 
   return (
     <article className={className}>
@@ -95,7 +95,7 @@ export function ContentCard({ item }: { item: ContentItem }) {
       <CardLink
         external={item.external}
         href={item.href}
-        className="block space-y-2 p-4 outline-none"
+        className="block flex-1 space-y-2 p-4 outline-none"
       >
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
