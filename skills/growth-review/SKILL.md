@@ -66,8 +66,8 @@ snapshot date, not today.
 
 For the last three or four episodes, write each one's lever from the channel's
 growth checklist (one concrete business outcome in the title and opening, the
-payoff by 45 seconds, no host faces, and so on) from the title, thumbnail and
-opening, not from the numbers. Then say per lever: keep, change or drop, with the
+payoff by 45 seconds, hosts at the edges, topic in the middle, no title text, and
+so on) from the title, thumbnail and opening, not from the numbers. Then say per lever: keep, change or drop, with the
 episodes and ratios behind it and what the evidence cannot show. Do not call a
 lever from fewer than three episodes.
 
