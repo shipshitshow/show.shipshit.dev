@@ -13,6 +13,8 @@
   "scripts": {
     "brand:check": "python3 scripts/sync-brand.py --check",
     "build": "turbo build",
+    "check:baselines": "bun scripts/ratchets/baselines-not-grown.ts",
+    "check:effects": "bun scripts/ratchets/use-effect-audit.ts",
     "check:types": "tsc -p tsconfig.scripts.json --noEmit && turbo check:types",
     "deps:update": "bunx npm-check-updates -u --deep && bun install",
     "dev": "turbo dev",
@@ -25,6 +27,7 @@
     "show:prep": "bun run --cwd apps/app show:prep",
     "storage:export": "bun run --cwd apps/app storage:export",
     "test": "turbo test",
+    "test:ratchets": "bun test scripts/ratchets",
     "thumbnail-lab:sync-live": "bun run --cwd apps/app thumbnail-lab:sync-live",
     "thumbnail:stamp": "bun run --cwd apps/app thumbnail:stamp",
     "transcripts:import": "bun scripts/import-transcripts.ts",

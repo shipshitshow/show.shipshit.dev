@@ -38,6 +38,20 @@ jobs:
       - name: Brand consistency
         run: bun run brand:check
 
+      - name: Ratchet tests
+        run: bun run test:ratchets
+
+      - name: useEffect ratchet
+        run: bun run check:effects
+
+      - name: Ratchet baselines may not grow
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          git fetch --no-tags --depth=1 origin "+refs/heads/${BASE_REF}:refs/remotes/origin/${BASE_REF}"
+          bun run check:baselines "origin/${BASE_REF}"
+
       - name: Checkout public skills
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:

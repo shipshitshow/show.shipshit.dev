@@ -23,6 +23,13 @@ bun run test          # bun test across packages
 bun run lint          # biome check
 ```
 
+## React effects
+- Do not add `useEffect`. A ratchet (`bun run check:effects`, `scripts/ratchets/use-effect-audit.ts`) counts `use_effect` and `async_effect_without_abort` per non-test file under `apps/` and `packages/`, against `scripts/ratchets/baselines/use-effect-audit.json`. A new file or a higher count fails; a lower count fails until you prune with `bun run check:effects --write` (which refuses to raise anything).
+- An async effect (`await`, `.then` or `fetch` in the callback) must mention `AbortController`, `AbortSignal` or `signal`. A `cancelled` flag does not count.
+- Instead of an effect, use derived state in render, the event handler that caused the work, the existing data-fetching hook, or a `key` to reset state. Keep effects for subscribing to systems outside React.
+- Escape hatch, on the line directly above the call, reason required: `// use-effect-audit: ignore <reason>`.
+- CI also runs `bun run check:baselines origin/<base>` on pull requests: a ratchet baseline may never grow against its base branch. Register new ratchet baselines in `scripts/ratchets/baselines-not-grown.ts`.
+
 ## Editing
 - `docs/show-prep/weekly-pipeline.md` — the one-page weekly run from topic to private upload, with Vincent's sign-off points.
 - `docs/show-prep/thumbnails.md` — the thumbnail and Shorts cover template, production rules and where masters live.
