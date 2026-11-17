@@ -1,5 +1,6 @@
 import { Button } from '@shipshitshow/ui';
-import { useCallback, useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
 
 interface AuthStatus {
   connected: boolean;
@@ -10,25 +11,20 @@ interface AuthStatus {
 const CHANNEL_LABELS = ['main', 'clips'] as const;
 
 export function YouTubeAuthView() {
-  const [status, setStatus] = useState<AuthStatus | null>(null);
-  const [loading, setLoading] = useState(true);
+  const statusQuery = useQuery({
+    queryFn: async (): Promise<AuthStatus | null> => {
+      try {
+        return await window.electronAPI.youtubeAuth.getStatus();
+      } catch {
+        return null;
+      }
+    },
+    queryKey: ['youtube-auth-status'],
+  });
+  const status = statusQuery.data ?? null;
+  const loading = statusQuery.isFetching;
+  const fetchStatus = () => statusQuery.refetch();
   const [authInProgress, setAuthInProgress] = useState<string | null>(null);
-
-  const fetchStatus = useCallback(async () => {
-    setLoading(true);
-    try {
-      const data = await window.electronAPI.youtubeAuth.getStatus();
-      setStatus(data);
-    } catch {
-      setStatus(null);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchStatus();
-  }, [fetchStatus]);
 
   async function handleAuth(label: string) {
     setAuthInProgress(label);
