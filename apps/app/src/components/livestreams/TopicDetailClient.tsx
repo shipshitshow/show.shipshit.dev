@@ -638,6 +638,7 @@ export function TopicDetailClient() {
     return () => clearInterval(interval);
   }, [fetchStreamMeta]);
 
+  // use-effect-audit: ignore sends the page-view analytics event (external service)
   useEffect(() => {
     logClientEvent('livestream_topic_view', { requestedDate: date, slug });
   }, [slug, date]);
@@ -764,6 +765,7 @@ export function TopicDetailClient() {
     }
   }
 
+  // use-effect-audit: ignore observes segment visibility with IntersectionObserver (browser API)
   useEffect(() => {
     const node = rundownScrollRef.current;
     if (!node || segments.length === 0) return;

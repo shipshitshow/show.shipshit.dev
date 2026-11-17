@@ -480,6 +480,7 @@ export function TweetSlider({
     }
   }, [date, slides]);
 
+  // use-effect-audit: ignore mirrors the current slide into the URL hash with history.replaceState (browser history)
   useEffect(() => {
     if (!slide) return;
     const position = slides.findIndex((item) => item.id === slide.id) + 1;
@@ -520,12 +521,14 @@ export function TweetSlider({
     }
   }, []);
 
+  // use-effect-audit: ignore subscribes to document fullscreenchange (browser event)
   useEffect(() => {
     const onChange = () => setIsFullscreen(Boolean(document.fullscreenElement));
     document.addEventListener('fullscreenchange', onChange);
     return () => document.removeEventListener('fullscreenchange', onChange);
   }, []);
 
+  // use-effect-audit: ignore idle timer reset by window mousemove (browser event)
   useEffect(() => {
     let timer = window.setTimeout(() => setIdle(true), IDLE_MS);
     const wake = () => {
@@ -540,6 +543,7 @@ export function TweetSlider({
     };
   }, []);
 
+  // use-effect-audit: ignore subscribes to window keydown for slide shortcuts (browser event)
   useEffect(() => {
     function onKey(event: KeyboardEvent) {
       if (event.metaKey || event.ctrlKey || event.altKey) return;

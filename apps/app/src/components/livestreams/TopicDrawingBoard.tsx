@@ -309,6 +309,7 @@ export function TopicDrawingBoard({ date, slug }: TopicDrawingBoardProps) {
     return () => controller.abort();
   }, [date, slug]);
 
+  // use-effect-audit: ignore flushes a pending save on window pointerup (browser event)
   useEffect(() => {
     const flushPendingSave = () => {
       if (!pendingContentRef.current) return;

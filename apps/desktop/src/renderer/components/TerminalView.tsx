@@ -11,6 +11,7 @@ interface TerminalViewProps {
 export function TerminalView({ className }: TerminalViewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // use-effect-audit: ignore owns the xterm terminal and its IPC subscriptions for the life of the view (external system)
   useEffect(() => {
     const controller = new AbortController();
     let detachData: (() => void) | null = null;

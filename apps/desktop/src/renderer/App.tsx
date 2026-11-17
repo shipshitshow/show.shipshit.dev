@@ -83,6 +83,7 @@ export function App() {
     setActiveView(viewId as ViewId);
   }, []);
 
+  // use-effect-audit: ignore subscribes to window keydown for app shortcuts (browser event)
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       const target = event.target as HTMLElement | null;
