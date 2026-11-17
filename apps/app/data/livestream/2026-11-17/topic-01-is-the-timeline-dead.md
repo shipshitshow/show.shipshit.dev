@@ -28,29 +28,22 @@ thumbnail_prompt: null
 
 ## Segment 1 — Vibe editing vs vibe coding
 
-16:03 to 16:28 CET. Mitchell says a pro prompts, then clicks. Vincent says people open the timeline less and less. Brian is the editor in the middle.
+16:03 to 16:28 CET. Mitchell says a pro prompts, then clicks. Vincent says people open the timeline less and less. Brian is the editor in the middle. It started with [Brian's 28 Oct post](https://x.com/ForwardEditor/status/2115412009806414253).
 
-### 1A. Where Brian stands now (16:03 to 16:09)
+### 1A. Where AI falls short (16:03 to 16:09)
 
-- A week on from [the post](https://x.com/ForwardEditor/status/2115412009806414253), same view, or has it moved?
-- You say [Opus edits better than you](https://x.com/ForwardEditor/status/2119050987931336831). Better at what?
-- Where is it still worse than you?
+- Where is [Opus](https://x.com/ForwardEditor/status/2119050987931336831) still worse than you?
 
 ### 1B. Your stack (16:09 to 16:15)
 
-- Are you building your own software for editing now? skills, workflows, what's your stack?
-- Editing skills are shipping fast: [this post](https://x.com/rames_jusso/status/2122465287354409304) claims a reverse-any-video skill that is 20x faster than the one it compares to. Have you tried skills like this?
-- Vibe coding went from "bugs" to default in a year. Is editing on the same curve?
-- What is the equivalent of "it compiles" in editing? How do you know a cut works?
-- **Chat question:** when did you last open a timeline, and why?
+- What's your stack: skills, workflows, your own software?
+- Have you tried [skills like this](https://x.com/rames_jusso/status/2122465287354409304)?
 
 ### 1C. The market (16:15 to 16:22)
 
-- Where is the market going for editors now?
-- What does a pro editor sell now?
-- Who owns the last 20%: you, the model, or the client?
+- Where is the market going for editors?
 
-### 1D. The job (16:22 to 16:28)
+### 1D. The people (16:22 to 16:28)
 
 - What should a junior learn first?
 - What would you tell an editor who is scared?
@@ -60,27 +53,26 @@ thumbnail_prompt: null
 
 16:28 to 16:40 CET. Mitchell leads.
 
-- Higgsfield's [post](https://x.com/higgsfield/status/2122441171771265172): do you see some manual editor cuts, or is it 100% AI?
-- In September you said video generation was not close to good enough yet. Is that still true?
-- What would a fully generated video need before you would put your name on it?
-- Which part is still the hardest to generate: consistent characters, camera moves, sound, or pacing?
-- Where does generation end and editing begin: can you still tell the cuts apart?
-- Generated b-roll inside an edit vs a fully generated video: the same business?
-- Would you hire an AI video generator for a client job, and what would you check first?
-- **Chat question:** would you watch a fully generated video from a channel you follow, and would you notice?
+- In September you wrote video generation "isn't even close to good enough yet… I need those key frames, layers, full control." Still true?
+- Higgsfield's [post](https://x.com/higgsfield/status/2122441171771265172): manual editor cuts, or 100% AI?
+- What would a generated video need for you to put your name on it?
+- Hardest to generate: characters, camera, sound or pacing?
+- Can you still tell where generation ends and editing begins?
+- Generated b-roll in an edit vs a fully generated video: same business?
+- Would you take a client job with an AI video generator?
+- **Chat question:** would you watch a fully generated video, and would you notice?
 
 ## Segment 3 — Content creation in 2027
 
 16:40 to 16:52 CET. Vincent leads.
 
-- Watching a video vs asking Claude for the transcript: will people still watch, or just ask for the answer?
-- Abundance of creators: when anyone can make a polished video, what is scarce: taste, trust, distribution, a face?
-- A classic internet rule of thumb states that roughly 1% of users create content, 9% edit or engage with it (commenting, sharing), and 90% passively consume it. Does AI break that rule?
-- Dead Internet theory: if most content is made by AI, how do you stay human, and does it matter?
-- Content for agents: do you make a video for a person, or for the agent that reads it for them?
-- Describe one solo creator's week in 2027. What is still a human job?
-- One prediction you are happy to be quoted on, and the date we check it.
-- **Chat question:** what is the one thing you would still pay a human editor for in 2027?
+- Will people watch a video, or ask Claude for the transcript?
+- When anyone can make a polished video, what is scarce?
+- 1% create, 9% engage, 90% consume. Does AI break that rule?
+- Dead Internet theory: does it matter if most content is AI?
+- Do you make a video for people, or for their agents?
+- One prediction you will be quoted on, and the date we check it.
+- **Chat question:** what would you still pay a human editor for in 2027?
 
 ## Close — Is the timeline dead?
 
