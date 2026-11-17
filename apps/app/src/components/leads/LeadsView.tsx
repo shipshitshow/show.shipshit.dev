@@ -1,61 +1,57 @@
 'use client';
 
-import type {
-  Lead,
-  LeadEpisodeOption,
-  LeadListResponse,
-  LeadStatus,
-} from '@shipshitshow/types';
+import type { Lead, LeadListResponse, LeadStatus } from '@shipshitshow/types';
 import { UNATTRIBUTED_EPISODE } from '@shipshitshow/types';
 import { Button } from '@shipshitshow/ui';
-import { useCallback, useEffect, useState } from 'react';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { fetchJson } from '@/lib/fetch-json';
 import { LeadLogTable } from './LeadLogTable';
 import { LeadQuickForm } from './LeadQuickForm';
 
 const EPISODE_SUMMARY_LIMIT = 6;
+const LEADS_KEY = ['leads'];
 
 export function LeadsView() {
-  const [leads, setLeads] = useState<Lead[]>([]);
-  const [episodes, setEpisodes] = useState<LeadEpisodeOption[]>([]);
-  const [leadsByEpisode, setLeadsByEpisode] = useState<Record<string, number>>(
-    {},
-  );
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const queryClient = useQueryClient();
+  const query = useQuery({
+    queryFn: ({ signal }) =>
+      fetchJson<LeadListResponse>('/api/leads', 'Failed to load leads', signal),
+    queryKey: LEADS_KEY,
+  });
+  const leads = query.data?.leads ?? [];
+  const episodes = query.data?.episodes ?? [];
+  const leadsByEpisode = query.data?.leadsByEpisode ?? {};
+  const loading = query.isPending;
+  const error = query.error?.message ?? null;
+  const fetchLeads = () => query.refetch();
 
-  const fetchLeads = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const res = await fetch('/api/leads');
-      if (!res.ok) throw new Error('Failed to load leads');
-      const data: LeadListResponse = await res.json();
-      setLeads(data.leads);
-      setEpisodes(data.episodes);
-      setLeadsByEpisode(data.leadsByEpisode);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : 'Failed to load leads');
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchLeads();
-  }, [fetchLeads]);
+  function updateLeads(update: (data: LeadListResponse) => LeadListResponse) {
+    queryClient.setQueryData<LeadListResponse>(LEADS_KEY, (data) =>
+      data ? update(data) : data,
+    );
+  }
 
   function handleCreated(lead: Lead) {
-    setLeads((prev) => [lead, ...prev]);
-    setLeadsByEpisode((prev) => {
+    updateLeads((data) => {
       const key = lead.episodeDate ?? UNATTRIBUTED_EPISODE;
-      return { ...prev, [key]: (prev[key] ?? 0) + 1 };
+      return {
+        ...data,
+        leads: [lead, ...data.leads],
+        leadsByEpisode: {
+          ...data.leadsByEpisode,
+          [key]: (data.leadsByEpisode[key] ?? 0) + 1,
+        },
+      };
     });
   }
 
   async function handleStatusChange(lead: Lead, status: LeadStatus) {
-    setLeads((prev) =>
-      prev.map((item) => (item.id === lead.id ? { ...item, status } : item)),
-    );
+    updateLeads((data) => ({
+      ...data,
+      leads: data.leads.map((item) =>
+        item.id === lead.id ? { ...item, status } : item,
+      ),
+    }));
 
     const res = await fetch(`/api/leads/${encodeURIComponent(lead.id)}`, {
       body: JSON.stringify({ status }),
@@ -64,11 +60,12 @@ export function LeadsView() {
     });
 
     if (!res.ok) {
-      setLeads((prev) =>
-        prev.map((item) =>
+      updateLeads((data) => ({
+        ...data,
+        leads: data.leads.map((item) =>
           item.id === lead.id ? { ...item, status: lead.status } : item,
         ),
-      );
+      }));
     }
   }
 

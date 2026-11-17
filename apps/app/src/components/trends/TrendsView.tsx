@@ -11,8 +11,10 @@ import type {
   TrendsSearchResponse,
 } from '@shipshitshow/types';
 import { Button } from '@shipshitshow/ui';
+import { useQuery } from '@tanstack/react-query';
 import { ArrowLeft } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { fetchJson } from '@/lib/fetch-json';
 import {
   describeTopicPersistResult,
   persistTrendTopics,
@@ -44,14 +46,26 @@ const SOURCE_STATUS_LABELS: Record<TrendSource, string> = {
 };
 
 export function TrendsView() {
-  const [items, setItems] = useState<TrendItem[]>([]);
-  const [activeItemId, setActiveItemId] = useState<string | null>(null);
-  const [fetchedAt, setFetchedAt] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [sources, setSources] = useState<TrendsResponse['sources'] | null>(
-    null,
+  const trendsQuery = useQuery({
+    queryFn: ({ signal }) =>
+      fetchJson<TrendsResponse>('/api/trends', 'Failed to load trends', signal),
+    queryKey: ['trends'],
+  });
+  const items = useMemo(
+    () => trendsQuery.data?.items ?? [],
+    [trendsQuery.data],
   );
+  const fetchedAt = trendsQuery.data?.fetchedAt ?? null;
+  const sources = trendsQuery.data?.sources ?? null;
+  const loading = trendsQuery.isFetching;
+  const error = trendsQuery.error?.message ?? null;
+  const fetchTrends = () => trendsQuery.refetch();
+  const [chosenItemId, setActiveItemId] = useState<string | null>(null);
+  // The previewed item falls back to the first one when the choice is gone.
+  const activeItemId =
+    chosenItemId && items.some((item) => item.id === chosenItemId)
+      ? chosenItemId
+      : (items[0]?.id ?? null);
   const [sourceFilter, setSourceFilter] = useState<FilterValue>('all');
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [deepDiveItems, setDeepDiveItems] = useState<TrendItem[]>([]);
@@ -68,32 +82,6 @@ export function TrendsView() {
   const [focusRequest, setFocusRequest] = useState<{
     pane: 'feed' | 'preview';
   } | null>(null);
-
-  const fetchTrends = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const res = await fetch('/api/trends');
-      if (!res.ok) throw new Error(`Failed to fetch trends: ${res.status}`);
-      const data: TrendsResponse = await res.json();
-      setItems(data.items);
-      setActiveItemId((prev) =>
-        prev && data.items.some((item) => item.id === prev)
-          ? prev
-          : (data.items[0]?.id ?? null),
-      );
-      setFetchedAt(data.fetchedAt);
-      setSources(data.sources);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : 'Failed to load trends');
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchTrends();
-  }, [fetchTrends]);
 
   const filteredItems = useMemo(() => {
     if (sourceFilter === 'all') return items;

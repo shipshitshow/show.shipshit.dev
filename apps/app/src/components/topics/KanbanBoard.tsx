@@ -9,7 +9,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@shipshitshow/ui';
-import { useCallback, useEffect, useState } from 'react';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useState } from 'react';
+import { fetchJson } from '@/lib/fetch-json';
 import { KanbanColumn } from './KanbanColumn';
 
 const COLUMNS: TopicStatus[] = ['draft', 'backlog', 'in_progress', 'done'];
@@ -21,59 +23,54 @@ function todayLocalDate(): string {
 }
 
 export function KanbanBoard() {
-  const [topics, setTopics] = useState<Topic[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [date, setDate] = useState(() => todayLocalDate());
-  const [availableDates, setAvailableDates] = useState<string[]>([]);
+  const queryClient = useQueryClient();
+  const [selectedDate, setDate] = useState(() => todayLocalDate());
 
-  const fetchTopics = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const datesRes = await fetch('/api/topics/dates');
-      if (!datesRes.ok) throw new Error('Failed to load dates');
-      const { dates }: { dates: string[] } = await datesRes.json();
-      setAvailableDates(dates);
+  const datesQuery = useQuery({
+    queryFn: ({ signal }) =>
+      fetchJson<{ dates: string[] }>(
+        '/api/topics/dates',
+        'Failed to load dates',
+        signal,
+      ),
+    queryKey: ['kanban', 'dates'],
+  });
+  const availableDates = datesQuery.data?.dates ?? [];
+  // A date with no topic file falls back to the newest one.
+  const date =
+    selectedDate === ALL_DATES_VALUE || availableDates.includes(selectedDate)
+      ? selectedDate
+      : availableDates[0] || selectedDate;
 
-      if (date === ALL_DATES_VALUE) {
-        const results = await Promise.all(
-          dates.map(async (d) => {
-            const res = await fetch(
-              `/api/topics?date=${encodeURIComponent(d)}`,
-            );
-            const data: { topics: Topic[] } = await res.json();
-            return data.topics;
-          }),
-        );
-        setTopics(results.flat());
-        return;
-      }
-
-      const resolvedDate = dates.includes(date) ? date : dates[0] || date;
-      if (resolvedDate !== date) {
-        setDate(resolvedDate);
-        return;
-      }
-
-      const res = await fetch(`/api/topics?date=${encodeURIComponent(date)}`);
-      if (!res.ok) throw new Error('Failed to load topics');
-      const data: { topics: Topic[] } = await res.json();
-      setTopics(data.topics);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : 'Failed to load topics');
-    } finally {
-      setLoading(false);
-    }
-  }, [date]);
-
-  useEffect(() => {
-    fetchTopics();
-  }, [fetchTopics]);
+  const topicsKey = ['kanban', 'topics', date];
+  const topicsQuery = useQuery({
+    enabled: datesQuery.isSuccess,
+    queryFn: async ({ signal }) => {
+      const dates = date === ALL_DATES_VALUE ? availableDates : [date];
+      const results = await Promise.all(
+        dates.map(async (d) => {
+          const data = await fetchJson<{ topics: Topic[] }>(
+            `/api/topics?date=${encodeURIComponent(d)}`,
+            'Failed to load topics',
+            signal,
+          );
+          return data.topics;
+        }),
+      );
+      return results.flat();
+    },
+    queryKey: topicsKey,
+  });
+  const topics = topicsQuery.data ?? [];
+  const loading =
+    datesQuery.isPending || (datesQuery.isSuccess && topicsQuery.isPending);
+  const error = (datesQuery.error ?? topicsQuery.error)?.message ?? null;
+  const fetchTopics = () =>
+    queryClient.invalidateQueries({ queryKey: ['kanban'] });
 
   async function handleStatusChange(topic: Topic, status: TopicStatus) {
-    setTopics((prev) =>
-      prev.map((t) =>
+    queryClient.setQueryData<Topic[]>(topicsKey, (prev) =>
+      prev?.map((t) =>
         t.slug === topic.slug && t.date === topic.date ? { ...t, status } : t,
       ),
     );
