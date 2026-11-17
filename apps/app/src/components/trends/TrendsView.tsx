@@ -108,10 +108,6 @@ export function TrendsView() {
   );
 
   useEffect(() => {
-    setPage(0);
-  }, [sourceFilter]);
-
-  useEffect(() => {
     if (!focusRequest) return;
     if (focusRequest.pane === 'preview') {
       // Only on the stacked layout; the desktop split keeps focus in the feed.
@@ -378,7 +374,10 @@ export function TrendsView() {
             <div className="min-w-0">
               <TrendFilters
                 active={sourceFilter}
-                onChange={setSourceFilter}
+                onChange={(value) => {
+                  setSourceFilter(value);
+                  setPage(0);
+                }}
                 counts={counts}
               />
               {(fetchedAt || sourceSummary) && (

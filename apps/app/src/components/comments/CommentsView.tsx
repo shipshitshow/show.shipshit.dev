@@ -77,7 +77,7 @@ export function CommentsView() {
     useState<CommentReplyDraftCapability | null>(null);
   const [fetchedAt, setFetchedAt] = useState<string | null>(null);
   const [page, setPage] = useState(0);
-  const [mobileView, setMobileView] = useState<MobileView>('list');
+  const [mobileViewState, setMobileView] = useState<MobileView>('list');
   const listRef = useRef<HTMLDivElement>(null);
   const backButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -139,21 +139,21 @@ export function CommentsView() {
     return Array.from(map.entries()).sort((a, b) => a[1].localeCompare(b[1]));
   }, [comments, channelFilter]);
 
-  useEffect(() => {
-    if (videoFilter === 'all') return;
-    if (!videoOptions.some(([videoId]) => videoId === videoFilter)) {
-      setVideoFilter('all');
-    }
-  }, [videoFilter, videoOptions]);
+  // A video that the channel filter hides counts as "all".
+  const effectiveVideoFilter =
+    videoFilter === 'all' ||
+    videoOptions.some(([videoId]) => videoId === videoFilter)
+      ? videoFilter
+      : 'all';
 
   const visibleComments = useMemo(
     () =>
       filterComments(comments, {
         channel: channelFilter,
         reply: replyFilter,
-        video: videoFilter,
+        video: effectiveVideoFilter,
       }),
-    [comments, channelFilter, replyFilter, videoFilter],
+    [comments, channelFilter, replyFilter, effectiveVideoFilter],
   );
 
   const totalPages = Math.max(1, Math.ceil(visibleComments.length / PAGE_SIZE));
@@ -161,10 +161,6 @@ export function CommentsView() {
     page * PAGE_SIZE,
     (page + 1) * PAGE_SIZE,
   );
-
-  useEffect(() => {
-    setPage(0);
-  }, [replyFilter, channelFilter, videoFilter]);
 
   const selectedComment = useMemo(
     () =>
@@ -174,16 +170,8 @@ export function CommentsView() {
     [selectedId, visibleComments],
   );
 
-  useEffect(() => {
-    if (!selectedComment) {
-      setSelectedId(null);
-      setMobileView('list');
-      return;
-    }
-    if (selectedId !== selectedComment.commentId) {
-      setSelectedId(selectedComment.commentId);
-    }
-  }, [selectedComment, selectedId]);
+  // Without a visible comment there is no detail pane to show.
+  const mobileView: MobileView = selectedComment ? mobileViewState : 'list';
 
   const openComment = useCallback((commentId: string) => {
     setSelectedId(commentId);
@@ -336,7 +324,10 @@ export function CommentsView() {
           <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto sm:gap-3">
             <Select
               value={replyFilter}
-              onValueChange={(value) => setReplyFilter(value as ReplyFilter)}
+              onValueChange={(value) => {
+                setReplyFilter(value as ReplyFilter);
+                setPage(0);
+              }}
             >
               <SelectTrigger
                 aria-label="Reply status"
@@ -352,7 +343,13 @@ export function CommentsView() {
                 <SelectItem value="all">All comments</SelectItem>
               </SelectContent>
             </Select>
-            <Select value={channelFilter} onValueChange={setChannelFilter}>
+            <Select
+              value={channelFilter}
+              onValueChange={(value) => {
+                setChannelFilter(value);
+                setPage(0);
+              }}
+            >
               <SelectTrigger
                 aria-label="Channel"
                 className={cn(
@@ -371,7 +368,13 @@ export function CommentsView() {
                 ))}
               </SelectContent>
             </Select>
-            <Select value={videoFilter} onValueChange={setVideoFilter}>
+            <Select
+              value={effectiveVideoFilter}
+              onValueChange={(value) => {
+                setVideoFilter(value);
+                setPage(0);
+              }}
+            >
               <SelectTrigger
                 aria-label="Video"
                 className={cn(

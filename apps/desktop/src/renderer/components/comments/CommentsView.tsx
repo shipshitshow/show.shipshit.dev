@@ -79,12 +79,12 @@ export function CommentsView() {
     return Array.from(map.entries()).sort((a, b) => a[1].localeCompare(b[1]));
   }, [filteredByChannel]);
 
-  useEffect(() => {
-    if (videoFilter === 'all') return;
-    if (!videoOptions.some(([videoId]) => videoId === videoFilter)) {
-      setVideoFilter('all');
-    }
-  }, [videoFilter, videoOptions]);
+  // A video that the channel filter hides counts as "all".
+  const effectiveVideoFilter =
+    videoFilter === 'all' ||
+    videoOptions.some(([videoId]) => videoId === videoFilter)
+      ? videoFilter
+      : 'all';
 
   const visibleComments = useMemo(() => {
     const byReplyStatus =
@@ -92,9 +92,11 @@ export function CommentsView() {
         ? filteredByChannel.filter((item) => !item.hasChannelReply)
         : filteredByChannel;
 
-    if (videoFilter === 'all') return byReplyStatus;
-    return byReplyStatus.filter((item) => item.videoId === videoFilter);
-  }, [filteredByChannel, replyFilter, videoFilter]);
+    if (effectiveVideoFilter === 'all') return byReplyStatus;
+    return byReplyStatus.filter(
+      (item) => item.videoId === effectiveVideoFilter,
+    );
+  }, [filteredByChannel, replyFilter, effectiveVideoFilter]);
 
   const selectedComment = useMemo(
     () =>
@@ -103,16 +105,6 @@ export function CommentsView() {
       null,
     [selectedId, visibleComments],
   );
-
-  useEffect(() => {
-    if (!selectedComment) {
-      setSelectedId(null);
-      return;
-    }
-    if (selectedId !== selectedComment.commentId) {
-      setSelectedId(selectedComment.commentId);
-    }
-  }, [selectedComment, selectedId]);
 
   const handleGenerateDrafts = useCallback(
     async (comment: YouTubeCommentThread) => {
