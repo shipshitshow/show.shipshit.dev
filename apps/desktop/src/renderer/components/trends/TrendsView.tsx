@@ -10,7 +10,8 @@ import type {
   TrendsSearchResponse,
 } from '@shipshitshow/types';
 import { Button } from '@shipshitshow/ui';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { useCallback, useMemo, useState } from 'react';
 import { DeepDivePanel } from './DeepDivePanel';
 import { TrendActionBar } from './TrendActionBar';
 import { TrendCard } from './TrendCard';
@@ -32,14 +33,25 @@ const SOURCE_STATUS_LABELS: Record<TrendSource, string> = {
 };
 
 export function TrendsView() {
-  const [items, setItems] = useState<TrendItem[]>([]);
-  const [activeItemId, setActiveItemId] = useState<string | null>(null);
-  const [fetchedAt, setFetchedAt] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [sources, setSources] = useState<TrendsResponse['sources'] | null>(
-    null,
+  const trendsQuery = useQuery({
+    queryFn: (): Promise<TrendsResponse> => window.electronAPI.trends.fetch(),
+    queryKey: ['trends'],
+  });
+  const items = useMemo(
+    () => trendsQuery.data?.items ?? [],
+    [trendsQuery.data],
   );
+  const fetchedAt = trendsQuery.data?.fetchedAt ?? null;
+  const sources = trendsQuery.data?.sources ?? null;
+  const loading = trendsQuery.isFetching;
+  const error = trendsQuery.error?.message ?? null;
+  const fetchTrends = () => trendsQuery.refetch();
+  const [chosenItemId, setActiveItemId] = useState<string | null>(null);
+  // The previewed item falls back to the first one when the choice is gone.
+  const activeItemId =
+    chosenItemId && items.some((item) => item.id === chosenItemId)
+      ? chosenItemId
+      : (items[0]?.id ?? null);
   const [sourceFilter, setSourceFilter] = useState<FilterValue>('all');
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [deepDiveItems, setDeepDiveItems] = useState<TrendItem[]>([]);
@@ -48,30 +60,6 @@ export function TrendsView() {
   const [manualXLoading, setManualXLoading] = useState(false);
   const [addingToLivestream, setAddingToLivestream] = useState(false);
   const [addedIds, setAddedIds] = useState<Set<string>>(new Set());
-
-  const fetchTrends = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const data: TrendsResponse = await window.electronAPI.trends.fetch();
-      setItems(data.items);
-      setActiveItemId((prev) =>
-        prev && data.items.some((item) => item.id === prev)
-          ? prev
-          : (data.items[0]?.id ?? null),
-      );
-      setFetchedAt(data.fetchedAt);
-      setSources(data.sources);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : 'Failed to load trends');
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchTrends();
-  }, [fetchTrends]);
 
   const filteredItems = useMemo(() => {
     if (sourceFilter === 'all') return items;

@@ -3,7 +3,8 @@ import type {
   YouTubeCommentThread,
 } from '@shipshitshow/types';
 import { Button } from '@shipshitshow/ui';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useCallback, useMemo, useState } from 'react';
 import { CopyButton } from '../CopyButton';
 
 type DraftState = Record<string, string[]>;
@@ -22,10 +23,14 @@ const buildYouTubeVideoUrl = (videoId: string) =>
 const buildYouTubeCommentUrl = (videoId: string, commentId: string) =>
   `${buildYouTubeVideoUrl(videoId)}&lc=${encodeURIComponent(commentId)}`;
 
+type CommentsData = Awaited<
+  ReturnType<typeof window.electronAPI.comments.list>
+>;
+
+const COMMENTS_KEY = ['comments'];
+const NO_COMMENTS: YouTubeCommentThread[] = [];
+
 export function CommentsView() {
-  const [comments, setComments] = useState<YouTubeCommentThread[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [channelFilter, setChannelFilter] = useState('all');
   const [videoFilter, setVideoFilter] = useState('all');
@@ -34,32 +39,17 @@ export function CommentsView() {
   const [draftLoadingId, setDraftLoadingId] = useState<string | null>(null);
   const [sendingByComment, setSendingByComment] = useState<SendingState>({});
   const [actionError, setActionError] = useState<string | null>(null);
-  const [fetchedAt, setFetchedAt] = useState<string | null>(null);
 
-  const loadComments = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const data = await window.electronAPI.comments.list({
-        maxResults: 100,
-      });
-      setComments(data.items);
-      setFetchedAt(data.fetchedAt);
-      setSelectedId((prev) => {
-        if (prev && data.items.some((item) => item.commentId === prev))
-          return prev;
-        return data.items[0]?.commentId ?? null;
-      });
-    } catch (e) {
-      setError(e instanceof Error ? e.message : 'Failed to load comments');
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    loadComments();
-  }, [loadComments]);
+  const queryClient = useQueryClient();
+  const commentsQuery = useQuery({
+    queryFn: () => window.electronAPI.comments.list({ maxResults: 100 }),
+    queryKey: COMMENTS_KEY,
+  });
+  const comments = commentsQuery.data?.items ?? NO_COMMENTS;
+  const fetchedAt = commentsQuery.data?.fetchedAt ?? null;
+  const loading = commentsQuery.isFetching;
+  const error = commentsQuery.error?.message ?? null;
+  const loadComments = () => commentsQuery.refetch();
 
   const channelOptions = useMemo(
     () => Array.from(new Set(comments.map((item) => item.channelLabel))).sort(),
@@ -143,17 +133,22 @@ export function CommentsView() {
             comment.channelId,
             draft,
           );
-        setComments((prev) =>
-          prev.map((item) =>
-            item.commentId === comment.commentId
-              ? {
-                  ...item,
-                  hasChannelReply: true,
-                  replies: [...item.replies, reply],
-                  totalReplyCount: item.totalReplyCount + 1,
-                }
-              : item,
-          ),
+        queryClient.setQueryData<CommentsData>(COMMENTS_KEY, (data) =>
+          data
+            ? {
+                ...data,
+                items: data.items.map((item) =>
+                  item.commentId === comment.commentId
+                    ? {
+                        ...item,
+                        hasChannelReply: true,
+                        replies: [...item.replies, reply],
+                        totalReplyCount: item.totalReplyCount + 1,
+                      }
+                    : item,
+                ),
+              }
+            : data,
         );
       } catch (e) {
         setActionError(e instanceof Error ? e.message : 'Failed to send reply');

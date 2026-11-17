@@ -1,10 +1,13 @@
 import type { Topic, TopicStatus } from '@shipshitshow/types';
 import { Button } from '@shipshitshow/ui';
-import { useCallback, useEffect, useState } from 'react';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useState } from 'react';
 import { KanbanColumn } from './KanbanColumn';
 
 const COLUMNS: TopicStatus[] = ['draft', 'backlog', 'in_progress', 'done'];
 const ALL_DATES_VALUE = '__all__';
+const NO_DATES: string[] = [];
+const NO_TOPICS: Topic[] = [];
 
 function todayLocalDate(): string {
   const now = new Date();
@@ -12,51 +15,44 @@ function todayLocalDate(): string {
 }
 
 export function KanbanBoard() {
-  const [topics, setTopics] = useState<Topic[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [date, setDate] = useState(() => todayLocalDate());
-  const [availableDates, setAvailableDates] = useState<string[]>([]);
+  const queryClient = useQueryClient();
+  const [selectedDate, setDate] = useState(() => todayLocalDate());
 
-  const fetchTopics = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const dates = await window.electronAPI.topics.listDates();
-      setAvailableDates(dates);
+  const datesQuery = useQuery({
+    queryFn: () => window.electronAPI.topics.listDates(),
+    queryKey: ['kanban', 'dates'],
+  });
+  const availableDates = datesQuery.data ?? NO_DATES;
+  // A date with no topic file falls back to the newest one.
+  const date =
+    selectedDate === ALL_DATES_VALUE || availableDates.includes(selectedDate)
+      ? selectedDate
+      : availableDates[0] || selectedDate;
 
-      if (date === ALL_DATES_VALUE) {
-        const results = await Promise.all(
-          dates.map((availableDate) =>
-            window.electronAPI.topics.list(availableDate),
-          ),
-        );
-        setTopics(results.flat());
-        return;
-      }
-
-      const resolvedDate = dates.includes(date) ? date : dates[0] || date;
-      if (resolvedDate !== date) {
-        setDate(resolvedDate);
-        return;
-      }
-
-      const result = await window.electronAPI.topics.list(date);
-      setTopics(result);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : 'Failed to load topics');
-    } finally {
-      setLoading(false);
-    }
-  }, [date]);
-
-  useEffect(() => {
-    fetchTopics();
-  }, [fetchTopics]);
+  const topicsKey = ['kanban', 'topics', date];
+  const topicsQuery = useQuery({
+    enabled: datesQuery.isSuccess,
+    queryFn: async () => {
+      if (date !== ALL_DATES_VALUE) return window.electronAPI.topics.list(date);
+      const results = await Promise.all(
+        availableDates.map((availableDate) =>
+          window.electronAPI.topics.list(availableDate),
+        ),
+      );
+      return results.flat();
+    },
+    queryKey: topicsKey,
+  });
+  const topics = topicsQuery.data ?? NO_TOPICS;
+  const loading =
+    datesQuery.isPending || (datesQuery.isSuccess && topicsQuery.isPending);
+  const error = (datesQuery.error ?? topicsQuery.error)?.message ?? null;
+  const fetchTopics = () =>
+    queryClient.invalidateQueries({ queryKey: ['kanban'] });
 
   async function handleStatusChange(topic: Topic, status: TopicStatus) {
-    setTopics((prev) =>
-      prev.map((t) =>
+    queryClient.setQueryData<Topic[]>(topicsKey, (prev) =>
+      prev?.map((t) =>
         t.slug === topic.slug && t.date === topic.date ? { ...t, status } : t,
       ),
     );
