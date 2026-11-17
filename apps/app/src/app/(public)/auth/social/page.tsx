@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
+import { QueryProvider } from '@/components/QueryProvider';
 import { SocialAuthPageClient } from '@/components/SocialAuthPageClient';
 import { requireProducerPage } from '@/lib/producer-auth';
 
@@ -11,8 +12,10 @@ export const metadata: Metadata = {
 export default async function SocialAuthPage() {
   await requireProducerPage();
   return (
-    <Suspense>
-      <SocialAuthPageClient />
-    </Suspense>
+    <QueryProvider>
+      <Suspense>
+        <SocialAuthPageClient />
+      </Suspense>
+    </QueryProvider>
   );
 }

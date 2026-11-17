@@ -5,19 +5,16 @@ import type {
   EpisodeMetric,
   EpisodeRollupResponse,
   EpisodeRollupRow,
-  ErrorResponse,
   NotTrackedReason,
 } from '@shipshitshow/types';
-import { isErrorResponse, isReauthRequiredResponse } from '@shipshitshow/types';
 import { Button, cn } from '@shipshitshow/ui';
 import Link from 'next/link';
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FilterSelect } from '@/components/FilterSelect';
 import { EpisodeRollupTableSkeleton } from '@/components/PageSkeletons';
-import { readCachedSnapshot, writeCachedSnapshot } from '@/lib/client-cache';
 import { OUTLIER_THRESHOLD, outlierScores } from '@/lib/content-library';
 import { formatNumber } from '@/lib/format';
-import { parseJsonResponse } from '@/lib/parse-json-response';
+import { useCachedReport } from '@/lib/use-cached-report';
 
 const CACHE_KEY = 'episode-rollup';
 
@@ -341,67 +338,20 @@ function Legend() {
 }
 
 export function EpisodeRollupClient() {
-  const [rollup, setRollup] = useState<EpisodeRollupResponse | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<ErrorResponse | null>(null);
-  const [cachedAt, setCachedAt] = useState<string | null>(null);
   const [sort, setSort] = useState<EpisodeSort>('latest');
 
-  const load = useCallback(async (options?: { force?: boolean }) => {
-    setLoading(true);
-    setError(null);
-
-    if (!options?.force) {
-      const cached = readCachedSnapshot<EpisodeRollupResponse>(CACHE_KEY);
-      if (cached) {
-        setRollup(cached.data);
-        setCachedAt(cached.savedAt);
-        setLoading(false);
-        return;
-      }
-    }
-
-    try {
-      const res = await fetch('/api/episode-rollup');
-      const data = await parseJsonResponse<
-        EpisodeRollupResponse | ErrorResponse
-      >(res);
-
-      if (!res.ok) {
-        if (isReauthRequiredResponse(data)) {
-          window.location.href = `/auth/youtube?next=${encodeURIComponent(window.location.pathname)}`;
-          return;
-        }
-        setRollup(null);
-        setError(
-          isErrorResponse(data) ? data : { error: `API error ${res.status}` },
-        );
-        return;
-      }
-      if (isErrorResponse(data)) {
-        setRollup(null);
-        setError(data);
-        return;
-      }
-
-      setRollup(data);
-      writeCachedSnapshot(CACHE_KEY, data);
-      setCachedAt(new Date().toISOString());
-    } catch (e) {
-      setRollup(null);
-      setError(
-        e instanceof Error
-          ? { error: e.message }
-          : { error: 'Failed to load episode rollup' },
-      );
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    load();
-  }, [load]);
+  const {
+    cachedAt,
+    error,
+    loading,
+    refresh,
+    report: rollup,
+  } = useCachedReport<EpisodeRollupResponse>({
+    cacheKey: CACHE_KEY,
+    failure: 'Failed to load episode rollup',
+    reauthNext: () => window.location.pathname,
+    url: '/api/episode-rollup',
+  });
 
   if (error) {
     return (
@@ -416,7 +366,7 @@ export function EpisodeRollupClient() {
           ) : null}
         </div>
         <Button
-          onClick={() => load({ force: true })}
+          onClick={() => refresh()}
           className="text-xs hover:border-accent-red"
         >
           Retry
@@ -453,7 +403,7 @@ export function EpisodeRollupClient() {
             options={SORTS}
           />
           <Button
-            onClick={() => load({ force: true })}
+            onClick={() => refresh()}
             aria-label="Refresh episode rollup"
             disabled={loading}
             className="px-2.5 hover:border-accent-red disabled:opacity-50"

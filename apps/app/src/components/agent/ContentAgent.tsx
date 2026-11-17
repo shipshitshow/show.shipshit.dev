@@ -1,5 +1,6 @@
 'use client';
 import { Button, cn, Textarea } from '@shipshitshow/ui';
+import { useQuery } from '@tanstack/react-query';
 import { SendHorizontal, Sparkles, X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
@@ -17,7 +18,6 @@ type Capability = { available: boolean; model: string } | null;
 export function ContentAgent() {
   const pathname = usePathname();
   const { toggleAgent } = useSidebarState();
-  const [capability, setCapability] = useState<Capability>(null);
   const [messages, setMessages] = useState<AgentMessage[]>([]);
   const [draft, setDraft] = useState('');
   const [busy, setBusy] = useState(false);
@@ -28,16 +28,22 @@ export function ContentAgent() {
   const context =
     app && label !== app.label ? `${app.label} / ${label}` : label;
 
-  useEffect(() => {
-    const controller = new AbortController();
-    fetch('/api/agent', { cache: 'no-store', signal: controller.signal })
-      .then((response) => (response.ok ? response.json() : null))
-      .then(setCapability)
-      .catch(() => {
-        if (!controller.signal.aborted) setCapability(null);
-      });
-    return () => controller.abort();
-  }, []);
+  const capabilityQuery = useQuery({
+    queryFn: async ({ signal }): Promise<Capability> => {
+      try {
+        const response = await fetch('/api/agent', {
+          cache: 'no-store',
+          signal,
+        });
+        return response.ok ? ((await response.json()) as Capability) : null;
+      } catch (failure) {
+        if (signal.aborted) throw failure;
+        return null;
+      }
+    },
+    queryKey: ['agent-capability'],
+  });
+  const capability = capabilityQuery.data ?? null;
 
   useEffect(() => {
     const element = thread.current;

@@ -2,17 +2,9 @@
   "files": {
     "apps/app/src/components/agent/ContentAgent.tsx": {
       "async_effect_without_abort": 0,
-      "use_effect": 2
+      "use_effect": 1
     },
     "apps/app/src/components/comments/CommentsView.tsx": {
-      "async_effect_without_abort": 0,
-      "use_effect": 1
-    },
-    "apps/app/src/components/DashboardClient.tsx": {
-      "async_effect_without_abort": 0,
-      "use_effect": 1
-    },
-    "apps/app/src/components/EpisodeRollupClient.tsx": {
       "async_effect_without_abort": 0,
       "use_effect": 1
     },
@@ -48,17 +40,9 @@
       "async_effect_without_abort": 0,
       "use_effect": 1
     },
-    "apps/app/src/components/SocialAuthPageClient.tsx": {
-      "async_effect_without_abort": 0,
-      "use_effect": 1
-    },
     "apps/app/src/components/trends/TrendsView.tsx": {
       "async_effect_without_abort": 0,
       "use_effect": 1
-    },
-    "apps/app/src/components/YouTubeAuthPageClient.tsx": {
-      "async_effect_without_abort": 0,
-      "use_effect": 2
     },
     "apps/desktop/src/renderer/App.tsx": {
       "async_effect_without_abort": 0,
