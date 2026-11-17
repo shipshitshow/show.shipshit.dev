@@ -8,10 +8,11 @@ import type {
   TrendsSearchResponse,
 } from '@shipshitshow/types';
 import { isErrorResponse } from '@shipshitshow/types';
+import { useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams, useSearchParams } from 'next/navigation';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CopyButton } from '@/components/CopyButton';
 import { LivestreamTopicContentSkeleton } from '@/components/PageSkeletons';
 import { logClientEvent, logClientPerf } from '@/lib/client-logger';
@@ -570,25 +571,24 @@ function extractSegmentMedia(segment: ShowSegment): SegmentMediaItem[] {
   return items;
 }
 
+const STREAM_META_REFRESH_MS = 30_000;
+const NO_TOPICS: Topic[] = [];
+const NO_TWEETS: TrendItem[] = [];
+
 export function TopicDetailClient() {
   const params = useParams();
   const searchParams = useSearchParams();
   const slug = params.slug as string;
   const date = searchParams.get('date') || todayLocalDate();
 
-  const [topics, setTopics] = useState<Topic[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [resolvedDate, setResolvedDate] = useState(date);
-  const [streamMeta, setStreamMeta] = useState<LivestreamMeta | null>(null);
-  const [xReactions, setXReactions] = useState<TrendItem[]>([]);
   const [activeSegmentNumber, setActiveSegmentNumber] = useState(0);
   const rundownScrollRef = useRef<HTMLElement | null>(null);
   const segmentRefs = useRef(new Map<number, HTMLDivElement>());
 
-  const fetchTopics = useCallback(async () => {
-    const startedAt = performance.now();
-    try {
-      const res = await fetch(`/api/livestreams?date=${date}`);
+  const topicsQuery = useQuery({
+    queryFn: async ({ signal }) => {
+      const startedAt = performance.now();
+      const res = await fetch(`/api/livestreams?date=${date}`, { signal });
       const data = await parseJsonResponse<
         LivestreamListResponse | { error: string }
       >(res);
@@ -601,8 +601,6 @@ export function TopicDetailClient() {
         throw new Error(data.error);
       }
       const livestreamData = data as LivestreamListResponse;
-      setTopics(livestreamData.topics);
-      setResolvedDate(livestreamData.resolvedDate);
       logClientPerf('livestream_topic_fetch_topics', {
         durationMs: Number((performance.now() - startedAt).toFixed(2)),
         requestedDate: date,
@@ -610,33 +608,33 @@ export function TopicDetailClient() {
         slug,
         topicCount: livestreamData.topics.length,
       });
-    } finally {
-      setLoading(false);
-    }
-  }, [date, slug]);
+      return livestreamData;
+    },
+    queryKey: ['livestream-topics', date],
+  });
+  const topics = topicsQuery.data?.topics ?? NO_TOPICS;
+  const resolvedDate = topicsQuery.data?.resolvedDate ?? date;
+  const loading = topicsQuery.isPending;
 
-  useEffect(() => {
-    fetchTopics();
-  }, [fetchTopics]);
-
-  const fetchStreamMeta = useCallback(async () => {
-    const startedAt = performance.now();
-    const res = await fetch(`/api/livestreams/${slug}/youtube?date=${date}`);
-    const data = await parseJsonResponse<LivestreamMeta>(res);
-    setStreamMeta(data);
-    logClientPerf('livestream_topic_fetch_stream_meta', {
-      durationMs: Number((performance.now() - startedAt).toFixed(2)),
-      liveStatus: data.liveStatus,
-      requestedDate: date,
-      slug,
-    });
-  }, [date, slug]);
-
-  useEffect(() => {
-    fetchStreamMeta();
-    const interval = setInterval(fetchStreamMeta, 30000);
-    return () => clearInterval(interval);
-  }, [fetchStreamMeta]);
+  const streamMetaQuery = useQuery({
+    queryFn: async ({ signal }) => {
+      const startedAt = performance.now();
+      const res = await fetch(`/api/livestreams/${slug}/youtube?date=${date}`, {
+        signal,
+      });
+      const data = await parseJsonResponse<LivestreamMeta>(res);
+      logClientPerf('livestream_topic_fetch_stream_meta', {
+        durationMs: Number((performance.now() - startedAt).toFixed(2)),
+        liveStatus: data.liveStatus,
+        requestedDate: date,
+        slug,
+      });
+      return data;
+    },
+    queryKey: ['livestream-stream-meta', slug, date],
+    refetchInterval: STREAM_META_REFRESH_MS,
+  });
+  const streamMeta = streamMetaQuery.data ?? null;
 
   // use-effect-audit: ignore sends the page-view analytics event (external service)
   useEffect(() => {
@@ -726,36 +724,35 @@ export function TopicDetailClient() {
     ? buildTopicSearchQuery(topic.title, summarySection?.body)
     : '';
 
-  const fetchXReactions = useCallback(async () => {
-    if (!topicSearchQuery) {
-      setXReactions([]);
-      return;
-    }
-
-    const startedAt = performance.now();
-    try {
-      const res = await fetch(
-        `/api/trends/search?q=${encodeURIComponent(topicSearchQuery)}`,
-      );
-      const searchData = await parseJsonResponse<TrendsSearchResponse>(res);
-      const tweets = searchData.items
-        .filter((item) => item.source === 'x' && isTweetUrl(item.url))
-        .slice(0, 6);
-      setXReactions(tweets);
-      logClientPerf('livestream_topic_fetch_x_reactions', {
-        durationMs: Number((performance.now() - startedAt).toFixed(2)),
-        query: topicSearchQuery,
-        resultCount: tweets.length,
-        slug,
-      });
-    } catch {
-      setXReactions([]);
-    }
-  }, [slug, topicSearchQuery]);
-
-  useEffect(() => {
-    fetchXReactions();
-  }, [fetchXReactions]);
+  const xReactionsQuery = useQuery({
+    enabled: topicSearchQuery !== '',
+    queryFn: async ({ signal }) => {
+      const startedAt = performance.now();
+      try {
+        const res = await fetch(
+          `/api/trends/search?q=${encodeURIComponent(topicSearchQuery)}`,
+          { signal },
+        );
+        const searchData = await parseJsonResponse<TrendsSearchResponse>(res);
+        const tweets = searchData.items
+          .filter((item) => item.source === 'x' && isTweetUrl(item.url))
+          .slice(0, 6);
+        logClientPerf('livestream_topic_fetch_x_reactions', {
+          durationMs: Number((performance.now() - startedAt).toFixed(2)),
+          query: topicSearchQuery,
+          resultCount: tweets.length,
+          slug,
+        });
+        return tweets;
+      } catch (failure) {
+        if (signal.aborted) throw failure;
+        return [];
+      }
+    },
+    queryKey: ['livestream-x-reactions', slug, topicSearchQuery],
+  });
+  const xReactions =
+    (topicSearchQuery !== '' ? xReactionsQuery.data : null) ?? NO_TWEETS;
 
   function jumpToSegment(segmentNumber: number) {
     setActiveSegmentNumber(segmentNumber);

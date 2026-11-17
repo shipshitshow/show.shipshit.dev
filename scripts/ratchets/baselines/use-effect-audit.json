@@ -8,10 +8,6 @@
       "async_effect_without_abort": 0,
       "use_effect": 1
     },
-    "apps/app/src/components/livestreams/TopicDetailClient.tsx": {
-      "async_effect_without_abort": 0,
-      "use_effect": 3
-    },
     "apps/app/src/components/livestreams/TopicDrawingBoard.tsx": {
       "async_effect_without_abort": 0,
       "use_effect": 1
