@@ -16,9 +16,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@shipshitshow/ui';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { ArrowLeft } from 'lucide-react';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import { CopyButton } from '@/components/CopyButton';
+import { fetchJson } from '@/lib/fetch-json';
 import { filterComments, type ReplyFilter } from './comment-filters';
 
 type DraftState = Record<string, string[]>;
@@ -61,10 +63,16 @@ async function readErrorResponse(
     : { error: `${fallback} (HTTP ${res.status})` };
 }
 
+interface CommentsResponse {
+  fetchedAt: string;
+  items: YouTubeCommentThread[];
+}
+
+const COMMENTS_KEY = ['comments'];
+const DRAFT_CAPABILITY_KEY = ['comments', 'draft-capability'];
+const NO_COMMENTS: YouTubeCommentThread[] = [];
+
 export function CommentsView() {
-  const [comments, setComments] = useState<YouTubeCommentThread[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [channelFilter, setChannelFilter] = useState('all');
   const [videoFilter, setVideoFilter] = useState('all');
@@ -73,54 +81,44 @@ export function CommentsView() {
   const [draftLoadingId, setDraftLoadingId] = useState<string | null>(null);
   const [sendingByComment, setSendingByComment] = useState<SendingState>({});
   const [actionError, setActionError] = useState<ActionError | null>(null);
-  const [draftCapability, setDraftCapability] =
-    useState<CommentReplyDraftCapability | null>(null);
-  const [fetchedAt, setFetchedAt] = useState<string | null>(null);
   const [page, setPage] = useState(0);
   const [mobileViewState, setMobileView] = useState<MobileView>('list');
   const listRef = useRef<HTMLDivElement>(null);
   const backButtonRef = useRef<HTMLButtonElement>(null);
 
-  const loadComments = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const res = await fetch('/api/comments?maxResults=100');
-      if (!res.ok) throw new Error(`Failed to fetch comments: ${res.status}`);
-      const data = await res.json();
-      setComments(data.items);
-      setFetchedAt(data.fetchedAt);
-      setSelectedId((prev) => {
-        if (
-          prev &&
-          data.items.some(
-            (item: YouTubeCommentThread) => item.commentId === prev,
-          )
-        )
-          return prev;
-        return data.items[0]?.commentId ?? null;
-      });
-    } catch (e) {
-      setError(e instanceof Error ? e.message : 'Failed to load comments');
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  const queryClient = useQueryClient();
+  const commentsQuery = useQuery({
+    queryFn: ({ signal }) =>
+      fetchJson<CommentsResponse>(
+        '/api/comments?maxResults=100',
+        'Failed to fetch comments',
+        signal,
+      ),
+    queryKey: COMMENTS_KEY,
+  });
+  const comments = commentsQuery.data?.items ?? NO_COMMENTS;
+  const fetchedAt = commentsQuery.data?.fetchedAt ?? null;
+  const loading = commentsQuery.isPending;
+  const refreshing = commentsQuery.isFetching && !loading;
+  const error = commentsQuery.error?.message ?? null;
+  const loadComments = () => commentsQuery.refetch();
 
-  const loadDraftCapability = useCallback(async () => {
-    try {
-      const res = await fetch('/api/comments/draft');
-      if (!res.ok) return;
-      setDraftCapability((await res.json()) as CommentReplyDraftCapability);
-    } catch {
-      // Unknown capability keeps the action enabled; a failed POST explains why.
-    }
-  }, []);
-
-  useEffect(() => {
-    loadComments();
-    loadDraftCapability();
-  }, [loadComments, loadDraftCapability]);
+  // An unknown capability keeps the action enabled; a failed POST explains why.
+  const capabilityQuery = useQuery({
+    queryFn: async ({ signal }) => {
+      try {
+        const res = await fetch('/api/comments/draft', { signal });
+        if (!res.ok) return null;
+        return (await res.json()) as CommentReplyDraftCapability;
+      } catch (failure) {
+        if (signal.aborted) throw failure;
+        return null;
+      }
+    },
+    queryKey: DRAFT_CAPABILITY_KEY,
+  });
+  const draftCapability = capabilityQuery.data ?? null;
+  const loadDraftCapability = () => capabilityQuery.refetch();
 
   const channelOptions = useMemo(
     () => Array.from(new Set(comments.map((item) => item.channelLabel))).sort(),
@@ -267,17 +265,22 @@ export function CommentsView() {
           return;
         }
         const reply: YouTubeCommentReply = await res.json();
-        setComments((prev) =>
-          prev.map((item) =>
-            item.commentId === comment.commentId
-              ? {
-                  ...item,
-                  hasChannelReply: true,
-                  replies: [...item.replies, reply],
-                  totalReplyCount: item.totalReplyCount + 1,
-                }
-              : item,
-          ),
+        queryClient.setQueryData<CommentsResponse>(COMMENTS_KEY, (data) =>
+          data
+            ? {
+                ...data,
+                items: data.items.map((item) =>
+                  item.commentId === comment.commentId
+                    ? {
+                        ...item,
+                        hasChannelReply: true,
+                        replies: [...item.replies, reply],
+                        totalReplyCount: item.totalReplyCount + 1,
+                      }
+                    : item,
+                ),
+              }
+            : data,
         );
       } catch (e) {
         setActionError({
@@ -316,7 +319,9 @@ export function CommentsView() {
           <p className="text-xs text-text-muted">
             {loading
               ? 'Loading comments...'
-              : `${visibleComments.length} comments loaded`}
+              : refreshing
+                ? 'Refreshing comments...'
+                : `${visibleComments.length} comments loaded`}
             {fetchedAt
               ? ` · updated ${new Date(fetchedAt).toLocaleTimeString()}`
               : ''}

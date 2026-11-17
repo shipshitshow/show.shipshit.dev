@@ -4,21 +4,9 @@
       "async_effect_without_abort": 0,
       "use_effect": 1
     },
-    "apps/app/src/components/comments/CommentsView.tsx": {
-      "async_effect_without_abort": 0,
-      "use_effect": 1
-    },
     "apps/app/src/components/labs/ThumbnailLab.tsx": {
       "async_effect_without_abort": 0,
       "use_effect": 4
-    },
-    "apps/app/src/components/labs/ThumbnailResources.tsx": {
-      "async_effect_without_abort": 0,
-      "use_effect": 1
-    },
-    "apps/app/src/components/labs/TitleLab.tsx": {
-      "async_effect_without_abort": 0,
-      "use_effect": 1
     },
     "apps/app/src/components/livestreams/EpisodeSidebarRegistrar.tsx": {
       "async_effect_without_abort": 0,
