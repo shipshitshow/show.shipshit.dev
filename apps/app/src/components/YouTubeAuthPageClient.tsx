@@ -8,8 +8,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@shipshitshow/ui';
+import { useQuery } from '@tanstack/react-query';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { parseJsonResponse } from '@/lib/parse-json-response';
 import type { YouTubeAuthStatus } from '@/lib/youtube/types';
 
@@ -22,51 +23,52 @@ export function YouTubeAuthPageClient() {
   const router = useRouter();
   const next = searchParams.get('next') || '/';
   const error = searchParams.get('error');
-  const [status, setStatus] = useState<YouTubeAuthStatus | null>(null);
-  const [redirectUri, setRedirectUri] = useState<string | null>(null);
   const [starting, setStarting] = useState(false);
-  const [selectedChannel, setSelectedChannel] = useState('main');
+  const [chosenChannel, setSelectedChannel] = useState<string | null>(null);
 
-  useEffect(() => {
-    const controller = new AbortController();
-    fetch('/api/auth/youtube/status', {
-      cache: 'no-store',
-      signal: controller.signal,
-    })
-      .then((res) => parseJsonResponse<YouTubeAuthStatus>(res))
-      .then((data) => {
-        setStatus(data);
-        if (data.channelLabelsNeedingAuth.length > 0) {
-          setSelectedChannel(data.channelLabelsNeedingAuth[0]);
-        }
-        if (data.connected) {
-          router.replace(next);
-        }
-      })
-      .catch(() => {
-        if (controller.signal.aborted) return;
-        setStatus({
+  const statusQuery = useQuery({
+    queryFn: async ({ signal }): Promise<YouTubeAuthStatus> => {
+      try {
+        const res = await fetch('/api/auth/youtube/status', {
+          cache: 'no-store',
+          signal,
+        });
+        const data = await parseJsonResponse<YouTubeAuthStatus>(res);
+        // Already connected: nothing to fix here, go where the user was headed.
+        if (data.connected) router.replace(next);
+        return data;
+      } catch (failure) {
+        if (signal.aborted) throw failure;
+        return {
           channelLabelsNeedingAuth: ['main'],
           connected: false,
           status: 'reauth_required',
-        });
-      });
-    return () => controller.abort();
-  }, [next, router]);
+        };
+      }
+    },
+    queryKey: ['youtube-auth', 'status', next],
+  });
+  const status = statusQuery.data ?? null;
+  const selectedChannel =
+    chosenChannel ?? status?.channelLabelsNeedingAuth[0] ?? 'main';
 
-  useEffect(() => {
-    const controller = new AbortController();
-    fetch('/api/auth/youtube/config', {
-      cache: 'no-store',
-      signal: controller.signal,
-    })
-      .then((res) => parseJsonResponse<YouTubeAuthConfigResponse>(res))
-      .then((data) => setRedirectUri(data.redirectUri))
-      .catch(() => {
-        if (!controller.signal.aborted) setRedirectUri(null);
-      });
-    return () => controller.abort();
-  }, []);
+  const configQuery = useQuery({
+    queryFn: async ({ signal }): Promise<string | null> => {
+      try {
+        const res = await fetch('/api/auth/youtube/config', {
+          cache: 'no-store',
+          signal,
+        });
+        const data = await parseJsonResponse<YouTubeAuthConfigResponse>(res);
+        return data.redirectUri;
+      } catch (failure) {
+        if (signal.aborted) throw failure;
+        return null;
+      }
+    },
+    queryKey: ['youtube-auth', 'config'],
+  });
+  const redirectUri = configQuery.data ?? null;
 
   const channelOptions = useMemo(() => {
     const options = new Set(['main', 'clips']);

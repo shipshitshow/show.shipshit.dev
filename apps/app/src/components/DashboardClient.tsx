@@ -5,13 +5,11 @@ import type {
   ChannelStats,
   DailyMetric,
   DateRange,
-  ErrorResponse,
   MultiChannelReport,
   VideoStats,
 } from '@shipshitshow/types';
-import { isErrorResponse, isReauthRequiredResponse } from '@shipshitshow/types';
 import { Button } from '@shipshitshow/ui';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { ChannelSelector } from '@/components/ChannelSelector';
 import { DateRangeSelector } from '@/components/DateRangeSelector';
 import { SocialPerformance } from '@/components/SocialPerformance';
@@ -19,9 +17,8 @@ import { StatCard } from '@/components/StatCard';
 import { type ChartLine, TimeSeriesChart } from '@/components/TimeSeriesChart';
 import { TopVideos } from '@/components/TopVideos';
 import { VideoTable } from '@/components/VideoTable';
-import { readCachedSnapshot, writeCachedSnapshot } from '@/lib/client-cache';
 import { formatNumber, formatWatchTime } from '@/lib/format';
-import { parseJsonResponse } from '@/lib/parse-json-response';
+import { useCachedReport } from '@/lib/use-cached-report';
 
 interface MultiChannelMetricPoint {
   day: string;
@@ -41,71 +38,14 @@ export function DashboardClient({
   view?: 'channels' | 'overview' | 'socials';
 }) {
   const [days, setDays] = useState<DateRange>(30);
-  const [report, setReport] = useState<MultiChannelReport | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<ErrorResponse | null>(null);
   const [channelFilter, setChannelFilter] = useState<ChannelFilter>('all');
-  const [cachedAt, setCachedAt] = useState<string | null>(null);
-
-  const load = useCallback(
-    async (options?: { force?: boolean }) => {
-      const cacheKey = `analytics-report:${days}`;
-
-      setLoading(true);
-      setError(null);
-
-      if (!options?.force) {
-        const cached = readCachedSnapshot<MultiChannelReport>(cacheKey);
-        if (cached) {
-          setReport(cached.data);
-          setCachedAt(cached.savedAt);
-          setLoading(false);
-          return;
-        }
-      }
-
-      try {
-        const res = await fetch(`/api/report?days=${days}`);
-        const data = await parseJsonResponse<
-          MultiChannelReport | { error: string }
-        >(res);
-        if (!res.ok) {
-          if (isReauthRequiredResponse(data)) {
-            window.location.href = `/auth/youtube?next=${encodeURIComponent(window.location.pathname + window.location.search)}`;
-            return;
-          }
-          setReport(null);
-          setError(
-            isErrorResponse(data) ? data : { error: `API error ${res.status}` },
-          );
-          return;
-        }
-        if (isErrorResponse(data)) {
-          setReport(null);
-          setError(data);
-          return;
-        }
-        const nextReport = data as MultiChannelReport;
-        setReport(nextReport);
-        writeCachedSnapshot(cacheKey, nextReport);
-        setCachedAt(new Date().toISOString());
-      } catch (e) {
-        setReport(null);
-        setError(
-          e instanceof Error
-            ? { error: e.message }
-            : { error: 'Failed to load analytics' },
-        );
-      } finally {
-        setLoading(false);
-      }
-    },
-    [days],
-  );
-
-  useEffect(() => {
-    load();
-  }, [load]);
+  const { cachedAt, error, loading, refresh, report } =
+    useCachedReport<MultiChannelReport>({
+      cacheKey: `analytics-report:${days}`,
+      failure: 'Failed to load analytics',
+      reauthNext: () => window.location.pathname + window.location.search,
+      url: `/api/report?days=${days}`,
+    });
 
   const CHANNEL_COLORS: Record<string, string> = {
     clips: 'var(--color-text-primary)',
@@ -222,7 +162,7 @@ export function DashboardClient({
           ) : null}
         </div>
         <Button
-          onClick={() => load({ force: true })}
+          onClick={() => refresh()}
           className="text-xs hover:border-accent-red"
         >
           Retry
@@ -248,7 +188,7 @@ export function DashboardClient({
               </p>
             )}
           </div>
-          <Button onClick={() => load({ force: true })} disabled={loading}>
+          <Button onClick={() => refresh()} disabled={loading}>
             Refresh socials
           </Button>
         </div>
@@ -312,7 +252,7 @@ export function DashboardClient({
           )}
           <DateRangeSelector value={days} onChange={setDays} />
           <Button
-            onClick={() => load({ force: true })}
+            onClick={() => refresh()}
             aria-label="Refresh analytics"
             disabled={loading}
             className="hover:border-accent-red px-2.5 disabled:opacity-50"

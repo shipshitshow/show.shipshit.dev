@@ -1,8 +1,8 @@
 'use client';
 
 import { Button } from '@shipshitshow/ui';
+import { useQuery } from '@tanstack/react-query';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
 import { parseJsonResponse } from '@/lib/parse-json-response';
 import type { SocialOAuthPublicConfig } from '@/lib/social/oauth';
 import type { SocialTokenPlatform } from '@/lib/social/tokens';
@@ -24,29 +24,22 @@ export function SocialAuthPageClient() {
   const searchParams = useSearchParams();
   const error = searchParams.get('error');
   const errorPlatform = searchParams.get('platform');
-  const [configs, setConfigs] = useState<SocialOAuthPublicConfig[]>([]);
-  const [statuses, setStatuses] = useState<StatusResponse['statuses']>([]);
-
-  useEffect(() => {
-    const controller = new AbortController();
-    const { signal } = controller;
-    Promise.all([
-      fetch('/api/auth/social/config', { cache: 'no-store', signal }).then(
-        (res) => parseJsonResponse<ConfigResponse>(res),
-      ),
-      fetch('/api/auth/social/status', { cache: 'no-store', signal }).then(
-        (res) => parseJsonResponse<StatusResponse>(res),
-      ),
-    ])
-      .then(([configData, statusData]) => {
-        setConfigs(configData.platforms);
-        setStatuses(statusData.statuses);
-      })
-      .catch((error) => {
-        if (!signal.aborted) throw error;
-      });
-    return () => controller.abort();
-  }, []);
+  const { data } = useQuery({
+    queryFn: async ({ signal }) => {
+      const [configData, statusData] = await Promise.all([
+        fetch('/api/auth/social/config', { cache: 'no-store', signal }).then(
+          (res) => parseJsonResponse<ConfigResponse>(res),
+        ),
+        fetch('/api/auth/social/status', { cache: 'no-store', signal }).then(
+          (res) => parseJsonResponse<StatusResponse>(res),
+        ),
+      ]);
+      return { configs: configData.platforms, statuses: statusData.statuses };
+    },
+    queryKey: ['social-auth'],
+  });
+  const configs = data?.configs ?? [];
+  const statuses = data?.statuses ?? [];
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-10">

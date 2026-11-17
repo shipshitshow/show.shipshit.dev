@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 };
 
 import { YouTubeAuthContentSkeleton } from '@/components/PageSkeletons';
+import { QueryProvider } from '@/components/QueryProvider';
 import { YouTubeAuthPageClient } from '@/components/YouTubeAuthPageClient';
 import { isYouTubeAuthEnabled } from '@/lib/dev-tools';
 
@@ -19,8 +20,10 @@ export default async function YouTubeAuthPage() {
   }
 
   return (
-    <Suspense fallback={<YouTubeAuthContentSkeleton />}>
-      <YouTubeAuthPageClient />
-    </Suspense>
+    <QueryProvider>
+      <Suspense fallback={<YouTubeAuthContentSkeleton />}>
+        <YouTubeAuthPageClient />
+      </Suspense>
+    </QueryProvider>
   );
 }

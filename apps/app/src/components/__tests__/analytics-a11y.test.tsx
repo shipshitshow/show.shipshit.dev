@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 import type { VideoStats } from '@shipshitshow/types';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { EpisodeRollupClient } from '@/components/EpisodeRollupClient';
 import { VideoTable } from '@/components/VideoTable';
@@ -46,7 +47,11 @@ describe('VideoTable sortable headers (#80)', () => {
 
 describe('EpisodeRollupClient refresh control (#80)', () => {
   test('the icon-only refresh button has an accessible name', () => {
-    const markup = renderToStaticMarkup(<EpisodeRollupClient />);
+    const markup = renderToStaticMarkup(
+      <QueryClientProvider client={new QueryClient()}>
+        <EpisodeRollupClient />
+      </QueryClientProvider>,
+    );
     expect(markup).toMatch(/<button[^>]*aria-label="Refresh episode rollup"/);
   });
 });
