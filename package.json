@@ -21,6 +21,7 @@
     "dev:app": "turbo dev --filter=@shipshitshow/app",
     "dev:desktop": "turbo dev --filter=@shipshitshow/desktop",
     "dev:web": "turbo dev --filter=@shipshitshow/web",
+    "edits:push": "bun run --cwd apps/app edits:push",
     "lint": "biome check .",
     "lint:write": "biome check --write .",
     "prepare": "bunx husky",

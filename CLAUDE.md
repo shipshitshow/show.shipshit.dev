@@ -32,6 +32,7 @@ bun run lint          # biome check
 
 ## Editing
 - `docs/show-prep/weekly-pipeline.md` — the one-page weekly run from topic to private upload, with Vincent's sign-off points.
+- `docs/show-prep/transcript-editing.md` — the Library > Edits page: highlight-to-cut transcript editing, the stutter and "like" action, the pushed word-level format and the cuts the recut script reads.
 - `docs/show-prep/thumbnails.md` — the thumbnail and Shorts cover template, production rules and where masters live.
 - Edit rules (single source): github.com/shipshitshow/vault `brand/editing.md`. `docs/show-prep/edit-style.md` holds only build values and script names.
 - `editing/` — Tesseract media workspace (projects, raws, renders). Media is not in the repo: it lives in `~/content/brands/shipshitshow` (see `editing/README.md`).
