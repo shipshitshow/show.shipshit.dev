@@ -58,6 +58,8 @@ export interface EditSession {
   sections: EditSection[];
   speakers: string[];
   title: string;
+  /** An https link to a video that runs on the transcript's clock. */
+  videoUrl?: string;
   words: EditWord[];
 }
 
@@ -203,11 +205,21 @@ export function parseEditSession(value: unknown, id: string): EditSession {
       return { from: from as number, title: name, to: to as number };
     });
   }
+  let videoUrl: string | undefined;
+  if (body.videoUrl !== undefined && body.videoUrl !== '') {
+    if (
+      typeof body.videoUrl !== 'string' ||
+      !body.videoUrl.startsWith('https://')
+    )
+      throw new Error('videoUrl must be an https link.');
+    videoUrl = body.videoUrl;
+  }
   return {
     id,
     sections,
     speakers: speakers as string[],
     title,
+    ...(videoUrl ? { videoUrl } : {}),
     words: markWords(words),
   };
 }
@@ -531,4 +543,66 @@ export function summarise(
     updatedAt,
     words: session.words.length,
   };
+}
+
+/* ---------- playback ---------- */
+
+/** The cut range that covers second `t`, or null. `ranges` are sorted. */
+export function rangeAt(
+  ranges: readonly EditRange[],
+  t: number,
+): EditRange | null {
+  let low = 0;
+  let high = ranges.length - 1;
+  while (low <= high) {
+    const mid = (low + high) >> 1;
+    const range = ranges[mid];
+    if (t < range.a) high = mid - 1;
+    else if (t >= range.b) low = mid + 1;
+    else return range;
+  }
+  return null;
+}
+
+/** The last word that starts at or before second `t`; `byTime` is sorted by t0. */
+export function wordAt(
+  byTime: readonly EditWord[],
+  t: number,
+): EditWord | null {
+  let low = 0;
+  let high = byTime.length - 1;
+  let found: EditWord | null = null;
+  while (low <= high) {
+    const mid = (low + high) >> 1;
+    if (byTime[mid].t0 <= t) {
+      found = byTime[mid];
+      low = mid + 1;
+    } else high = mid - 1;
+  }
+  return found;
+}
+
+export function sortedByTime(words: readonly EditWord[]): EditWord[] {
+  return [...words].sort((a, b) => a.t0 - b.t0 || a.idx - b.idx);
+}
+
+/** Seconds of lead-in before a cut when reviewing it. */
+export const CUT_LEAD_IN = 2;
+
+/**
+ * Where to start playing to hear the next (1) or previous (-1) cut after
+ * second `t`: a little before it, so the join plays.
+ */
+export function cutReviewStart(
+  ranges: readonly EditRange[],
+  t: number,
+  direction: 1 | -1,
+): number | null {
+  if (direction === 1) {
+    const next = ranges.find((range) => range.a > t + 0.1);
+    return next ? Math.max(0, next.a - CUT_LEAD_IN) : null;
+  }
+  const before = ranges.filter((range) => range.a < t - CUT_LEAD_IN - 0.5);
+  const previous = before[before.length - 1];
+  return previous ? Math.max(0, previous.a - CUT_LEAD_IN) : null;
 }

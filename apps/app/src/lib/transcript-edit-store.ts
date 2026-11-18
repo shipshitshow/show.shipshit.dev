@@ -43,6 +43,7 @@ interface SessionMeta {
   sections: EditSession['sections'];
   speakers: string[];
   title: string;
+  videoUrl?: string;
 }
 
 function assertId(id: string): void {
@@ -94,6 +95,7 @@ function assemble(
       sections: meta.sections,
       speakers: meta.speakers,
       title: meta.title,
+      videoUrl: meta.videoUrl,
       words: tuples,
     },
     meta.id,
@@ -143,6 +145,7 @@ export async function readEditSession(id: string): Promise<EditSession | null> {
       sections: session.sections,
       speakers: session.speakers,
       title: session.title,
+      videoUrl: session.videoUrl,
       words: session.words.map(toTuple),
     },
     id,
@@ -178,6 +181,7 @@ export async function saveEditSession(
       sections: session.sections,
       speakers: session.speakers,
       title: session.title,
+      ...(session.videoUrl ? { videoUrl: session.videoUrl } : {}),
     };
     await writeRedisHashField(key, 'meta', meta);
     await writeRedisHashField(redisKey(INDEX_KEY), id, summary);

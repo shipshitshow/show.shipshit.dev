@@ -5,14 +5,18 @@ import path from 'node:path';
 import { type RedisLike, setRedisClientForTests } from './redis-storage';
 import {
   buildCuts,
+  cutReviewStart,
   type EditWord,
   isEditCuts,
   markWords,
   parseEditSession,
+  rangeAt,
   rangesFromCuts,
   sectionsOf,
+  sortedByTime,
   stutterAndLikeIds,
   suggestedCuts,
+  wordAt,
 } from './transcript-edit';
 import {
   listEditSummaries,
@@ -165,6 +169,45 @@ describe('cuts', () => {
   });
 });
 
+describe('playback', () => {
+  const ranges = [
+    { a: 2, b: 3, text: 'x' },
+    { a: 10, b: 12, text: 'y' },
+    { a: 30, b: 31, text: 'z' },
+  ];
+
+  test('finds the cut range at a second, ends excluded', () => {
+    expect(rangeAt(ranges, 1.9)).toBeNull();
+    expect(rangeAt(ranges, 2)?.text).toBe('x');
+    expect(rangeAt(ranges, 2.99)?.text).toBe('x');
+    expect(rangeAt(ranges, 3)).toBeNull();
+    expect(rangeAt(ranges, 11)?.text).toBe('y');
+    expect(rangeAt(ranges, 99)).toBeNull();
+    expect(rangeAt([], 1)).toBeNull();
+  });
+
+  test('finds the word being said, even when the clips are out of order', () => {
+    const list = words('a', 'b', 'c');
+    list[0].t0 = 500;
+    list[0].t1 = 501;
+    const byTime = sortedByTime(list);
+    expect(wordAt(byTime, 0.5)).toBeNull();
+    expect(wordAt(byTime, 1.1)?.text).toBe('b');
+    expect(wordAt(byTime, 3)?.text).toBe('c');
+    expect(wordAt(byTime, 600)?.text).toBe('a');
+  });
+
+  test('review starts two seconds before the next or previous cut', () => {
+    expect(cutReviewStart(ranges, 0, 1)).toBe(0);
+    expect(cutReviewStart(ranges, 5, 1)).toBe(8);
+    expect(cutReviewStart(ranges, 8, 1)).toBe(8);
+    expect(cutReviewStart(ranges, 31, 1)).toBeNull();
+    expect(cutReviewStart(ranges, 8, -1)).toBe(0);
+    expect(cutReviewStart(ranges, 28, -1)).toBe(8);
+    expect(cutReviewStart(ranges, 1, -1)).toBeNull();
+  });
+});
+
 describe('transcript file', () => {
   const good = {
     speakers: ['Vincent', 'Brian'],
@@ -179,6 +222,22 @@ describe('transcript file', () => {
   test('parses tuples and marks the unmarked', () => {
     const session = parseEditSession(good, 'brian');
     expect(session.words.map((word) => word.flag)).toEqual(['', 'F', '']);
+  });
+
+  test('keeps an https video link and refuses anything else', () => {
+    expect(
+      parseEditSession(
+        { ...good, videoUrl: 'https://cdn.shipshit.dev/a.mp4' },
+        'x',
+      ).videoUrl,
+    ).toBe('https://cdn.shipshit.dev/a.mp4');
+    expect(parseEditSession(good, 'x').videoUrl).toBeUndefined();
+    expect(() =>
+      parseEditSession({ ...good, videoUrl: 'http://x.test/a.mp4' }, 'x'),
+    ).toThrow('https');
+    expect(() => parseEditSession({ ...good, videoUrl: 5 }, 'x')).toThrow(
+      'https',
+    );
   });
 
   test('says what is wrong', () => {
@@ -243,6 +302,7 @@ describe('storage', () => {
     sections: [{ from: 0, title: 'Intro', to: 2 }],
     speakers: ['Vincent'],
     title: 'Test',
+    videoUrl: 'https://cdn.shipshit.dev/test.mp4',
     words: Array.from({ length: 2500 }, (_unused, at) => [
       at,
       at,
@@ -275,6 +335,7 @@ describe('storage', () => {
     expect(session?.words).toHaveLength(2500);
     expect(session?.words[1].flag).toBe('F');
     expect(session?.sections).toEqual([{ from: 0, title: 'Intro', to: 2 }]);
+    expect(session?.videoUrl).toBe('https://cdn.shipshit.dev/test.mp4');
     expect((await listEditSummaries()).map((entry) => entry.id)).toEqual([
       'brian',
     ]);

@@ -23,6 +23,36 @@ recut script cuts the video from your marks. The page is
 - The section dropdown moves through the transcript: the sections the file
   names, or ten-minute blocks.
 
+## Video next to the transcript
+
+When the pushed file has a `videoUrl`, the page shows the recording beside the
+transcript and you hear the edit as you work:
+
+- Play the edit plays from the start and jumps over every cut. Cuts you make
+  while it plays take effect at once. Skipping cuts switches to Playing cuts to
+  hear what is being removed.
+- Previous cut and Next cut start two seconds before a cut, so the join plays.
+- The strip under the video marks every cut in red over the whole recording and
+  shows the playhead. Click it to jump. Edit runs shows the length after cuts.
+- The word being said is highlighted and the transcript follows it. The play
+  arrow beside a speaker's time starts the video from that block.
+
+The preview is for judging cuts, not the final render: it skips at word
+boundaries, so a join can sound abrupt until the recut script's own padding is
+applied.
+
+`videoUrl` must be an https link to a video on the same clock as the
+transcript times (the mp4 clock). Use a small preview file, not the raw:
+
+```bash
+ffmpeg -i raw.mp4 -vf scale=-2:540 -c:v libx264 -crf 28 -preset fast \
+  -c:a aac -b:a 96k -movflags +faststart preview-261117.mp4
+```
+
+`-movflags +faststart` matters: seeking needs the index at the front. The CDN
+is public to anyone with the link, so give the file an unguessable name (a
+hash, as the Library assets do), and delete it when the edit is done.
+
 The app marks fillers (uh, um, hmm), words cut off mid-way (`can't-`), words
 said twice, `go ahead <name>` handovers and one-word reactions (Yeah. Mm-hmm.)
 when the pushed file leaves them unmarked. It never marks "you know",
@@ -52,6 +82,7 @@ the same JSON from a signed-in producer.
 {
   "title": "Brian stream, 17 Nov",
   "speakers": ["Brian", "Mitchell", "Vincent"],
+  "videoUrl": "https://cdn.shipshit.dev/shipshitshow/edits/<unguessable>.mp4",
   "sections": [{ "title": "Cold open", "from": 0, "to": 311 }],
   "words": [
     [6312, 2401.051, 2401.611, "can't-", 0, "S", 232],
@@ -68,6 +99,7 @@ A word is `[idx, start, end, text, speaker, category, turn]`:
 - `category`: `F` filler, `S` stutter, `D` repeat, `H` handover, `R` reaction,
   `E` French, or `""` to let the app suggest one.
 - `turn`: a counter; a new turn starts a new speaker block.
+- `videoUrl` is optional: an https link to the preview video.
 - `sections` is optional: `from` and `to` are word `idx` values, inclusive.
 
 ## What the recut script reads

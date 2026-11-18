@@ -11,6 +11,10 @@ import {
   useState,
   useSyncExternalStore,
 } from 'react';
+import {
+  type PlayerHandle,
+  VideoPreview,
+} from '@/components/edits/VideoPreview';
 import { FilterSelect } from '@/components/FilterSelect';
 import { fetchJson } from '@/lib/fetch-json';
 import {
@@ -23,7 +27,9 @@ import {
   type EditSession,
   type EditWord,
   formatClock,
+  rangesFromCuts,
   sectionsOf,
+  sortedByTime,
   stutterAndLikeIds,
   suggestedCuts,
   wordsInSection,
@@ -153,6 +159,7 @@ function Editor({
   );
   const [copyText, setCopyText] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const [playing, setPlaying] = useState<number | null>(null);
 
   const docRef = useRef<HTMLDivElement>(null);
   const latest = useRef(cut);
@@ -160,6 +167,7 @@ function Editor({
   const inflight = useRef(false);
   const again = useRef(false);
   const lastApplied = useRef(0);
+  const playerRef = useRef<PlayerHandle>(null);
 
   const sendCuts = useCallback(async () => {
     if (inflight.current) {
@@ -250,6 +258,27 @@ function Editor({
     [section, session],
   );
   const stats = useMemo(() => cutStats(words, cut), [words, cut]);
+  const ranges = useMemo(() => rangesFromCuts(words, cut), [words, cut]);
+  const byTime = useMemo(() => sortedByTime(words), [words]);
+
+  /** The video moved to another word: follow it in the transcript. */
+  function followPlayback(word: EditWord | null) {
+    setPlaying(word?.idx ?? null);
+    if (!word) return;
+    const at = sections.findIndex(
+      (entry) => word.idx >= entry.from && word.idx <= entry.to,
+    );
+    if (at >= 0 && String(at) !== sectionAt) setSectionAt(String(at));
+    requestAnimationFrame(() => {
+      const element = docRef.current?.querySelector<HTMLElement>(
+        `[data-i="${word.idx}"]`,
+      );
+      if (!element) return;
+      const box = element.getBoundingClientRect();
+      if (box.top < 140 || box.bottom > window.innerHeight - 60)
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
   const categoryCounts = useMemo(() => {
     const counts = new Map<CutCategory, { cut: number; total: number }>();
     for (const word of words) {
@@ -295,8 +324,17 @@ function Editor({
           : 'Suggestions loaded, nothing saved yet';
 
   const doc = useMemo(
-    () => renderBlocks(sectionWords, session.speakers, cut),
-    [sectionWords, session.speakers, cut],
+    () =>
+      renderBlocks(
+        sectionWords,
+        session.speakers,
+        cut,
+        playing,
+        session.videoUrl
+          ? (seconds) => playerRef.current?.playFrom(seconds)
+          : null,
+      ),
+    [sectionWords, session.speakers, session.videoUrl, cut, playing],
   );
 
   return (
@@ -325,141 +363,166 @@ function Editor({
         </p>
       </header>
 
-      <div className="md:sticky md:top-0 z-10 space-y-2 border-b border-surface-border bg-surface/95 py-3 backdrop-blur">
-        <div className="flex flex-wrap items-center gap-2">
-          <Button
-            aria-label="Previous section"
-            disabled={Number(sectionAt) === 0}
-            onClick={() => setSectionAt(String(Number(sectionAt) - 1))}
-            size="icon"
-            variant="ghost"
-          >
-            <ChevronLeft className="size-4" />
-          </Button>
-          <FilterSelect
-            className="min-w-44"
-            label="Section"
-            onChange={setSectionAt}
-            options={sections.map((entry, at) => ({
-              label: entry.title,
-              value: String(at),
-            }))}
-            value={sectionAt}
-          />
-          <Button
-            aria-label="Next section"
-            disabled={Number(sectionAt) >= sections.length - 1}
-            onClick={() => setSectionAt(String(Number(sectionAt) + 1))}
-            size="icon"
-            variant="ghost"
-          >
-            <ChevronRight className="size-4" />
-          </Button>
-          <FilterSelect
-            className="min-w-44"
-            label="Cut or restore a category"
-            onChange={(category) => {
-              const ids = words
-                .filter((word) => word.flag === category)
-                .map((word) => word.idx);
-              apply(ids, !ids.every((wordId) => cut.has(wordId)));
-            }}
-            options={CUT_CATEGORY_ORDER.filter((key) =>
-              categoryCounts.has(key),
-            ).map((key) => {
-              const count = categoryCounts.get(key);
-              return {
-                label: `${CUT_CATEGORIES[key].label} · ${count?.cut}/${count?.total} cut`,
-                value: key,
-              };
-            })}
-            placeholder="Cut by category"
-            value=""
-          />
-        </div>
-
-        <div className="flex flex-wrap items-center gap-2">
-          <Button
-            disabled={stutterLikeLeft.length === 0}
-            onClick={() => apply(stutterLikeIds, true)}
-            variant="accent"
-          >
-            Delete all stutters and “like”
-          </Button>
-          <FilterSelect
-            className="min-w-44"
-            label="Which “like” words to delete"
-            onChange={(mode: LikeMode) => setLikeMode(mode)}
-            options={LIKE_OPTIONS}
-            value={likeMode}
-          />
-          <span className="text-xs text-text-muted tabular-nums">
-            {stutterLikeLeft.length === 0
-              ? 'All cut'
-              : `${stutterLikeLeft.length} left in the whole transcript`}
-          </span>
-        </div>
-
-        <div className="flex flex-wrap items-center gap-2">
-          <Button disabled={history.length === 0} onClick={undo}>
-            Undo
-          </Button>
-          <Button onClick={() => setClean(!clean)}>
-            {clean ? 'Show cuts' : 'Read clean'}
-          </Button>
-          <Button
-            onClick={() => commit(suggestedCuts(words))}
-            variant="default"
-          >
-            Reset to suggestions
-          </Button>
-          <span className="flex-1" />
-          <Button onClick={copyCuts} variant="accent">
-            {copied ? 'Copied' : 'Copy cuts'}
-          </Button>
-        </div>
-
-        <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-text-muted tabular-nums">
-          <span>
-            Cut <b className="text-text-primary">{stats.cutWords}</b> words ·{' '}
-            <b className="text-text-primary">{stats.cutSeconds.toFixed(1)}</b>s
-          </span>
-          <span>
-            Kept <b className="text-text-primary">{stats.keptWords}</b> words
-          </span>
-          <span className="ml-auto" role="status">
-            {status}
-          </span>
-        </div>
-      </div>
-
-      {copyText ? (
-        <textarea
-          aria-label="Cuts to copy"
-          className="h-40 w-full rounded-lg border border-surface-border bg-surface-card p-3 font-mono text-xs"
-          onFocus={(event) => event.currentTarget.select()}
-          readOnly
-          value={copyText}
-        />
-      ) : null}
       <div
-        className="space-y-4"
-        onClick={(event) => {
-          const element = (event.target as HTMLElement).closest<HTMLElement>(
-            '[data-i]',
-          );
-          if (!element || Date.now() - lastApplied.current < 250) return;
-          if (window.getSelection()?.toString()) return;
-          const wordId = Number(element.dataset.i);
-          apply([wordId], !cut.has(wordId));
-        }}
-        onMouseUp={() => {
-          if (pointer === 'mouse') applySelection('toggle');
-        }}
-        onPointerDown={(event) => setPointer(event.pointerType || 'mouse')}
-        ref={docRef}
+        className={cn(
+          session.videoUrl &&
+            'space-y-4 lg:grid lg:grid-cols-[minmax(0,26rem)_minmax(0,1fr)] lg:items-start lg:gap-6 lg:space-y-0',
+        )}
       >
-        {doc}
+        {session.videoUrl ? (
+          <div className="sticky top-0 z-20 bg-surface pb-2 lg:top-4">
+            <VideoPreview
+              byTime={byTime}
+              handle={playerRef}
+              onWord={followPlayback}
+              ranges={ranges}
+              videoUrl={session.videoUrl}
+            />
+          </div>
+        ) : null}
+        <div className="min-w-0 space-y-4">
+          <div className="md:sticky md:top-0 z-10 space-y-2 border-b border-surface-border bg-surface/95 py-3 backdrop-blur">
+            <div className="flex flex-wrap items-center gap-2">
+              <Button
+                aria-label="Previous section"
+                disabled={Number(sectionAt) === 0}
+                onClick={() => setSectionAt(String(Number(sectionAt) - 1))}
+                size="icon"
+                variant="ghost"
+              >
+                <ChevronLeft className="size-4" />
+              </Button>
+              <FilterSelect
+                className="min-w-44"
+                label="Section"
+                onChange={setSectionAt}
+                options={sections.map((entry, at) => ({
+                  label: entry.title,
+                  value: String(at),
+                }))}
+                value={sectionAt}
+              />
+              <Button
+                aria-label="Next section"
+                disabled={Number(sectionAt) >= sections.length - 1}
+                onClick={() => setSectionAt(String(Number(sectionAt) + 1))}
+                size="icon"
+                variant="ghost"
+              >
+                <ChevronRight className="size-4" />
+              </Button>
+              <FilterSelect
+                className="min-w-44"
+                label="Cut or restore a category"
+                onChange={(category) => {
+                  const ids = words
+                    .filter((word) => word.flag === category)
+                    .map((word) => word.idx);
+                  apply(ids, !ids.every((wordId) => cut.has(wordId)));
+                }}
+                options={CUT_CATEGORY_ORDER.filter((key) =>
+                  categoryCounts.has(key),
+                ).map((key) => {
+                  const count = categoryCounts.get(key);
+                  return {
+                    label: `${CUT_CATEGORIES[key].label} · ${count?.cut}/${count?.total} cut`,
+                    value: key,
+                  };
+                })}
+                placeholder="Cut by category"
+                value=""
+              />
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2">
+              <Button
+                disabled={stutterLikeLeft.length === 0}
+                onClick={() => apply(stutterLikeIds, true)}
+                variant="accent"
+              >
+                Delete all stutters and “like”
+              </Button>
+              <FilterSelect
+                className="min-w-44"
+                label="Which “like” words to delete"
+                onChange={(mode: LikeMode) => setLikeMode(mode)}
+                options={LIKE_OPTIONS}
+                value={likeMode}
+              />
+              <span className="text-xs text-text-muted tabular-nums">
+                {stutterLikeLeft.length === 0
+                  ? 'All cut'
+                  : `${stutterLikeLeft.length} left in the whole transcript`}
+              </span>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2">
+              <Button disabled={history.length === 0} onClick={undo}>
+                Undo
+              </Button>
+              <Button onClick={() => setClean(!clean)}>
+                {clean ? 'Show cuts' : 'Read clean'}
+              </Button>
+              <Button
+                onClick={() => commit(suggestedCuts(words))}
+                variant="default"
+              >
+                Reset to suggestions
+              </Button>
+              <span className="flex-1" />
+              <Button onClick={copyCuts} variant="accent">
+                {copied ? 'Copied' : 'Copy cuts'}
+              </Button>
+            </div>
+
+            <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-text-muted tabular-nums">
+              <span>
+                Cut <b className="text-text-primary">{stats.cutWords}</b> words
+                ·{' '}
+                <b className="text-text-primary">
+                  {stats.cutSeconds.toFixed(1)}
+                </b>
+                s
+              </span>
+              <span>
+                Kept <b className="text-text-primary">{stats.keptWords}</b>{' '}
+                words
+              </span>
+              <span className="ml-auto" role="status">
+                {status}
+              </span>
+            </div>
+          </div>
+
+          {copyText ? (
+            <textarea
+              aria-label="Cuts to copy"
+              className="h-40 w-full rounded-lg border border-surface-border bg-surface-card p-3 font-mono text-xs"
+              onFocus={(event) => event.currentTarget.select()}
+              readOnly
+              value={copyText}
+            />
+          ) : null}
+          <div
+            className="space-y-4"
+            onClick={(event) => {
+              const element = (
+                event.target as HTMLElement
+              ).closest<HTMLElement>('[data-i]');
+              if (!element || Date.now() - lastApplied.current < 250) return;
+              if (window.getSelection()?.toString()) return;
+              const wordId = Number(element.dataset.i);
+              apply([wordId], !cut.has(wordId));
+            }}
+            onMouseUp={() => {
+              if (pointer === 'mouse') applySelection('toggle');
+            }}
+            onPointerDown={(event) => setPointer(event.pointerType || 'mouse')}
+            ref={docRef}
+          >
+            {doc}
+          </div>
+        </div>
       </div>
 
       {selecting && pointer !== 'mouse' ? (
@@ -478,6 +541,8 @@ function renderBlocks(
   sectionWords: readonly EditWord[],
   speakers: readonly string[],
   cut: ReadonlySet<number>,
+  playing: number | null,
+  onSeek: ((seconds: number) => void) | null,
 ) {
   const blocks: Array<{ start: EditWord; words: EditWord[] }> = [];
   for (const word of sectionWords) {
@@ -498,9 +563,20 @@ function renderBlocks(
         )}
       >
         {speakers[block.start.spk]}
-        <span className="ml-2 font-normal normal-case text-text-muted tabular-nums sm:ml-0 sm:block">
-          {formatClock(block.start.t0)}
-        </span>
+        {onSeek ? (
+          <button
+            className="ml-2 font-normal normal-case text-text-muted tabular-nums hover:text-text-primary sm:ml-0 sm:block"
+            onClick={() => onSeek(block.start.t0)}
+            title="Play the video from here"
+            type="button"
+          >
+            ▶ {formatClock(block.start.t0)}
+          </button>
+        ) : (
+          <span className="ml-2 font-normal normal-case text-text-muted tabular-nums sm:ml-0 sm:block">
+            {formatClock(block.start.t0)}
+          </span>
+        )}
       </div>
       <p className="min-w-0 break-words text-lg leading-8">
         {block.words.map((word, at) => (
@@ -514,6 +590,7 @@ function renderBlocks(
                   : 'border-transparent',
                 cut.has(word.idx) &&
                   'edit-cut bg-accent-red/20 text-accent-red line-through',
+                playing === word.idx && 'bg-text-primary/20',
               )}
               data-i={word.idx}
             >
