@@ -54,6 +54,7 @@
     "check:types": "tsc --noEmit",
     "check:unused": "knip",
     "dev": "next dev -p 3001",
+    "edits:push": "bun src/cli/edits-push.ts",
     "show:prep": "bun src/cli/show-prep.ts",
     "start": "next start -p 3001",
     "storage:export": "bun src/cli/storage-export.ts",

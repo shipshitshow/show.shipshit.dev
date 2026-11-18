@@ -21,13 +21,16 @@ export function FilterSelect<T extends string>({
   label,
   onChange,
   options,
+  placeholder,
   value,
 }: {
   className?: string;
   label: string;
   onChange: (value: T) => void;
   options: readonly Option<T>[];
-  value: T;
+  /** Shown while `value` is empty: an action dropdown that never keeps a pick. */
+  placeholder?: string;
+  value: T | '';
 }) {
   return (
     <Select value={value} onValueChange={(next) => onChange(next as T)}>
@@ -35,7 +38,7 @@ export function FilterSelect<T extends string>({
         aria-label={label}
         className={cn('h-9 text-xs', className)}
       >
-        <SelectValue />
+        <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>
         {options.map((option) => (

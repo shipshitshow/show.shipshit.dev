@@ -32,6 +32,7 @@ export const PRODUCTION_APPS = [
       { href: '/library/titles', label: 'Titles' },
       { href: '/library/covers', label: 'Shorts covers' },
       { href: '/library/transcripts', label: 'Transcripts' },
+      { href: '/library/edits', label: 'Edits' },
       { href: '/library/artifacts', label: 'Artifacts' },
       { href: '/library/assets', label: 'Assets' },
     ],

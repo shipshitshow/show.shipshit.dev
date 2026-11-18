@@ -136,3 +136,6 @@ __pycache__/
 
 # Private thumbnail catalogue and local image drafts
 apps/app/data/thumbnail-lab/
+
+# Transcript edits (recordings are private working data; production uses Redis)
+apps/app/data/edits/
