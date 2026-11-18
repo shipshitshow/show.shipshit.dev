@@ -35,14 +35,14 @@ interface EditDetail {
   writable: boolean;
 }
 
-/** Underline colour that says why a word is suggested. */
-const CATEGORY_COLOR: Record<CutCategory, string> = {
-  D: '#52c0d0',
-  E: '#e873ad',
-  F: '#e8a33a',
-  H: '#e0664a',
-  R: '#8fc468',
-  S: '#a98aea',
+/** Underline that says why a word is suggested. */
+const CATEGORY_UNDERLINE: Record<CutCategory, string> = {
+  D: 'border-cyan-400',
+  E: 'border-pink-400',
+  F: 'border-amber-400',
+  H: 'border-accent-red',
+  R: 'border-emerald-400',
+  S: 'border-purple-400',
 };
 const SPEAKER_COLORS = ['text-accent-red', 'text-emerald-400', 'text-sky-400'];
 
@@ -508,16 +508,14 @@ function renderBlocks(
             {at > 0 ? ' ' : ''}
             <span
               className={cn(
-                'cursor-pointer rounded-sm border-b-2 border-transparent hover:bg-text-primary/10',
+                'cursor-pointer rounded-sm border-b-2 hover:bg-text-primary/10',
+                word.flag
+                  ? CATEGORY_UNDERLINE[word.flag]
+                  : 'border-transparent',
                 cut.has(word.idx) &&
                   'edit-cut bg-accent-red/20 text-accent-red line-through',
               )}
               data-i={word.idx}
-              style={
-                word.flag
-                  ? { borderBottomColor: CATEGORY_COLOR[word.flag] }
-                  : undefined
-              }
             >
               {word.text}
             </span>
