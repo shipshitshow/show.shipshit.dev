@@ -1,7 +1,7 @@
 # Editing workspace
 
-Local editing, audio, transcripts, graphics and delivery for Ship Sh*t Show,
-edited in Tesseract. This was the standalone `~/www/tesseract` workspace until
+Local editing, audio, transcripts, graphics and delivery for Ship Sh*t Show.
+This was the standalone `~/www/tesseract` workspace until
 October 2026; it now lives here so show data and edits share one repository.
 
 ## What is tracked
@@ -88,14 +88,16 @@ and delivery filenames:
   assets/               reusable audio, references, keyframes and briefs
   outputs/
     video.mp4           current working render, when present
-    project.tsrct       current working editable project, when present
+    project.tsrct       editable Tesseract project, when applicable
+    ffmpeg-handoff.json build and verification receipt for FFmpeg exports
     manifest.json       working bundle and readiness
     previews/           filmstrips, comparison samples and review stills
     work/               edit plans, JSON, processing scripts and diagnostics
   versions/v001/        independent snapshots; same delivery filenames
   final/
     video.mp4           current delivered render; no version suffix
-    project.tsrct       matching portable editable project
+    project.tsrct       matching editable Tesseract project, when applicable
+    ffmpeg-handoff.json matching FFmpeg rebuild receipt, when applicable
     transcript.txt      also .md, .srt and .vtt for spoken videos
     cuts.csv            source/edit timestamp mapping; also cuts.md
     description-context.md
@@ -129,18 +131,55 @@ python3 scripts/workspace.py init 261020/shorts/01-hook-name
 python3 scripts/workspace.py init _labs/new-board --kind branding
 python3 scripts/workspace.py audit
 python3 scripts/workspace.py audit --project 261013/video
-python3 scripts/workspace.py promote 261020/shorts/01-hook-name
 ```
-
-Promotion requires `outputs/video.mp4`, `outputs/project.tsrct`, a new revision
-such as `v004`, and an `outputs/manifest.json` with `status: "ready"`. It
-snapshots the new bundle, preserves the previous final revision and switches
-`final` locally. It does not upload or publish anything.
 
 The audit verifies episode links (show data, recording, transcripts), layout,
 listed artifacts, external paths, project document digests and packaged resource
 sizes. It does not prove full decoding,
 asset content digests, subjective audio quality or editorial correctness.
+
+## Review and delivery
+
+Put the exact master for review at `outputs/video.mp4`. List it and the matching
+build artifacts in `outputs/manifest.json` under `artifacts` using
+project-relative paths. Set a new `revision` such as `v004` and set `status`
+to `draft`. Record `turnaround.ingest_at` when the recording is available to
+edit and `turnaround.first_cut_at` when the first complete cut is ready for
+review. Use ISO 8601 timestamps with UTC offsets and cite the source for any
+backfilled timestamp. A chapter sample has its own milestone.
+
+For a Tesseract export, include `outputs/project.tsrct`. For an FFmpeg export,
+set `render_method` to `ffmpeg` and keep the recipe under `assets/`. Preserve
+the cut map, source and asset hashes, tool versions, and the command to rebuild
+into an empty output folder. List any rendered checkpoints as inputs and retain
+them with the source. Run the recipe from a clean scratch directory and compare
+the rebuilt master with the candidate by SHA-256. Include
+`outputs/ffmpeg-handoff.json` in `artifacts` with these fields:
+
+| Field | Value |
+| --- | --- |
+| `recipe` | Project-relative path to the rebuild entry point under `assets/` |
+| `recipe_sha256` | SHA-256 of that entry point at verification |
+| `rebuild_verified_at` | Timestamp with UTC offset from the successful replay |
+| `rebuilt_video_sha256` | SHA-256 of the freshly rebuilt master |
+
+Give the human reviewer the candidate revision and its SHA-256. After they
+watch and listen to the full export and explicitly approve it, record their
+name and the approval reference. Use the SHA-256 from the reviewed candidate
+even if the file has since changed.
+
+```sh
+python3 scripts/workspace.py sign-off 261020/video \
+  --reviewer "Reviewer name" --evidence "Approval message reference" --sha256 "$REVIEWED_SHA256"
+python3 scripts/workspace.py promote 261020/video
+```
+
+`sign-off` stores the approval timestamp in `human_review.approved_at` and
+marks the candidate ready. That timestamp ends the approved-final clock. When
+recording an earlier approval, pass its actual time with `--approved-at`.
+`promote` checks the exact delivered bytes, snapshots the bundle, preserves
+the previous final revision and switches `final` locally. Publishing follows
+the vault's owner approval gate.
 
 ## Skills
 

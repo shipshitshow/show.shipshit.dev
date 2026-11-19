@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from datetime import datetime, timezone
 import hashlib
 import json
 import os
@@ -258,30 +259,127 @@ def initialize(slug: str, kind: str | None) -> None:
     print(project)
 
 
+def artifact_sources(project: Path, manifest: dict) -> dict[str, Path]:
+    outputs = (project / "outputs").resolve()
+    sources = {}
+    for name, relative in manifest.get("artifacts", {}).items():
+        source = project / relative
+        if not source.resolve().is_relative_to(outputs) or not source.is_file():
+            raise ValueError(f"Artifact must exist inside outputs: {relative}")
+        if source.name in sources:
+            raise ValueError("Deliverable basenames must be unique.")
+        sources[source.name] = source
+    if "video.mp4" not in sources:
+        raise ValueError("A video bundle requires video.mp4.")
+    return sources
+
+
+def sha256(path: Path) -> str:
+    with path.open("rb") as stream:
+        return hashlib.file_digest(stream, "sha256").hexdigest()
+
+
+def timestamp(value: str) -> datetime:
+    parsed = datetime.fromisoformat(value)
+    if parsed.utcoffset() is None:
+        raise ValueError("Use an ISO 8601 timestamp with an explicit UTC offset.")
+    return parsed
+
+
+def revision_of(manifest: dict) -> str:
+    revision = manifest.get("revision", "")
+    if not re.fullmatch(r"v[0-9]{3,}", revision):
+        raise ValueError("Use a revision such as v004.")
+    return revision
+
+
+def sign_off(slug: str, reviewer: str, evidence: str, reviewed_sha256: str, approval_time: str | None) -> None:
+    """Record explicit human approval of the revision and exact video they watched."""
+    project = project_path(slug)
+    path = project / "outputs" / "manifest.json"
+    manifest = json.loads(path.read_text())
+    if manifest.get("status") not in ("draft", "ready"):
+        raise ValueError("Only a draft or ready candidate can receive sign-off.")
+    approval = {
+        "revision": revision_of(manifest),
+        "reviewer": reviewer.strip(),
+        "evidence": evidence.strip(),
+        "video_sha256": reviewed_sha256,
+    }
+    if not approval["reviewer"] or not approval["evidence"]:
+        raise ValueError("Provide the human reviewer and their explicit watch-and-listen approval.")
+    sources = artifact_sources(project, manifest)
+    if sha256(sources["video.mp4"]) != reviewed_sha256:
+        raise ValueError("The candidate differs from the video the reviewer approved.")
+    previous = manifest.get("human_review", {})
+    if manifest["status"] == "ready" and all(previous.get(key) == value for key, value in approval.items()):
+        print(previous["approved_at"])
+        return
+    now = datetime.now(timezone.utc)
+    approved_at = timestamp(approval_time) if approval_time else now
+    if approved_at > now:
+        raise ValueError("Approval cannot be in the future.")
+    approval["approved_at"] = approved_at.isoformat(timespec="seconds")
+    manifest.update(status="ready", human_review=approval)
+    check_delivery(project, manifest, sources)
+    with tempfile.NamedTemporaryFile(mode="w", dir=path.parent, delete=False) as staged:
+        staged_path = Path(staged.name)
+    try:
+        write_json(staged_path, manifest)
+        staged_path.replace(path)
+    finally:
+        staged_path.unlink(missing_ok=True)
+    print(approval["approved_at"])
+
+
+def check_delivery(project: Path, manifest: dict, sources: dict[str, Path]) -> None:
+    review = manifest.get("human_review", {})
+    if (
+        review.get("revision") != manifest["revision"]
+        or not review.get("reviewer", "").strip()
+        or not review.get("evidence", "").strip()
+    ):
+        raise ValueError("Record human sign-off on this exact revision before delivery.")
+    approved_at = timestamp(review["approved_at"])
+    turnaround = manifest.get("turnaround")
+    if turnaround is not None:
+        if not timestamp(turnaround["ingest_at"]) <= timestamp(turnaround["first_cut_at"]) <= approved_at:
+            raise ValueError("Turnaround timestamps must follow ingest, first cut, then approval.")
+
+    method = manifest.get("render_method", "tesseract")
+    if method == "tesseract":
+        if "project.tsrct" not in sources:
+            raise ValueError("A Tesseract delivery requires project.tsrct.")
+        check_archive(sources["project.tsrct"])
+    elif method == "ffmpeg":
+        if "ffmpeg-handoff.json" not in sources:
+            raise ValueError("An FFmpeg delivery requires ffmpeg-handoff.json.")
+        handoff = json.loads(sources["ffmpeg-handoff.json"].read_text())
+        recipe = (project / handoff["recipe"]).resolve()
+        if not recipe.is_relative_to((project / "assets").resolve()) or not recipe.is_file():
+            raise ValueError("Keep the FFmpeg recipe under the project's assets directory.")
+        if sha256(recipe) != handoff["recipe_sha256"]:
+            raise ValueError("The FFmpeg recipe has changed since the rebuild.")
+        timestamp(handoff["rebuild_verified_at"])
+        if handoff["rebuilt_video_sha256"] != review.get("video_sha256"):
+            raise ValueError("The rebuild must match the exact reviewed export.")
+    else:
+        raise ValueError(f"Unknown render method: {method}")
+
+
 def promote(slug: str) -> None:
     """Stage a verified bundle, snapshot it, then swap the stable final directory."""
     project = project_path(slug)
     outputs, final = project / "outputs", project / "final"
     manifest = json.loads((outputs / "manifest.json").read_text())
     if manifest.get("status") != "ready":
-        raise ValueError("outputs/manifest.json must mark this bundle ready after review.")
-    revision = manifest.get("revision", "")
-    if not re.fullmatch(r"v[0-9]{3,}", revision):
-        raise ValueError("Use a revision such as v004.")
+        raise ValueError("Record human sign-off on the final export before promotion.")
+    revision = revision_of(manifest)
     snapshot = project / "versions" / revision
     if snapshot.exists():
         raise ValueError("Revision already exists; choose a new revision, never overwrite history.")
-    sources = {}
-    for name, relative in manifest.get("artifacts", {}).items():
-        source = project / relative
-        if not source.resolve().is_relative_to(outputs.resolve()) or not source.is_file():
-            raise ValueError(f"Artifact must exist inside outputs: {relative}")
-        if source.name in sources:
-            raise ValueError("Deliverable basenames must be unique.")
-        sources[source.name] = source
-    if not {"video.mp4", "project.tsrct"}.issubset(sources):
-        raise ValueError("A video bundle requires video.mp4 and project.tsrct.")
-    check_archive(sources["project.tsrct"])
+    sources = artifact_sources(project, manifest)
+    check_delivery(project, manifest, sources)
     media = probe(sources["video.mp4"])
     if not any(s.get("codec_type") == "video" for s in media["streams"]):
         raise ValueError("video.mp4 has no video stream.")
@@ -305,10 +403,7 @@ def promote(slug: str) -> None:
                 if not archived.is_file():
                     raise ValueError("Current final snapshot is incomplete; preserve it before promotion.")
                 if current.suffix in (".mp4", ".tsrct", ".srt", ".vtt", ".txt", ".csv"):
-                    def digest(file):
-                        with file.open("rb") as stream:
-                            return hashlib.file_digest(stream, "sha256").digest()
-                    if digest(current) != digest(archived):
+                    if sha256(current) != sha256(archived):
                         raise ValueError("Final differs from its snapshot; preserve the change before promotion.")
     stage = Path(tempfile.mkdtemp(prefix=".delivery-", dir=project))
     backup = project / ".previous-final"
@@ -318,6 +413,8 @@ def promote(slug: str) -> None:
     try:
         for name, source in sources.items():
             shutil.copy2(source, stage / name)
+        if sha256(stage / "video.mp4") != manifest["human_review"]["video_sha256"]:
+            raise ValueError("The export changed after sign-off. Review the current revision before delivery.")
         final_manifest = dict(manifest, status="exported")
         final_manifest["artifacts"] = {name: "final/" + (project / relative).name for name, relative in manifest["artifacts"].items()}
         write_json(stage / "manifest.json", final_manifest)
@@ -345,11 +442,19 @@ def main() -> None:
     sub = parser.add_subparsers(dest="command", required=True)
     create = sub.add_parser("init"); create.add_argument("project"); create.add_argument("--kind", choices=("recap", "short", "branding", "design"))
     inspect = sub.add_parser("audit"); inspect.add_argument("--project")
+    review = sub.add_parser("sign-off", help="Record explicit approval after a human watches and listens.")
+    review.add_argument("project")
+    review.add_argument("--reviewer", required=True)
+    review.add_argument("--evidence", required=True, help="Reference to the human's explicit approval.")
+    review.add_argument("--sha256", required=True, help="SHA-256 of the exact export they reviewed.")
+    review.add_argument("--approved-at", help="Approval timestamp with UTC offset when recording an earlier decision.")
     publish = sub.add_parser("promote"); publish.add_argument("project")
     args = parser.parse_args()
     try:
         if args.command == "init":
             initialize(args.project, args.kind)
+        elif args.command == "sign-off":
+            sign_off(args.project, args.reviewer, args.evidence, args.sha256, args.approved_at)
         elif args.command == "promote":
             promote(args.project)
         else:
