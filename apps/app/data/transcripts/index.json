@@ -13,11 +13,23 @@
       "title": "Use Grok 4.6, Grok Bot & Cursor Origin Together!",
       "type": "livestream"
     },
+    "-TpzrpGu_30": {
+      "date": "2026-11-19",
+      "lang": "en",
+      "title": "Editing With Dictation",
+      "type": "short"
+    },
     "0BsdC05aQp4": {
       "date": "2026-07-08",
       "lang": "en",
-      "title": "Fable 5: One More Week!",
+      "title": "Building Is Easy Now. Sales Isn't.",
       "type": "video"
+    },
+    "1bAWYklLcVo": {
+      "date": "2026-11-11",
+      "lang": "en",
+      "title": "Is Video Editing Dead?",
+      "type": "livestream"
     },
     "1CFi5rzc2bU": {
       "date": "2026-10-27",
@@ -48,6 +60,12 @@
       "lang": "en",
       "title": "pstack: How Poteto Uses Grok Bot",
       "type": "video"
+    },
+    "2HfpJH5weqI": {
+      "date": "2026-11-19",
+      "lang": "en",
+      "title": "Delete your claude.md",
+      "type": "short"
     },
     "2PxiWbHQzwo": {
       "date": "2026-04-02",
@@ -118,7 +136,7 @@
     "49IkgeGr1kE": {
       "date": "2026-06-04",
       "lang": "en",
-      "title": "Opus 4.8 Built A FPS In 1 Prompt!",
+      "title": "One Prompt Built a Game",
       "type": "video"
     },
     "85sRdO3khR0": {
@@ -160,7 +178,7 @@
     "Ap5vza8qGy4": {
       "date": "2026-06-11",
       "lang": "en",
-      "title": "Opus 4.8: We're Starting an AI Indie Game Studio!",
+      "title": "We Started an AI Game Studio",
       "type": "livestream"
     },
     "AvJvsLprXek": {
@@ -214,7 +232,7 @@
     "BTb9O0Th8qs": {
       "date": "2026-06-12",
       "lang": "en",
-      "title": "Fable 5: We Built an AI Game Studio",
+      "title": "We Built Seven Games With AI",
       "type": "video"
     },
     "b0YzyC8mnb8": {
@@ -226,7 +244,7 @@
     "bc6WbJJNWPU": {
       "date": "2026-06-01",
       "lang": "en",
-      "title": "Composer 2.5 is The New King",
+      "title": "You Don't Need a $200 AI Plan",
       "type": "video"
     },
     "bNAQtKp1pAo": {
@@ -239,6 +257,12 @@
       "date": "2026-03-25",
       "lang": "en",
       "title": "Claude Code Channels vs OpenClaw",
+      "type": "short"
+    },
+    "CR01GpkfT0o": {
+      "date": "2026-11-20",
+      "lang": "en",
+      "title": "AI Editing Can Take Longer",
       "type": "short"
     },
     "CSjg6avBUYU": {
@@ -257,6 +281,18 @@
       "date": "2026-05-12",
       "lang": "en",
       "title": "The First Signed NPM Worm",
+      "type": "short"
+    },
+    "cr2CmVs8I24": {
+      "date": "2026-11-19",
+      "lang": "en",
+      "title": "Codex Takes Care Of This Now",
+      "type": "short"
+    },
+    "DQNItjmsfko": {
+      "date": "2026-11-13",
+      "lang": "en",
+      "title": "Devs Don't Code Anymore",
       "type": "short"
     },
     "dAHUYCAucLs": {
@@ -331,10 +367,22 @@
       "title": "Opus 4.8: Smarter AI Task Management",
       "type": "short"
     },
+    "FVHB86X6x_c": {
+      "date": "2026-11-13",
+      "lang": "en",
+      "title": "Distribution Beats Production",
+      "type": "short"
+    },
     "ffVOe6n7xok": {
       "date": "2026-06-17",
       "lang": "en",
       "title": "Mythos Jailbroken at Amazon?",
+      "type": "short"
+    },
+    "fGlww2wehno": {
+      "date": "2026-11-13",
+      "lang": "en",
+      "title": "AI Does 80%. You Own The Last 20%",
       "type": "short"
     },
     "fJl3YoRIvuQ": {
@@ -346,7 +394,7 @@
     "gbv3sghrAU4": {
       "date": "2026-04-08",
       "lang": "en",
-      "title": "Mythos Is Here. You Can't Use It!",
+      "title": "AI Hacks Better Than You",
       "type": "video"
     },
     "gnfJl0YfNHc": {
@@ -382,7 +430,7 @@
     "h0EzR9Sqkz0": {
       "date": "2026-07-08",
       "lang": "en",
-      "title": "Fable 5 is Gone!",
+      "title": "Your AI Model Can Vanish. Prepare For It.",
       "type": "livestream"
     },
     "hobkMV6hKCM": {
@@ -395,6 +443,12 @@
       "date": "2026-05-29",
       "lang": "en",
       "title": "Cursor Tracks Every Action",
+      "type": "short"
+    },
+    "hsx1sOZNiKc": {
+      "date": "2026-11-13",
+      "lang": "en",
+      "title": "More content. No one To Watch It!",
       "type": "short"
     },
     "hZQTJsi6Asw": {
@@ -484,7 +538,7 @@
     "kRUwZSY7IN8": {
       "date": "2026-07-28",
       "lang": "en",
-      "title": "Opus 5 + GPT-5.6: Build From the Beach",
+      "title": "Stop Reading AI Code?",
       "type": "livestream"
     },
     "kvtQwsAOibs": {
@@ -541,10 +595,16 @@
       "title": "OpenAI Will Go Bankrupt Before 2030",
       "type": "video"
     },
+    "mPowD-bF8QU": {
+      "date": "2026-11-13",
+      "lang": "en",
+      "title": "Video editing is DEAD!",
+      "type": "short"
+    },
     "mTMojeiIX0o": {
       "date": "2026-07-03",
       "lang": "en",
-      "title": "Fable 5 Is Back!",
+      "title": "Cheaper Tokens Can Cost You More",
       "type": "video"
     },
     "mX9yX-W9QF0": {
@@ -619,6 +679,12 @@
       "title": "AI Plan Mode: Markdown Files vs HTML",
       "type": "video"
     },
+    "Pq1ZjMIQ3rg": {
+      "date": "2026-11-13",
+      "lang": "en",
+      "title": "Video Editing Is DEAD",
+      "type": "video"
+    },
     "PuIJaW_YRdg": {
       "date": "2026-05-20",
       "lang": "en",
@@ -630,6 +696,12 @@
       "lang": "en",
       "title": "Opus 4.8 Masterclass: Everything to Know",
       "type": "livestream"
+    },
+    "p5zLmgCtxdo": {
+      "date": "2026-11-19",
+      "lang": "en",
+      "title": "AI Video Editing Is Just... Editing",
+      "type": "video"
     },
     "pgWuEkCrgIc": {
       "date": "2026-05-01",
@@ -647,6 +719,12 @@
       "date": "2026-08-04",
       "lang": "en",
       "title": "AI Engineering Is Cheaper Than Engineers",
+      "type": "livestream"
+    },
+    "Q5Q7MokBblo": {
+      "date": "2026-11-17",
+      "lang": "en",
+      "title": "Brian: Is Video Editing “The Old Way” Gone Forever?",
       "type": "livestream"
     },
     "QoQjddWCnKA": {
@@ -763,6 +841,12 @@
       "title": "Your SaaS Will Get Hacked. Do This Now!",
       "type": "video"
     },
+    "tP-0SGXOqRE": {
+      "date": "2026-11-20",
+      "lang": "en",
+      "title": "What Makes AI Slop?",
+      "type": "short"
+    },
     "tZvjK4aV-MU": {
       "date": "2026-04-01",
       "lang": "en",
@@ -802,7 +886,7 @@
     "VEzRyG-jZys": {
       "date": "2026-05-01",
       "lang": "en",
-      "title": "GPT-5.5 vs Claude Opus 4.7",
+      "title": "Stop Using One AI Model",
       "type": "video"
     },
     "VLeiwal57JA": {
