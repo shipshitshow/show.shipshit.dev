@@ -1,0 +1,1155 @@
+And welcome back everyone on the ship
+ship show with yeah with Mitchell.
+What's up bro?
+>> Welcome back.
+>> Welcome back to you too.
+[laughter]
+Big week, big show. It's going to be
+nice.
+Yeah, we're going to talk about
+a new trend on X because we have like a
+new leader to follow.
+>> [laughter]
+>> Is it you?
+>> No, it's it's Brian that that he made
+like some noise on the timeline about
+vibing anything.
+And yeah, like I wanted to talk about
+you with that because there is a lot of
+common points
+with
+vibe coding.
+So yeah, it's it's going to be an
+interesting topic.
+Yeah, like
+how are you doing mate? Like how was the
+week?
+>> Well,
+yeah, same as always, as busy as busy.
+But
+we got new releases, Fable
+>> Yes.
+>> and all the other ones. So
+even if I wasn't busy, I can still be
+filling up all my time with testing the
+new models.
+>> Oh yeah.
+And so yeah, like
+yeah, did you have like enough time and
+bandwidth to
+test Fable 5.2? So yeah, it got
+released.
+>> No, I didn't have it, but I was kind of
+scared because
+everybody was complaining right away on
+X that Fable is taking too many tokens.
+>> Yeah.
+>> And now, I can run all my projects six
+times
+with Opus 5.5 without running out of
+tokens.
+>> Yeah.
+>> So I was kind of scared if I use Fabel
+just to test it
+[laughter] and it says you consumed
+every token and every credit that you
+have,
+then I can't continue my project. So I
+didn't.
+>> Yeah. I mean like
+for me like the workflow with Fabel is
+like to
+plain and like
+audit,
+check the GitHub repository, the task
+and stuff if everything makes sense.
+And I'm not doing anything anything more
+than that because like yeah, like again,
+you do one prompt to say yeah, audit the
+monorepo blah blah blah and then you
+have
+you don't have
+>> one after to do is.
+>> Yeah. But we have a reset, right? In the
+cloud. Like I don't know if everyone at
+home check their close subscription, but
+we have a bank reset.
+>> Yeah, they should announce it 24 hours
+up front so I can just
+go ahead with Fabel.
+>> No, but it's a it's a bank reset so you
+can use it whenever you want.
+>> Ooh, that's nice. I didn't know that. I
+I only read the the X post this morning
+that they were going to give a reset and
+I was like yeah, I don't know if I used
+everything so I was kind of sad, but
+this makes it really good.
+>> Yeah. No, no, no, it's a Oh, yeah, I saw
+the tweet, but I think it was the one
+that
+has already been landed
+when they pushed it.
+>> Yeah, but they make an update to the
+resets, right?
+Depending on how long you've been a
+customer and how long your subscription
+is active, you get multiple resets.
+I am pretty sure I'm looking at right
+here, but I have seen it and I think it
+was like
+six months, 12 months, and over 12
+months.
+>> Really?
+>> Yeah.
+>> Damn.
+Okay.
+>> That's cool. That's really cool.
+>> Yeah.
+[laughter]
+Show more. No. Yeah, that's their reset.
+I will give it to you in a few minutes.
+I'm pretty sure I can find it.
+>> Yeah. I like I I saw a tweet on Claude
+Dev where they talk about the reset, but
+I suppose it was the one that we are
+we had
+during the fable drops because
+they didn't announce this one, so maybe
+we'll get to add don't believe they
+don't
+they are not a reset company, right? So
+they don't
+give us a lot of resets, but when they
+do, it's usually to test uh
+to test the models.
+>> Yeah, yeah, they do it, but
+um I am pretty sure if you have a
+subscription longer, you get a few
+additional resets that you can use
+whenever you want.
+>> That's nice. But uh yeah, we're going to
+do a live stream about like next week
+about like the next
+uh like OpenAI model and compare it to
+5.2 that would be and I will give us
+like a week to test like
+we don't need to do the review like
+because everyone everyone has the access
+to the to the model like a month before
+the release.
+So yeah, we can we can time the live
+stream for next week.
+>> Cool.
+>> Uh but yeah
+>> it for this week, right?
+>> Uh I mean it's part of it, but yeah,
+that's so for this week.
+>> No, no, I I mean this week we are going
+to talk about the video editing.
+>> Yes, exactly. That that's that's the
+title of the last Yeah, it is exciting.
+And um basically everything started
+um
+deck with [snorts]
+Future Brian
+who made like 1.5 million
+impression on X talking about
+um the editing the all way gone forever
+because Claude Motion
+when they release it in like the Claude
+desktop app uh what is getting like
+really good at um
+yeah, edit and move like camera and cut
+and stuff like that.
+And
+in a couple of weeks, like every editors
+on the timeline went
+from Adobe or like all of those
+yeah app desktop app
+to Claude Codd to edit their video and
+cut it and move it the way they want.
+And so
+Brian is the editor of Matthew Berman.
+And Matthew is like a big content
+creator.
+Oh, that oh okay. I didn't know he has
+his own app but yeah he interviewed like
+Sam Altman recently.
+Do you believe today's models are
+conscious? [music]
+>> This one channel path
+tech path
+yeah 650,000
+subscriber on on his channel.
+And Brian is the editor
+one of the editor for Matthew.
+And
+he push this video about like editing
+the old way where
+he he talk about his workflow
+where he went from yeah like the classic
+timeline
+to basically just talking to Claude.
+>> Yeah.
+>> It is like the the same evolution that
+we had with coding, right?
+>> Exactly. That that's why that's why like
+vibe
+vibe coding okay like software
+engineering
+and vibe editing is like basically
+following the same path and
+it's
+>> way and I hate that
+>> Sorry.
+It's basically yeah like all of the job
+that you can do on your computer now
+Claude can do it
+at
+professional at least intermediate slash
+beginner level.
+And that's good enough
+to to push like videos again and again,
+right?
+Uh
+and yeah, for example like here like
+Brian is a video editor, but like you
+can replace all of those job
+with a model now.
+>> Yeah.
+>> Like motion designer, 3D artist,
+animator, anime artist, storyboard, all
+of that it's it's either a model or a
+skill
+because it can be engineered and
+like the comments on here so yeah and
+you were not really a good editor if you
+just have Claude uh
+doing your job like.
+>> well this is the same as people were
+complaining like a year ago on Cloud
+Code doing the coding.
+>> Yeah.
+>> They were saying it's not that good, it
+makes bugs, you have to check everything
+two or three times and still it doesn't
+perform as good as you do it yourself,
+but see now within a year we are
+I think most of the devs who were using
+Cloud Code
+>> Yeah.
+>> uh are now only using AI to build and
+didn't touch any code themselves.
+>> no exactly like
+>> And even if they say they do, they just
+do it so they can tell the customers
+that they need the invoice more.
+>> No no exactly and honestly like if AI
+would stop tomorrow
+I'm not sure I would want to go back to
+coding myself
+with like typing lines of code like.
+>> It's so time consuming and
+>> Exactly.
+>> Doing it yourself you have to do so
+much.
+>> Yeah.
+>> Seeing how fast you can go right now and
+I think with the video editing that's
+the same thing.
+>> Yeah. No no exactly and uh okay so I'm
+here I'm going going to show like some
+basic video that I've done uh
+>> Yeah, because for all the viewers you
+are the one who is
+editing each show that we do. I didn't
+touch any editor at all. I don't even
+know how to do it so
+>> I'm your I'm your Claude Code.
+>> Yeah yeah you are.
+>> [laughter]
+>> But uh yeah.
+>> Even if I have to do it I would never go
+and learn the program at this moment. I
+would just use AI.
+>> Exactly. Like that it's completely
+useless to
+like get Adobe like subscription to
+edit. And even like Opus Clips were big
+in like editing and like to push clips
+right away. Like those addition in
+motion design and stuff are way more
+advanced
+than Opus Clip just cutting and like
+adding some randomized B-roll stuff
+that Snow Cloud can do on local too,
+right?
+So yeah, like it's completely new world.
+Like for example, okay, so
+yeah, there is like this this tweet for
+example. Yeah, you don't enjoy editing
+if considered a core because you are
+terrible at it and don't understand it.
+Movies are made in the editing suit.
+Anyone who understands entertainment
+knows this. This is completely like it's
+over. Like even Hollywood right now
+is moving into AI 100% of the workflow
+because you are going to go from a
+budget like a Marvel
+movie
+going from
+25
+25 million.
+>> Hundreds of millions to
+a million.
+>> Exactly. Like more like half a billion
+for a movie
+>> Yeah.
+>> to a couple of thousand of dollars or
+even like 100k, 200k. So like
+it's going to be
+a magnitude different from where we are
+right now for sure.
+Okay, that that's
+interesting. So yeah, I'm going to block
+some bot stuff. But okay, professional
+editor
+here.
+Hi Philip. Thank you for joining us.
+Interested to hear your take on this
+crazy opinion. Okay. And
+Gandhi is video editing already dead?
+And I don't know if you guys have seen
+this tweet from Brian. So I'm going to
+share it with you and you can explore it
+yourself, watch the video.
+But again, like
+as
+what we are discussing right now,
+it's
+if you're not using AI to edit your
+video right now,
+you will come into it like I'm pressure
+because there's absolutely no point of
+clicking a button when
+again Claude desktop can do it.
+>> Well, we again we can compare it to
+coding. We have been taking on the AI.
+We have been doing it
+every update testing everything see what
+we can do better and have AI do instead
+of us do it ourselves. And right now,
+I think the way that we optimize our
+entire coding street from drafting how
+to build it, building it, testing it
+just the entire street and pushing it
+live
+that we are so far ahead of so many
+companies and
+just figuring out right now how to do
+it.
+If you are on video editing and you know
+how it should work and you can do this
+with Cloud Code and you can use your own
+experience to optimize it then you can
+do so much so fast with perfect results.
+>> Yeah, no no exactly. And
+I watched a video from Theo where he was
+he was saying like software engineer or
+gardeners now
+where like you you need to clean up and
+keep your garden like clean to be able
+to plant the
+>> Take the weeds out.
+>> Exactly [laughter]
+and exactly and
+also like Potato talk about that too
+from
+Potato.
+>> Yeah, Potato is insane if you see see
+what she does.
+>> Everything needs a gardener, someone
+quietly watching the stream of pull
+request flowing into your code base,
+noticing the smell, the
+the is record this week, the lean
+suppression scripting like
+Ivy across your carefully plant garden,
+a steady hand standing up the weeds blah
+blah blah.
+Video editing will be the same.
+You can do so much now
+than a a
+editor will have a better output that
+for example us, right? Like uh we're not
+like professional editor. We can edit
+and I started to edit with like the
+previous channel like two years ago, but
+I just
+um when I started to learn it
+uh I really wanted to reduce the amount
+of time I spent on my edits because it
+was too much time consuming
+and like for example I remember like the
+first short I was editing like is like a
+short of like one minute
+and it took me
+four hours to edit something really
+basics, right? So obviously a
+professional editor will do it like
+probably like 30 minutes 20 minutes
+whatever
+for a short but like
+you can also have it running in the
+background with Claude, right?
+>> Yeah. And you can even take a block from
+a professional editor who give tips,
+give it to Claude
+>> Yeah.
+>> have it extract all the data and say
+implement this on the video and see how
+it looks.
+>> Exactly.
+>> So just optimize it by using examples
+from other people.
+>> No no exactly and like it's it's it's
+it's a no brainer. Okay so okay all of
+those shorts were edited
+>> But believe me most people who are in IT
+they just learn the trick. They know if
+they go to a SaaS software and they
+click a button it spins up a server and
+they connect GitHub and everything is
+installed that they build by using AI.
+>> He's muted.
+>> But
+>> Oh it's not muted? I just My bad.
+>> No it is.
+>> [laughter]
+>> Okay so I'm going to take two.
+Edit edit the version.
+[laughter]
+Uh so for example this short it's really
+like also just you talking.
+The caption has been done by
+Claude. Everything is has been done by
+Claude.
+The branding have an asset to stamp all
+of the shorts with the same branding.
+I have a skill for the caption now
+and all of the short will look like
+that. I just need to work on like the
+zoom and the like the B-rolls. Those
+B-rolls are Like it's not dynamic
+enough.
+But I'm one skill away to have something
+uh just cut better, right?
+Um and for example uh network
+What was the channel? Network
+TV
+because I renamed that. Yeah.
+>> an old one.
+>> Yeah. So that was the previous one and
+oh I added some haha
+I think I had some content.
+Um
+live podcast. Yeah, I I had some
+videos.
+Uh but like for example even the
+thumbnails were done by a
+thumbnail maker.
+Uh
+like AI is doing better than that now.
+>> Yeah. This was before the AI age. So
+everything was manual. You had to hire
+people because you didn't have enough
+time to do everything yourself.
+>> Yeah. Like all of that like bro I
+remember like spending times in my like
+Photoshop to just do that.
+Like it's
+just crazy. Like
+the comparing that to
+what we have now like
+Okay, maybe it's learning curve too,
+right? But like
+>> It always is. There is always time and
+and space to optimize but
+>> But it's day night, right? And
+like
+it's just it's it's yeah I'm speechless
+because like just by saying that
+um
+and it's not that far off, right? Like
+it's not that
+um
+not that old. Okay, yeah one year ago.
+What? One year ago? Damn. Okay.
+>> Yeah, that was the last one. That was
+not the first
+Yeah, I think it it went up to two or
+three years ago, right? Everything.
+>> Yeah, I don't exactly like yeah the
+first video. But where did I put the
+previous one? Uh oh no Vincent's
+decoders.
+Uh Vincent's
+uh
+>> So many YouTube channels.
+>> Unchained. That was my crypto Yes. Okay,
+cool.
+So haven't those videos Yeah, one year
+ago. Cool. And I have a short No, I I I
+had all of my short fair enough.
+Um,
+but I edited all of that then Okay, so
+podcast introduction Okay.
+Can you tell me
+>> So noodles is a social app on abstract.
+>> Is it muted now?
+>> Now it is. Yes.
+>> Okay, cool. Like podcast so edited like
+B-rolls and stuff like that. Okay, bit
+more dynamic. Okay, that's is also like
+Adobe
+assets default. And all of those edits
+and B-roll it's basically
+the least I can do to edit to keep it
+like moving a bit.
+>> Yeah, but you can tell Cloud like I was
+using these assets in Adobe. Please make
+skill for it so we can add them, right?
+>> Exactly which I've done that I think for
+the latest video
+here, I think.
+So it started to edits the same way. See
+those those cats? That animation is
+Cloud too.
+Um,
+that's B-roll done by Cloud. It's not
+perfect, but it's good enough for the
+number of views that we do.
+>> Yes.
+>> then yeah, like see yeah, wow, it's
+everything it's synced.
+Um,
+and then so like the asset at the end
+Where is it?
+When I say yeah, subscribe to the
+channel blah blah blah.
+Uh,
+tag intro.
+I think it's here. Yes.
+>> Yes.
+>> That's generated by Cloud. I just ask
+him Okay, yeah, please do me an assets
+to subscribe to the channel and that's
+it.
+>> And it works.
+>> And it works and it it's it's good like
+it's it's it's good enough it's good
+enough to be published on a channel with
+like 300 uh
+subscribers. And then if you can
+um
+uh
+if you can basically
+have a professional team behind you to
+use those tools, then you don't need
+you don't need to open Adobe ever again.
+>> Yeah.
+I I really think that the people who are
+professionals
+and they can now have an idea and
+instead of working an hour to get it
+invisible, they can now do it in a few
+minutes, maybe even in one or two
+minutes.
+>> Yeah.
+>> That's then this option is perfect for
+them because they can be creative, ask
+it, see how it looks, optimize it, do it
+two or three times, set it into a skill,
+and continue to the next one, and build
+their own library of skills to optimize
+every video exactly in the way that they
+want.
+>> Yeah. No, no, exactly. And and again,
+like if you walk like
+if you walk for one YouTuber or even
+like five different YouTubers, you have
+um
+uh
+branding to follow like a brand yeah,
+branding kit to follow or you have like
+the same assets to use in every video or
+whatever.
+Like Claude can do that.
+And Opus 55 can do it like again, all
+all of them
+Opus 55
+uh motion design
+motion design
+um
+thank share these tabs. Okay, look.
+uh
+like Opus replace After Effect, it's
+insane, drop the PDF, blah blah
+blah.
+Um I don't know if this one is 100%
+edited by Claude or if there is like
+some pre-processed after.
+>> It needs to it needs to look like nicer.
+>> Yeah, but like I mean like
+>> If it can do it, this is cool.
+>> I I'm pretty sure like some other people
+like explained that
+yeah, you can get those renders with
+Claude uh
+because it's all about um SVG
+manipulation and stuf like that, right?
+So, okay, so X-Fill, motion design.
+Uh so it's it's a mix of like yeah video
+and all of those animation that's
+basically Claude.
+Uh yeah, all of those that's 100%
+Claude, pretty sure.
+And you just need to
+uh get the video
+and then on top of it then you edit.
+Yeah, it's like layers and stuff yes,
+100%.
+Um I ask her to create my room in 3JS
+uh so I can animate my tutorial video
+like.
+So here you have the room
+generated probably with Blender or like
+some other software and then you have
+the animation inside the video. So you
+use Blender to move the camera or even
+like to prototype your video.
+>> Mhm.
+>> You have a basic [clears throat]
+um 3D render. You you give it to Claude
+and
+um
+it can
+uh recreate the video like and prompt
+the video based on your render.
+>> Yeah, and I think if you use something
+like the software from Artcraft like
+Filmcraft or whatever you can connect
+the MCP to Claude
+and then
+use it as a multiplier to do even more.
+>> Yes. No, exactly.
+>> You just have full control.
+>> Yeah.
+Yeah, and yeah the MCP of Adobe Premiere
+was not that crazy good. It was like
+always buggy and stuff like kind of like
+open Claude.
+>> Yeah.
+>> But
+um but also like yeah if you take out
+all of those software or even if you
+vibe code your own uh what was the one
+like you said uh
+>> Artcraft.
+>> Um
+right.
+>> If you do get artcraft.com.
+>> Yes, open source yes, okay cool.
+>> Ah yeah.
+This is the software that they reverse
+engineered from Adobe.
+>> GitHub.
+Dank.
+Yeah. so
+so Figma, Adobe Adobe Effect, Vector, so
+it's probably
+Illustrator, PDF.
+Yeah, they reverse engine and everything
+and recreate the code. Yeah, like
+>> And the cool thing is you can even use
+these
+these software tools in the browser.
+>> Oh.
+>> So you can connect them to your website
+and you can connect them locally to your
+Cloud MCP and you can do just everything
+the way that you want.
+>> Mhm.
+>> It's perfect.
+>> Interesting.
+>> And if you you use this
+to optimize the videos,
+>> Yeah.
+>> it's even better
+than Adobe because you can automate so
+much more.
+>> And it's cheaper.
+>> Yeah, it's way cheaper. And it's an open
+source project.
+>> Yeah, and it's meant like yeah, okay, so
+yeah, but you go back with the interface
+here like you know
+I because I think it's a nice transition
+to have that those
+project.
+But we are going more and more into
+a
+input box, chat box to change like why
+would I change the ticker of the lights
+when I can just tell Cloud change ask
+Cloud yeah, please change light and make
+it like
+Marvel movies.
+>> Yeah. I still think the people who did
+it like 20 years that way,
+they can connect Cloud and the MCP so
+they can prompt it and they see it
+happening in the software tool and they
+can also just easily do it themselves in
+the software tool. So
+>> It might be a good transition to going
+to full AI.
+>> Mhm.
+>> I don't know, but I think that full AI
+only chat prompting in a chat and
+getting a result
+I still think that's a bit far to away
+>> Yeah.
+>> for so many people.
+>> Mhm. That's interesting because yeah, I
+asked the same question for Gen 5 too
+like I like the people are going to
+learn how to use any craft even if
+effect craft with the timeline
+component, etc., etc.
+or they are going to ask Claude and
+connect them CP and never uh open the
+software. You know what I mean? Like, if
+I'm a new editor, like if I'm not
+experienced and I'm going to work as an
+editor
+um tomorrow, like in a few weeks I'm
+getting graduated and whatever. Or even
+like now, I got graduated during this
+summer and now it's Christmas and I need
+to find a job because uh
+it's time to go to the market. In 27 I'm
+going into the job market.
+Uh am I going to learn how to use Effect
+Craft or am I going to
+install a ton of skills on Claude,
+right?
+>> Yeah, that's what you're going to do,
+but as soon as there is something that
+isn't the way that you want it, you are
+going to prompt 20 times, right?
+>> Yeah.
+>> Fix it, fix it, fix it, please fix it.
+Hey, stop doing this stupid stuff and
+fix it.
+Uh somebody who knows uh Effect Craft or
+or any other tool
+after two prompts they just open the
+tool, they click it because they know
+where it is and they use that to just go
+way faster.
+>> Yeah. I mean
+Yeah, like
+>> have more control.
+>> Yeah. No, yeah, exactly. That's true.
+Like um you
+you can do 80% of the job, but the last
+20 that make going to make your video
+like professional quality,
+then you need to take ownership of the
+last
+edits, right?
+>> Yeah. And I still think that you can
+then say, hey Claude, did you see what I
+just changed? Please remember this and
+save it as a skill and name it like this
+so you can do it automatically. But
+that's also like training your model.
+>> Yeah, no, true. I mean yeah, you can you
+can have an agent inside the software
+and then uh
+they can create the skills or even have
+Claude inside
+and then yeah. Okay.
+>> And a robot is doing the same. You can
+just open the PC, say record, you show
+it what it's supposed to do, it
+remembers it and you can do it this way
+as well.
+>> Yeah, that's pretty cool.
+That's yeah, that's definitely
+interesting.
+Uh yeah, we'll we'll see how it goes in
+the future, right? But now like
+again, opening a UI, it's like
+when you spend eight hours a day,
+now you're going to spend one hour a day
+and you will close like five videos
+instead of one.
+>> Yeah, and this sounds good, but
+eventually, we said this for coding as
+well, and I am making more hours than
+ever.
+>> No, exactly. Oh yeah, no, exactly. You
+will have more YouTubers, you will have
+more clips, you will have more
+everything. We will live in an abundance
+of content creation. We just have
+not going to have enough people to watch
+them, but yeah, that's fine.
+>> So then the question is, are we going to
+do this full video just with Cloud only?
+>> Oh yeah. Oh yeah, like 100% like the
+edited version of this live stream will
+be edited with Cloud. I'm just going to
+download the raw file,
+cut everything and
+try to have like nice
+animation, motion design, blah blah
+blah, so I can increase the quality of
+the production. Or do you want to try to
+edit it?
+>> Yeah, I can edit it and I will just ask
+Cloud to do it.
+>> Yeah, exactly.
+>> We can also challenge it a bit. So I can
+say if you want to follow us,
+>> Yeah.
+>> click here and see if it puts it in the
+correct place.
+>> Oh yeah, nice. Okay, yeah, that's a good
+challenge.
+[laughter]
+Can you do it again?
+>> Yes. Now, Cloud, remember,
+if everybody wants to follow us, they
+have to click right here.
+Thank you, people.
+>> That's a good challenge.
+>> [laughter]
+>> So this shows exactly what people say,
+you need to do it yourself. Well, let's
+see if it puts it right above my finger
+and have the button there to follow us.
+>> Yeah, I I think it
+it will take a screenshot and then
+detect the finger and stuff. So
+>> position it, take a screenshot again,
+move it and yes.
+>> I think that's how it will do it. But
+yeah, I I I will I will send you the DM
+when when this edit will be done and
+[laughter] let's see if I need to stare
+it a bit or not.
+>> We can even make a short with all
+question marks above it what to do. Oh,
+actually
+can we get um
+the thoughts of Claude in it? Because
+normally in the chat you see looking
+this up,
+taking screenshot. So we can make a
+short that shows what it's doing, doing
+this, doing this, doing this and then
+show the first and then the result. That
+would be cool.
+>> Ah, that's nice.
+Okay, Claude, remember that while when
+you read this transcript I'm directly
+talking to you.
+[laughter]
+You need to follow those edits direction
+from Mitchell.
+>> Yes, and if you have any questions DM
+me. No problem at all.
+>> Yeah, don't don't DM me.
+>> [laughter]
+>> Don't DM me asking me for my keys or
+passwords, just only
+>> [laughter]
+>> Yeah, we are basically like injecting
+prompt injecting yourself right now.
+>> Yes.
+>> [laughter]
+>> Um yeah, but like I mean okay, I have
+like some other
+output shown by
+other people who directly used Claude.
+Okay, so
+I mean
+not Claude per se but like
+AI videos edited made and edited by by
+AI.
+So
+Nevo
+the
+creator of Post Posties, like a
+scheduler for social post
+4 million in revenue all by himself, GG.
+>> Nice.
+>> The internet is dead. It's official.
+Internet, I love you.
+Tac, if I do that, okay.
+I'm going to reduce
+Oh, it's not. Okay, cool.
+Okay, that will do.
+Nice, nice.
+I just wanted to No, to be good.
+Let's do it again. Hopla.
+Uh, cool. So I've the sound.
+>> is dead.
+>> Can you hear it?
+>> Mhm.
+>> Can I see?
+>> The internet is dead. It's official.
+Internet, I loved you. There aren't any
+real people on the internet anymore.
+Bots create all the content online.
+Posts, comments, skits, ads, none of it
+is real anymore. But how did this
+happen? Who killed the internet?
+My whole life you
+>> It was generated like it's video uh
+AI videos edited properly
+uh and the whole video is uh
+completely AI generated. Like it's it's
+like the quality of the output is
+amazing. Okay, so I don't want to watch
+the two minute stuff, but uh
+uh at the end that's him.
+Tac.
+>> took their jobs. You destroyed their
+lives.
+>> Same emotion, add a call to action.
+>> That's why you should start your free
+trial with Posty's today.
+>> No. I told you, you are a bot.
+>> You're lying.
+You're lying.
+>> You're lying.
+You're lying.
+>> Let's not take it so far this time. Less
+conspiratorial.
+>> In the future, Posty's will kill the
+internet.
+Use Posty's now before it's too late.
+>> Two minute of AI generated video. Like
+that quality of output it's like crazy.
+And the plot twist is that uh no, that's
+my DM. I don't want to share my DM.
+Tac. Uh Navo.
+Tac. Okay. So
+a few days before this video as a teaser
+he posted that I paid 10k for a creator
+to make me a full AI video, two minutes
+something insane releasing tomorrow.
+>> Yeah, you showed me this one
+indeed.
+>> Yeah.
+Like
+10 grand for that video getting 700,000
+views
+for a creator to So I don't know like
+how much he edited, how much it prompted
+like it cost him 10 k. What's the margin
+of the all of those videos
+like two minutes? It's
+Now we have the model for that, right?
+So and if you are able like to stitch
+them correctly and ask Claude to
+probably like storyboard them etc. like
+that's it.
+>> Yes, it is just testing and finding your
+own way and then you can do something
+like this
+with just one Claude subscription.
+>> Yeah. No, no, 1% and plus like yes, some
+extra model for replicate and stuff like
+Oh, Gen Feed, you can use Gen Feed to
+create good videos too.
+>> Yeah.
+That's using a replicate in the
+background, so that's perfect as well.
+>> Actually yeah, exactly. [laughter]
+And but like the quality of uh
+the output if you put the price okay
+like
+that kind of videos be before AI like
+first
+you will not do it anyway because that
+will cost too much.
+>> Yeah, and that's way too much work.
+>> No, no, exactly. At least it would be
+maybe 25
+or like
+maybe easy 50 grand, right? So
+it's it's a no-brainer.
+And and that's where the industry is
+going for sure. And like all of the
+people who say yeah, no, I don't want to
+use AI because it's not artistic blah
+blah blah like everyone is using AI.
+90% of the people are just doing slop.
+That's not artistic but that they're
+trying to learn whatever.
+And that's it, right? Like the and the
+professional who are able to they know
+what they are doing
+they have outputs like that.
+>> Yes, be artistic with AI. Keep
+optimizing it and even if this takes you
+a week with AI
+>> Exactly.
+>> you still make 10 grand.
+>> Exactly. Like for example here this
+transition here amazing.
+Like, you get the pause.
+>> I can see all the content online.
+>> Like, that's really nice. Like, it's
+it's basically edited properly. The
+transitions are good. I don't know if
+it's an AI or if it's like the editor
+who did the cut,
+but still just just nuts.
+So, yeah.
+Oh, Gemini Carbon. Okay, cool.
+Uh, cool. So, I think we here. And yeah,
+obviously like we know we have the Fable
+5.2 announcement.
+Yeah, it would be
+>> made with AI.
+>> Yes,
+probably yeah.
+Um, tag. What else do I have here?
+>> We do have one question before we close
+the subject.
+Do you believe that video editing is
+dead or not?
+>> Uh, uh, video editing as it was
+pre-AI, yes. I truly believe that people
+will open less and less
+um the their timeline. You will not see
+a freaking five pens of timelines on
+like anymore. I think it's over.
+And I think you're just going to
+chit-chat with your clone.
+>> Yes. Okay, cool.
+>> I mean
+>> You know that like 20 years ago I used
+to build banners with just one moving
+GIF image and sell them online for €5.
+yeah.
+>> That took me like so long. I could just
+do 1 million banners a day using this.
+>> Not exactly. And yeah, but the the
+Is it the the fact that we can produce
+so much
+will decrease the quality the average
+quality or
+maybe the platform where we push those
+they will like the low the lowest
+quality
+of the output will never reach like
+nobody will see them. You know what I
+mean? Like
+>> I don't [clears throat] think so. I
+think the biggest issue right now is
+because if you just wait three months
+and this is used a lot and Cloud Coder
+will give it a an priority to optimize
+this integration. So the quality will be
+so much better. So eventually I think
+>> the biggest issue will be how are you
+going to promote or market your product
+that you just created.
+The most creative people in marketing
+and selling the product online
+those are the ones who get everything
+distributed and other people not.
+>> Yeah. But I mean even like for example
+for a good video like the algo is also
+pick it up by itself, right? Like
+[snorts]
+yes there you can always distribute and
+like use influencers etc right?
+>> If there is so much
+how is it going to pick up yours?
+>> But that that's
+like
+TikTok algorithm is like basically you
+have a halo and if like people are not
+watching anything then you end up with
+zero views and then you have an account
+with zero views which should never
+happen on TikTok and if you see that on
+your TikTok you just close the account.
+>> Yeah because it's impossible to get it
+back up to a million views.
+>> But that mean like that kind of
+algorithm will
+deal with the slop and
+the what people don't want to see
+by itself.
+>> Yeah. So actually the first videos that
+you create need to be catching so people
+need to watch them otherwise if you
+start bad
+>> Yeah.
+>> your account is dead and it's impossible
+to restart.
+>> Exactly.
+And hopefully on YouTube it will not be
+that case because we just want to push
+that.
+>> No no no. We create a new channel with
+the best ones we add.
+>> Exactly. So yeah let's start editing
+this video and see where we can take it
+out.
+>> Yes. And if other people have videos
+they added it with Cloud feel free feel
+free to share them. Tag us on X and let
+us know.
+>> Yes and in the comment of the this video
+on YouTube and everywhere tag us and
+because we want to see better better
+video and yeah I will
+and Brian thank you for
+your time and like because he replied to
+me so I appreciate that.
+>> That's awesome.
+>> Yeah in the DM
+and yeah let's see what we can do with
+Claude and this live stream.
+>> Yes.
+Perfect.
+>> That's it yeah good.
+>> I think we're all good.
+>> Nice.
+So yeah everyone thank you so much for
+watching the stream thank you for
+everyone who joined us during the live
+that asked us some questions that was
+cool and we will see you
+at the same time
+next week.
+>> Next week.
+>> Yes.
+So yeah bye bye and subscribe and like
+and share bye bye.
+>> Yes here and here and here and here.
+>> [laughter]
+>> Good luck Claude.
+>> Bye.
