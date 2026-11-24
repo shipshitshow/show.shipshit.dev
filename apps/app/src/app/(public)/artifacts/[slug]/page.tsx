@@ -12,6 +12,7 @@ import {
   TIMELINE_EVENTS,
   TWEET_DECK,
 } from '@/lib/artifacts/agent-security-2026-10';
+import { MODEL_SHOWDOWN_TWEET_DECK } from '@/lib/artifacts/model-showdown-2026-11';
 import { ARTIFACTS, getArtifact } from '@/lib/artifacts/registry';
 import { TIMELINE_DEAD_TWEET_DECK } from '@/lib/artifacts/timeline-dead-2026-11';
 import { VIBE_EDITING_TWEET_DECK } from '@/lib/artifacts/vibe-editing-2026-11';
@@ -23,6 +24,7 @@ export const revalidate = 600;
 
 const TWEET_DECKS: Record<string, TweetDeckEntry[]> = {
   'agent-security-tweets': TWEET_DECK,
+  'model-showdown-tweets': MODEL_SHOWDOWN_TWEET_DECK,
   'timeline-dead-tweets': TIMELINE_DEAD_TWEET_DECK,
   'vibe-editing-tweets': VIBE_EDITING_TWEET_DECK,
 };

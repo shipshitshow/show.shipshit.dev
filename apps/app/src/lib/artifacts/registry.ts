@@ -52,6 +52,15 @@ export const ARTIFACTS: ArtifactEntry[] = [
     title: 'Is The Timeline Dead Tweets',
     updated: '2026-11-17',
   },
+  {
+    kind: 'tweets',
+    slug: 'model-showdown-tweets',
+    streams: ['2026-11-24'],
+    summary:
+      'The X posts for "Fable 5.2 vs GPT-6.2 vs Gemini 4 Neon" as a full-screen slideshow: Signal65 on Fable, Peter Yang and Chubby on Neon, Theo, Dan Shipper and Artificial Analysis on GPT-6.2.',
+    title: 'Model Showdown Tweets',
+    updated: '2026-11-23',
+  },
 ];
 
 export function getArtifact(slug: string): ArtifactEntry | undefined {
