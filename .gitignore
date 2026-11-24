@@ -123,6 +123,12 @@ editing/scripts/render/*
 !editing/scripts/render/dual.py
 !editing/scripts/render/test_dual.py
 !editing/scripts/render/README.md
+!editing/scripts/transitions/
+editing/scripts/transitions/*
+!editing/scripts/transitions/pixel.py
+!editing/scripts/transitions/wall.py
+!editing/scripts/transitions/test_pixel.py
+!editing/scripts/transitions/README.md
 !editing/scripts/matte/
 editing/scripts/matte/*
 !editing/scripts/matte/vmatte.swift
