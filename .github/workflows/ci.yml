@@ -84,6 +84,11 @@ jobs:
       - name: Dual render tests
         run: python3 -m unittest discover -s editing/scripts/render -p 'test_*.py'
 
+      - name: Pixel transition tests
+        run: |
+          python3 -m pip install --quiet numpy pillow
+          python3 -m unittest discover -s editing/scripts/transitions -p 'test_*.py'
+
       - name: Typecheck
         run: bun run check:types
 
