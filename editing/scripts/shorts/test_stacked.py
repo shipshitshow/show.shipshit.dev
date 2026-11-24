@@ -90,6 +90,39 @@ class SeamPlacement(unittest.TestCase):
         self.assertNotIn("zoompan", f)                                  # no cam zooms
 
 
+class JoinSync(unittest.TestCase):
+    """Video joins must stay on the audio's clock (24 Nov v2: the picture ran 0.28 s ahead over ten joins)."""
+
+    # The 24 Nov margin-math v2 segs (261124.mp4): none is a whole number of 30 fps frames, and the source is variable frame rate.
+    SEGS = [{"a": a, "b": b} for a, b in [(964.72, 966.7), (967.2, 972.56), (977.19, 986.69), (987.02, 993.74),
+                                          (994.53, 1001.43), (1004.28, 1010.75), (1012.12, 1015.8), (1017.42, 1022.4),
+                                          (1022.68, 1030.06), (1039.05, 1040.2)]]
+
+    def test_every_join_stays_within_half_a_frame_of_the_audio(self):
+        frames, audio_end, video_end = S.piece_frames(self.SEGS), 0.0, 0
+        for n, seg in zip(frames, self.SEGS):
+            audio_end += seg["b"] - seg["a"]
+            video_end += n
+            self.assertLessEqual(abs(video_end / C.FPS - audio_end), 0.5 / C.FPS + 1e-9)
+
+    def test_whole_frame_pieces_would_have_drifted(self):
+        # The old behaviour: each piece ends on the next whole frame after its audio. Same segs, summed overshoot.
+        import math
+        drift = sum(math.ceil((s["b"] - s["a"]) * C.FPS - 1e-9) / C.FPS - (s["b"] - s["a"]) for s in self.SEGS)
+        self.assertGreater(drift, 0.1)                                   # audible against the 18 ms fades
+        self.assertLessEqual(abs(sum(S.piece_frames(self.SEGS)) / C.FPS - sum(s["b"] - s["a"] for s in self.SEGS)),
+                             0.5 / C.FPS + 1e-9)
+
+    def test_piece_filter_cuts_each_piece_to_its_frames(self):
+        f = S.piece_filter(3, S.crop_spec({}), 119)
+        self.assertIn("vstack=inputs=2,setsar=1[r3]", f)
+        self.assertIn("[r3]fps=30:start_time=0,tpad=stop_mode=clone:stop_duration=0.2,trim=end_frame=119,"
+                      "setpts=PTS-STARTPTS[l3]", f)
+
+    def test_without_frames_the_filter_is_unchanged(self):
+        self.assertIn("setsar=1[l3]", S.piece_filter(3, S.crop_spec({})))
+
+
 class KaraokeTiming(unittest.TestCase):
     def test_each_word_is_red_until_the_next_starts(self):
         spans = S.karaoke_spans(CAPW[0][3], CAPW[0][1])

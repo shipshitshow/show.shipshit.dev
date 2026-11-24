@@ -5,7 +5,7 @@ Locked layout (vault brand/editing.md, mirrored in docs/show-prep/edit-style.md)
 equal panels, both hosts always visible, one above the other (Vincent on top, Mitchell below). Karaoke word
 captions sit on the seam between the panels: white uppercase Arial Bold, the spoken word in #E83B3B. No title
 text, no cam zooms, no b-roll. The red asterisk sits top-right (120 px, centred x820 / y460, inside the graphics safe box). Hard cuts with
-18 ms audio fades at the joins. Loudness is applied afterwards by finalize.py, same as build.py.
+18 ms audio fades at the joins; every video piece is cut to the frame count of its audio (piece_frames), so joins stay in sync on variable-frame-rate sources. Loudness is applied afterwards by finalize.py, same as build.py.
 
 Reads the same short.json as build.py (source, segs, tail, fadein0, chunks, optional crops) and the capsw.json that
 align.py writes, so the Short is cut and timed exactly like a single-host one. Per-seg `layout`, `tile`, `splits`
@@ -24,7 +24,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import common as C
-from common import AAC, CANVAS, UNSHARP, X264
+from common import AAC, CANVAS, FPS, UNSHARP, X264
 
 # ---- Locked layout values (docs/show-prep/edit-style.md). Change them there first. ----------------
 PANEL_W, PANEL_H = CANVAS[0], CANVAS[1] // 2     # two 1080x960 panels
@@ -36,6 +36,7 @@ DEFAULT_CROPS = {"w": 960, "h": 853, "V": [0, 0], "M": [960, 100]}   # V / M are
 LABEL_Y = 985
 ASPECT_TOL = 0.01                                 # crop aspect may differ from the panel's by 1%
 RED_NAME, WHITE_NAME = "red", "white"
+PAD_S = 0.2                                       # clone-padding on each piece so a short piece can still be cut to its frames
 
 
 # ---- Pure logic (no PIL / ffmpeg; covered by test_stacked.py) -------------------------------------------
@@ -98,14 +99,37 @@ def layout_warnings(runs, segs):
     return bad
 
 
-def piece_filter(i, spec):
-    """Filter text for piece i: input [i:v] -> both host windows, scaled to panels and stacked -> [l{i}]."""
+def piece_frames(segs, fps=FPS):
+    """Video frames each seg gets so the picture stays on the audio's clock.
+
+    The audio pieces are exact (`-t d`), but a video piece is a whole number of frames, and a variable-frame-rate
+    source hands back a piece that is a frame or two over. Concat adds those overshoots up (0.28 s over ten
+    joins on 24 Nov) while the audio does not, so the picture drifts ahead. Rounding the *cumulative* end of
+    every seg to a frame keeps each join within half a frame of the audio and never lets the error build up."""
+    frames, prev, end = [], 0, 0.0
+    for s in segs:
+        end += s["b"] - s["a"]
+        edge = round(end * fps)
+        frames.append(edge - prev)
+        prev = edge
+    return frames
+
+
+def piece_filter(i, spec, frames=None):
+    """Filter text for piece i: input [i:v] -> both host windows, scaled to panels and stacked -> [l{i}].
+    With `frames` (from piece_frames) the piece is also forced to constant fps, padded with clones of its last
+    frame and cut to exactly that many frames, so every piece has the length its audio has."""
     w, h = spec["w"], spec["h"]
     parts = [f"[{i}:v]split=2[sv{i}][sm{i}]"]
     for tag, host in (("v", "V"), ("m", "M")):
         x, y = spec[host]
         parts.append(f"[s{tag}{i}]crop={w}:{h}:{x}:{y},scale={PANEL_W}:{PANEL_H}:flags=lanczos,{UNSHARP}[p{tag}{i}]")
-    parts.append(f"[pv{i}][pm{i}]vstack=inputs=2,setsar=1[l{i}]")
+    if frames is None:
+        parts.append(f"[pv{i}][pm{i}]vstack=inputs=2,setsar=1[l{i}]")
+    else:
+        parts.append(f"[pv{i}][pm{i}]vstack=inputs=2,setsar=1[r{i}]")
+        parts.append(f"[r{i}]fps={FPS}:start_time=0,tpad=stop_mode=clone:stop_duration={PAD_S},"
+                     f"trim=end_frame={frames},setpts=PTS-STARTPTS[l{i}]")
     return ";".join(parts) + ";"
 
 
@@ -173,10 +197,11 @@ def main():
     segs = cfg["segs"]
     nseg = len(segs)
     inputs, fc, vin, ain = [], "", "", ""
+    nframes = piece_frames(segs)
     for i, s in enumerate(segs):
         d = s["b"] - s["a"]
         inputs += ["-ss", f"{s['a']:.3f}", "-t", f"{d:.3f}", "-i", str(src)]
-        fc += piece_filter(i, spec)
+        fc += piece_filter(i, spec, nframes[i])
         vin += f"[l{i}]"
         af = C.audio_fades(i, i, d, nseg, cfg.get("fadein0"))
         fc += f"[{i}:a]{','.join(af) if af else 'anull'}[au{i}];"
