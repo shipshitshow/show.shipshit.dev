@@ -339,7 +339,7 @@ def make_cut_segment(a: Path, b: Path, style: str, dur: float, accent: str, seed
 def cmd_cut(args) -> None:
     a, b, out = Path(args.a), Path(args.b), Path(args.out)
     accent = args.accent or ("red" if args.style == "sweep" else "none")
-    dur = args.dur or (0.6 if args.style.startswith("chunks") else 0.5)
+    dur = args.dur or (0.36 if args.style.startswith("chunks") else 0.4)
     args.dur = dur
     frames, w, h, fps_str, head_s, tail_s, pa = make_cut_segment(
         a, b, args.style, dur, accent, args.seed, args.cell, mark=args.mark, direction=args.direction)
@@ -376,7 +376,7 @@ def cmd_open(args) -> None:
     accent = args.accent or ("red" if args.style in ("grid", "scan") else "none")
     pi = probe(src)
     w, h, fps = pi["w"], pi["h"], pi["fps"]
-    dur = args.dur or (0.8 if chunk else 0.7)
+    dur = args.dur or (0.5 if chunk else 0.5)
     n = seg_frames(dur, fps)
     hold_n = int(round(args.hold * fps)) if chunk else 0
     live = read_frames(src, 0, n, w, h, fps)
@@ -429,26 +429,28 @@ def main(argv=None) -> None:
     c = sub.add_parser("cut", help="pixel disintegration between two clips")
     c.add_argument("a"), c.add_argument("b")
     c.add_argument("--style", choices=CUT_STYLES, default="chunks")
-    c.add_argument("--dur", type=float, help="total seconds, centred on the join (default 0.6 chunks, 0.5 mosaic styles)")
+    c.add_argument("--dur", type=float, help="total seconds, centred on the join (default 0.36 chunks, 0.4 mosaic styles)")
     o = sub.add_parser("open", help="pixel-resolve opening")
     o.add_argument("input")
     o.add_argument("--style", choices=OPEN_STYLES, default="wall")
-    o.add_argument("--dur", type=float, help="reveal seconds (default 0.8 wall, 0.7 others)")
-    o.add_argument("--hold", type=float, default=0.35, help="wall style: seconds of wallpaper before the break (0 = none)")
+    o.add_argument("--dur", type=float, help="reveal seconds (default 0.5)")
+    o.add_argument("--hold", type=float, default=0.2, help="wall style: seconds of wallpaper before the break (0 = none)")
     for s in (c, o):
         s.add_argument("-o", "--out", required=True)
         s.add_argument("--accent", choices=("none", "red", "white"), help="flecks on the edge (brand colours only)")
         s.add_argument("--cell", type=int, help="block size in px (default: auto, same look on 16:9 and 9:16)")
         s.add_argument("--seed", type=int, default=261124)
-        s.add_argument("--direction", choices=("right", "left", "top", "bottom", "center"),
-                       help="wall/chunks styles: where the break starts (default right for the opening, left for cuts)")
+        s.add_argument("--direction", choices=("right", "left", "top", "bottom", "center", "topright"),
+                       help="wall/chunks styles: where the break starts (default: opening topright on 9:16 and right on 16:9; cuts right, so the next shot slides in from the right)")
         s.add_argument("--mark", dest="mark", action="store_true", default=None, help="red asterisk on the wallpaper")
         s.add_argument("--no-mark", dest="mark", action="store_false")
         s.add_argument("--crf", type=int, default=16)
         s.add_argument("--segment-only", action="store_true", help="write only the transition clip, no audio")
     args = ap.parse_args(argv)
     if args.direction is None:
-        args.direction = "right" if args.cmd == "open" else "left"
+        args.direction = "right"
+        if args.cmd == "open" and (lambda d: d["h"] > d["w"])(probe(Path(args.input))):
+            args.direction = "topright"
     if args.mark is None:
         args.mark = args.cmd == "open"          # the mark shows on the opening frame, the cut band stays plain
     {"cut": cmd_cut, "open": cmd_open}[args.cmd](args)

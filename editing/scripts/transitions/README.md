@@ -5,10 +5,10 @@
 The look follows the reference Vincent sent on 24 Nov 2026 (a branded wallpaper frame that breaks into irregular pixel chunks with thin red edges). It is a style match, built from our own tokens: charcoal ground, white crosshair grid and thin outline boxes, red `#E83B3B` hairlines, optionally the standalone red asterisk. `wall.py` draws the frame and the chunk mask.
 
 ```bash
-# opening: wallpaper holds 0.35 s, then breaks from the right into the footage (audio delayed by the hold)
-python3 editing/scripts/transitions/pixel.py open SHOT.mp4 -o out.mp4 [--style wall] [--hold 0.35] [--dur 0.8] [--direction right] [--no-mark]
+# opening: wallpaper holds 0.2 s, then breaks (from the top right on 9:16, from the right on 16:9) into the footage (audio delayed by the hold)
+python3 editing/scripts/transitions/pixel.py open SHOT.mp4 -o out.mp4 [--style wall] [--hold 0.2] [--dur 0.5] [--direction right|topright] [--no-mark]
 # cut: the last dur/2 of A and the first dur/2 of B, centred on the join (timeline length unchanged)
-python3 editing/scripts/transitions/pixel.py cut A.mp4 B.mp4 -o out.mp4 [--style chunks|chunks-direct] [--dur 0.6]
+python3 editing/scripts/transitions/pixel.py cut A.mp4 B.mp4 -o out.mp4 [--style chunks|chunks-direct] [--dur 0.36]
 # only the transition clip (video only), to splice into an existing timeline
 python3 editing/scripts/transitions/pixel.py cut A.mp4 B.mp4 -o seg.mp4 --segment-only
 python3 -m unittest discover -s editing/scripts/transitions -p 'test_*.py'
@@ -18,8 +18,8 @@ python3 -m unittest discover -s editing/scripts/transitions -p 'test_*.py'
 
 | Command | Style | What it does |
 |---|---|---|
-| `open` | `wall` (default) | wallpaper frame, then irregular chunks open onto the footage. `--no-mark` drops the asterisk, `--direction right\|left\|top\|bottom\|center` sets where the break starts |
-| `cut` | `chunks` (default) | the outgoing shot breaks into wallpaper chunks that re-form as the next shot |
+| `open` | `wall` (default) | wallpaper frame, then irregular chunks open onto the footage. `--no-mark` drops the asterisk, `--direction right\|left\|top\|bottom\|center\|topright` sets where the break starts |
+| `cut` | `chunks` (default) | the outgoing shot breaks into wallpaper chunks that re-form as the next shot, the break travelling right to left |
 | `cut` | `chunks-direct` | shot to shot in chunks, with no wallpaper between |
 | `open` / `cut` | `resolve`, `grid`, `scan` / `dissolve`, `sweep`, `mosaic` | the first round: the footage itself crumbles into mosaic pixels, no wallpaper |
 

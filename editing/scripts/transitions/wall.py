@@ -111,7 +111,8 @@ def chunk_field(w: int, h: int, cell: int, direction: str = "right", seed: int =
     yy, xx = np.mgrid[0:rows, 0:cols]
     fx, fy = xx / max(cols - 1, 1), yy / max(rows - 1, 1)
     bias = {"right": 1 - fx, "left": fx, "top": fy, "bottom": 1 - fy,
-            "center": np.hypot(fx - 0.5, (fy - 0.5) * rows / cols) / 0.6}[direction]
+            "center": np.hypot(fx - 0.5, (fy - 0.5) * rows / cols) / 0.6,
+            "topright": np.hypot((1 - fx) * cols, fy * rows) / np.hypot(cols, rows)}[direction]
     f = 0.42 * bias + 0.36 * coarse + 0.22 * fine
     order = f.ravel().argsort().argsort().reshape(f.shape)          # rank transform: progress == covered share
     return (order / f.size).astype(np.float32)
