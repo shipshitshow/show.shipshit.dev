@@ -42,3 +42,9 @@ bun run lint          # biome check
 - `skills/` — show-specific runtime skills (prep, cues, hooks, clips, chapters, metadata, linkedin, x, thumbnails, coach, growth-review, plus recap, dialogue, library, overlays for editing)
 - `.agents/skills/` — show skill discovery links and dev skills (debug, refactor, review); symlinked to .claude/skills and .codex/skills
 - `scripts/skills.sh` — skill installer (pulls from github.com/shipshitshow/skills)
+
+## Claude model routing
+
+- Standard implementation: Claude Sonnet 5.5.
+- Big implementation (large or cross-cutting changes) and planning: Claude Opus 5.5 or newer.
+- Audits, major or minor: the latest Claude Fable (5.2 today). Fable never implements or edits code.
