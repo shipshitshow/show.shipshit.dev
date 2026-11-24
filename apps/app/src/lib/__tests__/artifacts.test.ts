@@ -6,6 +6,7 @@ import {
   TRACK_LABELS,
   TWEET_DECK,
 } from '@/lib/artifacts/agent-security-2026-10';
+import { MODEL_SHOWDOWN_TWEET_DECK } from '@/lib/artifacts/model-showdown-2026-11';
 import {
   ARTIFACTS,
   getArtifact,
@@ -39,6 +40,7 @@ describe('artifacts registry', () => {
     expect(ARTIFACTS.map(({ slug }) => slug).sort()).toEqual([
       'agent-security-timeline',
       'agent-security-tweets',
+      'model-showdown-tweets',
       'timeline-dead-tweets',
       'vibe-editing-tweets',
     ]);
@@ -114,6 +116,21 @@ describe('timeline dead tweet deck', () => {
     expect(ids.length).toBe(4);
     expect(new Set(ids).size).toBe(ids.length);
     for (const entry of TIMELINE_DEAD_TWEET_DECK) {
+      expect(entry.id).toMatch(/^\d+$/);
+      expect(entry.url).toBe(
+        `https://x.com/${entry.handle}/status/${entry.id}`,
+      );
+      expect(entry.note.length).toBeGreaterThan(0);
+    }
+  });
+});
+
+describe('model showdown tweet deck', () => {
+  test('entries are unique X status links that match their id and handle', () => {
+    const ids = MODEL_SHOWDOWN_TWEET_DECK.map(({ id }) => id);
+    expect(ids.length).toBe(6);
+    expect(new Set(ids).size).toBe(ids.length);
+    for (const entry of MODEL_SHOWDOWN_TWEET_DECK) {
       expect(entry.id).toMatch(/^\d+$/);
       expect(entry.url).toBe(
         `https://x.com/${entry.handle}/status/${entry.id}`,
