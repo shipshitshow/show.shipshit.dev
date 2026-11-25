@@ -11,7 +11,7 @@ y~1056 (55% down), centred on x468, spoken word in red, inside the Shorts safe z
 
 Usage:
   build.py <slug> --episode $SHIPSHITSHOW_CONTENT_ROOT/projects/<date>_<YYMMDD> [--still T] [--out FILE] [--work DIR]
-           [--config FILE] [--source FILE] [--assets DIR] [--font TTF] [--chrome PATH]
+           [--config FILE] [--source FILE] [--graded] [--assets DIR] [--font TTF] [--chrome PATH]
 Reads <work>/capsw.json (written by align.py). Writes <short>/outputs/work/video-prenorm.mp4.
 """
 import argparse
@@ -146,6 +146,7 @@ def main():
     ap.add_argument("--work", help="work dir holding capsw.json (default <short>/outputs/work/tmp_v3c)")
     ap.add_argument("--out", help="pre-loudnorm mp4 (default <short>/outputs/work/video-prenorm.mp4)")
     ap.add_argument("--source", help="override the source video")
+    ap.add_argument("--graded", action="store_true", help="use the colour-graded copy of the source (default: the raw)")
     ap.add_argument("--assets", help="b-roll PNG dir (default <episode>/out/video/assets)")
     ap.add_argument("--font", default=CAPFONT)
     ap.add_argument("--chrome", help="headless Chromium for the asterisk (or $CHROME)")
@@ -154,7 +155,7 @@ def main():
 
     cfg, episode, sdir = C.load_short(args.episode, args.slug, args.config)
     ff = C.find_bin("ffmpeg")
-    src = C.source_path(cfg, episode, args.source)
+    src = C.source_path(cfg, episode, args.source, args.graded)
     work = Path(args.work) if args.work else C.default_work(sdir)
     work.mkdir(parents=True, exist_ok=True)
     tmp = str(work)

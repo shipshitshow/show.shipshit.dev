@@ -31,9 +31,9 @@ MIN_CAPTION = 0.45      # s
 WHISPER_MODEL = Path.home() / ".cache" / "whisper" / "ggml-small.en.bin"
 
 
-def prep(cfg, episode, work, ff, model, src_override):
+def prep(cfg, episode, work, ff, model, src_override, graded=False):
     """a.wav = the Short's audio (16 kHz mono, segs concatenated), w.json = whisper word stamps."""
-    src = C.source_path(cfg, episode, src_override)
+    src = C.source_path(cfg, episode, src_override, graded)
     work.mkdir(parents=True, exist_ok=True)
     segs = cfg["segs"]
     inputs, ain = [], ""
@@ -156,13 +156,14 @@ def main():
     ap.add_argument("--prep", action="store_true", help="make a.wav + w.json (whisper) and print the numbered words")
     ap.add_argument("--fixes", help="JSON of whisper word-time corrections")
     ap.add_argument("--source")
+    ap.add_argument("--graded", action="store_true", help="use the colour-graded copy of the source (default: the raw)")
     ap.add_argument("--model", default=str(WHISPER_MODEL))
     args = ap.parse_args()
     cfg, episode, sdir = C.load_short(args.episode, args.slug, args.config)
     work = Path(args.work) if args.work else C.default_work(sdir)
     ff = C.find_bin("ffmpeg")
     if args.prep:
-        prep(cfg, episode, work, ff, args.model, args.source)
+        prep(cfg, episode, work, ff, args.model, args.source, args.graded)
         return
     if not cfg.get("chunks"):
         C.die("short.json has no 'chunks'; run with --prep, then write them")

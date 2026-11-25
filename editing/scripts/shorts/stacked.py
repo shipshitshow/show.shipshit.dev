@@ -13,7 +13,7 @@ and the `broll` list are ignored here. Panel crops come from `crops.S` (see READ
 
 Usage:
   stacked.py <slug> --episode $SHIPSHITSHOW_CONTENT_ROOT/projects/<date>_<YYMMDD> [--still T] [--out FILE] [--work DIR]
-             [--config FILE] [--source FILE] [--font TTF] [--chrome PATH]
+             [--config FILE] [--source FILE] [--graded] [--font TTF] [--chrome PATH]
 Writes <short>/outputs/work/video-prenorm.mp4 (or --out); with --still, a single frame to <work>/still.png.
 """
 import argparse
@@ -148,6 +148,7 @@ def main():
     ap.add_argument("--work", help="work dir holding capsw.json (default <short>/outputs/work/tmp_v3c)")
     ap.add_argument("--out", help="pre-loudnorm mp4 (default <short>/outputs/work/video-prenorm.mp4)")
     ap.add_argument("--source", help="override the source video")
+    ap.add_argument("--graded", action="store_true", help="use the colour-graded copy of the source (default: the raw)")
     ap.add_argument("--font", default=None)
     ap.add_argument("--chrome", help="headless Chromium for the asterisk (or $CHROME)")
     ap.add_argument("--still", metavar="T", help="write a single frame at clip second T to <work>/still.png")
@@ -160,7 +161,7 @@ def main():
 
     cfg, episode, sdir = C.load_short(args.episode, args.slug, args.config)
     ff, fp = C.find_bin("ffmpeg"), C.find_bin("ffprobe")
-    src = C.source_path(cfg, episode, args.source)
+    src = C.source_path(cfg, episode, args.source, args.graded)
     work = Path(args.work) if args.work else C.default_work(sdir)
     work.mkdir(parents=True, exist_ok=True)
     tmp = str(work)
