@@ -72,6 +72,8 @@ If whisper mistimes a word, correct it and re-run step 2:
 ```
 
 - `source`: cam recording, relative to the episode folder.
+  The raw is used as named; the colour-graded `<stem>.graded.mp4` is used only with `--graded` or `"source_graded": true`.
+  Every script prints a `source:` line saying which file it is cutting from.
 - `segs`: source-second ranges, joined with hard cuts (18 ms audio fades at the joins).
   - `layout "A"` (default): one speaker, `tile` is `vincent` or `mitchell`.
   - `layout "B"`: two-up; `splits` lists source seconds where the crop moves, `speaker_turns`

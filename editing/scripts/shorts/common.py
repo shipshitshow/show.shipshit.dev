@@ -66,11 +66,26 @@ def default_work(short_dir):
     return Path(short_dir) / "outputs" / "work" / "tmp_v3c"
 
 
-def source_path(cfg, episode, override=None):
-    # the config names the recording; its colour-corrected copy is used when current (--source bypasses this)
-    p = Path(override) if override else workspace.graded_source(Path(episode) / cfg["source"])
+def source_path(cfg, episode, override=None, graded=False):
+    """The recording a Short is cut from, and one line on stderr saying which file it is.
+
+    Default is the raw named by short.json's "source". The colour-corrected copy (<stem>.graded<suffix>, from
+    grade/grade.py) is used only when asked for: `graded=True` (the --graded flag) or "source_graded": true in
+    short.json. `override` (--source) wins over both. A stale or missing graded copy is an error, never a silent
+    fall-back to the raw."""
+    raw = Path(episode) / cfg["source"]
+    if override:
+        p, why = Path(override), "--source"
+    elif graded or cfg.get("source_graded"):
+        p = workspace.graded_source(raw)
+        if p == raw:
+            die(f"graded source requested but no current {raw.stem}.graded{raw.suffix} next to {raw}")
+        why = "graded"
+    else:
+        p, why = raw, "raw"
     if not p.exists():
         die(f"source video not found: {p}")
+    print(f"source: {p} ({why})", file=sys.stderr)
     return p
 
 
